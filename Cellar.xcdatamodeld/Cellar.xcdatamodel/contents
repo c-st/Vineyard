@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1810" systemVersion="12C60" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Appellation" representedClassName="Appellation" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="region" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Region" inverseName="appellations" inverseEntity="Region" syncable="YES"/>
+        <relationship name="wines" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Wine" inverseName="appellation" inverseEntity="Wine" syncable="YES"/>
+    </entity>
+    <entity name="Country" representedClassName="Country" parentEntity="Location" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="regions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Region" inverseName="country" inverseEntity="Region" syncable="YES"/>
+    </entity>
+    <entity name="Location" representedClassName="Location" isAbstract="YES" syncable="YES"/>
+    <entity name="Region" representedClassName="Region" parentEntity="Location" syncable="YES">
+        <relationship name="appellations" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Appellation" inverseName="region" inverseEntity="Appellation" syncable="YES"/>
+        <relationship name="country" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Country" inverseName="regions" inverseEntity="Country" syncable="YES"/>
+        <relationship name="wineries" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Winery" inverseName="region" inverseEntity="Winery" syncable="YES"/>
+    </entity>
+    <entity name="Varietal" representedClassName="Variety" syncable="YES">
+        <relationship name="wines" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Wine" inverseName="varietals" inverseEntity="Wine" syncable="YES"/>
+    </entity>
+    <entity name="Wine" representedClassName="Wine" syncable="YES">
+        <attribute name="creationTime" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="image" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="price" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="rating" optional="YES" attributeType="Integer 16" minValueString="0" maxValueString="100" defaultValueString="0.0" syncable="YES"/>
+        <relationship name="appellation" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Appellation" inverseName="wines" inverseEntity="Appellation" syncable="YES"/>
+        <relationship name="varietals" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Varietal" inverseName="wines" inverseEntity="Varietal" syncable="YES"/>
+        <relationship name="winery" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Winery" inverseName="wines" inverseEntity="Winery" syncable="YES"/>
+    </entity>
+    <entity name="Winery" representedClassName="Winery" syncable="YES">
+        <relationship name="region" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Region" inverseName="wineries" inverseEntity="Region" syncable="YES"/>
+        <relationship name="wines" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Wine" inverseName="winery" inverseEntity="Wine" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Country" positionX="-281" positionY="-49" width="137" height="73"/>
+        <element name="Region" positionX="-272" positionY="90" width="128" height="88"/>
+        <element name="Varietal" positionX="214" positionY="86" width="128" height="58"/>
+        <element name="Wine" positionX="-18" positionY="108" width="128" height="163"/>
+        <element name="Winery" positionX="-281" positionY="270" width="128" height="73"/>
+        <element name="Location" positionX="-488" positionY="29" width="128" height="43"/>
+        <element name="Appellation" positionX="-2" positionY="-45" width="128" height="88"/>
+    </elements>
+</model>
