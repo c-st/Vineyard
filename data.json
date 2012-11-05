@@ -1,16 +1,60 @@
 {
-    "countries":[
-                    { "countryID":"es", "name":"Spain"},
-                    { "countryID":"fr", "name":"France"}
-                    ],
-    
-    "regions":[
-               { "regionID":"rioja", "name":"RE Rioja", "countryID":"es"},
-               { "regionID":"aragon", "name":" RE Aragon", "countryID":"es"},
-               { "regionID":"test", "name":" RE Test", "countryID":"fr"}
+	"countries":[
+				 { "countryID":"es", "name":"Spain", "isoCode":"ES"},
+                 { "countryID":"fr", "name":"France", "isoCode":"FR"},
+                 { "countryID":"de", "name":"Germany", "isoCode":"DE"}
                  ],
     
-    "appellations":[
+	"regions":[
+			   { "regionID":"andalusia", "name":"Andalusia", "countryID":"es"},
+               { "regionID":"aragon", "name":" Aragon", "countryID":"es"},
+               { "regionID":"asturias", "name":" Asturias", "countryID":"es"},
+               { "regionID":"cantabria", "name":"Cantabria", "countryID":"es"},
+               { "regionID":"castille_leon", "name":"Castile and León", "countryID":"es"},
+               { "regionID":"castille_la_mancha", "name":"Castile-La Mancha", "countryID":"es"},
+               { "regionID":"madrid", "name":"Community of Madrid", "countryID":"es"},
+               { "regionID":"valencian_community", "name":"Valencian Community", "countryID":"es"},
+               { "regionID":"extremadura", "name":"Extremadura", "countryID":"es"},
+               { "regionID":"galicia", "name":"Galicia", "countryID":"es"},
+               { "regionID":"balearic_islands", "name":"Balearic Islands", "countryID":"es"},
+               { "regionID":"canary_islands", "name":"Canary Islands", "countryID":"es"},
+               { "regionID":"navarre", "name":"Foral Community of Navarre", "countryID":"es"},
+               { "regionID":"basque_country", "name":"Basque Country", "countryID":"es"},
+               { "regionID":"murcia", "name":"Murcia", "countryID":"es"},
+               { "regionID":"galicia", "name":"Galicia", "countryID":"es"},
+               { "regionID":"rioja", "name":"Rioja", "countryID":"es"},
+               
+               { "regionID":"alsace", "name":"Alsace", "countryID":"fr"},
+               { "regionID":"beaujolais", "name":"Beaujolais", "countryID":"fr"},
+               { "regionID":"bordeaux", "name":"Bordeaux", "countryID":"fr"},
+               { "regionID":"burgundy", "name":"Burgundy", "countryID":"fr"},
+               { "regionID":"champagne", "name":"Champagne", "countryID":"fr"},
+               { "regionID":"corsica", "name":"Corsica", "countryID":"fr"},
+               { "regionID":"jura", "name":"Jura", "countryID":"fr"},
+               { "regionID":"languedoc_roussillon", "name":"Languedoc-Roussillon", "countryID":"fr"},
+               { "regionID":"loire", "name":"Loire", "countryID":"fr"},
+               { "regionID":"provence", "name":"Provence", "countryID":"fr"},
+               { "regionID":"rhone", "name":"Rhône", "countryID":"fr"},
+               { "regionID":"savoy", "name":"Savoy", "countryID":"fr"},
+               { "regionID":"south_west_france", "name":"South West France", "countryID":"fr"},
+			   
+			   { "regionID":"ahr", "name":"Ahr", "countryID":"de"},
+			   { "regionID":"baden", "name":"Baden", "countryID":"de"},
+			   { "regionID":"franconia", "name":"Franconia", "countryID":"de"},
+			   { "regionID":"hessische_bergstrasse", "name":"Hessische Bergstraße", "countryID":"de"},
+			   { "regionID":"mittelrhein", "name":"Mittelrhein", "countryID":"de"},
+			   { "regionID":"mosel", "name":"Mosel", "countryID":"de"},
+			   { "regionID":"nahe", "name":"Nahe", "countryID":"de"},
+			   { "regionID":"palatinate", "name":"Palatinate", "countryID":"de"},
+			   { "regionID":"rheingau", "name":"Rheingau", "countryID":"de"},
+			   { "regionID":"rheinhessen", "name":"Rheinhessen", "countryID":"de"},
+			   { "regionID":"saale_unstrut", "name":"Saale-Unstrut", "countryID":"de"},
+			   { "regionID":"saxony", "name":"Saxony", "countryID":"de"},
+			   { "regionID":"wuerttemberg", "name":"Württemberg", "countryID":"de"}
+  
+               ],
+    
+	"appellations":[
                     { "appellationID":1, "name":"AP Rioja", "regionID":"rioja" },
                     { "appellationID":2, "name":"AP Cariñena", "regionID":"aragon"}
-]}
+                    ]}

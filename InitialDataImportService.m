@@ -21,7 +21,6 @@
     NSError *error = nil;
     NSData *json = [NSData dataWithContentsOfFile: [[NSBundle mainBundle] pathForResource:@"data.json" ofType:nil]];
     NSDictionary *data = [NSJSONSerialization JSONObjectWithData:json options:NSJSONReadingMutableContainers error:&error];
-
     
     NSLog(@"%@", data);
     id object;
@@ -30,7 +29,7 @@
         Country *newCountry = [Country createEntity];
         [newCountry importValuesForKeysWithObject:object];
     }
-    [[NSManagedObjectContext defaultContext] saveNestedContexts];
+    //[[NSManagedObjectContext defaultContext] saveNestedContexts];
     
     
     for (object in [data objectForKey:@"regions"]) {
@@ -41,9 +40,15 @@
         [newRegion setCountry:[[Country findByAttribute:@"countryID" withValue:[object valueForKeyPath:@"countryID"]] objectAtIndex:0]];
     }
     [[NSManagedObjectContext defaultContext] saveNestedContexts];
-    
-    
-    
+}
+
++ (void)clearStore {
+    [MagicalRecord cleanUp];
+    NSError *error = nil;
+    NSURL *storeUrl = [NSPersistentStore urlForStoreName:[MagicalRecord defaultStoreName]];
+    [[NSFileManager defaultManager] removeItemAtURL:storeUrl error:&error];
+    NSLog(@"Default store was reset.");
+    [MagicalRecord setupCoreDataStack];
 }
 
 @end

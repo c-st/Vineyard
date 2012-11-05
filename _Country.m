@@ -5,6 +5,7 @@
 
 const struct CountryAttributes CountryAttributes = {
 	.countryID = @"countryID",
+	.isoCode = @"isoCode",
 	.name = @"name",
 };
 
@@ -49,6 +50,13 @@ const struct CountryFetchedProperties CountryFetchedProperties = {
 
 
 @dynamic countryID;
+
+
+
+
+
+
+@dynamic isoCode;
 
 
 

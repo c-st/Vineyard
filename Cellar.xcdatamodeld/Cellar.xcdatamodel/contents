@@ -16,6 +16,7 @@
     </entity>
     <entity name="Country" representedClassName="Country" parentEntity="Location" syncable="YES">
         <attribute name="countryID" attributeType="String" syncable="YES"/>
+        <attribute name="isoCode" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" attributeType="String" syncable="YES"/>
         <relationship name="regions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Region" inverseName="country" inverseEntity="Region" syncable="YES">
             <userInfo>
@@ -58,7 +59,7 @@
     </entity>
     <elements>
         <element name="Appellation" positionX="-2" positionY="-45" width="128" height="105"/>
-        <element name="Country" positionX="-281" positionY="-49" width="137" height="90"/>
+        <element name="Country" positionX="-281" positionY="-49" width="137" height="103"/>
         <element name="Location" positionX="-488" positionY="29" width="128" height="43"/>
         <element name="Region" positionX="-272" positionY="90" width="128" height="120"/>
         <element name="Varietal" positionX="214" positionY="86" width="128" height="58"/>

@@ -1,27 +1,22 @@
-#import "CountryTableViewController.h"
+#import "RegionTableViewController.h"
 #import "WineCell.h"
 
-#import "Country.h"
+#import "Region.h"
 
-@interface CountryTableViewController ()
+@interface RegionTableViewController ()
 
 @end
 
-@implementation CountryTableViewController
+@implementation RegionTableViewController
 
 @synthesize fetchedResultsController = fetchedResultsController;
 @synthesize managedObjectContext = _managedObjectContext;
 
-- (NSFetchedResultsController *)fetchedResultsController {
-    if (fetchedResultsController != nil) {
-        return fetchedResultsController;
+- (id) initWithFetchedResultsController:(NSFetchedResultsController *)controller {
+    if ((self = [super init])) {
+        fetchedResultsController = controller;
     }
-    fetchedResultsController = [Country
-                                    fetchAllGroupedBy:nil
-                                    withPredicate:nil
-                                    sortedBy:@"name" ascending:NO delegate:self];
-    
-    return fetchedResultsController;
+    return self;
 }
 
 - (void)viewDidLoad {
@@ -30,7 +25,7 @@
 	if (![[self fetchedResultsController] performFetch:&error]) {
 		NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
 	}
-    self.title = @"Countries";
+    self.title = @"Regions";
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -43,9 +38,9 @@
 }
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
-    Country *country = [fetchedResultsController objectAtIndexPath:indexPath];
-    cell.textLabel.text = country.name;
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@, %@", country.name, country.countryID];
+    Region *region = [fetchedResultsController objectAtIndexPath:indexPath];
+    cell.textLabel.text = region.name;
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@, %@", region.name, region.regionID];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -58,9 +53,10 @@
     return cell;
 }
 
+/*
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath  {
 	[[self navigationController] pushViewController:[[WineTableViewController alloc] init] animated:YES];
-}
+}*/
 
 - (void)viewDidUnload {
     self.fetchedResultsController = nil;

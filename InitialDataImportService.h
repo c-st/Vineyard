@@ -12,4 +12,6 @@
 
 + (void)importInitialDataFromJson;
 
++ (void)clearStore;
+
 @end

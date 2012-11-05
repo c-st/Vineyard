@@ -1,5 +1,5 @@
 #import "AppDelegate.h"
-#import "WineTableViewController.h"
+#import "CountryTableViewController.h"
 
 #import "MagicalRecord.h"
 
@@ -20,8 +20,12 @@
     // Setup MagicalRecord
     [MagicalRecord setupCoreDataStack];
     
+    [InitialDataImportService clearStore];
+    
     // Import sample data
     [InitialDataImportService importInitialDataFromJson];
+    
+    
    
     // Display data
     for (Country *country in [Country findAll]) {
@@ -47,15 +51,15 @@
     
     NSMutableArray *tabs = [[NSMutableArray alloc] init];
     
-    WineTableViewController *wineTableViewController = [[WineTableViewController alloc] init];
+    CountryTableViewController *countryTableViewController = [[CountryTableViewController alloc] init];
     
-    [wineTableViewController setTitle:@"Wines"];
-    myNavigationController = [[UINavigationController alloc] initWithRootViewController:wineTableViewController];
+    [countryTableViewController setTitle:@"Wines"];
+    myNavigationController = [[UINavigationController alloc] initWithRootViewController:countryTableViewController];
     [tabs addObject:myNavigationController];
     
     
     UIViewController *mySecondViewController = [[UIViewController alloc] init];
-    [mySecondViewController setTitle:@"Appellations"];
+    [mySecondViewController setTitle:@"Browse"];
     myNavigationController = [[UINavigationController alloc] initWithRootViewController:mySecondViewController];
     [tabs addObject:myNavigationController];
     

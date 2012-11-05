@@ -6,6 +6,7 @@
 
 extern const struct CountryAttributes {
 	__unsafe_unretained NSString *countryID;
+	__unsafe_unretained NSString *isoCode;
 	__unsafe_unretained NSString *name;
 } CountryAttributes;
 
@@ -17,6 +18,7 @@ extern const struct CountryFetchedProperties {
 } CountryFetchedProperties;
 
 @class Region;
+
 
 
 
@@ -37,6 +39,14 @@ extern const struct CountryFetchedProperties {
 
 
 //- (BOOL)validateCountryID:(id*)value_ error:(NSError**)error_;
+
+
+
+
+@property (nonatomic, strong) NSString* isoCode;
+
+
+//- (BOOL)validateIsoCode:(id*)value_ error:(NSError**)error_;
 
 
 
@@ -74,6 +84,12 @@ extern const struct CountryFetchedProperties {
 
 - (NSString*)primitiveCountryID;
 - (void)setPrimitiveCountryID:(NSString*)value;
+
+
+
+
+- (NSString*)primitiveIsoCode;
+- (void)setPrimitiveIsoCode:(NSString*)value;
 
 
 

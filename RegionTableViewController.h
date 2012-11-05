@@ -1,8 +1,10 @@
 #import <UIKit/UIKit.h>
 
-@interface CountryTableViewController : UITableViewController <NSFetchedResultsControllerDelegate, UITableViewDataSource, UITableViewDelegate>
+@interface RegionTableViewController : UITableViewController <NSFetchedResultsControllerDelegate, UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic,strong) NSManagedObjectContext* managedObjectContext;
 @property (nonatomic, retain) NSFetchedResultsController *fetchedResultsController;
+
+- (id) initWithFetchedResultsController:(NSFetchedResultsController *)controller;
 
 @end
