@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-@interface InitialDataImportController : NSObject
+@interface InitialDataImportService : NSObject
+
++ (void)importInitialDataFromJson;
 
 @end

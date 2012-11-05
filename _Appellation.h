@@ -5,6 +5,7 @@
 
 
 extern const struct AppellationAttributes {
+	__unsafe_unretained NSString *appellationID;
 	__unsafe_unretained NSString *name;
 } AppellationAttributes;
 
@@ -21,6 +22,7 @@ extern const struct AppellationFetchedProperties {
 
 
 
+
 @interface AppellationID : NSManagedObjectID {}
 @end
 
@@ -29,6 +31,14 @@ extern const struct AppellationFetchedProperties {
 + (NSString*)entityName;
 + (NSEntityDescription*)entityInManagedObjectContext:(NSManagedObjectContext*)moc_;
 - (AppellationID*)objectID;
+
+
+
+
+@property (nonatomic, strong) NSString* appellationID;
+
+
+//- (BOOL)validateAppellationID:(id*)value_ error:(NSError**)error_;
 
 
 
@@ -69,6 +79,12 @@ extern const struct AppellationFetchedProperties {
 @end
 
 @interface _Appellation (CoreDataGeneratedPrimitiveAccessors)
+
+
+- (NSString*)primitiveAppellationID;
+- (void)setPrimitiveAppellationID:(NSString*)value;
+
+
 
 
 - (NSString*)primitiveName;

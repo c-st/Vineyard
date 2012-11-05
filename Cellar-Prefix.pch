@@ -8,9 +8,15 @@
 #warning "This project uses features only available in iOS SDK 3.0 and later."
 #endif
 
+
+
 #ifdef __OBJC__
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
-    #import <CoreData/CoreData.h>
+
+    #define MR_ENABLE_ACTIVE_RECORD_LOGGING 1
+    #define MR_SHORTHAND
     #import "CoreData+MagicalRecord.h"
+
+    #import <CoreData/CoreData.h>
 #endif

@@ -1,13 +1,13 @@
 {
     "countries":[
-                    { "countryIso":"es", "name":"Spain"},
-                    { "countryIso":"fr", "name":"France"}
+                    { "countryID":"es", "name":"Spain"},
+                    { "countryID":"fr", "name":"France"}
                     ],
     
     "regions":[
-               { "regionID":"rioja", "name":"RE Rioja", "countryIso":"es"},
-               { "regionID":"aragon", "name":" RE Aragon", "countryIso":"es"},
-               { "regionID":"test", "name":" RE Test", "countryIso":"fr"}
+               { "regionID":"rioja", "name":"RE Rioja", "countryID":"es"},
+               { "regionID":"aragon", "name":" RE Aragon", "countryID":"es"},
+               { "regionID":"test", "name":" RE Test", "countryID":"fr"}
                  ],
     
     "appellations":[

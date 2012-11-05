@@ -4,6 +4,8 @@
 #import "_Region.h"
 
 const struct RegionAttributes RegionAttributes = {
+	.name = @"name",
+	.regionID = @"regionID",
 };
 
 const struct RegionRelationships RegionRelationships = {
@@ -44,6 +46,20 @@ const struct RegionFetchedProperties RegionFetchedProperties = {
 
 	return keyPaths;
 }
+
+
+
+
+@dynamic name;
+
+
+
+
+
+
+@dynamic regionID;
+
+
 
 
 

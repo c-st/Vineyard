@@ -1,7 +1,13 @@
 #import "AppDelegate.h"
 #import "WineTableViewController.h"
 
+#import "MagicalRecord.h"
+
 #import "Appellation.h"
+#import "Country.h"
+#import "Region.h"
+
+#import "InitialDataImportService.h"
 
 @implementation AppDelegate
 
@@ -11,29 +17,28 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Save Data
-    NSManagedObjectContext *context = [self managedObjectContext];
-    Appellation *appellation = [NSEntityDescription
-                                      insertNewObjectForEntityForName:@"Appellation"
-                                      inManagedObjectContext:context];
-    appellation.name = @"Rioja";
-    // Region, Country
+    // Setup MagicalRecord
+    [MagicalRecord setupCoreDataStack];
     
-    NSError *error;
-    if (![context save:&error]) {
-        NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
+    // Import sample data
+    [InitialDataImportService importInitialDataFromJson];
+   
+    // Display data
+    for (Country *country in [Country findAll]) {
+        NSLog(@"-->Country Name is %@. countryID is %@.", country.name, country.countryID);
     }
     
-    // Fetch Data
-    // Test listing all FailedBankInfos from the store
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Appellation"
-                                              inManagedObjectContext:context];
-    [fetchRequest setEntity:entity];
-    NSArray *fetchedObjects = [context executeFetchRequest:fetchRequest error:&error];
-    for (Appellation *apellation in fetchedObjects) {
-        NSLog(@"Name: %@", apellation.name);
+    for (Region *region in [Region findAll]) {
+        NSLog(@"--> Region Name is %@. RegionID is %@. Country is %@ %@", region.name, region.regionID, region.country.countryID, region.country.name);
     }
+    
+    /*
+    NSArray *appellations = [Appellation findAll];
+    NSLog(@"Total count is %i", [appellations count]);
+    for (Appellation *ap in appellations) {
+        NSLog(@"Name is %@. RegionID is %@", ap.name, ap.region.regionID);
+    }
+    */
     
     // Build UI
     UITabBarController *tabBarController = [[UITabBarController alloc] init];
@@ -107,7 +112,9 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Saves changes in the application's managed object context before the application terminates.
-    [self saveContext];
+    //[self saveContext];
+    
+    [MagicalRecord cleanUp];
 }
 
 - (void)saveContext

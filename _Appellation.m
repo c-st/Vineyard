@@ -4,6 +4,7 @@
 #import "_Appellation.h"
 
 const struct AppellationAttributes AppellationAttributes = {
+	.appellationID = @"appellationID",
 	.name = @"name",
 };
 
@@ -44,6 +45,13 @@ const struct AppellationFetchedProperties AppellationFetchedProperties = {
 
 	return keyPaths;
 }
+
+
+
+
+@dynamic appellationID;
+
+
 
 
 

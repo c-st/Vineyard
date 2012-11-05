@@ -5,6 +5,8 @@
 #import "Location.h"
 
 extern const struct RegionAttributes {
+	__unsafe_unretained NSString *name;
+	__unsafe_unretained NSString *regionID;
 } RegionAttributes;
 
 extern const struct RegionRelationships {
@@ -21,6 +23,8 @@ extern const struct RegionFetchedProperties {
 @class Winery;
 
 
+
+
 @interface RegionID : NSManagedObjectID {}
 @end
 
@@ -29,6 +33,22 @@ extern const struct RegionFetchedProperties {
 + (NSString*)entityName;
 + (NSEntityDescription*)entityInManagedObjectContext:(NSManagedObjectContext*)moc_;
 - (RegionID*)objectID;
+
+
+
+
+@property (nonatomic, strong) NSString* name;
+
+
+//- (BOOL)validateName:(id*)value_ error:(NSError**)error_;
+
+
+
+
+@property (nonatomic, strong) NSString* regionID;
+
+
+//- (BOOL)validateRegionID:(id*)value_ error:(NSError**)error_;
 
 
 
@@ -68,6 +88,18 @@ extern const struct RegionFetchedProperties {
 @end
 
 @interface _Region (CoreDataGeneratedPrimitiveAccessors)
+
+
+- (NSString*)primitiveName;
+- (void)setPrimitiveName:(NSString*)value;
+
+
+
+
+- (NSString*)primitiveRegionID;
+- (void)setPrimitiveRegionID:(NSString*)value;
+
+
 
 
 

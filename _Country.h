@@ -5,6 +5,7 @@
 #import "Location.h"
 
 extern const struct CountryAttributes {
+	__unsafe_unretained NSString *countryID;
 	__unsafe_unretained NSString *name;
 } CountryAttributes;
 
@@ -19,6 +20,7 @@ extern const struct CountryFetchedProperties {
 
 
 
+
 @interface CountryID : NSManagedObjectID {}
 @end
 
@@ -27,6 +29,14 @@ extern const struct CountryFetchedProperties {
 + (NSString*)entityName;
 + (NSEntityDescription*)entityInManagedObjectContext:(NSManagedObjectContext*)moc_;
 - (CountryID*)objectID;
+
+
+
+
+@property (nonatomic, strong) NSString* countryID;
+
+
+//- (BOOL)validateCountryID:(id*)value_ error:(NSError**)error_;
 
 
 
@@ -60,6 +70,12 @@ extern const struct CountryFetchedProperties {
 @end
 
 @interface _Country (CoreDataGeneratedPrimitiveAccessors)
+
+
+- (NSString*)primitiveCountryID;
+- (void)setPrimitiveCountryID:(NSString*)value;
+
+
 
 
 - (NSString*)primitiveName;

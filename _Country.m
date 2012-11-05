@@ -4,6 +4,7 @@
 #import "_Country.h"
 
 const struct CountryAttributes CountryAttributes = {
+	.countryID = @"countryID",
 	.name = @"name",
 };
 
@@ -43,6 +44,13 @@ const struct CountryFetchedProperties CountryFetchedProperties = {
 
 	return keyPaths;
 }
+
+
+
+
+@dynamic countryID;
+
+
 
 
 
