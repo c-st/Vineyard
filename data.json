@@ -1,0 +1,16 @@
+{
+    "countries":[
+                    { "countryIso":"es", "name":"Spain"},
+                    { "countryIso":"fr", "name":"France"}
+                    ],
+    
+    "regions":[
+               { "regionID":"rioja", "name":"RE Rioja", "countryIso":"es"},
+               { "regionID":"aragon", "name":" RE Aragon", "countryIso":"es"},
+               { "regionID":"test", "name":" RE Test", "countryIso":"fr"}
+                 ],
+    
+    "appellations":[
+                    { "appellationID":1, "name":"AP Rioja", "regionID":"rioja" },
+                    { "appellationID":2, "name":"AP Cariñena", "regionID":"aragon"}
+]}
