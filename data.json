@@ -2,27 +2,28 @@
 	"countries":[
 				 { "countryID":"es", "name":"Spain", "isoCode":"ES"},
                  { "countryID":"fr", "name":"France", "isoCode":"FR"},
-                 { "countryID":"de", "name":"Germany", "isoCode":"DE"}
+                 { "countryID":"de", "name":"Germany", "isoCode":"DE"},
+				 { "countryID":"ch", "name":"Switzerland", "isoCode":"CH"}
+				 
                  ],
     
 	"regions":[
-			   { "regionID":"andalusia", "name":"Andalusia", "countryID":"es"},
-               { "regionID":"aragon", "name":" Aragon", "countryID":"es"},
-               { "regionID":"asturias", "name":" Asturias", "countryID":"es"},
+			   { "regionID":"andalusia", "name":"Andalucía", "countryID":"es"},
+               { "regionID":"aragon", "name":"Aragón", "countryID":"es"},
+               { "regionID":"asturias", "name":"Asturias", "countryID":"es"},
                { "regionID":"cantabria", "name":"Cantabria", "countryID":"es"},
-               { "regionID":"castille_leon", "name":"Castile and León", "countryID":"es"},
-               { "regionID":"castille_la_mancha", "name":"Castile-La Mancha", "countryID":"es"},
-               { "regionID":"madrid", "name":"Community of Madrid", "countryID":"es"},
-               { "regionID":"valencian_community", "name":"Valencian Community", "countryID":"es"},
+               { "regionID":"castille_leon", "name":"Castilla y León", "countryID":"es"},
+               { "regionID":"castille_la_mancha", "name":"Castilla-La Mancha", "countryID":"es"},
+               { "regionID":"madrid", "name":"Comunidad de Madrid", "countryID":"es"},
+               { "regionID":"valencian_community", "name":"Comunidad Valenciana", "countryID":"es"},
                { "regionID":"extremadura", "name":"Extremadura", "countryID":"es"},
                { "regionID":"galicia", "name":"Galicia", "countryID":"es"},
-               { "regionID":"balearic_islands", "name":"Balearic Islands", "countryID":"es"},
-               { "regionID":"canary_islands", "name":"Canary Islands", "countryID":"es"},
-               { "regionID":"navarre", "name":"Foral Community of Navarre", "countryID":"es"},
-               { "regionID":"basque_country", "name":"Basque Country", "countryID":"es"},
+               { "regionID":"balearic_islands", "name":"Islas Baleares", "countryID":"es"},
+               { "regionID":"canary_islands", "name":"Islas Canarias", "countryID":"es"},
+               { "regionID":"navarre", "name":"Comunidad Foral de Navarra", "countryID":"es"},
+               { "regionID":"basque_country", "name":"País Vasco", "countryID":"es"},
                { "regionID":"murcia", "name":"Murcia", "countryID":"es"},
-               { "regionID":"galicia", "name":"Galicia", "countryID":"es"},
-               { "regionID":"rioja", "name":"Rioja", "countryID":"es"},
+               { "regionID":"rioja", "name":"La Rioja", "countryID":"es"},
                
                { "regionID":"alsace", "name":"Alsace", "countryID":"fr"},
                { "regionID":"beaujolais", "name":"Beaujolais", "countryID":"fr"},

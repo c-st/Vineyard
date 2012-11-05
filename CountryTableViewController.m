@@ -21,7 +21,7 @@
     fetchedResultsController = [Country
                                     fetchAllGroupedBy:nil
                                     withPredicate:nil
-                                    sortedBy:@"name" ascending:NO delegate:self];
+                                    sortedBy:@"name" ascending:YES delegate:self];
     
     return fetchedResultsController;
 }

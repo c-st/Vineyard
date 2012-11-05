@@ -7,12 +7,17 @@
             </userInfo>
         </attribute>
         <attribute name="name" attributeType="String" syncable="YES"/>
+        <relationship name="classification" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Classification" inverseName="appellations" inverseEntity="Classification" syncable="YES"/>
         <relationship name="region" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Region" inverseName="appellations" inverseEntity="Region" syncable="YES">
             <userInfo>
                 <entry key="mappedKeyName" value="regionID"/>
             </userInfo>
         </relationship>
         <relationship name="wines" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Wine" inverseName="appellation" inverseEntity="Wine" syncable="YES"/>
+    </entity>
+    <entity name="Classification" representedClassName="Classification" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="appellations" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Appellation" inverseName="classification" inverseEntity="Appellation" syncable="YES"/>
     </entity>
     <entity name="Country" representedClassName="Country" parentEntity="Location" syncable="YES">
         <attribute name="countryID" attributeType="String" syncable="YES"/>
@@ -40,7 +45,7 @@
         </relationship>
         <relationship name="wineries" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Winery" inverseName="region" inverseEntity="Winery" syncable="YES"/>
     </entity>
-    <entity name="Varietal" representedClassName="Variety" syncable="YES">
+    <entity name="Varietal" representedClassName="Varietal" syncable="YES">
         <relationship name="wines" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Wine" inverseName="varietals" inverseEntity="Wine" syncable="YES"/>
     </entity>
     <entity name="Wine" representedClassName="Wine" syncable="YES">
@@ -58,12 +63,13 @@
         <relationship name="wines" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Wine" inverseName="winery" inverseEntity="Wine" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Appellation" positionX="-2" positionY="-45" width="128" height="105"/>
+        <element name="Appellation" positionX="-2" positionY="-45" width="128" height="118"/>
         <element name="Country" positionX="-281" positionY="-49" width="137" height="103"/>
         <element name="Location" positionX="-488" positionY="29" width="128" height="43"/>
         <element name="Region" positionX="-272" positionY="90" width="128" height="120"/>
         <element name="Varietal" positionX="214" positionY="86" width="128" height="58"/>
         <element name="Wine" positionX="-18" positionY="108" width="128" height="165"/>
         <element name="Winery" positionX="-281" positionY="270" width="128" height="73"/>
+        <element name="Classification" positionX="214" positionY="-45" width="128" height="73"/>
     </elements>
 </model>

@@ -10,6 +10,7 @@ extern const struct AppellationAttributes {
 } AppellationAttributes;
 
 extern const struct AppellationRelationships {
+	__unsafe_unretained NSString *classification;
 	__unsafe_unretained NSString *region;
 	__unsafe_unretained NSString *wines;
 } AppellationRelationships;
@@ -17,6 +18,7 @@ extern const struct AppellationRelationships {
 extern const struct AppellationFetchedProperties {
 } AppellationFetchedProperties;
 
+@class Classification;
 @class Region;
 @class Wine;
 
@@ -48,6 +50,13 @@ extern const struct AppellationFetchedProperties {
 
 //- (BOOL)validateName:(id*)value_ error:(NSError**)error_;
 
+
+
+
+
+@property (nonatomic, strong) Classification* classification;
+
+//- (BOOL)validateClassification:(id*)value_ error:(NSError**)error_;
 
 
 
@@ -91,6 +100,11 @@ extern const struct AppellationFetchedProperties {
 - (void)setPrimitiveName:(NSString*)value;
 
 
+
+
+
+- (Classification*)primitiveClassification;
+- (void)setPrimitiveClassification:(Classification*)value;
 
 
 

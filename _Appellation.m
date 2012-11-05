@@ -9,6 +9,7 @@ const struct AppellationAttributes AppellationAttributes = {
 };
 
 const struct AppellationRelationships AppellationRelationships = {
+	.classification = @"classification",
 	.region = @"region",
 	.wines = @"wines",
 };
@@ -62,6 +63,10 @@ const struct AppellationFetchedProperties AppellationFetchedProperties = {
 
 
 
+
+@dynamic classification;
+
+	
 
 @dynamic region;
 

@@ -22,7 +22,7 @@ extern const struct WineFetchedProperties {
 } WineFetchedProperties;
 
 @class Appellation;
-@class Variety;
+@class Varietal;
 @class Winery;
 
 
@@ -120,8 +120,8 @@ extern const struct WineFetchedProperties {
 
 - (void)addVarietals:(NSSet*)value_;
 - (void)removeVarietals:(NSSet*)value_;
-- (void)addVarietalsObject:(Variety*)value_;
-- (void)removeVarietalsObject:(Variety*)value_;
+- (void)addVarietalsObject:(Varietal*)value_;
+- (void)removeVarietalsObject:(Varietal*)value_;
 
 @end
 
