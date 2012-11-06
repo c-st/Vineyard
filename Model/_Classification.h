@@ -5,16 +5,20 @@
 
 
 extern const struct ClassificationAttributes {
+	__unsafe_unretained NSString *name;
 } ClassificationAttributes;
 
 extern const struct ClassificationRelationships {
 	__unsafe_unretained NSString *appellations;
+	__unsafe_unretained NSString *country;
 } ClassificationRelationships;
 
 extern const struct ClassificationFetchedProperties {
 } ClassificationFetchedProperties;
 
 @class Appellation;
+@class Country;
+
 
 
 @interface ClassificationID : NSManagedObjectID {}
@@ -29,10 +33,25 @@ extern const struct ClassificationFetchedProperties {
 
 
 
+@property (nonatomic, strong) NSString* name;
+
+
+//- (BOOL)validateName:(id*)value_ error:(NSError**)error_;
+
+
+
+
 
 @property (nonatomic, strong) Appellation* appellations;
 
 //- (BOOL)validateAppellations:(id*)value_ error:(NSError**)error_;
+
+
+
+
+@property (nonatomic, strong) Country* country;
+
+//- (BOOL)validateCountry:(id*)value_ error:(NSError**)error_;
 
 
 
@@ -47,9 +66,20 @@ extern const struct ClassificationFetchedProperties {
 @interface _Classification (CoreDataGeneratedPrimitiveAccessors)
 
 
+- (NSString*)primitiveName;
+- (void)setPrimitiveName:(NSString*)value;
+
+
+
+
 
 - (Appellation*)primitiveAppellations;
 - (void)setPrimitiveAppellations:(Appellation*)value;
+
+
+
+- (Country*)primitiveCountry;
+- (void)setPrimitiveCountry:(Country*)value;
 
 
 @end

@@ -11,12 +11,14 @@ extern const struct CountryAttributes {
 } CountryAttributes;
 
 extern const struct CountryRelationships {
+	__unsafe_unretained NSString *classifications;
 	__unsafe_unretained NSString *regions;
 } CountryRelationships;
 
 extern const struct CountryFetchedProperties {
 } CountryFetchedProperties;
 
+@class Classification;
 @class Region;
 
 
@@ -60,6 +62,13 @@ extern const struct CountryFetchedProperties {
 
 
 
+@property (nonatomic, strong) NSSet* classifications;
+
+- (NSMutableSet*)classificationsSet;
+
+
+
+
 @property (nonatomic, strong) NSSet* regions;
 
 - (NSMutableSet*)regionsSet;
@@ -71,6 +80,11 @@ extern const struct CountryFetchedProperties {
 @end
 
 @interface _Country (CoreDataGeneratedAccessors)
+
+- (void)addClassifications:(NSSet*)value_;
+- (void)removeClassifications:(NSSet*)value_;
+- (void)addClassificationsObject:(Classification*)value_;
+- (void)removeClassificationsObject:(Classification*)value_;
 
 - (void)addRegions:(NSSet*)value_;
 - (void)removeRegions:(NSSet*)value_;
@@ -98,6 +112,11 @@ extern const struct CountryFetchedProperties {
 - (void)setPrimitiveName:(NSString*)value;
 
 
+
+
+
+- (NSMutableSet*)primitiveClassifications;
+- (void)setPrimitiveClassifications:(NSMutableSet*)value;
 
 
 

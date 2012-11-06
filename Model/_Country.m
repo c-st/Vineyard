@@ -10,6 +10,7 @@ const struct CountryAttributes CountryAttributes = {
 };
 
 const struct CountryRelationships CountryRelationships = {
+	.classifications = @"classifications",
 	.regions = @"regions",
 };
 
@@ -69,6 +70,19 @@ const struct CountryFetchedProperties CountryFetchedProperties = {
 
 
 
+
+@dynamic classifications;
+
+	
+- (NSMutableSet*)classificationsSet {
+	[self willAccessValueForKey:@"classifications"];
+  
+	NSMutableSet *result = (NSMutableSet*)[self mutableSetValueForKey:@"classifications"];
+  
+	[self didAccessValueForKey:@"classifications"];
+	return result;
+}
+	
 
 @dynamic regions;
 

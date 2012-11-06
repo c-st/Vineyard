@@ -46,8 +46,6 @@
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
     Country *country = [fetchedResultsController objectAtIndexPath:indexPath];
-	
-	NSLog(@"isoCode is %@", country.isoCode);
 	cell.imageView.image = [UIImage imageNamed:[country.isoCode stringByAppendingString:@".png"]];
     cell.textLabel.text = country.name;
     cell.detailTextLabel.text = [NSString stringWithFormat:@"%@, %@", country.name, country.countryID];
@@ -65,8 +63,6 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath  {
     Country *country = [fetchedResultsController objectAtIndexPath:indexPath];
-	
-	
     
     NSPredicate *searchStatement = [NSPredicate predicateWithFormat:@"country.countryID == %@", country.countryID];
     NSFetchedResultsController *regionsController = [Region fetchAllSortedBy:@"name" ascending:YES withPredicate:searchStatement groupBy:nil delegate:self];

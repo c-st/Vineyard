@@ -6,6 +6,15 @@
 				 { "countryID":"ch", "name":"Switzerland", "isoCode":"CH"}
 				 
                  ],
+	
+	"classifications":[
+					   {"classificationID":"VP", "name":"Vino de Pago", "countryID":"es"},
+					   {"classificationID":"DOCa", "name":"Denominación de Origen Calificada", "countryID":"es"},
+					   {"classificationID":"DO", "name":"Denominación de Origen", "countryID":"es"},
+					   {"classificationID":"VdCcIG", "name":"Vino de Calidad con Indicación Geográfica", "countryID":"es"},
+					   {"classificationID":"VdlT", "name":"Vino de la Tierra", "countryID":"es"}
+					   
+					   ],
     
 	"regions":[
 			   { "regionID":"andalusia", "name":"Andalucía", "countryID":"es"},
@@ -56,6 +65,6 @@
                ],
     
 	"appellations":[
-                    { "appellationID":1, "name":"AP Rioja", "regionID":"rioja" },
-                    { "appellationID":2, "name":"AP Cariñena", "regionID":"aragon"}
+                    { "appellationID":"rioja", "name":"AP Rioja", "regionID":"rioja" },
+                    { "appellationID":"carinena", "name":"AP Cariñena", "regionID":"aragon"}
                     ]}

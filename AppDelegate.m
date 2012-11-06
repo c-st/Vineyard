@@ -28,12 +28,8 @@
     
    
     // Display data
-    for (Country *country in [Country findAll]) {
-        NSLog(@"-->Country Name is %@. countryID is %@.", country.name, country.countryID);
-    }
-    
-    for (Region *region in [Region findAll]) {
-        NSLog(@"--> Region Name is %@. RegionID is %@. Country is %@ %@", region.name, region.regionID, region.country.countryID, region.country.name);
+    for (Appellation *appellation in [Appellation findAll]) {
+        NSLog(@"-->Appellation Name is %@. Region is %@.", appellation.name, appellation.region.name);
     }
     
     /*

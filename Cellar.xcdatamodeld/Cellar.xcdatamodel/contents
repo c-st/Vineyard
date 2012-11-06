@@ -1,28 +1,22 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1810" systemVersion="12C60" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="Appellation" representedClassName="Appellation" syncable="YES">
-        <attribute name="appellationID" attributeType="String" syncable="YES">
-            <userInfo>
-                <entry key="mappedKeyName" value="appellationID"/>
-            </userInfo>
-        </attribute>
+        <attribute name="appellationID" attributeType="String" syncable="YES"/>
         <attribute name="name" attributeType="String" syncable="YES"/>
         <relationship name="classification" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Classification" inverseName="appellations" inverseEntity="Classification" syncable="YES"/>
-        <relationship name="region" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Region" inverseName="appellations" inverseEntity="Region" syncable="YES">
-            <userInfo>
-                <entry key="mappedKeyName" value="regionID"/>
-            </userInfo>
-        </relationship>
+        <relationship name="region" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Region" inverseName="appellations" inverseEntity="Region" syncable="YES"/>
         <relationship name="wines" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Wine" inverseName="appellation" inverseEntity="Wine" syncable="YES"/>
     </entity>
     <entity name="Classification" representedClassName="Classification" syncable="YES">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="appellations" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Appellation" inverseName="classification" inverseEntity="Appellation" syncable="YES"/>
+        <relationship name="country" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Country" inverseName="classifications" inverseEntity="Country" syncable="YES"/>
     </entity>
     <entity name="Country" representedClassName="Country" parentEntity="Location" syncable="YES">
         <attribute name="countryID" attributeType="String" syncable="YES"/>
         <attribute name="isoCode" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" attributeType="String" syncable="YES"/>
+        <relationship name="classifications" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Classification" inverseName="country" inverseEntity="Classification" syncable="YES"/>
         <relationship name="regions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Region" inverseName="country" inverseEntity="Region" syncable="YES">
             <userInfo>
                 <entry key="relatedByAttribute" value="regionID"/>
@@ -64,12 +58,12 @@
     </entity>
     <elements>
         <element name="Appellation" positionX="-2" positionY="-45" width="128" height="118"/>
-        <element name="Country" positionX="-281" positionY="-49" width="137" height="103"/>
+        <element name="Classification" positionX="-162" positionY="-163" width="128" height="88"/>
+        <element name="Country" positionX="-281" positionY="-49" width="137" height="118"/>
         <element name="Location" positionX="-488" positionY="29" width="128" height="43"/>
         <element name="Region" positionX="-272" positionY="90" width="128" height="120"/>
         <element name="Varietal" positionX="214" positionY="86" width="128" height="58"/>
         <element name="Wine" positionX="-18" positionY="108" width="128" height="165"/>
         <element name="Winery" positionX="-281" positionY="270" width="128" height="73"/>
-        <element name="Classification" positionX="214" positionY="-45" width="128" height="73"/>
     </elements>
 </model>

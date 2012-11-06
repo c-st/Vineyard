@@ -4,10 +4,12 @@
 #import "_Classification.h"
 
 const struct ClassificationAttributes ClassificationAttributes = {
+	.name = @"name",
 };
 
 const struct ClassificationRelationships ClassificationRelationships = {
 	.appellations = @"appellations",
+	.country = @"country",
 };
 
 const struct ClassificationFetchedProperties ClassificationFetchedProperties = {
@@ -46,7 +48,18 @@ const struct ClassificationFetchedProperties ClassificationFetchedProperties = {
 
 
 
+@dynamic name;
+
+
+
+
+
+
 @dynamic appellations;
+
+	
+
+@dynamic country;
 
 	
 
