@@ -5,6 +5,7 @@
 
 #import "Appellation.h"
 #import "Country.h"
+#import "Classification.h"
 #import "Region.h"
 
 #import "InitialDataImportService.h"
@@ -26,10 +27,16 @@
     [InitialDataImportService importInitialDataFromJson];
     
     
-   
+	for (Appellation *appellation in [Appellation findAll]) {
+        NSLog(@"-->Appellation Name is %@. Region is %@ %@", appellation.name, appellation.region, appellation.region.regionID);
+    }
     // Display data
-    for (Appellation *appellation in [Appellation findAll]) {
-        NSLog(@"-->Appellation Name is %@. Region is %@.", appellation.name, appellation.region.name);
+    for (Classification *c in [Classification findAll]) {
+        NSLog(@"-->Classification Name is %@. Country is %@ %@", c.name, c.country.name, c.country.countryID);
+    }
+	
+	for (Region *r in [Region findAll]) {
+        NSLog(@"-->Region Name is %@. Country is %@ %@", r.name, r.country.name, r.country.countryID);
     }
     
     /*

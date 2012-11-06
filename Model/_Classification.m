@@ -4,6 +4,7 @@
 #import "_Classification.h"
 
 const struct ClassificationAttributes ClassificationAttributes = {
+	.classificationID = @"classificationID",
 	.name = @"name",
 };
 
@@ -44,6 +45,13 @@ const struct ClassificationFetchedProperties ClassificationFetchedProperties = {
 
 	return keyPaths;
 }
+
+
+
+
+@dynamic classificationID;
+
+
 
 
 

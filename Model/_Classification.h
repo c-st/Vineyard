@@ -5,6 +5,7 @@
 
 
 extern const struct ClassificationAttributes {
+	__unsafe_unretained NSString *classificationID;
 	__unsafe_unretained NSString *name;
 } ClassificationAttributes;
 
@@ -21,6 +22,7 @@ extern const struct ClassificationFetchedProperties {
 
 
 
+
 @interface ClassificationID : NSManagedObjectID {}
 @end
 
@@ -29,6 +31,14 @@ extern const struct ClassificationFetchedProperties {
 + (NSString*)entityName;
 + (NSEntityDescription*)entityInManagedObjectContext:(NSManagedObjectContext*)moc_;
 - (ClassificationID*)objectID;
+
+
+
+
+@property (nonatomic, strong) NSString* classificationID;
+
+
+//- (BOOL)validateClassificationID:(id*)value_ error:(NSError**)error_;
 
 
 
@@ -64,6 +74,12 @@ extern const struct ClassificationFetchedProperties {
 @end
 
 @interface _Classification (CoreDataGeneratedPrimitiveAccessors)
+
+
+- (NSString*)primitiveClassificationID;
+- (void)setPrimitiveClassificationID:(NSString*)value;
+
+
 
 
 - (NSString*)primitiveName;

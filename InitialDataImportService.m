@@ -28,7 +28,7 @@
 	
 	// Country
     for (object in [data objectForKey:@"countries"]) {
-        NSLog(@"inserting new country: %@", object);
+        //NSLog(@"inserting new country: %@", object);
         Country *newCountry = [Country createEntity];
         [newCountry importValuesForKeysWithObject:object];
     }
@@ -36,7 +36,7 @@
 	
 	//Classification
 	for (object in [data objectForKey:@"classifications"]) {
-        NSLog(@"inserting new region: %@", object);
+        //NSLog(@"inserting new region: %@", object);
         Classification *newClassification = [Classification createEntity];
         [newClassification importValuesForKeysWithObject:object];
         
@@ -46,7 +46,7 @@
     
     // Region
     for (object in [data objectForKey:@"regions"]) {
-        NSLog(@"inserting new region: %@", object);
+        //NSLog(@"inserting new region: %@", object);
         Region *newRegion = [Region createEntity];
         [newRegion importValuesForKeysWithObject:object];
         
@@ -55,14 +55,22 @@
     [[NSManagedObjectContext defaultContext] saveNestedContexts];
 	
 	// Appellation
+	/*
 	for (object in [data objectForKey:@"appellations"]) {
-        NSLog(@"inserting new appellation: %@", object);
+        //NSLog(@"inserting new appellation: %@", object);
         Appellation *newAppellation = [Appellation createEntity];
         [newAppellation importValuesForKeysWithObject:object];
-        
-        [newAppellation setRegion:[[Region findByAttribute:@"regionID" withValue:[object valueForKeyPath:@"regionID"]] objectAtIndex:0]];
-    }
-    [[NSManagedObjectContext defaultContext] saveNestedContexts];
+				
+		[newAppellation setRegion:[[Region findByAttribute:@"regionID" withValue:[object valueForKeyPath:@"regionID"]] objectAtIndex:0]];
+
+		[newAppellation setClassification:[[Classification findByAttribute:@"classificationID" withValue:[object valueForKeyPath:@"classificationID"]] objectAtIndex:0]];
+		
+		NSLog(@"%@ Appellation: ", newAppellation);
+		
+	}
+	[[NSManagedObjectContext defaultContext] saveNestedContexts];
+    */
+
 }
 
 + (void)clearStore {
