@@ -54,9 +54,9 @@ extern const struct RegionFetchedProperties {
 
 
 
-@property (nonatomic, strong) Appellation* appellations;
+@property (nonatomic, strong) NSSet* appellations;
 
-//- (BOOL)validateAppellations:(id*)value_ error:(NSError**)error_;
+- (NSMutableSet*)appellationsSet;
 
 
 
@@ -79,6 +79,11 @@ extern const struct RegionFetchedProperties {
 @end
 
 @interface _Region (CoreDataGeneratedAccessors)
+
+- (void)addAppellations:(NSSet*)value_;
+- (void)removeAppellations:(NSSet*)value_;
+- (void)addAppellationsObject:(Appellation*)value_;
+- (void)removeAppellationsObject:(Appellation*)value_;
 
 - (void)addWineries:(NSSet*)value_;
 - (void)removeWineries:(NSSet*)value_;
@@ -103,8 +108,8 @@ extern const struct RegionFetchedProperties {
 
 
 
-- (Appellation*)primitiveAppellations;
-- (void)setPrimitiveAppellations:(Appellation*)value;
+- (NSMutableSet*)primitiveAppellations;
+- (void)setPrimitiveAppellations:(NSMutableSet*)value;
 
 
 

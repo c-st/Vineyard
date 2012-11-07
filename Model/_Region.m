@@ -67,6 +67,15 @@ const struct RegionFetchedProperties RegionFetchedProperties = {
 @dynamic appellations;
 
 	
+- (NSMutableSet*)appellationsSet {
+	[self willAccessValueForKey:@"appellations"];
+  
+	NSMutableSet *result = (NSMutableSet*)[self mutableSetValueForKey:@"appellations"];
+  
+	[self didAccessValueForKey:@"appellations"];
+	return result;
+}
+	
 
 @dynamic country;
 

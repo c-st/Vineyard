@@ -67,8 +67,8 @@
     
 	"appellations":[
 					{"appellationID":"condado_de_huelva", "name":"Condado de Huelva", "regionID":"andalusia","classificationID":"DO"},
-					{"appellationID":"jerez_xeres_sherry", "name":"Jerez-Xeres-Sherry", "regionID":"andalusia","classificationID":"DO"},
 					{"appellationID":"malaga", "name":"Málaga", "regionID":"andalusia","classificationID":"DO"},
+					{"appellationID":"jerez_xeres_sherry", "name":"Jerez-Xeres-Sherry", "regionID":"andalusia","classificationID":"DO"},
 					{"appellationID":"", "name":"Manzanilla Sanlúcar de Barrameda", "regionID":"andalusia","classificationID":"DO"},
 					{"appellationID":"", "name":"Montilla-Moriles", "regionID":"andalusia","classificationID":"DO"},
 					{"appellationID":"", "name":"Sierras de Málaga", "regionID":"andalusia","classificationID":"DO"},
@@ -199,6 +199,7 @@
 					{"appellationID":"", "name":"Abanilla", "regionID":"murcia","classificationID":"VdlT"},
 					{"appellationID":"", "name":"Campo de Cartagena", "regionID":"murcia","classificationID":"VdlT"},
 					{"appellationID":"", "name":"Valles de Sadacia", "regionID":"rioja","classificationID":"VdlT"}
+					
 					
                     ]
 }

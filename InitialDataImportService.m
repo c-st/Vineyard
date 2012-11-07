@@ -23,54 +23,65 @@
     NSData *json = [NSData dataWithContentsOfFile: [[NSBundle mainBundle] pathForResource:@"data.json" ofType:nil]];
     NSDictionary *data = [NSJSONSerialization JSONObjectWithData:json options:NSJSONReadingMutableContainers error:&error];
     
-    NSLog(@"%@", data);
+	NSManagedObjectContext *currentContext = [NSManagedObjectContext defaultContext];
+	
+    //NSLog(@"%@", data);
     id object;
 	
 	// Country
     for (object in [data objectForKey:@"countries"]) {
         //NSLog(@"inserting new country: %@", object);
-        Country *newCountry = [Country createEntity];
+        Country *newCountry = [Country createInContext:currentContext];
         [newCountry importValuesForKeysWithObject:object];
     }
-    [[NSManagedObjectContext defaultContext] saveNestedContexts];
+    //[[NSManagedObjectContext defaultContext] saveNestedContexts];
 	
 	//Classification
 	for (object in [data objectForKey:@"classifications"]) {
         //NSLog(@"inserting new region: %@", object);
-        Classification *newClassification = [Classification createEntity];
+        Classification *newClassification = [Classification createInContext:currentContext];
         [newClassification importValuesForKeysWithObject:object];
         
         [newClassification setCountry:[[Country findByAttribute:@"countryID" withValue:[object valueForKeyPath:@"countryID"]] objectAtIndex:0]];
     }
-    [[NSManagedObjectContext defaultContext] saveNestedContexts];
+    //[[NSManagedObjectContext defaultContext] saveNestedContexts];
     
     // Region
     for (object in [data objectForKey:@"regions"]) {
         //NSLog(@"inserting new region: %@", object);
-        Region *newRegion = [Region createEntity];
+        Region *newRegion = [Region createInContext:currentContext];
         [newRegion importValuesForKeysWithObject:object];
         
         [newRegion setCountry:[[Country findByAttribute:@"countryID" withValue:[object valueForKeyPath:@"countryID"]] objectAtIndex:0]];
     }
+	
     [[NSManagedObjectContext defaultContext] saveNestedContexts];
 	
+	
 	// Appellation
-	/*
 	for (object in [data objectForKey:@"appellations"]) {
-        //NSLog(@"inserting new appellation: %@", object);
-        Appellation *newAppellation = [Appellation createEntity];
-        [newAppellation importValuesForKeysWithObject:object];
-				
+		NSLog(@"inserting new appellation: %@", object);
+		Appellation *newAppellation = [Appellation createInContext:currentContext];
+		[newAppellation importValuesForKeysWithObject:object];
+			
 		[newAppellation setRegion:[[Region findByAttribute:@"regionID" withValue:[object valueForKeyPath:@"regionID"]] objectAtIndex:0]];
-
+		
+			
 		[newAppellation setClassification:[[Classification findByAttribute:@"classificationID" withValue:[object valueForKeyPath:@"classificationID"]] objectAtIndex:0]];
+			
 		
-		NSLog(@"%@ Appellation: ", newAppellation);
-		
+//			NSLog(@"%@ Appellation: ", newAppellation);
+			
+		/*[[NSManagedObjectContext defaultContext] saveNestedContextsErrorHandler:^(NSError * err) {
+			NSLog(@"error %@", err);
+		}];
+		*/	
+			
 	}
+	
 	[[NSManagedObjectContext defaultContext] saveNestedContexts];
-    */
 
+	
 }
 
 + (void)clearStore {

@@ -26,10 +26,7 @@
     // Import sample data
     [InitialDataImportService importInitialDataFromJson];
     
-    
-	for (Appellation *appellation in [Appellation findAll]) {
-        NSLog(@"-->Appellation Name is %@. Region is %@ %@", appellation.name, appellation.region, appellation.region.regionID);
-    }
+    /*
     // Display data
     for (Classification *c in [Classification findAll]) {
         NSLog(@"-->Classification Name is %@. Country is %@ %@", c.name, c.country.name, c.country.countryID);
@@ -38,14 +35,14 @@
 	for (Region *r in [Region findAll]) {
         NSLog(@"-->Region Name is %@. Country is %@ %@", r.name, r.country.name, r.country.countryID);
     }
+    */
     
-    /*
     NSArray *appellations = [Appellation findAll];
-    NSLog(@"Total count is %i", [appellations count]);
+    NSLog(@"Appellations Total count is %i", [appellations count]);
     for (Appellation *ap in appellations) {
         NSLog(@"Name is %@. RegionID is %@", ap.name, ap.region.regionID);
     }
-    */
+    
     
     // Build UI
     UITabBarController *tabBarController = [[UITabBarController alloc] init];
