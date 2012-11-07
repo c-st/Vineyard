@@ -63,11 +63,14 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath  {
     Country *country = [fetchedResultsController objectAtIndexPath:indexPath];
-    
+	
     NSPredicate *searchStatement = [NSPredicate predicateWithFormat:@"country.countryID == %@", country.countryID];
     NSFetchedResultsController *regionsController = [Region fetchAllSortedBy:@"name" ascending:YES withPredicate:searchStatement groupBy:nil delegate:self];
-    
-	[[self navigationController] pushViewController:[[RegionTableViewController alloc] initWithFetchedResultsController:regionsController] animated:YES];
+	
+	RegionTableViewController *regionTableViewController = [[RegionTableViewController alloc] initWithFetchedResultsController:regionsController];
+	[regionTableViewController setTitle:country.name];
+	
+	[[self navigationController] pushViewController:regionTableViewController animated:YES];
 }
 
 - (void)viewDidUnload {

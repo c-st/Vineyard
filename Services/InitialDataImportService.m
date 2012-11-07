@@ -23,9 +23,7 @@
     NSError *error = nil;
     NSData *json = [NSData dataWithContentsOfFile: [[NSBundle mainBundle] pathForResource:@"data.json" ofType:nil]];
     NSDictionary *data = [NSJSONSerialization JSONObjectWithData:json options:NSJSONReadingMutableContainers error:&error];
-    
-	NSManagedObjectContext *currentContext = [NSManagedObjectContext defaultContext];
-	
+   
     //NSLog(@"%@", data);
     id object;
 	
@@ -70,7 +68,7 @@
 	
 	// Appellation
 	for (object in [data objectForKey:@"appellations"]) {
-		NSLog(@"inserting new appellation: %@", object);
+		//NSLog(@"inserting new appellation: %@", object);
 		Appellation *newAppellation = [Appellation createEntity];
 		[newAppellation importValuesForKeysWithObject:object];
 			

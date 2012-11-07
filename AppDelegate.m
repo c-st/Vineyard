@@ -1,5 +1,6 @@
 #import "AppDelegate.h"
 #import "CountryTableViewController.h"
+#import "RaisedTabBarController.h"
 
 #import "MagicalRecord.h"
 
@@ -51,6 +52,7 @@
     */
     
     // Build UI
+	/*
     UITabBarController *tabBarController = [[UITabBarController alloc] init];
     
     UINavigationController *myNavigationController;
@@ -85,12 +87,15 @@
     [tabs addObject:myNavigationController];
     
     [tabBarController setViewControllers:tabs];
-    
+    */
+	
+	RaisedTabBarController *tab = [[RaisedTabBarController alloc] init];
+	
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
     
-    [self.window addSubview:tabBarController.view];
-    self.window.rootViewController = tabBarController;
+    [self.window addSubview:tab.view];
+    self.window.rootViewController = tab;
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     
