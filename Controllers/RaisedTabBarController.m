@@ -34,45 +34,6 @@
 	return YES;
 }
 
-// Build Tab
-/*
-- (*NSArray) buildViewControllerArray {
-	UINavigationController *myNavigationController;
-    
-    NSMutableArray *tabs = [[NSMutableArray alloc] init];
-    
-    CountryTableViewController *countryTableViewController = [[CountryTableViewController alloc] init];
-    [countryTableViewController setTitle:@"Wines"];
-    myNavigationController = [[UINavigationController alloc] initWithRootViewController:countryTableViewController];
-    [tabs addObject:myNavigationController];
-    
-    
-    UIViewController *mySecondViewController = [[UIViewController alloc] init];
-    [mySecondViewController setTitle:@"Browse"];
-    myNavigationController = [[UINavigationController alloc] initWithRootViewController:mySecondViewController];
-    [tabs addObject:myNavigationController];
-    
-    UIViewController *myThirdViewController = [[UIViewController alloc] init];
-    [myThirdViewController setTitle:@"Add"];
-    myNavigationController = [[UINavigationController alloc] initWithRootViewController:myThirdViewController];
-    [tabs addObject:myNavigationController];
-    
-    UIViewController *myFourthViewController = [[UIViewController alloc] init];
-    [myFourthViewController setTitle:@"Collections"];
-    myNavigationController = [[UINavigationController alloc] initWithRootViewController:myFourthViewController];
-    [tabs addObject:myNavigationController];
-    
-    UIViewController *myFithViewController = [[UIViewController alloc] init];
-    [myFithViewController setTitle:@"Settings"];
-    myNavigationController = [[UINavigationController alloc] initWithRootViewController:myFithViewController];
-    [tabs addObject:myNavigationController];
-    
-    [tabBarController setViewControllers:tabs];
-	
-	return [NSArray arrayWithObjects:nil];
-}
-*/
-
 - (void) viewDidLoad {
 	[super viewDidLoad];
 	
@@ -81,15 +42,13 @@
 	
 	[self setViewControllers:[NSArray arrayWithObjects:
                             countryNavController,
-                            [self viewControllerWithTabTitle:@"Explore" image:[UIImage imageNamed:@"tab-explore"]],
-                            [self viewControllerWithTabTitle:@"" image:nil],
-                            [self viewControllerWithTabTitle:@"Friends" image:[UIImage imageNamed:@"tab-friends.png"]],
-                            [self viewControllerWithTabTitle:@"Me" image:[UIImage imageNamed:@"tab-me.png"]], nil]];
+                            [self viewControllerWithTabTitle:@"Browse" image:[UIImage imageNamed:@"tab-explore"]],
+                            [self viewControllerWithTabTitle:@"Add" image:nil],
+                            [self viewControllerWithTabTitle:@"Collections" image:[UIImage imageNamed:@"tab-friends.png"]],
+                            [self viewControllerWithTabTitle:@"Settings" image:[UIImage imageNamed:@"tab-me.png"]], nil]];
 	
-}
-
--(void) willAppearIn:(UINavigationController *)navigationController {
-	[self addCenterButtonWithImage:[UIImage imageNamed:@"DE.png"] highlightImage:nil];
+	[self addCenterButtonWithImage:[UIImage imageNamed:@"capture-button.png"] highlightImage:nil];
+	
 }
 
 @end
