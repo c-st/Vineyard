@@ -1,46 +1,46 @@
 // DO NOT EDIT. This file is machine-generated and constantly overwritten.
-// Make changes to Classification.h instead.
+// Make changes to Indication.h instead.
 
 #import <CoreData/CoreData.h>
 
 
-extern const struct ClassificationAttributes {
-	__unsafe_unretained NSString *classificationID;
+extern const struct IndicationAttributes {
+	__unsafe_unretained NSString *indicationID;
 	__unsafe_unretained NSString *name;
 	__unsafe_unretained NSString *qualityRating;
-} ClassificationAttributes;
+	__unsafe_unretained NSString *type;
+} IndicationAttributes;
 
-extern const struct ClassificationRelationships {
-	__unsafe_unretained NSString *appellations;
+extern const struct IndicationRelationships {
 	__unsafe_unretained NSString *country;
-} ClassificationRelationships;
+} IndicationRelationships;
 
-extern const struct ClassificationFetchedProperties {
-} ClassificationFetchedProperties;
+extern const struct IndicationFetchedProperties {
+} IndicationFetchedProperties;
 
-@class Appellation;
 @class Country;
 
 
 
 
 
-@interface ClassificationID : NSManagedObjectID {}
+
+@interface IndicationID : NSManagedObjectID {}
 @end
 
-@interface _Classification : NSManagedObject {}
+@interface _Indication : NSManagedObject {}
 + (id)insertInManagedObjectContext:(NSManagedObjectContext*)moc_;
 + (NSString*)entityName;
 + (NSEntityDescription*)entityInManagedObjectContext:(NSManagedObjectContext*)moc_;
-- (ClassificationID*)objectID;
+- (IndicationID*)objectID;
 
 
 
 
-@property (nonatomic, strong) NSString* classificationID;
+@property (nonatomic, strong) NSString* indicationID;
 
 
-//- (BOOL)validateClassificationID:(id*)value_ error:(NSError**)error_;
+//- (BOOL)validateIndicationID:(id*)value_ error:(NSError**)error_;
 
 
 
@@ -65,10 +65,11 @@ extern const struct ClassificationFetchedProperties {
 
 
 
+@property (nonatomic, strong) NSString* type;
 
-@property (nonatomic, strong) Appellation* appellations;
 
-//- (BOOL)validateAppellations:(id*)value_ error:(NSError**)error_;
+//- (BOOL)validateType:(id*)value_ error:(NSError**)error_;
+
 
 
 
@@ -83,15 +84,15 @@ extern const struct ClassificationFetchedProperties {
 
 @end
 
-@interface _Classification (CoreDataGeneratedAccessors)
+@interface _Indication (CoreDataGeneratedAccessors)
 
 @end
 
-@interface _Classification (CoreDataGeneratedPrimitiveAccessors)
+@interface _Indication (CoreDataGeneratedPrimitiveAccessors)
 
 
-- (NSString*)primitiveClassificationID;
-- (void)setPrimitiveClassificationID:(NSString*)value;
+- (NSString*)primitiveIndicationID;
+- (void)setPrimitiveIndicationID:(NSString*)value;
 
 
 
@@ -111,9 +112,10 @@ extern const struct ClassificationFetchedProperties {
 
 
 
+- (NSString*)primitiveType;
+- (void)setPrimitiveType:(NSString*)value;
 
-- (Appellation*)primitiveAppellations;
-- (void)setPrimitiveAppellations:(Appellation*)value;
+
 
 
 

@@ -14,6 +14,7 @@
 #import "Country.h"
 #import "Classification.h"
 #import "Region.h"
+#import "Indication.h"
 
 @implementation InitialDataImportService
 
@@ -39,10 +40,20 @@
 	//Classification
 	for (object in [data objectForKey:@"classifications"]) {
         //NSLog(@"inserting new region: %@", object);
-        Classification *newClassification = [Classification createInContext:currentContext];
+        Classification *newClassification = [Classification createEntity];
         [newClassification importValuesForKeysWithObject:object];
         
         [newClassification setCountry:[[Country findByAttribute:@"countryID" withValue:[object valueForKeyPath:@"countryID"]] objectAtIndex:0]];
+    }
+    [[NSManagedObjectContext defaultContext] saveNestedContexts];
+	
+	//Indication
+	for (object in [data objectForKey:@"indications"]) {
+        //NSLog(@"inserting new region: %@", object);
+        Indication *newIndication = [Indication createEntity];
+        [newIndication importValuesForKeysWithObject:object];
+        
+        [newIndication setCountry:[[Country findByAttribute:@"countryID" withValue:[object valueForKeyPath:@"countryID"]] objectAtIndex:0]];
     }
     [[NSManagedObjectContext defaultContext] saveNestedContexts];
     

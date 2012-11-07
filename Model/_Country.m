@@ -11,6 +11,7 @@ const struct CountryAttributes CountryAttributes = {
 
 const struct CountryRelationships CountryRelationships = {
 	.classifications = @"classifications",
+	.indications = @"indications",
 	.regions = @"regions",
 };
 
@@ -80,6 +81,19 @@ const struct CountryFetchedProperties CountryFetchedProperties = {
 	NSMutableSet *result = (NSMutableSet*)[self mutableSetValueForKey:@"classifications"];
   
 	[self didAccessValueForKey:@"classifications"];
+	return result;
+}
+	
+
+@dynamic indications;
+
+	
+- (NSMutableSet*)indicationsSet {
+	[self willAccessValueForKey:@"indications"];
+  
+	NSMutableSet *result = (NSMutableSet*)[self mutableSetValueForKey:@"indications"];
+  
+	[self didAccessValueForKey:@"indications"];
 	return result;
 }
 	

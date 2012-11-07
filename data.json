@@ -8,14 +8,21 @@
                  ],
 	
 	"classifications":[
-					   {"classificationID":"VP", "name":"Vino de Pago", "countryID":"es"},
-					   {"classificationID":"DOCa", "name":"Denominación de Origen Calificada", "countryID":"es"},
-					   {"classificationID":"DO", "name":"Denominación de Origen", "countryID":"es"},
-					   {"classificationID":"VdCcIG", "name":"Vino de Calidad con Indicación Geográfica", "countryID":"es"},
-					   {"classificationID":"VdlT", "name":"Vino de la Tierra", "countryID":"es"}
-					   
-					   ],
-    
+					   {"classificationID":"VP", "name":"Vino de Pago", "qualityRating":5, "countryID":"es"},
+					   {"classificationID":"DOCa", "name":"Denominación de Origen Calificada", "qualityRating":4, "countryID":"es"},
+					   {"classificationID":"DO", "name":"Denominación de Origen", "qualityRating":3, "countryID":"es"},
+					   {"classificationID":"VdCcIG", "name":"Vino de Calidad con Indicación Geográfica", "qualityRating":2, "countryID":"es"},
+					   {"classificationID":"VdlT", "name":"Vino de la Tierra", "qualityRating":1, "countryID":"es"}
+					],
+    "indications":[
+				   {"indicationID":"noble", "name":"Vino noble", "type":"age", "qualityRating":2, "countryID":"es"},
+				   {"indicationID":"anejo", "name":"Vino añejo", "type":"age", "qualityRating":3, "countryID":"es"},
+				   {"indicationID":"viejo", "name":"Vino viejo", "type":"age", "qualityRating":4, "countryID":"es"},
+				   {"indicationID":"crianza", "name":"Vino de crianza", "type":"age", "qualityRating":3, "countryID":"es"},
+				   {"indicationID":"reserva", "name":"Reserva", "type":"age", "qualityRating":4, "countryID":"es"},
+				   {"indicationID":"gran_reserva", "name":"Gran reserva", "type":"age", "qualityRating":5, "countryID":"es"}
+	],
+	
 	"regions":[
 			   { "regionID":"andalusia", "name":"Andalucía", "countryID":"es"},
                { "regionID":"aragon", "name":"Aragón", "countryID":"es"},
@@ -95,13 +102,13 @@
 					{"appellationID":"", "name":"Ribera del Júcar", "regionID":"castille_la_mancha","classificationID":"DO"},
 					{"appellationID":"", "name":"Uclés", "regionID":"castille_la_mancha","classificationID":"DO"},
 					{"appellationID":"", "name":"Valdepeñas", "regionID":"castille_la_mancha","classificationID":"DO"},
-					{"appellationID":"", "name":"Pago Florentino (Vino de Pago)", "regionID":"castille_la_mancha","classificationID":"VP"},
-					{"appellationID":"", "name":"Campo de La Guardia (Vino de Pago)", "regionID":"castille_la_mancha","classificationID":"VP"},
-					{"appellationID":"", "name":"Dehesa del Carrizal (Vino de Pago)", "regionID":"castille_la_mancha","classificationID":"VP"},
-					{"appellationID":"", "name":"Dominio de Valdepusa (Vino de Pago)", "regionID":"castille_la_mancha","classificationID":"VP"},
-					{"appellationID":"", "name":"Finca Élez (Vino de Pago)", "regionID":"castille_la_mancha","classificationID":"VP"},
-					{"appellationID":"", "name":"Guijoso (Vino de Pago)", "regionID":"castille_la_mancha","classificationID":"VP"},
-					{"appellationID":"", "name":"Pago Casa Del Blanco (Vino de Pago)", "regionID":"castille_la_mancha","classificationID":"VP"},
+					{"appellationID":"", "name":"Pago Florentino", "regionID":"castille_la_mancha","classificationID":"VP"},
+					{"appellationID":"", "name":"Campo de La Guardia", "regionID":"castille_la_mancha","classificationID":"VP"},
+					{"appellationID":"", "name":"Dehesa del Carrizal", "regionID":"castille_la_mancha","classificationID":"VP"},
+					{"appellationID":"", "name":"Dominio de Valdepusa", "regionID":"castille_la_mancha","classificationID":"VP"},
+					{"appellationID":"", "name":"Finca Élez", "regionID":"castille_la_mancha","classificationID":"VP"},
+					{"appellationID":"", "name":"Guijoso", "regionID":"castille_la_mancha","classificationID":"VP"},
+					{"appellationID":"", "name":"Pago Casa Del Blanco", "regionID":"castille_la_mancha","classificationID":"VP"},
 					{"appellationID":"", "name":"Alella", "regionID":"catalonia","classificationID":"DO"},
 					{"appellationID":"", "name":"Catalunya", "regionID":"catalonia","classificationID":"DO"},
 					{"appellationID":"", "name":"Conca de Barberà", "regionID":"catalonia","classificationID":"DO"},
@@ -177,8 +184,8 @@
 					{"appellationID":"", "name":"Costa de Cantabria", "regionID":"cantabria","classificationID":"VdlT"},
 					{"appellationID":"", "name":"Liébana", "regionID":"cantabria","classificationID":"VdlT"},
 					{"appellationID":"", "name":"Castilla y León", "regionID":"castille_leon","classificationID":"VdlT"},
-					{"appellationID":"", "name":"Valles de Benavente (Vino de Calidad)", "regionID":"castille_leon","classificationID":"VdCcIG"},
-					{"appellationID":"", "name":"Valtiendas (Vino de Calidad)", "regionID":"castille_leon","classificationID":"VdCcIG"},
+					{"appellationID":"", "name":"Valles de Benavente", "regionID":"castille_leon","classificationID":"VdCcIG"},
+					{"appellationID":"", "name":"Valtiendas", "regionID":"castille_leon","classificationID":"VdCcIG"},
 					{"appellationID":"", "name":"Castilla", "regionID":"castille_la_mancha","classificationID":"VdlT"},
 					{"appellationID":"", "name":"Gálvez", "regionID":"castille_la_mancha","classificationID":"VdlT"},
 					{"appellationID":"", "name":"Pozohondo", "regionID":"castille_la_mancha","classificationID":"VdlT"},

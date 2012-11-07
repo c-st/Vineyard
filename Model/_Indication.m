@@ -1,43 +1,43 @@
 // DO NOT EDIT. This file is machine-generated and constantly overwritten.
-// Make changes to Classification.m instead.
+// Make changes to Indication.m instead.
 
-#import "_Classification.h"
+#import "_Indication.h"
 
-const struct ClassificationAttributes ClassificationAttributes = {
-	.classificationID = @"classificationID",
+const struct IndicationAttributes IndicationAttributes = {
+	.indicationID = @"indicationID",
 	.name = @"name",
 	.qualityRating = @"qualityRating",
+	.type = @"type",
 };
 
-const struct ClassificationRelationships ClassificationRelationships = {
-	.appellations = @"appellations",
+const struct IndicationRelationships IndicationRelationships = {
 	.country = @"country",
 };
 
-const struct ClassificationFetchedProperties ClassificationFetchedProperties = {
+const struct IndicationFetchedProperties IndicationFetchedProperties = {
 };
 
-@implementation ClassificationID
+@implementation IndicationID
 @end
 
-@implementation _Classification
+@implementation _Indication
 
 + (id)insertInManagedObjectContext:(NSManagedObjectContext*)moc_ {
 	NSParameterAssert(moc_);
-	return [NSEntityDescription insertNewObjectForEntityForName:@"Classification" inManagedObjectContext:moc_];
+	return [NSEntityDescription insertNewObjectForEntityForName:@"Indication" inManagedObjectContext:moc_];
 }
 
 + (NSString*)entityName {
-	return @"Classification";
+	return @"Indication";
 }
 
 + (NSEntityDescription*)entityInManagedObjectContext:(NSManagedObjectContext*)moc_ {
 	NSParameterAssert(moc_);
-	return [NSEntityDescription entityForName:@"Classification" inManagedObjectContext:moc_];
+	return [NSEntityDescription entityForName:@"Indication" inManagedObjectContext:moc_];
 }
 
-- (ClassificationID*)objectID {
-	return (ClassificationID*)[super objectID];
+- (IndicationID*)objectID {
+	return (IndicationID*)[super objectID];
 }
 
 + (NSSet *)keyPathsForValuesAffectingValueForKey:(NSString *)key {
@@ -54,7 +54,7 @@ const struct ClassificationFetchedProperties ClassificationFetchedProperties = {
 
 
 
-@dynamic classificationID;
+@dynamic indicationID;
 
 
 
@@ -94,9 +94,12 @@ const struct ClassificationFetchedProperties ClassificationFetchedProperties = {
 
 
 
-@dynamic appellations;
+@dynamic type;
 
-	
+
+
+
+
 
 @dynamic country;
 

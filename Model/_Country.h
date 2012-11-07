@@ -12,6 +12,7 @@ extern const struct CountryAttributes {
 
 extern const struct CountryRelationships {
 	__unsafe_unretained NSString *classifications;
+	__unsafe_unretained NSString *indications;
 	__unsafe_unretained NSString *regions;
 } CountryRelationships;
 
@@ -19,6 +20,7 @@ extern const struct CountryFetchedProperties {
 } CountryFetchedProperties;
 
 @class Classification;
+@class Indication;
 @class Region;
 
 
@@ -69,6 +71,13 @@ extern const struct CountryFetchedProperties {
 
 
 
+@property (nonatomic, strong) NSSet* indications;
+
+- (NSMutableSet*)indicationsSet;
+
+
+
+
 @property (nonatomic, strong) NSSet* regions;
 
 - (NSMutableSet*)regionsSet;
@@ -85,6 +94,11 @@ extern const struct CountryFetchedProperties {
 - (void)removeClassifications:(NSSet*)value_;
 - (void)addClassificationsObject:(Classification*)value_;
 - (void)removeClassificationsObject:(Classification*)value_;
+
+- (void)addIndications:(NSSet*)value_;
+- (void)removeIndications:(NSSet*)value_;
+- (void)addIndicationsObject:(Indication*)value_;
+- (void)removeIndicationsObject:(Indication*)value_;
 
 - (void)addRegions:(NSSet*)value_;
 - (void)removeRegions:(NSSet*)value_;
@@ -117,6 +131,11 @@ extern const struct CountryFetchedProperties {
 
 - (NSMutableSet*)primitiveClassifications;
 - (void)setPrimitiveClassifications:(NSMutableSet*)value;
+
+
+
+- (NSMutableSet*)primitiveIndications;
+- (void)setPrimitiveIndications:(NSMutableSet*)value;
 
 
 

@@ -6,6 +6,7 @@
 #import "Appellation.h"
 #import "Country.h"
 #import "Classification.h"
+#import "Indication.h"
 #import "Region.h"
 
 #import "InitialDataImportService.h"
@@ -26,23 +27,28 @@
     // Import sample data
     [InitialDataImportService importInitialDataFromJson];
     
-    /*
+    
     // Display data
     for (Classification *c in [Classification findAll]) {
-        NSLog(@"-->Classification Name is %@. Country is %@ %@", c.name, c.country.name, c.country.countryID);
+        NSLog(@"-->Classification Name is %@. Country is %@ %@ %i", c.name, c.country.name, c.country.countryID, c.qualityRatingValue);
     }
 	
+	for (Indication *i in [Indication findAll]) {
+        NSLog(@"-->Indication Name is %@. Type is %@ Rating %i", i.name, i.type, i.qualityRatingValue);
+    }
+	
+	
+	/*
 	for (Region *r in [Region findAll]) {
         NSLog(@"-->Region Name is %@. Country is %@ %@", r.name, r.country.name, r.country.countryID);
     }
-    */
     
     NSArray *appellations = [Appellation findAll];
     NSLog(@"Appellations Total count is %i", [appellations count]);
     for (Appellation *ap in appellations) {
         NSLog(@"Name is %@. RegionID is %@", ap.name, ap.region.regionID);
     }
-    
+    */
     
     // Build UI
     UITabBarController *tabBarController = [[UITabBarController alloc] init];
