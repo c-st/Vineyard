@@ -31,10 +31,10 @@
 	// Country
     for (object in [data objectForKey:@"countries"]) {
         //NSLog(@"inserting new country: %@", object);
-        Country *newCountry = [Country createInContext:currentContext];
+        Country *newCountry = [Country createEntity];
         [newCountry importValuesForKeysWithObject:object];
     }
-    //[[NSManagedObjectContext defaultContext] saveNestedContexts];
+    [[NSManagedObjectContext defaultContext] saveNestedContexts];
 	
 	//Classification
 	for (object in [data objectForKey:@"classifications"]) {
@@ -44,44 +44,30 @@
         
         [newClassification setCountry:[[Country findByAttribute:@"countryID" withValue:[object valueForKeyPath:@"countryID"]] objectAtIndex:0]];
     }
-    //[[NSManagedObjectContext defaultContext] saveNestedContexts];
+    [[NSManagedObjectContext defaultContext] saveNestedContexts];
     
     // Region
     for (object in [data objectForKey:@"regions"]) {
         //NSLog(@"inserting new region: %@", object);
-        Region *newRegion = [Region createInContext:currentContext];
+        Region *newRegion = [Region createEntity];
         [newRegion importValuesForKeysWithObject:object];
         
         [newRegion setCountry:[[Country findByAttribute:@"countryID" withValue:[object valueForKeyPath:@"countryID"]] objectAtIndex:0]];
     }
-	
     [[NSManagedObjectContext defaultContext] saveNestedContexts];
 	
 	
 	// Appellation
 	for (object in [data objectForKey:@"appellations"]) {
 		NSLog(@"inserting new appellation: %@", object);
-		Appellation *newAppellation = [Appellation createInContext:currentContext];
+		Appellation *newAppellation = [Appellation createEntity];
 		[newAppellation importValuesForKeysWithObject:object];
 			
 		[newAppellation setRegion:[[Region findByAttribute:@"regionID" withValue:[object valueForKeyPath:@"regionID"]] objectAtIndex:0]];
 		
-			
 		[newAppellation setClassification:[[Classification findByAttribute:@"classificationID" withValue:[object valueForKeyPath:@"classificationID"]] objectAtIndex:0]];
-			
-		
-//			NSLog(@"%@ Appellation: ", newAppellation);
-			
-		/*[[NSManagedObjectContext defaultContext] saveNestedContextsErrorHandler:^(NSError * err) {
-			NSLog(@"error %@", err);
-		}];
-		*/	
-			
 	}
-	
 	[[NSManagedObjectContext defaultContext] saveNestedContexts];
-
-	
 }
 
 + (void)clearStore {
