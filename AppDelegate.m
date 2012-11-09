@@ -50,44 +50,6 @@
         NSLog(@"Name is %@. RegionID is %@", ap.name, ap.region.regionID);
     }
     */
-    
-    // Build UI
-	/*
-    UITabBarController *tabBarController = [[UITabBarController alloc] init];
-    
-    UINavigationController *myNavigationController;
-    
-    NSMutableArray *tabs = [[NSMutableArray alloc] init];
-    
-    CountryTableViewController *countryTableViewController = [[CountryTableViewController alloc] init];
-    
-    [countryTableViewController setTitle:@"Wines"];
-    myNavigationController = [[UINavigationController alloc] initWithRootViewController:countryTableViewController];
-    [tabs addObject:myNavigationController];
-    
-    
-    UIViewController *mySecondViewController = [[UIViewController alloc] init];
-    [mySecondViewController setTitle:@"Browse"];
-    myNavigationController = [[UINavigationController alloc] initWithRootViewController:mySecondViewController];
-    [tabs addObject:myNavigationController];
-    
-    UIViewController *myThirdViewController = [[UIViewController alloc] init];
-    [myThirdViewController setTitle:@"Add"];
-    myNavigationController = [[UINavigationController alloc] initWithRootViewController:myThirdViewController];
-    [tabs addObject:myNavigationController];
-    
-    UIViewController *myFourthViewController = [[UIViewController alloc] init];
-    [myFourthViewController setTitle:@"Collections"];
-    myNavigationController = [[UINavigationController alloc] initWithRootViewController:myFourthViewController];
-    [tabs addObject:myNavigationController];
-    
-    UIViewController *myFithViewController = [[UIViewController alloc] init];
-    [myFithViewController setTitle:@"Settings"];
-    myNavigationController = [[UINavigationController alloc] initWithRootViewController:myFithViewController];
-    [tabs addObject:myNavigationController];
-    
-    [tabBarController setViewControllers:tabs];
-    */
 	
 	RaisedTabBarController *tab = [[RaisedTabBarController alloc] init];
 	

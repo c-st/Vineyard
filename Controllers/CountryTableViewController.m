@@ -46,16 +46,18 @@
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
     Country *country = [fetchedResultsController objectAtIndexPath:indexPath];
+	
 	cell.imageView.image = [UIImage imageNamed:[country.isoCode stringByAppendingString:@".png"]];
     cell.textLabel.text = country.name;
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@, %@", country.name, country.countryID];
+    //cell.detailTextLabel.text = [NSString stringWithFormat:@"%@, %@", country.name, country.countryID];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+		
     }
    [self configureCell:cell atIndexPath:indexPath];
     return cell;
