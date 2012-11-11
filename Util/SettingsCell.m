@@ -54,7 +54,6 @@
 }
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
-	NSLog(@"did begin editing");
 	[textField setTextColor: [UIColor blackColor]];
 }
 

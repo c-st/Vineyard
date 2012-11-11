@@ -40,7 +40,7 @@
 	[[testNC navigationBar] setTintColor:[UIColor colorWithRed:(111.0f/255.0f) green:(23.0f/255.0f) blue:(54.0f/255.0f) alpha:1.0f]];
 	
 	UIBarButtonItem *cancelButton =
-	[[UIBarButtonItem alloc] initWithTitle: @"Cancel" style: UIBarButtonItemStylePlain target:self action: @selector(closeWineView:)];
+	[[UIBarButtonItem alloc] initWithTitle: @"Cancel" style: UIBarButtonItemStylePlain target:addWineViewController action: @selector(closeWineView:)];
 	[[addWineViewController navigationItem] setLeftBarButtonItem:cancelButton];
 	
 	UIBarButtonItem *saveButton =
@@ -48,10 +48,6 @@
 	[[addWineViewController navigationItem] setRightBarButtonItem:saveButton];
 	
 	[self presentViewController:testNC animated:YES completion:nil];
-}
-
--(void) closeWineView:(id *) sender {
-	[self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
