@@ -58,9 +58,6 @@
 
 -(void) viewDidLoad {
 	[super viewDidLoad];
-	
-	
-	
 	[self setTitle:@"Add a Wine"];
 	
 	// Create a new wine
@@ -93,6 +90,14 @@
 	UIViewController *c = [[UIViewController alloc] init];
 	[[self navigationController] pushViewController:c animated:YES];
 	// view controller returns a value here (we need a callback. add delegate and method in this class, give child view controller reference to self).
+}
+
+- (void) saveWine {
+	NSLog(@"saving entry... %@", wine);
+	[[NSManagedObjectContext defaultContext] saveNestedContexts];
+	NSLog(@"done");
+	
+	[self dismissViewControllerAnimated:YES completion:nil];
 }
 
 -(void)dismissKeyboard {

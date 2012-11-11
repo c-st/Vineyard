@@ -28,7 +28,7 @@
 	if (![[self fetchedResultsController] performFetch:&error]) {
 		NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
 	}
-	//self.title = @"Unnamed";
+	self.title = @"Unnamed";
 }
 
 // Can/Should be customized in subclass

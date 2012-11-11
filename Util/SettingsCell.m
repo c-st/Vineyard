@@ -7,7 +7,7 @@
 - (id) initWithWine:(Wine*)wineInstance andType:(SettingsCellType)theCellType andProperty:(NSString*)thePropertyIdentifier andName:(NSString*)theName {
 	self = [super init];
 	
-	[self setWine:wine];
+	[self setWine:wineInstance];
 	[self setCellType:theCellType];
 	[self setPropertyIdentifier:thePropertyIdentifier];
 	[self setName:theName];
@@ -44,6 +44,15 @@
 	return self;
 }
 
+// don't use it directly.
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
+    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
+    if (self) {
+        // Initialization code
+    }
+    return self;
+}
+
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
 	NSLog(@"did begin editing");
 	[textField setTextColor: [UIColor blackColor]];
@@ -61,17 +70,10 @@
 -(void) textFieldValueChanged:(UITextField *) textField {
 	NSLog(@"textFieldValueChanged: %@", textField.text);
 	[self.wine setName:textField.text];
+	NSLog(@"attribute set %@", self.wine);
 	
 	[textField resignFirstResponder];
 	[textField endEditing:YES];
-}
-
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
-    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
-    if (self) {
-        // Initialization code
-    }
-    return self;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

@@ -14,6 +14,18 @@
 @synthesize fetchedResultsController = fetchedResultsController;
 @synthesize managedObjectContext = _managedObjectContext;
 
+-(id)init {
+    if (self = [super init] ) {
+        self.title = @"Countries";
+    }
+    return self;
+}
+
+- (void) loadView {
+	[super loadView];
+	
+}
+
 - (NSFetchedResultsController *)fetchedResultsController {
     if (fetchedResultsController != nil) {
         return fetchedResultsController;
@@ -32,7 +44,6 @@
 	if (![[self fetchedResultsController] performFetch:&error]) {
 		NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
 	}
-    self.title = @"Countries";
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {

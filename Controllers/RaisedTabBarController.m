@@ -1,6 +1,7 @@
 #import "RaisedTabBarController.h"
 #import "CountryTableViewController.h"
 #import "AddWineViewController.h"
+#import "WineTableViewController.h"
 
 @implementation RaisedTabBarController
 
@@ -34,27 +35,24 @@
 }
 
 -(void) addWineButtonPressed:(id *) sender {
-	NSLog(@"add wine pressed");
-
 	AddWineViewController *addWineViewController = [[AddWineViewController alloc] init];
 	UINavigationController *testNC = [[UINavigationController alloc] initWithRootViewController:addWineViewController];
 	[[testNC navigationBar] setTintColor:[UIColor colorWithRed:(111.0f/255.0f) green:(23.0f/255.0f) blue:(54.0f/255.0f) alpha:1.0f]];
 	
 	UIBarButtonItem *cancelButton =
-	[[UIBarButtonItem alloc] initWithTitle: @"Cancel" style: UIBarButtonItemStylePlain target: self action: @selector(closeWineView:)];
-
+	[[UIBarButtonItem alloc] initWithTitle: @"Cancel" style: UIBarButtonItemStylePlain target:self action: @selector(closeWineView:)];
 	[[addWineViewController navigationItem] setLeftBarButtonItem:cancelButton];
 	
+	UIBarButtonItem *saveButton =
+	[[UIBarButtonItem alloc] initWithTitle: @"Save" style: UIBarButtonItemStyleDone target:addWineViewController action: @selector(saveWine)];
+	[[addWineViewController navigationItem] setRightBarButtonItem:saveButton];
 	
 	[self presentViewController:testNC animated:YES completion:nil];
 }
 
 -(void) closeWineView:(id *) sender {
-	NSLog(@"close");
-	
 	[self dismissViewControllerAnimated:YES completion:nil];
 }
-
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
 	return YES;
@@ -62,19 +60,27 @@
 
 - (void) viewDidLoad {
 	[super viewDidLoad];
-	// 49 53 76
-	// 111 60 77 rot
-	// 134 143 189
 	
-	// 111 23 54
-	
+	// Countries
     UINavigationController *countryNavController = [[UINavigationController alloc] initWithRootViewController:[[CountryTableViewController alloc] init]];
 	
+	// Wines
+	NSPredicate *predicateName = [NSPredicate predicateWithFormat:@"name.length > 0"];
+
+    NSFetchedResultsController *winesController = [Wine fetchAllSortedBy:@"name" ascending:YES withPredicate:predicateName groupBy:nil delegate:nil];
+	WineTableViewController *wineTableViewController = [[WineTableViewController alloc] initWithFetchedResultsController:winesController];
+	[winesController setDelegate:wineTableViewController];
+	[wineTableViewController setTitle:@"All wines"];
+	UINavigationController *wineNavController = [[UINavigationController alloc] initWithRootViewController:wineTableViewController];
+	
+	// ...
+	
 	[countryNavController.navigationBar setTintColor:[UIColor colorWithRed:(111.0f/255.0f) green:(23.0f/255.0f) blue:(54.0f/255.0f) alpha:1.0f]];
+	[wineNavController.navigationBar setTintColor:[UIColor colorWithRed:(111.0f/255.0f) green:(23.0f/255.0f) blue:(54.0f/255.0f) alpha:1.0f]];
 	
 	[self setViewControllers:[NSArray arrayWithObjects:
+							wineNavController,
                             countryNavController,
-                            [self viewControllerWithTabTitle:@"Browse" image:[UIImage imageNamed:@"tab-explore"]],
                             [self viewControllerWithTabTitle:@"Add" image:nil],
                             [self viewControllerWithTabTitle:@"Collections" image:[UIImage imageNamed:@"tab-friends.png"]],
                             [self viewControllerWithTabTitle:@"Settings" image:[UIImage imageNamed:@"tab-me.png"]], nil]];
