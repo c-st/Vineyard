@@ -1,13 +1,11 @@
-//
-//  AddWineViewController.h
-//  Cellar
-//
-//  Created by Christian Stangier on 08.11.12.
-//  Copyright (c) 2012 Christian Stangier. All rights reserved.
-//
-
 #import <UIKit/UIKit.h>
+#import "Wine.h"
+@interface AddWineViewController : UIViewController <UITableViewDataSource, UITableViewDelegate> {
+	NSArray *configurableProperties;
+	Wine *wine;
+}
 
-@interface AddWineViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@property (nonatomic, strong) NSArray *configurableProperties;
+@property (nonatomic, strong) Wine *wine;
 
 @end

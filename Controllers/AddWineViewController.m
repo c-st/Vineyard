@@ -1,14 +1,8 @@
-//
-//  AddWineViewController.m
-//  Cellar
-//
-//  Created by Christian Stangier on 08.11.12.
-//  Copyright (c) 2012 Christian Stangier. All rights reserved.
-//
 
 #import "AddWineViewController.h"
-
 #import "AddWineTableViewController.h"
+#import "SettingsCell.h"
+#import "Wine.h"
 
 @interface AddWineViewController ()
 
@@ -16,6 +10,7 @@
 
 @implementation AddWineViewController
 
+@synthesize configurableProperties, wine;
 
 -(void) loadView {
 	[super loadView];
@@ -53,91 +48,59 @@
 	[tableView.tableView setDataSource:self];
 	[scrollView addSubview:tableView.view];
 	
+	// Tap recognizer to hide keyboard
+	UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
+	[tap setCancelsTouchesInView:NO];
+	[scrollView addGestureRecognizer:tap];
+	
 	[self.view addSubview:scrollView];
 }
 
-
+-(void) viewDidLoad {
+	[super viewDidLoad];
+	
+	
+	
+	[self setTitle:@"Add a Wine"];
+	
+	// Create a new wine
+	wine = [Wine createEntity];
+	
+	// Alloc a new wine
+	[self setConfigurableProperties:[NSArray arrayWithObjects:
+									[[SettingsCell alloc] initWithWine:wine andType:TextSettingsCellType andProperty:@"wineName" andName:@"Name"],
+									[[SettingsCell alloc] initWithWine:wine andType:DetailViewSettingsCellType andProperty:@"country" andName:@"Country"],
+									[[SettingsCell alloc] initWithWine:wine andType:DetailViewSettingsCellType andProperty:@"appellation" andName:@"Appellation"],
+									  nil]];
+	
+}
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 4;
+    return [[self configurableProperties] count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-	NSLog(@"Cell for row");
-    static NSString *CellIdentifier = @"Cell";
-	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-	if (cell==nil) {
-        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
-    }
-	//cell.textLabel.text = @"Hello";
-	
-	//
-	//[cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
-	
-	switch (indexPath.item) {
-		case 0:
-			return [self buildTextCell];
-			break;
-			
-		case 1:
-			[cell.textLabel setText:@"Country"];
-			[cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
-			return cell;
-			
-		case 2:
-			
-			[cell.textLabel setText:@"Appellation"];
-			[cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
-			return cell;
-			
-		default:
-			break;
-	}
-    
-    return cell;
-}
-
-
-
-- (UITableViewCell *)buildTextCell {
-	static NSString *CellIdentifier = @"TextInputCell";
-	UITableViewCell *cell = nil; //[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-	if (cell==nil) {
-        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
-    }
-	
-	UITextField *txtField=[[UITextField alloc]initWithFrame:CGRectMake(10, 10, 320, 39)];
-	txtField.autoresizingMask=UIViewAutoresizingFlexibleHeight;
-	txtField.autoresizesSubviews=YES;
-	//txtField.layer.cornerRadius=10.0;
-	[txtField setBorderStyle:UITextBorderStyleNone];
-	[txtField setPlaceholder:@"Name"];
-	[cell.contentView addSubview:txtField];
-	
-	return cell;
+	return [[self configurableProperties] objectAtIndex:indexPath.row];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath  {
+	//[tableView endEditing:YES]; //hide keyboard, if shown.
+	
 	UIViewController *c = [[UIViewController alloc] init];
 	[[self navigationController] pushViewController:c animated:YES];
+	// view controller returns a value here (we need a callback. add delegate and method in this class, give child view controller reference to self).
 }
 
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
-
-	[self setTitle:@"Add a Wine"];
-	//[self.view setBackgroundColor:[UIColor scrollViewTexturedBackgroundColor]];
+-(void)dismissKeyboard {
+	[self.view endEditing:YES];
 }
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 @end
