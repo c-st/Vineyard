@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AddWineViewController : UIViewController
+@interface AddWineViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
 @end

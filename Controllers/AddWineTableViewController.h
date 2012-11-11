@@ -1,5 +1,5 @@
 #import <UIKit/UIKit.h>
 
-@interface AddWineTableViewController : UITableViewController <UITableViewDataSource, UITableViewDelegate>
+@interface AddWineTableViewController : UITableViewController
 
 @end

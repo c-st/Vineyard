@@ -36,6 +36,7 @@
 	scrollView.scrollEnabled=YES;
 	scrollView.userInteractionEnabled=YES;
 	
+	// "Hidden" Label
 	UILabel *label = [[UILabel alloc] init];
 	[label setFrame:CGRectMake(10, -100, bound.size.width-20, 50)];
 	[label setBackgroundColor:[UIColor clearColor]];
@@ -45,18 +46,92 @@
 	[label setText:@"Life is too short\n to drink bad wine"];
 	[scrollView addSubview:label];
 	
-	AddWineTableViewController *tableView = [[AddWineTableViewController alloc] initWithStyle:(UITableViewStyleGrouped)];
+	// Attribute Table
+	AddWineTableViewController *tableView = [[AddWineTableViewController alloc] init];
+
+	[tableView.tableView setDelegate:self];
+	[tableView.tableView setDataSource:self];
 	[scrollView addSubview:tableView.view];
 	
 	[self.view addSubview:scrollView];
 }
+
+
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return 4;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+	NSLog(@"Cell for row");
+    static NSString *CellIdentifier = @"Cell";
+	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+	if (cell==nil) {
+        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+    }
+	//cell.textLabel.text = @"Hello";
+	
+	//
+	//[cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
+	
+	switch (indexPath.item) {
+		case 0:
+			return [self buildTextCell];
+			break;
+			
+		case 1:
+			[cell.textLabel setText:@"Country"];
+			[cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
+			return cell;
+			
+		case 2:
+			
+			[cell.textLabel setText:@"Appellation"];
+			[cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
+			return cell;
+			
+		default:
+			break;
+	}
+    
+    return cell;
+}
+
+
+
+- (UITableViewCell *)buildTextCell {
+	static NSString *CellIdentifier = @"TextInputCell";
+	UITableViewCell *cell = nil; //[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+	if (cell==nil) {
+        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+    }
+	
+	UITextField *txtField=[[UITextField alloc]initWithFrame:CGRectMake(10, 10, 320, 39)];
+	txtField.autoresizingMask=UIViewAutoresizingFlexibleHeight;
+	txtField.autoresizesSubviews=YES;
+	//txtField.layer.cornerRadius=10.0;
+	[txtField setBorderStyle:UITextBorderStyleNone];
+	[txtField setPlaceholder:@"Name"];
+	[cell.contentView addSubview:txtField];
+	
+	return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath  {
+	UIViewController *c = [[UIViewController alloc] init];
+	[[self navigationController] pushViewController:c animated:YES];
+}
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
 
 	[self setTitle:@"Add a Wine"];
 	//[self.view setBackgroundColor:[UIColor scrollViewTexturedBackgroundColor]];
-
 }
 
 
