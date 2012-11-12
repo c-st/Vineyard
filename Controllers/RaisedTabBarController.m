@@ -2,6 +2,7 @@
 #import "CountryTableViewController.h"
 #import "AddWineViewController.h"
 #import "WineTableViewController.h"
+#import "Country.h"
 
 @implementation RaisedTabBarController
 
@@ -58,11 +59,14 @@
 	[super viewDidLoad];
 	
 	// Countries
-    UINavigationController *countryNavController = [[UINavigationController alloc] initWithRootViewController:[[CountryTableViewController alloc] init]];
+	NSFetchedResultsController *countriesController = [Country fetchAllSortedBy:@"name" ascending:YES withPredicate:nil groupBy:nil delegate:nil];
+	CountryTableViewController *countryTableViewController = [[CountryTableViewController alloc] initWithFetchedResultsController:countriesController];
+	[countryTableViewController setTitle:@"Countries"];
+	
+    UINavigationController *countryNavController = [[UINavigationController alloc] initWithRootViewController:countryTableViewController];
 	
 	// Wines
 	NSPredicate *predicateName = [NSPredicate predicateWithFormat:@"name.length > 0"];
-
     NSFetchedResultsController *winesController = [Wine fetchAllSortedBy:@"name" ascending:YES withPredicate:predicateName groupBy:nil delegate:nil];
 	WineTableViewController *wineTableViewController = [[WineTableViewController alloc] initWithFetchedResultsController:winesController];
 	[winesController setDelegate:wineTableViewController];

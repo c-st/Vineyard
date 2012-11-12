@@ -102,7 +102,6 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-	NSLog(@"fetch: %i", indexPath.row);
 	return [[self configurableProperties] objectAtIndex:indexPath.row];
 }
 

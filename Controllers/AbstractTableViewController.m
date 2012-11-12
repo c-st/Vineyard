@@ -31,15 +31,16 @@
 	}
 }
 
-// if not customized, assume that we are a value pick controller. return value to settingsCell.
+// If not customized, assume that we are a value pick controller. Return value to our settingsCell.
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath  {
 	// give value to settings cell.
-	[[self settingsCell] valueWasSelected:[[self fetchedResultsController] objectAtIndexPath:indexPath]];
-	[self.navigationController popViewControllerAnimated:YES];
+	if ([self settingsCell] != nil) {
+		[[self settingsCell] valueWasSelected:[[self fetchedResultsController] objectAtIndexPath:indexPath]];
+		[self.navigationController popViewControllerAnimated:YES];
+	}
 }
 
 // Can/Should be customized in subclass
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     id  sectionInfo = [[fetchedResultsController sections] objectAtIndex:section];
     return [sectionInfo numberOfObjects];
