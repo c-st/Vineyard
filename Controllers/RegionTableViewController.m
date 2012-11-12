@@ -27,7 +27,6 @@
     return cell;
 }
 
-
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath  {
 	Region *region = [[super fetchedResultsController] objectAtIndexPath:indexPath];
 	

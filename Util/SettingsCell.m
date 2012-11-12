@@ -2,7 +2,7 @@
 
 @implementation SettingsCell
 
-@synthesize wine, cellType, propertyIdentifier, name;
+@synthesize wine, cellType, propertyIdentifier, name, settingsViewController;
 
 - (id) initWithWine:(Wine*)wineInstance andType:(SettingsCellType)theCellType andProperty:(NSString*)thePropertyIdentifier andName:(NSString*)theName {
 	self = [super init];
@@ -44,6 +44,18 @@
 	return self;
 }
 
+- (id) initWithWine:(Wine*)wineInstance andType:(SettingsCellType)theCellType andProperty:(NSString*)thePropertyIdentifier andName:(NSString*)theName andViewController:(UIViewController*)theViewController {
+	
+	if (theCellType == DetailViewSettingsCellType) {
+		[self setSettingsViewController:theViewController];
+	} else {
+		NSLog(@"wrong cellType is used.");
+	}
+	
+	return [self initWithWine:wineInstance andType:theCellType andProperty:thePropertyIdentifier andName:theName];
+}
+
+
 // don't use it directly.
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
@@ -51,6 +63,13 @@
         // Initialization code
     }
     return self;
+}
+
+- (void) valueWasSelected:(NSManagedObject*)managedObject {
+	NSLog(@"valueWasSelected: %@", managedObject);
+	[wine setValue:managedObject forKey:propertyIdentifier];
+	[self.textLabel setText:[managedObject valueForKey:@"name"]];
+	[self.textLabel setTextColor: [UIColor blackColor]];
 }
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
@@ -68,9 +87,7 @@
 
 -(void) textFieldValueChanged:(UITextField *) textField {
 	NSLog(@"textFieldValueChanged: %@", textField.text);
-	[self.wine setName:textField.text];
-	NSLog(@"attribute set %@", self.wine);
-	
+	[wine setValue:textField.text forKey:propertyIdentifier];
 	[textField resignFirstResponder];
 	[textField endEditing:YES];
 }

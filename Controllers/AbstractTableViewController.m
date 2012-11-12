@@ -6,6 +6,7 @@
 
 @implementation AbstractTableViewController
 
+@synthesize settingsCell;
 @synthesize fetchedResultsController = fetchedResultsController;
 @synthesize managedObjectContext = _managedObjectContext;
 
@@ -28,7 +29,13 @@
 	if (![[self fetchedResultsController] performFetch:&error]) {
 		NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
 	}
-	self.title = @"Unnamed";
+}
+
+// if not customized, assume that we are a value pick controller. return value to settingsCell.
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath  {
+	// give value to settings cell.
+	[[self settingsCell] valueWasSelected:[[self fetchedResultsController] objectAtIndexPath:indexPath]];
+	[self.navigationController popViewControllerAnimated:YES];
 }
 
 // Can/Should be customized in subclass

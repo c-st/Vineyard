@@ -2,6 +2,9 @@
 #import "AddWineViewController.h"
 #import "AddWineTableViewController.h"
 #import "SettingsCell.h"
+#import "AppellationTableViewController.h"
+
+#import "Appellation.h"
 #import "Wine.h"
 
 @interface AddWineViewController ()
@@ -10,7 +13,7 @@
 
 @implementation AddWineViewController
 
-@synthesize configurableProperties, wine;
+@synthesize configurableProperties, wine, tableView;
 
 -(void) loadView {
 	[super loadView];
@@ -42,8 +45,7 @@
 	[scrollView addSubview:label];
 	
 	// Attribute Table
-	AddWineTableViewController *tableView = [[AddWineTableViewController alloc] init];
-
+	self.tableView = [[AddWineTableViewController alloc] init];
 	[tableView.tableView setDelegate:self];
 	[tableView.tableView setDataSource:self];
 	[scrollView addSubview:tableView.view];
@@ -56,6 +58,11 @@
 	[self.view addSubview:scrollView];
 }
 
+-(void) viewDidAppear:(BOOL)animated {
+	NSLog(@"did appear");
+	[tableView.tableView reloadData];
+}
+
 -(void) viewDidLoad {
 	[super viewDidLoad];
 	[self setTitle:@"Add a Wine"];
@@ -63,13 +70,27 @@
 	// Create a new wine
 	wine = [Wine createEntity];
 	
-	// Alloc a new wine
-	[self setConfigurableProperties:[NSArray arrayWithObjects:
-									[[SettingsCell alloc] initWithWine:wine andType:TextSettingsCellType andProperty:@"wineName" andName:@"Name"],
-									[[SettingsCell alloc] initWithWine:wine andType:DetailViewSettingsCellType andProperty:@"country" andName:@"Country"],
-									[[SettingsCell alloc] initWithWine:wine andType:DetailViewSettingsCellType andProperty:@"appellation" andName:@"Appellation"],
-									  nil]];
+	// Build setting cells
 	
+	// name
+	SettingsCell *nameSettingsCell = [[SettingsCell alloc] initWithWine:wine andType:TextSettingsCellType andProperty:@"name" andName:@"Name"];
+	
+	// appellation
+	NSFetchedResultsController *appellationsController = [Appellation fetchAllSortedBy:@"name" ascending:YES withPredicate:nil groupBy:nil delegate:nil];
+	AppellationTableViewController *appellationTableViewController = [[AppellationTableViewController alloc] initWithFetchedResultsController:appellationsController];
+	SettingsCell *appellationSettingsCell = [[SettingsCell alloc] initWithWine:wine andType:DetailViewSettingsCellType andProperty:@"appellation" andName:@"Appellation" andViewController:appellationTableViewController];
+	[appellationTableViewController setSettingsCell:appellationSettingsCell];
+	
+	// create appellation view controller
+	//NSPredicate *searchStatement = [NSPredicate predicateWithFormat:@"region.regionID == %@", region.regionID];
+    
+	
+	
+	[self setConfigurableProperties:[NSArray arrayWithObjects:
+									nameSettingsCell,
+									appellationSettingsCell,
+									[[SettingsCell alloc] initWithWine:wine andType:DetailViewSettingsCellType andProperty:@"country" andName:@"Country"],
+									  nil]];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -81,25 +102,23 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+	NSLog(@"fetch: %i", indexPath.row);
 	return [[self configurableProperties] objectAtIndex:indexPath.row];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath  {
-	UIViewController *c = [[UIViewController alloc] init];
-	[[self navigationController] pushViewController:c animated:YES];
-	// view controller returns a value here (we need a callback. add delegate and method in this class, give child view controller reference to self).
+	SettingsCell *selectedCell = [[self configurableProperties] objectAtIndex:indexPath.row];
+	[[self navigationController] pushViewController:selectedCell.settingsViewController animated:YES];
 }
 
 - (void) saveWine {
 	NSLog(@"saving entry... %@", wine);
 	[[NSManagedObjectContext defaultContext] saveNestedContexts];
-	
 	[self dismissViewControllerAnimated:YES completion:nil];
 }
 
 -(void) closeWineView:(id *) sender {
 	NSLog(@"throwing wine away..");
-//	[wine setName:@""];
 	[wine deleteEntity];
 	[self dismissViewControllerAnimated:YES completion:nil];
 }

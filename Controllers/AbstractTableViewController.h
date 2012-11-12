@@ -1,17 +1,14 @@
-//
-//  AbstractTableViewController.h
-//  Cellar
-//
-//  Created by Christian Stangier on 07.11.12.
-//  Copyright (c) 2012 Christian Stangier. All rights reserved.
-//
-
 #import <Foundation/Foundation.h>
+#import "SettingsCell.h"
 
-@interface AbstractTableViewController : UITableViewController <NSFetchedResultsControllerDelegate, UITableViewDataSource, UITableViewDelegate>
+@interface AbstractTableViewController : UITableViewController <NSFetchedResultsControllerDelegate, UITableViewDataSource, UITableViewDelegate> {
+	SettingsCell *settingsCell;
+}
 
 @property (nonatomic, strong) NSManagedObjectContext* managedObjectContext;
 @property (nonatomic, retain) NSFetchedResultsController *fetchedResultsController;
+
+@property (nonatomic, strong) SettingsCell* settingsCell;
 
 - (id) initWithFetchedResultsController:(NSFetchedResultsController *)controller;
 

@@ -9,6 +9,7 @@
 #import "Classification.h"
 #import "Indication.h"
 #import "Region.h"
+#import "Wine.h"
 
 #import "InitialDataImportService.h"
 
@@ -30,14 +31,20 @@
     
     
     // Display data
+	for (Wine *w in [Wine findAll]) {
+        NSLog(@"-->Wine Name is %@. Appellation is %@", w.name, w.appellation.name);
+    }
+	/*
     for (Classification *c in [Classification findAll]) {
         NSLog(@"-->Classification Name is %@. Country is %@ %@ %i", c.name, c.country.name, c.country.countryID, c.qualityRatingValue);
     }
+	*/
 	
+	/*
 	for (Indication *i in [Indication findAll]) {
         NSLog(@"-->Indication Name is %@. Type is %@ Rating %i", i.name, i.type, i.qualityRatingValue);
     }
-	
+	*/
 	
 	/*
 	for (Region *r in [Region findAll]) {

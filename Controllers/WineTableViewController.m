@@ -1,5 +1,6 @@
 #import "WineTableViewController.h"
 #import "Wine.h"
+#import "Appellation.h"
 
 @interface WineTableViewController ()
 
@@ -27,8 +28,7 @@
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
     Wine *wine = [[super fetchedResultsController] objectAtIndexPath:indexPath];
-    cell.textLabel.text = wine.name;
-    //cell.detailTextLabel.text = [NSString stringWithFormat:@"%@, %@", region.name, region.regionID];
+    cell.textLabel.text = [wine.name stringByAppendingFormat:@" (%@)", wine.appellation.name];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {

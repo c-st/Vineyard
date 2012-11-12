@@ -12,17 +12,23 @@ typedef NS_ENUM( NSUInteger, SettingsCellType ) {
 	Wine *wine;
 	NSString *propertyIdentifier;
 	NSString *name;
+	
+	// optional property
+	UIViewController *settingsViewController;
 }
 
 //methods
 - (id) initWithWine:(Wine*)wineInstance andType:(SettingsCellType)theCellType andProperty:(NSString*)thePropertyIdentifier andName:(NSString*)theName;
+- (id) initWithWine:(Wine*)wineInstance andType:(SettingsCellType)theCellType andProperty:(NSString*)thePropertyIdentifier andName:(NSString*)theName andViewController:(UIViewController*)theViewController;
 
-- (void) selected;
+- (void) valueWasSelected:(NSManagedObject*)managedObject;
 
 @property (nonatomic) SettingsCellType *cellType;
 
 @property (nonatomic, strong) Wine *wine;
 @property (nonatomic, strong) NSString *propertyIdentifier;
 @property (nonatomic, strong) NSString *name;
+
+@property (nonatomic, strong) UIViewController *settingsViewController;
 
 @end
