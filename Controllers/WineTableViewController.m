@@ -8,21 +8,12 @@
 
 @implementation WineTableViewController
 
--(id)init {
-    if (self = [super init] ) {
-        self.title = @"Wines";
-    }
-    return self;
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     NSError *error;
 	if (![[self fetchedResultsController] performFetch:&error]) {
 		NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
 	}
-    self.title = @"Wines";
-	
 	NSLog(@"We have %i now", [[[Wine fetchAllSortedBy:@"name" ascending:YES withPredicate:nil groupBy:nil delegate:nil] fetchedObjects] count]);
 }
 

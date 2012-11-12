@@ -70,7 +70,7 @@
     NSFetchedResultsController *winesController = [Wine fetchAllSortedBy:@"name" ascending:YES withPredicate:predicateName groupBy:nil delegate:nil];
 	WineTableViewController *wineTableViewController = [[WineTableViewController alloc] initWithFetchedResultsController:winesController];
 	[winesController setDelegate:wineTableViewController];
-	[wineTableViewController setTitle:@"All wines"];
+	[wineTableViewController setTitle:@"Wines"];
 	UINavigationController *wineNavController = [[UINavigationController alloc] initWithRootViewController:wineTableViewController];
 	
 	// ...
