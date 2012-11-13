@@ -28,6 +28,7 @@
     id object;
 	
 	// Country
+	NSLog(@"Importing countries...");
     for (object in [data objectForKey:@"countries"]) {
         //NSLog(@"inserting new country: %@", object);
         Country *newCountry = [Country createEntity];
@@ -36,6 +37,7 @@
     [[NSManagedObjectContext defaultContext] saveNestedContexts];
 	
 	//Classification
+	NSLog(@"Importing classifications...");
 	for (object in [data objectForKey:@"classifications"]) {
         //NSLog(@"inserting new region: %@", object);
         Classification *newClassification = [Classification createEntity];
@@ -46,6 +48,7 @@
     [[NSManagedObjectContext defaultContext] saveNestedContexts];
 	
 	//Indication
+	NSLog(@"Importing indications...");
 	for (object in [data objectForKey:@"indications"]) {
         //NSLog(@"inserting new region: %@", object);
         Indication *newIndication = [Indication createEntity];
@@ -56,6 +59,7 @@
     [[NSManagedObjectContext defaultContext] saveNestedContexts];
     
     // Region
+	NSLog(@"Importing regions...");
     for (object in [data objectForKey:@"regions"]) {
         //NSLog(@"inserting new region: %@", object);
         Region *newRegion = [Region createEntity];
@@ -67,16 +71,20 @@
 	
 	
 	// Appellation
+	NSLog(@"Importing appellations...");
 	for (object in [data objectForKey:@"appellations"]) {
 		//NSLog(@"inserting new appellation: %@", object);
 		Appellation *newAppellation = [Appellation createEntity];
 		[newAppellation importValuesForKeysWithObject:object];
-			
 		[newAppellation setRegion:[[Region findByAttribute:@"regionID" withValue:[object valueForKeyPath:@"regionID"]] objectAtIndex:0]];
 		
-		[newAppellation setClassification:[[Classification findByAttribute:@"classificationID" withValue:[object valueForKeyPath:@"classificationID"]] objectAtIndex:0]];
+		if (![[object valueForKeyPath:@"classificationID"] isEqualToString:@""]) {
+			[newAppellation setClassification:[[Classification findByAttribute:@"classificationID" withValue:[object valueForKeyPath:@"classificationID"]] objectAtIndex:0]];
+		}
 	}
 	[[NSManagedObjectContext defaultContext] saveNestedContexts];
+	
+	NSLog(@"done importing!");
 }
 
 + (void)clearStore {
