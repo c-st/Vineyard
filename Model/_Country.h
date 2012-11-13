@@ -14,6 +14,7 @@ extern const struct CountryRelationships {
 	__unsafe_unretained NSString *classifications;
 	__unsafe_unretained NSString *indications;
 	__unsafe_unretained NSString *regions;
+	__unsafe_unretained NSString *wines;
 } CountryRelationships;
 
 extern const struct CountryFetchedProperties {
@@ -22,6 +23,7 @@ extern const struct CountryFetchedProperties {
 @class Classification;
 @class Indication;
 @class Region;
+@class Wine;
 
 
 
@@ -85,6 +87,13 @@ extern const struct CountryFetchedProperties {
 
 
 
+@property (nonatomic, strong) NSSet* wines;
+
+- (NSMutableSet*)winesSet;
+
+
+
+
 
 @end
 
@@ -104,6 +113,11 @@ extern const struct CountryFetchedProperties {
 - (void)removeRegions:(NSSet*)value_;
 - (void)addRegionsObject:(Region*)value_;
 - (void)removeRegionsObject:(Region*)value_;
+
+- (void)addWines:(NSSet*)value_;
+- (void)removeWines:(NSSet*)value_;
+- (void)addWinesObject:(Wine*)value_;
+- (void)removeWinesObject:(Wine*)value_;
 
 @end
 
@@ -141,6 +155,11 @@ extern const struct CountryFetchedProperties {
 
 - (NSMutableSet*)primitiveRegions;
 - (void)setPrimitiveRegions:(NSMutableSet*)value;
+
+
+
+- (NSMutableSet*)primitiveWines;
+- (void)setPrimitiveWines:(NSMutableSet*)value;
 
 
 @end

@@ -28,6 +28,10 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath  {
+	if([super respondsToSelector:@selector(tableView:didSelectRowAtIndexPath:)]) {
+		[super tableView:tableView didSelectRowAtIndexPath:indexPath];
+	}
+
 	Region *region = [[super fetchedResultsController] objectAtIndexPath:indexPath];
 	
     NSPredicate *searchStatement = [NSPredicate predicateWithFormat:@"region.regionID == %@", region.regionID];

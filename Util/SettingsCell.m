@@ -1,4 +1,5 @@
 #import "SettingsCell.h"
+#import "Country.h"
 
 @implementation SettingsCell
 
@@ -44,7 +45,7 @@
 	return self;
 }
 
-- (id) initWithWine:(Wine*)wineInstance andType:(SettingsCellType)theCellType andProperty:(NSString*)thePropertyIdentifier andName:(NSString*)theName andViewController:(UIViewController*)theViewController {
+- (id) initWithWine:(Wine*)wineInstance andType:(SettingsCellType)theCellType andProperty:(NSString*)thePropertyIdentifier andName:(NSString*)theName andViewController:(AbstractTableViewController*)theViewController {
 	
 	if (theCellType == DetailViewSettingsCellType) {
 		[self setSettingsViewController:theViewController];
@@ -53,6 +54,13 @@
 	}
 	
 	return [self initWithWine:wineInstance andType:theCellType andProperty:thePropertyIdentifier andName:theName];
+}
+
+- (void) updatePredicateAndRefetch {
+	[self.settingsViewController.fetchedResultsController.fetchRequest setPredicate:[self.settingsViewController getFetchPredicate:wine]];
+	
+	NSError *error;
+	[self.settingsViewController.fetchedResultsController performFetch:&error];
 }
 
 
@@ -66,8 +74,8 @@
 }
 
 - (void) valueWasSelected:(NSManagedObject*)managedObject {
-	NSLog(@"valueWasSelected: %@", managedObject);
 	[wine setValue:managedObject forKey:propertyIdentifier];
+	NSLog(@"updated Wine %@", managedObject);
 	[self.textLabel setText:[managedObject valueForKey:@"name"]];
 	[self.textLabel setTextColor: [UIColor blackColor]];
 }

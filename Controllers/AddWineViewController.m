@@ -1,11 +1,15 @@
 
 #import "AddWineViewController.h"
 #import "AddWineTableViewController.h"
+#import "AbstractTableViewController.h"
 #import "SettingsCell.h"
+
 #import "AppellationTableViewController.h"
+#import "CountryTableViewController.h"
 
 #import "Appellation.h"
 #import "Wine.h"
+#import "Country.h"
 
 @interface AddWineViewController ()
 
@@ -58,8 +62,7 @@
 	[self.view addSubview:scrollView];
 }
 
--(void) viewDidAppear:(BOOL)animated {
-	NSLog(@"did appear");
+-(void) viewWillAppear:(BOOL)animated {
 	[tableView.tableView reloadData];
 }
 
@@ -76,21 +79,31 @@
 	SettingsCell *nameSettingsCell = [[SettingsCell alloc] initWithWine:wine andType:TextSettingsCellType andProperty:@"name" andName:@"Name"];
 	
 	// appellation
+	
 	NSFetchedResultsController *appellationsController = [Appellation fetchAllSortedBy:@"name" ascending:YES withPredicate:nil groupBy:nil delegate:nil];
+	
 	AppellationTableViewController *appellationTableViewController = [[AppellationTableViewController alloc] initWithFetchedResultsController:appellationsController];
+	
 	SettingsCell *appellationSettingsCell = [[SettingsCell alloc] initWithWine:wine andType:DetailViewSettingsCellType andProperty:@"appellation" andName:@"Appellation" andViewController:appellationTableViewController];
+	
+	
 	[appellationTableViewController setSettingsCell:appellationSettingsCell];
 	
-	// create appellation view controller
-	//NSPredicate *searchStatement = [NSPredicate predicateWithFormat:@"region.regionID == %@", region.regionID];
-    
+	// country
+	NSFetchedResultsController *countryController = [Country fetchAllSortedBy:@"name" ascending:YES withPredicate:nil groupBy:nil delegate:nil];
+	
+	CountryTableViewController *countryTableViewController = [[CountryTableViewController alloc] initWithFetchedResultsController:countryController];
+	
+	SettingsCell *countrySettingsCell = [[SettingsCell alloc] initWithWine:wine andType:DetailViewSettingsCellType andProperty:@"country" andName:@"Country" andViewController:countryTableViewController];
+	[countryTableViewController setSettingsCell:countrySettingsCell];
 	
 	
 	[self setConfigurableProperties:[NSArray arrayWithObjects:
 									nameSettingsCell,
+									countrySettingsCell,
 									appellationSettingsCell,
-									[[SettingsCell alloc] initWithWine:wine andType:DetailViewSettingsCellType andProperty:@"country" andName:@"Country"],
-									  nil]];
+									
+									nil]];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -107,13 +120,19 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath  {
 	SettingsCell *selectedCell = [[self configurableProperties] objectAtIndex:indexPath.row];
+	[selectedCell updatePredicateAndRefetch];
+
 	[[self navigationController] pushViewController:selectedCell.settingsViewController animated:YES];
 }
 
 - (void) saveWine {
-	NSLog(@"saving entry... %@", wine);
-	[[NSManagedObjectContext defaultContext] saveNestedContexts];
-	[self dismissViewControllerAnimated:YES completion:nil];
+	if ([wine isValid]) {
+		NSLog(@"saving entry... %@", wine);
+		[[NSManagedObjectContext defaultContext] saveNestedContexts];
+		[self dismissViewControllerAnimated:YES completion:nil];
+	} else {
+		NSLog(@"Wine is not valid!");
+	}
 }
 
 -(void) closeWineView:(id *) sender {

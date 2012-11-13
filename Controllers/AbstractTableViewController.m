@@ -1,4 +1,6 @@
 #import "AbstractTableViewController.h"
+#import "SettingsCell.h"
+
 
 @interface AbstractTableViewController ()
 
@@ -31,16 +33,25 @@
 	}
 }
 
+-(void) viewWillAppear:(BOOL)animated {
+	[self.tableView reloadData];
+}
+
 // If not customized, assume that we are a value pick controller. Return value to our settingsCell.
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath  {
-	// give value to settings cell.
 	if ([self settingsCell] != nil) {
+		// hand value to settings cell.
+		NSLog(@"value is handed to settingsCell...");
 		[[self settingsCell] valueWasSelected:[[self fetchedResultsController] objectAtIndexPath:indexPath]];
 		[self.navigationController popViewControllerAnimated:YES];
 	}
 }
 
 // Can/Should be customized in subclass
+- (NSPredicate*) getFetchPredicate:(Wine *)withWine {
+	return nil;
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     id  sectionInfo = [[fetchedResultsController sections] objectAtIndex:section];
     return [sectionInfo numberOfObjects];

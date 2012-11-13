@@ -31,7 +31,12 @@
     return cell;
 }
 
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath  {
+	if([super respondsToSelector:@selector(tableView:didSelectRowAtIndexPath:)]) {
+		[super tableView:tableView didSelectRowAtIndexPath:indexPath];
+	}
+	
     Country *country = [self.fetchedResultsController objectAtIndexPath:indexPath];
 	
     NSPredicate *searchStatement = [NSPredicate predicateWithFormat:@"country.countryID == %@", country.countryID];
@@ -42,5 +47,6 @@
 	
 	[[self navigationController] pushViewController:regionTableViewController animated:YES];
 }
+
 
 @end

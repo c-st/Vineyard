@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1810" systemVersion="12C60" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="2057" systemVersion="12C3006" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="Appellation" representedClassName="Appellation" syncable="YES">
         <attribute name="appellationID" attributeType="String" syncable="YES"/>
         <attribute name="name" attributeType="String" syncable="YES"/>
@@ -25,6 +25,7 @@
                 <entry key="relatedByAttribute" value="regionID"/>
             </userInfo>
         </relationship>
+        <relationship name="wines" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Wine" inverseName="country" inverseEntity="Wine" syncable="YES"/>
     </entity>
     <entity name="Indication" representedClassName="Indication" syncable="YES">
         <attribute name="indicationID" attributeType="String" syncable="YES"/>
@@ -59,6 +60,7 @@
         <attribute name="price" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="rating" optional="YES" attributeType="Integer 16" minValueString="0" maxValueString="100" defaultValueString="0.0" syncable="YES"/>
         <relationship name="appellation" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Appellation" inverseName="wines" inverseEntity="Appellation" syncable="YES"/>
+        <relationship name="country" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Country" inverseName="wines" inverseEntity="Country" syncable="YES"/>
         <relationship name="varietals" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Varietal" inverseName="wines" inverseEntity="Varietal" syncable="YES"/>
         <relationship name="winery" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Winery" inverseName="wines" inverseEntity="Winery" syncable="YES"/>
     </entity>
@@ -69,12 +71,12 @@
     <elements>
         <element name="Appellation" positionX="99" positionY="-55" width="128" height="118"/>
         <element name="Classification" positionX="-92" positionY="-67" width="128" height="118"/>
-        <element name="Country" positionX="-335" positionY="-99" width="137" height="133"/>
+        <element name="Country" positionX="-335" positionY="-99" width="137" height="148"/>
+        <element name="Indication" positionX="-182" positionY="63" width="128" height="118"/>
         <element name="Location" positionX="-569" positionY="29" width="128" height="43"/>
         <element name="Region" positionX="-324" positionY="107" width="128" height="118"/>
         <element name="Varietal" positionX="187" positionY="324" width="128" height="58"/>
-        <element name="Wine" positionX="-18" positionY="108" width="128" height="165"/>
+        <element name="Wine" positionX="-18" positionY="108" width="128" height="178"/>
         <element name="Winery" positionX="-326" positionY="270" width="128" height="73"/>
-        <element name="Indication" positionX="-182" positionY="63" width="128" height="118"/>
     </elements>
 </model>

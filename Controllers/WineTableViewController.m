@@ -19,7 +19,7 @@
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
     Wine *wine = [[super fetchedResultsController] objectAtIndexPath:indexPath];
-    cell.textLabel.text = [wine.name stringByAppendingFormat:@" (%@)", wine.appellation.name];
+    cell.textLabel.text = [wine.name stringByAppendingFormat:@" (%@, %@)", wine.appellation.name, wine.country.countryID];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {

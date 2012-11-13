@@ -1,5 +1,6 @@
 #import <UIKit/UIKit.h>
 #import "Wine.h"
+#import "AbstractTableViewController.h"
 
 typedef NS_ENUM( NSUInteger, SettingsCellType ) {
 	TextSettingsCellType,
@@ -14,13 +15,15 @@ typedef NS_ENUM( NSUInteger, SettingsCellType ) {
 	NSString *name;
 	
 	// optional property (only for DetailViewSettingsCellType).
-	UIViewController *settingsViewController;
+	AbstractTableViewController *settingsViewController;
 }
 
 //methods
 - (id) initWithWine:(Wine*)wineInstance andType:(SettingsCellType)theCellType andProperty:(NSString*)thePropertyIdentifier andName:(NSString*)theName;
 
-- (id) initWithWine:(Wine*)wineInstance andType:(SettingsCellType)theCellType andProperty:(NSString*)thePropertyIdentifier andName:(NSString*)theName andViewController:(UIViewController*)theViewController;
+- (id) initWithWine:(Wine*)wineInstance andType:(SettingsCellType)theCellType andProperty:(NSString*)thePropertyIdentifier andName:(NSString*)theName andViewController:(AbstractTableViewController*)theViewController;
+
+- (void) updatePredicateAndRefetch;
 
 - (void) valueWasSelected:(NSManagedObject*)managedObject;
 
@@ -30,6 +33,6 @@ typedef NS_ENUM( NSUInteger, SettingsCellType ) {
 @property (nonatomic, strong) NSString *propertyIdentifier;
 @property (nonatomic, strong) NSString *name;
 
-@property (nonatomic, strong) UIViewController *settingsViewController;
+@property (nonatomic, strong) AbstractTableViewController *settingsViewController;
 
 @end

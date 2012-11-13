@@ -1,5 +1,8 @@
 #import <Foundation/Foundation.h>
-#import "SettingsCell.h"
+#import "Wine.h"
+#import "Country.h"
+
+@class SettingsCell;
 
 @interface AbstractTableViewController : UITableViewController <NSFetchedResultsControllerDelegate, UITableViewDataSource, UITableViewDelegate> {
 	SettingsCell *settingsCell;
@@ -11,5 +14,6 @@
 @property (nonatomic, strong) SettingsCell* settingsCell;
 
 - (id) initWithFetchedResultsController:(NSFetchedResultsController *)controller;
+- (NSPredicate*) getFetchPredicate:(Wine *)withWine;
 
 @end
