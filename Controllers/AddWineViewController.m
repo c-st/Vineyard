@@ -65,7 +65,9 @@
 -(void) viewWillAppear:(BOOL)animated {
 	[tableView.tableView reloadData];
 }
-
+/**
+ Build setting cells.
+ */
 -(void) viewDidLoad {
 	[super viewDidLoad];
 	[self setTitle:@"Add a Wine"];
@@ -73,28 +75,21 @@
 	// Create a new wine
 	wine = [Wine createEntity];
 	
-	// Build setting cells
-	
-	// name
+	// Name
 	SettingsCell *nameSettingsCell = [[SettingsCell alloc] initWithWine:wine andType:TextSettingsCellType andProperty:@"name" andName:@"Name"];
 	
-	// appellation
-	
-	NSFetchedResultsController *appellationsController = [Appellation fetchAllSortedBy:@"name" ascending:YES withPredicate:nil groupBy:nil delegate:nil];
-	
-	AppellationTableViewController *appellationTableViewController = [[AppellationTableViewController alloc] initWithFetchedResultsController:appellationsController];
+	// Appellation
+	AppellationTableViewController *appellationTableViewController = [[AppellationTableViewController alloc] initWithFetchedResultsController:[Appellation fetchAllSortedBy:@"name" ascending:YES withPredicate:nil groupBy:nil delegate:nil]];
 	
 	SettingsCell *appellationSettingsCell = [[SettingsCell alloc] initWithWine:wine andType:DetailViewSettingsCellType andProperty:@"appellation" andName:@"Appellation" andViewController:appellationTableViewController];
 	
-	
 	[appellationTableViewController setSettingsCell:appellationSettingsCell];
 	
-	// country
-	NSFetchedResultsController *countryController = [Country fetchAllSortedBy:@"name" ascending:YES withPredicate:nil groupBy:nil delegate:nil];
-	
-	CountryTableViewController *countryTableViewController = [[CountryTableViewController alloc] initWithFetchedResultsController:countryController];
+	// Country
+	CountryTableViewController *countryTableViewController = [[CountryTableViewController alloc] initWithFetchedResultsController:[Country fetchAllSortedBy:@"name" ascending:YES withPredicate:nil groupBy:nil delegate:nil]];
 	
 	SettingsCell *countrySettingsCell = [[SettingsCell alloc] initWithWine:wine andType:DetailViewSettingsCellType andProperty:@"country" andName:@"Country" andViewController:countryTableViewController];
+	
 	[countryTableViewController setSettingsCell:countrySettingsCell];
 	
 	
@@ -102,9 +97,12 @@
 									nameSettingsCell,
 									countrySettingsCell,
 									appellationSettingsCell,
-									
 									nil]];
 }
+
+
+#pragma mark
+#pragma mark Table view delegate methods
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
@@ -125,12 +123,16 @@
 	[[self navigationController] pushViewController:selectedCell.settingsViewController animated:YES];
 }
 
+#pragma mark
+#pragma mark Saving wine
+
 - (void) saveWine {
 	if ([wine isValid]) {
 		NSLog(@"saving entry... %@", wine);
 		[[NSManagedObjectContext defaultContext] saveNestedContexts];
 		[self dismissViewControllerAnimated:YES completion:nil];
 	} else {
+		// TODO: visual feedback!
 		NSLog(@"Wine is not valid!");
 	}
 }

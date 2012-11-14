@@ -13,6 +13,9 @@
     cell.textLabel.text = appellation.name;
 }
 
+/**
+ Only display appellations that match the current country. Return all, if no country is set.
+*/
 - (NSPredicate*) getFetchPredicate:(Wine *)withWine {
 	return [NSPredicate predicateWithFormat:@"(region.country.countryID == %@) || (%@ = null)", withWine.country.countryID, withWine.country.countryID];
 }

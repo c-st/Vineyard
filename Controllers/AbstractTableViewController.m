@@ -12,6 +12,9 @@
 @synthesize fetchedResultsController = fetchedResultsController;
 @synthesize managedObjectContext = _managedObjectContext;
 
+#pragma mark
+#pragma mark Initialization
+
 // Do not use this one. Use initWithFetchedResultsController.
 - (id)init {
 	[self doesNotRecognizeSelector:_cmd];
@@ -37,7 +40,20 @@
 	[self.tableView reloadData];
 }
 
-// If not customized, assume that we are a value pick controller. Return value to our settingsCell.
+- (void)viewDidUnload {
+    self.fetchedResultsController = nil;
+}
+
+#pragma mark
+#pragma mark Table view delegate methods
+
+/** 
+ If not customized, assume that we are a value pick controller. Return value to our settingsCell.
+ If customized, take care to also call this method from the child methods:
+	if([super respondsToSelector:@selector(tableView:didSelectRowAtIndexPath:)]) {
+		[super tableView:tableView didSelectRowAtIndexPath:indexPath];
+	}
+ */
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath  {
 	if ([self settingsCell] != nil) {
 		// hand value to settings cell.
@@ -48,9 +64,6 @@
 }
 
 // Can/Should be customized in subclass
-- (NSPredicate*) getFetchPredicate:(Wine *)withWine {
-	return nil;
-}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     id  sectionInfo = [[fetchedResultsController sections] objectAtIndex:section];
@@ -61,8 +74,13 @@
     return 1;
 }
 
-- (void)viewDidUnload {
-    self.fetchedResultsController = nil;
+/**
+ Implement, if the results from the fetchController should be filtered.
+ */
+- (NSPredicate*) getFetchPredicate:(Wine *)withWine {
+	return nil;
 }
+
+
 
 @end
