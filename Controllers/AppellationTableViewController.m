@@ -48,6 +48,10 @@
 }
 
 /////
+- (UIView *) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+	return [self tableView:tableView customViewForHeaderInSection:section];
+}
+
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
 	if ([[self.fetchedResultsController sections] count] > section) {
 		id <NSFetchedResultsSectionInfo> sectionInfo = [[self.fetchedResultsController sections] objectAtIndex:section];
@@ -60,7 +64,6 @@
     NSUInteger count = [[self.fetchedResultsController sections] count];
     return count;
 }
-
 
 
 
