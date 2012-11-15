@@ -79,7 +79,10 @@
 	SettingsCell *nameSettingsCell = [[SettingsCell alloc] initWithWine:wine andType:TextSettingsCellType andProperty:@"name" andName:@"Name"];
 	
 	// Appellation
-	AppellationTableViewController *appellationTableViewController = [[AppellationTableViewController alloc] initWithFetchedResultsController:[Appellation fetchAllSortedBy:@"name" ascending:YES withPredicate:nil groupBy:nil delegate:nil]];
+	NSFetchedResultsController *appellationFetchedResultController = [Appellation fetchAllGroupedBy:@"region" withPredicate:nil sortedBy:@"region.regionID" ascending:YES];
+	
+	
+	AppellationTableViewController *appellationTableViewController = [[AppellationTableViewController alloc] initWithFetchedResultsController:appellationFetchedResultController];
 	
 	SettingsCell *appellationSettingsCell = [[SettingsCell alloc] initWithWine:wine andType:DetailViewSettingsCellType andProperty:@"appellation" andName:@"Appellation" andViewController:appellationTableViewController];
 	
