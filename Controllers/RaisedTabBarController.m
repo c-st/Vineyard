@@ -1,3 +1,5 @@
+#import "UIColor+CellarColours.h"
+
 #import "RaisedTabBarController.h"
 #import "CountryTableViewController.h"
 #import "AddWineViewController.h"
@@ -38,7 +40,7 @@
 -(void) addWineButtonPressed:(id *) sender {
 	AddWineViewController *addWineViewController = [[AddWineViewController alloc] init];
 	UINavigationController *testNC = [[UINavigationController alloc] initWithRootViewController:addWineViewController];
-	[[testNC navigationBar] setTintColor:[UIColor colorWithRed:(111.0f/255.0f) green:(23.0f/255.0f) blue:(54.0f/255.0f) alpha:1.0f]];
+	[[testNC navigationBar] setTintColor:[UIColor cellarWineRedColour]];
 	
 	UIBarButtonItem *cancelButton =
 	[[UIBarButtonItem alloc] initWithTitle: @"Cancel" style: UIBarButtonItemStylePlain target:addWineViewController action: @selector(closeWineView:)];
@@ -75,8 +77,8 @@
 	
 	// ...
 	
-	[countryNavController.navigationBar setTintColor:[UIColor colorWithRed:(111.0f/255.0f) green:(23.0f/255.0f) blue:(54.0f/255.0f) alpha:1.0f]];
-	[wineNavController.navigationBar setTintColor:[UIColor colorWithRed:(111.0f/255.0f) green:(23.0f/255.0f) blue:(54.0f/255.0f) alpha:1.0f]];
+	[countryNavController.navigationBar setTintColor:[UIColor cellarWineRedColour]];
+	[wineNavController.navigationBar setTintColor:[UIColor cellarWineRedColour]];
 	
 	[self setViewControllers:[NSArray arrayWithObjects:
 							wineNavController,

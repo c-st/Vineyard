@@ -7,6 +7,8 @@
 #import "AppellationTableViewController.h"
 #import "CountryTableViewController.h"
 
+#import "UIColor+CellarColours.h"
+
 #import "Appellation.h"
 #import "Wine.h"
 #import "Country.h"
@@ -33,7 +35,7 @@
 	
 	[scrollView setContentInset:UIEdgeInsetsMake(21.0,0,0,0.0)];
 	// 234 227 217
-	[scrollView setBackgroundColor:[UIColor colorWithRed:(234.0f/255.0f) green:(227.0f/255.0f) blue:(217.0f/255.0f) alpha:1.0f]];
+	[scrollView setBackgroundColor:[UIColor cellarBeigeColour]];
 	scrollView.showsVerticalScrollIndicator=NO;
 	scrollView.scrollEnabled=YES;
 	scrollView.userInteractionEnabled=YES;

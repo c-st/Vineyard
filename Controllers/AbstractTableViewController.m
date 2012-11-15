@@ -1,3 +1,5 @@
+#import "UIColor+CellarColours.h"
+
 #import "AbstractTableViewController.h"
 #import "SettingsCell.h"
 
@@ -36,9 +38,8 @@
 	}
 	
 	searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
-	[searchBar setTintColor:[UIColor colorWithRed:(111.0f/255.0f) green:(23.0f/255.0f) blue:(54.0f/255.0f) alpha:1.0f]];
-	[searchBar setAlpha:0.95f];
-	
+	[searchBar setTintColor:[UIColor cellarWineRedColour]];
+	//[searchBar setAlpha:0.95f];
 	self.tableView.tableHeaderView = searchBar;
 	
 	self.tableView.contentOffset = CGPointMake(0, self.tableView.tableHeaderView.frame.size.height);
