@@ -23,4 +23,8 @@
 // Custom section header view (implement viewForHeaderInSection and return result of this method).
 - (UIView *) tableView:(UITableView *)tableView customViewForHeaderInSection:(NSInteger)section;
 
+// Overwrite and return yes to show search bar.
+- (BOOL) showSearchBar;
+
+- (void) filterContentForSearch:(NSString *) searchText;
 @end

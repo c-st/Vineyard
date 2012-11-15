@@ -18,8 +18,15 @@
  Only display appellations that match the current country. Return all, if no country is set.
 */
 - (NSPredicate*) getFetchPredicate:(Wine *)withWine {
-	//return nil;
-	return [NSPredicate predicateWithFormat:@"(region.country.countryID == %@) || (%@ = null)", withWine.country.countryID, withWine.country.countryID];
+	NSPredicate *search;
+	NSLog(@"getFetchPredicate %@", searchBar.text);
+	if ([searchBar.text length] == 0) {
+		search = [NSPredicate predicateWithFormat:@"(region.country.countryID == %@) OR (%@ = null)", withWine.country.countryID, withWine.country.countryID];
+	} else {
+		search = [NSPredicate predicateWithFormat:@"((region.country.countryID == %@) || (%@ = null)) AND name CONTAINS[c] %@", withWine.country.countryID, withWine.country.countryID, searchBar.text];
+	}
+	
+	return search;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -32,14 +39,14 @@
     return cell;
 }
 
+- (BOOL) showSearchBar {
+	return YES;
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     id  sectionInfo = [[self.fetchedResultsController sections] objectAtIndex:section];
     return [sectionInfo numberOfObjects];
 }
-
-/*- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
-}*/
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath  {
 	if([super respondsToSelector:@selector(tableView:didSelectRowAtIndexPath:)]) {

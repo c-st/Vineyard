@@ -1,6 +1,6 @@
 
 #import "AbstractTableViewController.h"
 
-@interface WineTableViewController : AbstractTableViewController <NSFetchedResultsControllerDelegate>
+@interface WineTableViewController : AbstractTableViewController 
 
 @end

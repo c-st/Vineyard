@@ -35,38 +35,6 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath  {
 }
 
-- (void)controllerWillChangeContent:(NSFetchedResultsController *)controller {
-	NSLog(@"controllerWillChangeContent");
-    [self.tableView beginUpdates];
-}
 
-- (void) controllerDidChangeContent:(NSFetchedResultsController *)controller {
-	NSLog(@"controllerDidChangeContent");
-	[[self fetchedResultsController] performFetch:nil];
-	[self.tableView reloadData];
-	[self.tableView endUpdates];
-}
-
--(void)controller:(NSFetchedResultsController *)controller
-  didChangeObject:(id)anObject
-      atIndexPath:(NSIndexPath *)indexPath
-    forChangeType:(NSFetchedResultsChangeType)type
-     newIndexPath:(NSIndexPath *)newIndexPath;
-{
-    switch (type) {
-        case NSFetchedResultsChangeInsert:
-            [self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:newIndexPath]
-                                  withRowAnimation:UITableViewRowAnimationTop];
-            break;
-        case NSFetchedResultsChangeDelete:
-            [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]
-                                  withRowAnimation:UITableViewRowAnimationTop];
-            break;
-        case NSFetchedResultsChangeUpdate:
-            [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]
-                                  withRowAnimation:UITableViewRowAnimationFade];
-            break;
-    }
-}
 
 @end

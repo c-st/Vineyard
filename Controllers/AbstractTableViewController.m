@@ -37,12 +37,13 @@
 		NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
 	}
 	
-	searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
-	[searchBar setTintColor:[UIColor cellarWineRedColour]];
-	//[searchBar setAlpha:0.95f];
-	self.tableView.tableHeaderView = searchBar;
-	
-	self.tableView.contentOffset = CGPointMake(0, self.tableView.tableHeaderView.frame.size.height);
+	if (self.showSearchBar) {
+		searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
+		[searchBar setTintColor:[UIColor cellarWineRedColour]];
+		[searchBar setDelegate:self];
+		self.tableView.tableHeaderView = searchBar;
+		self.tableView.contentOffset = CGPointMake(0, self.tableView.tableHeaderView.frame.size.height);
+	}
 }
 
 -(void) viewWillAppear:(BOOL)animated {
@@ -52,6 +53,71 @@
 
 - (void)viewDidUnload {
     self.fetchedResultsController = nil;
+}
+
+#pragma mark
+#pragma mark UISearchBar delegate methods
+
+- (BOOL) showSearchBar {
+	return NO;
+}
+
+-(void) searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
+	
+    [self filterContentForSearch:searchText];
+}
+
+-(void) searchBarSearchButtonClicked:(UISearchBar *)theSearchBar {
+    [self filterContentForSearch:theSearchBar.text];
+    [self.view endEditing:YES];
+}
+
+- (void) filterContentForSearch:(NSString *) searchText {
+	[self.fetchedResultsController.fetchRequest setPredicate:[self getFetchPredicate:self.settingsCell.wine]];
+	
+	NSError *error;
+	[self.fetchedResultsController performFetch:&error];
+	
+	[self.tableView reloadData];
+	NSLog(@"search");
+	// set predicate
+}
+
+#pragma mark
+#pragma mark NSFetchedResultsController delegate methods
+
+- (void)controllerWillChangeContent:(NSFetchedResultsController *)controller {
+	NSLog(@"controllerWillChangeContent");
+    [self.tableView beginUpdates];
+}
+
+- (void) controllerDidChangeContent:(NSFetchedResultsController *)controller {
+	NSLog(@"controllerDidChangeContent");
+	[[self fetchedResultsController] performFetch:nil];
+	[self.tableView reloadData];
+	[self.tableView endUpdates];
+}
+
+-(void)controller:(NSFetchedResultsController *)controller
+  didChangeObject:(id)anObject
+      atIndexPath:(NSIndexPath *)indexPath
+    forChangeType:(NSFetchedResultsChangeType)type
+     newIndexPath:(NSIndexPath *)newIndexPath;
+{
+    switch (type) {
+        case NSFetchedResultsChangeInsert:
+            [self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:newIndexPath]
+                                  withRowAnimation:UITableViewRowAnimationTop];
+            break;
+        case NSFetchedResultsChangeDelete:
+            [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]
+                                  withRowAnimation:UITableViewRowAnimationTop];
+            break;
+        case NSFetchedResultsChangeUpdate:
+            [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]
+                                  withRowAnimation:UITableViewRowAnimationFade];
+            break;
+    }
 }
 
 #pragma mark
