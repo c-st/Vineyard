@@ -16,7 +16,8 @@
 	switch (theCellType) {
 		case TextSettingsCellType: {
 			[self setAccessoryType:UITableViewCellAccessoryNone];
-			UITextField *textField=[[UITextField alloc]initWithFrame:CGRectMake(10, 10, 320, 39)];
+			UITextField *textField=[[UITextField alloc]initWithFrame:CGRectMake(10, 10, self.frame.size.width - 50 - 10, 30)];
+			//[textField setBackgroundColor:[UIColor redColor]];
 			[textField setTextColor: [UIColor lightGrayColor]];
 			[textField setFont:[UIFont systemFontOfSize:16]];
 			[textField setAutocorrectionType:UITextAutocapitalizationTypeNone];

@@ -32,7 +32,7 @@
 */
 - (NSPredicate*) getFetchPredicate:(Wine *)withWine {
 	NSPredicate *search;
-	NSLog(@"getFetchPredicate %@ %@", searchBar.text, withWine.country);
+	NSLog(@"getFetchPredicate %@", searchBar.text);
 	if ([searchBar.text length] == 0) {
 		search = [NSPredicate predicateWithFormat:@"(region.country.countryID == %@) || (%@ = null)", withWine.country.countryID, withWine.country.countryID];
 	} else {

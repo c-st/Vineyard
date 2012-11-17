@@ -76,8 +76,6 @@
 	// Create a new wine
 	wine = [Wine createEntity];
 	
-	SettingsCell *testSettingsCell = [[SettingsCell alloc] initWithWine:wine andType:TextSettingsCellType andProperty:@"name" andName:@"Name"];
-	
 	// Name
 	SettingsCell *nameSettingsCell = [[SettingsCell alloc] initWithWine:wine andType:TextSettingsCellType andProperty:@"name" andName:@"Name"];
 	
@@ -95,6 +93,9 @@
 	
 	[countryTableViewController setSettingsCell:countrySettingsCell];
 	
+	// Varietal
+	// change to viewController
+	SettingsCell *varietalSettingsCell = [[SettingsCell alloc] initWithWine:wine andType:TextSettingsCellType andProperty:@"varietals" andName:@"Varietals"];
 	
 	[self setConfigurableProperties:[NSArray arrayWithObjects:
 									 
@@ -105,7 +106,7 @@
 									  nil],
 									 
 									 [NSArray arrayWithObjects:
-									  testSettingsCell,
+									  varietalSettingsCell,
 									  nil],
 									 
 									 
