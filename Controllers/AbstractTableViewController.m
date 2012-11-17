@@ -38,19 +38,15 @@
 }
 
 -(void) viewWillAppear:(BOOL)animated {
-	
 	[self.tableView setContentOffset:self.showSearchBar ? CGPointMake(0, 44) : CGPointMake(0, 0) animated:YES];
+	[self.fetchedResultsController.fetchRequest setFetchBatchSize:50];
 	
-	[self.fetchedResultsController.fetchRequest setFetchBatchSize:100];
 	NSError *error;
 	if (![[self fetchedResultsController] performFetch:&error]) {
 		NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
 	}
 	
-	//dispatch_async(dispatch_get_main_queue(), ^{ [self.tableView reloadData]; });
-	
     [self.tableView reloadData];
-	[self.tableView scrollToNearestSelectedRowAtScrollPosition:UITableViewScrollPositionTop animated:NO];
 }
 
 - (void)viewDidUnload {
