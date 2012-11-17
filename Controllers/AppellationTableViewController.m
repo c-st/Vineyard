@@ -2,6 +2,7 @@
 
 #import "Appellation.h"
 #import "Region.h"
+#import "SettingsCell.h"
 
 @interface AppellationTableViewController ()
 
@@ -10,8 +11,10 @@
 @implementation AppellationTableViewController
 
 -(void) viewDidLoad {
+	if (self.settingsCell.wine != nil) {
+		[self setFetchedResultsController:[Appellation fetchAllGroupedBy:@"region" withPredicate:[self getFetchPredicate:self.settingsCell.wine] sortedBy:@"region.name" ascending:YES]];
+	}
 	[super viewDidLoad];
-	[self setFetchedResultsController:[Appellation fetchAllGroupedBy:@"region" withPredicate:nil sortedBy:@"region.name" ascending:YES]];
 }
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
@@ -24,7 +27,7 @@
 */
 - (NSPredicate*) getFetchPredicate:(Wine *)withWine {
 	NSPredicate *search;
-	NSLog(@"getFetchPredicate %@", searchBar.text);
+	NSLog(@"getFetchPredicate %@ %@", searchBar.text, withWine.country);
 	if ([searchBar.text length] == 0) {
 		search = [NSPredicate predicateWithFormat:@"(region.country.countryID == %@) || (%@ = null)", withWine.country.countryID, withWine.country.countryID];
 	} else {

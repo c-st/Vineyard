@@ -12,8 +12,8 @@
 @implementation CountryTableViewController
 
 - (void) viewDidLoad {
-	[super viewDidLoad];
 	[self setFetchedResultsController:[Country fetchAllSortedBy:@"name" ascending:YES withPredicate:nil groupBy:nil delegate:nil]];
+	[super viewDidLoad];
 }
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {

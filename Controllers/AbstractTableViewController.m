@@ -27,6 +27,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+	
     NSError *error;
 	if (![[self fetchedResultsController] performFetch:&error]) {
 		NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
@@ -42,6 +43,8 @@
 }
 
 -(void) viewWillAppear:(BOOL)animated {
+//	dispatch_async(dispatch_get_main_queue(), ^{ [self.tableView reloadData]; });
+	
 	[self.tableView reloadData];
 	[self.tableView scrollToNearestSelectedRowAtScrollPosition:UITableViewScrollPositionTop animated:NO];
 }

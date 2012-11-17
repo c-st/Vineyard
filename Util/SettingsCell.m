@@ -75,7 +75,7 @@
 
 - (void) valueWasSelected:(NSManagedObject*)managedObject {
 	[wine setValue:managedObject forKey:propertyIdentifier];
-	NSLog(@"updated Wine %@", managedObject);
+	//NSLog(@"updated Wine %@", managedObject);
 	[self.textLabel setText:[managedObject valueForKey:@"name"]];
 	[self.textLabel setTextColor: [UIColor blackColor]];
 }
