@@ -9,6 +9,11 @@
 
 @implementation AppellationTableViewController
 
+-(void) viewDidLoad {
+	[super viewDidLoad];
+	[self setFetchedResultsController:[Appellation fetchAllGroupedBy:@"region" withPredicate:nil sortedBy:@"region.name" ascending:YES]];
+}
+
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
     Appellation *appellation = [[super fetchedResultsController] objectAtIndexPath:indexPath];
     cell.textLabel.text = appellation.name;
@@ -21,7 +26,7 @@
 	NSPredicate *search;
 	NSLog(@"getFetchPredicate %@", searchBar.text);
 	if ([searchBar.text length] == 0) {
-		search = [NSPredicate predicateWithFormat:@"(region.country.countryID == %@) OR (%@ = null)", withWine.country.countryID, withWine.country.countryID];
+		search = [NSPredicate predicateWithFormat:@"(region.country.countryID == %@) || (%@ = null)", withWine.country.countryID, withWine.country.countryID];
 	} else {
 		search = [NSPredicate predicateWithFormat:@"((region.country.countryID == %@) || (%@ = null)) AND name CONTAINS[c] %@", withWine.country.countryID, withWine.country.countryID, searchBar.text];
 	}

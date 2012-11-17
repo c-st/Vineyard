@@ -17,12 +17,7 @@
 #pragma mark
 #pragma mark Initialization
 
-// Do not use this one. Use initWithFetchedResultsController.
-- (id)init {
-	[self doesNotRecognizeSelector:_cmd];
-	return nil;
-}
-
+// deprecated. set itself on view controller.
 - (id) initWithFetchedResultsController:(NSFetchedResultsController *)controller {
     if ((self = [super init])) {
         fetchedResultsController = controller;
@@ -80,7 +75,6 @@
 	
 	[self.tableView reloadData];
 	NSLog(@"search");
-	// set predicate
 }
 
 #pragma mark
@@ -93,7 +87,7 @@
 
 - (void) controllerDidChangeContent:(NSFetchedResultsController *)controller {
 	NSLog(@"controllerDidChangeContent");
-	[[self fetchedResultsController] performFetch:nil];
+	//[[self fetchedResultsController] performFetch:nil];
 	[self.tableView reloadData];
 	[self.tableView endUpdates];
 }
@@ -109,10 +103,12 @@
             [self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:newIndexPath]
                                   withRowAnimation:UITableViewRowAnimationTop];
             break;
+			
         case NSFetchedResultsChangeDelete:
             [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]
                                   withRowAnimation:UITableViewRowAnimationTop];
             break;
+			
         case NSFetchedResultsChangeUpdate:
             [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]
                                   withRowAnimation:UITableViewRowAnimationFade];

@@ -81,17 +81,14 @@
 	SettingsCell *nameSettingsCell = [[SettingsCell alloc] initWithWine:wine andType:TextSettingsCellType andProperty:@"name" andName:@"Name"];
 	
 	// Appellation
-	NSFetchedResultsController *appellationFetchedResultController = [Appellation fetchAllGroupedBy:@"region" withPredicate:nil sortedBy:@"region.regionID" ascending:YES];
-	
-	
-	AppellationTableViewController *appellationTableViewController = [[AppellationTableViewController alloc] initWithFetchedResultsController:appellationFetchedResultController];
+	AppellationTableViewController *appellationTableViewController = [[AppellationTableViewController alloc] init];
 	
 	SettingsCell *appellationSettingsCell = [[SettingsCell alloc] initWithWine:wine andType:DetailViewSettingsCellType andProperty:@"appellation" andName:@"Appellation" andViewController:appellationTableViewController];
 	
 	[appellationTableViewController setSettingsCell:appellationSettingsCell];
 	
 	// Country
-	CountryTableViewController *countryTableViewController = [[CountryTableViewController alloc] initWithFetchedResultsController:[Country fetchAllSortedBy:@"name" ascending:YES withPredicate:nil groupBy:nil delegate:nil]];
+	CountryTableViewController *countryTableViewController = [[CountryTableViewController alloc] init];
 	
 	SettingsCell *countrySettingsCell = [[SettingsCell alloc] initWithWine:wine andType:DetailViewSettingsCellType andProperty:@"country" andName:@"Country" andViewController:countryTableViewController];
 	
