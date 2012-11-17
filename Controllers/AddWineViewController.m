@@ -34,11 +34,10 @@
 	[scrollView setContentOffset: CGPointMake(0, 0)];
 	
 	[scrollView setContentInset:UIEdgeInsetsMake(21.0,0,0,0.0)];
-	// 234 227 217
 	[scrollView setBackgroundColor:[UIColor cellarBeigeColour]];
-	scrollView.showsVerticalScrollIndicator=NO;
-	scrollView.scrollEnabled=YES;
-	scrollView.userInteractionEnabled=YES;
+	[scrollView setShowsVerticalScrollIndicator:NO];
+	[scrollView setScrollEnabled:YES];
+	[scrollView setUserInteractionEnabled:YES];
 	
 	// "Hidden" Label
 	UILabel *label = [[UILabel alloc] init];
@@ -77,6 +76,8 @@
 	// Create a new wine
 	wine = [Wine createEntity];
 	
+	SettingsCell *testSettingsCell = [[SettingsCell alloc] initWithWine:wine andType:TextSettingsCellType andProperty:@"name" andName:@"Name"];
+	
 	// Name
 	SettingsCell *nameSettingsCell = [[SettingsCell alloc] initWithWine:wine andType:TextSettingsCellType andProperty:@"name" andName:@"Name"];
 	
@@ -96,10 +97,20 @@
 	
 	
 	[self setConfigurableProperties:[NSArray arrayWithObjects:
-									nameSettingsCell,
-									countrySettingsCell,
-									appellationSettingsCell,
-									nil]];
+									 
+									 [NSArray arrayWithObjects:
+									  nameSettingsCell,
+									  countrySettingsCell,
+									  appellationSettingsCell,
+									  nil],
+									 
+									 [NSArray arrayWithObjects:
+									  testSettingsCell,
+									  nil],
+									 
+									 
+									 nil]];
+									
 }
 
 
@@ -107,19 +118,19 @@
 #pragma mark Table view delegate methods
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
+    return [self.configurableProperties count];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [[self configurableProperties] count];
+	return [[self.configurableProperties objectAtIndex:section] count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-	return [[self configurableProperties] objectAtIndex:indexPath.row];
+	return [[[self configurableProperties] objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath  {
-	SettingsCell *selectedCell = [[self configurableProperties] objectAtIndex:indexPath.row];
+	SettingsCell *selectedCell = [[[self configurableProperties] objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
 	[selectedCell updatePredicateAndRefetch];
 
 	[[self navigationController] pushViewController:selectedCell.settingsViewController animated:YES];

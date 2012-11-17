@@ -11,10 +11,15 @@
 @implementation AppellationTableViewController
 
 -(void) viewDidLoad {
+	[super viewDidLoad];
+}
+
+-(void) viewWillAppear:(BOOL)animated {
 	if (self.settingsCell.wine != nil) {
 		[self setFetchedResultsController:[Appellation fetchAllGroupedBy:@"region" withPredicate:[self getFetchPredicate:self.settingsCell.wine] sortedBy:@"region.name" ascending:YES]];
 	}
-	[super viewDidLoad];
+	[super viewWillAppear:animated];
+	
 }
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {

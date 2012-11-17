@@ -58,9 +58,8 @@
 
 - (void) updatePredicateAndRefetch {
 	[self.settingsViewController.fetchedResultsController.fetchRequest setPredicate:[self.settingsViewController getFetchPredicate:wine]];
+//	[self.settingsViewController.fetchedResultsController performFetch:nil];
 	
-	NSError *error;
-	[self.settingsViewController.fetchedResultsController performFetch:&error];
 }
 
 

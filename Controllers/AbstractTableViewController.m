@@ -28,11 +28,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 	
-    NSError *error;
-	if (![[self fetchedResultsController] performFetch:&error]) {
-		NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-	}
-	
 	if (self.showSearchBar) {
 		searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
 		[searchBar setTintColor:[UIColor cellarWineRedColour]];
@@ -43,9 +38,18 @@
 }
 
 -(void) viewWillAppear:(BOOL)animated {
-//	dispatch_async(dispatch_get_main_queue(), ^{ [self.tableView reloadData]; });
 	
-	[self.tableView reloadData];
+	[self.tableView setContentOffset:self.showSearchBar ? CGPointMake(0, 44) : CGPointMake(0, 0) animated:YES];
+	
+	[self.fetchedResultsController.fetchRequest setFetchBatchSize:100];
+	NSError *error;
+	if (![[self fetchedResultsController] performFetch:&error]) {
+		NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+	}
+	
+	//dispatch_async(dispatch_get_main_queue(), ^{ [self.tableView reloadData]; });
+	
+    [self.tableView reloadData];
 	[self.tableView scrollToNearestSelectedRowAtScrollPosition:UITableViewScrollPositionTop animated:NO];
 }
 
@@ -127,12 +131,12 @@
 	if ([title length] == 0) {
 		return nil;
 	}
-	UIView* sectionHead = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.bounds.size.width, 18)];
+	UIView* sectionHead = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.bounds.size.width, 20)];
     sectionHead.backgroundColor = [UIColor colorWithRed:(111.0f/255.0f) green:(23.0f/255.0f) blue:(54.0f/255.0f) alpha:0.8f];
     sectionHead.userInteractionEnabled = YES;
     sectionHead.tag = section;
 
-	UILabel *sectionText = [[UILabel alloc] initWithFrame:CGRectMake(10, 2, tableView.bounds.size.width - 10, 18)];
+	UILabel *sectionText = [[UILabel alloc] initWithFrame:CGRectMake(10, 1, tableView.bounds.size.width - 10, 20)];
     sectionText.text = title;
     sectionText.backgroundColor = [UIColor clearColor];
     sectionText.textColor = [UIColor whiteColor];

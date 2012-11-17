@@ -24,10 +24,10 @@
     // Setup MagicalRecord
     [MagicalRecord setupCoreDataStack];
     
-    [InitialDataImportService clearStore];
+    //[InitialDataImportService clearStore];
     
     // Import sample data
-    [InitialDataImportService importInitialDataFromJson];
+    //[InitialDataImportService importInitialDataFromJson];
     
     
     // Display data

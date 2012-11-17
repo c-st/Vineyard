@@ -18,8 +18,8 @@
 // Create a custom UIButton and add it to the center of our tab bar
 -(void) addCenterButtonWithImage:(UIImage*)buttonImage highlightImage:(UIImage*)highlightImage {
 	UIButton* button = [UIButton buttonWithType:UIButtonTypeCustom];
-	button.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleTopMargin;
-	button.frame = CGRectMake(0.0, 0.0, buttonImage.size.width, buttonImage.size.height);
+	button.autoresizingMask = UIViewAutoresizingNone;
+	button.frame = CGRectMake(0.0, 0.0, buttonImage.size.width, buttonImage.size.height + 2); //added +2
 	[button setBackgroundImage:buttonImage forState:UIControlStateNormal];
 	[button setBackgroundImage:highlightImage forState:UIControlStateHighlighted];
 	//[button setBackgroundColor:[UIColor redColor]];
