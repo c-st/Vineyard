@@ -10,11 +10,25 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    NSError *error;
+}
+
+- (void) viewWillAppear:(BOOL)animated {
+	[self setFetchedResultsController:[Wine fetchAllSortedBy:@"name" ascending:YES withPredicate:[self getFetchPredicate:nil] groupBy:nil delegate:nil]];
+	
+	NSError *error;
 	if (![[self fetchedResultsController] performFetch:&error]) {
 		NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
 	}
-	NSLog(@"We have %i now", [[[Wine fetchAllSortedBy:@"name" ascending:YES withPredicate:nil groupBy:nil delegate:nil] fetchedObjects] count]);
+	
+	[super viewWillAppear:animated];
+}
+
+- (void) viewDidAppear:(BOOL)animated {
+	NSLog(@"We have %i now", [[[Wine fetchAllSortedBy:@"name" ascending:YES withPredicate:[self getFetchPredicate:nil] groupBy:nil delegate:nil] fetchedObjects] count]);
+}
+
+- (NSPredicate*) getFetchPredicate:(Wine *)withWine {
+	return [NSPredicate predicateWithFormat:@"name.length > 0"];
 }
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {

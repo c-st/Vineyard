@@ -42,14 +42,6 @@
 	UINavigationController *testNC = [[UINavigationController alloc] initWithRootViewController:addWineViewController];
 	[[testNC navigationBar] setTintColor:[UIColor cellarWineRedColour]];
 	
-	UIBarButtonItem *cancelButton =
-	[[UIBarButtonItem alloc] initWithTitle: @"Cancel" style: UIBarButtonItemStylePlain target:addWineViewController action: @selector(closeWineView:)];
-	[[addWineViewController navigationItem] setLeftBarButtonItem:cancelButton];
-	
-	UIBarButtonItem *saveButton =
-	[[UIBarButtonItem alloc] initWithTitle: @"Save" style: UIBarButtonItemStyleDone target:addWineViewController action: @selector(saveWine)];
-	[[addWineViewController navigationItem] setRightBarButtonItem:saveButton];
-	
 	[self presentViewController:testNC animated:YES completion:nil];
 }
 
@@ -68,10 +60,7 @@
     UINavigationController *countryNavController = [[UINavigationController alloc] initWithRootViewController:countryTableViewController];
 	
 	// Wines
-	NSPredicate *predicateName = [NSPredicate predicateWithFormat:@"name.length > 0"];
-    NSFetchedResultsController *winesController = [Wine fetchAllSortedBy:@"name" ascending:YES withPredicate:predicateName groupBy:nil delegate:nil];
-	WineTableViewController *wineTableViewController = [[WineTableViewController alloc] initWithFetchedResultsController:winesController];
-	[winesController setDelegate:wineTableViewController];
+	WineTableViewController *wineTableViewController = [[WineTableViewController alloc] init];
 	[wineTableViewController setTitle:@"Wines"];
 	UINavigationController *wineNavController = [[UINavigationController alloc] initWithRootViewController:wineTableViewController];
 	

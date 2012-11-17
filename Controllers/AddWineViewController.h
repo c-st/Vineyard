@@ -12,4 +12,5 @@
 @property (nonatomic, strong) Wine *wine;
 @property (nonatomic, strong) AddWineTableViewController *tableView;
 
+- (void) updateViewFromValidation;
 @end

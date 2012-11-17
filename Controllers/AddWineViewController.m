@@ -23,6 +23,17 @@
 
 -(void) loadView {
 	[super loadView];
+	
+	// Cancel and save buttons
+	UIBarButtonItem *cancelButton =
+	[[UIBarButtonItem alloc] initWithTitle: @"Cancel" style:UIBarButtonItemStylePlain target:self action: @selector(closeWineView)];
+	[[self navigationItem] setLeftBarButtonItem:cancelButton];
+	
+	UIBarButtonItem *saveButton =
+	[[UIBarButtonItem alloc] initWithTitle: @"Save" style:UIBarButtonItemStylePlain target:self action: @selector(saveWine)];
+	[[self navigationItem] setRightBarButtonItem:saveButton];
+
+	// Scroll view
 	CGRect bound = [[UIScreen mainScreen] bounds];
 	
 	UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(bound.origin.x,
@@ -32,7 +43,6 @@
 	
 	[scrollView setContentSize: CGSizeMake(self.view.frame.size.width, self.view.frame.size.height)];
 	[scrollView setContentOffset: CGPointMake(0, 0)];
-	
 	[scrollView setContentInset:UIEdgeInsetsMake(21.0,0,0,0.0)];
 	[scrollView setBackgroundColor:[UIColor cellarBeigeColour]];
 	[scrollView setShowsVerticalScrollIndicator:NO];
@@ -64,6 +74,7 @@
 }
 
 -(void) viewWillAppear:(BOOL)animated {
+	[self updateViewFromValidation];
 	[tableView.tableView reloadData];
 }
 /**
@@ -114,6 +125,10 @@
 									
 }
 
+- (void) updateViewFromValidation {
+	[self.navigationItem.rightBarButtonItem setEnabled:[self.wine isValid]];
+}
+
 
 #pragma mark
 #pragma mark Table view delegate methods
@@ -151,8 +166,9 @@
 	}
 }
 
--(void) closeWineView:(id *) sender {
+-(void) closeWineView {
 	NSLog(@"throwing wine away..");
+	[wine setName:@""];
 	[wine deleteEntity];
 	[self dismissViewControllerAnimated:YES completion:nil];
 }

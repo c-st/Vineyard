@@ -1,5 +1,6 @@
 #import "SettingsCell.h"
 #import "Country.h"
+#import "AddWineViewController.h"
 
 @implementation SettingsCell
 
@@ -16,16 +17,17 @@
 	switch (theCellType) {
 		case TextSettingsCellType: {
 			[self setAccessoryType:UITableViewCellAccessoryNone];
-			UITextField *textField=[[UITextField alloc]initWithFrame:CGRectMake(10, 10, self.frame.size.width - 50 - 10, 30)];
-			//[textField setBackgroundColor:[UIColor redColor]];
+			UITextField *textField=[[UITextField alloc]initWithFrame:CGRectMake(10, 12, self.frame.size.width - 50 - 10, 30)];
 			[textField setTextColor: [UIColor lightGrayColor]];
 			[textField setFont:[UIFont systemFontOfSize:16]];
-			[textField setAutocorrectionType:UITextAutocapitalizationTypeNone];
+			[textField setAutocorrectionType: UITextAutocorrectionTypeNo];
+			[textField setAutocapitalizationType:UITextAutocapitalizationTypeWords];
 			[textField setAutoresizingMask:UIViewAutoresizingFlexibleHeight];
 			[textField setAutoresizesSubviews:YES];
 			[textField setBorderStyle:UITextBorderStyleNone];
 			[textField setPlaceholder:theName];
-			[textField addTarget:self action:@selector(textFieldValueChanged:) forControlEvents: UIControlEventEditingDidEnd | UIControlEventEditingDidEndOnExit];
+			[textField addTarget:self action:@selector(textFieldValueChanged:) forControlEvents:UIControlEventEditingChanged];
+			[textField addTarget:self action:@selector(textFieldValueChangedDisappear:) forControlEvents: UIControlEventEditingDidEnd | UIControlEventEditingDidEndOnExit];
 						[self.contentView addSubview:textField];
 			[textField setDelegate:self];
 			break;
@@ -59,10 +61,7 @@
 
 - (void) updatePredicateAndRefetch {
 	[self.settingsViewController.fetchedResultsController.fetchRequest setPredicate:[self.settingsViewController getFetchPredicate:wine]];
-//	[self.settingsViewController.fetchedResultsController performFetch:nil];
-	
 }
-
 
 // don't use it directly.
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
@@ -75,7 +74,7 @@
 
 - (void) valueWasSelected:(NSManagedObject*)managedObject {
 	[wine setValue:managedObject forKey:propertyIdentifier];
-	//NSLog(@"updated Wine %@", managedObject);
+	NSLog(@"updated Wine %@", managedObject);
 	[self.textLabel setText:[managedObject valueForKey:@"name"]];
 	[self.textLabel setTextColor: [UIColor blackColor]];
 }
@@ -94,11 +93,20 @@
 }
 
 -(void) textFieldValueChanged:(UITextField *) textField {
-	NSLog(@"textFieldValueChanged: %@", textField.text);
 	[wine setValue:textField.text forKey:propertyIdentifier];
+	
+	// propagate change to AddWineViewController
+	UITableView *tv	= (UITableView *) self.superview;
+	AddWineViewController *addWine = (AddWineViewController *) tv.dataSource;
+	[addWine updateViewFromValidation];
+}
+
+-(void) textFieldValueChangedDisappear:(UITextField *) textField {
+	[self textFieldValueChanged:textField];
 	[textField resignFirstResponder];
 	[textField endEditing:YES];
 }
+
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     //[super setSelected:selected animated:animated];

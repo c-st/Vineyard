@@ -11,6 +11,10 @@
 			return NO;
 		}
 	}
+	
+	if (self.name.length == 0) {
+		return NO;
+	}
 	return YES;
 }
 

@@ -65,7 +65,6 @@
 }
 
 -(void) searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
-	
     [self filterContentForSearch:searchText];
 }
 
@@ -132,7 +131,7 @@
 		return nil;
 	}
 	UIView* sectionHead = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.bounds.size.width, 20)];
-    sectionHead.backgroundColor = [UIColor colorWithRed:(111.0f/255.0f) green:(23.0f/255.0f) blue:(54.0f/255.0f) alpha:0.8f];
+    sectionHead.backgroundColor = [[UIColor cellarWineRedColour] colorWithAlphaComponent:0.8f];
     sectionHead.userInteractionEnabled = YES;
     sectionHead.tag = section;
 
