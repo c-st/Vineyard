@@ -18,4 +18,12 @@
 	return YES;
 }
 
+
+- (void) extendWine {
+	if (self.appellation != nil) {
+		// create relationship to country, region
+		[self setCountry:self.appellation.region.country];
+	}
+}
+
 @end
