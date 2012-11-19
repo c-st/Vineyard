@@ -9,7 +9,7 @@
 
 @implementation WineCell
 
-@synthesize wine, cellBackgroundView;
+@synthesize wine, cellBackgroundView, toolbarView;
 
 - (id) initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier andWine:(Wine *)theWine {
 	self = [super initWithFrame:CGRectMake(0, 0, self.contentView.bounds.size.width, self.contentView.bounds.size.height)];
@@ -21,11 +21,22 @@
 		[self setCellBackgroundView:[self buildWineView]];
 		[self.contentView addSubview:[self cellBackgroundView]];
 		
+		[self buildAndSaveToolbarView];
+		[self.contentView addSubview:[self toolbarView]];
+		
 		[self setBackgroundView:nil];
 		[self setSelectionStyle:UITableViewCellSelectionStyleNone];
 		
 	}
 	return self;
+}
+
+- (void) buildAndSaveToolbarView {
+	UIView *toolbar = [[UIView alloc] initWithFrame:CGRectMake(10, 25, 40, 110)];
+	[toolbar setAlpha:0.0f];
+	[toolbar setBackgroundColor:[UIColor lightGrayColor]];
+	[self displayToolArea:NO];
+	[self setToolbarView:toolbar];
 }
 
 - (UIView*) buildWineView {
@@ -37,20 +48,17 @@
 	bg.layer.shadowColor = [UIColor blackColor].CGColor;
 	
 	// Name
-	UILabel *nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, 200, 20)];
+	UILabel *nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 7, 200, 18)];
 	[nameLabel setBackgroundColor:[UIColor clearColor]];
-	[nameLabel setShadowColor:[UIColor lightGrayColor]];
-    [nameLabel setShadowOffset:CGSizeMake(0,1)];
     [nameLabel setFont:[UIFont boldSystemFontOfSize:16]];
-	
-	[nameLabel setTextColor:[UIColor darkGrayColor]];
+	[nameLabel setTextColor:[UIColor blackColor]];
 	[nameLabel setText:[wine name]];
 	[bg addSubview:nameLabel];
 	
 	// Country / Appellation (Region)
 	if (wine.country != nil || wine.appellation != nil) {
 		if (wine.appellation != nil) {
-			UILabel *appellationLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 27, 200, 20)];
+			UILabel *appellationLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 25, 200, 13)];
 			[appellationLabel setFont:[UIFont boldSystemFontOfSize:12]];
 			[appellationLabel setText:[NSString stringWithFormat:@"%@", wine.appellation.name]];
 			//[appellationLabel setBackgroundColor:[UIColor redColor]];
@@ -74,6 +82,14 @@
 		[bg addSubview:localeLabel];
 	}
 	return bg;
+}
+
+- (void) displayToolArea:(BOOL)isDisplay {
+	if (isDisplay) {
+		[self.toolbarView setAlpha:1.0f];
+	} else {
+		[self.toolbarView setAlpha:0.0f];
+	}
 }
 
 

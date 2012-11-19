@@ -82,6 +82,12 @@
 }
 
 - (void) animateCellActivationChange:(BOOL)active {
+	if (!active) {
+		[UIView animateWithDuration:0.1 animations:^{
+			[currentlyActiveCell displayToolArea:NO];
+		}];
+	}
+	
 	CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"position.x"];
 	if (active) {
 		[animation setFromValue:[NSNumber numberWithFloat:currentlyActiveCell.cellBackgroundView.layer.position.x]];
@@ -96,6 +102,12 @@
 	
 	[currentlyActiveCell.cellBackgroundView.layer addAnimation:animation forKey:@"somekey"];
 	[currentlyActiveCell.cellBackgroundView.layer setValue:[animation toValue] forKeyPath:@"position.x"];
+	
+	if (active) {
+		[UIView animateWithDuration:0.1 animations:^{
+			[currentlyActiveCell displayToolArea:YES];
+		}];
+	}
 }
 
 - (void) endEditMode:(UITapGestureRecognizer *)sender {
