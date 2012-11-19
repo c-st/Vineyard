@@ -73,8 +73,8 @@
 							wineNavController,
                             countryNavController,
                             [self viewControllerWithTabTitle:@"Add" image:nil],
-                            [self viewControllerWithTabTitle:@"Collections" image:[UIImage imageNamed:@"tab-friends.png"]],
-                            [self viewControllerWithTabTitle:@"Settings" image:[UIImage imageNamed:@"tab-me.png"]], nil]];
+                            [self viewControllerWithTabTitle:@"Varietals" image:[UIImage imageNamed:@"tab-friends.png"]],
+                            [self viewControllerWithTabTitle:@"Collections" image:[UIImage imageNamed:@"tab-me.png"]], nil]];
 	
 	[self addCenterButtonWithImage:[UIImage imageNamed:@"add-wine-button.png"] highlightImage:nil];
 	
