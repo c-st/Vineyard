@@ -47,8 +47,7 @@
 
 
 - (void) layoutSubviews {
-	//[super layoutSubviews];
-	
+	// add shadow
 	self.cellBackgroundView.layer.shadowOpacity = 0.9f;
 	self.cellBackgroundView.layer.shadowOffset = CGSizeMake(0.0f, 0.0f);
 	self.cellBackgroundView.layer.shadowRadius = 2.0f;
@@ -58,7 +57,6 @@
 	self.cellBackgroundView.layer.cornerRadius = 4.0;
 	
 	[self.cellBackgroundView.layer setShadowPath:[[UIBezierPath bezierPathWithRoundedRect:self.cellBackgroundView.bounds cornerRadius:4.0f] CGPath]];
-	// add shadow
 }
 
 - (void)drawRect:(CGRect)rect {
