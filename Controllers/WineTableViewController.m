@@ -91,9 +91,8 @@
 		[animation setToValue:[NSNumber numberWithFloat:159.5]];
 	}
 	
-	[animation setDuration:.3];
-	[animation setTimingFunction:[CAMediaTimingFunction functionWithControlPoints: .5 :1.8
-																				 : 1 :1]];
+	[animation setDuration:.2];
+	[animation setTimingFunction:[CAMediaTimingFunction functionWithControlPoints: .5 :1.8: 1 :1]];
 	
 	[currentlyActiveCell.cellBackgroundView.layer addAnimation:animation forKey:@"somekey"];
 	[currentlyActiveCell.cellBackgroundView.layer setValue:[animation toValue] forKeyPath:@"position.x"];

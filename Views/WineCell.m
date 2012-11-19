@@ -1,4 +1,10 @@
 #import "WineCell.h"
+
+#import "Wine.h"
+#import "Country.h"
+#import "Appellation.h"
+#import "Region.h"
+
 #import <QuartzCore/QuartzCore.h>
 
 @implementation WineCell
@@ -30,8 +36,7 @@
 	[bg setBackgroundColor:[UIColor whiteColor]];
 	bg.layer.shadowColor = [UIColor blackColor].CGColor;
 	
-	//
-	
+	// Name
 	UILabel *nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, 200, 20)];
 	[nameLabel setBackgroundColor:[UIColor clearColor]];
 	[nameLabel setShadowColor:[UIColor lightGrayColor]];
@@ -42,6 +47,32 @@
 	[nameLabel setText:[wine name]];
 	[bg addSubview:nameLabel];
 	
+	// Country / Appellation (Region)
+	if (wine.country != nil || wine.appellation != nil) {
+		if (wine.appellation != nil) {
+			UILabel *appellationLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 27, 200, 20)];
+			[appellationLabel setFont:[UIFont boldSystemFontOfSize:12]];
+			[appellationLabel setText:[NSString stringWithFormat:@"%@", wine.appellation.name]];
+			//[appellationLabel setBackgroundColor:[UIColor redColor]];
+			[bg addSubview:appellationLabel];
+		}
+		
+		UIImageView *globeImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"globe.png"]];
+		[globeImage setFrame:CGRectMake(10, 95, 16, 16)];
+		[bg addSubview:globeImage];
+		
+		UILabel *localeLabel = [[UILabel alloc] initWithFrame:CGRectMake(30, 93, 190, 20)];
+		[localeLabel setFont:[UIFont boldSystemFontOfSize:12]];
+		//[localeLabel setBackgroundColor:[UIColor redColor]];
+		
+		if (wine.appellation != nil) {
+			[localeLabel setText:[NSString stringWithFormat:@"%@, %@", wine.appellation.region.name, wine.appellation.region.country.name]];
+		} else if (wine.appellation == nil && wine.country != nil) {
+			[localeLabel setText:[NSString stringWithFormat:@"%@", wine.country.name]];
+		}
+		
+		[bg addSubview:localeLabel];
+	}
 	return bg;
 }
 
