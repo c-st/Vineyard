@@ -30,6 +30,8 @@
 		UILabel *wineCountLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
 		[wineCountLabel setText:[NSString stringWithFormat:@"%i", count]];
 		cell.accessoryView = wineCountLabel;
+	} else {
+		cell.accessoryView = nil;
 	}
 	
     //cell.detailTextLabel.text = [NSString stringWithFormat:@"%@, %@", country.name, country.countryID];
