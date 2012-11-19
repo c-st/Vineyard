@@ -19,7 +19,7 @@
 -(void) addCenterButtonWithImage:(UIImage*)buttonImage highlightImage:(UIImage*)highlightImage {
 	UIButton* button = [UIButton buttonWithType:UIButtonTypeCustom];
 	button.autoresizingMask = UIViewAutoresizingNone;
-	button.frame = CGRectMake(0.0, 0.0, buttonImage.size.width, buttonImage.size.height + 2); //added +2
+	button.frame = CGRectMake(0.0, 0.0, buttonImage.size.width, buttonImage.size.height); 
 	[button setBackgroundImage:buttonImage forState:UIControlStateNormal];
 	[button setBackgroundImage:highlightImage forState:UIControlStateHighlighted];
 	//[button setBackgroundColor:[UIColor redColor]];

@@ -1,6 +1,8 @@
+#import "UIColor+CellarColours.h"
 #import "WineTableViewController.h"
 #import "Wine.h"
 #import "Appellation.h"
+#import "WineCell.h"
 
 @interface WineTableViewController ()
 
@@ -10,6 +12,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+	[self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+	[self.tableView setRowHeight:145];
+	[self.tableView setBackgroundColor:[UIColor cellarBeigeColour]];
 }
 
 - (void) viewWillAppear:(BOOL)animated {
@@ -31,18 +36,14 @@
 	return [NSPredicate predicateWithFormat:@"name.length > 0"];
 }
 
-- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
-    Wine *wine = [[super fetchedResultsController] objectAtIndexPath:indexPath];
-    cell.textLabel.text = [wine.name stringByAppendingFormat:@" (%@, %@)", wine.appellation.name, wine.country.countryID];
-}
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+	Wine *wine = [[super fetchedResultsController] objectAtIndexPath:indexPath];
+	
+    WineCell *cell = [tableView dequeueReusableCellWithIdentifier:@"WineCell"];
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell = [[WineCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"WineCell" andWine:wine];
     }
-	[self configureCell:cell atIndexPath:indexPath];
+	
     return cell;
 }
 

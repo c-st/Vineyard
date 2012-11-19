@@ -9,7 +9,6 @@ typedef NS_ENUM( NSUInteger, SettingsCellType ) {
 
 @interface SettingsCell : UITableViewCell <UITextFieldDelegate> {
 	SettingsCellType *cellType;
-	
 	Wine *wine;
 	NSString *propertyIdentifier;
 	NSString *name;
