@@ -27,7 +27,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-	
 	if (self.showSearchBar) {
 		searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
 		[searchBar setTintColor:[UIColor cellarWineRedColour]];
@@ -35,6 +34,7 @@
 		self.tableView.tableHeaderView = searchBar;
 		self.tableView.contentOffset = CGPointMake(0, self.tableView.tableHeaderView.frame.size.height);
 	}
+	[fetchedResultsController setDelegate:self];
 }
 
 -(void) viewWillAppear:(BOOL)animated {
@@ -45,7 +45,6 @@
 	if (![[self fetchedResultsController] performFetch:&error]) {
 		NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
 	}
-	
     [self.tableView reloadData];
 }
 
@@ -71,12 +70,9 @@
 
 - (void) filterContentForSearch:(NSString *) searchText {
 	[self.fetchedResultsController.fetchRequest setPredicate:[self getFetchPredicate:self.settingsCell.wine]];
-	
 	NSError *error;
 	[self.fetchedResultsController performFetch:&error];
-	
 	[self.tableView reloadData];
-	NSLog(@"search");
 }
 
 #pragma mark
@@ -89,17 +85,14 @@
 
 - (void) controllerDidChangeContent:(NSFetchedResultsController *)controller {
 	NSLog(@"controllerDidChangeContent");
-	//[[self fetchedResultsController] performFetch:nil];
 	[self.tableView reloadData];
 	[self.tableView endUpdates];
 }
 
--(void)controller:(NSFetchedResultsController *)controller
-  didChangeObject:(id)anObject
-      atIndexPath:(NSIndexPath *)indexPath
-    forChangeType:(NSFetchedResultsChangeType)type
-     newIndexPath:(NSIndexPath *)newIndexPath;
-{
+-(void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type newIndexPath:(NSIndexPath *)newIndexPath {
+	
+	NSLog(@"didChangeObject");
+	
     switch (type) {
         case NSFetchedResultsChangeInsert:
             [self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:newIndexPath]

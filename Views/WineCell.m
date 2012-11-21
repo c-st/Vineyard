@@ -9,7 +9,7 @@
 
 @implementation WineCell
 
-@synthesize wine, cellBackgroundView, toolbarView;
+@synthesize wine, cellBackgroundView, toolbarView, parentTableViewController;
 
 - (id) initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier andWine:(Wine *)theWine {
 	self = [super initWithFrame:CGRectMake(0, 0, self.contentView.bounds.size.width, self.contentView.bounds.size.height)];
@@ -26,17 +26,35 @@
 		
 		[self setBackgroundView:nil];
 		[self setSelectionStyle:UITableViewCellSelectionStyleNone];
-		
 	}
 	return self;
 }
 
 - (void) buildAndSaveToolbarView {
-	UIView *toolbar = [[UIView alloc] initWithFrame:CGRectMake(10, 25, 40, 110)];
+	UIView *toolbar = [[UIView alloc] initWithFrame:CGRectMake(10, 24, 59, 112)];
 	[toolbar setAlpha:0.0f];
-	[toolbar setBackgroundColor:[UIColor lightGrayColor]];
+	[toolbar setBackgroundColor:[UIColor clearColor]];
+	
+	UIButton *deleteButton = [UIButton buttonWithType:UIButtonTypeCustom];
+	[deleteButton addTarget:self action:@selector(deleteWine) forControlEvents:UIControlEventTouchUpInside];
+	UIImage *bin = [UIImage imageNamed:@"trashbin.png"];
+	[deleteButton setFrame:CGRectMake(15, 10, 38, 38)];
+	[deleteButton setImage:bin forState:UIControlStateNormal];
+	[toolbar addSubview:deleteButton];
+	
 	[self displayToolArea:NO];
 	[self setToolbarView:toolbar];
+}
+	 
+- (void) deleteWine {
+	NSLog(@"deleting wine..");
+	[wine deleteEntity];
+	[[NSManagedObjectContext defaultContext] saveNestedContexts];
+	[self.parentTableViewController.fetchedResultsController performFetch:nil];
+	[self.parentTableViewController.tableView beginUpdates];
+	NSIndexPath *path = [self.parentTableViewController.tableView indexPathForCell:self];
+	[self.parentTableViewController.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:path] withRowAnimation:UITableViewRowAnimationRight];
+	[self.parentTableViewController.tableView endUpdates];
 }
 
 - (UIView*) buildWineView {

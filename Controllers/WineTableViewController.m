@@ -53,10 +53,10 @@
 	}
 
 	WineCell *cell = [tableView dequeueReusableCellWithIdentifier:@"WineCell"];
-	
 	if (cell == nil) {
 		Wine *wine = [[super fetchedResultsController] objectAtIndexPath:indexPath];
         cell = [[WineCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"WineCell" andWine:wine];
+		[cell setParentTableViewController:self];
     }
     return cell;
 }
@@ -91,7 +91,7 @@
 	CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"position.x"];
 	if (active) {
 		[animation setFromValue:[NSNumber numberWithFloat:currentlyActiveCell.cellBackgroundView.layer.position.x]];
-		[animation setToValue:[NSNumber numberWithFloat:200]];
+		[animation setToValue:[NSNumber numberWithFloat:220]];
 	} else {
 		[animation setFromValue:[NSNumber numberWithFloat:currentlyActiveCell.cellBackgroundView.layer.position.x]];
 		[animation setToValue:[NSNumber numberWithFloat:159.5]];
@@ -118,6 +118,10 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath  {
+}
+
+- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
+	NSLog(@"didChangeContent");
 }
 
 @end
