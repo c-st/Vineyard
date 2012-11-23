@@ -138,9 +138,9 @@
 }
 
 - (SSBadgeView *) buildBadgeView:(NSString *) withText {
-	SSBadgeView *badgeView = [[SSBadgeView alloc] initWithFrame:CGRectMake(0, 0, 30, 20)];
+	SSBadgeView *badgeView = [[SSBadgeView alloc] initWithFrame:CGRectMake(0, 0, 55, 20)];
 	badgeView.backgroundColor = [UIColor clearColor];
-	[badgeView setBadgeColor:[[UIColor cellarWineRedColour] colorWithAlphaComponent:0.7f]];
+	[badgeView setBadgeColor:[[UIColor cellarWineRedColour] colorWithAlphaComponent:0.65f]];
 	badgeView.badgeAlignment = SSBadgeViewAlignmentCenter;
 	[badgeView.textLabel setText:withText];
 	return badgeView;
