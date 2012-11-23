@@ -182,7 +182,7 @@
 
 -(void) closeWineView {
 	NSLog(@"throwing wine away..");
-	[wine setName:@""];
+	//[wine setName:@""];
 	[wine deleteEntity];
 	[self dismissViewControllerAnimated:YES completion:nil];
 }

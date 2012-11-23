@@ -50,7 +50,6 @@
 	} else {
 		search = [NSPredicate predicateWithFormat:@"((region.country.countryID == %@) || (%@ = null)) AND name CONTAINS[c] %@", withWine.country.countryID, withWine.country.countryID, searchBar.text];
 	}
-	
 	return search;
 }
 
@@ -79,13 +78,25 @@
 	}
 }
 
-/////
+#pragma mark
+#pragma mark Delegate methods and logic for sections
+
 - (UIView *) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-	return [self tableView:tableView customViewForHeaderInSection:section];
+	if ([[self.fetchedResultsController sections] count] > 1) {
+		return [self tableView:tableView customViewForHeaderInSection:section];
+	}
+	return nil;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+	if ([[self.fetchedResultsController sections] count] == 1) {
+		return 0;
+	}
+    return 22;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-	if ([[self.fetchedResultsController sections] count] > section) {
+	if ([[self.fetchedResultsController sections] count] > 1) {
 		id <NSFetchedResultsSectionInfo> sectionInfo = [[self.fetchedResultsController sections] objectAtIndex:section];
 		return [[[[sectionInfo objects] objectAtIndex:0] region] name];
 	}
@@ -96,7 +107,5 @@
     NSUInteger count = [[self.fetchedResultsController sections] count];
     return count;
 }
-
-
 
 @end

@@ -34,11 +34,11 @@
 		NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
 	}
 	
-	[super viewWillAppear:animated];
+	NSLog(@"We have %i now", [[[Wine fetchAllSortedBy:@"name" ascending:YES withPredicate:[self getFetchPredicate:nil] groupBy:nil delegate:nil] fetchedObjects] count]);
+	
 }
 
 - (void) viewDidAppear:(BOOL)animated {
-	NSLog(@"We have %i now", [[[Wine fetchAllSortedBy:@"name" ascending:YES withPredicate:[self getFetchPredicate:nil] groupBy:nil delegate:nil] fetchedObjects] count]);
 }
 
 - (NSPredicate*) getFetchPredicate:(Wine *)withWine {
