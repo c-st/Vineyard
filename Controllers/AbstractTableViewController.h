@@ -2,8 +2,7 @@
 #import "Wine.h"
 #import "Country.h"
 
-#import "SSToolkit/SSBadgeView.h"
-#import "SSToolkit/SSLabel.h"
+#import "SSToolkit.h"
 
 @class SettingsCell;
 
