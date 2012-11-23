@@ -2,6 +2,9 @@
 #import "Wine.h"
 #import "Country.h"
 
+#import "SSToolkit/SSBadgeView.h"
+#import "SSToolkit/SSLabel.h"
+
 @class SettingsCell;
 
 @interface AbstractTableViewController : UITableViewController <NSFetchedResultsControllerDelegate, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate> {
@@ -29,6 +32,8 @@
 
 // Overwrite and return yes to show search bar.
 - (BOOL) showSearchBar;
+
+- (SSBadgeView *) buildBadgeView:(NSString *) withText;
 
 - (void) filterContentForSearch:(NSString *) searchText;
 @end

@@ -3,7 +3,6 @@
 #import "AbstractTableViewController.h"
 #import "SettingsCell.h"
 
-
 @interface AbstractTableViewController ()
 
 @end
@@ -138,7 +137,15 @@
 	return sectionHead;
 }
 
-/** 
+- (SSBadgeView *) buildBadgeView:(NSString *) withText {
+	SSBadgeView *badgeView = [[SSBadgeView alloc] initWithFrame:CGRectMake(0, 0, 30, 20)];
+	badgeView.backgroundColor = [UIColor clearColor];
+	badgeView.badgeAlignment = SSBadgeViewAlignmentCenter;
+	[badgeView.textLabel setText:withText];
+	return badgeView;
+}
+
+/**
  If not customized, assume that we are a value pick controller. Return value to our settingsCell.
  If customized, take care to also call this method from the child methods:
 	if([super respondsToSelector:@selector(tableView:didSelectRowAtIndexPath:)]) {
