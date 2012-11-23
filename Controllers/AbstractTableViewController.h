@@ -8,12 +8,16 @@
 	UISearchBar *searchBar;
 	
 	SettingsCell *settingsCell;
+	
+	BOOL showCount;
 }
 
 @property (nonatomic, strong) NSManagedObjectContext* managedObjectContext;
 @property (nonatomic, retain) NSFetchedResultsController *fetchedResultsController;
 
 @property (nonatomic, strong) SettingsCell* settingsCell;
+@property (atomic) BOOL showCount;
+
 
 - (id) initWithFetchedResultsController:(NSFetchedResultsController *)controller;
 

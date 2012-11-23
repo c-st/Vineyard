@@ -56,6 +56,7 @@
 	NSFetchedResultsController *countriesController = [Country fetchAllSortedBy:@"name" ascending:YES withPredicate:nil groupBy:nil delegate:nil];
 	CountryTableViewController *countryTableViewController = [[CountryTableViewController alloc] initWithFetchedResultsController:countriesController];
 	[countryTableViewController setTitle:@"Countries"];
+	[countryTableViewController setShowCount:YES];
 	
     UINavigationController *countryNavController = [[UINavigationController alloc] initWithRootViewController:countryTableViewController];
 	

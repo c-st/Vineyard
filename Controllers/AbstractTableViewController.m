@@ -10,7 +10,7 @@
 
 @implementation AbstractTableViewController
 
-@synthesize settingsCell;
+@synthesize settingsCell, showCount;
 @synthesize fetchedResultsController = fetchedResultsController;
 @synthesize managedObjectContext = _managedObjectContext;
 
@@ -21,6 +21,7 @@
 - (id) initWithFetchedResultsController:(NSFetchedResultsController *)controller {
     if ((self = [super init])) {
         fetchedResultsController = controller;
+		[self setShowCount:NO];
     }
     return self;
 }

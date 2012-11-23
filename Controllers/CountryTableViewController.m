@@ -23,15 +23,17 @@
 	cell.imageView.image = [UIImage imageNamed:[country.isoCode stringByAppendingString:@".png"]];
     cell.textLabel.text = country.name;
 	
-	// count wines
-	NSPredicate *winesFromCountry = [NSPredicate predicateWithFormat:@"(country.countryID == %@)", country.countryID];
-	int count = [Wine countOfEntitiesWithPredicate:winesFromCountry];
-	if (count > 0) {
-		UILabel *wineCountLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
-		[wineCountLabel setText:[NSString stringWithFormat:@"%i", count]];
-		cell.accessoryView = wineCountLabel;
-	} else {
-		cell.accessoryView = nil;
+	if ([self showCount]) {
+		// count wines
+		NSPredicate *winesFromCountry = [NSPredicate predicateWithFormat:@"(country.countryID == %@)", country.countryID];
+		int count = [Wine countOfEntitiesWithPredicate:winesFromCountry];
+		if (count > 0) {
+			UILabel *wineCountLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
+			[wineCountLabel setText:[NSString stringWithFormat:@"%i", count]];
+			cell.accessoryView = wineCountLabel;
+		} else {
+			cell.accessoryView = nil;
+		}
 	}
 	
     //cell.detailTextLabel.text = [NSString stringWithFormat:@"%@, %@", country.name, country.countryID];
@@ -61,6 +63,7 @@
 	
 	RegionTableViewController *regionTableViewController = [[RegionTableViewController alloc] initWithFetchedResultsController:regionsController];
 	[regionTableViewController setTitle:country.name];
+	[regionTableViewController setShowCount:[self showCount]];
 	
 	[[self navigationController] pushViewController:regionTableViewController animated:YES];
 }

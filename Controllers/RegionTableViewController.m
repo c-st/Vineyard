@@ -16,15 +16,17 @@
     cell.textLabel.text = region.name;
     cell.detailTextLabel.text = [NSString stringWithFormat:@"%@, %@", region.name, region.regionID];
 	
-	// count wines
-	NSPredicate *winesFromRegion = [NSPredicate predicateWithFormat:@"(appellation.region.regionID == %@)", region.regionID];
-	int count = [Wine countOfEntitiesWithPredicate:winesFromRegion];
-	if (count > 0) {
-		UILabel *wineCountLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
-		[wineCountLabel setText:[NSString stringWithFormat:@"%i", count]];
-		cell.accessoryView = wineCountLabel;
-	} else {
-		cell.accessoryView = nil;
+	if ([self showCount]) {
+		// count wines
+		NSPredicate *winesFromRegion = [NSPredicate predicateWithFormat:@"(appellation.region.regionID == %@)", region.regionID];
+		int count = [Wine countOfEntitiesWithPredicate:winesFromRegion];
+		if (count > 0) {
+			UILabel *wineCountLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
+			[wineCountLabel setText:[NSString stringWithFormat:@"%i", count]];
+			cell.accessoryView = wineCountLabel;
+		} else {
+			cell.accessoryView = nil;
+		}
 	}
 }
 
@@ -50,6 +52,7 @@
 	
 	AppellationTableViewController *appellationTableViewController = [[AppellationTableViewController alloc] initWithFetchedResultsController:appellationsController];
 	[appellationTableViewController setTitle:region.name];
+	[appellationTableViewController setShowCount:[self showCount]];
 	[[self navigationController] pushViewController:appellationTableViewController animated:YES];
 }
 
