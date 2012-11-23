@@ -30,20 +30,41 @@
 			[textField addTarget:self action:@selector(textFieldValueChangedDisappear:) forControlEvents: UIControlEventEditingDidEnd | UIControlEventEditingDidEndOnExit];
 						[self.contentView addSubview:textField];
 			[textField setDelegate:self];
+			
+			// check if we have an initial value
+			id currentValue = [wine valueForKey:propertyIdentifier];
+			if (currentValue != nil && [currentValue isKindOfClass:[NSString class]]) {
+				NSLog(@"setting value is %@", currentValue);
+				[textField setText:currentValue];
+				[textField setTextColor:[UIColor blackColor]];
+			}
+			
 			break;
 		}
 		case DetailViewSettingsCellType: {
 			[self setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
 			self.textLabel.text = name;
+			
+			// check if we have an initial value
+			id currentValue = [wine valueForKey:propertyIdentifier];
+			if (currentValue != nil && [currentValue isKindOfClass:[NSManagedObject class]]) {
+				//NSLog(@"setting is managed object: %@", propertyIdentifier);
+				[self.textLabel setText:[currentValue valueForKey:@"name"]];
+				self.textLabel.textColor = [UIColor blackColor];
+				self.textLabel.font = [UIFont systemFontOfSize:16];
+			} else if (currentValue != nil && ([currentValue isKindOfClass:[NSSet class]] && [(NSSet*) currentValue count] > 0)) {
+				NSLog(@"setting is list value: %@", propertyIdentifier);
+				// TODO
+			} else {
+				// no value yet
+				self.textLabel.textColor = [UIColor lightGrayColor];
+				self.textLabel.font = [UIFont systemFontOfSize:16];
+			}
 			break;
 		}
 		default:
 			break;
 	}
-	
-	// no value yet
-	self.textLabel.textColor = [UIColor lightGrayColor];
-	self.textLabel.font = [UIFont systemFontOfSize:16];
 	
 	return self;
 }
@@ -74,10 +95,13 @@
 
 - (void) valueWasSelected:(NSManagedObject*)managedObject {
 	[wine setValue:managedObject forKey:propertyIdentifier];
-	NSLog(@"updated Wine %@", managedObject);
+	NSLog(@"updated Wine for propertyIdentifier %@", propertyIdentifier);
 	[self.textLabel setText:[managedObject valueForKey:@"name"]];
 	[self.textLabel setTextColor: [UIColor blackColor]];
 }
+
+#pragma mark
+#pragma mark Text field delegate methods
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
 	[textField setTextColor: [UIColor blackColor]];
@@ -99,6 +123,7 @@
 	UITableView *tv	= (UITableView *) self.superview;
 	AddWineViewController *addWine = (AddWineViewController *) tv.dataSource;
 	[addWine updateViewFromValidation];
+	
 }
 
 -(void) textFieldValueChangedDisappear:(UITextField *) textField {

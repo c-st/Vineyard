@@ -73,7 +73,12 @@
 	[self.view addSubview:scrollView];
 }
 
+/**
+ View is about to appear. Set configurable properties and update settings table.
+ */
 -(void) viewWillAppear:(BOOL)animated {
+	[self updateAndSetConfigurableProperties];
+	
 	[self updateViewFromValidation];
 	[tableView.tableView reloadData];
 }
@@ -85,44 +90,52 @@
 	[self setTitle:@"Add a Wine"];
 	
 	// Create a new wine
-	wine = [Wine createEntity];
-	
+	[self setWine: [Wine createEntity]];
+}
+
+-(void) updateAndSetConfigurableProperties {
 	// Name
-	SettingsCell *nameSettingsCell = [[SettingsCell alloc] initWithWine:wine andType:TextSettingsCellType andProperty:@"name" andName:@"Name"];
+	SettingsCell *nameSettingsCell = [[SettingsCell alloc] initWithWine:[self wine] andType:TextSettingsCellType andProperty:@"name" andName:@"Name"];
 	
 	// Appellation
 	AppellationTableViewController *appellationTableViewController = [[AppellationTableViewController alloc] init];
 	
-	SettingsCell *appellationSettingsCell = [[SettingsCell alloc] initWithWine:wine andType:DetailViewSettingsCellType andProperty:@"appellation" andName:@"Appellation" andViewController:appellationTableViewController];
+	SettingsCell *appellationSettingsCell = [[SettingsCell alloc] initWithWine:[self wine] andType:DetailViewSettingsCellType andProperty:@"appellation" andName:@"Appellation" andViewController:appellationTableViewController];
 	
 	[appellationTableViewController setSettingsCell:appellationSettingsCell];
 	
 	// Country
 	CountryTableViewController *countryTableViewController = [[CountryTableViewController alloc] init];
 	
-	SettingsCell *countrySettingsCell = [[SettingsCell alloc] initWithWine:wine andType:DetailViewSettingsCellType andProperty:@"country" andName:@"Country" andViewController:countryTableViewController];
+	SettingsCell *countrySettingsCell = [[SettingsCell alloc] initWithWine:[self wine] andType:DetailViewSettingsCellType andProperty:@"country" andName:@"Country" andViewController:countryTableViewController];
 	
 	[countryTableViewController setSettingsCell:countrySettingsCell];
 	
 	// Varietal
 	// change to viewController
-	SettingsCell *varietalSettingsCell = [[SettingsCell alloc] initWithWine:wine andType:TextSettingsCellType andProperty:@"varietals" andName:@"Varietals"];
+	SettingsCell *varietalSettingsCell = [[SettingsCell alloc] initWithWine:[self wine] andType:TextSettingsCellType andProperty:@"varietals" andName:@"Varietals"];
+	
+	NSArray *basics = nil;
+	
+	if (wine.country != nil) {
+		basics = [NSArray arrayWithObjects:nameSettingsCell,
+				  countrySettingsCell,
+				  appellationSettingsCell,
+				  nil];
+	} else {
+		basics = [NSArray arrayWithObjects:nameSettingsCell,
+				  countrySettingsCell,
+				  nil];
+	}
+	
+	
+	NSArray *varietal = [NSArray arrayWithObjects:varietalSettingsCell, nil];
 	
 	[self setConfigurableProperties:[NSArray arrayWithObjects:
-									 
-									 [NSArray arrayWithObjects:
-									  nameSettingsCell,
-									  countrySettingsCell,
-									  appellationSettingsCell,
-									  nil],
-									 
-									 [NSArray arrayWithObjects:
-									  varietalSettingsCell,
-									  nil],
-									 
-									 
+									 basics,
+									 varietal,
 									 nil]];
-									
+	
 }
 
 - (void) updateViewFromValidation {
