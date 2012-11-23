@@ -57,6 +57,8 @@
 	CountryTableViewController *countryTableViewController = [[CountryTableViewController alloc] initWithFetchedResultsController:countriesController];
 	[countryTableViewController setTitle:@"Countries"];
 	[countryTableViewController setShowCount:YES];
+
+	countryTableViewController.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Countries" image:[UIImage imageNamed:@"globe-icon.png"] tag:0];
 	
     UINavigationController *countryNavController = [[UINavigationController alloc] initWithRootViewController:countryTableViewController];
 	

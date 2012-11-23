@@ -6,6 +6,8 @@
 #import "Region.h"
 #import "Wine.h"
 
+#import "UIImage+Scale.h"
+
 @interface CountryTableViewController ()
 
 @end
@@ -20,7 +22,7 @@
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
     Country *country = [self.fetchedResultsController objectAtIndexPath:indexPath];
 	
-	cell.imageView.image = [UIImage imageNamed:[country.isoCode stringByAppendingString:@".png"]];
+	cell.imageView.image = [[UIImage imageNamed:[country.isoCode stringByAppendingString:@".png"]] scaleToSize:CGSizeMake(26, 26)];
     cell.textLabel.text = country.name;
 	
 	if ([self showCount]) {
@@ -55,7 +57,6 @@
 	}
 	
     Country *country = [self.fetchedResultsController objectAtIndexPath:indexPath];
-	
     NSPredicate *searchStatement = [NSPredicate predicateWithFormat:@"country.countryID == %@", country.countryID];
     NSFetchedResultsController *regionsController = [Region fetchAllSortedBy:@"name" ascending:YES withPredicate:searchStatement groupBy:nil delegate:self];
 	
