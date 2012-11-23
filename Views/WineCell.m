@@ -50,6 +50,7 @@
 	NSLog(@"deleting wine..");
 	[wine deleteEntity];
 	[[NSManagedObjectContext defaultContext] saveNestedContexts];
+	
 	[self.parentTableViewController.fetchedResultsController performFetch:nil];
 	[self.parentTableViewController.tableView beginUpdates];
 	NSIndexPath *path = [self.parentTableViewController.tableView indexPathForCell:self];

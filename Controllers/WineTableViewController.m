@@ -27,7 +27,9 @@
 }
 
 - (void) viewWillAppear:(BOOL)animated {
-	[self setFetchedResultsController:[Wine fetchAllSortedBy:@"name" ascending:YES withPredicate:[self getFetchPredicate:nil] groupBy:nil delegate:nil]];
+	if (self.fetchedResultsController == nil) {
+		[self setFetchedResultsController:[Wine fetchAllSortedBy:@"name" ascending:YES withPredicate:[self getFetchPredicate:nil] groupBy:nil delegate:nil]];
+	}
 	
 	NSError *error;
 	if (![[self fetchedResultsController] performFetch:&error]) {
@@ -36,6 +38,7 @@
 	
 	NSLog(@"We have %i now", [[[Wine fetchAllSortedBy:@"name" ascending:YES withPredicate:[self getFetchPredicate:nil] groupBy:nil delegate:nil] fetchedObjects] count]);
 	
+	[self.tableView reloadData];
 }
 
 - (void) viewDidAppear:(BOOL)animated {

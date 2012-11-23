@@ -4,6 +4,8 @@
 #import "Region.h"
 #import "SettingsCell.h"
 
+#import "WineTableViewController.h"
+
 @interface AppellationTableViewController ()
 
 @end
@@ -74,6 +76,17 @@
 	if([super respondsToSelector:@selector(tableView:didSelectRowAtIndexPath:)]) {
 		[super tableView:tableView didSelectRowAtIndexPath:indexPath];
 	}
+	
+	Appellation *appellation = [[super fetchedResultsController] objectAtIndexPath:indexPath];
+	
+	NSPredicate *searchStatement = [NSPredicate predicateWithFormat:@"appellation.appellationID == %@", appellation.appellationID];
+    NSFetchedResultsController *wineSearchController = [Wine fetchAllSortedBy:@"name" ascending:YES withPredicate:searchStatement groupBy:nil delegate:self];
+	
+	WineTableViewController *wineTableViewController = [[WineTableViewController alloc] initWithFetchedResultsController:wineSearchController];
+	
+	[wineTableViewController setTitle:appellation.name];
+	[wineTableViewController setShowCount:NO];
+	[[self navigationController] pushViewController:wineTableViewController animated:YES];
 }
 
 #pragma mark
