@@ -57,7 +57,6 @@
 	CountryTableViewController *countryTableViewController = [[CountryTableViewController alloc] initWithFetchedResultsController:countriesController];
 	[countryTableViewController setTitle:@"Countries"];
 	[countryTableViewController setShowCount:YES];
-
 	countryTableViewController.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Countries" image:[UIImage imageNamed:@"globe-icon.png"] tag:0];
 	
     UINavigationController *countryNavController = [[UINavigationController alloc] initWithRootViewController:countryTableViewController];
@@ -65,9 +64,12 @@
 	// Wines
 	WineTableViewController *wineTableViewController = [[WineTableViewController alloc] init];
 	[wineTableViewController setTitle:@"Wines"];
+	wineTableViewController.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Wines" image:[UIImage imageNamed:@"food_wine_bottle_glass.png"] tag:0];
 	UINavigationController *wineNavController = [[UINavigationController alloc] initWithRootViewController:wineTableViewController];
 	
-	// ...
+	// Varietals
+
+	// Collections
 	
 	[countryNavController.navigationBar setTintColor:[UIColor cellarWineRedColour]];
 	[wineNavController.navigationBar setTintColor:[UIColor cellarWineRedColour]];
@@ -76,8 +78,8 @@
 							wineNavController,
                             countryNavController,
                             [self viewControllerWithTabTitle:@"Add" image:nil],
-                            [self viewControllerWithTabTitle:@"Varietals" image:[UIImage imageNamed:@"tab-friends.png"]],
-                            [self viewControllerWithTabTitle:@"Collections" image:[UIImage imageNamed:@"tab-me.png"]], nil]];
+                            [self viewControllerWithTabTitle:@"Varietals" image:[UIImage imageNamed:@"food_grapes.png"]],
+                            [self viewControllerWithTabTitle:@"Collections" image:[UIImage imageNamed:@"collections.png"]], nil]];
 	
 	[self addCenterButtonWithImage:[UIImage imageNamed:@"add-wine-button.png"] highlightImage:nil];
 	
