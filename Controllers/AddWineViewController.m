@@ -1,6 +1,5 @@
 
 #import "AddWineViewController.h"
-#import "AddWineTableViewController.h"
 #import "AbstractTableViewController.h"
 #import "SettingsCell.h"
 
@@ -80,9 +79,12 @@
 	[scrollView addSubview:label];
 	
 	// Attribute Table
-	self.tableView = [[AddWineTableViewController alloc] init];
+	self.tableView = [[UITableViewController alloc] initWithStyle:UITableViewStyleGrouped];
+	float outerSpacing = 10.0f;
+	[tableView.view setFrame:CGRectMake(bound.origin.x+outerSpacing, bound.origin.y, bound.size.width- 2 * outerSpacing, 400)];
 	[tableView.tableView setDelegate:self];
 	[tableView.tableView setDataSource:self];
+	[tableView.tableView setBackgroundView:nil];
 	[scrollView addSubview:tableView.view];
 	
 	// Tap recognizer to hide keyboard
@@ -219,10 +221,6 @@
 
 -(void)dismissKeyboard {
 	[self.view endEditing:YES];
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
 }
 
 @end
