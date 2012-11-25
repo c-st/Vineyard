@@ -4,6 +4,7 @@
 #import "CountryTableViewController.h"
 #import "AddWineViewController.h"
 #import "WineTableViewController.h"
+#import "VarietalTableViewController.h"
 #import "Country.h"
 
 @implementation RaisedTabBarController
@@ -68,17 +69,25 @@
 	UINavigationController *wineNavController = [[UINavigationController alloc] initWithRootViewController:wineTableViewController];
 	
 	// Varietals
-
-	// Collections
+	VarietalTableViewController *varietalTableViewController = [[VarietalTableViewController alloc] init];
+	[varietalTableViewController setTitle:@"Varietals"];
+	[varietalTableViewController setShowCount:YES];
+	[varietalTableViewController setPickMode:NO];
+	varietalTableViewController.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Varietals" image:[UIImage imageNamed:@"food_grapes.png"] tag:0];
+	UINavigationController *varietalNavController = [[UINavigationController alloc] initWithRootViewController:varietalTableViewController];
 	
-	[countryNavController.navigationBar setTintColor:[UIColor cellarWineRedColour]];
+	// Collections
+	// ...
+	
 	[wineNavController.navigationBar setTintColor:[UIColor cellarWineRedColour]];
+	[countryNavController.navigationBar setTintColor:[UIColor cellarWineRedColour]];
+	[varietalNavController.navigationBar setTintColor:[UIColor cellarWineRedColour]];
 	
 	[self setViewControllers:[NSArray arrayWithObjects:
 							wineNavController,
                             countryNavController,
                             [self viewControllerWithTabTitle:@"Add" image:nil],
-                            [self viewControllerWithTabTitle:@"Varietals" image:[UIImage imageNamed:@"food_grapes.png"]],
+                            varietalNavController,
                             [self viewControllerWithTabTitle:@"Collections" image:[UIImage imageNamed:@"collections.png"]], nil]];
 	
 	[self addCenterButtonWithImage:[UIImage imageNamed:@"add-wine-button.png"] highlightImage:nil];

@@ -21,19 +21,12 @@
 }
 
 - (void) viewWillAppear:(BOOL)animated {
-	if (self.settingsCell.wine != nil) {
-		[self setFetchedResultsController:[Varietal fetchAllSortedBy:@"name" ascending:YES withPredicate:[self getFetchPredicate:self.settingsCell.wine] groupBy:nil delegate:nil]];
-	} else {
-		[self setFetchedResultsController:[Varietal fetchAllSortedBy:@"name" ascending:YES withPredicate:nil groupBy:nil delegate:nil]];
-	}
+	[self setFetchedResultsController:[Varietal fetchAllGroupedBy:@"grapeType" withPredicate:self.settingsCell.wine != nil ? [self getFetchPredicate:self.settingsCell.wine]:nil sortedBy:@"grapeType.name" ascending:YES]];
 	
 	if ([self pickMode]) {
 		UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle: @"Done" style:UIBarButtonItemStylePlain target:self action: @selector(finishSelection)];
 		[[self navigationItem] setRightBarButtonItem:doneButton];
-		
-		// set selected varietals from wine (we need the wine!)
 	}
-	
 	[super viewWillAppear:animated];
 }
 
@@ -48,7 +41,7 @@
 
 - (NSPredicate *) buildCountPredicateForObject:(NSManagedObject *)object {
 	Varietal* varietal = (Varietal *) object;
-	return [NSPredicate predicateWithFormat:@"(varietals CONTAINS[c] %@)", varietal.varietalID];
+	return [NSPredicate predicateWithFormat:@"ANY varietals == %@", varietal];
 }
 
 - (NSPredicate*) getFetchPredicate:(Wine *)withWine {
@@ -70,11 +63,11 @@
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
     Varietal *varietal = [self.fetchedResultsController objectAtIndexPath:indexPath];
 	
-	cell.textLabel.text = [NSString stringWithFormat:@"%@ (%@)", varietal.name, varietal.grapeType.name];
+	cell.textLabel.text = [NSString stringWithFormat:@"%@", varietal.name];
 	
 	if ([self showCount]) {
 		// count wines
-		cell.accessoryView = [self buildAccessoryViewFromPredicate:[self buildCountPredicateForObject:varietal] andObject:varietal];
+		cell.accessoryView = [self buildAccessoryViewFromPredicate:[self buildCountPredicateForObject:varietal] andObject:varietal andIndexPath:indexPath];
 	}
 	
 	if ([self.selectedVarietals containsObject:varietal]) {
@@ -83,6 +76,8 @@
 		[cell setAccessoryType:UITableViewCellAccessoryNone];
 	}
 }
+
+
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath  {
@@ -102,6 +97,37 @@
 	//NSLog(@"--> %i", [selectedVarietals count]);
 }
 
+#pragma mark
+#pragma mark Delegate methods and logic for sections
+
+- (UIView *) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+	if ([[self.fetchedResultsController sections] count] > 1) {
+		return [self tableView:tableView customViewForHeaderInSection:section];
+	}
+	return nil;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+	if ([[self.fetchedResultsController sections] count] == 1) {
+		return 0;
+	}
+    return 22;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+	if ([[self.fetchedResultsController sections] count] > 1) {
+		id <NSFetchedResultsSectionInfo> sectionInfo = [[self.fetchedResultsController sections] objectAtIndex:section];
+		Varietal *v = (Varietal *) [[sectionInfo objects] objectAtIndex:0];
+		return [NSString stringWithFormat:@"%@ grapes", v.grapeType.name];
+		
+	}
+	return nil;
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    NSUInteger count = [[self.fetchedResultsController sections] count];
+    return count;
+}
 
 
 

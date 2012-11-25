@@ -5,6 +5,8 @@
 #import "WineTableViewController.h"
 #import "SettingsCell.h"
 
+#import "UIView+ObjectTagAdditions.h"
+
 #import <QuartzCore/QuartzCore.h>
 
 @interface AbstractTableViewController ()
@@ -145,7 +147,7 @@
 	return sectionHead;
 }
 
-- (UIView *) buildAccessoryViewFromPredicate:(NSPredicate *)searchPredicate andObject:(NSManagedObject *) object {
+- (UIView *) buildAccessoryViewFromPredicate:(NSPredicate *)searchPredicate andObject:(NSManagedObject *) object andIndexPath:(NSIndexPath *)indexPath {
 	int count = [Wine countOfEntitiesWithPredicate:searchPredicate];
 	
 	// TODO make this badge look more like a button
@@ -163,14 +165,14 @@
 		badgeView.layer.shadowOpacity = 0.9f;
 		badgeView.layer.masksToBounds = NO;
 		
+		
 		UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
 		[button setBackgroundColor:[UIColor clearColor]];
 		[button setFrame:CGRectMake(0, 0, 60, 30)];
 		[button addSubview:badgeView];
 		//[button setShowsTouchWhenHighlighted:YES];
-		
 		[button addTarget:self action:@selector(countButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
-		[button setTag:[[self fetchedResultsController] indexPathForObject:object].row]; // store position in tag of button
+		[button setObjectTag:indexPath]; // store indexPath of button
 		return button;
 	} else {
 		return nil;
@@ -179,8 +181,7 @@
 
 - (void) countButtonClicked:(UIButton *) sender {
 	// fetch selected row object
-	NSManagedObject *object = [[self fetchedResultsController] objectAtIndexPath:[NSIndexPath indexPathForRow:sender.tag inSection:0]];
-	
+	NSManagedObject *object = [[self fetchedResultsController] objectAtIndexPath:[sender objectTag]];
 	NSFetchedResultsController *wineSearchController = [Wine fetchAllSortedBy:@"name" ascending:YES withPredicate:[self buildCountPredicateForObject:object] groupBy:nil delegate:self];
 	
 	WineTableViewController *wineTableViewController = [[WineTableViewController alloc] initWithFetchedResultsController:wineSearchController];

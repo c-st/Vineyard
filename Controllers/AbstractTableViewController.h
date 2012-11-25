@@ -34,7 +34,7 @@
 #pragma mark
 #pragma mark Count and count Predicate
 
-- (UIView *) buildAccessoryViewFromPredicate:(NSPredicate *)searchPredicate andObject:(NSManagedObject *) object;
+- (UIView *) buildAccessoryViewFromPredicate:(NSPredicate *)searchPredicate andObject:(NSManagedObject *) object andIndexPath:(NSIndexPath *) indexPath;
 - (NSPredicate *) buildCountPredicateForObject:(NSManagedObject *)object;
 
 - (void) filterContentForSearch:(NSString *) searchText;
