@@ -5,6 +5,8 @@
 #import "WineTableViewController.h"
 #import "SettingsCell.h"
 
+#import <QuartzCore/QuartzCore.h>
+
 @interface AbstractTableViewController ()
 
 @end
@@ -146,8 +148,9 @@
 - (UIView *) buildAccessoryViewFromPredicate:(NSPredicate *)searchPredicate andObject:(NSManagedObject *) object {
 	int count = [Wine countOfEntitiesWithPredicate:searchPredicate];
 	
+	// TODO make this badge look more like a button
 	if (count > 0) {
-		SSBadgeView *badgeView = [[SSBadgeView alloc] initWithFrame:CGRectMake(0, 0, 55, 20)];
+		SSBadgeView *badgeView = [[SSBadgeView alloc] initWithFrame:CGRectMake(0, 5, 55, 20)];
 		badgeView.backgroundColor = [UIColor clearColor];
 		[badgeView setBadgeColor:[[UIColor cellarWineRedColour] colorWithAlphaComponent:0.65f]];
 		badgeView.badgeAlignment = SSBadgeViewAlignmentCenter;
@@ -155,9 +158,14 @@
 		badgeView.userInteractionEnabled = NO;
 		badgeView.exclusiveTouch = NO;
 		
+		badgeView.layer.shadowOffset = CGSizeMake(0.0f, 0.0f);
+		badgeView.layer.shadowRadius = 2.0f;
+		badgeView.layer.shadowOpacity = 0.9f;
+		badgeView.layer.masksToBounds = NO;
+		
 		UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
 		[button setBackgroundColor:[UIColor clearColor]];
-		[button setFrame:CGRectMake(0, 0, 55, 20)];
+		[button setFrame:CGRectMake(0, 0, 60, 30)];
 		[button addSubview:badgeView];
 		//[button setShowsTouchWhenHighlighted:YES];
 		

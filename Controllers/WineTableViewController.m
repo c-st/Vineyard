@@ -130,8 +130,6 @@
 	Wine *wine = [[super fetchedResultsController] objectAtIndexPath:indexPath];
 	
 	WineDetailViewController *wineDetail = [[WineDetailViewController alloc] initWithWine:wine];
-	
-	//AddWineViewController *wineViewController = [[AddWineViewController alloc] initWithWine:wine];
 	[[self navigationController] pushViewController:wineDetail animated:YES];
 }
 
