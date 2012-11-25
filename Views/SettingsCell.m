@@ -55,12 +55,12 @@
 			} else if (currentValue != nil && ([currentValue isKindOfClass:[NSSet class]] && [(NSSet*) currentValue count] > 0)) {
 				NSLog(@"setting is list value: %@", propertyIdentifier);
 				NSSet *values = (NSSet *) currentValue;
-				NSManagedObject *firstEntry = (NSManagedObject *) [[currentValue allObjects] objectAtIndex:0];
-				if ([values count] > 1) {
-					[self.textLabel setText:[NSString stringWithFormat:@"%@, ...", [firstEntry valueForKey:@"name"]]];
-				} else {
-					[self.textLabel setText:[firstEntry valueForKey:@"name"]];
+				NSString *names = [[NSString alloc] init];
+				for (NSManagedObject *object in values) {
+					names = [names stringByAppendingString:[[object valueForKey:@"name"] stringByAppendingString:@" "]];
 				}
+				[self.textLabel setText:names];
+				
 				self.textLabel.textColor = [UIColor blackColor];
 				self.textLabel.font = [UIFont systemFontOfSize:16];
 			} else {
