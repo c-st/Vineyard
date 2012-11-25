@@ -12,6 +12,7 @@
 	SettingsCell *settingsCell;
 	
 	BOOL showCount;
+	BOOL showSearchBar;
 }
 
 @property (nonatomic, strong) NSManagedObjectContext* managedObjectContext;
@@ -19,6 +20,7 @@
 @property (nonatomic, strong) SettingsCell* settingsCell;
 
 @property (atomic) BOOL showCount;
+@property (atomic) BOOL showSearchBar;
 
 
 - (id) initWithFetchedResultsController:(NSFetchedResultsController *)controller;
@@ -28,9 +30,6 @@
 
 // Custom section header view (implement viewForHeaderInSection and return result of this method).
 - (UIView *) tableView:(UITableView *)tableView customViewForHeaderInSection:(NSInteger)section;
-
-// Overwrite and return yes to show search bar.
-- (BOOL) showSearchBar;
 
 #pragma mark
 #pragma mark Count and count Predicate

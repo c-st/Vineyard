@@ -112,7 +112,7 @@
 	
 	// Appellation
 	AppellationTableViewController *appellationTableViewController = [[AppellationTableViewController alloc] init];
-	
+	[appellationTableViewController setShowSearchBar:YES];
 	SettingsCell *appellationSettingsCell = [[SettingsCell alloc] initWithWine:[self wine] andType:DetailViewSettingsCellType andProperty:@"appellation" andName:@"Appellation" andViewController:appellationTableViewController];
 	
 	[appellationTableViewController setSettingsCell:appellationSettingsCell];

@@ -11,7 +11,7 @@
 
 @implementation AbstractTableViewController
 
-@synthesize settingsCell, showCount;
+@synthesize settingsCell, showCount, showSearchBar;
 @synthesize fetchedResultsController = fetchedResultsController;
 @synthesize managedObjectContext = _managedObjectContext;
 
@@ -23,6 +23,7 @@
     if ((self = [super init])) {
         fetchedResultsController = controller;
 		[self setShowCount:NO];
+		[self setShowSearchBar:NO];
     }
     return self;
 }
@@ -56,10 +57,6 @@
 
 #pragma mark
 #pragma mark UISearchBar delegate methods
-
-- (BOOL) showSearchBar {
-	return NO;
-}
 
 -(void) searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
     [self filterContentForSearch:searchText];
@@ -158,12 +155,12 @@
 		badgeView.userInteractionEnabled = NO;
 		badgeView.exclusiveTouch = NO;
 		
-		
 		UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
 		[button setBackgroundColor:[UIColor clearColor]];
 		[button setFrame:CGRectMake(0, 0, 55, 20)];
 		[button addSubview:badgeView];
-		[button setShowsTouchWhenHighlighted:YES];
+		//[button setShowsTouchWhenHighlighted:YES];
+		
 		[button addTarget:self action:@selector(countButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
 		[button setTag:[[self fetchedResultsController] indexPathForObject:object].row]; // store position in tag of button
 		return button;
@@ -218,7 +215,5 @@
 - (NSPredicate*) getFetchPredicate:(Wine *)withWine {
 	return nil;
 }
-
-
 
 @end

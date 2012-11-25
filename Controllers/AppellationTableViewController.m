@@ -63,10 +63,6 @@
     return cell;
 }
 
-- (BOOL) showSearchBar {
-	return YES;
-}
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     id  sectionInfo = [[self.fetchedResultsController sections] objectAtIndex:section];
     return [sectionInfo numberOfObjects];
