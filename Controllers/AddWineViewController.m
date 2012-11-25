@@ -21,7 +21,24 @@
 
 @synthesize configurableProperties, wine, tableView;
 
--(void) loadView {
+- (id) init {
+	if ((self = [super init])) {
+		// Create a new wine
+		[self setWine: [Wine createEntity]];
+		[self setTitle:@"Add a Wine"];
+	}
+    return self;
+}
+
+- (id) initWithWine:(Wine *)theWine {
+	if ((self = [super init])) {
+		[self setWine:theWine];
+		[self setTitle:[NSString stringWithFormat:@"%@", theWine.name]];
+	}
+    return self;
+}
+
+- (void) loadView {
 	[super loadView];
 	
 	// Cancel and save buttons
@@ -87,10 +104,6 @@
  */
 -(void) viewDidLoad {
 	[super viewDidLoad];
-	[self setTitle:@"Add a Wine"];
-	
-	// Create a new wine
-	[self setWine: [Wine createEntity]];
 }
 
 -(void) updateAndSetConfigurableProperties {
@@ -174,6 +187,7 @@
 		[wine extendWine];
 		[[NSManagedObjectContext defaultContext] saveNestedContexts];
 		[self dismissViewControllerAnimated:YES completion:nil];
+		[[self navigationController] popViewControllerAnimated:YES];
 	} else {
 		// TODO: visual feedback!
 		NSLog(@"Wine is not valid!");
@@ -183,8 +197,9 @@
 -(void) closeWineView {
 	NSLog(@"throwing wine away..");
 	//[wine setName:@""];
-	[wine deleteEntity];
+	//[wine deleteEntity];
 	[self dismissViewControllerAnimated:YES completion:nil];
+	[[self navigationController] popViewControllerAnimated:YES];
 }
 
 -(void)dismissKeyboard {

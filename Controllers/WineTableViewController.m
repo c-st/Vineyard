@@ -3,7 +3,9 @@
 #import "Wine.h"
 #import "Appellation.h"
 #import "WineCell.h"
+
 #import <QuartzCore/QuartzCore.h>
+#import "AddWineViewController.h"
 
 @interface WineTableViewController ()
 
@@ -123,6 +125,10 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath  {
+	Wine *wine = [[super fetchedResultsController] objectAtIndexPath:indexPath];
+	
+	AddWineViewController *wineViewController = [[AddWineViewController alloc] initWithWine:wine];
+	[[self navigationController] pushViewController:wineViewController animated:YES];
 }
 
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {

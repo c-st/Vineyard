@@ -13,4 +13,6 @@
 @property (nonatomic, strong) AddWineTableViewController *tableView;
 
 - (void) updateViewFromValidation;
+
+- (id) initWithWine:(Wine *) theWine;
 @end
