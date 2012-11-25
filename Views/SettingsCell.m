@@ -94,8 +94,17 @@
 }
 
 - (void) valueWasSelected:(NSManagedObject*)managedObject {
+	// reset appellation if country was changed.
+	if ([propertyIdentifier isEqualToString:@"country"]) {
+		//only if the value was actually changed
+		if (![wine.country isEqual:managedObject]) {
+			[wine setValue:nil forKey:@"appellation"];
+		}
+	}
+	
 	[wine setValue:managedObject forKey:propertyIdentifier];
 	NSLog(@"updated Wine for propertyIdentifier %@", propertyIdentifier);
+	
 	[self.textLabel setText:[managedObject valueForKey:@"name"]];
 	[self.textLabel setTextColor: [UIColor blackColor]];
 }
