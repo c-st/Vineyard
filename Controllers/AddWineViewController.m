@@ -125,7 +125,6 @@
 	
 	// Country
 	CountryTableViewController *countryTableViewController = [[CountryTableViewController alloc] init];
-	
 	SettingsCell *countrySettingsCell = [[SettingsCell alloc] initWithWine:[self wine] andType:DetailViewSettingsCellType andProperty:@"country" andName:@"Country" andViewController:countryTableViewController];
 	
 	[countryTableViewController setSettingsCell:countrySettingsCell];
@@ -138,7 +137,7 @@
 	// Varietal
 	VarietalTableViewController *varietalTableViewController = [[VarietalTableViewController alloc] init];
 	[varietalTableViewController setPickMode:YES];
-	
+	[varietalTableViewController setSelectedVarietals:[[[wine varietals] allObjects] mutableCopy]];
 	SettingsCell *varietalSettingsCell = [[SettingsCell alloc] initWithWine:[self wine] andType:DetailViewSettingsCellType andProperty:@"varietals" andName:@"Varietals" andViewController:varietalTableViewController];
 	
 	[varietalTableViewController setSettingsCell:varietalSettingsCell];

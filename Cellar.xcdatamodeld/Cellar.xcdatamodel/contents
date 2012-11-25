@@ -27,6 +27,11 @@
         </relationship>
         <relationship name="wines" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Wine" inverseName="country" inverseEntity="Wine" syncable="YES"/>
     </entity>
+    <entity name="GrapeType" representedClassName="GrapeType" syncable="YES">
+        <attribute name="grapeTypeID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="varietals" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Varietal" inverseName="grapeType" inverseEntity="Varietal" syncable="YES"/>
+    </entity>
     <entity name="Indication" representedClassName="Indication" syncable="YES">
         <attribute name="indicationID" attributeType="String" syncable="YES"/>
         <attribute name="name" attributeType="String" syncable="YES"/>
@@ -51,13 +56,13 @@
         <relationship name="wineries" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Winery" inverseName="region" inverseEntity="Winery" syncable="YES"/>
     </entity>
     <entity name="Varietal" representedClassName="Varietal" syncable="YES">
-        <attribute name="colour" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="varietalID" optional="YES" attributeType="String" syncable="YES">
             <userInfo>
                 <entry key="mappedKeyName" value="varietalID"/>
             </userInfo>
         </attribute>
+        <relationship name="grapeType" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="GrapeType" inverseName="varietals" inverseEntity="GrapeType" syncable="YES"/>
         <relationship name="wines" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Wine" inverseName="varietals" inverseEntity="Wine" syncable="YES"/>
     </entity>
     <entity name="Wine" representedClassName="Wine" syncable="YES">
@@ -86,5 +91,6 @@
         <element name="Varietal" positionX="187" positionY="324" width="128" height="103"/>
         <element name="Wine" positionX="-18" positionY="108" width="128" height="193"/>
         <element name="Winery" positionX="-326" positionY="270" width="128" height="73"/>
+        <element name="GrapeType" positionX="358" positionY="326" width="128" height="88"/>
     </elements>
 </model>

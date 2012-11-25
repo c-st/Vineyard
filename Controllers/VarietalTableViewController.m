@@ -2,6 +2,7 @@
 #import "VarietalTableViewController.h"
 #import "Varietal.h"
 #import "Wine.h"
+#import "GrapeType.h"
 #import "SettingsCell.h"
 
 @interface VarietalTableViewController ()
@@ -30,7 +31,7 @@
 		UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle: @"Done" style:UIBarButtonItemStylePlain target:self action: @selector(finishSelection)];
 		[[self navigationItem] setRightBarButtonItem:doneButton];
 		
-		// set selected varietals from wine
+		// set selected varietals from wine (we need the wine!)
 	}
 	
 	[super viewWillAppear:animated];
@@ -52,7 +53,7 @@
 
 - (NSPredicate*) getFetchPredicate:(Wine *)withWine {
 	// if colour is set, only display varietals with colour
-	return [NSPredicate predicateWithFormat:@"(colour == %@) || (%@ = null)", withWine.colour, withWine.colour];	
+	return [NSPredicate predicateWithFormat:@"(grapeType.grapeTypeID == %@) || (%@ = null)", withWine.colour, withWine.colour];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -69,7 +70,7 @@
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
     Varietal *varietal = [self.fetchedResultsController objectAtIndexPath:indexPath];
 	
-	cell.textLabel.text = [NSString stringWithFormat:@"%@ (%@)", varietal.name, varietal.colour];
+	cell.textLabel.text = [NSString stringWithFormat:@"%@ (%@)", varietal.name, varietal.grapeType.name];
 	
 	if ([self showCount]) {
 		// count wines

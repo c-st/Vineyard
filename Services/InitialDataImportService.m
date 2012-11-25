@@ -16,6 +16,7 @@
 #import "Region.h"
 #import "Indication.h"
 #import "Varietal.h"
+#import "GrapeType.h"
 
 @implementation InitialDataImportService
 
@@ -94,6 +95,17 @@
 		[[NSManagedObjectContext defaultContext] saveNestedContexts];
 	}
 	
+	// Grape Type
+	if (![GrapeType hasAtLeastOneEntity]) {
+		NSLog(@"Importing grape types...");
+		for (object in [data objectForKey:@"grapeTypes"]) {
+			//NSLog(@"inserting new varietal: %@", object);
+			GrapeType *newGrapeType = [GrapeType createEntity];
+			[newGrapeType importValuesForKeysWithObject:object];
+		}
+		[[NSManagedObjectContext defaultContext] saveNestedContexts];
+	}
+	
 	// Varietals
 	if (![Varietal hasAtLeastOneEntity]) {
 		NSLog(@"Importing varietals...");
@@ -101,6 +113,8 @@
 			//NSLog(@"inserting new varietal: %@", object);
 			Varietal *newVarietal = [Varietal createEntity];
 			[newVarietal importValuesForKeysWithObject:object];
+			
+			[newVarietal setGrapeType:[[GrapeType findByAttribute:@"grapeTypeID" withValue:[object valueForKeyPath:@"grapeTypeID"]] objectAtIndex:0]];
 		}
 		[[NSManagedObjectContext defaultContext] saveNestedContexts];
 	}

@@ -4,12 +4,12 @@
 #import "_Varietal.h"
 
 const struct VarietalAttributes VarietalAttributes = {
-	.colour = @"colour",
 	.name = @"name",
 	.varietalID = @"varietalID",
 };
 
 const struct VarietalRelationships VarietalRelationships = {
+	.grapeType = @"grapeType",
 	.wines = @"wines",
 };
 
@@ -49,13 +49,6 @@ const struct VarietalFetchedProperties VarietalFetchedProperties = {
 
 
 
-@dynamic colour;
-
-
-
-
-
-
 @dynamic name;
 
 
@@ -69,6 +62,10 @@ const struct VarietalFetchedProperties VarietalFetchedProperties = {
 
 
 
+
+@dynamic grapeType;
+
+	
 
 @dynamic wines;
 

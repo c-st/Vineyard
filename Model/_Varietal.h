@@ -5,20 +5,20 @@
 
 
 extern const struct VarietalAttributes {
-	__unsafe_unretained NSString *colour;
 	__unsafe_unretained NSString *name;
 	__unsafe_unretained NSString *varietalID;
 } VarietalAttributes;
 
 extern const struct VarietalRelationships {
+	__unsafe_unretained NSString *grapeType;
 	__unsafe_unretained NSString *wines;
 } VarietalRelationships;
 
 extern const struct VarietalFetchedProperties {
 } VarietalFetchedProperties;
 
+@class GrapeType;
 @class Wine;
-
 
 
 
@@ -31,14 +31,6 @@ extern const struct VarietalFetchedProperties {
 + (NSString*)entityName;
 + (NSEntityDescription*)entityInManagedObjectContext:(NSManagedObjectContext*)moc_;
 - (VarietalID*)objectID;
-
-
-
-
-@property (nonatomic, strong) NSString* colour;
-
-
-//- (BOOL)validateColour:(id*)value_ error:(NSError**)error_;
 
 
 
@@ -56,6 +48,13 @@ extern const struct VarietalFetchedProperties {
 
 //- (BOOL)validateVarietalID:(id*)value_ error:(NSError**)error_;
 
+
+
+
+
+@property (nonatomic, strong) GrapeType* grapeType;
+
+//- (BOOL)validateGrapeType:(id*)value_ error:(NSError**)error_;
 
 
 
@@ -82,12 +81,6 @@ extern const struct VarietalFetchedProperties {
 @interface _Varietal (CoreDataGeneratedPrimitiveAccessors)
 
 
-- (NSString*)primitiveColour;
-- (void)setPrimitiveColour:(NSString*)value;
-
-
-
-
 - (NSString*)primitiveName;
 - (void)setPrimitiveName:(NSString*)value;
 
@@ -98,6 +91,11 @@ extern const struct VarietalFetchedProperties {
 - (void)setPrimitiveVarietalID:(NSString*)value;
 
 
+
+
+
+- (GrapeType*)primitiveGrapeType;
+- (void)setPrimitiveGrapeType:(GrapeType*)value;
 
 
 

@@ -13,6 +13,7 @@
 #import "Region.h"
 #import "Wine.h"
 #import "Varietal.h"
+#import "GrapeType.h"
 
 #import "InitialDataImportService.h"
 
@@ -64,7 +65,7 @@
     */
 	
 	for (Varietal *v in [Varietal findAll]) {
-        NSLog(@"-->Varietal %@", v.name);
+        NSLog(@"-->Varietal %@ %@", v.name, v.grapeType.name);
     }
 	
 	RaisedTabBarController *tab = [[RaisedTabBarController alloc] init];
