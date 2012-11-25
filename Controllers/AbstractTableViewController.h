@@ -16,8 +16,8 @@
 
 @property (nonatomic, strong) NSManagedObjectContext* managedObjectContext;
 @property (nonatomic, retain) NSFetchedResultsController *fetchedResultsController;
-
 @property (nonatomic, strong) SettingsCell* settingsCell;
+
 @property (atomic) BOOL showCount;
 
 
@@ -32,7 +32,11 @@
 // Overwrite and return yes to show search bar.
 - (BOOL) showSearchBar;
 
-- (SSBadgeView *) buildBadgeView:(NSString *) withText;
+#pragma mark
+#pragma mark Count and count Predicate
+
+- (UIView *) buildAccessoryViewFromPredicate:(NSPredicate *)searchPredicate andObject:(NSManagedObject *) object;
+- (NSPredicate *) buildCountPredicateForObject:(NSManagedObject *)object;
 
 - (void) filterContentForSearch:(NSString *) searchText;
 @end

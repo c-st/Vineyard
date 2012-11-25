@@ -18,14 +18,13 @@
 	
 	if ([self showCount]) {
 		// count wines
-		NSPredicate *winesFromRegion = [NSPredicate predicateWithFormat:@"(appellation.region.regionID == %@)", region.regionID];
-		int count = [Wine countOfEntitiesWithPredicate:winesFromRegion];
-		if (count > 0) {
-			cell.accessoryView = [self buildBadgeView:[NSString stringWithFormat:@"%i", count]];
-		} else {
-			cell.accessoryView = nil;
-		}
+		cell.accessoryView = [self buildAccessoryViewFromPredicate:[self buildCountPredicateForObject:region] andObject:region];
 	}
+}
+
+- (NSPredicate *) buildCountPredicateForObject:(NSManagedObject *)object {
+	Region* region = (Region *) object;
+	return [NSPredicate predicateWithFormat:@"(appellation.region.regionID == %@)", region.regionID];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {

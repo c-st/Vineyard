@@ -1,6 +1,8 @@
 #import "UIColor+CellarColours.h"
 
 #import "AbstractTableViewController.h"
+
+#import "WineTableViewController.h"
 #import "SettingsCell.h"
 
 @interface AbstractTableViewController ()
@@ -111,6 +113,13 @@
     }
 }
 
+/**
+ Build count predicate to count wines for a specific row.
+ */
+- (NSPredicate *) buildCountPredicateForObject:(NSManagedObject *)object {
+	return nil;
+}
+
 #pragma mark
 #pragma mark Table view delegate methods
 
@@ -137,14 +146,44 @@
 	return sectionHead;
 }
 
-- (SSBadgeView *) buildBadgeView:(NSString *) withText {
-	SSBadgeView *badgeView = [[SSBadgeView alloc] initWithFrame:CGRectMake(0, 0, 55, 20)];
-	badgeView.backgroundColor = [UIColor clearColor];
-	[badgeView setBadgeColor:[[UIColor cellarWineRedColour] colorWithAlphaComponent:0.65f]];
-	badgeView.badgeAlignment = SSBadgeViewAlignmentCenter;
-	[badgeView.textLabel setText:withText];
-	return badgeView;
+- (UIView *) buildAccessoryViewFromPredicate:(NSPredicate *)searchPredicate andObject:(NSManagedObject *) object {
+	int count = [Wine countOfEntitiesWithPredicate:searchPredicate];
+	
+	if (count > 0) {
+		SSBadgeView *badgeView = [[SSBadgeView alloc] initWithFrame:CGRectMake(0, 0, 55, 20)];
+		badgeView.backgroundColor = [UIColor clearColor];
+		[badgeView setBadgeColor:[[UIColor cellarWineRedColour] colorWithAlphaComponent:0.65f]];
+		badgeView.badgeAlignment = SSBadgeViewAlignmentCenter;
+		[badgeView.textLabel setText:[NSString stringWithFormat:@"%i", count]];
+		badgeView.userInteractionEnabled = NO;
+		badgeView.exclusiveTouch = NO;
+		
+		
+		UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+		[button setBackgroundColor:[UIColor clearColor]];
+		[button setFrame:CGRectMake(0, 0, 55, 20)];
+		[button addSubview:badgeView];
+		[button setShowsTouchWhenHighlighted:YES];
+		[button addTarget:self action:@selector(countButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+		[button setTag:[[self fetchedResultsController] indexPathForObject:object].row]; // store position in tag of button
+		return button;
+	} else {
+		return nil;
+	}
 }
+
+- (void) countButtonClicked:(UIButton *) sender {
+	// fetch selected row object
+	NSManagedObject *object = [[self fetchedResultsController] objectAtIndexPath:[NSIndexPath indexPathForRow:sender.tag inSection:0]];
+	
+	NSFetchedResultsController *wineSearchController = [Wine fetchAllSortedBy:@"name" ascending:YES withPredicate:[self buildCountPredicateForObject:object] groupBy:nil delegate:self];
+	
+	WineTableViewController *wineTableViewController = [[WineTableViewController alloc] initWithFetchedResultsController:wineSearchController];
+	[wineTableViewController setTitle:[object valueForKey:@"name"]];
+	[wineTableViewController setShowCount:NO];
+	[[self navigationController] pushViewController:wineTableViewController animated:YES];
+}
+
 
 /**
  If not customized, assume that we are a value pick controller. Return value to our settingsCell.

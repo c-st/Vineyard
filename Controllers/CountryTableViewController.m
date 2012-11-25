@@ -27,16 +27,13 @@
 	
 	if ([self showCount]) {
 		// count wines
-		NSPredicate *winesFromCountry = [NSPredicate predicateWithFormat:@"(country.countryID == %@)", country.countryID];
-		int count = [Wine countOfEntitiesWithPredicate:winesFromCountry];
-		if (count > 0) {
-			cell.accessoryView = [self buildBadgeView:[NSString stringWithFormat:@"%i", count]];
-		} else {
-			cell.accessoryView = nil;
-		}
+		cell.accessoryView = [self buildAccessoryViewFromPredicate:[self buildCountPredicateForObject:country] andObject:country];
 	}
-	
-    //cell.detailTextLabel.text = [NSString stringWithFormat:@"%@, %@", country.name, country.countryID];
+}
+
+- (NSPredicate *) buildCountPredicateForObject:(NSManagedObject *)object {
+	Country* country = (Country *) object;
+	return [NSPredicate predicateWithFormat:@"(country.countryID == %@)", country.countryID];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {

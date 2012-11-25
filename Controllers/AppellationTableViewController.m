@@ -19,6 +19,7 @@
 -(void) viewWillAppear:(BOOL)animated {
 	if (self.settingsCell.wine != nil) {
 		[self setFetchedResultsController:[Appellation fetchAllGroupedBy:@"region" withPredicate:[self getFetchPredicate:self.settingsCell.wine] sortedBy:@"region.name" ascending:YES]];
+		
 	}
 	[super viewWillAppear:animated];
 }
@@ -29,14 +30,13 @@
 	
 	if ([self showCount]) {
 		// count wines
-		NSPredicate *winesFromAppellation = [NSPredicate predicateWithFormat:@"(appellation.appellationID == %@)", appellation.appellationID];
-		int count = [Wine countOfEntitiesWithPredicate:winesFromAppellation];
-		if (count > 0) {
-			cell.accessoryView = [self buildBadgeView:[NSString stringWithFormat:@"%i", count]];
-		} else {
-			cell.accessoryView = nil;
-		}
+		cell.accessoryView = [self buildAccessoryViewFromPredicate:[self buildCountPredicateForObject:appellation] andObject:appellation];
 	}
+}
+
+- (NSPredicate *) buildCountPredicateForObject:(NSManagedObject *)object {
+	Appellation* appellation = (Appellation *) object;
+	return [NSPredicate predicateWithFormat:@"(appellation.appellationID == %@)", appellation.appellationID];
 }
 
 /**
