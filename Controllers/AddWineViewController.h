@@ -6,11 +6,15 @@
 	AddWineTableViewController *tableView;
 	NSArray *configurableProperties;
 	Wine *wine;
+	
+	BOOL newWine;
 }
 
 @property (nonatomic, strong) NSArray *configurableProperties;
 @property (nonatomic, strong) Wine *wine;
 @property (nonatomic, strong) AddWineTableViewController *tableView;
+
+@property (atomic) BOOL newWine;
 
 - (void) updateViewFromValidation;
 

@@ -1,3 +1,5 @@
+#import "UIColor+CellarColours.h"
+
 #import "AppDelegate.h"
 #import "CountryTableViewController.h"
 #import "RaisedTabBarController.h"
@@ -61,11 +63,10 @@
 	RaisedTabBarController *tab = [[RaisedTabBarController alloc] init];
 	
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    
+    [self.window setBackgroundColor:[UIColor blackColor]];
     
     [self.window addSubview:tab.view];
     self.window.rootViewController = tab;
-    self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     
     return YES;

@@ -19,13 +19,14 @@
 
 @implementation AddWineViewController
 
-@synthesize configurableProperties, wine, tableView;
+@synthesize configurableProperties, wine, tableView, newWine;
 
 - (id) init {
 	if ((self = [super init])) {
 		// Create a new wine
 		[self setWine: [Wine createEntity]];
 		[self setTitle:@"Add a Wine"];
+		[self setNewWine:YES];
 	}
     return self;
 }
@@ -34,12 +35,14 @@
 	if ((self = [super init])) {
 		[self setWine:theWine];
 		[self setTitle:[NSString stringWithFormat:@"%@", theWine.name]];
+		[self setNewWine:NO];
 	}
     return self;
 }
 
 - (void) loadView {
 	[super loadView];
+	[self.view setBackgroundColor:[UIColor cellarBeigeColour]];
 	
 	// Cancel and save buttons
 	UIBarButtonItem *cancelButton =
@@ -186,8 +189,14 @@
 		NSLog(@"saving entry... %@", wine);
 		[wine extendWine];
 		[[NSManagedObjectContext defaultContext] saveNestedContexts];
-		[self dismissViewControllerAnimated:YES completion:nil];
-		[[self navigationController] popViewControllerAnimated:YES];
+		if ([self newWine]) {
+			[self dismissViewControllerAnimated:YES completion:nil];
+		} else {
+			[UIView animateWithDuration:0.5 animations:^{
+				[UIView setAnimationTransition:UIViewAnimationTransitionFlipFromLeft forView:self.navigationController.view cache:NO];
+			} completion:^(BOOL finished){}];
+			[[self navigationController] popViewControllerAnimated:NO];
+		}
 	} else {
 		// TODO: visual feedback!
 		NSLog(@"Wine is not valid!");
@@ -197,8 +206,15 @@
 -(void) closeWineView {
 	NSLog(@"throwing wine away, discarding changes..");
 	[[NSManagedObjectContext defaultContext] rollback];
-	[self dismissViewControllerAnimated:YES completion:nil];
-	[[self navigationController] popViewControllerAnimated:YES];
+	
+	if ([self newWine]) {
+		[self dismissViewControllerAnimated:YES completion:nil];
+	} else {
+		[UIView animateWithDuration:0.5 animations:^{
+			[UIView setAnimationTransition:UIViewAnimationTransitionFlipFromLeft forView:self.navigationController.view cache:NO];
+		} completion:^(BOOL finished){}];
+		[[self navigationController] popViewControllerAnimated:NO];
+	}
 }
 
 -(void)dismissKeyboard {
