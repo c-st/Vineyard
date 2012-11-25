@@ -25,7 +25,7 @@
 	
 	// add gesture recognizer
 	[self setTapGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(endEditMode:)]];
-	[self.tapGestureRecognizer  setCancelsTouchesInView:NO];
+	[self.tapGestureRecognizer  setCancelsTouchesInView:YES];
 	[self.tapGestureRecognizer setEnabled:NO];
 	[self.tableView addGestureRecognizer:[self tapGestureRecognizer]];
 }
@@ -40,7 +40,7 @@
 		NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
 	}
 	
-	NSLog(@"We have %i now", [[[Wine fetchAllSortedBy:@"name" ascending:YES withPredicate:[self getFetchPredicate:nil] groupBy:nil delegate:nil] fetchedObjects] count]);
+	NSLog(@"%i wines.", [[[Wine fetchAllSortedBy:@"name" ascending:YES withPredicate:[self getFetchPredicate:nil] groupBy:nil delegate:nil] fetchedObjects] count]);
 	
 	[self.tableView reloadData];
 }
@@ -120,13 +120,13 @@
 - (void) endEditMode:(UITapGestureRecognizer *)sender {
 	[self animateCellActivationChange:NO];
 	[self.tableView setEditing:NO animated:YES];
-	//[self.tableView reloadData];
 	[tapGestureRecognizer setEnabled:NO];
+	
+	[self setCurrentlyActiveCell:nil];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath  {
 	Wine *wine = [[super fetchedResultsController] objectAtIndexPath:indexPath];
-	
 	AddWineViewController *wineViewController = [[AddWineViewController alloc] initWithWine:wine];
 	[[self navigationController] pushViewController:wineViewController animated:YES];
 }
