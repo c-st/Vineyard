@@ -195,9 +195,8 @@
 }
 
 -(void) closeWineView {
-	NSLog(@"throwing wine away..");
-	//[wine setName:@""];
-	//[wine deleteEntity];
+	NSLog(@"throwing wine away, discarding changes..");
+	[[NSManagedObjectContext defaultContext] rollback];
 	[self dismissViewControllerAnimated:YES completion:nil];
 	[[self navigationController] popViewControllerAnimated:YES];
 }
