@@ -4,6 +4,9 @@
 #import "_Varietal.h"
 
 const struct VarietalAttributes VarietalAttributes = {
+	.colour = @"colour",
+	.name = @"name",
+	.varietalID = @"varietalID",
 };
 
 const struct VarietalRelationships VarietalRelationships = {
@@ -42,6 +45,27 @@ const struct VarietalFetchedProperties VarietalFetchedProperties = {
 
 	return keyPaths;
 }
+
+
+
+
+@dynamic colour;
+
+
+
+
+
+
+@dynamic name;
+
+
+
+
+
+
+@dynamic varietalID;
+
+
 
 
 

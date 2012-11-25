@@ -54,7 +54,15 @@
 				self.textLabel.font = [UIFont systemFontOfSize:16];
 			} else if (currentValue != nil && ([currentValue isKindOfClass:[NSSet class]] && [(NSSet*) currentValue count] > 0)) {
 				NSLog(@"setting is list value: %@", propertyIdentifier);
-				// TODO
+				NSSet *values = (NSSet *) currentValue;
+				NSManagedObject *firstEntry = (NSManagedObject *) [[currentValue allObjects] objectAtIndex:0];
+				if ([values count] > 1) {
+					[self.textLabel setText:[NSString stringWithFormat:@"%@, ...", [firstEntry valueForKey:@"name"]]];
+				} else {
+					[self.textLabel setText:[firstEntry valueForKey:@"name"]];
+				}
+				self.textLabel.textColor = [UIColor blackColor];
+				self.textLabel.font = [UIFont systemFontOfSize:16];
 			} else {
 				// no value yet
 				self.textLabel.textColor = [UIColor lightGrayColor];
@@ -106,6 +114,14 @@
 	NSLog(@"updated Wine for propertyIdentifier %@", propertyIdentifier);
 	
 	[self.textLabel setText:[managedObject valueForKey:@"name"]];
+	[self.textLabel setTextColor: [UIColor blackColor]];
+}
+
+- (void) listValueWasSelected:(NSSet*)list {
+	[wine setValue:list forKey:propertyIdentifier];
+	NSLog(@"updated Wine for propertyIdentifier %@ with list value", propertyIdentifier);
+	
+	[self.textLabel setText:@"some values..."];
 	[self.textLabel setTextColor: [UIColor blackColor]];
 }
 

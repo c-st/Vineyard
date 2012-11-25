@@ -12,6 +12,7 @@
 #import "Indication.h"
 #import "Region.h"
 #import "Wine.h"
+#import "Varietal.h"
 
 #import "InitialDataImportService.h"
 
@@ -33,9 +34,11 @@
     
     
     // Display data
+	/*
 	for (Wine *w in [Wine findAll]) {
         NSLog(@"-->Wine Name is %@. Appellation is %@", w.name, w.appellation.name);
     }
+	 */
 	/*
     for (Classification *c in [Classification findAll]) {
         NSLog(@"-->Classification Name is %@. Country is %@ %@ %i", c.name, c.country.name, c.country.countryID, c.qualityRatingValue);
@@ -59,6 +62,10 @@
         NSLog(@"Name is %@. RegionID is %@", ap.name, ap.region.regionID);
     }
     */
+	
+	for (Varietal *v in [Varietal findAll]) {
+        NSLog(@"-->Varietal %@", v.name);
+    }
 	
 	RaisedTabBarController *tab = [[RaisedTabBarController alloc] init];
 	

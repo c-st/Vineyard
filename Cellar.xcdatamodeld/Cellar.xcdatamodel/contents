@@ -51,9 +51,17 @@
         <relationship name="wineries" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Winery" inverseName="region" inverseEntity="Winery" syncable="YES"/>
     </entity>
     <entity name="Varietal" representedClassName="Varietal" syncable="YES">
+        <attribute name="colour" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="varietalID" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="mappedKeyName" value="varietalID"/>
+            </userInfo>
+        </attribute>
         <relationship name="wines" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Wine" inverseName="varietals" inverseEntity="Wine" syncable="YES"/>
     </entity>
     <entity name="Wine" representedClassName="Wine" syncable="YES">
+        <attribute name="colour" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="creationTime" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="image" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
         <attribute name="name" attributeType="String" syncable="YES"/>
@@ -75,8 +83,8 @@
         <element name="Indication" positionX="-182" positionY="63" width="128" height="118"/>
         <element name="Location" positionX="-569" positionY="29" width="128" height="43"/>
         <element name="Region" positionX="-324" positionY="107" width="128" height="118"/>
-        <element name="Varietal" positionX="187" positionY="324" width="128" height="58"/>
-        <element name="Wine" positionX="-18" positionY="108" width="128" height="178"/>
+        <element name="Varietal" positionX="187" positionY="324" width="128" height="103"/>
+        <element name="Wine" positionX="-18" positionY="108" width="128" height="193"/>
         <element name="Winery" positionX="-326" positionY="270" width="128" height="73"/>
     </elements>
 </model>

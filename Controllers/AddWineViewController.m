@@ -5,6 +5,7 @@
 
 #import "AppellationTableViewController.h"
 #import "CountryTableViewController.h"
+#import "VarietalTableViewController.h"
 
 #import "UIColor+CellarColours.h"
 
@@ -129,9 +130,18 @@
 	
 	[countryTableViewController setSettingsCell:countrySettingsCell];
 	
-	// Varietal
+	// Colour
 	// change to viewController
-	SettingsCell *varietalSettingsCell = [[SettingsCell alloc] initWithWine:[self wine] andType:TextSettingsCellType andProperty:@"varietals" andName:@"Varietals"];
+	SettingsCell *colourSettingsCell = [[SettingsCell alloc] initWithWine:[self wine] andType:TextSettingsCellType andProperty:@"colour" andName:@"Colour"];
+	
+	
+	// Varietal
+	VarietalTableViewController *varietalTableViewController = [[VarietalTableViewController alloc] init];
+	[varietalTableViewController setPickMode:YES];
+	
+	SettingsCell *varietalSettingsCell = [[SettingsCell alloc] initWithWine:[self wine] andType:DetailViewSettingsCellType andProperty:@"varietals" andName:@"Varietals" andViewController:varietalTableViewController];
+	
+	[varietalTableViewController setSettingsCell:varietalSettingsCell];
 	
 	NSArray *basics = nil;
 	
@@ -147,7 +157,10 @@
 	}
 	
 	
-	NSArray *varietal = [NSArray arrayWithObjects:varietalSettingsCell, nil];
+	NSArray *varietal = [NSArray arrayWithObjects:
+							colourSettingsCell,
+							varietalSettingsCell,
+							nil];
 	
 	[self setConfigurableProperties:[NSArray arrayWithObjects:
 									 basics,
