@@ -1,3 +1,4 @@
+#import "UIColor+CellarColours.h"
 #import "CountryTableViewController.h"
 #import "RegionTableViewController.h"
 #import "WineCell.h"
@@ -26,9 +27,7 @@
     cell.textLabel.text = country.name;
 	
 	if ([self showCount]) {
-		[cell addSubview:[self buildAccessoryViewFromPredicate:[self buildCountPredicateForObject:country] andObject:country andIndexPath:indexPath]];
-		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-
+		cell.accessoryView = [self buildAccessoryViewFromPredicate:[self buildCountPredicateForObject:country] andObject:country andIndexPath:indexPath];
 	}
 }
 
@@ -38,11 +37,13 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    static NSString *CellIdentifier = @"CountryCell";
+    CellarTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
-		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        cell = [[CellarTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+		if ([self showCount]) {
+			[cell setShowArrow:YES];
+		}
     }
    [self configureCell:cell atIndexPath:indexPath];
     return cell;

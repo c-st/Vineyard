@@ -30,7 +30,7 @@
 	
 	if ([self showCount]) {
 		// count wines
-		[cell addSubview:[self buildAccessoryViewFromPredicate:[self buildCountPredicateForObject:appellation] andObject:appellation andIndexPath:indexPath]];
+		cell.accessoryView = [self buildAccessoryViewFromPredicate:[self buildCountPredicateForObject:appellation] andObject:appellation andIndexPath:indexPath];
 	}
 }
 
@@ -54,11 +54,13 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    static NSString *CellIdentifier = @"AppellationCell";
+    CellarTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        cell = [[CellarTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+		if ([self showCount]) {
+			[cell setShowArrow:YES];
+		}
     }
 	[self configureCell:cell atIndexPath:indexPath];
     return cell;

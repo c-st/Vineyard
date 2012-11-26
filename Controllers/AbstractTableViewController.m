@@ -159,7 +159,6 @@
 		[badgeView.textLabel setText:[NSString stringWithFormat:@"%i", count]];
 		badgeView.userInteractionEnabled = NO;
 		badgeView.exclusiveTouch = NO;
-		
 		// shadow
 		badgeView.layer.shadowOpacity = 1.0f;
 		badgeView.layer.shadowOffset = CGSizeMake(0.0f, 0.0f);
@@ -169,11 +168,12 @@
 		
 		UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
 		[button setBackgroundColor:[UIColor clearColor]];
-		[button setFrame:CGRectMake(255, 7, 40, 30)];
+		[button setFrame:CGRectMake(0, 0, 60, 30)];
 		[button addSubview:badgeView];
 		//[button setShowsTouchWhenHighlighted:YES];
 		[button addTarget:self action:@selector(countButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
 		[button setObjectTag:indexPath]; // store indexPath of button
+		
 		return button;
 	} else {
 		return nil;

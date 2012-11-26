@@ -14,11 +14,11 @@
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {	
     Region *region = [[super fetchedResultsController] objectAtIndexPath:indexPath];
     cell.textLabel.text = region.name;
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@, %@", region.name, region.regionID];
+    //cell.detailTextLabel.text = [NSString stringWithFormat:@"%@, %@", region.name, region.regionID];
 	
 	if ([self showCount]) {
 		// count wines
-		[cell addSubview:[self buildAccessoryViewFromPredicate:[self buildCountPredicateForObject:region] andObject:region andIndexPath:indexPath]];
+		cell.accessoryView = [self buildAccessoryViewFromPredicate:[self buildCountPredicateForObject:region] andObject:region andIndexPath:indexPath];
 	}
 }
 
@@ -28,11 +28,13 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    static NSString *CellIdentifier = @"RegionCell";
+    CellarTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        cell = [[CellarTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+		if ([self showCount]) {
+			[cell setShowArrow:YES];
+		}
     }
    [self configureCell:cell atIndexPath:indexPath];
     return cell;

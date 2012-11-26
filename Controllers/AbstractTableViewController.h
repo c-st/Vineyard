@@ -2,6 +2,8 @@
 #import "Wine.h"
 #import "Country.h"
 
+#import "CellarTableViewCell.h"
+
 #import "SSToolkit.h"
 
 @class SettingsCell;
