@@ -152,7 +152,7 @@
 	
 	// TODO make this badge look more like a button
 	if (count > 0) {
-		SSBadgeView *badgeView = [[SSBadgeView alloc] initWithFrame:CGRectMake(0, 5, 55, 20)];
+		SSBadgeView *badgeView = [[SSBadgeView alloc] initWithFrame:CGRectMake(0, 5, 40, 20)];
 		badgeView.backgroundColor = [UIColor clearColor];
 		[badgeView setBadgeColor:[[UIColor cellarWineRedColour] colorWithAlphaComponent:0.65f]];
 		badgeView.badgeAlignment = SSBadgeViewAlignmentCenter;
@@ -160,15 +160,16 @@
 		badgeView.userInteractionEnabled = NO;
 		badgeView.exclusiveTouch = NO;
 		
+		// shadow
+		badgeView.layer.shadowOpacity = 1.0f;
 		badgeView.layer.shadowOffset = CGSizeMake(0.0f, 0.0f);
-		badgeView.layer.shadowRadius = 2.0f;
-		badgeView.layer.shadowOpacity = 0.9f;
+		badgeView.layer.shadowRadius = 1.0f;
 		badgeView.layer.masksToBounds = NO;
-		
+		badgeView.layer.cornerRadius = 0.0;
 		
 		UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
 		[button setBackgroundColor:[UIColor clearColor]];
-		[button setFrame:CGRectMake(0, 0, 60, 30)];
+		[button setFrame:CGRectMake(255, 7, 40, 30)];
 		[button addSubview:badgeView];
 		//[button setShowsTouchWhenHighlighted:YES];
 		[button addTarget:self action:@selector(countButtonClicked:) forControlEvents:UIControlEventTouchUpInside];

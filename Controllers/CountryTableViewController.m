@@ -26,8 +26,9 @@
     cell.textLabel.text = country.name;
 	
 	if ([self showCount]) {
-		// count wines
-		cell.accessoryView = [self buildAccessoryViewFromPredicate:[self buildCountPredicateForObject:country] andObject:country andIndexPath:indexPath];
+		[cell addSubview:[self buildAccessoryViewFromPredicate:[self buildCountPredicateForObject:country] andObject:country andIndexPath:indexPath]];
+		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+
 	}
 }
 
@@ -41,7 +42,7 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
-		
+		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
    [self configureCell:cell atIndexPath:indexPath];
     return cell;
