@@ -52,24 +52,28 @@
 				[self.textLabel setText:[currentValue valueForKey:@"name"]];
 				self.textLabel.textColor = [UIColor blackColor];
 				self.textLabel.font = [UIFont systemFontOfSize:16];
-			} else if (currentValue != nil && ([currentValue isKindOfClass:[NSSet class]] && [(NSSet*) currentValue count] > 0)) {
+			} else if (currentValue != nil && ([currentValue isKindOfClass:[NSSet class]])) {
 				NSLog(@"setting is list value: %@", propertyIdentifier);
-				NSSet *values = (NSSet *) currentValue;
-				NSString *names = [[NSString alloc] init];
-				for (NSManagedObject *object in values) {
-					names = [names stringByAppendingString:[[object valueForKey:@"name"] stringByAppendingString:@" "]];
+				if ([(NSSet*) currentValue count] > 0) {
+					NSSet *values = (NSSet *) currentValue;
+					NSString *names = [[NSString alloc] init];
+					for (NSManagedObject *object in values) {
+						names = [names stringByAppendingString:[[object valueForKey:@"name"] stringByAppendingString:@" "]];
+					}
+					[self.textLabel setText:names];
+					self.textLabel.textColor = [UIColor blackColor];
+					self.textLabel.font = [UIFont systemFontOfSize:16];
+				} else {
+					// no value yet
+					self.textLabel.textColor = [UIColor lightGrayColor];
+					self.textLabel.font = [UIFont systemFontOfSize:16];
 				}
-				[self.textLabel setText:names];
-				
-				self.textLabel.textColor = [UIColor blackColor];
-				self.textLabel.font = [UIFont systemFontOfSize:16];
 			} else if (currentValue != nil) {
 				// object value
 				NSLog(@"setting is object value %@", propertyIdentifier);
 				self.textLabel.textColor = [UIColor blackColor];
 				self.textLabel.font = [UIFont systemFontOfSize:16];
-				[self.textLabel setText:currentValue];
-				
+				[self.textLabel setText:[NSString stringWithFormat:@"%@", currentValue]];
 			} else {
 				// no value yet
 				self.textLabel.textColor = [UIColor lightGrayColor];
