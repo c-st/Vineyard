@@ -63,6 +63,13 @@
 				
 				self.textLabel.textColor = [UIColor blackColor];
 				self.textLabel.font = [UIFont systemFontOfSize:16];
+			} else if (currentValue != nil) {
+				// object value
+				NSLog(@"setting is object value %@", propertyIdentifier);
+				self.textLabel.textColor = [UIColor blackColor];
+				self.textLabel.font = [UIFont systemFontOfSize:16];
+				[self.textLabel setText:currentValue];
+				
 			} else {
 				// no value yet
 				self.textLabel.textColor = [UIColor lightGrayColor];
@@ -122,6 +129,14 @@
 	NSLog(@"updated Wine for propertyIdentifier %@ with list value", propertyIdentifier);
 	
 	[self.textLabel setText:@"some values..."];
+	[self.textLabel setTextColor: [UIColor blackColor]];
+}
+
+- (void) objectValueWasSelected:(id)object {
+	[wine setValue:object forKey:propertyIdentifier];
+	NSLog(@"updated Wine for propertyIdentifier %@ with object value %@", propertyIdentifier, object);
+	
+	[self.textLabel setText:[NSString stringWithFormat:@"%@", object]];
 	[self.textLabel setTextColor: [UIColor blackColor]];
 }
 

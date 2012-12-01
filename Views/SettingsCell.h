@@ -27,6 +27,7 @@ typedef NS_ENUM( NSUInteger, SettingsCellType ) {
 // Value was selected in ViewController
 - (void) valueWasSelected:(NSManagedObject*)managedObject;
 - (void) listValueWasSelected:(NSSet*)list;
+- (void) objectValueWasSelected:(id)object;
 
 @property (nonatomic) SettingsCellType *cellType;
 

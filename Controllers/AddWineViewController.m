@@ -6,6 +6,7 @@
 #import "AppellationTableViewController.h"
 #import "CountryTableViewController.h"
 #import "VarietalTableViewController.h"
+#import "ColourTableViewController.h"
 
 #import "UIColor+CellarColours.h"
 
@@ -105,6 +106,7 @@
 	[self updateViewFromValidation];
 	[tableView.tableView reloadData];
 }
+
 /**
  Build setting cells.
  */
@@ -130,8 +132,9 @@
 	[countryTableViewController setSettingsCell:countrySettingsCell];
 	
 	// Colour
-	// change to viewController
-	SettingsCell *colourSettingsCell = [[SettingsCell alloc] initWithWine:[self wine] andType:TextSettingsCellType andProperty:@"colour" andName:@"Colour"];
+	ColourTableViewController *colourTableViewController = [[ColourTableViewController alloc] init];
+	SettingsCell *colourSettingsCell = [[SettingsCell alloc] initWithWine:[self wine] andType:DetailViewSettingsCellType andProperty:@"colour" andName:@"Colour" andViewController:colourTableViewController];
+	[colourTableViewController setSettingsCell:colourSettingsCell];
 	
 	
 	// Varietal

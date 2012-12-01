@@ -46,18 +46,7 @@
 
 - (NSPredicate*) getFetchPredicate:(Wine *)withWine {
 	// if colour is set, only display varietals with colour
-	return [NSPredicate predicateWithFormat:@"(grapeType.grapeTypeID == %@) || (%@ = null)", withWine.colour, withWine.colour];
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
-		[cell setSelectionStyle:UITableViewCellEditingStyleNone];
-    }
-	[self configureCell:cell atIndexPath:indexPath];
-    return cell;
+	return [NSPredicate predicateWithFormat:@"(grapeType.grapeTypeID ==[c] %@) || (%@ = null)", withWine.colour, withWine.colour];
 }
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
@@ -77,8 +66,16 @@
 	}
 }
 
-
-
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    static NSString *CellIdentifier = @"Cell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+		[cell setSelectionStyle:UITableViewCellEditingStyleNone];
+    }
+	[self configureCell:cell atIndexPath:indexPath];
+    return cell;
+}
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath  {
 	UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
@@ -93,8 +90,6 @@
 			[cell setAccessoryType:UITableViewCellAccessoryCheckmark];
 		}
 	}
-	
-	//NSLog(@"--> %i", [selectedVarietals count]);
 }
 
 #pragma mark

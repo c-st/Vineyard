@@ -63,10 +63,11 @@
         NSLog(@"Name is %@. RegionID is %@", ap.name, ap.region.regionID);
     }
     */
-	
+	/*
 	for (Varietal *v in [Varietal findAll]) {
         NSLog(@"-->Varietal %@ %@", v.name, v.grapeType.name);
     }
+	*/
 	
 	RaisedTabBarController *tab = [[RaisedTabBarController alloc] init];
 	
