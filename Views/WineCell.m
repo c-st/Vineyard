@@ -97,9 +97,26 @@
 		} else if (wine.appellation == nil && wine.country != nil) {
 			[localeLabel setText:[NSString stringWithFormat:@"%@", wine.country.name]];
 		}
-		
 		[bg addSubview:localeLabel];
 	}
+	
+	if (wine.varietals != nil && [wine.varietals count] > 0) {
+		UIImageView *grapesImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"food_grapes_black.png"]];
+		[grapesImage setFrame:CGRectMake(9, 40, 18, 18)];
+		[bg addSubview:grapesImage];
+		
+		UILabel *varietalLabel = [[UILabel alloc] initWithFrame:CGRectMake(30, 38, 190, 20)];
+		NSString *names = [[NSString alloc] init];
+		for (NSManagedObject *object in wine.varietals) {
+			names = [names stringByAppendingString:[[object valueForKey:@"name"] stringByAppendingString:@", "]];
+		}
+		[varietalLabel setText:[names substringToIndex:[names length] - 2]];
+		//[varietalLabel setBackgroundColor:[UIColor redColor]];
+		[varietalLabel setFont:[UIFont boldSystemFontOfSize:12]];
+		
+		[bg addSubview:varietalLabel];
+	}
+
 	return bg;
 }
 
