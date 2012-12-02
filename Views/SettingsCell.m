@@ -30,7 +30,7 @@
 			[textField setPlaceholder:theName];
 			[textField addTarget:self action:@selector(textFieldValueChanged:) forControlEvents:UIControlEventEditingChanged];
 			[textField addTarget:self action:@selector(textFieldValueChangedDisappear:) forControlEvents: UIControlEventEditingDidEnd | UIControlEventEditingDidEndOnExit];
-						[self.contentView addSubview:textField];
+			[self.contentView addSubview:textField];
 			[textField setDelegate:self];
 			
 			// check if we have an initial value
@@ -43,6 +43,26 @@
 			
 			break;
 		}
+			
+		case RatingSettingsCellType: {
+			[self setAccessoryType:UITableViewCellAccessoryNone];
+			SSRatingPicker *ratingPicker = [[SSRatingPicker alloc] initWithFrame:CGRectMake(8, 0, self.frame.size.width - 50 - 10, 40)];
+			[ratingPicker setBackgroundColor:[UIColor clearColor]];
+			[ratingPicker setTotalNumberOfStars:6];
+			[ratingPicker.textLabel setText:@""];
+			[ratingPicker addTarget:self action:@selector(ratingPickerValueChanged:) forControlEvents:UIControlEventValueChanged];
+			[self.contentView addSubview:ratingPicker];
+			
+			// check if we have an initial value
+			id currentValue = [wine valueForKey:propertyIdentifier];
+			if (currentValue != nil && [currentValue isKindOfClass:[NSNumber class]]) {
+				[ratingPicker setSelectedNumberOfStars:[wine.rating floatValue]];
+				NSLog(@"setting value is %@", currentValue);
+			}
+			
+			break;
+		}
+			
 		case DetailViewSettingsCellType: {
 			[self setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
 			self.textLabel.text = name;
@@ -151,8 +171,9 @@
 	[self.textLabel setTextColor: [UIColor blackColor]];
 }
 
+
 #pragma mark
-#pragma mark Text field delegate methods
+#pragma mark Text field and rating picker delegate methods
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
 	[textField setTextColor: [UIColor blackColor]];
@@ -174,7 +195,10 @@
 	UITableView *tv	= (UITableView *) self.superview;
 	AddWineViewController *addWine = (AddWineViewController *) tv.dataSource;
 	[addWine updateViewFromValidation];
-	
+}
+
+-(void) ratingPickerValueChanged:(SSRatingPicker *) ratingPicker {
+	[wine setValue:[NSNumber numberWithFloat:ratingPicker.selectedNumberOfStars] forKey:propertyIdentifier];
 }
 
 -(void) textFieldValueChangedDisappear:(UITextField *) textField {

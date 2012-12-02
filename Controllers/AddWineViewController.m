@@ -134,7 +134,6 @@
 	SettingsCell *colourSettingsCell = [[SettingsCell alloc] initWithWine:[self wine] andType:DetailViewSettingsCellType andProperty:@"colour" andName:@"Colour" andViewController:colourTableViewController];
 	[colourTableViewController setSettingsCell:colourSettingsCell];
 	
-	
 	// Varietal
 	VarietalTableViewController *varietalTableViewController = [[VarietalTableViewController alloc] init];
 	[varietalTableViewController setPickMode:YES];
@@ -142,6 +141,10 @@
 	SettingsCell *varietalSettingsCell = [[SettingsCell alloc] initWithWine:[self wine] andType:DetailViewSettingsCellType andProperty:@"varietals" andName:@"Varietals" andViewController:varietalTableViewController];
 	
 	[varietalTableViewController setSettingsCell:varietalSettingsCell];
+	
+	// Rating
+	SettingsCell *ratingSettingsCell = [[SettingsCell alloc] initWithWine:[self wine] andType:RatingSettingsCellType andProperty:@"rating" andName:@"Rating"];
+	
 	
 	NSArray *basics = nil;
 	
@@ -162,9 +165,14 @@
 							varietalSettingsCell,
 							nil];
 	
+	NSArray *rating = [NSArray arrayWithObjects:
+					   ratingSettingsCell,
+					   nil];
+	
 	[self setConfigurableProperties:[NSArray arrayWithObjects:
 									 basics,
 									 varietal,
+									 rating,
 									 nil]];
 	
 }

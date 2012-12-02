@@ -4,7 +4,8 @@
 
 typedef NS_ENUM( NSUInteger, SettingsCellType ) {
 	TextSettingsCellType,
-	DetailViewSettingsCellType
+	DetailViewSettingsCellType,
+	RatingSettingsCellType
 };
 
 @interface SettingsCell : UITableViewCell <UITextFieldDelegate> {
