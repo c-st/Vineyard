@@ -5,7 +5,6 @@
 
 
 extern const struct WineAttributes {
-	__unsafe_unretained NSString *colour;
 	__unsafe_unretained NSString *creationTime;
 	__unsafe_unretained NSString *image;
 	__unsafe_unretained NSString *name;
@@ -15,6 +14,7 @@ extern const struct WineAttributes {
 
 extern const struct WineRelationships {
 	__unsafe_unretained NSString *appellation;
+	__unsafe_unretained NSString *colour;
 	__unsafe_unretained NSString *country;
 	__unsafe_unretained NSString *varietals;
 	__unsafe_unretained NSString *winery;
@@ -24,10 +24,10 @@ extern const struct WineFetchedProperties {
 } WineFetchedProperties;
 
 @class Appellation;
+@class GrapeType;
 @class Country;
 @class Varietal;
 @class Winery;
-
 
 
 
@@ -43,14 +43,6 @@ extern const struct WineFetchedProperties {
 + (NSString*)entityName;
 + (NSEntityDescription*)entityInManagedObjectContext:(NSManagedObjectContext*)moc_;
 - (WineID*)objectID;
-
-
-
-
-@property (nonatomic, strong) NSString* colour;
-
-
-//- (BOOL)validateColour:(id*)value_ error:(NSError**)error_;
 
 
 
@@ -111,6 +103,13 @@ extern const struct WineFetchedProperties {
 
 
 
+@property (nonatomic, strong) GrapeType* colour;
+
+//- (BOOL)validateColour:(id*)value_ error:(NSError**)error_;
+
+
+
+
 @property (nonatomic, strong) Country* country;
 
 //- (BOOL)validateCountry:(id*)value_ error:(NSError**)error_;
@@ -145,12 +144,6 @@ extern const struct WineFetchedProperties {
 @end
 
 @interface _Wine (CoreDataGeneratedPrimitiveAccessors)
-
-
-- (NSString*)primitiveColour;
-- (void)setPrimitiveColour:(NSString*)value;
-
-
 
 
 - (NSDate*)primitiveCreationTime;
@@ -192,6 +185,11 @@ extern const struct WineFetchedProperties {
 
 - (Appellation*)primitiveAppellation;
 - (void)setPrimitiveAppellation:(Appellation*)value;
+
+
+
+- (GrapeType*)primitiveColour;
+- (void)setPrimitiveColour:(GrapeType*)value;
 
 
 

@@ -31,6 +31,7 @@
         <attribute name="grapeTypeID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="varietals" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Varietal" inverseName="grapeType" inverseEntity="Varietal" syncable="YES"/>
+        <relationship name="wines" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Wine" inverseName="colour" inverseEntity="Wine" syncable="YES"/>
     </entity>
     <entity name="Indication" representedClassName="Indication" syncable="YES">
         <attribute name="indicationID" attributeType="String" syncable="YES"/>
@@ -66,13 +67,13 @@
         <relationship name="wines" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Wine" inverseName="varietals" inverseEntity="Wine" syncable="YES"/>
     </entity>
     <entity name="Wine" representedClassName="Wine" syncable="YES">
-        <attribute name="colour" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="creationTime" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="image" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
         <attribute name="name" attributeType="String" syncable="YES"/>
         <attribute name="price" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="rating" optional="YES" attributeType="Integer 16" minValueString="0" maxValueString="100" defaultValueString="0.0" syncable="YES"/>
         <relationship name="appellation" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Appellation" inverseName="wines" inverseEntity="Appellation" syncable="YES"/>
+        <relationship name="colour" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="GrapeType" inverseName="wines" inverseEntity="GrapeType" syncable="YES"/>
         <relationship name="country" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Country" inverseName="wines" inverseEntity="Country" syncable="YES"/>
         <relationship name="varietals" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Varietal" inverseName="wines" inverseEntity="Varietal" syncable="YES"/>
         <relationship name="winery" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Winery" inverseName="wines" inverseEntity="Winery" syncable="YES"/>
@@ -85,11 +86,11 @@
         <element name="Appellation" positionX="304" positionY="-72" width="128" height="118"/>
         <element name="Classification" positionX="-90" positionY="-244" width="128" height="118"/>
         <element name="Country" positionX="-335" positionY="-99" width="137" height="148"/>
-        <element name="GrapeType" positionX="493" positionY="288" width="128" height="88"/>
+        <element name="GrapeType" positionX="340" positionY="144" width="128" height="103"/>
         <element name="Indication" positionX="-47" positionY="-99" width="128" height="118"/>
         <element name="Location" positionX="-569" positionY="29" width="128" height="43"/>
         <element name="Region" positionX="-288" positionY="126" width="128" height="118"/>
-        <element name="Varietal" positionX="315" positionY="288" width="128" height="103"/>
+        <element name="Varietal" positionX="331" positionY="338" width="128" height="103"/>
         <element name="Wine" positionX="88" positionY="149" width="128" height="193"/>
         <element name="Winery" positionX="-317" positionY="368" width="128" height="73"/>
     </elements>

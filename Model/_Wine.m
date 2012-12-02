@@ -4,7 +4,6 @@
 #import "_Wine.h"
 
 const struct WineAttributes WineAttributes = {
-	.colour = @"colour",
 	.creationTime = @"creationTime",
 	.image = @"image",
 	.name = @"name",
@@ -14,6 +13,7 @@ const struct WineAttributes WineAttributes = {
 
 const struct WineRelationships WineRelationships = {
 	.appellation = @"appellation",
+	.colour = @"colour",
 	.country = @"country",
 	.varietals = @"varietals",
 	.winery = @"winery",
@@ -59,13 +59,6 @@ const struct WineFetchedProperties WineFetchedProperties = {
 
 	return keyPaths;
 }
-
-
-
-
-@dynamic colour;
-
-
 
 
 
@@ -144,6 +137,10 @@ const struct WineFetchedProperties WineFetchedProperties = {
 
 
 @dynamic appellation;
+
+	
+
+@dynamic colour;
 
 	
 

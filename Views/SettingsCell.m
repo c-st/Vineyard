@@ -1,5 +1,7 @@
 #import "SettingsCell.h"
+
 #import "Country.h"
+#import "GrapeType.h"
 #import "AddWineViewController.h"
 
 @implementation SettingsCell
@@ -119,6 +121,14 @@
 		}
 	}
 	
+	// reset varietals if colour was changed
+	if ([propertyIdentifier isEqualToString:@"colour"]) {
+		//only if the value was actually changed
+		if (![wine.colour isEqual:managedObject]) {
+			[wine setValue:nil forKey:@"varietals"];
+		}
+	}
+	
 	[wine setValue:managedObject forKey:propertyIdentifier];
 	NSLog(@"updated Wine for propertyIdentifier %@", propertyIdentifier);
 	
@@ -135,14 +145,6 @@
 }
 
 - (void) objectValueWasSelected:(id)object {
-	// reset varietals if colour was changed
-	if ([propertyIdentifier isEqualToString:@"colour"]) {
-		//only if the value was actually changed
-		if (![wine.colour isEqual:object]) {
-			[wine setValue:nil forKey:@"varietals"];
-		}
-	}
-	
 	[wine setValue:object forKey:propertyIdentifier];
 	NSLog(@"updated Wine for propertyIdentifier %@ with object value %@", propertyIdentifier, object);
 	[self.textLabel setText:[NSString stringWithFormat:@"%@", object]];

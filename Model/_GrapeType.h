@@ -11,12 +11,14 @@ extern const struct GrapeTypeAttributes {
 
 extern const struct GrapeTypeRelationships {
 	__unsafe_unretained NSString *varietals;
+	__unsafe_unretained NSString *wines;
 } GrapeTypeRelationships;
 
 extern const struct GrapeTypeFetchedProperties {
 } GrapeTypeFetchedProperties;
 
 @class Varietal;
+@class Wine;
 
 
 
@@ -57,6 +59,13 @@ extern const struct GrapeTypeFetchedProperties {
 
 
 
+@property (nonatomic, strong) NSSet* wines;
+
+- (NSMutableSet*)winesSet;
+
+
+
+
 
 @end
 
@@ -66,6 +75,11 @@ extern const struct GrapeTypeFetchedProperties {
 - (void)removeVarietals:(NSSet*)value_;
 - (void)addVarietalsObject:(Varietal*)value_;
 - (void)removeVarietalsObject:(Varietal*)value_;
+
+- (void)addWines:(NSSet*)value_;
+- (void)removeWines:(NSSet*)value_;
+- (void)addWinesObject:(Wine*)value_;
+- (void)removeWinesObject:(Wine*)value_;
 
 @end
 
@@ -87,6 +101,11 @@ extern const struct GrapeTypeFetchedProperties {
 
 - (NSMutableSet*)primitiveVarietals;
 - (void)setPrimitiveVarietals:(NSMutableSet*)value;
+
+
+
+- (NSMutableSet*)primitiveWines;
+- (void)setPrimitiveWines:(NSMutableSet*)value;
 
 
 @end

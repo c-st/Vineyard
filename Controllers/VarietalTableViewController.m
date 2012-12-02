@@ -46,7 +46,7 @@
 
 - (NSPredicate*) getFetchPredicate:(Wine *)withWine {
 	// if colour is set, only display varietals with colour
-	return [NSPredicate predicateWithFormat:@"(grapeType.grapeTypeID ==[c] %@) || (%@ = null)", withWine.colour, withWine.colour];
+	return [NSPredicate predicateWithFormat:@"(grapeType.grapeTypeID ==[c] %@) || (%@ = null)", withWine.colour.grapeTypeID, withWine.colour];
 }
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {

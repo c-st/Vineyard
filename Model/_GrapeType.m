@@ -10,6 +10,7 @@ const struct GrapeTypeAttributes GrapeTypeAttributes = {
 
 const struct GrapeTypeRelationships GrapeTypeRelationships = {
 	.varietals = @"varietals",
+	.wines = @"wines",
 };
 
 const struct GrapeTypeFetchedProperties GrapeTypeFetchedProperties = {
@@ -71,6 +72,19 @@ const struct GrapeTypeFetchedProperties GrapeTypeFetchedProperties = {
 	NSMutableSet *result = (NSMutableSet*)[self mutableSetValueForKey:@"varietals"];
   
 	[self didAccessValueForKey:@"varietals"];
+	return result;
+}
+	
+
+@dynamic wines;
+
+	
+- (NSMutableSet*)winesSet {
+	[self willAccessValueForKey:@"wines"];
+  
+	NSMutableSet *result = (NSMutableSet*)[self mutableSetValueForKey:@"wines"];
+  
+	[self didAccessValueForKey:@"wines"];
 	return result;
 }
 	

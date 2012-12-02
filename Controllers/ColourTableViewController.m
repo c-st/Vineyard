@@ -1,25 +1,20 @@
 #import "ColourTableViewController.h"
 #import "SettingsCell.h"
 
-@implementation ColourTableViewController
+#import "GrapeType.h"
 
-@synthesize colours;
+@implementation ColourTableViewController
 
 - (id) init {
 	if ((self = [super init])) {
 		// init
-		[self setColours:[NSArray arrayWithObjects:@"Red", @"White", @"Rosé", nil]];
 	}
     return self;
 }
 
 - (void) viewWillAppear:(BOOL)animated {
-	//[self setFetchedResultsController:[Varietal fetchAllGroupedBy:@"grapeType" withPredicate:self.settingsCell.wine != nil ? [self getFetchPredicate:self.settingsCell.wine]:nil sortedBy:@"grapeType.name" ascending:YES]];
+	[self setFetchedResultsController:[GrapeType fetchAllSortedBy:@"name" ascending:YES withPredicate:nil groupBy:nil delegate:nil]];
 	[super viewWillAppear:animated];
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [colours count];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -27,8 +22,8 @@
 }
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
-    
-	cell.textLabel.text = [NSString stringWithFormat:@"%@", [colours objectAtIndex:indexPath.row]];
+    GrapeType *grapeType = [self.fetchedResultsController objectAtIndexPath:indexPath];
+	cell.textLabel.text = [NSString stringWithFormat:@"%@", grapeType.name];
 	
 	/*
 	if ([self showCount]) {
@@ -50,7 +45,9 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-	[[self settingsCell] objectValueWasSelected:[[self colours]objectAtIndex:indexPath.row]];
+	if([super respondsToSelector:@selector(tableView:didSelectRowAtIndexPath:)]) {
+		[super tableView:tableView didSelectRowAtIndexPath:indexPath];
+	}
 	
 	[self.navigationController popViewControllerAnimated:YES];
 }
