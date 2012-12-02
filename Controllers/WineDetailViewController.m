@@ -38,12 +38,10 @@
 }
 
 - (void) editWine {
-	NSLog(@"edit");
 	// Transition to AddWineViewController withWine
-	AddWineViewController *wineViewController = [[AddWineViewController alloc] initWithWine:wine];
-	
+	AddWineViewController *addWineController = [[AddWineViewController alloc] initWithWine:wine];
 	[UIView animateWithDuration:0.5 animations:^{
-		[[self navigationController] pushViewController:wineViewController animated:NO];
+		[[self navigationController] pushViewController:addWineController animated:YES];
 		[UIView setAnimationTransition:UIViewAnimationTransitionFlipFromRight forView:self.navigationController.view cache:NO];
 		
 	} completion:^(BOOL finished){}];

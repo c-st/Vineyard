@@ -47,14 +47,14 @@
 			
 			// check if we have an initial value
 			id currentValue = [wine valueForKey:propertyIdentifier];
-			if (currentValue != nil && [currentValue isKindOfClass:[NSManagedObject class]]) {
+			if (currentValue != nil && [currentValue isKindOfClass:[NSManagedObject class]]) { // NSManagedObject
 				//NSLog(@"setting is managed object: %@", propertyIdentifier);
 				[self.textLabel setText:[currentValue valueForKey:@"name"]];
 				self.textLabel.textColor = [UIColor blackColor];
 				self.textLabel.font = [UIFont systemFontOfSize:16];
-			} else if (currentValue != nil && ([currentValue isKindOfClass:[NSSet class]])) {
+			} else if (currentValue != nil && ([currentValue isKindOfClass:[NSSet class]])) { // NSSet
 				NSLog(@"setting is list value: %@", propertyIdentifier);
-				if ([(NSSet*) currentValue count] > 0) {
+				if ([(NSSet*) currentValue count] > 0) { // with values
 					NSSet *values = (NSSet *) currentValue;
 					NSString *names = [[NSString alloc] init];
 					for (NSManagedObject *object in values) {
@@ -63,13 +63,11 @@
 					[self.textLabel setText:names];
 					self.textLabel.textColor = [UIColor blackColor];
 					self.textLabel.font = [UIFont systemFontOfSize:16];
-				} else {
-					// no value yet
+				} else { // no values yet
 					self.textLabel.textColor = [UIColor lightGrayColor];
 					self.textLabel.font = [UIFont systemFontOfSize:16];
 				}
-			} else if (currentValue != nil) {
-				// object value
+			} else if (currentValue != nil) { // NSObject
 				NSLog(@"setting is object value %@", propertyIdentifier);
 				self.textLabel.textColor = [UIColor blackColor];
 				self.textLabel.font = [UIFont systemFontOfSize:16];

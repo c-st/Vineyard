@@ -1,12 +1,11 @@
-
 #import "AddWineViewController.h"
 #import "AbstractTableViewController.h"
-#import "SettingsCell.h"
-
 #import "AppellationTableViewController.h"
 #import "CountryTableViewController.h"
 #import "VarietalTableViewController.h"
 #import "ColourTableViewController.h"
+
+#import "SettingsCell.h"
 
 #import "UIColor+CellarColours.h"
 
@@ -14,9 +13,6 @@
 #import "Wine.h"
 #import "Country.h"
 
-@interface AddWineViewController ()
-
-@end
 
 @implementation AddWineViewController
 
@@ -35,7 +31,10 @@
 - (id) initWithWine:(Wine *)theWine {
 	if ((self = [super init])) {
 		[self setWine:theWine];
-		[self setTitle:[NSString stringWithFormat:@"%@", theWine.name]];
+		
+		//[self setTitle:[NSString stringWithFormat:@"%@", theWine.name]];
+		[self setTitle:@"Edit Wine"];
+		
 		[self setNewWine:NO];
 	}
     return self;
@@ -102,7 +101,6 @@
  */
 -(void) viewWillAppear:(BOOL)animated {
 	[self updateAndSetConfigurableProperties];
-	
 	[self updateViewFromValidation];
 	[tableView.tableView reloadData];
 }
