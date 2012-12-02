@@ -135,9 +135,16 @@
 }
 
 - (void) objectValueWasSelected:(id)object {
+	// reset varietals if colour was changed
+	if ([propertyIdentifier isEqualToString:@"colour"]) {
+		//only if the value was actually changed
+		if (![wine.colour isEqual:object]) {
+			[wine setValue:nil forKey:@"varietals"];
+		}
+	}
+	
 	[wine setValue:object forKey:propertyIdentifier];
 	NSLog(@"updated Wine for propertyIdentifier %@ with object value %@", propertyIdentifier, object);
-	
 	[self.textLabel setText:[NSString stringWithFormat:@"%@", object]];
 	[self.textLabel setTextColor: [UIColor blackColor]];
 }
@@ -173,7 +180,6 @@
 	[textField resignFirstResponder];
 	[textField endEditing:YES];
 }
-
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     //[super setSelected:selected animated:animated];

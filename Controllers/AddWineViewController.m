@@ -219,9 +219,7 @@
 }
 
 -(void) closeWineView {
-	NSLog(@"throwing wine away, discarding changes..");
 	[[NSManagedObjectContext defaultContext] rollback];
-	
 	if ([self newWine]) {
 		[self dismissViewControllerAnimated:YES completion:nil];
 	} else {
