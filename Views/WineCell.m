@@ -116,6 +116,18 @@
 		
 		[bg addSubview:varietalLabel];
 	}
+	
+	if (wine.rating != nil) {
+		SSRatingPicker *ratingPicker = [[SSRatingPicker alloc] initWithFrame:CGRectMake(195, 86, 100, 30)];
+		//[ratingPicker setBackgroundColor:[UIColor redColor]];
+		[ratingPicker setAlpha:0.8f];
+		[ratingPicker setSelectedNumberOfStars:[wine.rating floatValue]];
+		[ratingPicker setTotalNumberOfStars:6];
+		[ratingPicker setStarSize:CGSizeMake(11, 20)];
+		[ratingPicker setStarSpacing:3.0f];
+		[ratingPicker.textLabel setText:@""];
+		[bg addSubview:ratingPicker];
+	}
 
 	return bg;
 }

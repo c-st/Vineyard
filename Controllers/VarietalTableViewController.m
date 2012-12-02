@@ -5,6 +5,8 @@
 #import "GrapeType.h"
 #import "SettingsCell.h"
 
+#import "UIColor+CellarColours.h"
+
 @interface VarietalTableViewController ()
 
 @end
@@ -61,6 +63,7 @@
 	
 	if ([self.selectedVarietals containsObject:varietal]) {
 		[cell setAccessoryType:UITableViewCellAccessoryCheckmark];
+		[cell setBackgroundColor:[UIColor cellarBeigeColour]];
 	} else {
 		[cell setAccessoryType:UITableViewCellAccessoryNone];
 	}
@@ -123,7 +126,6 @@
     NSUInteger count = [[self.fetchedResultsController sections] count];
     return count;
 }
-
 
 
 @end
