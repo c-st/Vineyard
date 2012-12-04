@@ -113,7 +113,6 @@
 		[varietalLabel setText:[names substringToIndex:[names length] - 2]];
 		//[varietalLabel setBackgroundColor:[UIColor redColor]];
 		[varietalLabel setFont:[UIFont boldSystemFontOfSize:12]];
-		
 		[bg addSubview:varietalLabel];
 	}
 	
