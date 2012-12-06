@@ -4,6 +4,8 @@
 #import "GrapeType.h"
 #import "AddWineViewController.h"
 
+#import "UIColor+CellarColours.h"
+
 @implementation SettingsCell
 
 @synthesize wine, cellType, propertyIdentifier, name, settingsViewController;
@@ -41,6 +43,45 @@
 				[textField setTextColor:[UIColor blackColor]];
 			}
 			
+			break;
+		}
+			
+		case YearSettingsCellType: {
+			[self setAccessoryType:UITableViewCellAccessoryNone];
+			UIPickerView *pickerView = [[UIPickerView alloc] init];
+			[pickerView setDataSource:self];
+			[pickerView setDelegate:self];
+			[pickerView setShowsSelectionIndicator:YES];
+			
+			UITextField *textField=[[UITextField alloc]initWithFrame:CGRectMake(10, 12, self.frame.size.width - 50 - 10, 30)];
+			[textField setTextColor: [UIColor lightGrayColor]];
+			
+			UIToolbar *toolBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 320, 56)];
+			[toolBar setBarStyle:UIBarStyleBlackTranslucent];
+			[toolBar sizeToFit];
+			UIBarButtonItem *flexSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:self action:nil];
+			UIBarButtonItem *doneBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneClicked:)];
+			[doneBtn setTintColor:[UIColor blackColor]];
+			[toolBar setItems:[NSArray arrayWithObjects:flexSpace, doneBtn, nil]];
+			
+			[textField setInputAccessoryView:toolBar];
+			[textField setInputView:pickerView];
+			[textField setPlaceholder:theName];
+			[textField setDelegate:self];
+			
+			[self.contentView addSubview:textField];
+			
+			// check for current value
+			id currentValue = [wine valueForKey:propertyIdentifier];
+			if (currentValue != nil && [currentValue isKindOfClass:[NSString class]]) {
+				NSInteger *currentRow = [self rowForYearString:currentValue];
+				NSLog(@"setting value is %@, row is %ld", currentValue, (long)currentRow);
+			
+				[pickerView selectRow:currentRow inComponent:0 animated:YES];
+				
+				[textField setText:currentValue];
+				[textField setTextColor:[UIColor blackColor]];
+			}
 			break;
 		}
 			
@@ -173,7 +214,7 @@
 
 
 #pragma mark
-#pragma mark Text field and rating picker delegate methods
+#pragma mark Text field delegate methods
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
 	[textField setTextColor: [UIColor blackColor]];
@@ -197,15 +238,69 @@
 	[addWine updateViewFromValidation];
 }
 
--(void) ratingPickerValueChanged:(SSRatingPicker *) ratingPicker {
-	[wine setValue:[NSNumber numberWithFloat:ratingPicker.selectedNumberOfStars] forKey:propertyIdentifier];
-}
-
 -(void) textFieldValueChangedDisappear:(UITextField *) textField {
 	[self textFieldValueChanged:textField];
 	[textField resignFirstResponder];
 	[textField endEditing:YES];
 }
+
+
+#pragma mark
+#pragma mark Rating picker delegate methods
+
+-(void) ratingPickerValueChanged:(SSRatingPicker *) ratingPicker {
+	[wine setValue:[NSNumber numberWithFloat:ratingPicker.selectedNumberOfStars] forKey:propertyIdentifier];
+}
+
+
+#pragma mark
+#pragma mark Year PickerView delegate methods
+
+// generate year as string from row
+- (NSString *) yearStringForRow:(NSInteger) row {
+	NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+	[formatter setDateFormat:@"yyyy"];
+	NSDate *date = [[NSDate date] dateByAddingTimeInterval:-365*24*60*60*(row)];
+	NSString *yearString = [formatter stringFromDate:date];
+	return yearString;
+}
+
+// determine row from string
+- (NSInteger *) rowForYearString:(NSString*) year {
+	NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+	[formatter setDateFormat:@"yyyy"];
+	NSDate *date = [formatter dateFromString:year];
+	NSDateComponents *components = [[NSCalendar currentCalendar] components:NSYearCalendarUnit fromDate:date];
+	int *determinedYear = [components year];
+	components = [[NSCalendar currentCalendar] components:NSYearCalendarUnit fromDate:[NSDate date]];
+	int *currentYear = [components year];
+	return (long)currentYear-(long)determinedYear;
+}
+
+- (void) doneClicked:(UITextField *) textField {
+	// hide picker
+	[(UITextField *)[[self.contentView subviews] objectAtIndex:0] resignFirstResponder];
+}
+
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
+	return 1;
+}
+
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
+	return 30;
+}
+
+- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
+	return [self yearStringForRow:row];
+}
+
+- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
+	NSLog(@"did select");
+	[wine setValue:[self yearStringForRow:row] forKey:propertyIdentifier];
+	[(UITextField *)[[self.contentView subviews] objectAtIndex:0] setText:[self yearStringForRow:row]];
+}
+
+
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     //[super setSelected:selected animated:animated];

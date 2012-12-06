@@ -129,6 +129,9 @@
 	
 	[countryTableViewController setSettingsCell:countrySettingsCell];
 	
+	// Vontae
+	SettingsCell *vintageSettingsCell = [[SettingsCell alloc] initWithWine:[self wine] andType:YearSettingsCellType andProperty:@"vintage" andName:@"Vintage"];
+	
 	// Colour
 	ColourTableViewController *colourTableViewController = [[ColourTableViewController alloc] init];
 	SettingsCell *colourSettingsCell = [[SettingsCell alloc] initWithWine:[self wine] andType:DetailViewSettingsCellType andProperty:@"colour" andName:@"Colour" andViewController:colourTableViewController];
@@ -161,6 +164,7 @@
 	
 	
 	NSArray *varietal = [NSArray arrayWithObjects:
+							vintageSettingsCell,
 							colourSettingsCell,
 							varietalSettingsCell,
 							nil];

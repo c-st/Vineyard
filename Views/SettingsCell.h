@@ -4,11 +4,12 @@
 
 typedef NS_ENUM( NSUInteger, SettingsCellType ) {
 	TextSettingsCellType,
+	YearSettingsCellType,
 	DetailViewSettingsCellType,
 	RatingSettingsCellType
 };
 
-@interface SettingsCell : UITableViewCell <UITextFieldDelegate> {
+@interface SettingsCell : UITableViewCell <UITextFieldDelegate, UIPickerViewDataSource, UIPickerViewDelegate> {
 	SettingsCellType *cellType;
 	Wine *wine;
 	NSString *propertyIdentifier;

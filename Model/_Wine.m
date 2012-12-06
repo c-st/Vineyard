@@ -9,6 +9,7 @@ const struct WineAttributes WineAttributes = {
 	.name = @"name",
 	.price = @"price",
 	.rating = @"rating",
+	.vintage = @"vintage",
 };
 
 const struct WineRelationships WineRelationships = {
@@ -131,6 +132,13 @@ const struct WineFetchedProperties WineFetchedProperties = {
 - (void)setPrimitiveRatingValue:(int16_t)value_ {
 	[self setPrimitiveRating:[NSNumber numberWithShort:value_]];
 }
+
+
+
+
+
+@dynamic vintage;
+
 
 
 

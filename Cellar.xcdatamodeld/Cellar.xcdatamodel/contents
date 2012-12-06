@@ -72,6 +72,7 @@
         <attribute name="name" attributeType="String" syncable="YES"/>
         <attribute name="price" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="rating" optional="YES" attributeType="Integer 16" minValueString="0" maxValueString="100" syncable="YES"/>
+        <attribute name="vintage" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="appellation" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Appellation" inverseName="wines" inverseEntity="Appellation" syncable="YES"/>
         <relationship name="colour" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="GrapeType" inverseName="wines" inverseEntity="GrapeType" syncable="YES"/>
         <relationship name="country" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Country" inverseName="wines" inverseEntity="Country" syncable="YES"/>
@@ -91,7 +92,7 @@
         <element name="Location" positionX="-569" positionY="29" width="128" height="43"/>
         <element name="Region" positionX="-288" positionY="126" width="128" height="118"/>
         <element name="Varietal" positionX="331" positionY="338" width="128" height="103"/>
-        <element name="Wine" positionX="88" positionY="149" width="128" height="195"/>
+        <element name="Wine" positionX="88" positionY="149" width="128" height="210"/>
         <element name="Winery" positionX="-317" positionY="368" width="128" height="73"/>
     </elements>
 </model>
