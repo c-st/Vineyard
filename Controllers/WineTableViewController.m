@@ -66,6 +66,7 @@
         cell = [[WineCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"WineCell" andWine:wine];
 		[cell setParentTableViewController:self];
     }
+
     return cell;
 }
 
@@ -96,6 +97,7 @@
 		}];
 	}
 	
+	// set position.x of cell
 	CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"position.x"];
 	if (active) {
 		[animation setFromValue:[NSNumber numberWithFloat:currentlyActiveCell.cellBackgroundView.layer.position.x]];

@@ -47,15 +47,25 @@
 }
 	 
 - (void) deleteWine {
+	[self.parentTableViewController.tableView beginUpdates];
+	
 	NSLog(@"deleting wine..");
 	[wine deleteEntity];
 	[[NSManagedObjectContext defaultContext] saveNestedContexts];
 	
 	[self.parentTableViewController.fetchedResultsController performFetch:nil];
-	[self.parentTableViewController.tableView beginUpdates];
+	
 	NSIndexPath *path = [self.parentTableViewController.tableView indexPathForCell:self];
 	[self.parentTableViewController.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:path] withRowAnimation:UITableViewRowAnimationRight];
 	[self.parentTableViewController.tableView endUpdates];
+
+	// Workaround for resetting all cells: reloading table view after a quarter-second helps.
+	double delayInSeconds = .25;
+	dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+	dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+		[self.parentTableViewController.tableView reloadData];
+	});
+
 }
 
 - (UIView*) buildWineView {
@@ -156,7 +166,6 @@
 - (void)drawRect:(CGRect)rect {
 	[super drawRect:rect];
 	//[self.textLabel setText:[self.wine name]];
-
 }
 
 @end
