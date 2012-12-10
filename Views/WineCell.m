@@ -5,6 +5,9 @@
 #import "Appellation.h"
 #import "Region.h"
 
+#import "UIColor+CellarColours.h"
+#import "UIView+JMNoise.h"
+
 #import <QuartzCore/QuartzCore.h>
 
 @implementation WineCell
@@ -19,6 +22,8 @@
 		[self.contentView setBackgroundColor:[UIColor clearColor]];
 		
 		[self setCellBackgroundView:[self buildWineView]];
+		[self.cellBackgroundView applyNoiseWithOpacity:0.4f];
+
 		[self.contentView addSubview:[self cellBackgroundView]];
 		
 		[self buildAndSaveToolbarView];
@@ -38,7 +43,7 @@
 	UIButton *deleteButton = [UIButton buttonWithType:UIButtonTypeCustom];
 	[deleteButton addTarget:self action:@selector(deleteWine) forControlEvents:UIControlEventTouchUpInside];
 	UIImage *bin = [UIImage imageNamed:@"trashbin.png"];
-	[deleteButton setFrame:CGRectMake(15, 10, 38, 38)];
+	[deleteButton setFrame:CGRectMake(15, 30, 38, 38)];
 	[deleteButton setImage:bin forState:UIControlStateNormal];
 	[toolbar addSubview:deleteButton];
 	
@@ -59,8 +64,8 @@
 	[self.parentTableViewController.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:path] withRowAnimation:UITableViewRowAnimationRight];
 	[self.parentTableViewController.tableView endUpdates];
 
-	// Workaround for resetting all cells: reloading table view after a quarter-second helps.
-	double delayInSeconds = .25;
+	// Workaround for resetting all cells: reloading table view after a while helps.
+	double delayInSeconds = .5;
 	dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
 	dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
 		[self.parentTableViewController.tableView reloadData];
@@ -88,6 +93,7 @@
 	if (wine.country != nil || wine.appellation != nil) {
 		if (wine.appellation != nil) {
 			UILabel *appellationLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 25, 200, 13)];
+			[appellationLabel setBackgroundColor:[UIColor clearColor]];
 			[appellationLabel setFont:[UIFont boldSystemFontOfSize:12]];
 			[appellationLabel setText:[NSString stringWithFormat:@"%@", wine.appellation.name]];
 			//[appellationLabel setBackgroundColor:[UIColor redColor]];
@@ -99,6 +105,7 @@
 		[bg addSubview:globeImage];
 		
 		UILabel *localeLabel = [[UILabel alloc] initWithFrame:CGRectMake(30, 93, 190, 20)];
+		[localeLabel setBackgroundColor:[UIColor clearColor]];
 		[localeLabel setFont:[UIFont boldSystemFontOfSize:12]];
 		//[localeLabel setBackgroundColor:[UIColor redColor]];
 		
@@ -116,6 +123,7 @@
 		[bg addSubview:grapesImage];
 		
 		UILabel *varietalLabel = [[UILabel alloc] initWithFrame:CGRectMake(30, 38, 190, 20)];
+		[varietalLabel setBackgroundColor:[UIColor clearColor]];
 		NSString *names = [[NSString alloc] init];
 		for (NSManagedObject *object in wine.varietals) {
 			names = [names stringByAppendingString:[[object valueForKey:@"name"] stringByAppendingString:@", "]];
@@ -130,6 +138,7 @@
 		SSRatingPicker *ratingPicker = [[SSRatingPicker alloc] initWithFrame:CGRectMake(195, 86, 100, 30)];
 		//[ratingPicker setBackgroundColor:[UIColor redColor]];
 		[ratingPicker setAlpha:0.8f];
+		[ratingPicker setBackgroundColor:[UIColor clearColor]];
 		[ratingPicker setSelectedNumberOfStars:[wine.rating floatValue]];
 		[ratingPicker setTotalNumberOfStars:6];
 		[ratingPicker setStarSize:CGSizeMake(11, 20)];
@@ -151,6 +160,8 @@
 
 
 - (void) layoutSubviews {
+	//[self.cellBackgroundView setBackgroundColor:[UIColor cellarBeigeColour]];
+	
 	// add shadow
 	self.cellBackgroundView.layer.shadowOpacity = 0.9f;
 	self.cellBackgroundView.layer.shadowOffset = CGSizeMake(0.0f, 0.0f);
@@ -161,11 +172,12 @@
 	self.cellBackgroundView.layer.cornerRadius = 4.0;
 	
 	[self.cellBackgroundView.layer setShadowPath:[[UIBezierPath bezierPathWithRoundedRect:self.cellBackgroundView.bounds cornerRadius:4.0f] CGPath]];
+	
+	
 }
 
 - (void)drawRect:(CGRect)rect {
 	[super drawRect:rect];
-	//[self.textLabel setText:[self.wine name]];
 }
 
 @end

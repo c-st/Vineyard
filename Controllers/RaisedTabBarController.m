@@ -91,7 +91,6 @@
                             [self viewControllerWithTabTitle:@"Collections" image:[UIImage imageNamed:@"collections.png"]], nil]];
 	
 	[self addCenterButtonWithImage:[UIImage imageNamed:@"add-wine-button.png"] highlightImage:nil];
-	
 }
 
 @end
