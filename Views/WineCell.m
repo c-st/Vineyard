@@ -9,6 +9,8 @@
 
 #import <QuartzCore/QuartzCore.h>
 
+#import "SSToolkit.h"
+
 @implementation WineCell
 
 @synthesize wine, cellBackgroundView, toolbarView, parentTableViewController;
@@ -139,7 +141,6 @@
 		[ratingPicker.textLabel setText:@""];
 		[bg addSubview:ratingPicker];
 	}
-
 	return bg;
 }
 

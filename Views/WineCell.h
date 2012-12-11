@@ -2,6 +2,7 @@
 #import "Wine.h"
 #import "AbstractTableViewController.h"
 
+
 @interface WineCell : UITableViewCell {
 	Wine *wine;
 	UIView *cellBackgroundView;

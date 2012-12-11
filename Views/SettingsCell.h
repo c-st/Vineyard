@@ -2,6 +2,8 @@
 #import "Wine.h"
 #import "AbstractTableViewController.h"
 
+#import "SSToolkit.h"
+
 typedef NS_ENUM( NSUInteger, SettingsCellType ) {
 	TextSettingsCellType,
 	YearSettingsCellType,

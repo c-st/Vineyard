@@ -93,7 +93,7 @@
 			[ratingPicker.textLabel setText:@""];
 			[ratingPicker addTarget:self action:@selector(ratingPickerValueChanged:) forControlEvents:UIControlEventValueChanged];
 			[self.contentView addSubview:ratingPicker];
-			
+		
 			// check if we have an initial value
 			id currentValue = [wine valueForKey:propertyIdentifier];
 			if (currentValue != nil && [currentValue isKindOfClass:[NSNumber class]]) {

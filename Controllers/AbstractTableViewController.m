@@ -1,13 +1,11 @@
 #import "UIColor+CellarColours.h"
-
 #import "AbstractTableViewController.h"
-
 #import "WineTableViewController.h"
 #import "SettingsCell.h"
-
 #import "UIView+ObjectTagAdditions.h"
-
 #import <QuartzCore/QuartzCore.h>
+
+#import "SSToolkit/SSToolkit.h"
 
 @interface AbstractTableViewController ()
 
@@ -151,7 +149,9 @@
 	int count = [Wine countOfEntitiesWithPredicate:searchPredicate];
 	
 	// TODO make this badge look more like a button
+	
 	if (count > 0) {
+		
 		SSBadgeView *badgeView = [[SSBadgeView alloc] initWithFrame:CGRectMake(0, 5, 40, 20)];
 		badgeView.backgroundColor = [UIColor clearColor];
 		[badgeView setBadgeColor:[[UIColor cellarWineRedColour] colorWithAlphaComponent:0.65f]];
