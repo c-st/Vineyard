@@ -1,9 +1,6 @@
 [submodule "SSToolKit"]
 	path = SSToolKit
 	url = /Users/Chris/Dropbox/Projects/Cellar/Frameworks/SSToolkit
-[submodule "MagicalRecord"]
-	path = MagicalRecord
-	url = /Users/Chris/Dropbox/Projects/Cellar/Frameworks/MagicalRecord
-[submodule "PaperFold"]
-	path = PaperFold
-	url = /Users/Chris/Dropbox/Projects/Cellar/Frameworks/PaperFold
+[submodule "Frameworks/PaperFold-for-iOS"]
+	path = Frameworks/PaperFold-for-iOS
+	url = /Users/Chris/Dropbox/Projects/Cellar/Cellar/Frameworks/PaperFold-for-iOS

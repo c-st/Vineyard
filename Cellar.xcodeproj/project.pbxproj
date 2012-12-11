@@ -34,7 +34,7 @@
 		8361EE761677B5930057E04B /* trashbin@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8361EE721677B5930057E04B /* trashbin@2x.png */; };
 		8361EE781677B5B70057E04B /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8361EE771677B5B70057E04B /* Default-568h@2x.png */; };
 		8361EF891677B7FE0057E04B /* SSToolkitResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8361EF881677B7FE0057E04B /* SSToolkitResources.bundle */; };
-		8361EF8B1677B88F0057E04B /* libSSToolkit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8361EF8A1677B88F0057E04B /* libSSToolkit.a */; };
+		8361EF8E1677BC5D0057E04B /* libSSToolkit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8361EF8D1677BC5D0057E04B /* libSSToolkit.a */; };
 		83D5DD6C163EBC50001C857E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83D5DD6B163EBC50001C857E /* UIKit.framework */; };
 		83D5DD6E163EBC50001C857E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83D5DD6D163EBC50001C857E /* Foundation.framework */; };
 		83D5DD70163EBC50001C857E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83D5DD6F163EBC50001C857E /* CoreGraphics.framework */; };
@@ -142,7 +142,7 @@
 		8361EE721677B5930057E04B /* trashbin@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "trashbin@2x.png"; path = "Resources/Images/trashbin@2x.png"; sourceTree = SOURCE_ROOT; };
 		8361EE771677B5B70057E04B /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "Resources/Default-568h@2x.png"; sourceTree = SOURCE_ROOT; };
 		8361EF881677B7FE0057E04B /* SSToolkitResources.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; name = SSToolkitResources.bundle; path = "/Users/Chris/Library/Developer/Xcode/DerivedData/Cellar-ayhnfeybmgjysfflcbmcjmnyqkqz/Build/Products/Debug-iphoneos/SSToolkitResources.bundle"; sourceTree = "<absolute>"; };
-		8361EF8A1677B88F0057E04B /* libSSToolkit.a */ = {isa = PBXFileReference; lastKnownFileType = file; name = libSSToolkit.a; path = "Frameworks/SSToolkit/build/Release-iphoneos/libSSToolkit.a"; sourceTree = "<group>"; };
+		8361EF8D1677BC5D0057E04B /* libSSToolkit.a */ = {isa = PBXFileReference; lastKnownFileType = file; name = libSSToolkit.a; path = "Frameworks/SSToolkit/build/Release-iphoneos/libSSToolkit.a"; sourceTree = "<group>"; };
 		83D5DD67163EBC50001C857E /* Cellar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cellar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		83D5DD6B163EBC50001C857E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		83D5DD6D163EBC50001C857E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -295,12 +295,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8361EF8B1677B88F0057E04B /* libSSToolkit.a in Frameworks */,
 				83EF99E5165AA92700C56F40 /* QuartzCore.framework in Frameworks */,
 				83D5DD6C163EBC50001C857E /* UIKit.framework in Frameworks */,
 				83D5DD6E163EBC50001C857E /* Foundation.framework in Frameworks */,
 				83D5DD70163EBC50001C857E /* CoreGraphics.framework in Frameworks */,
 				83D5DD72163EBC50001C857E /* CoreData.framework in Frameworks */,
+				8361EF8E1677BC5D0057E04B /* libSSToolkit.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -524,7 +524,7 @@
 		83D5DD5C163EBC50001C857E = {
 			isa = PBXGroup;
 			children = (
-				8361EF8A1677B88F0057E04B /* libSSToolkit.a */,
+				8361EF8D1677BC5D0057E04B /* libSSToolkit.a */,
 				8361EF881677B7FE0057E04B /* SSToolkitResources.bundle */,
 				8361EE161677AE5A0057E04B /* SSToolkit.xcodeproj */,
 				832EDC4F165FD4FA00AE20A9 /* Frameworks */,
