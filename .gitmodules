@@ -4,6 +4,11 @@
 [submodule "Frameworks/PaperFold-for-iOS"]
 	path = Frameworks/PaperFold-for-iOS
 	url = /Users/Chris/Dropbox/Projects/Cellar/Cellar/Frameworks/PaperFold-for-iOS
-[submodule "Frameworks/sstoolk.it"]
 	path = Frameworks/sstoolk.it
 	url = /Users/Chris/Dropbox/Projects/Cellar/Cellar/Frameworks/sstoolk.it
+[submodule "Frameworks/Magical-Record"]
+	path = Frameworks/Magical-Record
+	url = https://chris-stangier@github.com/magicalpanda/MagicalRecord.git
+[submodule "Frameworks/SS-Toolkit"]
+	path = Frameworks/SS-Toolkit
+	url = https://chris-stangier@github.com/soffes/sstoolkit.git
