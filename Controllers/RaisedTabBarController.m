@@ -92,27 +92,27 @@
 	UINavigationController *collectionsNavController = [[UINavigationController alloc] initWithRootViewController:collectionsController];
 	PaperFoldNavigationController *paperFoldNavController = [[PaperFoldNavigationController alloc] initWithRootViewController:collectionsNavController];
 	paperFoldNavController.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Collections" image:[UIImage imageNamed:@"collections.png"] tag:0];
+	[[paperFoldNavController paperFoldView] setEnableLeftFoldDragging:NO];
 	
 	// Left view (dummy)
 	UIViewController *leftVC = [[UIViewController alloc] init];
-	[leftVC.view setFrame:CGRectMake(0,0,100,[self.view bounds].size.height)];
+	[leftVC.view setFrame:CGRectMake(0, 0, 100, [self.view bounds].size.height)];
 	[leftVC.view setBackgroundColor:[UIColor greenColor]];
-	[paperFoldNavController setLeftViewController:leftVC width:150.0];
+	[paperFoldNavController setLeftViewController:leftVC width:100.0];
+	
 	
 	// Right view
 	UIViewController *rightVC = [[UIViewController alloc] init];
-	[rightVC.view setFrame:CGRectMake(0,0,240,[self.view bounds].size.height)];
-	[rightVC.view setBackgroundColor:[UIColor blueColor]];
-	[paperFoldNavController setRightViewController:rightVC width:250.0 rightViewFoldCount:3 rightViewPullFactor:0.9];
-	
-	
-	
+	[rightVC.view setFrame:CGRectMake(0, 0, 150, [self.view bounds].size.height)];
+	[rightVC.view setBackgroundColor:[UIColor grayColor]];
+	[paperFoldNavController setRightViewController:rightVC width:150 rightViewFoldCount:3 rightViewPullFactor:1.0];
 	
 	
 	[wineNavController.navigationBar setTintColor:[UIColor cellarWineRedColour]];
 	[countryNavController.navigationBar setTintColor:[UIColor cellarWineRedColour]];
 	[varietalNavController.navigationBar setTintColor:[UIColor cellarWineRedColour]];
 	[collectionsNavController.navigationBar setTintColor:[UIColor cellarWineRedColour]];
+	
 	
 	[self setViewControllers:[NSArray arrayWithObjects:
 							wineNavController,
