@@ -47,6 +47,7 @@
 		8319B0061677C295005E28BB /* ShadowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8319AFF81677C295005E28BB /* ShadowView.m */; };
 		8319B0071677C295005E28BB /* TouchThroughUIView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8319AFFA1677C295005E28BB /* TouchThroughUIView.m */; };
 		8319B0081677C295005E28BB /* UIView+Screenshot.m in Sources */ = {isa = PBXBuildFile; fileRef = 8319AFFC1677C295005E28BB /* UIView+Screenshot.m */; };
+		8319B00A1677C6E0005E28BB /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8319B0091677C6E0005E28BB /* MapKit.framework */; };
 		8361EE291677B4B50057E04B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8361EE281677B4B50057E04B /* main.m */; };
 		8361EE4F1677B51E0057E04B /* CH.png in Resources */ = {isa = PBXBuildFile; fileRef = 8361EE431677B51E0057E04B /* CH.png */; };
 		8361EE501677B51E0057E04B /* US.png in Resources */ = {isa = PBXBuildFile; fileRef = 8361EE441677B51E0057E04B /* US.png */; };
@@ -237,6 +238,7 @@
 		8319AFFA1677C295005E28BB /* TouchThroughUIView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TouchThroughUIView.m; sourceTree = "<group>"; };
 		8319AFFB1677C295005E28BB /* UIView+Screenshot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Screenshot.h"; sourceTree = "<group>"; };
 		8319AFFC1677C295005E28BB /* UIView+Screenshot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Screenshot.m"; sourceTree = "<group>"; };
+		8319B0091677C6E0005E28BB /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		833591E4164B145E00FEA5C9 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		833591E5164B145E00FEA5C9 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		8361EE281677B4B50057E04B /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = SOURCE_ROOT; };
@@ -365,6 +367,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8319B00A1677C6E0005E28BB /* MapKit.framework in Frameworks */,
 				8319AFE11677C0DC005E28BB /* libSSToolkit.a in Frameworks */,
 				83EF99E5165AA92700C56F40 /* QuartzCore.framework in Frameworks */,
 				83D5DD6C163EBC50001C857E /* UIKit.framework in Frameworks */,
@@ -745,6 +748,7 @@
 		83D5DD5C163EBC50001C857E = {
 			isa = PBXGroup;
 			children = (
+				8319B0091677C6E0005E28BB /* MapKit.framework */,
 				8319AFD11677C09F005E28BB /* SSToolkit.xcodeproj */,
 				832EDC4F165FD4FA00AE20A9 /* Frameworks */,
 				83D5DD73163EBC50001C857E /* Cellar */,
