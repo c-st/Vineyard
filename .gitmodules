@@ -4,3 +4,6 @@
 [submodule "Frameworks/PaperFold-for-iOS"]
 	path = Frameworks/PaperFold-for-iOS
 	url = /Users/Chris/Dropbox/Projects/Cellar/Cellar/Frameworks/PaperFold-for-iOS
+[submodule "Frameworks/sstoolk.it"]
+	path = Frameworks/sstoolk.it
+	url = /Users/Chris/Dropbox/Projects/Cellar/Cellar/Frameworks/sstoolk.it
