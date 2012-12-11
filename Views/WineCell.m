@@ -6,7 +6,6 @@
 #import "Region.h"
 
 #import "UIColor+CellarColours.h"
-#import "UIView+JMNoise.h"
 
 #import <QuartzCore/QuartzCore.h>
 
@@ -22,7 +21,6 @@
 		[self.contentView setBackgroundColor:[UIColor clearColor]];
 		
 		[self setCellBackgroundView:[self buildWineView]];
-		[self.cellBackgroundView applyNoiseWithOpacity:0.4f];
 
 		[self.contentView addSubview:[self cellBackgroundView]];
 		
@@ -52,25 +50,20 @@
 }
 	 
 - (void) deleteWine {
-	[self.parentTableViewController.tableView beginUpdates];
-	
 	NSLog(@"deleting wine..");
+	NSIndexPath *path = [self.parentTableViewController.tableView indexPathForCell:self];
+
+	[self.parentTableViewController.tableView beginUpdates];
+	[self.parentTableViewController.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:path] withRowAnimation:UITableViewRowAnimationRight];
+
 	[wine deleteEntity];
 	[[NSManagedObjectContext defaultContext] saveNestedContexts];
-	
 	[self.parentTableViewController.fetchedResultsController performFetch:nil];
-	
-	NSIndexPath *path = [self.parentTableViewController.tableView indexPathForCell:self];
-	[self.parentTableViewController.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:path] withRowAnimation:UITableViewRowAnimationRight];
 	[self.parentTableViewController.tableView endUpdates];
-
-	// Workaround for resetting all cells: reloading table view after a while helps.
-	double delayInSeconds = .5;
-	dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
-	dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+	
+	[UIView animateWithDuration:0.2 animations:^{
 		[self.parentTableViewController.tableView reloadData];
-	});
-
+	}];
 }
 
 - (UIView*) buildWineView {
@@ -158,6 +151,34 @@
 	}
 }
 
+- (void) animateSwipeCellActivationChange:(BOOL)active {
+	NSNumber *targetValue = active ? [NSNumber numberWithFloat:220] : [NSNumber numberWithFloat:159.5];
+	
+	// set position.x of cell
+	CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"position.x"];
+	[animation setFromValue:[NSNumber numberWithFloat:self.cellBackgroundView.layer.position.x]];
+	[animation setToValue:targetValue];
+	
+	[animation setDuration:.2];
+	[animation setTimingFunction:[CAMediaTimingFunction functionWithControlPoints: .5 :1.8: 1 :1]];
+	
+	[self.cellBackgroundView.layer addAnimation:animation forKey:@"animation-somekey"];
+	//[self.cellBackgroundView.layer setValue:[animation toValue] forKeyPath:@"position.x"];
+	[self.cellBackgroundView.layer setPosition:CGPointMake([targetValue floatValue], self.cellBackgroundView.layer.position.y)];
+	[self.cellBackgroundView setNeedsLayout];
+	
+	if (active) {
+		[UIView animateWithDuration:0.1 animations:^{
+			[self displayToolArea:YES];
+		}];
+	}
+	
+	if (!active) {
+		[UIView animateWithDuration:0.05 animations:^{
+			[self displayToolArea:NO];
+		}];
+	}
+}
 
 - (void) layoutSubviews {
 	//[self.cellBackgroundView setBackgroundColor:[UIColor cellarBeigeColour]];
@@ -173,6 +194,7 @@
 	
 	[self.cellBackgroundView.layer setShadowPath:[[UIBezierPath bezierPathWithRoundedRect:self.cellBackgroundView.bounds cornerRadius:4.0f] CGPath]];
 	
+	//[self.cellBackgroundView.layer setPosition:CGPointMake(159.5, self.cellBackgroundView.layer.position.y)];
 	
 }
 

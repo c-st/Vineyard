@@ -19,4 +19,5 @@
 - (id) initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier andWine:(Wine *)theWine;
 
 - (void) displayToolArea:(BOOL)isDisplay;
+- (void) animateSwipeCellActivationChange:(BOOL)active;
 @end

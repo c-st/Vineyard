@@ -54,7 +54,7 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-	// set acticated cell deactivated
+	// set activated cell deactivated
 	if (self.currentlyActiveCell != nil) {
 		[self endEditMode:nil];
 		[self setCurrentlyActiveCell:nil];
@@ -66,7 +66,7 @@
         cell = [[WineCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"WineCell" andWine:wine];
 		[cell setParentTableViewController:self];
     }
-
+	
     return cell;
 }
 
@@ -87,41 +87,12 @@
 	[self setCurrentlyActiveCell:cell];
 	
 	[tapGestureRecognizer setEnabled:YES];
-	[self animateCellActivationChange:YES];
+	[currentlyActiveCell animateSwipeCellActivationChange:YES];
 }
 
-- (void) animateCellActivationChange:(BOOL)active {
-	if (!active) {
-		[UIView animateWithDuration:0.1 animations:^{
-			[currentlyActiveCell displayToolArea:NO];
-		}];
-	}
-	
-	// set position.x of cell
-	CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"position.x"];
-	if (active) {
-		[animation setFromValue:[NSNumber numberWithFloat:currentlyActiveCell.cellBackgroundView.layer.position.x]];
-		[animation setToValue:[NSNumber numberWithFloat:220]];
-	} else {
-		[animation setFromValue:[NSNumber numberWithFloat:currentlyActiveCell.cellBackgroundView.layer.position.x]];
-		[animation setToValue:[NSNumber numberWithFloat:159.5]];
-	}
-	
-	[animation setDuration:.2];
-	[animation setTimingFunction:[CAMediaTimingFunction functionWithControlPoints: .5 :1.8: 1 :1]];
-	
-	[currentlyActiveCell.cellBackgroundView.layer addAnimation:animation forKey:@"somekey"];
-	[currentlyActiveCell.cellBackgroundView.layer setValue:[animation toValue] forKeyPath:@"position.x"];
-	
-	if (active) {
-		[UIView animateWithDuration:0.1 animations:^{
-			[currentlyActiveCell displayToolArea:YES];
-		}];
-	}
-}
 
 - (void) endEditMode:(UITapGestureRecognizer *)sender {
-	[self animateCellActivationChange:NO];
+	[currentlyActiveCell animateSwipeCellActivationChange:NO];
 	[self.tableView setEditing:NO animated:YES];
 	[tapGestureRecognizer setEnabled:NO];
 	

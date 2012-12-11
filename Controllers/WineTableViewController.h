@@ -2,11 +2,13 @@
 #import "WineCell.h"
 
 @interface WineTableViewController : AbstractTableViewController {
-	WineCell *currentlyActiveCell;
+	__weak WineCell *currentlyActiveCell;
 	UITapGestureRecognizer *tapGestureRecognizer;
 }
 
-@property (nonatomic, strong) WineCell* currentlyActiveCell;
+//@property (nonatomic, strong) WineCell* currentlyActiveCell;
+@property (weak) WineCell* currentlyActiveCell;
+
 @property (nonatomic, strong) UITapGestureRecognizer* tapGestureRecognizer;
 
 @end
