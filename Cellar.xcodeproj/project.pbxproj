@@ -35,6 +35,18 @@
 		8319AFD01677BFF8005E28BB /* MagicalRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 8319AFB41677BFF8005E28BB /* MagicalRecord.m */; };
 		8319AFE11677C0DC005E28BB /* libSSToolkit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8319AFD81677C09F005E28BB /* libSSToolkit.a */; };
 		8319AFE21677C0F8005E28BB /* SSToolkitResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8319AFDC1677C09F005E28BB /* SSToolkitResources.bundle */; };
+		8319AFFD1677C295005E28BB /* FacingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8319AFE71677C295005E28BB /* FacingView.m */; };
+		8319AFFE1677C295005E28BB /* FoldView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8319AFE91677C295005E28BB /* FoldView.m */; };
+		8319AFFF1677C295005E28BB /* MultiFoldView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8319AFEB1677C295005E28BB /* MultiFoldView.m */; };
+		8319B0001677C295005E28BB /* PaperFoldNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8319AFEE1677C295005E28BB /* PaperFoldNavigationController.m */; };
+		8319B0011677C295005E28BB /* PaperFoldResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8319AFEF1677C295005E28BB /* PaperFoldResources.bundle */; };
+		8319B0021677C295005E28BB /* PaperFoldSwipeHintView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8319AFF11677C295005E28BB /* PaperFoldSwipeHintView.m */; };
+		8319B0031677C295005E28BB /* PaperFoldView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8319AFF31677C295005E28BB /* PaperFoldView.m */; };
+		8319B0041677C295005E28BB /* swipe_guide.psd in Resources */ = {isa = PBXBuildFile; fileRef = 8319AFF51677C295005E28BB /* swipe_guide.psd */; };
+		8319B0051677C295005E28BB /* swipe_guide2.psd in Resources */ = {isa = PBXBuildFile; fileRef = 8319AFF61677C295005E28BB /* swipe_guide2.psd */; };
+		8319B0061677C295005E28BB /* ShadowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8319AFF81677C295005E28BB /* ShadowView.m */; };
+		8319B0071677C295005E28BB /* TouchThroughUIView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8319AFFA1677C295005E28BB /* TouchThroughUIView.m */; };
+		8319B0081677C295005E28BB /* UIView+Screenshot.m in Sources */ = {isa = PBXBuildFile; fileRef = 8319AFFC1677C295005E28BB /* UIView+Screenshot.m */; };
 		8361EE291677B4B50057E04B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8361EE281677B4B50057E04B /* main.m */; };
 		8361EE4F1677B51E0057E04B /* CH.png in Resources */ = {isa = PBXBuildFile; fileRef = 8361EE431677B51E0057E04B /* CH.png */; };
 		8361EE501677B51E0057E04B /* US.png in Resources */ = {isa = PBXBuildFile; fileRef = 8361EE441677B51E0057E04B /* US.png */; };
@@ -203,6 +215,28 @@
 		8319AFB51677BFF8005E28BB /* MagicalRecordShorthand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MagicalRecordShorthand.h; sourceTree = "<group>"; };
 		8319AFB61677BFF8005E28BB /* CoreData+MagicalRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CoreData+MagicalRecord.h"; sourceTree = "<group>"; };
 		8319AFD11677C09F005E28BB /* SSToolkit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SSToolkit.xcodeproj; path = "Frameworks/SS-Toolkit/SSToolkit.xcodeproj"; sourceTree = "<group>"; };
+		8319AFE61677C295005E28BB /* FacingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacingView.h; sourceTree = "<group>"; };
+		8319AFE71677C295005E28BB /* FacingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FacingView.m; sourceTree = "<group>"; };
+		8319AFE81677C295005E28BB /* FoldView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoldView.h; sourceTree = "<group>"; };
+		8319AFE91677C295005E28BB /* FoldView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoldView.m; sourceTree = "<group>"; };
+		8319AFEA1677C295005E28BB /* MultiFoldView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MultiFoldView.h; sourceTree = "<group>"; };
+		8319AFEB1677C295005E28BB /* MultiFoldView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MultiFoldView.m; sourceTree = "<group>"; };
+		8319AFEC1677C295005E28BB /* PaperFoldConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaperFoldConstants.h; sourceTree = "<group>"; };
+		8319AFED1677C295005E28BB /* PaperFoldNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaperFoldNavigationController.h; sourceTree = "<group>"; };
+		8319AFEE1677C295005E28BB /* PaperFoldNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaperFoldNavigationController.m; sourceTree = "<group>"; };
+		8319AFEF1677C295005E28BB /* PaperFoldResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = PaperFoldResources.bundle; sourceTree = "<group>"; };
+		8319AFF01677C295005E28BB /* PaperFoldSwipeHintView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaperFoldSwipeHintView.h; sourceTree = "<group>"; };
+		8319AFF11677C295005E28BB /* PaperFoldSwipeHintView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaperFoldSwipeHintView.m; sourceTree = "<group>"; };
+		8319AFF21677C295005E28BB /* PaperFoldView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaperFoldView.h; sourceTree = "<group>"; };
+		8319AFF31677C295005E28BB /* PaperFoldView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaperFoldView.m; sourceTree = "<group>"; };
+		8319AFF51677C295005E28BB /* swipe_guide.psd */ = {isa = PBXFileReference; lastKnownFileType = file; path = swipe_guide.psd; sourceTree = "<group>"; };
+		8319AFF61677C295005E28BB /* swipe_guide2.psd */ = {isa = PBXFileReference; lastKnownFileType = file; path = swipe_guide2.psd; sourceTree = "<group>"; };
+		8319AFF71677C295005E28BB /* ShadowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShadowView.h; sourceTree = "<group>"; };
+		8319AFF81677C295005E28BB /* ShadowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShadowView.m; sourceTree = "<group>"; };
+		8319AFF91677C295005E28BB /* TouchThroughUIView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TouchThroughUIView.h; sourceTree = "<group>"; };
+		8319AFFA1677C295005E28BB /* TouchThroughUIView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TouchThroughUIView.m; sourceTree = "<group>"; };
+		8319AFFB1677C295005E28BB /* UIView+Screenshot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Screenshot.h"; sourceTree = "<group>"; };
+		8319AFFC1677C295005E28BB /* UIView+Screenshot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Screenshot.m"; sourceTree = "<group>"; };
 		833591E4164B145E00FEA5C9 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		833591E5164B145E00FEA5C9 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		8361EE281677B4B50057E04B /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = SOURCE_ROOT; };
@@ -455,9 +489,48 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		8319AFE51677C295005E28BB /* PaperFold */ = {
+			isa = PBXGroup;
+			children = (
+				8319AFE61677C295005E28BB /* FacingView.h */,
+				8319AFE71677C295005E28BB /* FacingView.m */,
+				8319AFE81677C295005E28BB /* FoldView.h */,
+				8319AFE91677C295005E28BB /* FoldView.m */,
+				8319AFEA1677C295005E28BB /* MultiFoldView.h */,
+				8319AFEB1677C295005E28BB /* MultiFoldView.m */,
+				8319AFEC1677C295005E28BB /* PaperFoldConstants.h */,
+				8319AFED1677C295005E28BB /* PaperFoldNavigationController.h */,
+				8319AFEE1677C295005E28BB /* PaperFoldNavigationController.m */,
+				8319AFEF1677C295005E28BB /* PaperFoldResources.bundle */,
+				8319AFF01677C295005E28BB /* PaperFoldSwipeHintView.h */,
+				8319AFF11677C295005E28BB /* PaperFoldSwipeHintView.m */,
+				8319AFF21677C295005E28BB /* PaperFoldView.h */,
+				8319AFF31677C295005E28BB /* PaperFoldView.m */,
+				8319AFF41677C295005E28BB /* Resources */,
+				8319AFF71677C295005E28BB /* ShadowView.h */,
+				8319AFF81677C295005E28BB /* ShadowView.m */,
+				8319AFF91677C295005E28BB /* TouchThroughUIView.h */,
+				8319AFFA1677C295005E28BB /* TouchThroughUIView.m */,
+				8319AFFB1677C295005E28BB /* UIView+Screenshot.h */,
+				8319AFFC1677C295005E28BB /* UIView+Screenshot.m */,
+			);
+			name = PaperFold;
+			path = "Frameworks/PaperFold-for-iOS/PaperFold/PaperFold/PaperFold";
+			sourceTree = SOURCE_ROOT;
+		};
+		8319AFF41677C295005E28BB /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				8319AFF51677C295005E28BB /* swipe_guide.psd */,
+				8319AFF61677C295005E28BB /* swipe_guide2.psd */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		832EDC4F165FD4FA00AE20A9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8319AFE51677C295005E28BB /* PaperFold */,
 				8319AF7B1677BFF8005E28BB /* MagicalRecord */,
 			);
 			name = Frameworks;
@@ -861,6 +934,9 @@
 				8361EE751677B5930057E04B /* globe@2x.png in Resources */,
 				8361EE761677B5930057E04B /* trashbin@2x.png in Resources */,
 				8361EE781677B5B70057E04B /* Default-568h@2x.png in Resources */,
+				8319B0011677C295005E28BB /* PaperFoldResources.bundle in Resources */,
+				8319B0041677C295005E28BB /* swipe_guide.psd in Resources */,
+				8319B0051677C295005E28BB /* swipe_guide2.psd in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -940,6 +1016,15 @@
 				8319AFCE1677BFF8005E28BB /* MagicalRecord+Setup.m in Sources */,
 				8319AFCF1677BFF8005E28BB /* MagicalRecord+ShorthandSupport.m in Sources */,
 				8319AFD01677BFF8005E28BB /* MagicalRecord.m in Sources */,
+				8319AFFD1677C295005E28BB /* FacingView.m in Sources */,
+				8319AFFE1677C295005E28BB /* FoldView.m in Sources */,
+				8319AFFF1677C295005E28BB /* MultiFoldView.m in Sources */,
+				8319B0001677C295005E28BB /* PaperFoldNavigationController.m in Sources */,
+				8319B0021677C295005E28BB /* PaperFoldSwipeHintView.m in Sources */,
+				8319B0031677C295005E28BB /* PaperFoldView.m in Sources */,
+				8319B0061677C295005E28BB /* ShadowView.m in Sources */,
+				8319B0071677C295005E28BB /* TouchThroughUIView.m in Sources */,
+				8319B0081677C295005E28BB /* UIView+Screenshot.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
