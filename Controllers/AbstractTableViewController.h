@@ -4,14 +4,17 @@
 
 #import "CellarTableViewCell.h"
 
+#import "PaperFoldNavigationController.h"
+
 #import "SSToolkit.h"
 
 @class SettingsCell;
 
 @interface AbstractTableViewController : UITableViewController <NSFetchedResultsControllerDelegate, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate> {
 	UISearchBar *searchBar;
-	
 	SettingsCell *settingsCell;
+	
+	PaperFoldNavigationController *paperFoldNC;
 	
 	BOOL showCount;
 	BOOL showSearchBar;
@@ -20,6 +23,8 @@
 @property (nonatomic, strong) NSManagedObjectContext* managedObjectContext;
 @property (nonatomic, retain) NSFetchedResultsController *fetchedResultsController;
 @property (nonatomic, strong) SettingsCell* settingsCell;
+
+@property (nonatomic, strong) PaperFoldNavigationController *paperFoldNC;
 
 @property (atomic) BOOL showCount;
 @property (atomic) BOOL showSearchBar;

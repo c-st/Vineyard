@@ -13,7 +13,7 @@
 
 @implementation AbstractTableViewController
 
-@synthesize settingsCell, showCount, showSearchBar;
+@synthesize settingsCell, showCount, showSearchBar, paperFoldNC;
 @synthesize fetchedResultsController = fetchedResultsController;
 @synthesize managedObjectContext = _managedObjectContext;
 

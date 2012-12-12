@@ -1,7 +1,7 @@
 #import <UIKit/UIKit.h>
 #import "Wine.h"
 
-@interface WineDetailViewController : UIViewController {
+@interface WineDetailViewController : UIViewController <UIScrollViewDelegate> {
 	Wine *wine;
 }
 

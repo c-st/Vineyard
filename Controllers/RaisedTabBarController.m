@@ -74,6 +74,7 @@
 	[winePaperFoldNC.paperFoldView setBackgroundColor:[UIColor blackColor]];
 	winePaperFoldNC.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Wines" image:[UIImage imageNamed:@"food_wine_bottle_glass.png"] tag:0];
 	[[winePaperFoldNC paperFoldView] setEnableRightFoldDragging:NO];
+	[wineTVC setPaperFoldNC:winePaperFoldNC];
 	
 	// 1.1.1 Left view (dummy)
 	UIViewController *dummyVC = [[UIViewController alloc] init];

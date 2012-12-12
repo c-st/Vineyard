@@ -8,6 +8,8 @@
 #import "AddWineViewController.h"
 #import "WineDetailViewController.h"
 
+#import "PaperFoldNavigationController.h"
+
 @interface WineTableViewController ()
 
 @end
@@ -44,10 +46,15 @@
 	NSLog(@"%i wines.", [[[Wine fetchAllSortedBy:@"name" ascending:YES withPredicate:[self getFetchPredicate:nil] groupBy:nil delegate:nil] fetchedObjects] count]);
 	
 	[self.tableView reloadData];
+	
+	
 }
 
 - (void) viewDidAppear:(BOOL)animated {
+	// enable left fold
+	[[[self paperFoldNC] paperFoldView] setEnableLeftFoldDragging:YES];
 }
+
 
 - (NSPredicate*) getFetchPredicate:(Wine *)withWine {
 	return [NSPredicate predicateWithFormat:@"name.length > 0"];
@@ -100,6 +107,10 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath  {
+	// unfold and disable
+	[[[self paperFoldNC] paperFoldView] setEnableLeftFoldDragging:NO];
+	[[[self paperFoldNC] paperFoldView] setPaperFoldState:PaperFoldStateDefault];
+	
 	Wine *wine = [[super fetchedResultsController] objectAtIndexPath:indexPath];
 	
 	WineDetailViewController *wineDetail = [[WineDetailViewController alloc] initWithWine:wine];
