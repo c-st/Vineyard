@@ -25,7 +25,6 @@
 	[filterLabel setBackgroundColor:[UIColor clearColor]];
 	[filterLabel setTextAlignment:NSTextAlignmentCenter];
 	[filterLabel setTextColor:[UIColor whiteColor]];
-	
 	filterLabel.shadowColor = [UIColor blackColor];
 	filterLabel.shadowOffset = CGSizeMake(0.0, -1.0);
 	[filterLabel setFont:[UIFont fontWithName:@"ArialRoundedMTBold" size:20]];

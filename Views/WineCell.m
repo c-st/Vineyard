@@ -74,19 +74,36 @@
 														  120)];
 	
 	// Name
-	UILabel *nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 7, 200, 18)];
+	UILabel *nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, 200, 25)];
 	[nameLabel setBackgroundColor:[UIColor clearColor]];
-    [nameLabel setFont:[UIFont boldSystemFontOfSize:16]];
+    [nameLabel setFont:[UIFont fontWithName:@"Baskerville" size:20]];
 	[nameLabel setTextColor:[UIColor blackColor]];
 	[nameLabel setText:[wine name]];
 	[bg addSubview:nameLabel];
 	
+	// Vintage
+	if (wine.vintage != nil) {
+		UILabel *vintageLabel = [[UILabel alloc] initWithFrame:CGRectMake(252, 15, 100, 18)];
+		[vintageLabel setBackgroundColor:[UIColor clearColor]];
+		[vintageLabel setFont:[UIFont fontWithName:@"Baskerville" size:18]];
+		[vintageLabel setTextColor:[UIColor darkGrayColor]];
+		[vintageLabel setText:[wine vintage]];
+		[bg addSubview:vintageLabel];
+	}
+	
+	// Line
+	SSLineView *lineView = [[SSLineView alloc] initWithFrame:CGRectMake(10, 38, 280, 3)];
+	[lineView setLineColor:[[UIColor lightGrayColor] colorWithAlphaComponent:0.2]];
+	[lineView setInsetColor:[UIColor whiteColor]];
+	[bg addSubview:lineView];
+	
 	// Country / Appellation (Region)
 	if (wine.country != nil || wine.appellation != nil) {
 		if (wine.appellation != nil) {
-			UILabel *appellationLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 25, 200, 13)];
+			UILabel *appellationLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 45, 150, 13)];
 			[appellationLabel setBackgroundColor:[UIColor clearColor]];
-			[appellationLabel setFont:[UIFont boldSystemFontOfSize:12]];
+			[appellationLabel setTextColor:[[UIColor blackColor] colorWithAlphaComponent:0.85]];
+			[appellationLabel setFont:[UIFont systemFontOfSize:12]];
 			[appellationLabel setText:[NSString stringWithFormat:@"%@", wine.appellation.name]];
 			//[appellationLabel setBackgroundColor:[UIColor redColor]];
 			[bg addSubview:appellationLabel];
@@ -98,7 +115,7 @@
 		
 		UILabel *localeLabel = [[UILabel alloc] initWithFrame:CGRectMake(30, 93, 190, 20)];
 		[localeLabel setBackgroundColor:[UIColor clearColor]];
-		[localeLabel setFont:[UIFont boldSystemFontOfSize:12]];
+		[localeLabel setFont:[UIFont systemFontOfSize:12]];
 		//[localeLabel setBackgroundColor:[UIColor redColor]];
 		
 		if (wine.appellation != nil) {
@@ -111,10 +128,10 @@
 	
 	if (wine.varietals != nil && [wine.varietals count] > 0) {
 		UIImageView *grapesImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"food_grapes_black.png"]];
-		[grapesImage setFrame:CGRectMake(9, 40, 18, 18)];
+		[grapesImage setFrame:CGRectMake(9, 70, 18, 18)];
 		[bg addSubview:grapesImage];
 		
-		UILabel *varietalLabel = [[UILabel alloc] initWithFrame:CGRectMake(30, 38, 190, 20)];
+		UILabel *varietalLabel = [[UILabel alloc] initWithFrame:CGRectMake(29, 68, 190, 20)];
 		[varietalLabel setBackgroundColor:[UIColor clearColor]];
 		NSString *names = [[NSString alloc] init];
 		for (NSManagedObject *object in wine.varietals) {
@@ -122,14 +139,14 @@
 		}
 		[varietalLabel setText:[names substringToIndex:[names length] - 2]];
 		//[varietalLabel setBackgroundColor:[UIColor redColor]];
-		[varietalLabel setFont:[UIFont boldSystemFontOfSize:12]];
+		[varietalLabel setFont:[UIFont systemFontOfSize:12]];
 		[bg addSubview:varietalLabel];
 	}
 	
 	if (wine.rating != nil) {
 		SSRatingPicker *ratingPicker = [[SSRatingPicker alloc] initWithFrame:CGRectMake(195, 86, 100, 30)];
 		//[ratingPicker setBackgroundColor:[UIColor redColor]];
-		[ratingPicker setAlpha:0.8f];
+		[ratingPicker setAlpha:1.0f];
 		[ratingPicker setBackgroundColor:[UIColor clearColor]];
 		[ratingPicker setSelectedNumberOfStars:[wine.rating floatValue]];
 		[ratingPicker setTotalNumberOfStars:6];
@@ -180,13 +197,29 @@
 
 - (void) layoutSubviews {
 	//[self.cellBackgroundView setBackgroundColor:[UIColor cellarBeigeColour]];
-	
 	[self.cellBackgroundView setBackgroundColor:[UIColor whiteColor]];
-	self.cellBackgroundView.layer.shadowColor = [UIColor blackColor].CGColor;
+	
+	// background gradient
+	UIColor *colorOne = [UIColor colorWithRed:(231/255.0) green:(231/255.0) blue:(231/255.0) alpha:0.2];
+	UIColor *colorTwo = [UIColor colorWithRed:(203/255.0)  green:(203/255.0)  blue:(203/255.0)  alpha:0.2];
+	
+	CAGradientLayer *shadow = [CAGradientLayer layer];
+	[shadow setFrame: CGRectMake(0, 0, 299, 120)];
+	shadow.startPoint = CGPointMake(0.0, 0.5);
+	shadow.endPoint = CGPointMake(0, 1.0);
+	shadow.colors = [NSArray arrayWithObjects:(id)[colorOne CGColor], [colorTwo CGColor], nil];
+	
+	CAShapeLayer * mask = [CAShapeLayer layer];
+	mask.path = [[UIBezierPath bezierPathWithRoundedRect:self.cellBackgroundView.bounds cornerRadius:4.0f] CGPath];
+	[shadow setMask:mask];
+	
+	[self.cellBackgroundView.layer addSublayer:shadow];
+
 	
 	// add shadow
 	self.cellBackgroundView.layer.shadowOpacity = 0.9f;
 	self.cellBackgroundView.layer.shadowOffset = CGSizeMake(0.0f, 0.0f);
+	self.cellBackgroundView.layer.shadowColor = [UIColor blackColor].CGColor;
 	self.cellBackgroundView.layer.shadowRadius = 2.0f;
 	self.cellBackgroundView.layer.masksToBounds = NO;
 	//[self.cellBackgroundView.layer setShouldRasterize:YES];
@@ -197,7 +230,6 @@
 	// stroke
 	self.cellBackgroundView.layer.borderColor =	[[UIColor blackColor] CGColor];
 	self.cellBackgroundView.layer.borderWidth = 0.5f;
-	
 	
 	
 	//[self.cellBackgroundView.layer setPosition:CGPointMake(159.5, self.cellBackgroundView.layer.position.y)];
