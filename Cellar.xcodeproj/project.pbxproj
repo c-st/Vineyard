@@ -48,7 +48,7 @@
 		8319B0071677C295005E28BB /* TouchThroughUIView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8319AFFA1677C295005E28BB /* TouchThroughUIView.m */; };
 		8319B0081677C295005E28BB /* UIView+Screenshot.m in Sources */ = {isa = PBXBuildFile; fileRef = 8319AFFC1677C295005E28BB /* UIView+Screenshot.m */; };
 		8319B00A1677C6E0005E28BB /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8319B0091677C6E0005E28BB /* MapKit.framework */; };
-		833146D51678D2E5000F9654 /* RightWineFoldViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 833146D41678D2E5000F9654 /* RightWineFoldViewController.m */; };
+		833146D51678D2E5000F9654 /* WineFilterFoldViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 833146D41678D2E5000F9654 /* WineFilterFoldViewController.m */; };
 		8361EE291677B4B50057E04B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8361EE281677B4B50057E04B /* main.m */; };
 		8361EE4F1677B51E0057E04B /* CH.png in Resources */ = {isa = PBXBuildFile; fileRef = 8361EE431677B51E0057E04B /* CH.png */; };
 		8361EE501677B51E0057E04B /* US.png in Resources */ = {isa = PBXBuildFile; fileRef = 8361EE441677B51E0057E04B /* US.png */; };
@@ -240,8 +240,8 @@
 		8319AFFB1677C295005E28BB /* UIView+Screenshot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Screenshot.h"; sourceTree = "<group>"; };
 		8319AFFC1677C295005E28BB /* UIView+Screenshot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Screenshot.m"; sourceTree = "<group>"; };
 		8319B0091677C6E0005E28BB /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
-		833146D31678D2E5000F9654 /* RightWineFoldViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RightWineFoldViewController.h; path = Controllers/RightWineFoldViewController.h; sourceTree = SOURCE_ROOT; };
-		833146D41678D2E5000F9654 /* RightWineFoldViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RightWineFoldViewController.m; path = Controllers/RightWineFoldViewController.m; sourceTree = SOURCE_ROOT; };
+		833146D31678D2E5000F9654 /* WineFilterFoldViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WineFilterFoldViewController.h; path = Controllers/WineFilterFoldViewController.h; sourceTree = SOURCE_ROOT; };
+		833146D41678D2E5000F9654 /* WineFilterFoldViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WineFilterFoldViewController.m; path = Controllers/WineFilterFoldViewController.m; sourceTree = SOURCE_ROOT; };
 		833591E4164B145E00FEA5C9 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		833591E5164B145E00FEA5C9 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		8361EE281677B4B50057E04B /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = SOURCE_ROOT; };
@@ -563,8 +563,8 @@
 		833146D11678D29E000F9654 /* PaperFold */ = {
 			isa = PBXGroup;
 			children = (
-				833146D31678D2E5000F9654 /* RightWineFoldViewController.h */,
-				833146D41678D2E5000F9654 /* RightWineFoldViewController.m */,
+				833146D31678D2E5000F9654 /* WineFilterFoldViewController.h */,
+				833146D41678D2E5000F9654 /* WineFilterFoldViewController.m */,
 			);
 			name = PaperFold;
 			sourceTree = "<group>";
@@ -1034,7 +1034,7 @@
 				8319B0061677C295005E28BB /* ShadowView.m in Sources */,
 				8319B0071677C295005E28BB /* TouchThroughUIView.m in Sources */,
 				8319B0081677C295005E28BB /* UIView+Screenshot.m in Sources */,
-				833146D51678D2E5000F9654 /* RightWineFoldViewController.m in Sources */,
+				833146D51678D2E5000F9654 /* WineFilterFoldViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

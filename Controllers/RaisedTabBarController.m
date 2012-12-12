@@ -10,7 +10,7 @@
 #import "PaperFoldView.h"
 #import "PaperFoldNavigationController.h"
 
-#import "RightWineFoldViewController.h"
+#import "WineFilterFoldViewController.h"
 
 
 @implementation RaisedTabBarController
@@ -73,19 +73,19 @@
 	PaperFoldNavigationController *winePaperFoldNC = [[PaperFoldNavigationController alloc] initWithRootViewController:wineNavController];
 	[winePaperFoldNC.paperFoldView setBackgroundColor:[UIColor blackColor]];
 	winePaperFoldNC.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Wines" image:[UIImage imageNamed:@"food_wine_bottle_glass.png"] tag:0];
-//	[[winePaperFoldNC paperFoldView] setEnableLeftFoldDragging:NO];
+	[[winePaperFoldNC paperFoldView] setEnableRightFoldDragging:NO];
 	
 	// 1.1.1 Left view (dummy)
 	UIViewController *dummyVC = [[UIViewController alloc] init];
-	[dummyVC.view setFrame:CGRectMake(0, 0, 100, [self.view bounds].size.height)];
+	[dummyVC.view setFrame:CGRectMake(0, 0, 150, [self.view bounds].size.height)];
 	[dummyVC.view setBackgroundColor:[UIColor greenColor]];
-	[winePaperFoldNC setLeftViewController:dummyVC width:100.0];
 	
 	// 1.1.2 Right view
-	RightWineFoldViewController *wineRightVC = [[RightWineFoldViewController alloc] init];
-	[wineRightVC.view setFrame:CGRectMake(0, 0, 150, [self.view bounds].size.height)];
-	[winePaperFoldNC setRightViewController:wineRightVC width:150 rightViewFoldCount:1 rightViewPullFactor:1.0];
+	WineFilterFoldViewController *wineRightVC = [[WineFilterFoldViewController alloc] init];
+	[wineRightVC.view setFrame:CGRectMake(0, 0, 120, [self.view bounds].size.height)];
 	
+	[winePaperFoldNC setRightViewController:dummyVC width:150 rightViewFoldCount:1 rightViewPullFactor:1.0];
+	[winePaperFoldNC setLeftViewController:wineRightVC width:120.0];
 	
 	// 1.2 Countries
 	NSFetchedResultsController *countriesFRC = [Country fetchAllSortedBy:@"name" ascending:YES withPredicate:nil groupBy:nil delegate:nil];

@@ -72,9 +72,6 @@
 	UIView *bg = [[UIView alloc] initWithFrame:CGRectMake(10, 19,
 														  self.contentView.bounds.size.width - 21,
 														  120)];
-	// shadow etc.
-	[bg setBackgroundColor:[UIColor whiteColor]];
-	bg.layer.shadowColor = [UIColor blackColor].CGColor;
 	
 	// Name
 	UILabel *nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 7, 200, 18)];
@@ -184,6 +181,9 @@
 - (void) layoutSubviews {
 	//[self.cellBackgroundView setBackgroundColor:[UIColor cellarBeigeColour]];
 	
+	[self.cellBackgroundView setBackgroundColor:[UIColor whiteColor]];
+	self.cellBackgroundView.layer.shadowColor = [UIColor blackColor].CGColor;
+	
 	// add shadow
 	self.cellBackgroundView.layer.shadowOpacity = 0.9f;
 	self.cellBackgroundView.layer.shadowOffset = CGSizeMake(0.0f, 0.0f);
@@ -192,8 +192,13 @@
 	//[self.cellBackgroundView.layer setShouldRasterize:YES];
 	self.cellBackgroundView.layer.opaque = YES;
 	self.cellBackgroundView.layer.cornerRadius = 4.0;
-	
 	[self.cellBackgroundView.layer setShadowPath:[[UIBezierPath bezierPathWithRoundedRect:self.cellBackgroundView.bounds cornerRadius:4.0f] CGPath]];
+	
+	// stroke
+	self.cellBackgroundView.layer.borderColor =	[[UIColor blackColor] CGColor];
+	self.cellBackgroundView.layer.borderWidth = 0.5f;
+	
+	
 	
 	//[self.cellBackgroundView.layer setPosition:CGPointMake(159.5, self.cellBackgroundView.layer.position.y)];
 	
