@@ -48,8 +48,9 @@
 	CGPoint centerPoint = CGPointMake(sender.frame.origin.x + (sender.frame.size.width / 2), sender.frame.origin.y + (sender.frame.size.height / 2));
 	
 	//[PopoverView showPopoverAtPoint:centerPoint inView:self.view withTitle:@"Location Location Location" withStringArray:[NSArray arrayWithObjects:@"YES", @"NO", nil] delegate:self];
-	NSFetchedResultsController *countriesFRC = [Country fetchAllSortedBy:@"name" ascending:YES withPredicate:nil groupBy:nil delegate:nil];
-	CountryTableViewController *cTVC = [[CountryTableViewController alloc] initWithFetchedResultsController:countriesFRC];
+	
+	//NSFetchedResultsController *countriesFRC = [Country fetchAllSortedBy:@"name" ascending:YES withPredicate:nil groupBy:nil delegate:nil];
+	//CountryTableViewController *cTVC = [[CountryTableViewController alloc] initWithFetchedResultsController:countriesFRC];
 	
 	UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 200, 100)];
     tableView.delegate = self;
@@ -63,7 +64,6 @@
 }
 
 - (void) viewWillAppear:(BOOL)animated {
-	NSLog(@"viewWillAppear");
 }
 
 - (void) viewDidAppear:(BOOL)animated {

@@ -128,6 +128,7 @@
 		[bg addSubview:localeLabel];
 	}
 	
+	// Colour
 	if (wine.colour != nil) {
 		UIImage *bottle;
 		if ([wine.colour.grapeTypeID isEqual: @"red"]) {
@@ -139,17 +140,18 @@
 		}
 		
 		UIImageView *bottleImage = [[UIImageView alloc] initWithImage:bottle];
-		[bottleImage setFrame:CGRectMake(253, 50, 34, 34)];
-		[bottleImage setAlpha:0.6];
+		[bottleImage setFrame:CGRectMake(254, 45, 30, 30)];
+		[bottleImage setAlpha:0.8];
 		[bg addSubview:bottleImage];
 	}
 	
+	// Varietal
 	if (wine.varietals != nil && [wine.varietals count] > 0) {
 		UIImageView *grapesImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"food_grapes_black.png"]];
 		[grapesImage setFrame:CGRectMake(9, 70, 18, 18)];
 		[bg addSubview:grapesImage];
 		
-		UILabel *varietalLabel = [[UILabel alloc] initWithFrame:CGRectMake(29, 68, 190, 20)];
+		UILabel *varietalLabel = [[UILabel alloc] initWithFrame:CGRectMake(29, 70, 190, 20)];
 		[varietalLabel setBackgroundColor:[UIColor clearColor]];
 		NSString *names = [[NSString alloc] init];
 		for (NSManagedObject *object in wine.varietals) {
