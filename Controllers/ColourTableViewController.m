@@ -12,7 +12,7 @@
     return self;
 }
 
-- (void) viewWillAppear:(BOOL)animated {
+- (void) viewWillAppear:(BOOL) animated {
 	[self setFetchedResultsController:[GrapeType fetchAllSortedBy:@"name" ascending:YES withPredicate:nil groupBy:nil delegate:nil]];
 	[super viewWillAppear:animated];
 }

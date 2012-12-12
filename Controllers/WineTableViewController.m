@@ -112,9 +112,8 @@
 	[[[self paperFoldNC] paperFoldView] setPaperFoldState:PaperFoldStateDefault];
 	
 	Wine *wine = [[super fetchedResultsController] objectAtIndexPath:indexPath];
-	
 	WineDetailViewController *wineDetail = [[WineDetailViewController alloc] initWithWine:wine];
-	[[self navigationController] pushViewController:wineDetail animated:YES];
+	[[self navigationController] pushViewController:wineDetail animated:YES];;
 }
 
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {

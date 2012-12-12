@@ -15,7 +15,7 @@
 
 @implementation CountryTableViewController
 
-- (void) viewWillAppear:(BOOL)animated {
+- (void) viewWillAppear:(BOOL) animated {
 	[self setFetchedResultsController:[Country fetchAllSortedBy:@"name" ascending:YES withPredicate:nil groupBy:nil delegate:nil]];
 	[super viewWillAppear:animated];
 }

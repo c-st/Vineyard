@@ -4,8 +4,10 @@
 #import "Country.h"
 #import "Appellation.h"
 #import "Region.h"
+#import "GrapeType.h"
 
 #import "UIColor+CellarColours.h"
+#import "UIImage+Tint.h"
 
 #import <QuartzCore/QuartzCore.h>
 
@@ -124,6 +126,22 @@
 			[localeLabel setText:[NSString stringWithFormat:@"%@", wine.country.name]];
 		}
 		[bg addSubview:localeLabel];
+	}
+	
+	if (wine.colour != nil) {
+		UIImage *bottle;
+		if ([wine.colour.grapeTypeID isEqual: @"red"]) {
+			bottle = [[UIImage imageNamed:@"wine_bottle.png"] imageTintedWithColor:[UIColor cellarWineColourRed]];
+		} else if ([wine.colour.grapeTypeID isEqual: @"white"]) {
+			bottle = [[UIImage imageNamed:@"wine_bottle.png"] imageTintedWithColor:[UIColor cellarWineColourWhite]];
+		} else if ([wine.colour.grapeTypeID isEqual: @"white"]) {
+			bottle = [[UIImage imageNamed:@"wine_bottle.png"] imageTintedWithColor:[UIColor cellarWineColourRose]];
+		}
+		
+		UIImageView *bottleImage = [[UIImageView alloc] initWithImage:bottle];
+		[bottleImage setFrame:CGRectMake(253, 50, 34, 34)];
+		[bottleImage setAlpha:0.6];
+		[bg addSubview:bottleImage];
 	}
 	
 	if (wine.varietals != nil && [wine.varietals count] > 0) {
