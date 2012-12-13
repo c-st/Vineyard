@@ -50,7 +50,7 @@
 		8319B00A1677C6E0005E28BB /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8319B0091677C6E0005E28BB /* MapKit.framework */; };
 		833146D51678D2E5000F9654 /* WineFilterFoldViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 833146D41678D2E5000F9654 /* WineFilterFoldViewController.m */; };
 		833146DD16791B0E000F9654 /* PopoverView.m in Sources */ = {isa = PBXBuildFile; fileRef = 833146DB16791B0E000F9654 /* PopoverView.m */; };
-		833146E1167931BA000F9654 /* wine_bottle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 833146E0167931BA000F9654 /* wine_bottle@2x.png */; };
+		833C5F2F167A81C400D4F65C /* wine_bottle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 833C5F2E167A81C400D4F65C /* wine_bottle@2x.png */; };
 		8361EE291677B4B50057E04B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8361EE281677B4B50057E04B /* main.m */; };
 		8361EE4F1677B51E0057E04B /* CH.png in Resources */ = {isa = PBXBuildFile; fileRef = 8361EE431677B51E0057E04B /* CH.png */; };
 		8361EE501677B51E0057E04B /* US.png in Resources */ = {isa = PBXBuildFile; fileRef = 8361EE441677B51E0057E04B /* US.png */; };
@@ -246,9 +246,9 @@
 		833146D41678D2E5000F9654 /* WineFilterFoldViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WineFilterFoldViewController.m; path = Controllers/WineFilterFoldViewController.m; sourceTree = SOURCE_ROOT; };
 		833146DA16791B0E000F9654 /* PopoverView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopoverView.h; sourceTree = "<group>"; };
 		833146DB16791B0E000F9654 /* PopoverView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopoverView.m; sourceTree = "<group>"; };
-		833146E0167931BA000F9654 /* wine_bottle@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "wine_bottle@2x.png"; path = "Resources/Images/Icons/wine_bottle@2x.png"; sourceTree = SOURCE_ROOT; };
 		833591E4164B145E00FEA5C9 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		833591E5164B145E00FEA5C9 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		833C5F2E167A81C400D4F65C /* wine_bottle@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "wine_bottle@2x.png"; path = "Resources/Images/Icons/wine_bottle@2x.png"; sourceTree = SOURCE_ROOT; };
 		8361EE281677B4B50057E04B /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = SOURCE_ROOT; };
 		8361EE431677B51E0057E04B /* CH.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = CH.png; path = Resources/Flags/CH.png; sourceTree = SOURCE_ROOT; };
 		8361EE441677B51E0057E04B /* US.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = US.png; path = Resources/Flags/US.png; sourceTree = SOURCE_ROOT; };
@@ -552,7 +552,7 @@
 		832EDF88165FF55400AE20A9 /* Icons */ = {
 			isa = PBXGroup;
 			children = (
-				833146E0167931BA000F9654 /* wine_bottle@2x.png */,
+				833C5F2E167A81C400D4F65C /* wine_bottle@2x.png */,
 				8361EE6F1677B5930057E04B /* food_grapes_black@2x.png */,
 				8361EE701677B5930057E04B /* add-wine-button@2x.png */,
 				8361EE711677B5930057E04B /* globe@2x.png */,
@@ -971,7 +971,7 @@
 				8319B0011677C295005E28BB /* PaperFoldResources.bundle in Resources */,
 				8319B0041677C295005E28BB /* swipe_guide.psd in Resources */,
 				8319B0051677C295005E28BB /* swipe_guide2.psd in Resources */,
-				833146E1167931BA000F9654 /* wine_bottle@2x.png in Resources */,
+				833C5F2F167A81C400D4F65C /* wine_bottle@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

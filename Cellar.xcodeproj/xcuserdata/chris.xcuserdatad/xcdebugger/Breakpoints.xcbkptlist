@@ -21,11 +21,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Views/WineCell.m"
-         timestampString = "377043557.201388"
+         timestampString = "377126690.821447"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "134"
-         endingLineNumber = "134"
+         startingLineNumber = "137"
+         endingLineNumber = "137"
          landmarkName = "-buildWineView"
          landmarkType = "5">
       </FileBreakpoint>

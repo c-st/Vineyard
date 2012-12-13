@@ -22,7 +22,7 @@
 	if (self) {
 		[self setWine:theWine];
 		
-		[self.contentView setBackgroundColor:[UIColor clearColor]];
+		//[self.contentView setBackgroundColor:[UIColor clearColor]];
 		
 		[self setCellBackgroundView:[self buildWineView]];
 
@@ -40,7 +40,7 @@
 - (void) buildAndSaveToolbarView {
 	UIView *toolbar = [[UIView alloc] initWithFrame:CGRectMake(10, 24, 59, 112)];
 	[toolbar setAlpha:0.0f];
-	[toolbar setBackgroundColor:[UIColor clearColor]];
+	[toolbar setBackgroundColor:[UIColor cellarGrayColour]];
 	
 	UIButton *deleteButton = [UIButton buttonWithType:UIButtonTypeCustom];
 	[deleteButton addTarget:self action:@selector(deleteWine) forControlEvents:UIControlEventTouchUpInside];
@@ -75,9 +75,11 @@
 														  self.contentView.bounds.size.width - 21,
 														  120)];
 	
+	[bg setOpaque:YES];
+	
 	// Name
 	UILabel *nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, 200, 25)];
-	[nameLabel setBackgroundColor:[UIColor clearColor]];
+	[nameLabel setBackgroundColor:[UIColor cellarGrayColour]];
     [nameLabel setFont:[UIFont fontWithName:@"Baskerville" size:20]];
 	[nameLabel setTextColor:[UIColor blackColor]];
 	[nameLabel setText:[wine name]];
@@ -85,8 +87,8 @@
 	
 	// Vintage
 	if (wine.vintage != nil) {
-		UILabel *vintageLabel = [[UILabel alloc] initWithFrame:CGRectMake(252, 15, 100, 18)];
-		[vintageLabel setBackgroundColor:[UIColor clearColor]];
+		UILabel *vintageLabel = [[UILabel alloc] initWithFrame:CGRectMake(252, 15, 40, 18)];
+		[vintageLabel setBackgroundColor:[UIColor cellarGrayColour]];
 		[vintageLabel setFont:[UIFont fontWithName:@"Baskerville" size:18]];
 		[vintageLabel setTextColor:[UIColor darkGrayColor]];
 		[vintageLabel setText:[wine vintage]];
@@ -103,7 +105,7 @@
 	if (wine.country != nil || wine.appellation != nil) {
 		if (wine.appellation != nil) {
 			UILabel *appellationLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 45, 150, 13)];
-			[appellationLabel setBackgroundColor:[UIColor clearColor]];
+			[appellationLabel setBackgroundColor:[UIColor cellarGrayColour]];
 			[appellationLabel setTextColor:[[UIColor blackColor] colorWithAlphaComponent:0.85]];
 			[appellationLabel setFont:[UIFont systemFontOfSize:12]];
 			[appellationLabel setText:[NSString stringWithFormat:@"%@", wine.appellation.name]];
@@ -112,11 +114,12 @@
 		}
 		
 		UIImageView *globeImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"globe.png"]];
+		[globeImage setBackgroundColor:[UIColor cellarGrayColour]];
 		[globeImage setFrame:CGRectMake(10, 95, 16, 16)];
 		[bg addSubview:globeImage];
 		
 		UILabel *localeLabel = [[UILabel alloc] initWithFrame:CGRectMake(30, 93, 190, 20)];
-		[localeLabel setBackgroundColor:[UIColor clearColor]];
+		[localeLabel setBackgroundColor:[UIColor cellarGrayColour]];
 		[localeLabel setFont:[UIFont systemFontOfSize:12]];
 		//[localeLabel setBackgroundColor:[UIColor redColor]];
 		
@@ -138,9 +141,9 @@
 		} else if ([wine.colour.grapeTypeID isEqual: @"white"]) {
 			bottle = [[UIImage imageNamed:@"wine_bottle.png"] imageTintedWithColor:[UIColor cellarWineColourRose]];
 		}
-		
+
 		UIImageView *bottleImage = [[UIImageView alloc] initWithImage:bottle];
-		[bottleImage setFrame:CGRectMake(254, 45, 30, 30)];
+		[bottleImage setFrame:CGRectMake(252, 35, 35, 35)];
 		[bottleImage setAlpha:0.8];
 		[bg addSubview:bottleImage];
 	}
@@ -148,11 +151,12 @@
 	// Varietal
 	if (wine.varietals != nil && [wine.varietals count] > 0) {
 		UIImageView *grapesImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"food_grapes_black.png"]];
+		[grapesImage setBackgroundColor:[UIColor cellarGrayColour]];
 		[grapesImage setFrame:CGRectMake(9, 70, 18, 18)];
 		[bg addSubview:grapesImage];
 		
 		UILabel *varietalLabel = [[UILabel alloc] initWithFrame:CGRectMake(29, 70, 190, 20)];
-		[varietalLabel setBackgroundColor:[UIColor clearColor]];
+		[varietalLabel setBackgroundColor:[UIColor cellarGrayColour]];
 		NSString *names = [[NSString alloc] init];
 		for (NSManagedObject *object in wine.varietals) {
 			names = [names stringByAppendingString:[[object valueForKey:@"name"] stringByAppendingString:@", "]];
@@ -167,7 +171,7 @@
 		SSRatingPicker *ratingPicker = [[SSRatingPicker alloc] initWithFrame:CGRectMake(195, 86, 100, 30)];
 		//[ratingPicker setBackgroundColor:[UIColor redColor]];
 		[ratingPicker setAlpha:1.0f];
-		[ratingPicker setBackgroundColor:[UIColor clearColor]];
+		[ratingPicker setBackgroundColor:[UIColor cellarGrayColour]];
 		[ratingPicker setSelectedNumberOfStars:[wine.rating floatValue]];
 		[ratingPicker setTotalNumberOfStars:6];
 		[ratingPicker setStarSize:CGSizeMake(11, 20)];
@@ -216,25 +220,8 @@
 }
 
 - (void) layoutSubviews {
-	//[self.cellBackgroundView setBackgroundColor:[UIColor cellarBeigeColour]];
-	[self.cellBackgroundView setBackgroundColor:[UIColor whiteColor]];
-	
-	// background gradient
-	UIColor *colorOne = [UIColor colorWithRed:(231/255.0) green:(231/255.0) blue:(231/255.0) alpha:0.2];
-	UIColor *colorTwo = [UIColor colorWithRed:(203/255.0)  green:(203/255.0)  blue:(203/255.0)  alpha:0.2];
-	
-	CAGradientLayer *shadow = [CAGradientLayer layer];
-	[shadow setFrame: CGRectMake(0, 0, 299, 120)];
-	shadow.startPoint = CGPointMake(0.0, 0.5);
-	shadow.endPoint = CGPointMake(0, 1.0);
-	shadow.colors = [NSArray arrayWithObjects:(id)[colorOne CGColor], [colorTwo CGColor], nil];
-	
-	CAShapeLayer * mask = [CAShapeLayer layer];
-	mask.path = [[UIBezierPath bezierPathWithRoundedRect:self.cellBackgroundView.bounds cornerRadius:4.0f] CGPath];
-	[shadow setMask:mask];
-	
-	[self.cellBackgroundView.layer addSublayer:shadow];
-
+	[self.cellBackgroundView setBackgroundColor:[UIColor cellarGrayColour]];
+	[self.cellBackgroundView setOpaque:YES];
 	
 	// add shadow
 	self.cellBackgroundView.layer.shadowOpacity = 0.9f;

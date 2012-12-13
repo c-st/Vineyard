@@ -14,6 +14,8 @@
 
 +(UIColor *) cellarBeigeColour;
 
++(UIColor *) cellarGrayColour;
+
 // Wine colours
 
 +(UIColor *) cellarWineColourRed;

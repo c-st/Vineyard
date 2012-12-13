@@ -10,6 +10,12 @@
 	return [UIColor colorWithRed:(234.0f/255.0f) green:(227.0f/255.0f) blue:(217.0f/255.0f) alpha:1.0f];
 }
 
++(UIColor *) cellarGrayColour {
+	return [UIColor colorWithRed:(246/255.0) green:(246/255.0) blue:(246/255.0) alpha:1.0];
+}
+
+// Wine colurs
+
 +(UIColor *) cellarWineColourRed {
 	return [UIColor colorWithRed:(199.0f/255.0f) green:(60.0f/255.0f) blue:(68.0f/255.0f) alpha:1.0f];
 }
@@ -21,4 +27,6 @@
 +(UIColor *) cellarWineColourRose {
 	return [UIColor colorWithRed:(206.0f/255.0f) green:(72.0f/255.0f) blue:(107.0f/255.0f) alpha:1.0f];
 }
+
+
 @end
