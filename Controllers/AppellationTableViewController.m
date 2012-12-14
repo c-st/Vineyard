@@ -18,7 +18,7 @@
 
 -(void) viewWillAppear:(BOOL)animated {
 	if (self.settingsCell.wine != nil) {
-		[self setFetchedResultsController:[Appellation fetchAllGroupedBy:@"region" withPredicate:[self getFetchPredicate:self.settingsCell.wine] sortedBy:@"region.name" ascending:YES]];
+		[self setFetchedResultsController:[Appellation fetchAllGroupedBy:@"region" withPredicate:[self getFetchPredicate:self.settingsCell.wine] sortedBy:@"region,name" ascending:YES]];
 		
 	}
 	[super viewWillAppear:animated];

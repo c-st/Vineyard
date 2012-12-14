@@ -23,7 +23,7 @@
 }
 
 - (void) viewWillAppear:(BOOL)animated {
-	[self setFetchedResultsController:[Varietal fetchAllGroupedBy:@"grapeType" withPredicate:self.settingsCell.wine != nil ? [self getFetchPredicate:self.settingsCell.wine]:nil sortedBy:@"grapeType.name" ascending:YES]];
+	[self setFetchedResultsController:[Varietal fetchAllGroupedBy:@"grapeType" withPredicate:self.settingsCell.wine != nil ? [self getFetchPredicate:self.settingsCell.wine]:nil sortedBy:@"grapeType,name" ascending:YES]];
 	
 	if ([self pickMode]) {
 		UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle: @"Done" style:UIBarButtonItemStylePlain target:self action: @selector(finishSelection)];
