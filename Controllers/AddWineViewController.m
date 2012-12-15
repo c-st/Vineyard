@@ -153,38 +153,30 @@
 	SettingsCell *ratingSettingsCell = [[SettingsCell alloc] initWithWine:[self wine] andType:RatingSettingsCellType andProperty:@"rating" andName:@"Rating"];
 	
 	// Price
-	SettingsCell *priceSettingsCell = [[SettingsCell alloc] initWithWine:[self wine] andType:YearSettingsCellType andProperty:@"price" andName:@"Price"];
+	SettingsCell *priceSettingsCell = [[SettingsCell alloc] initWithWine:[self wine] andType:DoubleNumberSettingsCellType andProperty:@"price" andName:@"Price"];
 	
 	NSArray *basics = nil;
 	
 	if (wine.country != nil) {
-		basics = [NSArray arrayWithObjects:nameSettingsCell,
+		basics = @[nameSettingsCell,
 				  countrySettingsCell,
-				  appellationSettingsCell,
-				  nil];
+			 appellationSettingsCell];
 	} else {
-		basics = [NSArray arrayWithObjects:nameSettingsCell,
-				  countrySettingsCell,
-				  nil];
+		basics = @[nameSettingsCell,
+				  countrySettingsCell];
 	}
 	
 	
-	NSArray *varietal = [NSArray arrayWithObjects:
-							vintageSettingsCell,
+	NSArray *varietal = @[vintageSettingsCell,
 							colourSettingsCell,
-							varietalSettingsCell,
-							nil];
+							varietalSettingsCell];
 	
-	NSArray *rating = [NSArray arrayWithObjects:
-					   priceSettingsCell,
-					   ratingSettingsCell,
-					   nil];
+	NSArray *rating = @[priceSettingsCell,
+					   ratingSettingsCell];
 	
-	[self setConfigurableProperties:[NSArray arrayWithObjects:
-									 basics,
+	[self setConfigurableProperties:@[basics,
 									 varietal,
-									 rating,
-									 nil]];
+									 rating]];
 	
 }
 

@@ -23,7 +23,7 @@
 	shadow.frame = CGRectMake(115, 0, 5, self.view.frame.size.height);
 	shadow.startPoint = CGPointMake(1.0, 0.5);
 	shadow.endPoint = CGPointMake(0, 0.5);
-	shadow.colors = [NSArray arrayWithObjects:(id)[[UIColor colorWithWhite:0.0 alpha:0.6] CGColor], (id)[[UIColor clearColor] CGColor], nil];
+	shadow.colors = @[(id)[[UIColor colorWithWhite:0.0 alpha:0.6] CGColor], (id)[[UIColor clearColor] CGColor]];
 	[self.view.layer addSublayer:shadow];
 	
 	UILabel *filterLabel = [[UILabel alloc] initWithFrame:CGRectMake(12, 7, 90, 30)];

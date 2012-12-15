@@ -85,42 +85,33 @@
 			break;
 		}
 			
-		case DoubleSettingsCellType: {
+		case DoubleNumberSettingsCellType: {
 			[self setAccessoryType:UITableViewCellAccessoryNone];
-			UIPickerView *pickerView = [[UIPickerView alloc] init];
-			[pickerView setDataSource:self];
-			[pickerView setDelegate:self];
-			[pickerView setShowsSelectionIndicator:YES];
-			
 			UITextField *textField=[[UITextField alloc]initWithFrame:CGRectMake(10, 12, self.frame.size.width - 50 - 10, 30)];
 			[textField setTextColor: [UIColor lightGrayColor]];
-			
-			UIToolbar *toolBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 320, 56)];
-			[toolBar setBarStyle:UIBarStyleBlackTranslucent];
-			[toolBar sizeToFit];
-			UIBarButtonItem *flexSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:self action:nil];
-			UIBarButtonItem *doneBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneClicked:)];
-			[doneBtn setTintColor:[UIColor blackColor]];
-			[toolBar setItems:[NSArray arrayWithObjects:flexSpace, doneBtn, nil]];
-			
-			[textField setInputAccessoryView:toolBar];
-			[textField setInputView:pickerView];
+			[textField setFont:[UIFont systemFontOfSize:16]];
+			[textField setKeyboardType:UIKeyboardTypeDecimalPad];
+			[textField setAutocorrectionType: UITextAutocorrectionTypeNo];
+			[textField setAutocapitalizationType:UITextAutocapitalizationTypeWords];
+			[textField setAutoresizingMask:UIViewAutoresizingFlexibleHeight];
+			[textField setAutoresizesSubviews:YES];
+			[textField setBorderStyle:UITextBorderStyleNone];
 			[textField setPlaceholder:theName];
+			[textField addTarget:self action:@selector(textFieldValueChanged:) forControlEvents:UIControlEventEditingChanged];
+			[textField addTarget:self action:@selector(textFieldValueChangedDisappear:) forControlEvents: UIControlEventEditingDidEnd | UIControlEventEditingDidEndOnExit];
+			[self.contentView addSubview:textField];
 			[textField setDelegate:self];
 			
-			[self.contentView addSubview:textField];
-			
-			// check for current value
+			// check if we have an initial value
 			id currentValue = [wine valueForKey:propertyIdentifier];
-			if (currentValue != nil && [currentValue isKindOfClass:[NSString class]]) {
-				NSInteger *currentRow = [self rowForYearString:currentValue];
-				NSLog(@"setting value is %@, row is %ld", currentValue, (long)currentRow);
-				
-				[pickerView selectRow:currentRow inComponent:0 animated:YES];
-				
+			/**
+			if (currentValue != nil && [currentValue isKindOfClass:[NSNumber class]]) {
+				NSLog(@"setting value is %@", currentValue);
 				[textField setText:currentValue];
 				[textField setTextColor:[UIColor blackColor]];
 			}
+			 */
+			
 			break;
 		}
 			

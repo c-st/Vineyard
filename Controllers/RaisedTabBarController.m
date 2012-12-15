@@ -139,12 +139,11 @@
 	[collectionsNavController.navigationBar setTintColor:[UIColor cellarWineRedColour]];
 	
 	
-	[self setViewControllers:[NSArray arrayWithObjects:
-							winePaperFoldNC,
+	[self setViewControllers:@[winePaperFoldNC,
                             countryNavController,
                             [self viewControllerWithTabTitle:@"Add" image:nil],
                             varietalNavController,
-                            paperFoldNavController, nil]];
+                            paperFoldNavController]];
 	
 	[self addCenterButtonWithImage:[UIImage imageNamed:@"add-wine-button.png"] highlightImage:nil];
 }
