@@ -110,7 +110,7 @@
 	// 1.3 Collections
 	UIViewController *collectionsVC = [[UIViewController alloc] init];
 	[collectionsVC setTitle:@"Collections"];
-	[collectionsVC.view setBackgroundColor:[UIColor cellarBeigeColour]];
+	[collectionsVC.view setBackgroundColor:[UIColor cellarBeigeNoisyColour]];
 	
 	// 1.3.0 Content
 	UINavigationController *collectionsNavController = [[UINavigationController alloc] initWithRootViewController:collectionsVC];

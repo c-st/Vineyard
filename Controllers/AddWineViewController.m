@@ -42,7 +42,6 @@
 
 - (void) loadView {
 	[super loadView];
-	[self.view setBackgroundColor:[UIColor cellarBeigeColour]];
 	
 	// Cancel and save buttons
 	UIBarButtonItem *cancelButton =
@@ -60,11 +59,12 @@
 																			  bound.origin.y,
 																			  bound.size.width,
 																			  bound.size.height)];
+	int contentHeight = 60;
 	
-	[scrollView setContentSize: CGSizeMake(self.view.frame.size.width, self.view.frame.size.height)];
-	[scrollView setContentOffset: CGPointMake(0, 0)];
+	[scrollView setContentSize: CGSizeMake(self.view.frame.size.width, self.view.frame.size.height + contentHeight)];
+	[scrollView setContentOffset: CGPointMake(0, -20)];
 	[scrollView setContentInset:UIEdgeInsetsMake(21.0,0,0,0.0)];
-	[scrollView setBackgroundColor:[UIColor cellarBeigeColour]];
+	[scrollView setBackgroundColor:[UIColor cellarBeigeNoisyColour]];
 	[scrollView setShowsVerticalScrollIndicator:NO];
 	[scrollView setScrollEnabled:YES];
 	[scrollView setUserInteractionEnabled:YES];
@@ -82,7 +82,11 @@
 	// Attribute Table
 	self.tableView = [[UITableViewController alloc] initWithStyle:UITableViewStyleGrouped];
 	float outerSpacing = 10.0f;
-	[tableView.view setFrame:CGRectMake(bound.origin.x+outerSpacing, bound.origin.y, bound.size.width- 2 * outerSpacing, 400)];
+	[tableView.view setFrame:CGRectMake(bound.origin.x+outerSpacing, bound.origin.y - 15, bound.size.width- 2 * outerSpacing, bound.size.height-50)];
+	[tableView.tableView setContentSize:CGSizeMake(0, bound.size.height+300)];
+	
+	[tableView.tableView setScrollEnabled:NO];
+	
 	[tableView.tableView setDelegate:self];
 	[tableView.tableView setDataSource:self];
 	[tableView.tableView setBackgroundView:nil];
@@ -148,6 +152,8 @@
 	// Rating
 	SettingsCell *ratingSettingsCell = [[SettingsCell alloc] initWithWine:[self wine] andType:RatingSettingsCellType andProperty:@"rating" andName:@"Rating"];
 	
+	// Price
+	SettingsCell *priceSettingsCell = [[SettingsCell alloc] initWithWine:[self wine] andType:YearSettingsCellType andProperty:@"price" andName:@"Price"];
 	
 	NSArray *basics = nil;
 	
@@ -170,6 +176,7 @@
 							nil];
 	
 	NSArray *rating = [NSArray arrayWithObjects:
+					   priceSettingsCell,
 					   ratingSettingsCell,
 					   nil];
 	

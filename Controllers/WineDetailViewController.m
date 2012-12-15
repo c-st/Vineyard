@@ -45,7 +45,7 @@
 	[scrollView setContentSize: CGSizeMake(self.view.frame.size.width, 700)];//self.view.frame.size.height)];
 	[scrollView setContentOffset: CGPointMake(0, 0)];
 	[scrollView setContentInset:UIEdgeInsetsMake(21.0,0,0,0.0)];
-	[scrollView setBackgroundColor:[UIColor cellarBeigeColour]];
+	[scrollView setBackgroundColor:[UIColor cellarBeigeNoisyColour]];
 	[scrollView setShowsVerticalScrollIndicator:NO];
 	[scrollView setScrollEnabled:YES];
 	[scrollView setUserInteractionEnabled:YES];

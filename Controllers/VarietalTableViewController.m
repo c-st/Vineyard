@@ -63,7 +63,7 @@
 	
 	if ([self.selectedVarietals containsObject:varietal]) {
 		[cell setAccessoryType:UITableViewCellAccessoryCheckmark];
-		[cell setBackgroundColor:[UIColor cellarBeigeColour]];
+		[cell setBackgroundColor:[UIColor cellarBeigeNoisyColour]];
 	} else {
 		[cell setAccessoryType:UITableViewCellAccessoryNone];
 	}

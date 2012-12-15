@@ -22,8 +22,6 @@
 	if (self) {
 		[self setWine:theWine];
 		
-		//[self.contentView setBackgroundColor:[UIColor clearColor]];
-		
 		[self setCellBackgroundView:[self buildWineView]];
 
 		[self.contentView addSubview:[self cellBackgroundView]];

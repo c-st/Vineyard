@@ -7,6 +7,7 @@
 typedef NS_ENUM( NSUInteger, SettingsCellType ) {
 	TextSettingsCellType,
 	YearSettingsCellType,
+	DoubleSettingsCellType,
 	DetailViewSettingsCellType,
 	RatingSettingsCellType
 };
