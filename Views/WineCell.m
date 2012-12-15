@@ -78,7 +78,7 @@
 	[bg setOpaque:YES];
 	
 	// Name
-	UILabel *nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, 200, 25)];
+	UILabel *nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, 240, 25)];
 	[nameLabel setBackgroundColor:[UIColor cellarGrayColour]];
     [nameLabel setFont:[UIFont fontWithName:@"Baskerville" size:20]];
 	[nameLabel setTextColor:[UIColor blackColor]];
@@ -143,7 +143,7 @@
 		}
 
 		UIImageView *bottleImage = [[UIImageView alloc] initWithImage:bottle];
-		[bottleImage setFrame:CGRectMake(252, 35, 35, 35)];
+		[bottleImage setFrame:CGRectMake(253, 35, 35, 35)];
 		[bottleImage setAlpha:0.8];
 		[bg addSubview:bottleImage];
 	}
@@ -237,10 +237,6 @@
 	// stroke
 	self.cellBackgroundView.layer.borderColor =	[[UIColor blackColor] CGColor];
 	self.cellBackgroundView.layer.borderWidth = 0.5f;
-	
-	
-	//[self.cellBackgroundView.layer setPosition:CGPointMake(159.5, self.cellBackgroundView.layer.position.y)];
-	
 }
 
 - (void)drawRect:(CGRect)rect {

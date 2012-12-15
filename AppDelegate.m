@@ -31,7 +31,7 @@
     //[InitialDataImportService clearStore];
     
     // Import sample data
-	//[InitialDataImportService importInitialDataFromJson];
+	[InitialDataImportService importInitialDataFromJson];
     
     
     // Display data

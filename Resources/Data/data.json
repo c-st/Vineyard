@@ -9,7 +9,8 @@
 				 {"countryID":"grc", "name":"Greece", "isoCode":"GRC"},
 				 {"countryID":"us", "name":"United-States", "isoCode":"US"},
 				 {"countryID":"zaf", "name":"South-Africa", "isoCode":"ZAF"},
-				 {"countryID":"nzl", "name":"New-Zealand", "isoCode":"NZL"}
+				 {"countryID":"nzl", "name":"New-Zealand", "isoCode":"NZL"},
+				 {"countryID":"etstland", "name":"Testland", "isoCode":"TST"}
                  ],
 	
 	"classifications":[
@@ -30,7 +31,9 @@
 	
 	"grapeTypes":[
 				  {"grapeTypeID":"red", "name":"Red"},
-				  {"grapeTypeID":"white","name":"White"}
+				  {"grapeTypeID":"white","name":"White"},
+				  {"grapeTypeID":"rose","name":"Rosé"},
+				  {"grapeTypeID":"sparkling","name":"Sparkling wine"}
 	],
 	
 	"varietals":[
@@ -63,7 +66,8 @@
 				 {"varietalID":"verdejo","name":"Verdejo", "grapeTypeID":"white"},
 				 {"varietalID":"trebbiano","name":"Trebbiano", "grapeTypeID":"white"},
 				 {"varietalID":"malvasia","name":"Malvasia", "grapeTypeID":"white"},
-				 {"varietalID":"muscat_blanc","name":"Muscat Blanc", "grapeTypeID":"white"}
+				 {"varietalID":"muscat_blanc","name":"Muscat Blanc", "grapeTypeID":"white"},
+				 {"varietalID":"scheurebe","name":"Scheurebe", "grapeTypeID":"white"}
 	],
 	
 	"regions":[

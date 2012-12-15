@@ -10,6 +10,10 @@
 	return [UIColor colorWithRed:(234.0f/255.0f) green:(227.0f/255.0f) blue:(217.0f/255.0f) alpha:1.0f];
 }
 
++(UIColor *) cellarBeigeNoisyColour {
+	return [UIColor colorWithPatternImage:[UIImage imageNamed:@"background.png"]];
+}
+
 +(UIColor *) cellarGrayColour {
 	return [UIColor colorWithRed:(246/255.0) green:(246/255.0) blue:(246/255.0) alpha:1.0];
 }

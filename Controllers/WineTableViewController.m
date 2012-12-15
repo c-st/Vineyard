@@ -1,4 +1,5 @@
 #import "UIColor+CellarColours.h"
+#import "UIImage+Tint.h"
 #import "WineTableViewController.h"
 #import "Wine.h"
 #import "Appellation.h"
@@ -22,11 +23,10 @@
     [super viewDidLoad];
 	[self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
 	[self.tableView setRowHeight:145];
-	[self.tableView setBackgroundColor:[UIColor cellarBeigeColour]];
-	
+	[self.tableView setBackgroundColor:[UIColor cellarBeigeNoisyColour]];
 	self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 15, 0);
 	
-	// add gesture recognizer
+	// add gesture recognize
 	[self setTapGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(endEditMode:)]];
 	[self.tapGestureRecognizer  setCancelsTouchesInView:YES];
 	[self.tapGestureRecognizer setEnabled:NO];
