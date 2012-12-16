@@ -60,6 +60,11 @@
         </relationship>
         <relationship name="wineries" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Winery" inverseName="region" inverseEntity="Winery" syncable="YES"/>
     </entity>
+    <entity name="TemperatureRange" representedClassName="TemperatureRange" syncable="YES">
+        <attribute name="temperatureFrom" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="temperatureTo" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <relationship name="wine" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Wine" inverseName="servingTemperature" inverseEntity="Wine" syncable="YES"/>
+    </entity>
     <entity name="Varietal" representedClassName="Varietal" syncable="YES">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="varietalID" optional="YES" attributeType="String" syncable="YES">
@@ -81,6 +86,7 @@
         <relationship name="colour" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="GrapeType" inverseName="wines" inverseEntity="GrapeType" syncable="YES"/>
         <relationship name="country" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Country" inverseName="wines" inverseEntity="Country" syncable="YES"/>
         <relationship name="location" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Location" inverseName="wines" inverseEntity="Location" syncable="YES"/>
+        <relationship name="servingTemperature" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="TemperatureRange" inverseName="wine" inverseEntity="TemperatureRange" syncable="YES"/>
         <relationship name="varietals" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Varietal" inverseName="wines" inverseEntity="Varietal" syncable="YES"/>
         <relationship name="winery" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Winery" inverseName="wines" inverseEntity="Winery" syncable="YES"/>
     </entity>
@@ -97,7 +103,8 @@
         <element name="Location" positionX="-569" positionY="29" width="128" height="88"/>
         <element name="Region" positionX="-288" positionY="126" width="128" height="118"/>
         <element name="Varietal" positionX="331" positionY="338" width="128" height="103"/>
-        <element name="Wine" positionX="88" positionY="149" width="128" height="223"/>
+        <element name="Wine" positionX="88" positionY="149" width="128" height="238"/>
         <element name="Winery" positionX="-317" positionY="368" width="128" height="73"/>
+        <element name="TemperatureRange" positionX="79" positionY="515" width="128" height="88"/>
     </elements>
 </model>

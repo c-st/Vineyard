@@ -18,6 +18,7 @@ extern const struct WineRelationships {
 	__unsafe_unretained NSString *colour;
 	__unsafe_unretained NSString *country;
 	__unsafe_unretained NSString *location;
+	__unsafe_unretained NSString *servingTemperature;
 	__unsafe_unretained NSString *varietals;
 	__unsafe_unretained NSString *winery;
 } WineRelationships;
@@ -29,6 +30,7 @@ extern const struct WineFetchedProperties {
 @class GrapeType;
 @class Country;
 @class Location;
+@class TemperatureRange;
 @class Varietal;
 @class Winery;
 
@@ -136,6 +138,13 @@ extern const struct WineFetchedProperties {
 
 
 
+@property (nonatomic, strong) TemperatureRange* servingTemperature;
+
+//- (BOOL)validateServingTemperature:(id*)value_ error:(NSError**)error_;
+
+
+
+
 @property (nonatomic, strong) NSSet* varietals;
 
 - (NSMutableSet*)varietalsSet;
@@ -225,6 +234,11 @@ extern const struct WineFetchedProperties {
 
 - (Location*)primitiveLocation;
 - (void)setPrimitiveLocation:(Location*)value;
+
+
+
+- (TemperatureRange*)primitiveServingTemperature;
+- (void)setPrimitiveServingTemperature:(TemperatureRange*)value;
 
 
 
