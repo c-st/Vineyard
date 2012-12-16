@@ -3,8 +3,9 @@
 #import "AddWineViewController.h"
 
 #import "UIColor+CellarColours.h"
+#import "SSToolkit.h"
 
-#import <QuartzCore/QuartzCore.h>
+
 
 @interface WineDetailViewController ()
 
@@ -12,7 +13,9 @@
 
 @implementation WineDetailViewController
 
-@synthesize wine;
+double deltaLatitude;
+
+@synthesize wine, mapView;
 
 - (id) initWithWine:(Wine *)theWine {
 	if ((self = [super init])) {
@@ -41,9 +44,9 @@
 	UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(bound.origin.x,
 																			  bound.origin.y,
 																			  bound.size.width,
-																			  bound.size.height)];
+																			  self.view.frame.size.height)];
 	
-	[scrollView setContentSize: CGSizeMake(self.view.frame.size.width, self.view.frame.size.height + 100)];
+	[scrollView setContentSize: CGSizeMake(self.view.frame.size.width, self.view.frame.size.height )];
 	[scrollView setContentOffset: CGPointMake(0, 0)];
 	[scrollView setContentInset:UIEdgeInsetsMake(21.0,0,0,0.0)];
 	[scrollView setBackgroundColor:[UIColor cellarBeigeNoisyColour]];
@@ -52,16 +55,41 @@
 	[scrollView setUserInteractionEnabled:YES];
 	[scrollView setDelegate:self];
 	
+	// Map -200
+	self.mapView = [[MKMapView alloc] initWithFrame:CGRectMake(0, -100, bound.size.width, 300)];
+	
+    CLLocationCoordinate2D coordinate = {wine.location.latitudeValue, wine.location.longitudeValue};
+	[mapView setRegion:MKCoordinateRegionMakeWithDistance(coordinate, 1500, 1500) animated:YES];
+	[mapView setCenterCoordinate:coordinate animated:YES];
+	
+	
+	[mapView setScrollEnabled:NO];
+	[mapView setZoomEnabled:NO];
+	
+	CLLocationCoordinate2D referencePosition = [mapView convertPoint:CGPointMake(0, 0) toCoordinateFromView:mapView];
+    CLLocationCoordinate2D referencePosition2 = [mapView convertPoint:CGPointMake(0, 100) toCoordinateFromView:mapView];
+    deltaLatitude = (referencePosition2.latitude - referencePosition.latitude) / 100;
+	
+	MKPointAnnotation *point = [[MKPointAnnotation alloc] init];
+	point.coordinate = coordinate;
+	[mapView addAnnotation:point];
+	 
+	[scrollView addSubview:mapView];
+
 	
 	// White
-	UILabel *whiteArea = [[UILabel alloc] initWithFrame:CGRectMake(bound.origin.x, bound.origin.y, bound.size.width, 200)];
+	UILabel *whiteArea = [[UILabel alloc] initWithFrame:CGRectMake(bound.origin.x, 100, bound.size.width, 200)];
 	[whiteArea setBackgroundColor:[UIColor whiteColor]];
-	
 	[scrollView addSubview:whiteArea];
+	
+	// Line view
+	SSLineView *line = [[SSLineView alloc] initWithFrame:CGRectMake(0, 100, bound.size.width, 20)];
+	[line setLineColor:[UIColor lightGrayColor]];
+	[scrollView addSubview:line];
 	
 	// Shadow
 	CAGradientLayer *shadow = [CAGradientLayer layer];
-	shadow.frame = CGRectMake(0, 200, bound.size.width, 8);
+	shadow.frame = CGRectMake(0, 300, bound.size.width, 8);
 	shadow.startPoint = CGPointMake(1.0, 0.5);
 	shadow.endPoint = CGPointMake(1.0, 1.0);
 	shadow.colors = @[(id)[[UIColor colorWithWhite:0.0 alpha:0.2] CGColor], (id)[[UIColor clearColor] CGColor]];
@@ -69,7 +97,7 @@
 	
 	
 	// Name
-	UILabel *nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, 300, 25)];
+	UILabel *nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 110, 300, 25)];
 	[nameLabel setBackgroundColor:[UIColor clearColor]];
     [nameLabel setFont:[UIFont fontWithName:@"Baskerville" size:20]];
 	[nameLabel setTextColor:[UIColor blackColor]];
@@ -80,6 +108,19 @@
 	[self.view addSubview:scrollView];
 }
 
+- (void)scrollViewDidScroll:(UIScrollView *)theScrollView {
+    CGFloat y = theScrollView.contentOffset.y;
+    // did we drag ?
+    if (y<0) {
+        //we moved y pixels down, how much latitude is that ?
+        double deltaLat = y * deltaLatitude;
+		
+        //Move the center coordinate accordingly
+        CLLocationCoordinate2D newCenter = CLLocationCoordinate2DMake(wine.location.latitudeValue - deltaLat/2, wine.location.longitudeValue);
+		[mapView setCenterCoordinate:newCenter animated:NO];
+    }
+}
+
 - (void) editWine {
 	// Transition to AddWineViewController withWine
 	AddWineViewController *addWineController = [[AddWineViewController alloc] initWithWine:wine];
@@ -88,16 +129,6 @@
 		[UIView setAnimationTransition:UIViewAnimationTransitionFlipFromRight forView:self.navigationController.view cache:NO];
 		
 	} completion:^(BOOL finished){}];
-	
-	/*
-	[UIView  beginAnimations:@"switch" context:nil];
-	[UIView setAnimationCurve: UIViewAnimationCurveEaseInOut];
-	[UIView setAnimationDuration:0.5];
-	[[self navigationController] pushViewController:wineViewController animated:NO];
-	[UIView setAnimationTransition:UIViewAnimationTransitionFlipFromRight forView:self.navigationController.view cache:NO];
-	[UIView commitAnimations];
-	*/
-	//[[self navigationController] pushViewController:wineViewController animated:YES];
 }
 
 

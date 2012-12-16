@@ -266,8 +266,10 @@
 	
 	// if a new wine is created, set location.
 	if ([self newWine]) {
-		[self.wine.location setLatitudeValue:newLocation.coordinate.latitude];
-		[self.wine.location setLongitudeValue:newLocation.coordinate.longitude];
+		Location *loc = [Location createEntity];
+		[loc setLatitudeValue:newLocation.coordinate.latitude];
+		[loc setLongitudeValue:newLocation.coordinate.longitude];
+		[self.wine setLocation:loc];
 	}
 	[manager stopUpdatingLocation];
 }
