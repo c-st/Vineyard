@@ -16,6 +16,7 @@ const struct WineRelationships WineRelationships = {
 	.appellation = @"appellation",
 	.colour = @"colour",
 	.country = @"country",
+	.location = @"location",
 	.varietals = @"varietals",
 	.winery = @"winery",
 };
@@ -153,6 +154,10 @@ const struct WineFetchedProperties WineFetchedProperties = {
 	
 
 @dynamic country;
+
+	
+
+@dynamic location;
 
 	
 

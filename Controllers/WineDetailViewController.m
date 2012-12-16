@@ -4,6 +4,8 @@
 
 #import "UIColor+CellarColours.h"
 
+#import <QuartzCore/QuartzCore.h>
+
 @interface WineDetailViewController ()
 
 @end
@@ -34,7 +36,6 @@
 	[[self navigationItem] setRightBarButtonItem:editButton];
 	
 	// Scroll view
-	// Scroll view
 	CGRect bound = [[UIScreen mainScreen] bounds];
 	
 	UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(bound.origin.x,
@@ -42,7 +43,7 @@
 																			  bound.size.width,
 																			  bound.size.height)];
 	
-	[scrollView setContentSize: CGSizeMake(self.view.frame.size.width, 700)];//self.view.frame.size.height)];
+	[scrollView setContentSize: CGSizeMake(self.view.frame.size.width, self.view.frame.size.height + 100)];
 	[scrollView setContentOffset: CGPointMake(0, 0)];
 	[scrollView setContentInset:UIEdgeInsetsMake(21.0,0,0,0.0)];
 	[scrollView setBackgroundColor:[UIColor cellarBeigeNoisyColour]];
@@ -55,12 +56,20 @@
 	// White
 	UILabel *whiteArea = [[UILabel alloc] initWithFrame:CGRectMake(bound.origin.x, bound.origin.y, bound.size.width, 200)];
 	[whiteArea setBackgroundColor:[UIColor whiteColor]];
-	whiteArea.shadowColor = [UIColor blackColor];
-	whiteArea.shadowOffset = CGSizeMake(1.0, 1.0);
+	
 	[scrollView addSubview:whiteArea];
 	
+	// Shadow
+	CAGradientLayer *shadow = [CAGradientLayer layer];
+	shadow.frame = CGRectMake(0, 200, bound.size.width, 8);
+	shadow.startPoint = CGPointMake(1.0, 0.5);
+	shadow.endPoint = CGPointMake(1.0, 1.0);
+	shadow.colors = @[(id)[[UIColor colorWithWhite:0.0 alpha:0.2] CGColor], (id)[[UIColor clearColor] CGColor]];
+	[scrollView.layer addSublayer:shadow];
+	
+	
 	// Name
-	UILabel *nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, 200, 25)];
+	UILabel *nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, 300, 25)];
 	[nameLabel setBackgroundColor:[UIColor clearColor]];
     [nameLabel setFont:[UIFont fontWithName:@"Baskerville" size:20]];
 	[nameLabel setTextColor:[UIColor blackColor]];
@@ -90,6 +99,7 @@
 	*/
 	//[[self navigationController] pushViewController:wineViewController animated:YES];
 }
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];

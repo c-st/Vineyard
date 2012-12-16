@@ -2,7 +2,7 @@
 // Make changes to Country.h instead.
 
 #import <CoreData/CoreData.h>
-#import "Location.h"
+
 
 extern const struct CountryAttributes {
 	__unsafe_unretained NSString *countryID;
@@ -32,7 +32,7 @@ extern const struct CountryFetchedProperties {
 @interface CountryID : NSManagedObjectID {}
 @end
 
-@interface _Country : Location {}
+@interface _Country : NSManagedObject {}
 + (id)insertInManagedObjectContext:(NSManagedObjectContext*)moc_;
 + (NSString*)entityName;
 + (NSEntityDescription*)entityInManagedObjectContext:(NSManagedObjectContext*)moc_;

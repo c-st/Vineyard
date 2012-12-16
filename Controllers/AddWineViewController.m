@@ -12,11 +12,13 @@
 #import "Appellation.h"
 #import "Wine.h"
 #import "Country.h"
+#import "Location.h"
+
 
 
 @implementation AddWineViewController
 
-@synthesize configurableProperties, wine, tableView, newWine;
+@synthesize configurableProperties, wine, tableView, newWine, locationManager;
 
 - (id) init {
 	if ((self = [super init])) {
@@ -24,6 +26,9 @@
 		[self setWine: [Wine createEntity]];
 		[self setTitle:@"Add a Wine"];
 		[self setNewWine:YES];
+		
+		[self requestLocationUpdate];
+		[self.wine setCreationTime:[NSDate date]];
 	}
     return self;
 }
@@ -34,11 +39,11 @@
 		
 		//[self setTitle:[NSString stringWithFormat:@"%@", theWine.name]];
 		[self setTitle:@"Edit Wine"];
-		
 		[self setNewWine:NO];
 	}
     return self;
 }
+
 
 - (void) loadView {
 	[super loadView];
@@ -171,7 +176,7 @@
 							colourSettingsCell,
 							varietalSettingsCell];
 	
-	NSArray *rating = @[priceSettingsCell,
+	NSArray *rating = @[//priceSettingsCell,
 					   ratingSettingsCell];
 	
 	[self setConfigurableProperties:@[basics,
@@ -243,6 +248,28 @@
 
 -(void)dismissKeyboard {
 	[self.view endEditing:YES];
+}
+
+#pragma mark
+#pragma mark Location
+
+- (void) requestLocationUpdate {
+	self.locationManager = [[CLLocationManager alloc] init];
+	locationManager.delegate = self;
+	locationManager.distanceFilter = kCLDistanceFilterNone;
+	locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+	[locationManager startUpdatingLocation];
+}
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
+    NSLog(@"Location %f %f", newLocation.coordinate.latitude, newLocation.coordinate.longitude);
+	
+	// if a new wine is created, set location.
+	if ([self newWine]) {
+		[self.wine.location setLatitudeValue:newLocation.coordinate.latitude];
+		[self.wine.location setLongitudeValue:newLocation.coordinate.longitude];
+	}
+	[manager stopUpdatingLocation];
 }
 
 @end

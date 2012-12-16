@@ -52,6 +52,7 @@
 		833146DD16791B0E000F9654 /* PopoverView.m in Sources */ = {isa = PBXBuildFile; fileRef = 833146DB16791B0E000F9654 /* PopoverView.m */; };
 		833C5F2F167A81C400D4F65C /* wine_bottle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 833C5F2E167A81C400D4F65C /* wine_bottle@2x.png */; };
 		835C6D8B167C9F9C00AC2A04 /* background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 835C6D8A167C9F9C00AC2A04 /* background@2x.png */; };
+		835C6D8E167E1B4700AC2A04 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 835C6D8D167E1B4700AC2A04 /* CoreLocation.framework */; };
 		8361EE291677B4B50057E04B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8361EE281677B4B50057E04B /* main.m */; };
 		8361EE4F1677B51E0057E04B /* CH.png in Resources */ = {isa = PBXBuildFile; fileRef = 8361EE431677B51E0057E04B /* CH.png */; };
 		8361EE501677B51E0057E04B /* US.png in Resources */ = {isa = PBXBuildFile; fileRef = 8361EE441677B51E0057E04B /* US.png */; };
@@ -251,6 +252,8 @@
 		833591E5164B145E00FEA5C9 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		833C5F2E167A81C400D4F65C /* wine_bottle@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "wine_bottle@2x.png"; path = "Resources/Images/Icons/wine_bottle@2x.png"; sourceTree = SOURCE_ROOT; };
 		835C6D8A167C9F9C00AC2A04 /* background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "background@2x.png"; path = "Resources/Images/background@2x.png"; sourceTree = SOURCE_ROOT; };
+		835C6D8D167E1B4700AC2A04 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		835C6D8F167E22A900AC2A04 /* Cellar 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cellar 2.xcdatamodel"; sourceTree = "<group>"; };
 		8361EE281677B4B50057E04B /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = SOURCE_ROOT; };
 		8361EE431677B51E0057E04B /* CH.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = CH.png; path = Resources/Flags/CH.png; sourceTree = SOURCE_ROOT; };
 		8361EE441677B51E0057E04B /* US.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = US.png; path = Resources/Flags/US.png; sourceTree = SOURCE_ROOT; };
@@ -377,6 +380,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				835C6D8E167E1B4700AC2A04 /* CoreLocation.framework in Frameworks */,
 				8319B00A1677C6E0005E28BB /* MapKit.framework in Frameworks */,
 				8319AFE11677C0DC005E28BB /* libSSToolkit.a in Frameworks */,
 				83EF99E5165AA92700C56F40 /* QuartzCore.framework in Frameworks */,
@@ -782,6 +786,7 @@
 		83D5DD5C163EBC50001C857E = {
 			isa = PBXGroup;
 			children = (
+				835C6D8D167E1B4700AC2A04 /* CoreLocation.framework */,
 				8319B0091677C6E0005E28BB /* MapKit.framework */,
 				8319AFD11677C09F005E28BB /* SSToolkit.xcodeproj */,
 				832EDC4F165FD4FA00AE20A9 /* Frameworks */,
@@ -1215,6 +1220,7 @@
 		8361EE601677B55B0057E04B /* Cellar.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				835C6D8F167E22A900AC2A04 /* Cellar 2.xcdatamodel */,
 				8361EE611677B55B0057E04B /* Cellar.xcdatamodel */,
 			);
 			currentVersion = 8361EE611677B55B0057E04B /* Cellar.xcdatamodel */;
