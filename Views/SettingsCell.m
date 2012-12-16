@@ -1,10 +1,9 @@
-#import "SettingsCell.h"
+#import "UIColor+CellarColours.h"
 
-#import "Country.h"
-#import "GrapeType.h"
+#import "SettingsCell.h"
 #import "AddWineViewController.h"
 
-#import "UIColor+CellarColours.h"
+#import "NMRangeSlider.h"
 
 @implementation SettingsCell
 
@@ -17,6 +16,7 @@
 	[self setCellType:theCellType];
 	[self setPropertyIdentifier:thePropertyIdentifier];
 	[self setName:theName];
+	[self setSelectionStyle:UITableViewCellEditingStyleNone];
 	
 	switch (theCellType) {
 		case TextSettingsCellType: {
@@ -42,7 +42,6 @@
 				[textField setText:currentValue];
 				[textField setTextColor:[UIColor blackColor]];
 			}
-			
 			break;
 		}
 			
@@ -76,45 +75,46 @@
 			if (currentValue != nil && [currentValue isKindOfClass:[NSString class]]) {
 				NSInteger *currentRow = [self rowForYearString:currentValue];
 				NSLog(@"setting value is %@, row is %ld", currentValue, (long)currentRow);
-			
 				[pickerView selectRow:currentRow inComponent:0 animated:YES];
-				
 				[textField setText:currentValue];
 				[textField setTextColor:[UIColor blackColor]];
 			}
 			break;
 		}
-			
-		case DoubleNumberSettingsCellType: {
+		
+		case RangeSettingsCellType: {
 			[self setAccessoryType:UITableViewCellAccessoryNone];
 			UITextField *textField=[[UITextField alloc]initWithFrame:CGRectMake(10, 12, self.frame.size.width - 50 - 10, 30)];
 			[textField setTextColor: [UIColor lightGrayColor]];
-			[textField setFont:[UIFont systemFontOfSize:16]];
-			[textField setKeyboardType:UIKeyboardTypeDecimalPad];
-			[textField setAutocorrectionType: UITextAutocorrectionTypeNo];
-			[textField setAutocapitalizationType:UITextAutocapitalizationTypeWords];
-			[textField setAutoresizingMask:UIViewAutoresizingFlexibleHeight];
-			[textField setAutoresizesSubviews:YES];
-			[textField setBorderStyle:UITextBorderStyleNone];
+			
 			[textField setPlaceholder:theName];
-			[textField addTarget:self action:@selector(textFieldValueChanged:) forControlEvents:UIControlEventEditingChanged];
-			[textField addTarget:self action:@selector(textFieldValueChangedDisappear:) forControlEvents: UIControlEventEditingDidEnd | UIControlEventEditingDidEndOnExit];
-			[self.contentView addSubview:textField];
 			[textField setDelegate:self];
 			
-			// check if we have an initial value
+			// add range slider
+			NMRangeSlider *slider = [[NMRangeSlider alloc] initWithFrame:CGRectMake(15, 8, self.frame.size.width - 50 - 20, 30)];
+			slider.minimumValue = 0;
+			slider.maximumValue = 100;
+			slider.lowerValue = 0;
+			slider.upperValue = 100;
+			slider.minimumRange = 10;
+			slider.stepValue = 0.2;
+			slider.stepValueContinuously = NO;
+			
+			//[slider addTarget:self action:@selector(updateRangeLabel:) forControlEvents:UIControlEventValueChanged];
+			[self.contentView addSubview:slider];
+			
+//			[self.contentView addSubview:textField];
+			
 			id currentValue = [wine valueForKey:propertyIdentifier];
-			/**
-			if (currentValue != nil && [currentValue isKindOfClass:[NSNumber class]]) {
-				NSLog(@"setting value is %@", currentValue);
+			if (currentValue != nil && [currentValue isKindOfClass:[TemperatureRange class]]) {
+				NSLog(@"value found");
 				[textField setText:currentValue];
 				[textField setTextColor:[UIColor blackColor]];
 			}
-			 */
-			
+
 			break;
 		}
-			
+		
 		case RatingSettingsCellType: {
 			[self setAccessoryType:UITableViewCellAccessoryNone];
 			SSRatingPicker *ratingPicker = [[SSRatingPicker alloc] initWithFrame:CGRectMake(8, 0, self.frame.size.width - 50 - 10, 40)];

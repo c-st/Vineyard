@@ -138,7 +138,7 @@
 	
 	[countryTableViewController setSettingsCell:countrySettingsCell];
 	
-	// Vontae
+	// Vintage
 	SettingsCell *vintageSettingsCell = [[SettingsCell alloc] initWithWine:[self wine] andType:YearSettingsCellType andProperty:@"vintage" andName:@"Vintage"];
 	
 	// Colour
@@ -158,7 +158,10 @@
 	SettingsCell *ratingSettingsCell = [[SettingsCell alloc] initWithWine:[self wine] andType:RatingSettingsCellType andProperty:@"rating" andName:@"Rating"];
 	
 	// Price
-	SettingsCell *priceSettingsCell = [[SettingsCell alloc] initWithWine:[self wine] andType:DoubleNumberSettingsCellType andProperty:@"price" andName:@"Price"];
+	//SettingsCell *priceSettingsCell = [[SettingsCell alloc] initWithWine:[self wine] andType:DoubleNumberSettingsCellType andProperty:@"price" andName:@"Price"];
+	
+	// Serving temperature
+	SettingsCell *servingTemperatureSettingsCell = [[SettingsCell alloc] initWithWine:[self wine] andType:RangeSettingsCellType andProperty:@"servingTemperature" andName:@"Serving Temperature"];
 	
 	NSArray *basics = nil;
 	
@@ -179,9 +182,14 @@
 	NSArray *rating = @[//priceSettingsCell,
 					   ratingSettingsCell];
 	
+	NSArray *tasting = @[servingTemperatureSettingsCell
+					  // barrel time, tags, notes,
+					  ];
+	
 	[self setConfigurableProperties:@[basics,
 									 varietal,
-									 rating]];
+									 rating,
+									 tasting]];
 	
 }
 
@@ -209,7 +217,9 @@
 	SettingsCell *selectedCell = [[[self configurableProperties] objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
 	[selectedCell updatePredicateAndRefetch];
 
-	[[self navigationController] pushViewController:selectedCell.settingsViewController animated:YES];
+	if (selectedCell.settingsViewController != nil) {
+		[[self navigationController] pushViewController:selectedCell.settingsViewController animated:YES];
+	}
 }
 
 #pragma mark

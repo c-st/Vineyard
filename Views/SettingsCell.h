@@ -1,13 +1,17 @@
 #import <UIKit/UIKit.h>
-#import "Wine.h"
-#import "AbstractTableViewController.h"
 
+#import "Country.h"
+#import "GrapeType.h"
+#import "Wine.h"
+#import "TemperatureRange.h"
+
+#import "AbstractTableViewController.h"
 #import "SSToolkit.h"
 
 typedef NS_ENUM( NSUInteger, SettingsCellType ) {
 	TextSettingsCellType,
 	YearSettingsCellType,
-	DoubleNumberSettingsCellType,
+	RangeSettingsCellType,
 	DetailViewSettingsCellType,
 	RatingSettingsCellType
 };

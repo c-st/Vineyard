@@ -33,7 +33,8 @@
 				  {"grapeTypeID":"red", "name":"Red"},
 				  {"grapeTypeID":"white","name":"White"},
 				  {"grapeTypeID":"rose","name":"Rosé"},
-				  {"grapeTypeID":"sparkling","name":"Sparkling wine"}
+				  {"grapeTypeID":"sparkling","name":"Sparkling wine"},
+				  {"grapeTypeID":"port","name":"Port"}
 	],
 	
 	"varietals":[
