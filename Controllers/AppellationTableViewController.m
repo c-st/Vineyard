@@ -18,8 +18,7 @@
 
 -(void) viewWillAppear:(BOOL)animated {
 	if (self.settingsCell.wine != nil) {
-		[self setFetchedResultsController:[Appellation fetchAllGroupedBy:@"region" withPredicate:[self getFetchPredicate:self.settingsCell.wine] sortedBy:@"region,name" ascending:YES]];
-		
+	[self setFetchedResultsController:[Appellation fetchAllGroupedBy:@"region" withPredicate:[self getFetchPredicate:self.settingsCell.wine] sortedBy:@"region.name,name" ascending:YES]];
 	}
 	[super viewWillAppear:animated];
 }
@@ -79,7 +78,7 @@
 	Appellation *appellation = [[super fetchedResultsController] objectAtIndexPath:indexPath];
 	
 	NSPredicate *searchStatement = [NSPredicate predicateWithFormat:@"appellation.appellationID == %@", appellation.appellationID];
-    NSFetchedResultsController *wineSearchController = [Wine fetchAllSortedBy:@"name" ascending:YES withPredicate:searchStatement groupBy:nil delegate:self];
+    NSFetchedResultsController *wineSearchController = [Wine fetchAllSortedBy:@"appellation.name" ascending:YES withPredicate:searchStatement groupBy:nil delegate:self];
 	
 	WineTableViewController *wineTableViewController = [[WineTableViewController alloc] initWithFetchedResultsController:wineSearchController];
 	

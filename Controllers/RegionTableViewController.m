@@ -47,7 +47,7 @@
 
 	Region *region = [[super fetchedResultsController] objectAtIndexPath:indexPath];
     NSPredicate *searchStatement = [NSPredicate predicateWithFormat:@"region.regionID == %@", region.regionID];
-    NSFetchedResultsController *appellationsController = [Appellation fetchAllSortedBy:@"name" ascending:YES withPredicate:searchStatement groupBy:nil delegate:self];
+    NSFetchedResultsController *appellationsController = [Appellation fetchAllSortedBy:@"region.name" ascending:YES withPredicate:searchStatement groupBy:nil delegate:self];
 	
 	AppellationTableViewController *appellationTableViewController = [[AppellationTableViewController alloc] initWithFetchedResultsController:appellationsController];
 	[appellationTableViewController setTitle:region.name];
