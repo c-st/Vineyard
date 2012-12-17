@@ -7,7 +7,7 @@
 
 @implementation SettingsCell
 
-@synthesize wine, cellType, propertyIdentifier, name, settingsViewController;
+@synthesize wine, cellType, propertyIdentifier, name, settingsViewController, textField;
 
 - (id) initWithWine:(Wine*)wineInstance andType:(SettingsCellType)theCellType andProperty:(NSString*)thePropertyIdentifier andName:(NSString*)theName {
 	self = [super init];
@@ -21,7 +21,7 @@
 	switch (theCellType) {
 		case TextSettingsCellType: {
 			[self setAccessoryType:UITableViewCellAccessoryNone];
-			UITextField *textField=[[UITextField alloc]initWithFrame:CGRectMake(10, 12, self.frame.size.width - 50 - 10, 30)];
+			textField=[[UITextField alloc]initWithFrame:CGRectMake(10, 12, self.frame.size.width - 50 - 10, 30)];
 			[textField setTextColor: [UIColor lightGrayColor]];
 			[textField setFont:[UIFont systemFontOfSize:16]];
 			[textField setAutocorrectionType: UITextAutocorrectionTypeNo];
@@ -52,7 +52,7 @@
 			[pickerView setDelegate:self];
 			[pickerView setShowsSelectionIndicator:YES];
 			
-			UITextField *textField=[[UITextField alloc]initWithFrame:CGRectMake(10, 12, self.frame.size.width - 50 - 10, 30)];
+			textField=[[UITextField alloc]initWithFrame:CGRectMake(10, 12, self.frame.size.width - 50 - 10, 30)];
 			[textField setTextColor: [UIColor lightGrayColor]];
 			
 			UIToolbar *toolBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 320, 56)];
@@ -84,34 +84,42 @@
 		
 		case RangeSettingsCellType: {
 			[self setAccessoryType:UITableViewCellAccessoryNone];
-			UITextField *textField=[[UITextField alloc]initWithFrame:CGRectMake(10, 12, self.frame.size.width - 50 - 10, 30)];
+			textField=[[UITextField alloc] initWithFrame:CGRectMake(10, 12, 85, 30)];
 			[textField setTextColor: [UIColor lightGrayColor]];
-			
-			[textField setPlaceholder:theName];
-			[textField setDelegate:self];
+			[textField setPlaceholder:@"8-20º"];
+			[textField setUserInteractionEnabled:NO];
+			[self.contentView addSubview:textField];
 			
 			// add range slider
-			NMRangeSlider *slider = [[NMRangeSlider alloc] initWithFrame:CGRectMake(15, 8, self.frame.size.width - 50 - 20, 30)];
+			NMRangeSlider *slider = [[NMRangeSlider alloc] initWithFrame:CGRectMake(95, 8, self.frame.size.width - 145, 30)];
 			slider.minimumValue = 0;
-			slider.maximumValue = 100;
-			slider.lowerValue = 0;
-			slider.upperValue = 100;
-			slider.minimumRange = 10;
-			slider.stepValue = 0.2;
-			slider.stepValueContinuously = NO;
+			slider.maximumValue = 20;
 			
-			//[slider addTarget:self action:@selector(updateRangeLabel:) forControlEvents:UIControlEventValueChanged];
+			slider.stepValue = 0.5;
+			[slider setStepValueContinuously:NO];
+			[slider setLowerValue:8 upperValue:20 animated:NO];
 			[self.contentView addSubview:slider];
+			slider.minimumValue=8;
+			[slider setLowerValue:8 upperValue:20 animated:NO];
 			
-//			[self.contentView addSubview:textField];
+			[slider addTarget:self action:@selector(updateSliderLabel:) forControlEvents:UIControlEventValueChanged];
+			[slider addTarget:self action:@selector(sliderForRangeWasChanged:) forControlEvents:UIControlEventTouchUpInside];
 			
 			id currentValue = [wine valueForKey:propertyIdentifier];
 			if (currentValue != nil && [currentValue isKindOfClass:[TemperatureRange class]]) {
-				NSLog(@"value found");
-				[textField setText:currentValue];
+				TemperatureRange *currentRange = (TemperatureRange *) currentValue;
+				NSLog(@"value for range found %f %f", currentRange.temperatureFromValue, currentRange.temperatureToValue);
+				
+				[self.textField setText:[NSString stringWithFormat:@"%.1f-%.1fº", currentRange.temperatureFromValue, currentRange.temperatureToValue]];
+				
+				slider.lowerValue = currentRange.temperatureFromValue;
+				slider.upperValue = currentRange.temperatureToValue;
+				
+				[slider setLowerValue:currentRange.temperatureFromValue upperValue:currentRange.temperatureToValue animated:NO];
+				
 				[textField setTextColor:[UIColor blackColor]];
 			}
-
+			
 			break;
 		}
 		
@@ -246,21 +254,21 @@
 #pragma mark
 #pragma mark Text field delegate methods
 
-- (void)textFieldDidBeginEditing:(UITextField *)textField {
-	[textField setTextColor: [UIColor blackColor]];
+- (void)textFieldDidBeginEditing:(UITextField *)theTextField {
+	[theTextField setTextColor: [UIColor blackColor]];
 }
 
-- (void)textFieldDidEndEditing:(UITextField *)textField {
+- (void)textFieldDidEndEditing:(UITextField *)theTextField {
 	// if text was set, set colour to black.
-	if ([textField.text length] > 0) {
-		[textField setTextColor: [UIColor blackColor]];
+	if ([theTextField.text length] > 0) {
+		[theTextField setTextColor: [UIColor blackColor]];
 	} else {
-		[textField setTextColor: [UIColor lightGrayColor]];
+		[theTextField setTextColor: [UIColor lightGrayColor]];
 	}
 }
 
--(void) textFieldValueChanged:(UITextField *) textField {
-	[wine setValue:textField.text forKey:propertyIdentifier];
+-(void) textFieldValueChanged:(UITextField *) theTextField {
+	[wine setValue:theTextField.text forKey:propertyIdentifier];
 	
 	// propagate change to AddWineViewController
 	UITableView *tv	= (UITableView *) self.superview;
@@ -268,10 +276,10 @@
 	[addWine updateViewFromValidation];
 }
 
--(void) textFieldValueChangedDisappear:(UITextField *) textField {
+-(void) textFieldValueChangedDisappear:(UITextField *) theTextField {
 	[self textFieldValueChanged:textField];
-	[textField resignFirstResponder];
-	[textField endEditing:YES];
+	[theTextField resignFirstResponder];
+	[theTextField endEditing:YES];
 }
 
 
@@ -325,11 +333,38 @@
 }
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
-	NSLog(@"did select");
 	[wine setValue:[self yearStringForRow:row] forKey:propertyIdentifier];
 	[(UITextField *)[[self.contentView subviews] objectAtIndex:0] setText:[self yearStringForRow:row]];
 }
 
+#pragma mark
+#pragma mark Range slider delegate methods
+
+- (void) updateSliderLabel:(NMRangeSlider *) slider {
+	NSLog(@"--> %.1f %.1f", slider.lowerValue, slider.upperValue);
+	double fromValue = slider.lowerValue;
+	double toValue = slider.upperValue;
+	[self.textField setText:[NSString stringWithFormat:@"%.1f-%.1fº", fromValue, toValue]];
+	[self.textField setTextColor:[UIColor blackColor]];
+}
+
+- (void) sliderForRangeWasChanged:(NMRangeSlider *) slider {
+	[self updateSliderLabel:slider];
+	
+	double fromValue = slider.lowerValue;
+	double toValue = slider.upperValue;
+	
+	// save value
+	if (wine.servingTemperature != nil) {
+		[wine.servingTemperature setTemperatureFromValue:fromValue];
+		[wine.servingTemperature setTemperatureToValue:toValue];
+	} else {
+		TemperatureRange *range = [TemperatureRange createEntity];
+		[range setTemperatureFromValue:fromValue];
+		[range setTemperatureToValue:toValue];
+		[wine setServingTemperature:range];
+	}
+}
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     //[super setSelected:selected animated:animated];

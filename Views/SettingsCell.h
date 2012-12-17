@@ -22,6 +22,8 @@ typedef NS_ENUM( NSUInteger, SettingsCellType ) {
 	NSString *propertyIdentifier;
 	NSString *name;
 	
+	UITextField *textField;
+	
 	// optional property (only for DetailViewSettingsCellType).
 	AbstractTableViewController *settingsViewController;
 }
@@ -43,6 +45,8 @@ typedef NS_ENUM( NSUInteger, SettingsCellType ) {
 @property (nonatomic, strong) Wine *wine;
 @property (nonatomic, strong) NSString *propertyIdentifier;
 @property (nonatomic, strong) NSString *name;
+
+@property (nonatomic, strong) UITextField *textField;
 
 @property (nonatomic, strong) AbstractTableViewController *settingsViewController;
 

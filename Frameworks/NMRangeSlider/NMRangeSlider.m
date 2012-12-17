@@ -36,6 +36,7 @@
     {
         [self configureView];
     }
+	NSLog(@"%i", [self.gestureRecognizers count]);
     
     return self;
 }
@@ -187,7 +188,7 @@
 {
     if(_trackImage==nil)
     {
-        UIImage* image = [UIImage imageNamed:@"slider-default-track"];
+        UIImage* image = [[UIImage imageNamed:@"slider-default-track"] imageTintedWithColor:[UIColor redColor] fraction:0.5];
         image = [image resizableImageWithCapInsets:UIEdgeInsetsMake(0.0, 7.0, 0.0, 7.0)];
         _trackImage = image;
     }
@@ -407,6 +408,8 @@
 
 -(BOOL) beginTrackingWithTouch:(UITouch *)touch withEvent:(UIEvent *)event
 {
+	NSLog(@"beginTracking");
+	NSLog(@"%i", [self.gestureRecognizers count]);
     CGPoint touchPoint = [touch locationInView:self];
     
     
@@ -434,6 +437,7 @@
 -(BOOL)continueTrackingWithTouch:(UITouch *)touch withEvent:(UIEvent *)event
 {
     if(!_lowerHandle.highlighted && !_upperHandle.highlighted ){
+		NSLog(@"none of them");
         return YES;
     }
     
@@ -444,23 +448,24 @@
         //get new lower value based on the touch location.
         //This is automatically contained within a valid range.
         float newValue = [self lowerValueForCenterX:(touchPoint.x - _lowerTouchOffset)];
-        
+		
         //if both upper and lower is selected, then the new value must be LOWER
         //otherwise the touch event is ignored.
         if(!_upperHandle.highlighted || newValue<_lowerValue)
         {
-            _upperHandle.highlighted=NO;
+			NSLog(@"lower highlighted. not upper or newValue < lowerV");
+            _upperHandle.highlighted = NO;
             [self bringSubviewToFront:_lowerHandle];
-            
-            [self setLowerValue:newValue animated:_stepValueContinuously ? YES : NO];
+			[self setLowerValue:newValue animated:_stepValueContinuously ? YES : NO];
         }
         else
         {
-            _lowerHandle.highlighted=NO;
+			NSLog(@"else");
+            _lowerHandle.highlighted = NO;
         }
     }
-    
-    if(_upperHandle.highlighted )
+	
+	if(_upperHandle.highlighted )
     {
         float newValue = [self upperValueForCenterX:(touchPoint.x - _upperTouchOffset)];
 
@@ -468,17 +473,18 @@
         //otherwise the touch event is ignored.
         if(!_lowerHandle.highlighted || newValue>_upperValue)
         {
-            _lowerHandle.highlighted=NO;
+            _lowerHandle.highlighted = NO;
             [self bringSubviewToFront:_upperHandle];
-            [self setUpperValue:newValue animated:_stepValueContinuously ? YES : NO];
+           [self setUpperValue:newValue animated:_stepValueContinuously ? YES : NO];
         }
         else
         {
-            _upperHandle.highlighted=NO;
+            _upperHandle.highlighted = NO;
         }
     }
      
     
+	
     //send the control event
     if(_continuous)
     {
@@ -486,8 +492,10 @@
     }
     
     //redraw
-    [self setNeedsLayout];
+    [self layoutIfNeeded];
 
+	NSLog(@"ned method");
+	
     return YES;
 }
 
@@ -495,6 +503,7 @@
 
 -(void)endTrackingWithTouch:(UITouch *)touch withEvent:(UIEvent *)event
 {
+	NSLog(@"end tracking");
     _lowerHandle.highlighted = NO;
     _upperHandle.highlighted = NO;
     
@@ -508,5 +517,11 @@
     
     [self sendActionsForControlEvents:UIControlEventValueChanged];
 }
+
+-(void) cancelTrackingWithEvent:(UIEvent *)event {
+	
+	 NSLog(@"%@",[NSThread callStackSymbols]);
+}
+
 
 @end
