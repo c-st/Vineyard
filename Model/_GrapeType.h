@@ -10,6 +10,7 @@ extern const struct GrapeTypeAttributes {
 } GrapeTypeAttributes;
 
 extern const struct GrapeTypeRelationships {
+	__unsafe_unretained NSString *defaultTemperatureRange;
 	__unsafe_unretained NSString *varietals;
 	__unsafe_unretained NSString *wines;
 } GrapeTypeRelationships;
@@ -17,6 +18,7 @@ extern const struct GrapeTypeRelationships {
 extern const struct GrapeTypeFetchedProperties {
 } GrapeTypeFetchedProperties;
 
+@class TemperatureRange;
 @class Varietal;
 @class Wine;
 
@@ -48,6 +50,13 @@ extern const struct GrapeTypeFetchedProperties {
 
 //- (BOOL)validateName:(id*)value_ error:(NSError**)error_;
 
+
+
+
+
+@property (nonatomic, strong) TemperatureRange* defaultTemperatureRange;
+
+//- (BOOL)validateDefaultTemperatureRange:(id*)value_ error:(NSError**)error_;
 
 
 
@@ -96,6 +105,11 @@ extern const struct GrapeTypeFetchedProperties {
 - (void)setPrimitiveName:(NSString*)value;
 
 
+
+
+
+- (TemperatureRange*)primitiveDefaultTemperatureRange;
+- (void)setPrimitiveDefaultTemperatureRange:(TemperatureRange*)value;
 
 
 

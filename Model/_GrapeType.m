@@ -9,6 +9,7 @@ const struct GrapeTypeAttributes GrapeTypeAttributes = {
 };
 
 const struct GrapeTypeRelationships GrapeTypeRelationships = {
+	.defaultTemperatureRange = @"defaultTemperatureRange",
 	.varietals = @"varietals",
 	.wines = @"wines",
 };
@@ -62,6 +63,10 @@ const struct GrapeTypeFetchedProperties GrapeTypeFetchedProperties = {
 
 
 
+
+@dynamic defaultTemperatureRange;
+
+	
 
 @dynamic varietals;
 

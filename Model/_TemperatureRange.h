@@ -10,12 +10,14 @@ extern const struct TemperatureRangeAttributes {
 } TemperatureRangeAttributes;
 
 extern const struct TemperatureRangeRelationships {
+	__unsafe_unretained NSString *grape;
 	__unsafe_unretained NSString *wine;
 } TemperatureRangeRelationships;
 
 extern const struct TemperatureRangeFetchedProperties {
 } TemperatureRangeFetchedProperties;
 
+@class GrapeType;
 @class Wine;
 
 
@@ -36,9 +38,9 @@ extern const struct TemperatureRangeFetchedProperties {
 @property (nonatomic, strong) NSNumber* temperatureFrom;
 
 
-@property double temperatureFromValue;
-- (double)temperatureFromValue;
-- (void)setTemperatureFromValue:(double)value_;
+@property float temperatureFromValue;
+- (float)temperatureFromValue;
+- (void)setTemperatureFromValue:(float)value_;
 
 //- (BOOL)validateTemperatureFrom:(id*)value_ error:(NSError**)error_;
 
@@ -48,12 +50,19 @@ extern const struct TemperatureRangeFetchedProperties {
 @property (nonatomic, strong) NSNumber* temperatureTo;
 
 
-@property double temperatureToValue;
-- (double)temperatureToValue;
-- (void)setTemperatureToValue:(double)value_;
+@property float temperatureToValue;
+- (float)temperatureToValue;
+- (void)setTemperatureToValue:(float)value_;
 
 //- (BOOL)validateTemperatureTo:(id*)value_ error:(NSError**)error_;
 
+
+
+
+
+@property (nonatomic, strong) GrapeType* grape;
+
+//- (BOOL)validateGrape:(id*)value_ error:(NSError**)error_;
 
 
 
@@ -78,8 +87,8 @@ extern const struct TemperatureRangeFetchedProperties {
 - (NSNumber*)primitiveTemperatureFrom;
 - (void)setPrimitiveTemperatureFrom:(NSNumber*)value;
 
-- (double)primitiveTemperatureFromValue;
-- (void)setPrimitiveTemperatureFromValue:(double)value_;
+- (float)primitiveTemperatureFromValue;
+- (void)setPrimitiveTemperatureFromValue:(float)value_;
 
 
 
@@ -87,10 +96,15 @@ extern const struct TemperatureRangeFetchedProperties {
 - (NSNumber*)primitiveTemperatureTo;
 - (void)setPrimitiveTemperatureTo:(NSNumber*)value;
 
-- (double)primitiveTemperatureToValue;
-- (void)setPrimitiveTemperatureToValue:(double)value_;
+- (float)primitiveTemperatureToValue;
+- (void)setPrimitiveTemperatureToValue:(float)value_;
 
 
+
+
+
+- (GrapeType*)primitiveGrape;
+- (void)setPrimitiveGrape:(GrapeType*)value;
 
 
 

@@ -92,15 +92,23 @@
 			
 			// add range slider
 			NMRangeSlider *slider = [[NMRangeSlider alloc] initWithFrame:CGRectMake(95, 8, self.frame.size.width - 145, 30)];
-			slider.minimumValue = 0;
-			slider.maximumValue = 20;
+			
+			// set minimum / maximum value based on ranges
+			if (self.wine.colour.defaultTemperatureRange != nil) {
+				TemperatureRange *range = self.wine.colour.defaultTemperatureRange;
+				NSLog(@"found default range. %f %f", range.temperatureFromValue, range.temperatureToValue);
+				slider.minimumValue = range.temperatureFromValue;
+				slider.maximumValue = range.temperatureToValue;
+			} else {
+				slider.minimumValue = 0;
+				slider.maximumValue = 20;
+			}
 			
 			slider.stepValue = 0.5;
 			[slider setStepValueContinuously:NO];
-			[slider setLowerValue:8 upperValue:20 animated:NO];
+			[slider setLowerValue:slider.minimumValue upperValue:slider.maximumValue animated:YES];
+			
 			[self.contentView addSubview:slider];
-			slider.minimumValue=8;
-			[slider setLowerValue:8 upperValue:20 animated:NO];
 			
 			[slider addTarget:self action:@selector(updateSliderLabel:) forControlEvents:UIControlEventValueChanged];
 			[slider addTarget:self action:@selector(sliderForRangeWasChanged:) forControlEvents:UIControlEventTouchUpInside];
@@ -109,14 +117,8 @@
 			if (currentValue != nil && [currentValue isKindOfClass:[TemperatureRange class]]) {
 				TemperatureRange *currentRange = (TemperatureRange *) currentValue;
 				NSLog(@"value for range found %f %f", currentRange.temperatureFromValue, currentRange.temperatureToValue);
-				
 				[self.textField setText:[NSString stringWithFormat:@"%.1f-%.1fº", currentRange.temperatureFromValue, currentRange.temperatureToValue]];
-				
-				slider.lowerValue = currentRange.temperatureFromValue;
-				slider.upperValue = currentRange.temperatureToValue;
-				
 				[slider setLowerValue:currentRange.temperatureFromValue upperValue:currentRange.temperatureToValue animated:NO];
-				
 				[textField setTextColor:[UIColor blackColor]];
 			}
 			
@@ -341,7 +343,7 @@
 #pragma mark Range slider delegate methods
 
 - (void) updateSliderLabel:(NMRangeSlider *) slider {
-	NSLog(@"--> %.1f %.1f", slider.lowerValue, slider.upperValue);
+	//NSLog(@"--> %.1f %.1f", slider.lowerValue, slider.upperValue);
 	double fromValue = slider.lowerValue;
 	double toValue = slider.upperValue;
 	[self.textField setText:[NSString stringWithFormat:@"%.1f-%.1fº", fromValue, toValue]];

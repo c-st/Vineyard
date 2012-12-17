@@ -9,6 +9,7 @@ const struct TemperatureRangeAttributes TemperatureRangeAttributes = {
 };
 
 const struct TemperatureRangeRelationships TemperatureRangeRelationships = {
+	.grape = @"grape",
 	.wine = @"wine",
 };
 
@@ -60,22 +61,22 @@ const struct TemperatureRangeFetchedProperties TemperatureRangeFetchedProperties
 
 
 
-- (double)temperatureFromValue {
+- (float)temperatureFromValue {
 	NSNumber *result = [self temperatureFrom];
-	return [result doubleValue];
+	return [result floatValue];
 }
 
-- (void)setTemperatureFromValue:(double)value_ {
-	[self setTemperatureFrom:[NSNumber numberWithDouble:value_]];
+- (void)setTemperatureFromValue:(float)value_ {
+	[self setTemperatureFrom:[NSNumber numberWithFloat:value_]];
 }
 
-- (double)primitiveTemperatureFromValue {
+- (float)primitiveTemperatureFromValue {
 	NSNumber *result = [self primitiveTemperatureFrom];
-	return [result doubleValue];
+	return [result floatValue];
 }
 
-- (void)setPrimitiveTemperatureFromValue:(double)value_ {
-	[self setPrimitiveTemperatureFrom:[NSNumber numberWithDouble:value_]];
+- (void)setPrimitiveTemperatureFromValue:(float)value_ {
+	[self setPrimitiveTemperatureFrom:[NSNumber numberWithFloat:value_]];
 }
 
 
@@ -86,27 +87,31 @@ const struct TemperatureRangeFetchedProperties TemperatureRangeFetchedProperties
 
 
 
-- (double)temperatureToValue {
+- (float)temperatureToValue {
 	NSNumber *result = [self temperatureTo];
-	return [result doubleValue];
+	return [result floatValue];
 }
 
-- (void)setTemperatureToValue:(double)value_ {
-	[self setTemperatureTo:[NSNumber numberWithDouble:value_]];
+- (void)setTemperatureToValue:(float)value_ {
+	[self setTemperatureTo:[NSNumber numberWithFloat:value_]];
 }
 
-- (double)primitiveTemperatureToValue {
+- (float)primitiveTemperatureToValue {
 	NSNumber *result = [self primitiveTemperatureTo];
-	return [result doubleValue];
+	return [result floatValue];
 }
 
-- (void)setPrimitiveTemperatureToValue:(double)value_ {
-	[self setPrimitiveTemperatureTo:[NSNumber numberWithDouble:value_]];
+- (void)setPrimitiveTemperatureToValue:(float)value_ {
+	[self setPrimitiveTemperatureTo:[NSNumber numberWithFloat:value_]];
 }
 
 
 
 
+
+@dynamic grape;
+
+	
 
 @dynamic wine;
 

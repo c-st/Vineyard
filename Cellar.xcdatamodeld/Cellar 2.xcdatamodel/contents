@@ -30,6 +30,7 @@
     <entity name="GrapeType" representedClassName="GrapeType" syncable="YES">
         <attribute name="grapeTypeID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="defaultTemperatureRange" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="TemperatureRange" inverseName="grape" inverseEntity="TemperatureRange" syncable="YES"/>
         <relationship name="varietals" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Varietal" inverseName="grapeType" inverseEntity="Varietal" syncable="YES"/>
         <relationship name="wines" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Wine" inverseName="colour" inverseEntity="Wine" syncable="YES"/>
     </entity>
@@ -61,8 +62,9 @@
         <relationship name="wineries" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Winery" inverseName="region" inverseEntity="Winery" syncable="YES"/>
     </entity>
     <entity name="TemperatureRange" representedClassName="TemperatureRange" syncable="YES">
-        <attribute name="temperatureFrom" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="temperatureTo" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="temperatureFrom" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="temperatureTo" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <relationship name="grape" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="GrapeType" inverseName="defaultTemperatureRange" inverseEntity="GrapeType" syncable="YES"/>
         <relationship name="wine" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Wine" inverseName="servingTemperature" inverseEntity="Wine" syncable="YES"/>
     </entity>
     <entity name="Varietal" representedClassName="Varietal" syncable="YES">
@@ -98,13 +100,13 @@
         <element name="Appellation" positionX="304" positionY="-72" width="128" height="118"/>
         <element name="Classification" positionX="-90" positionY="-244" width="128" height="118"/>
         <element name="Country" positionX="-335" positionY="-99" width="137" height="148"/>
-        <element name="GrapeType" positionX="340" positionY="144" width="128" height="103"/>
+        <element name="GrapeType" positionX="556" positionY="158" width="128" height="118"/>
         <element name="Indication" positionX="-47" positionY="-99" width="128" height="118"/>
         <element name="Location" positionX="-569" positionY="29" width="128" height="88"/>
         <element name="Region" positionX="-288" positionY="126" width="128" height="118"/>
+        <element name="TemperatureRange" positionX="358" positionY="63" width="128" height="103"/>
         <element name="Varietal" positionX="331" positionY="338" width="128" height="103"/>
         <element name="Wine" positionX="88" positionY="149" width="128" height="238"/>
         <element name="Winery" positionX="-317" positionY="368" width="128" height="73"/>
-        <element name="TemperatureRange" positionX="79" positionY="515" width="128" height="88"/>
     </elements>
 </model>

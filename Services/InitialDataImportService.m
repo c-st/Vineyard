@@ -17,6 +17,7 @@
 #import "Indication.h"
 #import "Varietal.h"
 #import "GrapeType.h"
+#import "TemperatureRange.h"
 
 @implementation InitialDataImportService
 
@@ -102,6 +103,19 @@
 			//NSLog(@"inserting new varietal: %@", object);
 			GrapeType *newGrapeType = [GrapeType createEntity];
 			[newGrapeType importValuesForKeysWithObject:object];
+		}
+		[[NSManagedObjectContext defaultContext] saveNestedContexts];
+	}
+	
+	// Temperature ranges
+	if (![TemperatureRange hasAtLeastOneEntity]) {
+		NSLog(@"Importing temperature ranges...");
+		for (object in [data objectForKey:@"defaultTemperatureRanges"]) {
+			//NSLog(@"inserting new varietal: %@", object);
+			TemperatureRange *newTemperatureRange = [TemperatureRange createEntity];
+			[newTemperatureRange importValuesForKeysWithObject:object];
+			
+			[newTemperatureRange setGrape:[[GrapeType findByAttribute:@"grapeTypeID" withValue:[object valueForKeyPath:@"grapeTypeID"]] objectAtIndex:0]];
 		}
 		[[NSManagedObjectContext defaultContext] saveNestedContexts];
 	}
