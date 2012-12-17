@@ -36,7 +36,6 @@
     {
         [self configureView];
     }
-	NSLog(@"%i", [self.gestureRecognizers count]);
     
     return self;
 }
@@ -408,10 +407,7 @@
 
 -(BOOL) beginTrackingWithTouch:(UITouch *)touch withEvent:(UIEvent *)event
 {
-	NSLog(@"beginTracking");
-	NSLog(@"%i", [self.gestureRecognizers count]);
     CGPoint touchPoint = [touch locationInView:self];
-    
     
     //Check both buttons upper and lower thumb handles because
     //they could be on top of each other.
@@ -437,7 +433,6 @@
 -(BOOL)continueTrackingWithTouch:(UITouch *)touch withEvent:(UIEvent *)event
 {
     if(!_lowerHandle.highlighted && !_upperHandle.highlighted ){
-		NSLog(@"none of them");
         return YES;
     }
     
@@ -453,14 +448,12 @@
         //otherwise the touch event is ignored.
         if(!_upperHandle.highlighted || newValue<_lowerValue)
         {
-			NSLog(@"lower highlighted. not upper or newValue < lowerV");
             _upperHandle.highlighted = NO;
             [self bringSubviewToFront:_lowerHandle];
 			[self setLowerValue:newValue animated:_stepValueContinuously ? YES : NO];
         }
         else
         {
-			NSLog(@"else");
             _lowerHandle.highlighted = NO;
         }
     }
@@ -493,17 +486,13 @@
     
     //redraw
     [self layoutIfNeeded];
-
-	NSLog(@"ned method");
 	
     return YES;
 }
 
 
-
 -(void)endTrackingWithTouch:(UITouch *)touch withEvent:(UIEvent *)event
 {
-	NSLog(@"end tracking");
     _lowerHandle.highlighted = NO;
     _upperHandle.highlighted = NO;
     
@@ -517,11 +506,5 @@
     
     [self sendActionsForControlEvents:UIControlEventValueChanged];
 }
-
--(void) cancelTrackingWithEvent:(UIEvent *)event {
-	
-	 NSLog(@"%@",[NSThread callStackSymbols]);
-}
-
 
 @end

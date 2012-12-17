@@ -46,13 +46,12 @@
 	NSLog(@"%i wines.", [[[Wine fetchAllSortedBy:@"name" ascending:YES withPredicate:[self getFetchPredicate:nil] groupBy:nil delegate:nil] fetchedObjects] count]);
 	
 	[self.tableView reloadData];
-	
-	
 }
 
 - (void) viewDidAppear:(BOOL)animated {
 	// enable left fold
 	[[[self paperFoldNC] paperFoldView] setEnableLeftFoldDragging:YES];
+	[[[self paperFoldNC] paperFoldView] setGestureRecognizerEnabled:YES];
 }
 
 
@@ -109,6 +108,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath  {
 	// unfold and disable
 	[[[self paperFoldNC] paperFoldView] setEnableLeftFoldDragging:NO];
+	[[[self paperFoldNC] paperFoldView] setGestureRecognizerEnabled:NO];
 	[[[self paperFoldNC] paperFoldView] setPaperFoldState:PaperFoldStateDefault];
 	
 	Wine *wine = [[super fetchedResultsController] objectAtIndexPath:indexPath];
