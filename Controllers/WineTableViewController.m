@@ -3,7 +3,9 @@
 #import "WineTableViewController.h"
 #import "Wine.h"
 #import "Appellation.h"
+
 #import "WineCell.h"
+#import "FastWineCell.h"
 
 #import <QuartzCore/QuartzCore.h>
 #import "AddWineViewController.h"
@@ -66,6 +68,7 @@
 		[self setCurrentlyActiveCell:nil];
 	}
 
+	// moved to FastWineCell from WineCell
 	WineCell *cell = [tableView dequeueReusableCellWithIdentifier:@"WineCell"];
 	if (cell == nil) {
 		Wine *wine = [[super fetchedResultsController] objectAtIndexPath:indexPath];

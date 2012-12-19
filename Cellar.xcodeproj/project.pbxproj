@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		83099D5016826A6F00415556 /* ABTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 83099D4F16826A6F00415556 /* ABTableViewCell.m */; };
+		83099D5316826B1100415556 /* FastWineCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 83099D5216826B1100415556 /* FastWineCell.m */; };
 		8319AFB71677BFF8005E28BB /* MagicalImportFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 8319AF7F1677BFF8005E28BB /* MagicalImportFunctions.m */; };
 		8319AFB81677BFF8005E28BB /* NSAttributeDescription+MagicalDataImport.m in Sources */ = {isa = PBXBuildFile; fileRef = 8319AF811677BFF8005E28BB /* NSAttributeDescription+MagicalDataImport.m */; };
 		8319AFB91677BFF8005E28BB /* NSEntityDescription+MagicalDataImport.m in Sources */ = {isa = PBXBuildFile; fileRef = 8319AF831677BFF8005E28BB /* NSEntityDescription+MagicalDataImport.m */; };
@@ -177,6 +179,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		83099D4E16826A6F00415556 /* ABTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABTableViewCell.h; sourceTree = "<group>"; };
+		83099D4F16826A6F00415556 /* ABTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABTableViewCell.m; sourceTree = "<group>"; };
+		83099D5116826B1100415556 /* FastWineCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FastWineCell.h; path = Views/FastWineCell.h; sourceTree = SOURCE_ROOT; };
+		83099D5216826B1100415556 /* FastWineCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FastWineCell.m; path = Views/FastWineCell.m; sourceTree = SOURCE_ROOT; };
 		8319AF7E1677BFF8005E28BB /* MagicalImportFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MagicalImportFunctions.h; sourceTree = "<group>"; };
 		8319AF7F1677BFF8005E28BB /* MagicalImportFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MagicalImportFunctions.m; sourceTree = "<group>"; };
 		8319AF801677BFF8005E28BB /* NSAttributeDescription+MagicalDataImport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSAttributeDescription+MagicalDataImport.h"; sourceTree = "<group>"; };
@@ -419,6 +425,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		83099D4D16826A6F00415556 /* ABTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				83099D4E16826A6F00415556 /* ABTableViewCell.h */,
+				83099D4F16826A6F00415556 /* ABTableViewCell.m */,
+			);
+			name = ABTableViewCell;
+			path = Frameworks/ABTableViewCell;
+			sourceTree = SOURCE_ROOT;
+		};
 		8319AF7B1677BFF8005E28BB /* MagicalRecord */ = {
 			isa = PBXGroup;
 			children = (
@@ -572,6 +588,7 @@
 		832EDC4F165FD4FA00AE20A9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				83099D4D16826A6F00415556 /* ABTableViewCell */,
 				838B2E1D167E5EBB00944657 /* NMRangeSlider */,
 				833146D916791B0E000F9654 /* PopoverView */,
 				8319AFE51677C295005E28BB /* PaperFold */,
@@ -720,6 +737,8 @@
 			children = (
 				83E79DC11677AA2600E0E42D /* WineCell.m */,
 				83E79DC21677AA2600E0E42D /* WineCell.h */,
+				83099D5116826B1100415556 /* FastWineCell.h */,
+				83099D5216826B1100415556 /* FastWineCell.m */,
 				83E79DC31677AA2600E0E42D /* SettingsCell.m */,
 				83E79DC41677AA2600E0E42D /* SettingsCell.h */,
 				83E79DC51677AA2600E0E42D /* CellarTableViewCell.m */,
@@ -1138,6 +1157,8 @@
 				838B2DF1167E52EC00944657 /* _TemperatureRange.m in Sources */,
 				838B2DF2167E52EC00944657 /* TemperatureRange.m in Sources */,
 				838B2E42167E5EBB00944657 /* NMRangeSlider.m in Sources */,
+				83099D5016826A6F00415556 /* ABTableViewCell.m in Sources */,
+				83099D5316826B1100415556 /* FastWineCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

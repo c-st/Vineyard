@@ -107,7 +107,8 @@
 			slider.stepValue = 0.5;
 			[slider setStepValueContinuously:NO];
 			[slider setLowerValue:slider.minimumValue upperValue:slider.maximumValue animated:YES];
-			
+			// FIXME: layout problem
+			[slider setNeedsLayout];
 			[self.contentView addSubview:slider];
 			
 			[slider addTarget:self action:@selector(updateSliderLabel:) forControlEvents:UIControlEventValueChanged];

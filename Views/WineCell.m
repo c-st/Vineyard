@@ -218,6 +218,11 @@
 }
 
 - (void) layoutSubviews {
+
+}
+
+- (void)drawRect:(CGRect)rect {
+	//[super drawRect:rect];
 	[self.cellBackgroundView setBackgroundColor:[UIColor cellarGrayColour]];
 	[self.cellBackgroundView setOpaque:YES];
 	
@@ -235,10 +240,6 @@
 	// stroke
 	self.cellBackgroundView.layer.borderColor =	[[UIColor blackColor] CGColor];
 	self.cellBackgroundView.layer.borderWidth = 0.5f;
-}
-
-- (void)drawRect:(CGRect)rect {
-	[super drawRect:rect];
 }
 
 @end
