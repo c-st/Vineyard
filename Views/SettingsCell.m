@@ -93,26 +93,27 @@
 			// add range slider
 			NMRangeSlider *slider = [[NMRangeSlider alloc] initWithFrame:CGRectMake(95, 8, self.frame.size.width - 145, 30)];
 			
+			// Woraround: make sure slider is aligned properly.
+			[slider setMinimumValue:0];
+			[slider setMaximumValue:10];
+			[slider setLowerValue:slider.minimumValue upperValue:slider.maximumValue animated:NO];
+			
 			// set minimum / maximum value based on ranges
 			if (self.wine.colour.defaultTemperatureRange != nil) {
 				TemperatureRange *range = self.wine.colour.defaultTemperatureRange;
 				NSLog(@"found default range. %f %f", range.temperatureFromValue, range.temperatureToValue);
-				slider.minimumValue = range.temperatureFromValue;
-				slider.maximumValue = range.temperatureToValue;
+				[slider setMinimumValue:range.temperatureFromValue];
+				[slider setMaximumValue:range.temperatureToValue];
 			} else {
-				slider.minimumValue = 0;
-				slider.maximumValue = 20;
+				[slider setMinimumValue:5];
+				[slider setMaximumValue:10];
 			}
 			
 			slider.stepValue = 0.5;
-			[slider setStepValueContinuously:NO];
-			[slider setLowerValue:slider.minimumValue upperValue:slider.maximumValue animated:YES];
-			// FIXME: layout problem
-			[slider setNeedsLayout];
-			[self.contentView addSubview:slider];
+			[slider setStepValueContinuously:YES];
 			
-			[slider addTarget:self action:@selector(updateSliderLabel:) forControlEvents:UIControlEventValueChanged];
-			[slider addTarget:self action:@selector(sliderForRangeWasChanged:) forControlEvents:UIControlEventTouchUpInside];
+			[slider setLowerValue:slider.minimumValue upperValue:slider.maximumValue animated:YES];
+			[self updateSliderLabel:slider];
 			
 			id currentValue = [wine valueForKey:propertyIdentifier];
 			if (currentValue != nil && [currentValue isKindOfClass:[TemperatureRange class]]) {
@@ -122,6 +123,11 @@
 				[slider setLowerValue:currentRange.temperatureFromValue upperValue:currentRange.temperatureToValue animated:NO];
 				[textField setTextColor:[UIColor blackColor]];
 			}
+			
+			[slider addTarget:self action:@selector(updateSliderLabel:) forControlEvents:UIControlEventValueChanged];
+			[slider addTarget:self action:@selector(sliderForRangeWasChanged:) forControlEvents:UIControlEventTouchUpInside];
+			
+			[self.contentView addSubview:slider];
 			
 			break;
 		}
@@ -348,10 +354,10 @@
 	double fromValue = slider.lowerValue;
 	double toValue = slider.upperValue;
 	[self.textField setText:[NSString stringWithFormat:@"%.1f-%.1fº", fromValue, toValue]];
-	[self.textField setTextColor:[UIColor blackColor]];
 }
 
 - (void) sliderForRangeWasChanged:(NMRangeSlider *) slider {
+	[self.textField setTextColor:[UIColor blackColor]];
 	[self updateSliderLabel:slider];
 	
 	double fromValue = slider.lowerValue;

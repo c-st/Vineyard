@@ -33,12 +33,15 @@
 				  {"grapeTypeID":"white","name":"White"},
 				  {"grapeTypeID":"rose","name":"Rosé"},
 				  {"grapeTypeID":"sparkling","name":"Sparkling wine"},
-				  {"grapeTypeID":"port","name":"Port"}
+				  {"grapeTypeID":"fortified","name":"Fortified wine"}
 	],
 	
 	"defaultTemperatureRanges":[
 				  {"temperatureFrom":10, "temperatureTo":20, "grapeTypeID":"red"},
-				  {"temperatureFrom":8, "temperatureTo":15, "grapeTypeID":"white"}
+				  {"temperatureFrom":5, "temperatureTo":15, "grapeTypeID":"white"},
+				  {"temperatureFrom":7, "temperatureTo":13, "grapeTypeID":"rose"},
+				  {"temperatureFrom":5, "temperatureTo":15, "grapeTypeID":"white"},
+				  {"temperatureFrom":13, "temperatureTo":20, "grapeTypeID":"fortified"}
 	],
 	
 	"varietals":[

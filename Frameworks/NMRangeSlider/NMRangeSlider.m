@@ -394,8 +394,8 @@
 // TODO: Do it the correct way. I think wwdc 2012 had a video on it...
 - (CGRect) touchRectForHandle:(UIImageView*) handleImageView
 {
-    float xPadding = 10;
-    float yPadding = 10; //(self.bounds.size.height-touchRect.size.height)/2.0f
+    float xPadding = 20;
+    float yPadding = 20; //(self.bounds.size.height-touchRect.size.height)/2.0f
     
     CGRect touchRect = handleImageView.frame;
     touchRect.origin.x -= xPadding/2.0;
