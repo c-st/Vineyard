@@ -25,23 +25,42 @@
 }
 
 - (void) drawRoundedRect:(CGRect)rect context:(CGContextRef) context {
-	float radius = 5.0f;
-	float padding = 10.0f;
+	float shadowRadius = 5.0f;
+	float cornerRadius = 3.0f;
+	float padding = 6.0f;
 	
-	CGRect frame = CGRectMake(padding, padding, self.contentView.bounds.size.width - (2 * padding), self.contentView.bounds.size.height - (2 * padding));
-	rect = CGRectInset(frame, 1.0f, 1.0f);
+	CGRect bounds = CGRectMake(padding, padding, self.contentView.bounds.size.width - (2 * padding), self.contentView.bounds.size.height - (2 * padding));
+	CGRect contentRect = CGRectInset(bounds, shadowRadius, shadowRadius);
+	
+	CGContextSaveGState(context); //save state
+	
+	/* Create the rounded path and fill it */
+    UIBezierPath *roundedPath = [UIBezierPath bezierPathWithRoundedRect:contentRect cornerRadius:cornerRadius];
+    CGContextSetFillColorWithColor(context, [UIColor cellarGrayColour].CGColor);
+    CGContextSetShadowWithColor(context, CGSizeMake(0.0, 0.0), shadowRadius, [UIColor blackColor].CGColor);
+	[roundedPath fill];
+	
 
+	[roundedPath addClip];
+    CGContextSetStrokeColorWithColor(context, [UIColor colorWithWhite:1.0 alpha:0.6].CGColor);
+    CGContextSetBlendMode(context, kCGBlendModeOverlay);
 	
-	CGContextBeginPath(context);
-	CGContextSetGrayFillColor(context, 0.5, 0.7);
-	CGContextMoveToPoint(context, CGRectGetMinX(rect) + radius, CGRectGetMinY(rect));
-	CGContextAddArc(context, CGRectGetMaxX(rect) - radius, CGRectGetMinY(rect) + radius, radius, 3 * M_PI / 2, 0, 0);
-	CGContextAddArc(context, CGRectGetMaxX(rect) - radius, CGRectGetMaxY(rect) - radius, radius, 0, M_PI / 2, 0);
-	CGContextAddArc(context, CGRectGetMinX(rect) + radius, CGRectGetMaxY(rect) - radius, radius, M_PI / 2, M_PI, 0);
-	CGContextAddArc(context, CGRectGetMinX(rect) + radius, CGRectGetMinY(rect) + radius, radius, M_PI, 3 * M_PI / 2, 0);
+    CGContextMoveToPoint(context, CGRectGetMinX(contentRect), CGRectGetMinY(contentRect)+0.5);
+    CGContextAddLineToPoint(context, CGRectGetMaxX(contentRect), CGRectGetMinY(contentRect)+0.5);
+    CGContextStrokePath(context);
 	
-	CGContextClosePath(context);
-	CGContextFillPath(context);
+	
+	CGContextRestoreGState(context); // restore state
+	
+	// add stroke
+	CGContextSaveGState(context);
+	CGContextAddPath(context, roundedPath.CGPath);
+	CGContextClip(context);
+	
+	CGContextRestoreGState(context);
+	CGContextSetStrokeColorWithColor(context, [UIColor colorWithWhite:0.0 alpha:0.3].CGColor);
+	CGContextAddPath(context, roundedPath.CGPath);
+	CGContextDrawPath(context, kCGPathStroke);
 }
 
 - (void) drawContentView:(CGRect)rect highlighted:(BOOL)highlighted {
@@ -49,15 +68,20 @@
 	
 	CGContextRef context = UIGraphicsGetCurrentContext();
 	
-	
-	
-	
 	UIColor *backgroundColor = [UIColor cellarBeigeNoisyColour];
 	UIColor *textColor = [UIColor blackColor];
 	
 	// set background color
 	[backgroundColor set];
 	CGContextFillRect(context, rect);
+	
+	//CGContextSaveGState(context); //save state
+	
+	[self drawRoundedRect:rect context:context];
+	
+	//CGContextRestoreGState(context); // restore state, after clipping
+	
+	// some text
 	
 	CGPoint p;
 	p.x = 42;
@@ -71,7 +95,7 @@
 	
 	
 	
-	[self drawRoundedRect:rect context:context];
+	
 	
 	
 	
