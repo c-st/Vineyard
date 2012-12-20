@@ -69,10 +69,10 @@
 	}
 
 	// moved to FastWineCell from WineCell
-	WineCell *cell = [tableView dequeueReusableCellWithIdentifier:@"WineCell"];
+	FastWineCell *cell = [tableView dequeueReusableCellWithIdentifier:@"WineCell"];
 	if (cell == nil) {
 		Wine *wine = [[super fetchedResultsController] objectAtIndexPath:indexPath];
-        cell = [[WineCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"WineCell" andWine:wine];
+        cell = [[FastWineCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"WineCell" andWine:wine];
 		[cell setParentTableViewController:self];
     }
 	

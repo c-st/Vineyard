@@ -49,10 +49,9 @@
     CGContextAddLineToPoint(context, CGRectGetMaxX(contentRect), CGRectGetMinY(contentRect)+0.5);
     CGContextStrokePath(context);
 	
-	
 	CGContextRestoreGState(context); // restore state
 	
-	// add stroke
+	// add stroke around rectangle
 	CGContextSaveGState(context);
 	CGContextAddPath(context, roundedPath.CGPath);
 	CGContextClip(context);
@@ -61,6 +60,23 @@
 	CGContextSetStrokeColorWithColor(context, [UIColor colorWithWhite:0.0 alpha:0.3].CGColor);
 	CGContextAddPath(context, roundedPath.CGPath);
 	CGContextDrawPath(context, kCGPathStroke);
+	
+	// draw line
+	CGContextSaveGState(context);
+	CGRect lineBounds = CGRectMake(18, 43, 300, 0);
+	
+	CGContextSetLineWidth(context, 1.0f);
+	CGContextSetStrokeColorWithColor(context, [[UIColor lightGrayColor] colorWithAlphaComponent:0.2].CGColor);
+	CGContextMoveToPoint(context, lineBounds.origin.x, lineBounds.origin.y);
+	CGContextAddLineToPoint(context, lineBounds.size.width, lineBounds.origin.y);
+	CGContextStrokePath(context);
+	
+	CGContextSetStrokeColorWithColor(context, [UIColor whiteColor].CGColor);
+	CGContextMoveToPoint(context, lineBounds.origin.x, lineBounds.origin.y + 1.0);
+	CGContextAddLineToPoint(context, lineBounds.size.width, lineBounds.origin.y + 1.0);
+	CGContextStrokePath(context);
+	
+	CGContextRestoreGState(context);
 }
 
 - (void) drawRating:(CGRect)rect {
@@ -102,7 +118,9 @@
 	
 	//CGContextRestoreGState(context); // restore state, after clipping
 
-	[self drawName:CGPointMake(20, 15)];
+
+	
+	[self drawName:CGPointMake(21, 17)];
 	
 	[self drawRating: CGRectMake(0, 112, 518, 0)];
 	

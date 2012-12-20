@@ -134,7 +134,7 @@
 		
 		case RatingSettingsCellType: {
 			[self setAccessoryType:UITableViewCellAccessoryNone];
-			SSRatingPicker *ratingPicker = [[SSRatingPicker alloc] initWithFrame:CGRectMake(8, 0, self.frame.size.width - 50 - 10, 40)];
+			SSRatingPicker *ratingPicker = [[SSRatingPicker alloc] initWithFrame:CGRectMake(8, 11, self.frame.size.width - 50 - 10, 40)];
 			[ratingPicker setBackgroundColor:[UIColor clearColor]];
 			[ratingPicker setTotalNumberOfStars:6];
 			[ratingPicker.textLabel setText:@""];
