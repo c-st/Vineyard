@@ -4,6 +4,10 @@
 #import "UIColor+CellarColours.h"
 
 #import "Wine.h"
+#import "Appellation.h"
+#import "Country.h"
+#import "Region.h"
+
 
 @interface FastWineCell : ABTableViewCell {
 	Wine *wine;

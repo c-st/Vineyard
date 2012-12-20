@@ -1,4 +1,5 @@
 #import "FastWineCell.h"
+#import "UIImage+Scale.h"
 
 @implementation FastWineCell
 
@@ -80,7 +81,7 @@
 }
 
 - (void) drawRating:(CGRect)rect {
-	if (self.wine.rating == nil) {
+	if (wine.rating == nil) {
 		return;
 	}
 	
@@ -98,6 +99,43 @@
 	UIColor *textColor = [UIColor blackColor];
 	[textColor set];
 	[self.wine.name drawAtPoint:point withFont:font];
+}
+
+- (void) drawVintage:(CGPoint) point {
+	if (wine.vintage == nil) {
+		return;
+	}
+	
+	UIFont *font = [UIFont fontWithName:@"Baskerville" size:18];
+	UIColor *textColor = [UIColor darkGrayColor];
+	[textColor set];
+	[self.wine.vintage drawAtPoint:point withFont:font];
+}
+
+- (void) drawAppellationRegion:(CGPoint) appellationPoint localizationPoint:(CGPoint) localizationPoint {
+	if (wine.country != nil || wine.appellation != nil) {
+		UIFont *font = [UIFont systemFontOfSize:12];
+		UIColor *textColor = [UIColor blackColor];
+		[textColor set];
+		
+		if (wine.appellation != nil) {
+			//appellation
+			[[NSString stringWithFormat:@"%@", wine.appellation.name] drawAtPoint:appellationPoint withFont:font];
+		}
+		
+		// globe image
+		[[[UIImage imageNamed:@"globe.png"] scaleToSize:CGSizeMake(16, 16)] drawAtPoint:localizationPoint];
+		
+		
+		// localization text
+		float leftPadding = 20;
+		if (wine.appellation != nil) {
+			[[NSString stringWithFormat:@"%@, %@", wine.appellation.region.name, wine.appellation.region.country.name] drawAtPoint:CGPointMake(localizationPoint.x + leftPadding, localizationPoint.y) withFont:font];
+			 
+		} else if (wine.appellation == nil && wine.country != nil) {
+			[[NSString stringWithFormat:@"%@", wine.country.name] drawAtPoint:CGPointMake(localizationPoint.x + leftPadding, localizationPoint.y) withFont:font];
+		}
+	}
 }
 
 - (void) drawContentView:(CGRect)rect highlighted:(BOOL)highlighted {
@@ -120,7 +158,11 @@
 
 
 	
-	[self drawName:CGPointMake(21, 17)];
+	[self drawName:CGPointMake(19, 17)];
+	
+	[self drawVintage:CGPointMake(265, 19)];
+	
+	[self drawAppellationRegion:CGPointMake(20, 50) localizationPoint:CGPointMake(20, 110)];
 	
 	[self drawRating: CGRectMake(0, 112, 518, 0)];
 	

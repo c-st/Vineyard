@@ -8,7 +8,18 @@
 {
 	// Create a bitmap graphics context
 	// This will also set it as the current context
-	UIGraphicsBeginImageContext(size);
+	
+//	UIGraphicsBeginImageContext(size);
+//	UIGraphicsBeginImageContextWithOptions(size, NO, 2.0f);
+	if ([UIScreen instancesRespondToSelector:@selector(scale)]) {
+		UIGraphicsBeginImageContextWithOptions(size, NO, 0.0f);
+	} else {
+		UIGraphicsBeginImageContext(size);
+	}
+	
+	
+	//CGContextRef context = UIGraphicsGetCurrentContext();
+	//CGContextSetInterpolationQuality(context, kCGInterpolationHigh);
 	
 	// Draw the scaled image in the current context
 	[self drawInRect:CGRectMake(0, 0, size.width, size.height)];
