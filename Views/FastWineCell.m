@@ -63,13 +63,34 @@
 	CGContextDrawPath(context, kCGPathStroke);
 }
 
-- (void) drawContentView:(CGRect)rect highlighted:(BOOL)highlighted {
+- (void) drawRating:(CGRect)rect {
+	if (self.wine.rating == nil) {
+		return;
+	}
+	
+	SSRatingPicker *ratingPicker = [[SSRatingPicker alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
+	[ratingPicker setStarSize:CGSizeMake(11, 20)];
+	[ratingPicker setStarSpacing:3.0f];
+	[ratingPicker setTotalNumberOfStars:6];
+	[ratingPicker.textLabel setText:@""];
+	[ratingPicker setSelectedNumberOfStars:self.wine.ratingValue];
+	[ratingPicker drawRect:rect];
+}
+
+- (void) drawName:(CGPoint) point {
 	UIFont *font = [UIFont fontWithName:@"Baskerville" size:20];
+	UIColor *textColor = [UIColor blackColor];
+	[textColor set];
+	[self.wine.name drawAtPoint:point withFont:font];
+}
+
+- (void) drawContentView:(CGRect)rect highlighted:(BOOL)highlighted {
+	
 	
 	CGContextRef context = UIGraphicsGetCurrentContext();
 	
 	UIColor *backgroundColor = [UIColor cellarBeigeNoisyColour];
-	UIColor *textColor = [UIColor blackColor];
+	
 	
 	// set background color
 	[backgroundColor set];
@@ -80,31 +101,15 @@
 	[self drawRoundedRect:rect context:context];
 	
 	//CGContextRestoreGState(context); // restore state, after clipping
+
+	[self drawName:CGPointMake(20, 15)];
 	
-	// some text
-	
-	CGPoint p;
-	p.x = 42;
-	p.y = 15;
-	
-	[textColor set];
-	CGSize s = [@"hello" drawAtPoint:p withFont:font];
-	
-	p.x += s.width + 6; // space between words
-	[self.wine.name drawAtPoint:p withFont:font];
-	
-	
-	
-	
+	[self drawRating: CGRectMake(0, 112, 518, 0)];
 	
 	
 	
 	
 }
-
-	//[@"hello" drawInRect:rect withFont:[UIFont fontWithName:@"Baskerville" size:20]];
-	
-
 
 
 @end
