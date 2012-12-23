@@ -25,7 +25,11 @@
 	return self;
 }
 
-- (void) drawRoundedRect:(CGRect)rect context:(CGContextRef) context {
+- (void) drawWineCellContainer:(CGRect)rect context:(CGContextRef) context {
+	UIColor *backgroundColor = [UIColor cellarBeigeNoisyColour];
+	[backgroundColor set];
+	CGContextFillRect(context, rect);
+	
 	float shadowRadius = 5.0f;
 	float cornerRadius = 3.0f;
 	float padding = 6.0f;
@@ -140,31 +144,42 @@
 	}
 }
 
+- (void) drawVarietals:(CGPoint) varietalPoint {
+	if (wine.varietals == nil || [wine.varietals count] == 0) {
+		return;
+	}
+	
+	UIFont *font = [UIFont systemFontOfSize:12];
+	UIColor *textColor = [UIColor blackColor];
+	[textColor set];
+	
+	// grape image
+	[[[UIImage imageNamed:@"food_grapes_black.png"] scaleToSize:CGSizeMake(16, 16)] drawAtPoint:varietalPoint];
+	
+	// varietals text
+	float leftPadding = 20;
+	NSString *names = [[NSString alloc] init];
+	for (NSManagedObject *object in wine.varietals) {
+		names = [names stringByAppendingString:[[object valueForKey:@"name"] stringByAppendingString:@", "]];
+	}
+	names = [names substringToIndex:[names length] - 2];
+	
+	[names drawAtPoint:CGPointMake(varietalPoint.x + leftPadding, varietalPoint.y) withFont:font];
+}
+
 - (void) drawContentView:(CGRect)rect highlighted:(BOOL)highlighted {
-	
-	
 	CGContextRef context = UIGraphicsGetCurrentContext();
 	
-	UIColor *backgroundColor = [UIColor cellarBeigeNoisyColour];
 	
-	
-	// set background color
-	[backgroundColor set];
-	CGContextFillRect(context, rect);
-	
-	//CGContextSaveGState(context); //save state
-	
-	[self drawRoundedRect:rect context:context];
-	
-	//CGContextRestoreGState(context); // restore state, after clipping
-
-
+	[self drawWineCellContainer:rect context:context];
 	
 	[self drawName:CGPointMake(19, 17)];
 	
 	[self drawVintage:CGPointMake(265, 19)];
 	
 	[self drawAppellationRegion:CGPointMake(20, 50) localizationPoint:CGPointMake(20, 110)];
+	
+	[self drawVarietals:CGPointMake(20, 80)];
 	
 	[self drawRating: CGRectMake(0, 112, 518, 0)];
 	

@@ -34,6 +34,8 @@ double deltaLatitude;
 	[self setTitle:@"Wine"];
 	//[self.view setBackgroundColor:[UIColor cellarBeigeColour]];
 	
+	// TODO: add UiPageControl with scroll view to change views by swiping horizontally.
+	
 	UIBarButtonItem *editButton =
 	[[UIBarButtonItem alloc] initWithTitle: @"Edit" style:UIBarButtonItemStylePlain target:self action: @selector(editWine)];
 	[[self navigationItem] setRightBarButtonItem:editButton];
@@ -48,7 +50,7 @@ double deltaLatitude;
 	
 	[scrollView setContentSize: CGSizeMake(self.view.frame.size.width, self.view.frame.size.height )];
 	[scrollView setContentOffset: CGPointMake(0, 0)];
-	[scrollView setContentInset:UIEdgeInsetsMake(21.0,0,0,0.0)];
+	[scrollView setContentInset:UIEdgeInsetsMake(1.0,0,0,0.0)];
 	[scrollView setBackgroundColor:[UIColor cellarBeigeNoisyColour]];
 	[scrollView setShowsVerticalScrollIndicator:NO];
 	[scrollView setScrollEnabled:YES];
@@ -56,7 +58,8 @@ double deltaLatitude;
 	[scrollView setDelegate:self];
 	
 	// Map -200
-	self.mapView = [[MKMapView alloc] initWithFrame:CGRectMake(0, -100, bound.size.width, 300)];
+	// -100, .. 300
+	self.mapView = [[MKMapView alloc] initWithFrame:CGRectMake(0, -150, bound.size.width, 400)];
 	
     CLLocationCoordinate2D coordinate = {wine.location.latitudeValue, wine.location.longitudeValue};
 	[mapView setRegion:MKCoordinateRegionMakeWithDistance(coordinate, 1500, 1500) animated:YES];
