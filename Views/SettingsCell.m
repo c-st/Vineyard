@@ -16,10 +16,11 @@
 	[self setCellType:theCellType];
 	[self setPropertyIdentifier:thePropertyIdentifier];
 	[self setName:theName];
-	[self setSelectionStyle:UITableViewCellEditingStyleNone];
+	//[self setSelectionStyle:UITableViewCellEditingStyleNone];
 	
 	switch (theCellType) {
 		case TextSettingsCellType: {
+			[self setSelectionStyle:UITableViewCellEditingStyleNone];
 			[self setAccessoryType:UITableViewCellAccessoryNone];
 			textField=[[UITextField alloc]initWithFrame:CGRectMake(10, 12, self.frame.size.width - 50 - 10, 30)];
 			[textField setTextColor: [UIColor lightGrayColor]];
@@ -46,6 +47,7 @@
 		}
 			
 		case YearSettingsCellType: {
+			[self setSelectionStyle:UITableViewCellEditingStyleNone];
 			[self setAccessoryType:UITableViewCellAccessoryNone];
 			UIPickerView *pickerView = [[UIPickerView alloc] init];
 			[pickerView setDataSource:self];
@@ -83,6 +85,7 @@
 		}
 		
 		case RangeSettingsCellType: {
+			[self setSelectionStyle:UITableViewCellEditingStyleNone];
 			[self setAccessoryType:UITableViewCellAccessoryNone];
 			textField=[[UITextField alloc] initWithFrame:CGRectMake(10, 12, 85, 30)];
 			[textField setTextColor: [UIColor lightGrayColor]];
@@ -114,7 +117,6 @@
 			
 			[slider setLowerValue:slider.minimumValue upperValue:slider.maximumValue animated:YES];
 			[self updateSliderLabel:slider];
-			
 			id currentValue = [wine valueForKey:propertyIdentifier];
 			if (currentValue != nil && [currentValue isKindOfClass:[TemperatureRange class]]) {
 				TemperatureRange *currentRange = (TemperatureRange *) currentValue;
@@ -133,6 +135,7 @@
 		}
 		
 		case RatingSettingsCellType: {
+			[self setSelectionStyle:UITableViewCellEditingStyleNone];
 			[self setAccessoryType:UITableViewCellAccessoryNone];
 			SSRatingPicker *ratingPicker = [[SSRatingPicker alloc] initWithFrame:CGRectMake(8, 11, self.frame.size.width - 50 - 10, 40)];
 			[ratingPicker setBackgroundColor:[UIColor clearColor]];

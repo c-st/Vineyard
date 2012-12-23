@@ -38,7 +38,9 @@
 	/* Create the rounded path and fill it */
     UIBezierPath *roundedPath = [UIBezierPath bezierPathWithRoundedRect:contentRect cornerRadius:cornerRadius];
     CGContextSetFillColorWithColor(context, [UIColor cellarGrayColour].CGColor);
-  //  CGContextSetShadowWithColor(context, CGSizeMake(0.0, 0.0), shadowRadius, [UIColor blackColor].CGColor);
+	/* // disabled due to performance problems
+	 CGContextSetShadowWithColor(context, CGSizeMake(0.0, 0.0), shadowRadius, [UIColor blackColor].CGColor);
+	 */
 	[roundedPath fill];
 	
 
@@ -165,9 +167,6 @@
 	[self drawAppellationRegion:CGPointMake(20, 50) localizationPoint:CGPointMake(20, 110)];
 	
 	[self drawRating: CGRectMake(0, 112, 518, 0)];
-	
-	
-	
 	
 }
 

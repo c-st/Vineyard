@@ -239,7 +239,6 @@
 			[[self navigationController] popViewControllerAnimated:NO];
 		}
 	} else {
-		// TODO: visual feedback!
 		NSLog(@"Wine is not valid!");
 	}
 }
