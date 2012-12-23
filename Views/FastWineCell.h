@@ -7,6 +7,7 @@
 #import "Appellation.h"
 #import "Country.h"
 #import "Region.h"
+#import "GrapeType.h"
 
 
 @interface FastWineCell : ABTableViewCell {

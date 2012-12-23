@@ -1,5 +1,7 @@
 #import "FastWineCell.h"
+
 #import "UIImage+Scale.h"
+#import "UIImage+Tint.h"
 
 @implementation FastWineCell
 
@@ -167,6 +169,21 @@
 	[names drawAtPoint:CGPointMake(varietalPoint.x + leftPadding, varietalPoint.y) withFont:font];
 }
 
+- (void) drawColour:(CGPoint) colourPoint {
+	if (wine.colour != nil) {
+		UIImage *bottle;
+		if ([wine.colour.grapeTypeID isEqual: @"red"]) {
+			bottle = [[UIImage imageNamed:@"wine_bottle.png"] imageTintedWithColor:[UIColor cellarWineColourRed]];
+		} else if ([wine.colour.grapeTypeID isEqual: @"white"]) {
+			bottle = [[UIImage imageNamed:@"wine_bottle.png"] imageTintedWithColor:[UIColor cellarWineColourWhite]];
+		} else if ([wine.colour.grapeTypeID isEqual: @"white"]) {
+			bottle = [[UIImage imageNamed:@"wine_bottle.png"] imageTintedWithColor:[UIColor cellarWineColourRose]];
+		}
+		
+		[[bottle scaleToSize:CGSizeMake(48, 48)] drawAtPoint:colourPoint];
+	}
+}
+
 - (void) drawContentView:(CGRect)rect highlighted:(BOOL)highlighted {
 	CGContextRef context = UIGraphicsGetCurrentContext();
 	
@@ -180,6 +197,8 @@
 	[self drawAppellationRegion:CGPointMake(20, 50) localizationPoint:CGPointMake(20, 110)];
 	
 	[self drawVarietals:CGPointMake(20, 80)];
+	
+	[self drawColour:CGPointMake(240, 55)];
 	
 	[self drawRating: CGRectMake(0, 112, 518, 0)];
 	

@@ -21,11 +21,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Views/FastWineCell.m"
-         timestampString = "377994975.640317"
+         timestampString = "377996380.046579"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "132"
-         endingLineNumber = "132"
+         startingLineNumber = "131"
+         endingLineNumber = "131"
          landmarkName = "-drawAppellationRegion:localizationPoint:"
          landmarkType = "5">
       </FileBreakpoint>
