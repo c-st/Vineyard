@@ -11,18 +11,6 @@
 	self = [super initWithFrame:CGRectMake(0, 0, self.contentView.bounds.size.width, self.contentView.bounds.size.height)];
 	if (self) {
 		[self setWine:theWine];
-		
-		/*
-		[self setCellBackgroundView:[self buildWineView]];
-		
-		[self.contentView addSubview:[self cellBackgroundView]];
-		
-		[self buildAndSaveToolbarView];
-		[self.contentView addSubview:[self toolbarView]];
-		
-		[self setBackgroundView:nil];
-		[self setSelectionStyle:UITableViewCellSelectionStyleNone];
-		 */
 	}
 	return self;
 }
@@ -134,7 +122,6 @@
 		// globe image
 		[[[UIImage imageNamed:@"globe.png"] scaleToSize:CGSizeMake(16, 16)] drawAtPoint:localizationPoint];
 		
-		
 		// localization text
 		float leftPadding = 20;
 		if (wine.appellation != nil) {
@@ -187,7 +174,6 @@
 - (void) drawContentView:(CGRect)rect highlighted:(BOOL)highlighted {
 	CGContextRef context = UIGraphicsGetCurrentContext();
 	
-	
 	[self drawWineCellContainer:rect context:context];
 	
 	[self drawName:CGPointMake(19, 17)];
@@ -198,10 +184,9 @@
 	
 	[self drawVarietals:CGPointMake(20, 80)];
 	
-	[self drawColour:CGPointMake(240, 55)];
+	[self drawColour:CGPointMake(240, 35)];
 	
 	[self drawRating: CGRectMake(0, 112, 518, 0)];
-	
 }
 
 
