@@ -31,7 +31,7 @@ double deltaLatitude;
 - (void) loadView {
 	[super loadView];
 	//[self setTitle:[NSString stringWithFormat:@"%@", wine.name]];
-	[self setTitle:@"Wine"];
+	//[self setTitle:@"Wine"];
 	//[self.view setBackgroundColor:[UIColor cellarBeigeColour]];
 	
 	// TODO: add UiPageControl with scroll view to change views by swiping horizontally.
@@ -80,33 +80,71 @@ double deltaLatitude;
 	[scrollView addSubview:mapView];
 
 	
-	// White
-	UILabel *whiteArea = [[UILabel alloc] initWithFrame:CGRectMake(bound.origin.x, 100, bound.size.width, 200)];
-	[whiteArea setBackgroundColor:[UIColor whiteColor]];
+	// White area
+	UILabel *whiteArea = [[UILabel alloc] initWithFrame:CGRectMake(bound.origin.x, 100, bound.size.width, 120)];
+	[whiteArea setBackgroundColor:[UIColor cellarGrayColour]];
 	[scrollView addSubview:whiteArea];
 	
 	// Line view
 	SSLineView *line = [[SSLineView alloc] initWithFrame:CGRectMake(0, 100, bound.size.width, 20)];
 	[line setLineColor:[UIColor lightGrayColor]];
+	[line setInsetColor:[UIColor whiteColor]];
 	[scrollView addSubview:line];
-	
-	// Shadow
-	CAGradientLayer *shadow = [CAGradientLayer layer];
-	shadow.frame = CGRectMake(0, 300, bound.size.width, 8);
-	shadow.startPoint = CGPointMake(1.0, 0.5);
-	shadow.endPoint = CGPointMake(1.0, 1.0);
-	shadow.colors = @[(id)[[UIColor colorWithWhite:0.0 alpha:0.2] CGColor], (id)[[UIColor clearColor] CGColor]];
-	[scrollView.layer addSublayer:shadow];
-	
 	
 	// Name
 	UILabel *nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 110, 300, 25)];
 	[nameLabel setBackgroundColor:[UIColor clearColor]];
-    [nameLabel setFont:[UIFont fontWithName:@"Baskerville" size:20]];
+    [nameLabel setFont:[UIFont fontWithName:@"Baskerville" size:24]];
 	[nameLabel setTextColor:[UIColor blackColor]];
 	[nameLabel setText:[wine name]];
-
 	[scrollView addSubview:nameLabel];
+	
+	// Vintage
+	UILabel *vintageLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 135, 300, 25)];
+	[vintageLabel setBackgroundColor:[UIColor clearColor]];
+	[vintageLabel setTextColor:[UIColor darkGrayColor]];
+	[vintageLabel setFont:[UIFont fontWithName:@"Baskerville" size:20]];
+	[vintageLabel setText:[wine vintage]];
+	[scrollView addSubview:vintageLabel];
+
+	// Rating
+	SSRatingPicker *ratingPicker = [[SSRatingPicker alloc] initWithFrame:CGRectMake(8, 175, 300, 40)];
+	[ratingPicker setBackgroundColor:[UIColor clearColor]];
+	[ratingPicker setUserInteractionEnabled:NO];
+	[ratingPicker setTotalNumberOfStars:6];
+	[ratingPicker.textLabel setText:@""];
+	if ([wine.rating isKindOfClass:[NSNumber class]]) {
+		[ratingPicker setSelectedNumberOfStars:[wine.rating floatValue]];
+	}
+	[scrollView addSubview:ratingPicker];
+	
+	// Line view
+	SSLineView *line2 = [[SSLineView alloc] initWithFrame:CGRectMake(0, 218, bound.size.width, 20)];
+	[line2 setLineColor:[UIColor whiteColor]];
+	[line2 setInsetColor:[UIColor lightGrayColor]];
+	[scrollView addSubview:line2];
+
+	// 2nd white area
+	UILabel *whiteArea2 = [[UILabel alloc] initWithFrame:CGRectMake(bound.origin.x, 220, bound.size.width, 150)];
+	[whiteArea2 setBackgroundColor:[UIColor cellarGrayColour]];
+	[scrollView addSubview:whiteArea2];
+	
+	// Shadow
+	CAGradientLayer *shadow = [CAGradientLayer layer];
+	shadow.frame = CGRectMake(0, 220, bound.size.width, 4);
+	shadow.startPoint = CGPointMake(1.0, 0.5);
+	shadow.endPoint = CGPointMake(1.0, 1.0);
+	shadow.colors = @[(id)[[UIColor colorWithWhite:0.0 alpha:0.15] CGColor], (id)[[UIColor clearColor] CGColor]];
+	[scrollView.layer addSublayer:shadow];
+	
+	// Shadow 2
+	CAGradientLayer *shadow2 = [CAGradientLayer layer];
+	shadow2.frame = CGRectMake(0, 370, bound.size.width, 4);
+	shadow2.startPoint = CGPointMake(1.0, 0.5);
+	shadow2.endPoint = CGPointMake(1.0, 1.0);
+	shadow2.colors = @[(id)[[UIColor colorWithWhite:0.0 alpha:0.2] CGColor], (id)[[UIColor clearColor] CGColor]];
+	[scrollView.layer addSublayer:shadow2];
+	
 	
 	[self.view addSubview:scrollView];
 }

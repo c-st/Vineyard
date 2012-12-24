@@ -1,7 +1,10 @@
 #import <UIKit/UIKit.h>
-#import "Wine.h"
-
 #import <CoreLocation/CoreLocation.h>
+
+#import "Wine.h"
+#import "Appellation.h"
+#import "Country.h"
+#import "Location.h"
 
 @interface AddWineViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, CLLocationManagerDelegate> {
 	CLLocationManager *locationManager;

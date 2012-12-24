@@ -184,7 +184,7 @@
 	
 	[self drawVarietals:CGPointMake(20, 80)];
 	
-	[self drawColour:CGPointMake(240, 35)];
+	[self drawColour:CGPointMake(251, 33)];
 	
 	[self drawRating: CGRectMake(0, 112, 518, 0)];
 }
