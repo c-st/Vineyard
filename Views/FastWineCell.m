@@ -156,6 +156,23 @@
 	[names drawAtPoint:CGPointMake(varietalPoint.x + leftPadding, varietalPoint.y) withFont:font];
 }
 
+- (void) drawTemperature:(CGPoint) temperaturePoint {
+	if (wine.servingTemperature == nil) {
+		return;
+	}
+	
+	UIFont *font = [UIFont systemFontOfSize:12];
+	UIColor *textColor = [UIColor blackColor];
+	[textColor set];
+	
+	float leftPadding = 14;
+	
+	// thermometer image
+	[[[UIImage imageNamed:@"thermometer.png"] scaleToSize:CGSizeMake(6, 14)] drawAtPoint:temperaturePoint];
+	[[NSString stringWithFormat:@"%0.0f - %0.0f ºC", [wine.servingTemperature temperatureFromValue], [wine.servingTemperature temperatureToValue]] drawAtPoint:CGPointMake(temperaturePoint.x + leftPadding, temperaturePoint.y) withFont:font];
+	
+}
+
 - (void) drawColour:(CGPoint) colourPoint {
 	if (wine.colour != nil) {
 		UIImage *bottle;
@@ -182,7 +199,9 @@
 	
 	[self drawAppellationRegion:CGPointMake(20, 50) localizationPoint:CGPointMake(20, 110)];
 	
-	[self drawVarietals:CGPointMake(20, 80)];
+	[self drawVarietals:CGPointMake(20, 70)];
+	
+	[self drawTemperature:CGPointMake(25, 90)];
 	
 	[self drawColour:CGPointMake(251, 33)];
 	

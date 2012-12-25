@@ -84,6 +84,11 @@
 		838B2DF1167E52EC00944657 /* _TemperatureRange.m in Sources */ = {isa = PBXBuildFile; fileRef = 838B2DEE167E52EC00944657 /* _TemperatureRange.m */; };
 		838B2DF2167E52EC00944657 /* TemperatureRange.m in Sources */ = {isa = PBXBuildFile; fileRef = 838B2DF0167E52EC00944657 /* TemperatureRange.m */; };
 		838B2E42167E5EBB00944657 /* NMRangeSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 838B2E31167E5EBB00944657 /* NMRangeSlider.m */; };
+		83B0A8B21689243200D65198 /* wine_bottle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 83B0A8AB1689243200D65198 /* wine_bottle@2x.png */; };
+		83B0A8B31689243200D65198 /* basic2-058.png in Resources */ = {isa = PBXBuildFile; fileRef = 83B0A8AC1689243200D65198 /* basic2-058.png */; };
+		83B0A8B41689243200D65198 /* basic1-044.png in Resources */ = {isa = PBXBuildFile; fileRef = 83B0A8AD1689243200D65198 /* basic1-044.png */; };
+		83B0A8B51689243200D65198 /* basic1-101.png in Resources */ = {isa = PBXBuildFile; fileRef = 83B0A8AE1689243200D65198 /* basic1-101.png */; };
+		83B0A8B71689243200D65198 /* thermometer@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 83B0A8B01689243200D65198 /* thermometer@2x.png */; };
 		83B76CD7167E9C11006964ED /* slider-default-handle-highlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 83B76CC4167E9C11006964ED /* slider-default-handle-highlighted.png */; };
 		83B76CD8167E9C11006964ED /* slider-default-handle-highlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 83B76CC5167E9C11006964ED /* slider-default-handle-highlighted@2x.png */; };
 		83B76CD9167E9C11006964ED /* slider-default-handle.png in Resources */ = {isa = PBXBuildFile; fileRef = 83B76CC6167E9C11006964ED /* slider-default-handle.png */; };
@@ -305,6 +310,11 @@
 		838B2DF0167E52EC00944657 /* TemperatureRange.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TemperatureRange.m; path = Model/TemperatureRange.m; sourceTree = SOURCE_ROOT; };
 		838B2E30167E5EBB00944657 /* NMRangeSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NMRangeSlider.h; sourceTree = "<group>"; };
 		838B2E31167E5EBB00944657 /* NMRangeSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NMRangeSlider.m; sourceTree = "<group>"; };
+		83B0A8AB1689243200D65198 /* wine_bottle@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "wine_bottle@2x.png"; path = "Resources/Images/wine_bottle@2x.png"; sourceTree = SOURCE_ROOT; };
+		83B0A8AC1689243200D65198 /* basic2-058.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "basic2-058.png"; path = "Resources/Images/basic2-058.png"; sourceTree = SOURCE_ROOT; };
+		83B0A8AD1689243200D65198 /* basic1-044.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "basic1-044.png"; path = "Resources/Images/basic1-044.png"; sourceTree = SOURCE_ROOT; };
+		83B0A8AE1689243200D65198 /* basic1-101.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "basic1-101.png"; path = "Resources/Images/basic1-101.png"; sourceTree = SOURCE_ROOT; };
+		83B0A8B01689243200D65198 /* thermometer@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "thermometer@2x.png"; path = "Resources/Images/thermometer@2x.png"; sourceTree = SOURCE_ROOT; };
 		83B76CC4167E9C11006964ED /* slider-default-handle-highlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "slider-default-handle-highlighted.png"; sourceTree = "<group>"; };
 		83B76CC5167E9C11006964ED /* slider-default-handle-highlighted@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "slider-default-handle-highlighted@2x.png"; sourceTree = "<group>"; };
 		83B76CC6167E9C11006964ED /* slider-default-handle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "slider-default-handle.png"; sourceTree = "<group>"; };
@@ -601,6 +611,11 @@
 		832EDF88165FF55400AE20A9 /* Icons */ = {
 			isa = PBXGroup;
 			children = (
+				83B0A8AB1689243200D65198 /* wine_bottle@2x.png */,
+				83B0A8AC1689243200D65198 /* basic2-058.png */,
+				83B0A8AD1689243200D65198 /* basic1-044.png */,
+				83B0A8AE1689243200D65198 /* basic1-101.png */,
+				83B0A8B01689243200D65198 /* thermometer@2x.png */,
 				833C5F2E167A81C400D4F65C /* wine_bottle@2x.png */,
 				8361EE6F1677B5930057E04B /* food_grapes_black@2x.png */,
 				8361EE701677B5930057E04B /* add-wine-button@2x.png */,
@@ -1064,6 +1079,11 @@
 				83B76CDC167E9C11006964ED /* slider-default-track@2x.png in Resources */,
 				83B76CDD167E9C11006964ED /* slider-default-trackBackground.png in Resources */,
 				83B76CDE167E9C11006964ED /* slider-default_trackBackground@2x.png in Resources */,
+				83B0A8B21689243200D65198 /* wine_bottle@2x.png in Resources */,
+				83B0A8B31689243200D65198 /* basic2-058.png in Resources */,
+				83B0A8B41689243200D65198 /* basic1-044.png in Resources */,
+				83B0A8B51689243200D65198 /* basic1-101.png in Resources */,
+				83B0A8B71689243200D65198 /* thermometer@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,6 +8,7 @@
 #import "Country.h"
 #import "Region.h"
 #import "GrapeType.h"
+#import "TemperatureRange.h"
 
 
 @interface FastWineCell : ABTableViewCell {
