@@ -169,7 +169,11 @@
 	
 	// thermometer image
 	[[[UIImage imageNamed:@"thermometer.png"] scaleToSize:CGSizeMake(6, 14)] drawAtPoint:temperaturePoint];
-	[[NSString stringWithFormat:@"%0.0f - %0.0f ºC", [wine.servingTemperature temperatureFromValue], [wine.servingTemperature temperatureToValue]] drawAtPoint:CGPointMake(temperaturePoint.x + leftPadding, temperaturePoint.y) withFont:font];
+	if ([wine.servingTemperature temperatureFromValue] != [wine.servingTemperature temperatureToValue]) {
+		[[NSString stringWithFormat:@"%0.0f - %0.0f ºC", [wine.servingTemperature temperatureFromValue], [wine.servingTemperature temperatureToValue]] drawAtPoint:CGPointMake(temperaturePoint.x + leftPadding, temperaturePoint.y) withFont:font];
+	} else {
+		[[NSString stringWithFormat:@"%0.0f ºC", [wine.servingTemperature temperatureFromValue]] drawAtPoint:CGPointMake(temperaturePoint.x + leftPadding, temperaturePoint.y) withFont:font];
+	}
 	
 }
 
