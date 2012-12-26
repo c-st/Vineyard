@@ -17,10 +17,14 @@
 }
 
 -(void) viewWillAppear:(BOOL)animated {
+	
 	if (self.settingsCell.wine != nil) {
+		[self.settingsCell.wine setCountry:self.settingsCell.wine.country]; //workaround for bug
+		
 		NSPredicate *predicate = [self getFetchPredicate:self.settingsCell.wine];
-		NSLog(@"predicate %@", predicate);
-		[self setFetchedResultsController:[Appellation fetchAllGroupedBy:@"region" withPredicate:predicate sortedBy:@"region.name,name" ascending:YES]];
+		//[self setFetchedResultsController:[Appellation fetchAllGroupedBy:@"region" withPredicate:predicate sortedBy:@"region.name,name" ascending:YES]];
+		
+		[self setFetchedResultsController:[Appellation fetchAllSortedBy:@"region.name,name" ascending:YES withPredicate:predicate groupBy:@"region" delegate:self]];
 		
 		//sortedBy:nil works  -  @"region.name,name"
 	}
@@ -28,7 +32,7 @@
 }
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
-    Appellation *appellation = [[super fetchedResultsController] objectAtIndexPath:indexPath];
+    Appellation *appellation = [self.fetchedResultsController objectAtIndexPath:indexPath];
     cell.textLabel.text = appellation.name;
 	
 	if ([self showCount]) {
@@ -51,7 +55,7 @@
 		NSLog(@"getFetchPredicate %@", withWine.country.countryID);
 		search = [NSPredicate predicateWithFormat:@"(region.country.countryID == %@) || (%@ = null)", withWine.country.countryID, withWine.country.countryID];
 	} else {
-		NSLog(@"getFetchPredicate %@", searchBar.text);
+		NSLog(@"getFetchPredicate for text search %@", searchBar.text);
 		search = [NSPredicate predicateWithFormat:@"((region.country.countryID == %@) || (%@ = null)) AND name CONTAINS[c] %@", withWine.country.countryID, withWine.country.countryID, searchBar.text];
 	}
 	return search;
@@ -112,13 +116,8 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
 	if ([[self.fetchedResultsController sections] count] > 1) {
-		NSLog(@"%i", self.fetchedResultsController.sections.count);
-		
 		id <NSFetchedResultsSectionInfo> sectionInfo = [[self.fetchedResultsController sections] objectAtIndex:section];
 		NSString *title = [[[[sectionInfo objects] objectAtIndex:0] region] name];
-		
-		
-		//NSLog(@"section: %i title: %@", section, title);
 		return title;
 	}
 	//NSLog(@"returning nil!");
