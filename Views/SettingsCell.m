@@ -239,9 +239,9 @@
 			[wine setValue:nil forKey:@"varietals"];
 		}
 	}
-	
+								 
 	[wine setValue:managedObject forKey:propertyIdentifier];
-	NSLog(@"updated Wine for propertyIdentifier %@", propertyIdentifier);
+	NSLog(@"updated Wine for propertyIdentifier %@ %@", propertyIdentifier, managedObject);
 	
 	[self.textLabel setText:[managedObject valueForKey:@"name"]];
 	[self.textLabel setTextColor: [UIColor blackColor]];

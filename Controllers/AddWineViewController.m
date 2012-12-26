@@ -119,18 +119,18 @@
 	// Name
 	SettingsCell *nameSettingsCell = [[SettingsCell alloc] initWithWine:[self wine] andType:TextSettingsCellType andProperty:@"name" andName:@"Name"];
 	
+	// Country
+	CountryTableViewController *countryTableViewController = [[CountryTableViewController alloc] init];
+	SettingsCell *countrySettingsCell = [[SettingsCell alloc] initWithWine:[self wine] andType:DetailViewSettingsCellType andProperty:@"country" andName:@"Country" andViewController:countryTableViewController];
+	
+	[countryTableViewController setSettingsCell:countrySettingsCell];
+	
 	// Appellation
 	AppellationTableViewController *appellationTableViewController = [[AppellationTableViewController alloc] init];
 	[appellationTableViewController setShowSearchBar:YES];
 	SettingsCell *appellationSettingsCell = [[SettingsCell alloc] initWithWine:[self wine] andType:DetailViewSettingsCellType andProperty:@"appellation" andName:@"Appellation" andViewController:appellationTableViewController];
 	
 	[appellationTableViewController setSettingsCell:appellationSettingsCell];
-	
-	// Country
-	CountryTableViewController *countryTableViewController = [[CountryTableViewController alloc] init];
-	SettingsCell *countrySettingsCell = [[SettingsCell alloc] initWithWine:[self wine] andType:DetailViewSettingsCellType andProperty:@"country" andName:@"Country" andViewController:countryTableViewController];
-	
-	[countryTableViewController setSettingsCell:countrySettingsCell];
 	
 	// Vintage
 	SettingsCell *vintageSettingsCell = [[SettingsCell alloc] initWithWine:[self wine] andType:YearSettingsCellType andProperty:@"vintage" andName:@"Vintage"];
