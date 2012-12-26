@@ -11,6 +11,7 @@ const struct RegionAttributes RegionAttributes = {
 const struct RegionRelationships RegionRelationships = {
 	.appellations = @"appellations",
 	.country = @"country",
+	.location = @"location",
 	.wineries = @"wineries",
 };
 
@@ -78,6 +79,10 @@ const struct RegionFetchedProperties RegionFetchedProperties = {
 	
 
 @dynamic country;
+
+	
+
+@dynamic location;
 
 	
 

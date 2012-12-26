@@ -61,8 +61,13 @@ double deltaLatitude;
 	// -100, .. 300
 	self.mapView = [[MKMapView alloc] initWithFrame:CGRectMake(0, -150, bound.size.width, 400)];
 	
-    CLLocationCoordinate2D coordinate = {wine.location.latitudeValue, wine.location.longitudeValue};
-	[mapView setRegion:MKCoordinateRegionMakeWithDistance(coordinate, 1500, 1500) animated:YES];
+    CLLocationCoordinate2D coordinate = {wine.location.latitudeValue, wine.location.longitudeValue}; // taken at
+	//CLLocationCoordinate2D coordinate = {wine.appellation.region.location.latitudeValue, wine.appellation.region.location.longitudeValue};
+	
+	
+	//[mapView setRegion:MKCoordinateRegionMakeWithDistance(coordinate, 1500, 1500) animated:YES];
+	[mapView setRegion:MKCoordinateRegionMakeWithDistance(coordinate, 180000, 180000) animated:YES];
+	
 	[mapView setCenterCoordinate:coordinate animated:YES];
 	
 	
@@ -73,9 +78,10 @@ double deltaLatitude;
     CLLocationCoordinate2D referencePosition2 = [mapView convertPoint:CGPointMake(0, 100) toCoordinateFromView:mapView];
     deltaLatitude = (referencePosition2.latitude - referencePosition.latitude) / 100;
 	
+	// pin
 	MKPointAnnotation *point = [[MKPointAnnotation alloc] init];
 	point.coordinate = coordinate;
-	[mapView addAnnotation:point];
+	//[mapView addAnnotation:point];
 	 
 	[scrollView addSubview:mapView];
 
@@ -157,7 +163,10 @@ double deltaLatitude;
         double deltaLat = y * deltaLatitude;
 		
         //Move the center coordinate accordingly
+		
         CLLocationCoordinate2D newCenter = CLLocationCoordinate2DMake(wine.location.latitudeValue - deltaLat/2, wine.location.longitudeValue);
+		//CLLocationCoordinate2D newCenter = CLLocationCoordinate2DMake(wine.appellation.region.location.latitudeValue - deltaLat/2, wine.appellation.region.location.longitudeValue);
+		
 		[mapView setCenterCoordinate:newCenter animated:NO];
     }
 }

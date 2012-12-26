@@ -10,12 +10,14 @@ extern const struct LocationAttributes {
 } LocationAttributes;
 
 extern const struct LocationRelationships {
+	__unsafe_unretained NSString *region;
 	__unsafe_unretained NSString *wines;
 } LocationRelationships;
 
 extern const struct LocationFetchedProperties {
 } LocationFetchedProperties;
 
+@class Region;
 @class Wine;
 
 
@@ -58,6 +60,13 @@ extern const struct LocationFetchedProperties {
 
 
 
+@property (nonatomic, strong) Region* region;
+
+//- (BOOL)validateRegion:(id*)value_ error:(NSError**)error_;
+
+
+
+
 @property (nonatomic, strong) NSSet* wines;
 
 - (NSMutableSet*)winesSet;
@@ -96,6 +105,11 @@ extern const struct LocationFetchedProperties {
 - (void)setPrimitiveLongitudeValue:(double)value_;
 
 
+
+
+
+- (Region*)primitiveRegion;
+- (void)setPrimitiveRegion:(Region*)value;
 
 
 

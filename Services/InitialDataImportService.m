@@ -18,6 +18,7 @@
 #import "Varietal.h"
 #import "GrapeType.h"
 #import "TemperatureRange.h"
+#import "Location.h"
 
 @implementation InitialDataImportService
 
@@ -129,6 +130,21 @@
 			[newVarietal importValuesForKeysWithObject:object];
 			
 			[newVarietal setGrapeType:[[GrapeType findByAttribute:@"grapeTypeID" withValue:[object valueForKeyPath:@"grapeTypeID"]] objectAtIndex:0]];
+		}
+		[[NSManagedObjectContext defaultContext] saveNestedContexts];
+	}
+	
+	// Locations for Regions
+	if (![Location hasAtLeastOneEntity]) {
+		NSLog(@"Importing locations for regions...");
+		for (object in [data objectForKey:@"regionLocations"]) {
+			//NSLog(@"inserting new location for region: %@", object);
+			Location *location = [Location createEntity];
+			[location setLatitude:[object valueForKeyPath:@"latitude"]];
+			[location setLongitude:[object valueForKeyPath:@"longitude"]];
+			[location setRegion:[[Region findByAttribute:@"regionID" withValue:[object valueForKeyPath:@"regionID"]] objectAtIndex:0]];
+			//NSLog(@"location: %@", location);
+			
 		}
 		[[NSManagedObjectContext defaultContext] saveNestedContexts];
 	}

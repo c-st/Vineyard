@@ -4,6 +4,8 @@
 
 #import "Wine.h"
 #import "Location.h"
+#import "Region.h"
+#import "Appellation.h"
 
 @interface WineDetailViewController : UIViewController <UIScrollViewDelegate> {
 	Wine *wine;

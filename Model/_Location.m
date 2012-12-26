@@ -9,6 +9,7 @@ const struct LocationAttributes LocationAttributes = {
 };
 
 const struct LocationRelationships LocationRelationships = {
+	.region = @"region",
 	.wines = @"wines",
 };
 
@@ -107,6 +108,10 @@ const struct LocationFetchedProperties LocationFetchedProperties = {
 
 
 
+
+@dynamic region;
+
+	
 
 @dynamic wines;
 

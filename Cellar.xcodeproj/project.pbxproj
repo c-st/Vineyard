@@ -52,7 +52,6 @@
 		8319B00A1677C6E0005E28BB /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8319B0091677C6E0005E28BB /* MapKit.framework */; };
 		833146D51678D2E5000F9654 /* WineFilterFoldViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 833146D41678D2E5000F9654 /* WineFilterFoldViewController.m */; };
 		833146DD16791B0E000F9654 /* PopoverView.m in Sources */ = {isa = PBXBuildFile; fileRef = 833146DB16791B0E000F9654 /* PopoverView.m */; };
-		833C5F2F167A81C400D4F65C /* wine_bottle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 833C5F2E167A81C400D4F65C /* wine_bottle@2x.png */; };
 		835C6D8B167C9F9C00AC2A04 /* background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 835C6D8A167C9F9C00AC2A04 /* background@2x.png */; };
 		835C6D8E167E1B4700AC2A04 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 835C6D8D167E1B4700AC2A04 /* CoreLocation.framework */; };
 		8361EE291677B4B50057E04B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8361EE281677B4B50057E04B /* main.m */; };
@@ -272,7 +271,6 @@
 		833146DB16791B0E000F9654 /* PopoverView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopoverView.m; sourceTree = "<group>"; };
 		833591E4164B145E00FEA5C9 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		833591E5164B145E00FEA5C9 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
-		833C5F2E167A81C400D4F65C /* wine_bottle@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "wine_bottle@2x.png"; path = "Resources/Images/Icons/wine_bottle@2x.png"; sourceTree = SOURCE_ROOT; };
 		835C6D8A167C9F9C00AC2A04 /* background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "background@2x.png"; path = "Resources/Images/background@2x.png"; sourceTree = SOURCE_ROOT; };
 		835C6D8D167E1B4700AC2A04 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		835C6D8F167E22A900AC2A04 /* Cellar 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Cellar 2.xcdatamodel"; sourceTree = "<group>"; };
@@ -616,7 +614,6 @@
 				83B0A8AD1689243200D65198 /* basic1-044.png */,
 				83B0A8AE1689243200D65198 /* basic1-101.png */,
 				83B0A8B01689243200D65198 /* thermometer@2x.png */,
-				833C5F2E167A81C400D4F65C /* wine_bottle@2x.png */,
 				8361EE6F1677B5930057E04B /* food_grapes_black@2x.png */,
 				8361EE701677B5930057E04B /* add-wine-button@2x.png */,
 				8361EE711677B5930057E04B /* globe@2x.png */,
@@ -1069,7 +1066,6 @@
 				8319B0011677C295005E28BB /* PaperFoldResources.bundle in Resources */,
 				8319B0041677C295005E28BB /* swipe_guide.psd in Resources */,
 				8319B0051677C295005E28BB /* swipe_guide2.psd in Resources */,
-				833C5F2F167A81C400D4F65C /* wine_bottle@2x.png in Resources */,
 				835C6D8B167C9F9C00AC2A04 /* background@2x.png in Resources */,
 				83B76CD7167E9C11006964ED /* slider-default-handle-highlighted.png in Resources */,
 				83B76CD8167E9C11006964ED /* slider-default-handle-highlighted@2x.png in Resources */,

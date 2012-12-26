@@ -44,6 +44,7 @@
     <entity name="Location" representedClassName="Location" syncable="YES">
         <attribute name="latitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="longitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <relationship name="region" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Region" inverseName="location" inverseEntity="Region" syncable="YES"/>
         <relationship name="wines" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Wine" inverseName="location" inverseEntity="Wine" syncable="YES"/>
     </entity>
     <entity name="Region" representedClassName="Region" syncable="YES">
@@ -59,6 +60,7 @@
                 <entry key="relatedByAttribute" value="countryID"/>
             </userInfo>
         </relationship>
+        <relationship name="location" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Location" inverseName="region" inverseEntity="Location" syncable="YES"/>
         <relationship name="wineries" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Winery" inverseName="region" inverseEntity="Winery" syncable="YES"/>
     </entity>
     <entity name="TemperatureRange" representedClassName="TemperatureRange" syncable="YES">
@@ -102,8 +104,8 @@
         <element name="Country" positionX="-335" positionY="-99" width="137" height="148"/>
         <element name="GrapeType" positionX="556" positionY="158" width="128" height="118"/>
         <element name="Indication" positionX="-47" positionY="-99" width="128" height="118"/>
-        <element name="Location" positionX="-569" positionY="29" width="128" height="88"/>
-        <element name="Region" positionX="-288" positionY="126" width="128" height="118"/>
+        <element name="Location" positionX="-569" positionY="29" width="128" height="103"/>
+        <element name="Region" positionX="-288" positionY="126" width="128" height="133"/>
         <element name="TemperatureRange" positionX="358" positionY="63" width="128" height="103"/>
         <element name="Varietal" positionX="331" positionY="338" width="128" height="103"/>
         <element name="Wine" positionX="88" positionY="149" width="128" height="238"/>
