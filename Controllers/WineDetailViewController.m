@@ -64,9 +64,10 @@ double deltaLatitude;
     //CLLocationCoordinate2D coordinate = {wine.location.latitudeValue, wine.location.longitudeValue}; // taken at
 	CLLocationCoordinate2D coordinate = {wine.appellation.region.location.latitudeValue, wine.appellation.region.location.longitudeValue};
 	
+	NSLog(@"using coordinate %f %f", coordinate.latitude, coordinate.longitude);
 	
 	//[mapView setRegion:MKCoordinateRegionMakeWithDistance(coordinate, 1500, 1500) animated:YES];
-	[mapView setRegion:MKCoordinateRegionMakeWithDistance(coordinate, 180000, 180000) animated:YES];
+	[mapView setRegion:MKCoordinateRegionMakeWithDistance(coordinate, 220000, 220000) animated:YES];
 	
 	[mapView setCenterCoordinate:coordinate animated:YES];
 	
