@@ -2,6 +2,7 @@
 #import "WineDetailViewController.h"
 #import "AddWineViewController.h"
 
+#import "MKMapView+ZoomLevel.h"
 #import "UIColor+CellarColours.h"
 #import "SSToolkit.h"
 
@@ -27,6 +28,33 @@ double deltaLatitude;
 - (void) viewWillAppear:(BOOL)animated {
 	[self loadView];
 }
+
+- (UIView*) buildLocationView {
+	CGRect bound = [[UIScreen mainScreen] bounds];
+	self.mapView = [[MKMapView alloc] initWithFrame:CGRectMake(0, -150, bound.size.width, 400)];
+	
+    //CLLocationCoordinate2D coordinate = {wine.location.latitudeValue, wine.location.longitudeValue}; // taken at
+	CLLocationCoordinate2D coordinate = {wine.appellation.region.location.latitudeValue, wine.appellation.region.location.longitudeValue};
+	
+	NSLog(@"using coordinate %f %f", coordinate.latitude, coordinate.longitude);
+	[mapView setCenterCoordinate:coordinate zoomLevel:7 animated:YES];
+	
+	[mapView setScrollEnabled:NO];
+	[mapView setZoomEnabled:NO];
+	
+	CLLocationCoordinate2D referencePosition = [mapView convertPoint:CGPointMake(0, 0) toCoordinateFromView:mapView];
+    CLLocationCoordinate2D referencePosition2 = [mapView convertPoint:CGPointMake(0, 100) toCoordinateFromView:mapView];
+    deltaLatitude = (referencePosition2.latitude - referencePosition.latitude) / 100;
+	
+	// pin
+	MKPointAnnotation *point = [[MKPointAnnotation alloc] init];
+	point.coordinate = coordinate;
+	//[mapView addAnnotation:point];
+	
+	return mapView;
+}
+
+
 
 - (void) loadView {
 	[super loadView];
@@ -59,32 +87,9 @@ double deltaLatitude;
 	
 	// Map -200
 	// -100, .. 300
-	self.mapView = [[MKMapView alloc] initWithFrame:CGRectMake(0, -150, bound.size.width, 400)];
 	
-    //CLLocationCoordinate2D coordinate = {wine.location.latitudeValue, wine.location.longitudeValue}; // taken at
-	CLLocationCoordinate2D coordinate = {wine.appellation.region.location.latitudeValue, wine.appellation.region.location.longitudeValue};
-	
-	NSLog(@"using coordinate %f %f", coordinate.latitude, coordinate.longitude);
-	
-	//[mapView setRegion:MKCoordinateRegionMakeWithDistance(coordinate, 1500, 1500) animated:YES];
-	[mapView setRegion:MKCoordinateRegionMakeWithDistance(coordinate, 220000, 220000) animated:YES];
-	
-	[mapView setCenterCoordinate:coordinate animated:YES];
-	
-	
-	[mapView setScrollEnabled:NO];
-	[mapView setZoomEnabled:NO];
-	
-	CLLocationCoordinate2D referencePosition = [mapView convertPoint:CGPointMake(0, 0) toCoordinateFromView:mapView];
-    CLLocationCoordinate2D referencePosition2 = [mapView convertPoint:CGPointMake(0, 100) toCoordinateFromView:mapView];
-    deltaLatitude = (referencePosition2.latitude - referencePosition.latitude) / 100;
-	
-	// pin
-	MKPointAnnotation *point = [[MKPointAnnotation alloc] init];
-	point.coordinate = coordinate;
-	//[mapView addAnnotation:point];
 	 
-	[scrollView addSubview:mapView];
+	[scrollView addSubview:[self buildLocationView]];
 
 	
 	// White area
@@ -152,14 +157,15 @@ double deltaLatitude;
 	shadow2.colors = @[(id)[[UIColor colorWithWhite:0.0 alpha:0.2] CGColor], (id)[[UIColor clearColor] CGColor]];
 	[scrollView.layer addSublayer:shadow2];
 	
-	
 	[self.view addSubview:scrollView];
 }
+
+
 
 - (void)scrollViewDidScroll:(UIScrollView *)theScrollView {
     CGFloat y = theScrollView.contentOffset.y;
     // did we drag ?
-    if (y<0) {
+    if (y < 0) {
         //we moved y pixels down, how much latitude is that ?
         double deltaLat = y * deltaLatitude;
 		

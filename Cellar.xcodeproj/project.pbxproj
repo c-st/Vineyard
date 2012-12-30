@@ -89,6 +89,7 @@
 		83B0A8B51689243200D65198 /* basic1-101.png in Resources */ = {isa = PBXBuildFile; fileRef = 83B0A8AE1689243200D65198 /* basic1-101.png */; };
 		83B0A8B71689243200D65198 /* thermometer@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 83B0A8B01689243200D65198 /* thermometer@2x.png */; };
 		83B0A8C0168FBDFA00D65198 /* AR.png in Resources */ = {isa = PBXBuildFile; fileRef = 83B0A8BF168FBDFA00D65198 /* AR.png */; };
+		83B0A8C4168FC54900D65198 /* MKMapView+ZoomLevel.m in Sources */ = {isa = PBXBuildFile; fileRef = 83B0A8C3168FC54900D65198 /* MKMapView+ZoomLevel.m */; };
 		83B76CD7167E9C11006964ED /* slider-default-handle-highlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 83B76CC4167E9C11006964ED /* slider-default-handle-highlighted.png */; };
 		83B76CD8167E9C11006964ED /* slider-default-handle-highlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 83B76CC5167E9C11006964ED /* slider-default-handle-highlighted@2x.png */; };
 		83B76CD9167E9C11006964ED /* slider-default-handle.png in Resources */ = {isa = PBXBuildFile; fileRef = 83B76CC6167E9C11006964ED /* slider-default-handle.png */; };
@@ -315,6 +316,8 @@
 		83B0A8AE1689243200D65198 /* basic1-101.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "basic1-101.png"; path = "Resources/Images/basic1-101.png"; sourceTree = SOURCE_ROOT; };
 		83B0A8B01689243200D65198 /* thermometer@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "thermometer@2x.png"; path = "Resources/Images/thermometer@2x.png"; sourceTree = SOURCE_ROOT; };
 		83B0A8BF168FBDFA00D65198 /* AR.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = AR.png; path = Resources/Flags/AR.png; sourceTree = SOURCE_ROOT; };
+		83B0A8C2168FC54900D65198 /* MKMapView+ZoomLevel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "MKMapView+ZoomLevel.h"; path = "Categories/MKMapView+ZoomLevel.h"; sourceTree = SOURCE_ROOT; };
+		83B0A8C3168FC54900D65198 /* MKMapView+ZoomLevel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "MKMapView+ZoomLevel.m"; path = "Categories/MKMapView+ZoomLevel.m"; sourceTree = SOURCE_ROOT; };
 		83B76CC4167E9C11006964ED /* slider-default-handle-highlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "slider-default-handle-highlighted.png"; sourceTree = "<group>"; };
 		83B76CC5167E9C11006964ED /* slider-default-handle-highlighted@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "slider-default-handle-highlighted@2x.png"; sourceTree = "<group>"; };
 		83B76CC6167E9C11006964ED /* slider-default-handle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "slider-default-handle.png"; sourceTree = "<group>"; };
@@ -670,6 +673,8 @@
 				83E79DB91677AA1400E0E42D /* UIImage+Scale.h */,
 				83E79DBA1677AA1400E0E42D /* UIColor+CellarColours.m */,
 				83E79DBB1677AA1400E0E42D /* UIColor+CellarColours.h */,
+				83B0A8C2168FC54900D65198 /* MKMapView+ZoomLevel.h */,
+				83B0A8C3168FC54900D65198 /* MKMapView+ZoomLevel.m */,
 			);
 			name = Categories;
 			path = Controllers;
@@ -1179,6 +1184,7 @@
 				838B2E42167E5EBB00944657 /* NMRangeSlider.m in Sources */,
 				83099D5016826A6F00415556 /* ABTableViewCell.m in Sources */,
 				83099D5316826B1100415556 /* FastWineCell.m in Sources */,
+				83B0A8C4168FC54900D65198 /* MKMapView+ZoomLevel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
