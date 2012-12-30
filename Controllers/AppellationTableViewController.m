@@ -89,12 +89,15 @@
 	
 	NSPredicate *searchStatement = [NSPredicate predicateWithFormat:@"appellation.appellationID == %@", appellation.appellationID];
     NSFetchedResultsController *wineSearchController = [Wine fetchAllSortedBy:@"appellation.name" ascending:YES withPredicate:searchStatement groupBy:nil delegate:self];
-	
+
 	WineTableViewController *wineTableViewController = [[WineTableViewController alloc] initWithFetchedResultsController:wineSearchController];
 	
 	[wineTableViewController setTitle:appellation.name];
 	[wineTableViewController setShowCount:NO];
-	[[self navigationController] pushViewController:wineTableViewController animated:YES];
+	
+	if ([wineSearchController.fetchedObjects count] > 0) {
+		[[self navigationController] pushViewController:wineTableViewController animated:YES];
+	}
 }
 
 #pragma mark
