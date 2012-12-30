@@ -109,11 +109,11 @@
 				[slider setMaximumValue:range.temperatureToValue];
 			} else {
 				[slider setMinimumValue:5];
-				[slider setMaximumValue:10];
+				[slider setMaximumValue:20];
 			}
 			
 			slider.stepValue = 0.5;
-			[slider setStepValueContinuously:YES];
+			[slider setStepValueContinuously:NO];
 			
 			[slider setLowerValue:slider.minimumValue upperValue:slider.maximumValue animated:YES];
 			[self updateSliderLabel:slider];
