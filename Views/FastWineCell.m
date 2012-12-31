@@ -60,7 +60,7 @@
 	
 	// draw line
 	CGContextSaveGState(context);
-	CGRect lineBounds = CGRectMake(18, 43, 300, 0);
+	CGRect lineBounds = CGRectMake(18, 36, 300, 0);
 	
 	CGContextSetLineWidth(context, 1.0f);
 	CGContextSetStrokeColorWithColor(context, [[UIColor lightGrayColor] colorWithAlphaComponent:0.2].CGColor);
@@ -120,7 +120,7 @@
 		}
 		
 		// globe image
-		[[[UIImage imageNamed:@"globe.png"] scaleToSize:CGSizeMake(16, 16)] drawAtPoint:localizationPoint];
+		[[[UIImage imageNamed:@"globe.png"] scaleToSize:CGSizeMake(12, 12)] drawAtPoint:localizationPoint];
 		
 		// localization text
 		float leftPadding = 20;
@@ -197,19 +197,19 @@
 	
 	[self drawWineCellContainer:rect context:context];
 	
-	[self drawName:CGPointMake(19, 17)];
+	[self drawName:CGPointMake(19, 12)];
 	
-	[self drawVintage:CGPointMake(265, 19)];
+	[self drawVintage:CGPointMake(265, 15)];
 	
-	[self drawAppellationRegion:CGPointMake(20, 50) localizationPoint:CGPointMake(20, 110)];
+	[self drawAppellationRegion:CGPointMake(20, 40) localizationPoint:CGPointMake(20, 90)];
 	
-	[self drawVarietals:CGPointMake(20, 70)];
+	[self drawVarietals:CGPointMake(20, 55)];
 	
-	[self drawTemperature:CGPointMake(25, 90)];
+	[self drawTemperature:CGPointMake(25, 72)];
 	
 	[self drawColour:CGPointMake(251, 33)];
 	
-	[self drawRating: CGRectMake(0, 112, 518, 0)];
+	[self drawRating: CGRectMake(0, 90, 518, 0)];
 }
 
 

@@ -93,7 +93,7 @@ double deltaLatitude;
 
 	
 	// White area
-	UILabel *whiteArea = [[UILabel alloc] initWithFrame:CGRectMake(bound.origin.x, 100, bound.size.width, 120)];
+	UILabel *whiteArea = [[UILabel alloc] initWithFrame:CGRectMake(bound.origin.x, 100, bound.size.width, 270)];
 	[whiteArea setBackgroundColor:[UIColor cellarGrayColour]];
 	[scrollView addSubview:whiteArea];
 	
@@ -135,11 +135,6 @@ double deltaLatitude;
 	[line2 setLineColor:[UIColor whiteColor]];
 	[line2 setInsetColor:[UIColor lightGrayColor]];
 	[scrollView addSubview:line2];
-
-	// 2nd white area
-	UILabel *whiteArea2 = [[UILabel alloc] initWithFrame:CGRectMake(bound.origin.x, 220, bound.size.width, 150)];
-	[whiteArea2 setBackgroundColor:[UIColor cellarGrayColour]];
-	[scrollView addSubview:whiteArea2];
 	
 	// Shadow
 	CAGradientLayer *shadow = [CAGradientLayer layer];

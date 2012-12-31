@@ -24,9 +24,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 	[self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
-	[self.tableView setRowHeight:145];
+	[self.tableView setRowHeight:120];
 	[self.tableView setBackgroundColor:[UIColor cellarBeigeNoisyColour]];
-	self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 15, 0);
+	self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 10, 0);
 	
 	// add gesture recognize
 	[self setTapGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(endEditMode:)]];
