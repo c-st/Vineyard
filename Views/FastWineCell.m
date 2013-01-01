@@ -124,11 +124,14 @@
 		
 		// localization text
 		float leftPadding = 20;
+			float topPadding = -2;
 		if (wine.appellation != nil) {
-			[[NSString stringWithFormat:@"%@, %@", wine.appellation.region.name, wine.appellation.region.country.name] drawAtPoint:CGPointMake(localizationPoint.x + leftPadding, localizationPoint.y) withFont:font];
+			[[NSString stringWithFormat:@"%@, %@", wine.appellation.region.name, wine.appellation.region.country.name] drawAtPoint:
+				CGPointMake(localizationPoint.x + leftPadding, localizationPoint.y + topPadding) withFont:font];
 			 
 		} else if (wine.appellation == nil && wine.country != nil) {
-			[[NSString stringWithFormat:@"%@", wine.country.name] drawAtPoint:CGPointMake(localizationPoint.x + leftPadding, localizationPoint.y) withFont:font];
+			[[NSString stringWithFormat:@"%@", wine.country.name] drawAtPoint:
+				CGPointMake(localizationPoint.x + leftPadding, localizationPoint.y + topPadding) withFont:font];
 		}
 	}
 }
@@ -147,13 +150,15 @@
 	
 	// varietals text
 	float leftPadding = 20;
+	float topPadding = 2;
+	
 	NSString *names = [[NSString alloc] init];
 	for (NSManagedObject *object in wine.varietals) {
 		names = [names stringByAppendingString:[[object valueForKey:@"name"] stringByAppendingString:@", "]];
 	}
 	names = [names substringToIndex:[names length] - 2];
 	
-	[names drawAtPoint:CGPointMake(varietalPoint.x + leftPadding, varietalPoint.y) withFont:font];
+	[names drawAtPoint:CGPointMake(varietalPoint.x + leftPadding, varietalPoint.y + topPadding) withFont:font];
 }
 
 - (void) drawTemperature:(CGPoint) temperaturePoint {
@@ -165,7 +170,7 @@
 	UIColor *textColor = [UIColor blackColor];
 	[textColor set];
 	
-	float leftPadding = 14;
+	float leftPadding = 15;
 	
 	// thermometer image
 	[[[UIImage imageNamed:@"thermometer.png"] scaleToSize:CGSizeMake(6, 14)] drawAtPoint:temperaturePoint];
@@ -197,15 +202,15 @@
 	
 	[self drawWineCellContainer:rect context:context];
 	
-	[self drawName:CGPointMake(19, 12)];
+	[self drawName:CGPointMake(19, 14)];
 	
 	[self drawVintage:CGPointMake(265, 15)];
 	
-	[self drawAppellationRegion:CGPointMake(20, 40) localizationPoint:CGPointMake(20, 90)];
+	[self drawAppellationRegion:CGPointMake(20, 38) localizationPoint:CGPointMake(18, 90)];
 	
-	[self drawVarietals:CGPointMake(20, 55)];
+	[self drawVarietals:CGPointMake(17, 55)];
 	
-	[self drawTemperature:CGPointMake(25, 72)];
+	[self drawTemperature:CGPointMake(21, 73)];
 	
 	[self drawColour:CGPointMake(251, 33)];
 	
