@@ -1,7 +1,6 @@
 #import "UIColor+CellarColours.h"
 #import "CountryTableViewController.h"
 #import "RegionTableViewController.h"
-#import "WineCell.h"
 
 #import "Country.h"
 #import "Region.h"

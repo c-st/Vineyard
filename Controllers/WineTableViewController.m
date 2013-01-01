@@ -4,7 +4,6 @@
 #import "Wine.h"
 #import "Appellation.h"
 
-#import "WineCell.h"
 #import "FastWineCell.h"
 
 #import <QuartzCore/QuartzCore.h>
@@ -18,8 +17,6 @@
 @end
 
 @implementation WineTableViewController
-
-@synthesize currentlyActiveCell, tapGestureRecognizer;
 
 - (void)viewDidLoad {
     [super viewDidLoad];

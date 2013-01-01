@@ -1,6 +1,5 @@
 #import "RegionTableViewController.h"
 #import "AppellationTableViewController.h"
-#import "WineCell.h"
 
 #import "Region.h"
 #import "Appellation.h"
