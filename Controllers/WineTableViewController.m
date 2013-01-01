@@ -27,12 +27,6 @@
 	[self.tableView setRowHeight:120];
 	[self.tableView setBackgroundColor:[UIColor cellarBeigeNoisyColour]];
 	self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 10, 0);
-	
-	// add gesture recognize
-	[self setTapGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(endEditMode:)]];
-	[self.tapGestureRecognizer  setCancelsTouchesInView:YES];
-	[self.tapGestureRecognizer setEnabled:NO];
-	[self.tableView addGestureRecognizer:[self tapGestureRecognizer]];
 }
 
 - (void) viewWillAppear:(BOOL)animated {
@@ -62,12 +56,6 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-	// set activated cell deactivated
-	if (self.currentlyActiveCell != nil) {
-		[self endEditMode:nil];
-		[self setCurrentlyActiveCell:nil];
-	}
-
 	// moved to FastWineCell from WineCell
 	FastWineCell *cell = [tableView dequeueReusableCellWithIdentifier:@"WineCell"];
 	if (cell == nil) {
@@ -79,34 +67,6 @@
     return cell;
 }
 
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    return YES;
-}
-
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        //add code here for when you hit delete
-		NSLog(@"delete");
-    }
-}
-
--(void)tableView:(UITableView*)tableView willBeginEditingRowAtIndexPath:(NSIndexPath *)indexPath {
-	// set cell active
-	WineCell *cell = (WineCell *)[tableView cellForRowAtIndexPath:indexPath];
-	[self setCurrentlyActiveCell:cell];
-	
-	[tapGestureRecognizer setEnabled:YES];
-	[currentlyActiveCell animateSwipeCellActivationChange:YES];
-}
-
-
-- (void) endEditMode:(UITapGestureRecognizer *)sender {
-	[currentlyActiveCell animateSwipeCellActivationChange:NO];
-	[self.tableView setEditing:NO animated:YES];
-	[tapGestureRecognizer setEnabled:NO];
-	
-	[self setCurrentlyActiveCell:nil];
-}
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath  {
 	// unfold and disable
