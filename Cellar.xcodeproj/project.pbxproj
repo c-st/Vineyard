@@ -127,7 +127,6 @@
 		83E79DBE1677AA1400E0E42D /* UIView+ObjectTagAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 83E79DB61677AA1400E0E42D /* UIView+ObjectTagAdditions.m */; };
 		83E79DBF1677AA1400E0E42D /* UIImage+Scale.m in Sources */ = {isa = PBXBuildFile; fileRef = 83E79DB81677AA1400E0E42D /* UIImage+Scale.m */; };
 		83E79DC01677AA1400E0E42D /* UIColor+CellarColours.m in Sources */ = {isa = PBXBuildFile; fileRef = 83E79DBA1677AA1400E0E42D /* UIColor+CellarColours.m */; };
-		83E79DC91677AA2600E0E42D /* WineCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 83E79DC11677AA2600E0E42D /* WineCell.m */; };
 		83E79DCA1677AA2600E0E42D /* SettingsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 83E79DC31677AA2600E0E42D /* SettingsCell.m */; };
 		83E79DCB1677AA2600E0E42D /* CellarTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 83E79DC51677AA2600E0E42D /* CellarTableViewCell.m */; };
 		83E79DCC1677AA2600E0E42D /* ColourCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 83E79DC71677AA2600E0E42D /* ColourCell.m */; };
@@ -381,8 +380,6 @@
 		83E79DB91677AA1400E0E42D /* UIImage+Scale.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+Scale.h"; path = "Categories/UIImage+Scale.h"; sourceTree = SOURCE_ROOT; };
 		83E79DBA1677AA1400E0E42D /* UIColor+CellarColours.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIColor+CellarColours.m"; path = "Categories/UIColor+CellarColours.m"; sourceTree = SOURCE_ROOT; };
 		83E79DBB1677AA1400E0E42D /* UIColor+CellarColours.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIColor+CellarColours.h"; path = "Categories/UIColor+CellarColours.h"; sourceTree = SOURCE_ROOT; };
-		83E79DC11677AA2600E0E42D /* WineCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WineCell.m; path = Views/WineCell.m; sourceTree = SOURCE_ROOT; };
-		83E79DC21677AA2600E0E42D /* WineCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WineCell.h; path = Views/WineCell.h; sourceTree = SOURCE_ROOT; };
 		83E79DC31677AA2600E0E42D /* SettingsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingsCell.m; path = Views/SettingsCell.m; sourceTree = SOURCE_ROOT; };
 		83E79DC41677AA2600E0E42D /* SettingsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SettingsCell.h; path = Views/SettingsCell.h; sourceTree = SOURCE_ROOT; };
 		83E79DC51677AA2600E0E42D /* CellarTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CellarTableViewCell.m; path = Views/CellarTableViewCell.m; sourceTree = SOURCE_ROOT; };
@@ -755,8 +752,6 @@
 		833591EA164B147600FEA5C9 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				83E79DC11677AA2600E0E42D /* WineCell.m */,
-				83E79DC21677AA2600E0E42D /* WineCell.h */,
 				83099D5116826B1100415556 /* FastWineCell.h */,
 				83099D5216826B1100415556 /* FastWineCell.m */,
 				83E79DC31677AA2600E0E42D /* SettingsCell.m */,
@@ -1124,7 +1119,6 @@
 				83E79DBE1677AA1400E0E42D /* UIView+ObjectTagAdditions.m in Sources */,
 				83E79DBF1677AA1400E0E42D /* UIImage+Scale.m in Sources */,
 				83E79DC01677AA1400E0E42D /* UIColor+CellarColours.m in Sources */,
-				83E79DC91677AA2600E0E42D /* WineCell.m in Sources */,
 				83E79DCA1677AA2600E0E42D /* SettingsCell.m in Sources */,
 				83E79DCB1677AA2600E0E42D /* CellarTableViewCell.m in Sources */,
 				83E79DCC1677AA2600E0E42D /* ColourCell.m in Sources */,
