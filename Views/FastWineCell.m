@@ -60,7 +60,7 @@
 	
 	// draw line
 	CGContextSaveGState(context);
-	CGRect lineBounds = CGRectMake(18, 36, 300, 0);
+	CGRect lineBounds = CGRectMake(18, 38, 300, 0);
 	
 	CGContextSetLineWidth(context, 1.0f);
 	CGContextSetStrokeColorWithColor(context, [[UIColor lightGrayColor] colorWithAlphaComponent:0.2].CGColor);
@@ -123,7 +123,7 @@
 		[[[UIImage imageNamed:@"globe.png"] scaleToSize:CGSizeMake(12, 12)] drawAtPoint:localizationPoint];
 		
 		// localization text
-		float leftPadding = 20;
+		float leftPadding = 16;
 			float topPadding = -2;
 		if (wine.appellation != nil) {
 			[[NSString stringWithFormat:@"%@, %@", wine.appellation.region.name, wine.appellation.region.country.name] drawAtPoint:
@@ -149,7 +149,7 @@
 	[[[UIImage imageNamed:@"food_grapes_black.png"] scaleToSize:CGSizeMake(16, 16)] drawAtPoint:varietalPoint];
 	
 	// varietals text
-	float leftPadding = 20;
+	float leftPadding = 16;
 	float topPadding = 2;
 	
 	NSString *names = [[NSString alloc] init];
@@ -170,7 +170,7 @@
 	UIColor *textColor = [UIColor blackColor];
 	[textColor set];
 	
-	float leftPadding = 15;
+	float leftPadding = 12;
 	
 	// thermometer image
 	[[[UIImage imageNamed:@"thermometer.png"] scaleToSize:CGSizeMake(6, 14)] drawAtPoint:temperaturePoint];
@@ -193,7 +193,7 @@
 			bottle = [[UIImage imageNamed:@"wine_bottle.png"] imageTintedWithColor:[UIColor cellarWineColourRose]];
 		}
 		
-		[[bottle scaleToSize:CGSizeMake(48, 48)] drawAtPoint:colourPoint];
+		[[bottle scaleToSize:CGSizeMake(36, 36)] drawAtPoint:colourPoint];
 	}
 }
 
@@ -206,13 +206,13 @@
 	
 	[self drawVintage:CGPointMake(265, 15)];
 	
-	[self drawAppellationRegion:CGPointMake(20, 38) localizationPoint:CGPointMake(18, 90)];
+	[self drawAppellationRegion:CGPointMake(20, 40) localizationPoint:CGPointMake(18, 93)];
 	
 	[self drawVarietals:CGPointMake(17, 55)];
 	
-	[self drawTemperature:CGPointMake(21, 73)];
+	[self drawTemperature:CGPointMake(21, 74)];
 	
-	[self drawColour:CGPointMake(251, 33)];
+	[self drawColour:CGPointMake(266, 33)];
 	
 	[self drawRating: CGRectMake(0, 90, 518, 0)];
 }

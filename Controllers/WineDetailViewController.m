@@ -54,6 +54,72 @@ double deltaLatitude;
 	return mapView;
 }
 
+- (void) addContainerViews:(UIView *) view {
+	CGRect bound = [[UIScreen mainScreen] bounds];
+	
+	// White area
+	UILabel *whiteArea = [[UILabel alloc] initWithFrame:CGRectMake(bound.origin.x, 100, bound.size.width, 270)];
+	[whiteArea setBackgroundColor:[UIColor cellarGrayColour]];
+	[view addSubview:whiteArea];
+	
+	// Line view
+	SSLineView *line2 = [[SSLineView alloc] initWithFrame:CGRectMake(0, 218, bound.size.width, 20)];
+	[line2 setLineColor:[UIColor whiteColor]];
+	[line2 setInsetColor:[UIColor lightGrayColor]];
+	[view addSubview:line2];
+	
+	// Shadow
+	CAGradientLayer *shadow = [CAGradientLayer layer];
+	shadow.frame = CGRectMake(0, 220, bound.size.width, 4);
+	shadow.startPoint = CGPointMake(1.0, 0.5);
+	shadow.endPoint = CGPointMake(1.0, 1.0);
+	shadow.colors = @[(id)[[UIColor colorWithWhite:0.0 alpha:0.15] CGColor], (id)[[UIColor clearColor] CGColor]];
+	[view.layer addSublayer:shadow];
+	
+	// Shadow 2
+	CAGradientLayer *shadow2 = [CAGradientLayer layer];
+	shadow2.frame = CGRectMake(0, 370, bound.size.width, 4);
+	shadow2.startPoint = CGPointMake(1.0, 0.5);
+	shadow2.endPoint = CGPointMake(1.0, 1.0);
+	shadow2.colors = @[(id)[[UIColor colorWithWhite:0.0 alpha:0.2] CGColor], (id)[[UIColor clearColor] CGColor]];
+	[view.layer addSublayer:shadow2];
+	
+	// Line view
+	SSLineView *line = [[SSLineView alloc] initWithFrame:CGRectMake(0, 100, bound.size.width, 20)];
+	[line setLineColor:[UIColor lightGrayColor]];
+	[line setInsetColor:[UIColor whiteColor]];
+	[view addSubview:line];
+}
+
+- (void) addHeaderArea:(UIView *) view {
+	// Name
+	UILabel *nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 110, 300, 25)];
+	[nameLabel setBackgroundColor:[UIColor clearColor]];
+    [nameLabel setFont:[UIFont fontWithName:@"Baskerville" size:24]];
+	[nameLabel setTextColor:[UIColor blackColor]];
+	[nameLabel setText:[wine name]];
+	[view addSubview:nameLabel];
+	
+	// Vintage
+	UILabel *vintageLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 135, 300, 25)];
+	[vintageLabel setBackgroundColor:[UIColor clearColor]];
+	[vintageLabel setTextColor:[UIColor darkGrayColor]];
+	[vintageLabel setFont:[UIFont fontWithName:@"Baskerville" size:20]];
+	[vintageLabel setText:[wine vintage]];
+	[view addSubview:vintageLabel];
+	
+	// Rating
+	SSRatingPicker *ratingPicker = [[SSRatingPicker alloc] initWithFrame:CGRectMake(8, 175, 300, 40)];
+	[ratingPicker setBackgroundColor:[UIColor clearColor]];
+	[ratingPicker setUserInteractionEnabled:NO];
+	[ratingPicker setTotalNumberOfStars:6];
+	[ratingPicker.textLabel setText:@""];
+	if ([wine.rating isKindOfClass:[NSNumber class]]) {
+		[ratingPicker setSelectedNumberOfStars:[wine.rating floatValue]];
+	}
+	[view addSubview:ratingPicker];
+}
+
 
 
 - (void) loadView {
@@ -90,67 +156,10 @@ double deltaLatitude;
 	
 	 
 	[scrollView addSubview:[self buildLocationView]];
+	
+	[self addContainerViews:scrollView];
 
-	
-	// White area
-	UILabel *whiteArea = [[UILabel alloc] initWithFrame:CGRectMake(bound.origin.x, 100, bound.size.width, 270)];
-	[whiteArea setBackgroundColor:[UIColor cellarGrayColour]];
-	[scrollView addSubview:whiteArea];
-	
-	// Line view
-	SSLineView *line = [[SSLineView alloc] initWithFrame:CGRectMake(0, 100, bound.size.width, 20)];
-	[line setLineColor:[UIColor lightGrayColor]];
-	[line setInsetColor:[UIColor whiteColor]];
-	[scrollView addSubview:line];
-	
-	// Name
-	UILabel *nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 110, 300, 25)];
-	[nameLabel setBackgroundColor:[UIColor clearColor]];
-    [nameLabel setFont:[UIFont fontWithName:@"Baskerville" size:24]];
-	[nameLabel setTextColor:[UIColor blackColor]];
-	[nameLabel setText:[wine name]];
-	[scrollView addSubview:nameLabel];
-	
-	// Vintage
-	UILabel *vintageLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 135, 300, 25)];
-	[vintageLabel setBackgroundColor:[UIColor clearColor]];
-	[vintageLabel setTextColor:[UIColor darkGrayColor]];
-	[vintageLabel setFont:[UIFont fontWithName:@"Baskerville" size:20]];
-	[vintageLabel setText:[wine vintage]];
-	[scrollView addSubview:vintageLabel];
-
-	// Rating
-	SSRatingPicker *ratingPicker = [[SSRatingPicker alloc] initWithFrame:CGRectMake(8, 175, 300, 40)];
-	[ratingPicker setBackgroundColor:[UIColor clearColor]];
-	[ratingPicker setUserInteractionEnabled:NO];
-	[ratingPicker setTotalNumberOfStars:6];
-	[ratingPicker.textLabel setText:@""];
-	if ([wine.rating isKindOfClass:[NSNumber class]]) {
-		[ratingPicker setSelectedNumberOfStars:[wine.rating floatValue]];
-	}
-	[scrollView addSubview:ratingPicker];
-	
-	// Line view
-	SSLineView *line2 = [[SSLineView alloc] initWithFrame:CGRectMake(0, 218, bound.size.width, 20)];
-	[line2 setLineColor:[UIColor whiteColor]];
-	[line2 setInsetColor:[UIColor lightGrayColor]];
-	[scrollView addSubview:line2];
-	
-	// Shadow
-	CAGradientLayer *shadow = [CAGradientLayer layer];
-	shadow.frame = CGRectMake(0, 220, bound.size.width, 4);
-	shadow.startPoint = CGPointMake(1.0, 0.5);
-	shadow.endPoint = CGPointMake(1.0, 1.0);
-	shadow.colors = @[(id)[[UIColor colorWithWhite:0.0 alpha:0.15] CGColor], (id)[[UIColor clearColor] CGColor]];
-	[scrollView.layer addSublayer:shadow];
-	
-	// Shadow 2
-	CAGradientLayer *shadow2 = [CAGradientLayer layer];
-	shadow2.frame = CGRectMake(0, 370, bound.size.width, 4);
-	shadow2.startPoint = CGPointMake(1.0, 0.5);
-	shadow2.endPoint = CGPointMake(1.0, 1.0);
-	shadow2.colors = @[(id)[[UIColor colorWithWhite:0.0 alpha:0.2] CGColor], (id)[[UIColor clearColor] CGColor]];
-	[scrollView.layer addSublayer:shadow2];
+	[self addHeaderArea:scrollView];
 	
 	[self.view addSubview:scrollView];
 }
