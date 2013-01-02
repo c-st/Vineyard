@@ -4,6 +4,7 @@
 #import "_Wine.h"
 
 const struct WineAttributes WineAttributes = {
+	.alcoholContent = @"alcoholContent",
 	.creationTime = @"creationTime",
 	.image = @"image",
 	.name = @"name",
@@ -51,6 +52,10 @@ const struct WineFetchedProperties WineFetchedProperties = {
 + (NSSet *)keyPathsForValuesAffectingValueForKey:(NSString *)key {
 	NSSet *keyPaths = [super keyPathsForValuesAffectingValueForKey:key];
 	
+	if ([key isEqualToString:@"alcoholContentValue"]) {
+		NSSet *affectingKey = [NSSet setWithObject:@"alcoholContent"];
+		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
+	}
 	if ([key isEqualToString:@"priceValue"]) {
 		NSSet *affectingKey = [NSSet setWithObject:@"price"];
 		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
@@ -62,6 +67,32 @@ const struct WineFetchedProperties WineFetchedProperties = {
 
 	return keyPaths;
 }
+
+
+
+
+@dynamic alcoholContent;
+
+
+
+- (double)alcoholContentValue {
+	NSNumber *result = [self alcoholContent];
+	return [result doubleValue];
+}
+
+- (void)setAlcoholContentValue:(double)value_ {
+	[self setAlcoholContent:[NSNumber numberWithDouble:value_]];
+}
+
+- (double)primitiveAlcoholContentValue {
+	NSNumber *result = [self primitiveAlcoholContent];
+	return [result doubleValue];
+}
+
+- (void)setPrimitiveAlcoholContentValue:(double)value_ {
+	[self setPrimitiveAlcoholContent:[NSNumber numberWithDouble:value_]];
+}
+
 
 
 

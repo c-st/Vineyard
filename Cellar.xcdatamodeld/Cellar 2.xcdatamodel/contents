@@ -80,6 +80,7 @@
         <relationship name="wines" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Wine" inverseName="varietals" inverseEntity="Wine" syncable="YES"/>
     </entity>
     <entity name="Wine" representedClassName="Wine" syncable="YES">
+        <attribute name="alcoholContent" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="creationTime" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="image" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
         <attribute name="name" attributeType="String" syncable="YES"/>
@@ -108,7 +109,7 @@
         <element name="Region" positionX="-288" positionY="126" width="128" height="133"/>
         <element name="TemperatureRange" positionX="358" positionY="63" width="128" height="103"/>
         <element name="Varietal" positionX="331" positionY="338" width="128" height="103"/>
-        <element name="Wine" positionX="88" positionY="149" width="128" height="238"/>
+        <element name="Wine" positionX="88" positionY="149" width="128" height="255"/>
         <element name="Winery" positionX="-317" positionY="368" width="128" height="73"/>
     </elements>
 </model>

@@ -83,13 +83,44 @@
 			}
 			break;
 		}
+			
+		case AlcoholSettingsCellType: {
+			[self setSelectionStyle:UITableViewCellEditingStyleNone];
+			[self setAccessoryType:UITableViewCellAccessoryNone];
+			
+			textField = [[UITextField alloc] initWithFrame:CGRectMake(10, 12, 85, 30)];
+			[textField setTextColor: [UIColor lightGrayColor]];
+			[textField setPlaceholder:@"Alc.vol.%"];
+			[textField setUserInteractionEnabled:NO];
+			[self.contentView addSubview:textField];
+			
+			UISlider *slider = [[UISlider alloc] initWithFrame:CGRectMake(95, 8, self.frame.size.width - 145, 30)];
+			[slider setMaximumTrackTintColor:[UIColor cellarWineRedColour]];
+			[slider setMinimumTrackTintColor:[UIColor lightGrayColor]];
+			[slider setMinimumValue:10.0f];
+			[slider setMaximumValue:30.0f];
+			[slider addTarget:self action:@selector(sliderValueWasChanged:) forControlEvents:UIControlEventValueChanged];
+			
+						
+			[self.contentView addSubview:slider];
+			
+			// check for current value
+			id currentValue = [wine valueForKey:propertyIdentifier];
+			if (currentValue != nil && [currentValue floatValue] > 0) {
+				NSLog(@"current value %f", [currentValue floatValue]);
+				[textField setText:[NSString stringWithFormat:@"%.1f vol", [currentValue floatValue]]];
+				[textField setTextColor:[UIColor blackColor]];
+				[slider setValue:[currentValue floatValue]];
+			}
+			break;
+		}
 		
 		case RangeSettingsCellType: {
 			[self setSelectionStyle:UITableViewCellEditingStyleNone];
 			[self setAccessoryType:UITableViewCellAccessoryNone];
 			textField=[[UITextField alloc] initWithFrame:CGRectMake(10, 12, 85, 30)];
 			[textField setTextColor: [UIColor lightGrayColor]];
-			[textField setPlaceholder:@"8-20º"];
+			[textField setPlaceholder:@"Temp."];
 			[textField setUserInteractionEnabled:NO];
 			[self.contentView addSubview:textField];
 			
@@ -116,7 +147,7 @@
 			[slider setStepValueContinuously:NO];
 			
 			[slider setLowerValue:slider.minimumValue upperValue:slider.maximumValue animated:YES];
-			[self updateSliderLabel:slider];
+			[self updateRangeSliderLabel:slider];
 			id currentValue = [wine valueForKey:propertyIdentifier];
 			if (currentValue != nil && [currentValue isKindOfClass:[TemperatureRange class]]) {
 				TemperatureRange *currentRange = (TemperatureRange *) currentValue;
@@ -126,7 +157,7 @@
 				[textField setTextColor:[UIColor blackColor]];
 			}
 			
-			[slider addTarget:self action:@selector(updateSliderLabel:) forControlEvents:UIControlEventValueChanged];
+			[slider addTarget:self action:@selector(updateRangeSliderLabel:) forControlEvents:UIControlEventValueChanged];
 			[slider addTarget:self action:@selector(sliderForRangeWasChanged:) forControlEvents:UIControlEventTouchUpInside];
 			
 			[self.contentView addSubview:slider];
@@ -333,26 +364,39 @@
 }
 
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
+	if ([propertyIdentifier isEqualToString:@"vintage"]) {
+		return 1;
+	}
 	return 1;
 }
 
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
-	return 30;
+	if ([propertyIdentifier isEqualToString:@"vintage"]) {
+		return 30;
+	} 
+	return 1;
 }
 
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
-	return [self yearStringForRow:row];
+	if ([propertyIdentifier isEqualToString:@"vintage"]) {
+		return [self yearStringForRow:row];
+	}
+	return @"Not defined";
 }
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
-	[wine setValue:[self yearStringForRow:row] forKey:propertyIdentifier];
-	[(UITextField *)[[self.contentView subviews] objectAtIndex:0] setText:[self yearStringForRow:row]];
+	if ([propertyIdentifier isEqualToString:@"vintage"]) {
+		[wine setValue:[self yearStringForRow:row] forKey:propertyIdentifier];
+		[(UITextField *)[[self.contentView subviews] objectAtIndex:0] setText:[self yearStringForRow:row]];
+	} else if ([propertyIdentifier isEqualToString:@"alcoholContent"]) {
+		// set content
+	}
 }
 
 #pragma mark
 #pragma mark Range slider delegate methods
 
-- (void) updateSliderLabel:(NMRangeSlider *) slider {
+- (void) updateRangeSliderLabel:(NMRangeSlider *) slider {
 	//NSLog(@"--> %.1f %.1f", slider.lowerValue, slider.upperValue);
 	double fromValue = slider.lowerValue;
 	double toValue = slider.upperValue;
@@ -361,7 +405,7 @@
 
 - (void) sliderForRangeWasChanged:(NMRangeSlider *) slider {
 	[self.textField setTextColor:[UIColor blackColor]];
-	[self updateSliderLabel:slider];
+	[self updateRangeSliderLabel:slider];
 	
 	double fromValue = slider.lowerValue;
 	double toValue = slider.upperValue;
@@ -377,6 +421,27 @@
 		[wine setServingTemperature:range];
 	}
 }
+
+#pragma mark
+#pragma mark Slider delegate methods
+
+- (void) updateSliderLabel:(UISlider *) slider {
+	double value = slider.value;
+	[self.textField setText:[NSString stringWithFormat:@"%.1f vol", value]];
+}
+
+
+- (void) sliderValueWasChanged:(UISlider *) slider {
+	float newStep = roundf((slider.value) / 0.1f);
+    slider.value = newStep * 0.1f;
+	
+	NSLog(@"%.1f", slider.value);
+	[self updateSliderLabel:slider];
+	
+	// save value
+	[wine setAlcoholContentValue:slider.value];
+}
+
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     //[super setSelected:selected animated:animated];

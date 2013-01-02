@@ -5,6 +5,7 @@
 
 
 extern const struct WineAttributes {
+	__unsafe_unretained NSString *alcoholContent;
 	__unsafe_unretained NSString *creationTime;
 	__unsafe_unretained NSString *image;
 	__unsafe_unretained NSString *name;
@@ -41,6 +42,7 @@ extern const struct WineFetchedProperties {
 
 
 
+
 @interface WineID : NSManagedObjectID {}
 @end
 
@@ -49,6 +51,18 @@ extern const struct WineFetchedProperties {
 + (NSString*)entityName;
 + (NSEntityDescription*)entityInManagedObjectContext:(NSManagedObjectContext*)moc_;
 - (WineID*)objectID;
+
+
+
+
+@property (nonatomic, strong) NSNumber* alcoholContent;
+
+
+@property double alcoholContentValue;
+- (double)alcoholContentValue;
+- (void)setAlcoholContentValue:(double)value_;
+
+//- (BOOL)validateAlcoholContent:(id*)value_ error:(NSError**)error_;
 
 
 
@@ -172,6 +186,15 @@ extern const struct WineFetchedProperties {
 @end
 
 @interface _Wine (CoreDataGeneratedPrimitiveAccessors)
+
+
+- (NSNumber*)primitiveAlcoholContent;
+- (void)setPrimitiveAlcoholContent:(NSNumber*)value;
+
+- (double)primitiveAlcoholContentValue;
+- (void)setPrimitiveAlcoholContentValue:(double)value_;
+
+
 
 
 - (NSDate*)primitiveCreationTime;

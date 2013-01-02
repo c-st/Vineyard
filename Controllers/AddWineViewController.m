@@ -151,11 +151,16 @@
 	// Rating
 	SettingsCell *ratingSettingsCell = [[SettingsCell alloc] initWithWine:[self wine] andType:RatingSettingsCellType andProperty:@"rating" andName:@"Rating"];
 	
-	// Price
-	//SettingsCell *priceSettingsCell = [[SettingsCell alloc] initWithWine:[self wine] andType:DoubleNumberSettingsCellType andProperty:@"price" andName:@"Price"];
+	// TODO Price
+	SettingsCell *priceSettingsCell = [[SettingsCell alloc] initWithWine:[self wine] andType:TextSettingsCellType andProperty:@"price" andName:@"Price"];
 	
 	// Serving temperature
 	SettingsCell *servingTemperatureSettingsCell = [[SettingsCell alloc] initWithWine:[self wine] andType:RangeSettingsCellType andProperty:@"servingTemperature" andName:@"Serving Temperature"];
+	
+	// TODO Alcohol content
+	SettingsCell *alcoholContentSettingsCell = [[SettingsCell alloc] initWithWine:[self wine] andType:AlcoholSettingsCellType andProperty:@"alcoholContent" andName:@"Alcohol content"];
+	
+	// TODO: Tags, Notes, Tasting notes, barrel time
 	
 	NSArray *basics = nil;
 	
@@ -173,10 +178,12 @@
 							colourSettingsCell,
 							varietalSettingsCell];
 	
-	NSArray *rating = @[//priceSettingsCell,
-					   ratingSettingsCell];
+	NSArray *rating = @[ratingSettingsCell,
+						priceSettingsCell
+					 ];
 	
-	NSArray *tasting = @[servingTemperatureSettingsCell
+	NSArray *tasting = @[alcoholContentSettingsCell,
+					  servingTemperatureSettingsCell
 					  // barrel time, tags, notes,
 					  ];
 	
