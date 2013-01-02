@@ -119,7 +119,6 @@
 			[self setSelectionStyle:UITableViewCellEditingStyleNone];
 			[self setAccessoryType:UITableViewCellAccessoryNone];
 			textField=[[UITextField alloc] initWithFrame:CGRectMake(10, 12, 85, 30)];
-			[textField setTextColor: [UIColor lightGrayColor]];
 			[textField setPlaceholder:@"Temp."];
 			[textField setUserInteractionEnabled:NO];
 			[self.contentView addSubview:textField];
@@ -148,6 +147,7 @@
 			
 			[slider setLowerValue:slider.minimumValue upperValue:slider.maximumValue animated:YES];
 			[self updateRangeSliderLabel:slider];
+			[textField setTextColor:[UIColor lightGrayColor]];
 			id currentValue = [wine valueForKey:propertyIdentifier];
 			if (currentValue != nil && [currentValue isKindOfClass:[TemperatureRange class]]) {
 				TemperatureRange *currentRange = (TemperatureRange *) currentValue;
@@ -426,6 +426,7 @@
 #pragma mark Slider delegate methods
 
 - (void) updateSliderLabel:(UISlider *) slider {
+	[self.textField setTextColor:[UIColor blackColor]];
 	double value = slider.value;
 	[self.textField setText:[NSString stringWithFormat:@"%.1f vol", value]];
 }
