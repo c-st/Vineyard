@@ -54,13 +54,19 @@
 	// Scroll view
 	CGRect bound = [[UIScreen mainScreen] bounds];
 	
+	int contentHeight = 40;
+	// reduce height, if new wine is created. (no tab bar visible!).
+	if (![self newWine]) {
+		contentHeight = 90;
+	}
+	
 	UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(bound.origin.x,
 																			  bound.origin.y,
 																			  bound.size.width,
 																			  bound.size.height)];
-	int contentHeight = 80;
 	
-	[scrollView setContentSize: CGSizeMake(self.view.frame.size.width, self.view.frame.size.height + contentHeight)];
+	
+	[scrollView setContentSize: CGSizeMake(self.view.frame.size.width, self.view.frame.size.height + (contentHeight*2))];
 	[scrollView setContentOffset: CGPointMake(0, -20)];
 	[scrollView setContentInset:UIEdgeInsetsMake(21.0,0,0,0.0)];
 	[scrollView setBackgroundColor:[UIColor cellarBeigeNoisyColour]];
@@ -81,10 +87,8 @@
 	// Attribute Table
 	self.tableView = [[UITableViewController alloc] initWithStyle:UITableViewStyleGrouped];
 	float outerSpacing = 10.0f;
-	[tableView.view setFrame:CGRectMake(bound.origin.x+outerSpacing, bound.origin.y - 15, bound.size.width- 2 * outerSpacing, bound.size.height)];
-	
+	[tableView.view setFrame:CGRectMake(bound.origin.x+outerSpacing, bound.origin.y - 15, bound.size.width- 2 * outerSpacing, bound.size.height + contentHeight)];
 	[tableView.tableView setScrollEnabled:NO];
-	
 	[tableView.tableView setDelegate:self];
 	[tableView.tableView setDataSource:self];
 	[tableView.tableView setBackgroundView:nil];
