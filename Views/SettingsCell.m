@@ -3,6 +3,8 @@
 #import "SettingsCell.h"
 #import "AddWineViewController.h"
 
+#import "UIImage+Tint.h"
+
 #import "NMRangeSlider.h"
 
 @implementation SettingsCell
@@ -90,15 +92,17 @@
 			
 			textField = [[UITextField alloc] initWithFrame:CGRectMake(10, 12, 85, 30)];
 			[textField setTextColor: [UIColor lightGrayColor]];
-			[textField setPlaceholder:@"Alc.vol.%"];
+			[textField setPlaceholder:@"Alc. Vol.%"];
 			[textField setUserInteractionEnabled:NO];
 			[self.contentView addSubview:textField];
 			
 			UISlider *slider = [[UISlider alloc] initWithFrame:CGRectMake(95, 8, self.frame.size.width - 145, 30)];
-			[slider setMaximumTrackTintColor:[UIColor cellarWineRedColour]];
-			[slider setMinimumTrackTintColor:[UIColor lightGrayColor]];
-			[slider setMinimumValue:10.0f];
-			[slider setMaximumValue:30.0f];
+			// is needed for unique Look with range slider
+			UIImage *image = [[UIImage imageNamed:@"slider-default-track"] imageTintedWithColor:[UIColor redColor] fraction:0.5];
+			image = [image resizableImageWithCapInsets:UIEdgeInsetsMake(0.0, 7.0, 0.0, 7.0)];
+			[slider setMinimumTrackImage:image forState:UIControlStateNormal];
+			[slider setMinimumValue:9.0f];
+			[slider setMaximumValue:25.0f];
 			[slider addTarget:self action:@selector(sliderValueWasChanged:) forControlEvents:UIControlEventValueChanged];
 			
 						
@@ -108,7 +112,7 @@
 			id currentValue = [wine valueForKey:propertyIdentifier];
 			if (currentValue != nil && [currentValue floatValue] > 0) {
 				NSLog(@"current value %f", [currentValue floatValue]);
-				[textField setText:[NSString stringWithFormat:@"%.1f vol", [currentValue floatValue]]];
+				[textField setText:[NSString stringWithFormat:@"%.1f %%", [currentValue floatValue]]];
 				[textField setTextColor:[UIColor blackColor]];
 				[slider setValue:[currentValue floatValue]];
 			}
@@ -125,7 +129,7 @@
 			
 			// add range slider
 			NMRangeSlider *slider = [[NMRangeSlider alloc] initWithFrame:CGRectMake(95, 8, self.frame.size.width - 145, 30)];
-			
+		
 			// Woraround: make sure slider is aligned properly.
 			[slider setMinimumValue:0];
 			[slider setMaximumValue:10];
@@ -398,13 +402,14 @@
 
 - (void) updateRangeSliderLabel:(NMRangeSlider *) slider {
 	//NSLog(@"--> %.1f %.1f", slider.lowerValue, slider.upperValue);
+	[self.textField setTextColor:[UIColor blackColor]];
 	double fromValue = slider.lowerValue;
 	double toValue = slider.upperValue;
 	[self.textField setText:[NSString stringWithFormat:@"%.1f-%.1fº", fromValue, toValue]];
 }
 
 - (void) sliderForRangeWasChanged:(NMRangeSlider *) slider {
-	[self.textField setTextColor:[UIColor blackColor]];
+	
 	[self updateRangeSliderLabel:slider];
 	
 	double fromValue = slider.lowerValue;
@@ -428,7 +433,7 @@
 - (void) updateSliderLabel:(UISlider *) slider {
 	[self.textField setTextColor:[UIColor blackColor]];
 	double value = slider.value;
-	[self.textField setText:[NSString stringWithFormat:@"%.1f vol", value]];
+	[self.textField setText:[NSString stringWithFormat:@"%.1f %%", value]];
 }
 
 
@@ -436,7 +441,7 @@
 	float newStep = roundf((slider.value) / 0.1f);
     slider.value = newStep * 0.1f;
 	
-	NSLog(@"%.1f", slider.value);
+	//NSLog(@"%.1f", slider.value);
 	[self updateSliderLabel:slider];
 	
 	// save value

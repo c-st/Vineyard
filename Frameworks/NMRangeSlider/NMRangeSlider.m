@@ -9,6 +9,8 @@
 #import "NMRangeSlider.h"
 #import "UIImage+Tint.h"
 
+#import "UIColor+CellarColours.h"
+
 @interface NMRangeSlider ()
 {
     float _lowerTouchOffset;
