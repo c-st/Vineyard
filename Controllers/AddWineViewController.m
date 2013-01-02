@@ -58,7 +58,7 @@
 																			  bound.origin.y,
 																			  bound.size.width,
 																			  bound.size.height)];
-	int contentHeight = 60;
+	int contentHeight = 80;
 	
 	[scrollView setContentSize: CGSizeMake(self.view.frame.size.width, self.view.frame.size.height + contentHeight)];
 	[scrollView setContentOffset: CGPointMake(0, -20)];
@@ -81,8 +81,7 @@
 	// Attribute Table
 	self.tableView = [[UITableViewController alloc] initWithStyle:UITableViewStyleGrouped];
 	float outerSpacing = 10.0f;
-	[tableView.view setFrame:CGRectMake(bound.origin.x+outerSpacing, bound.origin.y - 15, bound.size.width- 2 * outerSpacing, bound.size.height-50)];
-	[tableView.tableView setContentSize:CGSizeMake(0, bound.size.height+300)];
+	[tableView.view setFrame:CGRectMake(bound.origin.x+outerSpacing, bound.origin.y - 15, bound.size.width- 2 * outerSpacing, bound.size.height)];
 	
 	[tableView.tableView setScrollEnabled:NO];
 	
