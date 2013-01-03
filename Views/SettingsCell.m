@@ -48,6 +48,40 @@
 			break;
 		}
 			
+		case NumberSettingsCellType: {
+			[self setSelectionStyle:UITableViewCellEditingStyleNone];
+			[self setAccessoryType:UITableViewCellAccessoryNone];
+			textField=[[UITextField alloc]initWithFrame:CGRectMake(10, 12, self.frame.size.width - 50 - 10, 30)];
+			[textField setTextColor: [UIColor lightGrayColor]];
+			[textField setFont:[UIFont systemFontOfSize:16]];
+
+			[textField setKeyboardType:UIKeyboardTypeDecimalPad];
+			[textField setPlaceholder:theName];
+			
+			UIToolbar *toolBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 320, 56)];
+			[toolBar setBarStyle:UIBarStyleBlackTranslucent];
+			[toolBar sizeToFit];
+			UIBarButtonItem *flexSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:self action:nil];
+			UIBarButtonItem *doneBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneClicked:)];
+			[doneBtn setTintColor:[UIColor blackColor]];
+			[toolBar setItems:[NSArray arrayWithObjects:flexSpace, doneBtn, nil]];
+			[textField setInputAccessoryView:toolBar];
+			
+			[textField addTarget:self action:@selector(textFieldValueChanged:) forControlEvents:UIControlEventEditingChanged];
+			[textField addTarget:self action:@selector(textFieldValueChangedDisappear:) forControlEvents: UIControlEventEditingDidEnd | UIControlEventEditingDidEndOnExit];
+			[self.contentView addSubview:textField];
+			[textField setDelegate:self];
+			
+			id currentValue = [wine valueForKey:propertyIdentifier];
+			if (currentValue != nil && [currentValue floatValue] > 0) {
+				NSLog(@"setting value is %@", currentValue);
+				[textField setText:[NSString stringWithFormat:@"%.2f %@", [currentValue floatValue], [self getCurrencySymbol]]];
+				//[self textFieldValueChanged:textField];
+				[textField setTextColor:[UIColor blackColor]];
+			}
+			break;
+		}
+			
 		case YearSettingsCellType: {
 			[self setSelectionStyle:UITableViewCellEditingStyleNone];
 			[self setAccessoryType:UITableViewCellAccessoryNone];
@@ -301,8 +335,25 @@
 #pragma mark
 #pragma mark Text field delegate methods
 
+- (BOOL)textField:(UITextField *)theTextField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    if (theTextField.keyboardType == UIKeyboardTypeDecimalPad) {
+        NSString *newString = [theTextField.text stringByReplacingCharactersInRange:range withString:string];
+        NSString *expression = @"^([0-9]+)?([\\.,\\,]([0-9]{1,2})?)?$";
+        NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:expression options:NSRegularExpressionCaseInsensitive error:nil];
+        NSUInteger numberOfMatches = [regex numberOfMatchesInString:newString options:0 range:NSMakeRange(0, [newString length])];
+        if (numberOfMatches == 0) {
+				return NO;
+		}
+	}
+    return YES;
+}
+
 - (void)textFieldDidBeginEditing:(UITextField *)theTextField {
 	[theTextField setTextColor: [UIColor blackColor]];
+	
+	// remove currency symbol
+	[theTextField setText:[theTextField.text stringByReplacingOccurrencesOfString:[NSString stringWithFormat:@" %@",[self getCurrencySymbol]] withString:@""]];
+	
 }
 
 - (void)textFieldDidEndEditing:(UITextField *)theTextField {
@@ -312,15 +363,28 @@
 	} else {
 		[theTextField setTextColor: [UIColor lightGrayColor]];
 	}
+	
+	if ([propertyIdentifier isEqualToString:@"price"]) {
+		// append currency symbol
+		if ([theTextField.text length] > 0) {
+			[theTextField setText:[NSString stringWithFormat:@"%@ %@", theTextField.text, [self getCurrencySymbol]]];
+		}
+	}
 }
 
 -(void) textFieldValueChanged:(UITextField *) theTextField {
-	[wine setValue:theTextField.text forKey:propertyIdentifier];
+	if ([propertyIdentifier isEqualToString:@"name"]) {
+		[wine setValue:theTextField.text forKey:propertyIdentifier];
 	
-	// propagate change to AddWineViewController
-	UITableView *tv	= (UITableView *) self.superview;
-	AddWineViewController *addWine = (AddWineViewController *) tv.dataSource;
-	[addWine updateViewFromValidation];
+		// propagate change to AddWineViewController
+		UITableView *tv	= (UITableView *) self.superview;
+		AddWineViewController *addWine = (AddWineViewController *) tv.dataSource;
+		[addWine updateViewFromValidation];
+	} else if ([propertyIdentifier isEqualToString:@"price"]) {
+		NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+		[formatter setNumberStyle:NSNumberFormatterDecimalStyle];
+		[wine setValue:[formatter numberFromString:theTextField.text] forKey:propertyIdentifier];
+	}
 }
 
 -(void) textFieldValueChangedDisappear:(UITextField *) theTextField {
@@ -392,8 +456,6 @@
 	if ([propertyIdentifier isEqualToString:@"vintage"]) {
 		[wine setValue:[self yearStringForRow:row] forKey:propertyIdentifier];
 		[(UITextField *)[[self.contentView subviews] objectAtIndex:0] setText:[self yearStringForRow:row]];
-	} else if ([propertyIdentifier isEqualToString:@"alcoholContent"]) {
-		// set content
 	}
 }
 
@@ -446,6 +508,11 @@
 	
 	// save value
 	[wine setAlcoholContentValue:slider.value];
+}
+
+- (NSString *) getCurrencySymbol {
+	NSLocale *theLocale = [NSLocale currentLocale];
+	return [theLocale objectForKey:NSLocaleCurrencySymbol];
 }
 
 

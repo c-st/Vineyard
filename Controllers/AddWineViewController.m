@@ -154,14 +154,15 @@
 	// Rating
 	SettingsCell *ratingSettingsCell = [[SettingsCell alloc] initWithWine:[self wine] andType:RatingSettingsCellType andProperty:@"rating" andName:@"Rating"];
 	
-	// TODO Price
-	SettingsCell *priceSettingsCell = [[SettingsCell alloc] initWithWine:[self wine] andType:TextSettingsCellType andProperty:@"price" andName:@"Price"];
+	// Price
+	SettingsCell *priceSettingsCell = [[SettingsCell alloc] initWithWine:[self wine] andType:NumberSettingsCellType andProperty:@"price" andName:@"Price"];
 	
 	// Serving temperature
 	SettingsCell *servingTemperatureSettingsCell = [[SettingsCell alloc] initWithWine:[self wine] andType:RangeSettingsCellType andProperty:@"servingTemperature" andName:@"Serving Temperature"];
 	
-	// TODO Alcohol content
+	// Alcohol content
 	SettingsCell *alcoholContentSettingsCell = [[SettingsCell alloc] initWithWine:[self wine] andType:AlcoholSettingsCellType andProperty:@"alcoholContent" andName:@"Alcohol content"];
+	
 	
 	// TODO: Tags, Notes, Tasting notes, barrel time
 	
