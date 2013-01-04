@@ -354,6 +354,10 @@
 	// remove currency symbol
 	[theTextField setText:[theTextField.text stringByReplacingOccurrencesOfString:[NSString stringWithFormat:@" %@",[self getCurrencySymbol]] withString:@""]];
 	
+	// scroll to current cell
+	// determine position of current cell, scroll there with scrollview.
+	// send scroll event here - which is caught at AddWineViewController
+	[[NSNotificationCenter defaultCenter] postNotificationName:@"scrollToUITableViewCell" object:self];
 }
 
 - (void)textFieldDidEndEditing:(UITextField *)theTextField {
