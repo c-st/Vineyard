@@ -6,8 +6,6 @@
 #import "UIColor+CellarColours.h"
 #import "SSToolkit.h"
 
-
-
 @interface WineDetailViewController ()
 
 @end
@@ -16,7 +14,8 @@
 
 double deltaLatitude;
 
-@synthesize wine, mapView;
+@synthesize wine, swipeView;
+@synthesize locationMapView, addedMapView;
 
 - (id) initWithWine:(Wine *)theWine {
 	if ((self = [super init])) {
@@ -25,20 +24,19 @@ double deltaLatitude;
     return self;
 }
 
+#pragma mark
+#pragma mark View
+
 - (void) viewWillAppear:(BOOL)animated {
 	[self loadView];
 }
 
-- (UIView*) buildLocationView {
+- (CellarMapView*) buildLocationView:(CLLocationCoordinate2D) coordinate {
 	CGRect bound = [[UIScreen mainScreen] bounds];
-	self.mapView = [[MKMapView alloc] initWithFrame:CGRectMake(0, -150, bound.size.width, 400)];
+	CellarMapView *mapView = [[CellarMapView alloc] initWithFrame:CGRectMake(0, -150, bound.size.width, 400) andLocation:coordinate];
 	
-    //CLLocationCoordinate2D coordinate = {wine.location.latitudeValue, wine.location.longitudeValue}; // taken at
-	CLLocationCoordinate2D coordinate = {wine.appellation.region.location.latitudeValue, wine.appellation.region.location.longitudeValue};
-	
-	NSLog(@"using coordinate %f %f", coordinate.latitude, coordinate.longitude);
+	//NSLog(@"using coordinate %f %f", coordinate.latitude, coordinate.longitude);
 	[mapView setCenterCoordinate:coordinate zoomLevel:7 animated:YES];
-	
 	[mapView setScrollEnabled:NO];
 	[mapView setZoomEnabled:NO];
 	
@@ -46,12 +44,25 @@ double deltaLatitude;
     CLLocationCoordinate2D referencePosition2 = [mapView convertPoint:CGPointMake(0, 100) toCoordinateFromView:mapView];
     deltaLatitude = (referencePosition2.latitude - referencePosition.latitude) / 100;
 	
-	// pin
-	MKPointAnnotation *point = [[MKPointAnnotation alloc] init];
-	point.coordinate = coordinate;
-	//[mapView addAnnotation:point];
+	mapView.mapType = MKMapTypeStandard;
 	
 	return mapView;
+}
+
+- (UIView *) buildSwipeView {
+	self.swipeView = [[SwipeView alloc] initWithFrame:CGRectMake(0, -150, self.view.frame.size.width, 400)];
+	swipeView.alignment = SwipeViewAlignmentCenter;
+    swipeView.pagingEnabled = YES;
+    swipeView.wrapEnabled = NO;
+    swipeView.itemsPerPage = 1;
+    swipeView.truncateFinalPage = YES;
+	
+	swipeView.delaysContentTouches = YES;
+	
+	swipeView.dataSource = self;
+	swipeView.delegate = self;
+	
+	return swipeView;
 }
 
 - (void) addContainerViews:(UIView *) view {
@@ -121,7 +132,6 @@ double deltaLatitude;
 }
 
 
-
 - (void) loadView {
 	[super loadView];
 	//[self setTitle:[NSString stringWithFormat:@"%@", wine.name]];
@@ -151,11 +161,13 @@ double deltaLatitude;
 	[scrollView setUserInteractionEnabled:YES];
 	[scrollView setDelegate:self];
 	
-	// Map -200
-	// -100, .. 300
 	
-	 
-	[scrollView addSubview:[self buildLocationView]];
+	// init map views
+	self.locationMapView = [self buildLocationView:CLLocationCoordinate2DMake(wine.appellation.region.location.latitudeValue, wine.appellation.region.location.longitudeValue)];
+	
+	self.addedMapView = [self buildLocationView:CLLocationCoordinate2DMake(wine.location.latitudeValue, wine.location.longitudeValue)];
+	
+	[scrollView addSubview:[self buildSwipeView]];
 	
 	[self addContainerViews:scrollView];
 
@@ -164,9 +176,37 @@ double deltaLatitude;
 	[self.view addSubview:scrollView];
 }
 
+#pragma mark
+#pragma mark Swipe view delegate methods
+
+- (NSInteger)numberOfItemsInSwipeView:(SwipeView *)swipeView {
+	return 2;
+}
+
+- (UIView *)swipeView:(SwipeView *)swipeView viewForItemAtIndex:(NSInteger)index reusingView:(UIView *)view {
+	if (index == 0) {
+		return [self locationMapView];
+	} else if (index == 1) {
+		return [self addedMapView];
+	}
+	
+	NSLog(@"no view for index %i", index);
+	return nil;
+}
 
 
-- (void)scrollViewDidScroll:(UIScrollView *)theScrollView {
+#pragma mark
+#pragma mark Location
+
+- (void) scrollViewDidScroll:(UIScrollView *)theScrollView {
+	// determine active mapView
+	CellarMapView *mapView = nil;
+	if (self.swipeView.currentPage == 0) {
+		mapView = self.locationMapView;
+	} else if (self.swipeView.currentPage == 1) {
+		mapView = self.addedMapView;
+	}
+	
     CGFloat y = theScrollView.contentOffset.y;
     // did we drag ?
     if (y < 0) {
@@ -174,9 +214,8 @@ double deltaLatitude;
         double deltaLat = y * deltaLatitude;
 		
         //Move the center coordinate accordingly
-		
-        //CLLocationCoordinate2D newCenter = CLLocationCoordinate2DMake(wine.location.latitudeValue - deltaLat/2, wine.location.longitudeValue);
-		CLLocationCoordinate2D newCenter = CLLocationCoordinate2DMake(wine.appellation.region.location.latitudeValue - deltaLat/2, wine.appellation.region.location.longitudeValue);
+		CLLocationCoordinate2D coordinate = mapView.location;
+		CLLocationCoordinate2D newCenter = CLLocationCoordinate2DMake(coordinate.latitude - deltaLat/2, coordinate.longitude);
 		
 		[mapView setCenterCoordinate:newCenter animated:NO];
     }

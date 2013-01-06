@@ -59,25 +59,14 @@
 	[[UIBarButtonItem alloc] initWithTitle: @"Save" style:UIBarButtonItemStylePlain target:self action: @selector(saveWine)];
 	[[self navigationItem] setRightBarButtonItem:saveButton];
 	
-	self.view.backgroundColor = [UIColor greenColor];
-	
-
+	// calculate height of scrollView. If new wine, also substract tab bar.
 	int height = self.view.frame.size.height - 44;
-	// also substract tab bar 
 	if (![self newWine]) {
-		NSLog(@"newWine");
 		height = height - 44;
 	}
+	self.scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, height)];
 	
-	self.scrollView = [[UIScrollView alloc] initWithFrame:
-					   CGRectMake(0, 0,
-								  self.view.frame.size.width,
-								  height)
-					   ];
-	
-	NSLog(@"--> %f %i", self.view.frame.size.height, height); //4: 460 5: 548
-	
-	[scrollView setContentSize: CGSizeMake(self.view.frame.size.width, self.view.bounds.size.height)];
+	[scrollView setContentSize: CGSizeMake(self.view.frame.size.width, self.view.frame.size.height)];
 	[scrollView setContentOffset: CGPointMake(0, -20)];
 	[scrollView setContentInset:UIEdgeInsetsMake(5.0,0,0,0.0)];
 	[scrollView setBackgroundColor:[UIColor cellarBeigeNoisyColour]];
@@ -98,14 +87,12 @@
 	// Attribute Table
 	self.tableView = [[UITableViewController alloc] initWithStyle:UITableViewStyleGrouped];
 	float outerSpacing = 10.0f;
-	//tableView.tableView.backgroundColor = [UIColor greenColor];
 	
 	[tableView.view setFrame:
 		CGRectMake(self.view.frame.origin.x + outerSpacing,
 				   self.view.frame.origin.y - 15,
 				   self.view.frame.size.width - (2 * outerSpacing),
 				   self.view.frame.size.height)];
-	tableView.tableView.autoresizingMask = UIViewAutoresizingFlexibleHeight;
 	
 	[tableView.tableView setScrollEnabled:NO];
 	[tableView.tableView setDelegate:self];
@@ -331,9 +318,10 @@
 		
 		[UIView animateWithDuration:0.2 animations:^{
 			if (rectInSuperview.origin.y >= 265) {
-				self.scrollView.contentOffset = CGPointMake(0, rectInSuperview.origin.y - 265);
+				//self.scrollView.contentOffset = CGPointMake(0, rectInSuperview.origin.y - 265);
 			}
-			//[self.scrollView scrollRectToVisible:rectInSuperview animated:YES];
+			
+			[self.scrollView scrollRectToVisible:rectInSuperview animated:YES];
 			
 		}];
 	}

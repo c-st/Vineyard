@@ -7,14 +7,22 @@
 #import "Region.h"
 #import "Appellation.h"
 
-@interface WineDetailViewController : UIViewController <UIScrollViewDelegate> {
+#import "SwipeView.h"
+#import "CellarMapView.h"
+
+@interface WineDetailViewController : UIViewController <UIScrollViewDelegate, SwipeViewDelegate, SwipeViewDataSource> {
 	Wine *wine;
+	SwipeView *swipeView;
 	
-	MKMapView *mapView;
+	CellarMapView *locationMapView;
+	CellarMapView *addedMapView;
 }
 
 @property (nonatomic, strong) Wine *wine;
-@property (nonatomic, strong) MKMapView	*mapView;
+@property (nonatomic, strong) SwipeView	*swipeView;
+
+@property (nonatomic, strong) CellarMapView	*locationMapView;
+@property (nonatomic, strong) CellarMapView *addedMapView;
 
 - (id) initWithWine:(Wine *) theWine;
 
