@@ -14,7 +14,7 @@
 
 double deltaLatitude;
 
-@synthesize wine, swipeView;
+@synthesize wine, swipeView, pageControl, pageLabel;
 @synthesize locationMapView, addedMapView;
 
 - (id) initWithWine:(Wine *)theWine {
@@ -61,6 +61,22 @@ double deltaLatitude;
 	
 	swipeView.dataSource = self;
 	swipeView.delegate = self;
+	
+	self.pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0, 230, self.view.frame.size.width, 20)];
+	pageControl.numberOfPages = 2;
+	pageControl.currentPage = 0;
+	pageControl.currentPageIndicatorTintColor = [[UIColor cellarWineRedColour] colorWithAlphaComponent:0.6];
+	pageControl.pageIndicatorTintColor = [[UIColor cellarWineRedColour] colorWithAlphaComponent:0.3];
+	[pageControl addTarget:self action:@selector(pageControlTapped:) forControlEvents:UIControlEventValueChanged];
+	[swipeView addSubview:pageControl];
+	
+	self.pageLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 230, 200, 20)];
+	UIFont *font = [UIFont systemFontOfSize:12];
+	[pageLabel setFont:font];
+	[pageLabel setBackgroundColor:[UIColor clearColor]];
+	[self.pageLabel setTextColor:[UIColor darkGrayColor]];
+	[pageLabel setText:@"Wine region"];
+	[swipeView addSubview:pageLabel];
 	
 	return swipeView;
 }
@@ -138,8 +154,6 @@ double deltaLatitude;
 	//[self setTitle:@"Wine"];
 	//[self.view setBackgroundColor:[UIColor cellarBeigeColour]];
 	
-	// TODO: add UiPageControl with scroll view to change views by swiping horizontally.
-	
 	UIBarButtonItem *editButton =
 	[[UIBarButtonItem alloc] initWithTitle: @"Edit" style:UIBarButtonItemStylePlain target:self action: @selector(editWine)];
 	[[self navigationItem] setRightBarButtonItem:editButton];
@@ -179,11 +193,11 @@ double deltaLatitude;
 #pragma mark
 #pragma mark Swipe view delegate methods
 
-- (NSInteger)numberOfItemsInSwipeView:(SwipeView *)swipeView {
+- (NSInteger) numberOfItemsInSwipeView:(SwipeView *)swipeView {
 	return 2;
 }
 
-- (UIView *)swipeView:(SwipeView *)swipeView viewForItemAtIndex:(NSInteger)index reusingView:(UIView *)view {
+- (UIView *) swipeView:(SwipeView *)swipeView viewForItemAtIndex:(NSInteger)index reusingView:(UIView *)view {
 	if (index == 0) {
 		return [self locationMapView];
 	} else if (index == 1) {
@@ -194,6 +208,18 @@ double deltaLatitude;
 	return nil;
 }
 
+- (void) swipeViewCurrentItemIndexDidChange:(SwipeView *)theSwipeView {
+	if (theSwipeView.currentPage == 0) {
+		[pageLabel setText:@"Wine region"];
+	} else if (theSwipeView.currentPage == 1) {
+		[pageLabel setText:@"Wine added"];
+	}
+	self.pageControl.currentPage = theSwipeView.currentPage;
+}
+
+- (void) pageControlTapped:(UIPageControl*) sender {
+	[swipeView scrollToPage:pageControl.currentPage duration:0.4];
+}
 
 #pragma mark
 #pragma mark Location
