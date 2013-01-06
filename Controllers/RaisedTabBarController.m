@@ -141,7 +141,7 @@
 	
 	[self setViewControllers:@[winePaperFoldNC,
                             countryNavController,
-                            [self viewControllerWithTabTitle:@"Add" image:nil],
+                            [self viewControllerWithTabTitle:@"" image:nil],
                             varietalNavController,
                             paperFoldNavController]];
 	
