@@ -59,6 +59,7 @@
 				 {"varietalID":"nebbiolo","name":"Nebbiolo", "grapeTypeID":"red"},
 				 {"varietalID":"sangiovese","name":"Sangiovese", "grapeTypeID":"red"},
 				 {"varietalID":"touriga_nacional","name":"Touriga Nacional", "grapeTypeID":"red"},
+				 {"varietalID":"petit_verdot","name":"Petit Verdot", "grapeTypeID":"red"},
 				 
 				 {"varietalID":"chardonnay","name":"Chardonnay", "grapeTypeID":"white"},
 				 {"varietalID":"sauvignon_blanc","name":"Sauvignon Blanc", "grapeTypeID":"white"},
