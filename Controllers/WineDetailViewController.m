@@ -12,8 +12,6 @@
 
 @implementation WineDetailViewController
 
-double deltaLatitude;
-
 @synthesize wine, swipeView, pageControl, pageLabel;
 @synthesize locationMapView, addedMapView;
 
@@ -31,18 +29,19 @@ double deltaLatitude;
 	[self loadView];
 }
 
-- (CellarMapView*) buildLocationView:(CLLocationCoordinate2D) coordinate {
+- (CellarMapView*) buildLocationView:(CLLocationCoordinate2D)coordinate andZoomLevel:(int)zoomLevel {
 	CGRect bound = [[UIScreen mainScreen] bounds];
-	CellarMapView *mapView = [[CellarMapView alloc] initWithFrame:CGRectMake(0, -150, bound.size.width, 400) andLocation:coordinate];
+	CellarMapView *mapView = [[CellarMapView alloc] initWithFrame:CGRectMake(0, -150, bound.size.width, 400) andLocation:coordinate andZoomLevel:zoomLevel];
 	
 	//NSLog(@"using coordinate %f %f", coordinate.latitude, coordinate.longitude);
-	[mapView setCenterCoordinate:coordinate zoomLevel:7 animated:YES];
+	
 	[mapView setScrollEnabled:NO];
 	[mapView setZoomEnabled:NO];
 	
 	CLLocationCoordinate2D referencePosition = [mapView convertPoint:CGPointMake(0, 0) toCoordinateFromView:mapView];
     CLLocationCoordinate2D referencePosition2 = [mapView convertPoint:CGPointMake(0, 100) toCoordinateFromView:mapView];
-    deltaLatitude = (referencePosition2.latitude - referencePosition.latitude) / 100;
+	
+    mapView.deltaLatitude = (referencePosition2.latitude - referencePosition.latitude) / 100;
 	
 	mapView.mapType = MKMapTypeStandard;
 	
@@ -150,9 +149,6 @@ double deltaLatitude;
 
 - (void) loadView {
 	[super loadView];
-	//[self setTitle:[NSString stringWithFormat:@"%@", wine.name]];
-	//[self setTitle:@"Wine"];
-	//[self.view setBackgroundColor:[UIColor cellarBeigeColour]];
 	
 	UIBarButtonItem *editButton =
 	[[UIBarButtonItem alloc] initWithTitle: @"Edit" style:UIBarButtonItemStylePlain target:self action: @selector(editWine)];
@@ -177,9 +173,14 @@ double deltaLatitude;
 	
 	
 	// init map views
-	self.locationMapView = [self buildLocationView:CLLocationCoordinate2DMake(wine.appellation.region.location.latitudeValue, wine.appellation.region.location.longitudeValue)];
+	self.locationMapView = [self buildLocationView:CLLocationCoordinate2DMake(wine.appellation.region.location.latitudeValue,
+																			  wine.appellation.region.location.longitudeValue) andZoomLevel:5];
 	
-	self.addedMapView = [self buildLocationView:CLLocationCoordinate2DMake(wine.location.latitudeValue, wine.location.longitudeValue)];
+	self.addedMapView = [self buildLocationView:CLLocationCoordinate2DMake(wine.location.latitudeValue,
+																		   wine.location.longitudeValue) andZoomLevel:11];
+	MKPointAnnotation *point = [[MKPointAnnotation alloc] init];
+	point.coordinate = self.addedMapView.location;
+	[self.addedMapView addAnnotation:point];
 	
 	[scrollView addSubview:[self buildSwipeView]];
 	
@@ -234,16 +235,16 @@ double deltaLatitude;
 	}
 	
     CGFloat y = theScrollView.contentOffset.y;
-    // did we drag ?
-    if (y < 0) {
-        //we moved y pixels down, how much latitude is that ?
-        double deltaLat = y * deltaLatitude;
+    if (y < 0) { // drag
+        // we moved y pixels down, how much latitude is that ?
+        double deltaLat = y * mapView.deltaLatitude;
 		
-        //Move the center coordinate accordingly
+        // move the center coordinate accordingly
 		CLLocationCoordinate2D coordinate = mapView.location;
-		CLLocationCoordinate2D newCenter = CLLocationCoordinate2DMake(coordinate.latitude - deltaLat/2, coordinate.longitude);
+		CLLocationCoordinate2D newCenter = CLLocationCoordinate2DMake(coordinate.latitude - (deltaLat / 2),
+																	  coordinate.longitude);
 		
-		[mapView setCenterCoordinate:newCenter animated:NO];
+		[mapView setCenterCoordinate:newCenter zoomLevel:mapView.zoomLevel animated:NO];
     }
 }
 
