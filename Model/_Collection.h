@@ -1,34 +1,32 @@
 // DO NOT EDIT. This file is machine-generated and constantly overwritten.
-// Make changes to Winery.h instead.
+// Make changes to Collection.h instead.
 
 #import <CoreData/CoreData.h>
 
 
-extern const struct WineryAttributes {
+extern const struct CollectionAttributes {
 	__unsafe_unretained NSString *name;
-} WineryAttributes;
+} CollectionAttributes;
 
-extern const struct WineryRelationships {
-	__unsafe_unretained NSString *region;
+extern const struct CollectionRelationships {
 	__unsafe_unretained NSString *wines;
-} WineryRelationships;
+} CollectionRelationships;
 
-extern const struct WineryFetchedProperties {
-} WineryFetchedProperties;
+extern const struct CollectionFetchedProperties {
+} CollectionFetchedProperties;
 
-@class Region;
 @class Wine;
 
 
 
-@interface WineryID : NSManagedObjectID {}
+@interface CollectionID : NSManagedObjectID {}
 @end
 
-@interface _Winery : NSManagedObject {}
+@interface _Collection : NSManagedObject {}
 + (id)insertInManagedObjectContext:(NSManagedObjectContext*)moc_;
 + (NSString*)entityName;
 + (NSEntityDescription*)entityInManagedObjectContext:(NSManagedObjectContext*)moc_;
-- (WineryID*)objectID;
+- (CollectionID*)objectID;
 
 
 
@@ -38,13 +36,6 @@ extern const struct WineryFetchedProperties {
 
 //- (BOOL)validateName:(id*)value_ error:(NSError**)error_;
 
-
-
-
-
-@property (nonatomic, strong) Region* region;
-
-//- (BOOL)validateRegion:(id*)value_ error:(NSError**)error_;
 
 
 
@@ -59,7 +50,7 @@ extern const struct WineryFetchedProperties {
 
 @end
 
-@interface _Winery (CoreDataGeneratedAccessors)
+@interface _Collection (CoreDataGeneratedAccessors)
 
 - (void)addWines:(NSSet*)value_;
 - (void)removeWines:(NSSet*)value_;
@@ -68,18 +59,13 @@ extern const struct WineryFetchedProperties {
 
 @end
 
-@interface _Winery (CoreDataGeneratedPrimitiveAccessors)
+@interface _Collection (CoreDataGeneratedPrimitiveAccessors)
 
 
 - (NSString*)primitiveName;
 - (void)setPrimitiveName:(NSString*)value;
 
 
-
-
-
-- (Region*)primitiveRegion;
-- (void)setPrimitiveRegion:(Region*)value;
 
 
 

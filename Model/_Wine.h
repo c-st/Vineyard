@@ -16,6 +16,7 @@ extern const struct WineAttributes {
 
 extern const struct WineRelationships {
 	__unsafe_unretained NSString *appellation;
+	__unsafe_unretained NSString *collections;
 	__unsafe_unretained NSString *colour;
 	__unsafe_unretained NSString *country;
 	__unsafe_unretained NSString *location;
@@ -28,6 +29,7 @@ extern const struct WineFetchedProperties {
 } WineFetchedProperties;
 
 @class Appellation;
+@class Collection;
 @class GrapeType;
 @class Country;
 @class Location;
@@ -131,6 +133,13 @@ extern const struct WineFetchedProperties {
 
 
 
+@property (nonatomic, strong) NSSet* collections;
+
+- (NSMutableSet*)collectionsSet;
+
+
+
+
 @property (nonatomic, strong) GrapeType* colour;
 
 //- (BOOL)validateColour:(id*)value_ error:(NSError**)error_;
@@ -177,6 +186,11 @@ extern const struct WineFetchedProperties {
 @end
 
 @interface _Wine (CoreDataGeneratedAccessors)
+
+- (void)addCollections:(NSSet*)value_;
+- (void)removeCollections:(NSSet*)value_;
+- (void)addCollectionsObject:(Collection*)value_;
+- (void)removeCollectionsObject:(Collection*)value_;
 
 - (void)addVarietals:(NSSet*)value_;
 - (void)removeVarietals:(NSSet*)value_;
@@ -242,6 +256,11 @@ extern const struct WineFetchedProperties {
 
 - (Appellation*)primitiveAppellation;
 - (void)setPrimitiveAppellation:(Appellation*)value;
+
+
+
+- (NSMutableSet*)primitiveCollections;
+- (void)setPrimitiveCollections:(NSMutableSet*)value;
 
 
 

@@ -1,41 +1,40 @@
 // DO NOT EDIT. This file is machine-generated and constantly overwritten.
-// Make changes to Winery.m instead.
+// Make changes to Collection.m instead.
 
-#import "_Winery.h"
+#import "_Collection.h"
 
-const struct WineryAttributes WineryAttributes = {
+const struct CollectionAttributes CollectionAttributes = {
 	.name = @"name",
 };
 
-const struct WineryRelationships WineryRelationships = {
-	.region = @"region",
+const struct CollectionRelationships CollectionRelationships = {
 	.wines = @"wines",
 };
 
-const struct WineryFetchedProperties WineryFetchedProperties = {
+const struct CollectionFetchedProperties CollectionFetchedProperties = {
 };
 
-@implementation WineryID
+@implementation CollectionID
 @end
 
-@implementation _Winery
+@implementation _Collection
 
 + (id)insertInManagedObjectContext:(NSManagedObjectContext*)moc_ {
 	NSParameterAssert(moc_);
-	return [NSEntityDescription insertNewObjectForEntityForName:@"Winery" inManagedObjectContext:moc_];
+	return [NSEntityDescription insertNewObjectForEntityForName:@"Collection" inManagedObjectContext:moc_];
 }
 
 + (NSString*)entityName {
-	return @"Winery";
+	return @"Collection";
 }
 
 + (NSEntityDescription*)entityInManagedObjectContext:(NSManagedObjectContext*)moc_ {
 	NSParameterAssert(moc_);
-	return [NSEntityDescription entityForName:@"Winery" inManagedObjectContext:moc_];
+	return [NSEntityDescription entityForName:@"Collection" inManagedObjectContext:moc_];
 }
 
-- (WineryID*)objectID {
-	return (WineryID*)[super objectID];
+- (CollectionID*)objectID {
+	return (CollectionID*)[super objectID];
 }
 
 + (NSSet *)keyPathsForValuesAffectingValueForKey:(NSString *)key {
@@ -54,10 +53,6 @@ const struct WineryFetchedProperties WineryFetchedProperties = {
 
 
 
-
-@dynamic region;
-
-	
 
 @dynamic wines;
 

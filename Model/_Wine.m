@@ -15,6 +15,7 @@ const struct WineAttributes WineAttributes = {
 
 const struct WineRelationships WineRelationships = {
 	.appellation = @"appellation",
+	.collections = @"collections",
 	.colour = @"colour",
 	.country = @"country",
 	.location = @"location",
@@ -179,6 +180,19 @@ const struct WineFetchedProperties WineFetchedProperties = {
 
 @dynamic appellation;
 
+	
+
+@dynamic collections;
+
+	
+- (NSMutableSet*)collectionsSet {
+	[self willAccessValueForKey:@"collections"];
+  
+	NSMutableSet *result = (NSMutableSet*)[self mutableSetValueForKey:@"collections"];
+  
+	[self didAccessValueForKey:@"collections"];
+	return result;
+}
 	
 
 @dynamic colour;
