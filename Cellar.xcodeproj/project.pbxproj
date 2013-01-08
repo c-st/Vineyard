@@ -85,6 +85,12 @@
 		838B2DF1167E52EC00944657 /* _TemperatureRange.m in Sources */ = {isa = PBXBuildFile; fileRef = 838B2DEE167E52EC00944657 /* _TemperatureRange.m */; };
 		838B2DF2167E52EC00944657 /* TemperatureRange.m in Sources */ = {isa = PBXBuildFile; fileRef = 838B2DF0167E52EC00944657 /* TemperatureRange.m */; };
 		838B2E42167E5EBB00944657 /* NMRangeSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 838B2E31167E5EBB00944657 /* NMRangeSlider.m */; };
+		839B6FF1169B885A00BDAACF /* SliderPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 839B6FF0169B885A00BDAACF /* SliderPageControl.m */; };
+		839B6FF8169B88A100BDAACF /* sliderPageControl.png in Resources */ = {isa = PBXBuildFile; fileRef = 839B6FF4169B88A100BDAACF /* sliderPageControl.png */; };
+		839B6FF9169B88A100BDAACF /* sliderPageControl@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 839B6FF5169B88A100BDAACF /* sliderPageControl@2x.png */; };
+		839B6FFA169B88A100BDAACF /* sliderPageControlBg.png in Resources */ = {isa = PBXBuildFile; fileRef = 839B6FF6169B88A100BDAACF /* sliderPageControlBg.png */; };
+		839B6FFB169B88A100BDAACF /* sliderPageControlBg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 839B6FF7169B88A100BDAACF /* sliderPageControlBg@2x.png */; };
+		839B6FFF169B909A00BDAACF /* CharacteristicsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 839B6FFE169B909A00BDAACF /* CharacteristicsViewController.m */; };
 		83B0A8B21689243200D65198 /* wine_bottle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 83B0A8AB1689243200D65198 /* wine_bottle@2x.png */; };
 		83B0A8B31689243200D65198 /* basic2-058.png in Resources */ = {isa = PBXBuildFile; fileRef = 83B0A8AC1689243200D65198 /* basic2-058.png */; };
 		83B0A8B41689243200D65198 /* basic1-044.png in Resources */ = {isa = PBXBuildFile; fileRef = 83B0A8AD1689243200D65198 /* basic1-044.png */; };
@@ -315,6 +321,14 @@
 		838B2DF0167E52EC00944657 /* TemperatureRange.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TemperatureRange.m; path = Model/TemperatureRange.m; sourceTree = SOURCE_ROOT; };
 		838B2E30167E5EBB00944657 /* NMRangeSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NMRangeSlider.h; sourceTree = "<group>"; };
 		838B2E31167E5EBB00944657 /* NMRangeSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NMRangeSlider.m; sourceTree = "<group>"; };
+		839B6FEF169B885A00BDAACF /* SliderPageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SliderPageControl.h; sourceTree = "<group>"; };
+		839B6FF0169B885A00BDAACF /* SliderPageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SliderPageControl.m; sourceTree = "<group>"; };
+		839B6FF4169B88A100BDAACF /* sliderPageControl.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sliderPageControl.png; sourceTree = "<group>"; };
+		839B6FF5169B88A100BDAACF /* sliderPageControl@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sliderPageControl@2x.png"; sourceTree = "<group>"; };
+		839B6FF6169B88A100BDAACF /* sliderPageControlBg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sliderPageControlBg.png; sourceTree = "<group>"; };
+		839B6FF7169B88A100BDAACF /* sliderPageControlBg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sliderPageControlBg@2x.png"; sourceTree = "<group>"; };
+		839B6FFD169B909A00BDAACF /* CharacteristicsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CharacteristicsViewController.h; path = Controllers/CharacteristicsViewController.h; sourceTree = SOURCE_ROOT; };
+		839B6FFE169B909A00BDAACF /* CharacteristicsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CharacteristicsViewController.m; path = Controllers/CharacteristicsViewController.m; sourceTree = SOURCE_ROOT; };
 		83B0A8AB1689243200D65198 /* wine_bottle@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "wine_bottle@2x.png"; path = "Resources/Images/wine_bottle@2x.png"; sourceTree = SOURCE_ROOT; };
 		83B0A8AC1689243200D65198 /* basic2-058.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "basic2-058.png"; path = "Resources/Images/basic2-058.png"; sourceTree = SOURCE_ROOT; };
 		83B0A8AD1689243200D65198 /* basic1-044.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "basic1-044.png"; path = "Resources/Images/basic1-044.png"; sourceTree = SOURCE_ROOT; };
@@ -614,6 +628,7 @@
 		832EDC4F165FD4FA00AE20A9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				839B6FEE169B885A00BDAACF /* SliderPageControl */,
 				83282ED91698F6AB00C5BE0E /* SwipeView */,
 				83099D4D16826A6F00415556 /* ABTableViewCell */,
 				838B2E1D167E5EBB00944657 /* NMRangeSlider */,
@@ -697,6 +712,7 @@
 		83358FF6164B133B00FEA5C9 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				839B6FF3169B88A100BDAACF /* Other */,
 				8361EE771677B5B70057E04B /* Default-568h@2x.png */,
 				83EF99D4165A615900C56F40 /* App Icon [Rounded] */,
 				833591E4164B145E00FEA5C9 /* Default.png */,
@@ -750,9 +766,8 @@
 			children = (
 				833146D11678D29E000F9654 /* PaperFold */,
 				83AB87EE165191BE008F7094 /* Wine */,
-				83AB87ED1651916D008F7094 /* TableViews */,
-				83E79DE81677AA6900E0E42D /* RaisedTabBarController.m */,
-				83E79DE91677AA6900E0E42D /* RaisedTabBarController.h */,
+				83AB87ED1651916D008F7094 /* TableViewController */,
+				839B6FFC169B8EBE00BDAACF /* Others */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -794,7 +809,40 @@
 			path = Frameworks/NMRangeSlider;
 			sourceTree = SOURCE_ROOT;
 		};
-		83AB87ED1651916D008F7094 /* TableViews */ = {
+		839B6FEE169B885A00BDAACF /* SliderPageControl */ = {
+			isa = PBXGroup;
+			children = (
+				839B6FEF169B885A00BDAACF /* SliderPageControl.h */,
+				839B6FF0169B885A00BDAACF /* SliderPageControl.m */,
+			);
+			name = SliderPageControl;
+			path = Frameworks/SliderPageControl;
+			sourceTree = SOURCE_ROOT;
+		};
+		839B6FF3169B88A100BDAACF /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				839B6FF4169B88A100BDAACF /* sliderPageControl.png */,
+				839B6FF5169B88A100BDAACF /* sliderPageControl@2x.png */,
+				839B6FF6169B88A100BDAACF /* sliderPageControlBg.png */,
+				839B6FF7169B88A100BDAACF /* sliderPageControlBg@2x.png */,
+			);
+			name = Other;
+			path = Resources/Images/Other;
+			sourceTree = SOURCE_ROOT;
+		};
+		839B6FFC169B8EBE00BDAACF /* Others */ = {
+			isa = PBXGroup;
+			children = (
+				83E79DE81677AA6900E0E42D /* RaisedTabBarController.m */,
+				83E79DE91677AA6900E0E42D /* RaisedTabBarController.h */,
+				839B6FFD169B909A00BDAACF /* CharacteristicsViewController.h */,
+				839B6FFE169B909A00BDAACF /* CharacteristicsViewController.m */,
+			);
+			name = Others;
+			sourceTree = "<group>";
+		};
+		83AB87ED1651916D008F7094 /* TableViewController */ = {
 			isa = PBXGroup;
 			children = (
 				83E79DDC1677AA5100E0E42D /* AbstractTableViewController.h */,
@@ -812,7 +860,7 @@
 				83E79DD41677AA5100E0E42D /* WineTableViewController.h */,
 				83E79DD31677AA5100E0E42D /* WineTableViewController.m */,
 			);
-			name = TableViews;
+			name = TableViewController;
 			sourceTree = "<group>";
 		};
 		83AB87EE165191BE008F7094 /* Wine */ = {
@@ -1103,6 +1151,10 @@
 				83B0A8B51689243200D65198 /* basic1-101.png in Resources */,
 				83B0A8B71689243200D65198 /* thermometer@2x.png in Resources */,
 				83B0A8C0168FBDFA00D65198 /* AR.png in Resources */,
+				839B6FF8169B88A100BDAACF /* sliderPageControl.png in Resources */,
+				839B6FF9169B88A100BDAACF /* sliderPageControl@2x.png in Resources */,
+				839B6FFA169B88A100BDAACF /* sliderPageControlBg.png in Resources */,
+				839B6FFB169B88A100BDAACF /* sliderPageControlBg@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1200,6 +1252,8 @@
 				83B0A8C4168FC54900D65198 /* MKMapView+ZoomLevel.m in Sources */,
 				83282EDC1698F6AB00C5BE0E /* SwipeView.m in Sources */,
 				83282EE01699031100C5BE0E /* CellarMapView.m in Sources */,
+				839B6FF1169B885A00BDAACF /* SliderPageControl.m in Sources */,
+				839B6FFF169B909A00BDAACF /* CharacteristicsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

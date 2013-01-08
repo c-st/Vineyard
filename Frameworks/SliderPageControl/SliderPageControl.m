@@ -127,17 +127,17 @@
 	{
 		if (self.maskView==nil)
 		{
-			self.maskView = [[UIView alloc] initWithFrame:CGRectMake(0,0,[self window].frame.size.width,[self window].frame.size.height)];
-			[self.maskView setBackgroundColor:[UIColor blackColor]];
+			self.maskView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [self window].frame.size.width, [self window].frame.size.height)];
+			//[self.maskView setBackgroundColor:[UIColor blackColor]];
 			[[self superview] insertSubview:self.maskView belowSubview:self];
 			
-			self.hintLabel = [[UILabel alloc] initWithFrame:CGRectMake(20,20,self.maskView.frame.size.width-40,self.maskView.frame.size.height-40)];
+			self.hintLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 20, self.maskView.frame.size.width-40, self.maskView.frame.size.height-40)];
 			[self.hintLabel setBackgroundColor:[UIColor clearColor]];
-			[self.hintLabel setFont:[UIFont boldSystemFontOfSize:30]];
+			[self.hintLabel setFont:[UIFont boldSystemFontOfSize:40]];
 			[self.hintLabel setNumberOfLines:10];
-			[self.hintLabel setTextAlignment:UITextAlignmentCenter];
-			[self.hintLabel setTextColor:[UIColor whiteColor]];
-			[self.hintLabel setShadowColor:[UIColor blackColor]];
+			[self.hintLabel setTextAlignment:NSTextAlignmentCenter];
+			[self.hintLabel setTextColor:[UIColor cellarWineRedColour]];
+			[self.hintLabel setShadowColor:[UIColor whiteColor]];
 			[self.hintLabel setShadowOffset:CGSizeMake(0,-1)];
 			[self.maskView addSubview:self.hintLabel];
 			

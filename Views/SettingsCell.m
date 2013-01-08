@@ -9,7 +9,7 @@
 
 @implementation SettingsCell
 
-@synthesize wine, cellType, propertyIdentifier, name, settingsViewController, textField;
+@synthesize wine, cellType, propertyIdentifier, name, settingsTableViewController, viewController, textField;
 
 - (id) initWithWine:(Wine*)wineInstance andType:(SettingsCellType)theCellType andProperty:(NSString*)thePropertyIdentifier andName:(NSString*)theName {
 	self = [super init];
@@ -268,10 +268,23 @@
 	return self;
 }
 
+// DetailView settings cell: display table view
+- (id) initWithWine:(Wine*)wineInstance andType:(SettingsCellType)theCellType andProperty:(NSString*)thePropertyIdentifier andName:(NSString*)theName andTableViewController:(AbstractTableViewController*)theViewController {
+	
+	if (theCellType == DetailViewSettingsCellType) {
+		[self setSettingsTableViewController:theViewController];
+	} else {
+		NSLog(@"wrong cellType is used.");
+	}
+	
+	return [self initWithWine:wineInstance andType:theCellType andProperty:thePropertyIdentifier andName:theName];
+}
+
+// DetailView settings cell: display normal view
 - (id) initWithWine:(Wine*)wineInstance andType:(SettingsCellType)theCellType andProperty:(NSString*)thePropertyIdentifier andName:(NSString*)theName andViewController:(AbstractTableViewController*)theViewController {
 	
 	if (theCellType == DetailViewSettingsCellType) {
-		[self setSettingsViewController:theViewController];
+		[self setViewController:theViewController];
 	} else {
 		NSLog(@"wrong cellType is used.");
 	}
@@ -280,7 +293,9 @@
 }
 
 - (void) updatePredicateAndRefetch {
-	[self.settingsViewController.fetchedResultsController.fetchRequest setPredicate:[self.settingsViewController getFetchPredicate:wine]];
+	if (self.settingsTableViewController != nil) {
+		[self.settingsTableViewController.fetchedResultsController.fetchRequest setPredicate:[self.settingsTableViewController getFetchPredicate:wine]];
+	}
 }
 
 // don't use it directly.

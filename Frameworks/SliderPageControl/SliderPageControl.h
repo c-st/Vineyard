@@ -32,6 +32,7 @@
  */
 
 #import <UIKit/UIKit.h>
+#import "UIColor+CellarColours.h"
 
 @protocol SliderPageControlDelegate
 @optional

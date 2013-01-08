@@ -4,6 +4,7 @@
 #import "CountryTableViewController.h"
 #import "VarietalTableViewController.h"
 #import "ColourTableViewController.h"
+#import "CharacteristicsViewController.h"
 
 #import "SettingsCell.h"
 
@@ -137,14 +138,14 @@
 	
 	// Country
 	CountryTableViewController *countryTableViewController = [[CountryTableViewController alloc] init];
-	SettingsCell *countrySettingsCell = [[SettingsCell alloc] initWithWine:[self wine] andType:DetailViewSettingsCellType andProperty:@"country" andName:@"Country" andViewController:countryTableViewController];
+	SettingsCell *countrySettingsCell = [[SettingsCell alloc] initWithWine:[self wine] andType:DetailViewSettingsCellType andProperty:@"country" andName:@"Country" andTableViewController:countryTableViewController];
 	
 	[countryTableViewController setSettingsCell:countrySettingsCell];
 	
 	// Appellation
 	AppellationTableViewController *appellationTableViewController = [[AppellationTableViewController alloc] init];
 	[appellationTableViewController setShowSearchBar:YES];
-	SettingsCell *appellationSettingsCell = [[SettingsCell alloc] initWithWine:[self wine] andType:DetailViewSettingsCellType andProperty:@"appellation" andName:@"Appellation" andViewController:appellationTableViewController];
+	SettingsCell *appellationSettingsCell = [[SettingsCell alloc] initWithWine:[self wine] andType:DetailViewSettingsCellType andProperty:@"appellation" andName:@"Appellation" andTableViewController:appellationTableViewController];
 	
 	[appellationTableViewController setSettingsCell:appellationSettingsCell];
 	
@@ -153,14 +154,14 @@
 	
 	// Colour
 	ColourTableViewController *colourTableViewController = [[ColourTableViewController alloc] init];
-	SettingsCell *colourSettingsCell = [[SettingsCell alloc] initWithWine:[self wine] andType:DetailViewSettingsCellType andProperty:@"colour" andName:@"Colour" andViewController:colourTableViewController];
+	SettingsCell *colourSettingsCell = [[SettingsCell alloc] initWithWine:[self wine] andType:DetailViewSettingsCellType andProperty:@"colour" andName:@"Colour" andTableViewController:colourTableViewController];
 	[colourTableViewController setSettingsCell:colourSettingsCell];
 	
 	// Varietal
 	VarietalTableViewController *varietalTableViewController = [[VarietalTableViewController alloc] init];
 	[varietalTableViewController setPickMode:YES];
 	[varietalTableViewController setSelectedVarietals:[[[wine varietals] allObjects] mutableCopy]];
-	SettingsCell *varietalSettingsCell = [[SettingsCell alloc] initWithWine:[self wine] andType:DetailViewSettingsCellType andProperty:@"varietals" andName:@"Varietals" andViewController:varietalTableViewController];
+	SettingsCell *varietalSettingsCell = [[SettingsCell alloc] initWithWine:[self wine] andType:DetailViewSettingsCellType andProperty:@"varietals" andName:@"Varietals" andTableViewController:varietalTableViewController];
 	
 	[varietalTableViewController setSettingsCell:varietalSettingsCell];
 	
@@ -170,12 +171,24 @@
 	// Price
 	SettingsCell *priceSettingsCell = [[SettingsCell alloc] initWithWine:[self wine] andType:NumberSettingsCellType andProperty:@"price" andName:@"Price"];
 	
-	// Serving temperature
-	SettingsCell *servingTemperatureSettingsCell = [[SettingsCell alloc] initWithWine:[self wine] andType:RangeSettingsCellType andProperty:@"servingTemperature" andName:@"Serving Temperature"];
-	
 	// Alcohol content
 	SettingsCell *alcoholContentSettingsCell = [[SettingsCell alloc] initWithWine:[self wine] andType:AlcoholSettingsCellType andProperty:@"alcoholContent" andName:@"Alcohol content"];
 	
+	// Serving temperature
+	SettingsCell *servingTemperatureSettingsCell = [[SettingsCell alloc] initWithWine:[self wine] andType:RangeSettingsCellType andProperty:@"servingTemperature" andName:@"Serving Temperature"];
+	
+	// TODO Characteristics
+	CharacteristicsViewController *characteristicsViewController = [[CharacteristicsViewController alloc] init];
+	// set current characteristics...
+	
+	SettingsCell *characteristicsSettingsCell = [[SettingsCell alloc] initWithWine:[self wine] andType:DetailViewSettingsCellType andProperty:@"varietals" andName:@"Characteristics" andViewController:characteristicsViewController];
+	[characteristicsViewController setSettingsCell:characteristicsSettingsCell];
+	
+	// TODO Tags
+	SettingsCell *tags = [[SettingsCell alloc] initWithWine:[self wine] andType:DetailViewSettingsCellType andProperty:@"varietals" andName:@"Tags" andTableViewController:varietalTableViewController];
+	
+	// TODO Notes
+	SettingsCell *notes = [[SettingsCell alloc] initWithWine:[self wine] andType:DetailViewSettingsCellType andProperty:@"varietals" andName:@"Notes" andTableViewController:varietalTableViewController];
 	
 	// TODO: Tags, Notes, Tasting notes, barrel time
 	
@@ -191,23 +204,20 @@
 	}
 	
 	
-	NSArray *varietal = @[vintageSettingsCell,
-							colourSettingsCell,
-							varietalSettingsCell];
+	NSArray *varietal = @[vintageSettingsCell, colourSettingsCell, varietalSettingsCell]; // barrel time
 	
-	NSArray *rating = @[ratingSettingsCell,
-						priceSettingsCell
-					 ];
+	NSArray *rating = @[ratingSettingsCell, priceSettingsCell];
 	
-	NSArray *tasting = @[alcoholContentSettingsCell,
-					  servingTemperatureSettingsCell
-					  // barrel time, tags, notes,
-					  ];
+	NSArray *tasting = @[alcoholContentSettingsCell, servingTemperatureSettingsCell];
+	
+	NSArray *wineNotes = @[characteristicsSettingsCell, tags, notes];
 	
 	[self setConfigurableProperties:@[basics,
 									 varietal,
+									 tasting,
 									 rating,
-									 tasting]];
+									 wineNotes
+									 ]];
 	
 }
 
@@ -235,8 +245,10 @@
 	SettingsCell *selectedCell = [[[self configurableProperties] objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
 	[selectedCell updatePredicateAndRefetch];
 
-	if (selectedCell.settingsViewController != nil) {
-		[[self navigationController] pushViewController:selectedCell.settingsViewController animated:YES];
+	if (selectedCell.settingsTableViewController != nil) {
+		[[self navigationController] pushViewController:selectedCell.settingsTableViewController animated:YES];
+	} else if (selectedCell.viewController != nil) {
+		[[self navigationController] pushViewController:selectedCell.viewController animated:YES];
 	}
 }
 

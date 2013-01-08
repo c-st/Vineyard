@@ -89,14 +89,14 @@
 	[view addSubview:whiteArea];
 	
 	// Line view
-	SSLineView *line2 = [[SSLineView alloc] initWithFrame:CGRectMake(0, 218, bound.size.width, 20)];
+	SSLineView *line2 = [[SSLineView alloc] initWithFrame:CGRectMake(0, 190, bound.size.width, 20)];
 	[line2 setLineColor:[UIColor whiteColor]];
 	[line2 setInsetColor:[UIColor lightGrayColor]];
 	[view addSubview:line2];
 	
 	// Shadow
 	CAGradientLayer *shadow = [CAGradientLayer layer];
-	shadow.frame = CGRectMake(0, 220, bound.size.width, 4);
+	shadow.frame = CGRectMake(0, 190, bound.size.width, 6);
 	shadow.startPoint = CGPointMake(1.0, 0.5);
 	shadow.endPoint = CGPointMake(1.0, 1.0);
 	shadow.colors = @[(id)[[UIColor colorWithWhite:0.0 alpha:0.15] CGColor], (id)[[UIColor clearColor] CGColor]];
@@ -119,7 +119,7 @@
 
 - (void) addHeaderArea:(UIView *) view {
 	// Name
-	UILabel *nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 110, 300, 25)];
+	UILabel *nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 110, 270, 30)];
 	[nameLabel setBackgroundColor:[UIColor clearColor]];
     [nameLabel setFont:[UIFont fontWithName:@"Baskerville" size:24]];
 	[nameLabel setTextColor:[UIColor blackColor]];
@@ -127,7 +127,7 @@
 	[view addSubview:nameLabel];
 	
 	// Vintage
-	UILabel *vintageLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 135, 300, 25)];
+	UILabel *vintageLabel = [[UILabel alloc] initWithFrame:CGRectMake(270, 108, 50, 25)];
 	[vintageLabel setBackgroundColor:[UIColor clearColor]];
 	[vintageLabel setTextColor:[UIColor darkGrayColor]];
 	[vintageLabel setFont:[UIFont fontWithName:@"Baskerville" size:20]];
@@ -135,7 +135,7 @@
 	[view addSubview:vintageLabel];
 	
 	// Rating
-	SSRatingPicker *ratingPicker = [[SSRatingPicker alloc] initWithFrame:CGRectMake(8, 175, 300, 40)];
+	SSRatingPicker *ratingPicker = [[SSRatingPicker alloc] initWithFrame:CGRectMake(8, 150, 300, 40)];
 	[ratingPicker setBackgroundColor:[UIColor clearColor]];
 	[ratingPicker setUserInteractionEnabled:NO];
 	[ratingPicker setTotalNumberOfStars:6];

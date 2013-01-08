@@ -26,14 +26,17 @@ typedef NS_ENUM( NSUInteger, SettingsCellType ) {
 	
 	UITextField *textField;
 	
-	// optional property (only for DetailViewSettingsCellType).
-	AbstractTableViewController *settingsViewController;
+	// optional properties (only for DetailViewSettingsCellType).
+	AbstractTableViewController *settingsTableViewController;
+	UIViewController *viewController;
 }
 
 //methods
 - (id) initWithWine:(Wine*)wineInstance andType:(SettingsCellType)theCellType andProperty:(NSString*)thePropertyIdentifier andName:(NSString*)theName;
 
-- (id) initWithWine:(Wine*)wineInstance andType:(SettingsCellType)theCellType andProperty:(NSString*)thePropertyIdentifier andName:(NSString*)theName andViewController:(AbstractTableViewController*)theViewController;
+- (id) initWithWine:(Wine*)wineInstance andType:(SettingsCellType)theCellType andProperty:(NSString*)thePropertyIdentifier andName:(NSString*)theName andTableViewController:(AbstractTableViewController*)theViewController;
+
+- (id) initWithWine:(Wine*)wineInstance andType:(SettingsCellType)theCellType andProperty:(NSString*)thePropertyIdentifier andName:(NSString*)theName andViewController:(UIViewController*)theViewController;
 
 - (void) updatePredicateAndRefetch;
 
@@ -50,6 +53,7 @@ typedef NS_ENUM( NSUInteger, SettingsCellType ) {
 
 @property (nonatomic, strong) UITextField *textField;
 
-@property (nonatomic, strong) AbstractTableViewController *settingsViewController;
+@property (nonatomic, strong) AbstractTableViewController *settingsTableViewController;
+@property (nonatomic, strong) UIViewController *viewController;
 
 @end
