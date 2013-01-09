@@ -20,7 +20,7 @@
 	[slider setCurrentPage:0];
 	[slider setDelegate:self];
 	[slider setShowsHint:YES];
-	[self.view addSubview:slider];
+	[[self view] addSubview:slider];
 	
 	NSLog(@"loadView");
 }

@@ -23,7 +23,7 @@
 		[self setNewWine:YES];
 		
 		[self requestLocationUpdate];
-		[self.wine setCreationTime:[NSDate date]];
+		[[self wine] setCreationTime:[NSDate date]];
 	}
 	
 	// register observer for scrolling notifications
@@ -121,8 +121,8 @@
 	CGRect tableFrame = tableView.tableView.frame;
 	tableFrame.size.height = tableView.tableView.contentSize.height;
 	tableFrame.size.width = tableView.tableView.contentSize.width;
-	tableView.tableView.frame = tableFrame;
-	scrollView.contentSize = tableView.tableView.contentSize;
+	[[tableView tableView] setFrame:tableFrame];
+	[scrollView setContentSize:tableView.tableView.contentSize];
 }
 
 /**
