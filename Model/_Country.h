@@ -41,7 +41,9 @@ extern const struct CountryFetchedProperties {
 
 
 
+
 @property (nonatomic, strong) NSString* countryID;
+
 
 
 //- (BOOL)validateCountryID:(id*)value_ error:(NSError**)error_;
@@ -49,7 +51,9 @@ extern const struct CountryFetchedProperties {
 
 
 
+
 @property (nonatomic, strong) NSString* isoCode;
+
 
 
 //- (BOOL)validateIsoCode:(id*)value_ error:(NSError**)error_;
@@ -57,7 +61,9 @@ extern const struct CountryFetchedProperties {
 
 
 
+
 @property (nonatomic, strong) NSString* name;
+
 
 
 //- (BOOL)validateName:(id*)value_ error:(NSError**)error_;
@@ -66,28 +72,28 @@ extern const struct CountryFetchedProperties {
 
 
 
-@property (nonatomic, strong) NSSet* classifications;
+@property (nonatomic, strong) NSSet *classifications;
 
 - (NSMutableSet*)classificationsSet;
 
 
 
 
-@property (nonatomic, strong) NSSet* indications;
+@property (nonatomic, strong) NSSet *indications;
 
 - (NSMutableSet*)indicationsSet;
 
 
 
 
-@property (nonatomic, strong) NSSet* regions;
+@property (nonatomic, strong) NSSet *regions;
 
 - (NSMutableSet*)regionsSet;
 
 
 
 
-@property (nonatomic, strong) NSSet* wines;
+@property (nonatomic, strong) NSSet *wines;
 
 - (NSMutableSet*)winesSet;
 

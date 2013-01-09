@@ -31,7 +31,9 @@ extern const struct CollectionFetchedProperties {
 
 
 
+
 @property (nonatomic, strong) NSString* name;
+
 
 
 //- (BOOL)validateName:(id*)value_ error:(NSError**)error_;
@@ -40,7 +42,7 @@ extern const struct CollectionFetchedProperties {
 
 
 
-@property (nonatomic, strong) NSSet* wines;
+@property (nonatomic, strong) NSSet *wines;
 
 - (NSMutableSet*)winesSet;
 

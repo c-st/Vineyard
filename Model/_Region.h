@@ -39,7 +39,9 @@ extern const struct RegionFetchedProperties {
 
 
 
+
 @property (nonatomic, strong) NSString* name;
+
 
 
 //- (BOOL)validateName:(id*)value_ error:(NSError**)error_;
@@ -47,7 +49,9 @@ extern const struct RegionFetchedProperties {
 
 
 
+
 @property (nonatomic, strong) NSString* regionID;
+
 
 
 //- (BOOL)validateRegionID:(id*)value_ error:(NSError**)error_;
@@ -56,28 +60,28 @@ extern const struct RegionFetchedProperties {
 
 
 
-@property (nonatomic, strong) NSSet* appellations;
+@property (nonatomic, strong) NSSet *appellations;
 
 - (NSMutableSet*)appellationsSet;
 
 
 
 
-@property (nonatomic, strong) Country* country;
+@property (nonatomic, strong) Country *country;
 
 //- (BOOL)validateCountry:(id*)value_ error:(NSError**)error_;
 
 
 
 
-@property (nonatomic, strong) Location* location;
+@property (nonatomic, strong) Location *location;
 
 //- (BOOL)validateLocation:(id*)value_ error:(NSError**)error_;
 
 
 
 
-@property (nonatomic, strong) NSSet* wineries;
+@property (nonatomic, strong) NSSet *wineries;
 
 - (NSMutableSet*)wineriesSet;
 

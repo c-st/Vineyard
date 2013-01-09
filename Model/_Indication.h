@@ -37,7 +37,9 @@ extern const struct IndicationFetchedProperties {
 
 
 
+
 @property (nonatomic, strong) NSString* indicationID;
+
 
 
 //- (BOOL)validateIndicationID:(id*)value_ error:(NSError**)error_;
@@ -45,7 +47,9 @@ extern const struct IndicationFetchedProperties {
 
 
 
+
 @property (nonatomic, strong) NSString* name;
+
 
 
 //- (BOOL)validateName:(id*)value_ error:(NSError**)error_;
@@ -53,7 +57,9 @@ extern const struct IndicationFetchedProperties {
 
 
 
+
 @property (nonatomic, strong) NSNumber* qualityRating;
+
 
 
 @property int16_t qualityRatingValue;
@@ -65,7 +71,9 @@ extern const struct IndicationFetchedProperties {
 
 
 
+
 @property (nonatomic, strong) NSString* type;
+
 
 
 //- (BOOL)validateType:(id*)value_ error:(NSError**)error_;
@@ -74,7 +82,7 @@ extern const struct IndicationFetchedProperties {
 
 
 
-@property (nonatomic, strong) Country* country;
+@property (nonatomic, strong) Country *country;
 
 //- (BOOL)validateCountry:(id*)value_ error:(NSError**)error_;
 

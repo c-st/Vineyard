@@ -57,7 +57,9 @@ extern const struct WineFetchedProperties {
 
 
 
+
 @property (nonatomic, strong) NSNumber* alcoholContent;
+
 
 
 @property double alcoholContentValue;
@@ -69,7 +71,9 @@ extern const struct WineFetchedProperties {
 
 
 
+
 @property (nonatomic, strong) NSDate* creationTime;
+
 
 
 //- (BOOL)validateCreationTime:(id*)value_ error:(NSError**)error_;
@@ -77,7 +81,9 @@ extern const struct WineFetchedProperties {
 
 
 
+
 @property (nonatomic, strong) NSData* image;
+
 
 
 //- (BOOL)validateImage:(id*)value_ error:(NSError**)error_;
@@ -85,7 +91,9 @@ extern const struct WineFetchedProperties {
 
 
 
+
 @property (nonatomic, strong) NSString* name;
+
 
 
 //- (BOOL)validateName:(id*)value_ error:(NSError**)error_;
@@ -93,7 +101,9 @@ extern const struct WineFetchedProperties {
 
 
 
+
 @property (nonatomic, strong) NSNumber* price;
+
 
 
 @property double priceValue;
@@ -105,7 +115,9 @@ extern const struct WineFetchedProperties {
 
 
 
+
 @property (nonatomic, strong) NSNumber* rating;
+
 
 
 @property int16_t ratingValue;
@@ -117,7 +129,9 @@ extern const struct WineFetchedProperties {
 
 
 
+
 @property (nonatomic, strong) NSString* vintage;
+
 
 
 //- (BOOL)validateVintage:(id*)value_ error:(NSError**)error_;
@@ -126,56 +140,56 @@ extern const struct WineFetchedProperties {
 
 
 
-@property (nonatomic, strong) Appellation* appellation;
+@property (nonatomic, strong) Appellation *appellation;
 
 //- (BOOL)validateAppellation:(id*)value_ error:(NSError**)error_;
 
 
 
 
-@property (nonatomic, strong) NSSet* collections;
+@property (nonatomic, strong) NSSet *collections;
 
 - (NSMutableSet*)collectionsSet;
 
 
 
 
-@property (nonatomic, strong) GrapeType* colour;
+@property (nonatomic, strong) GrapeType *colour;
 
 //- (BOOL)validateColour:(id*)value_ error:(NSError**)error_;
 
 
 
 
-@property (nonatomic, strong) Country* country;
+@property (nonatomic, strong) Country *country;
 
 //- (BOOL)validateCountry:(id*)value_ error:(NSError**)error_;
 
 
 
 
-@property (nonatomic, strong) Location* location;
+@property (nonatomic, strong) Location *location;
 
 //- (BOOL)validateLocation:(id*)value_ error:(NSError**)error_;
 
 
 
 
-@property (nonatomic, strong) TemperatureRange* servingTemperature;
+@property (nonatomic, strong) TemperatureRange *servingTemperature;
 
 //- (BOOL)validateServingTemperature:(id*)value_ error:(NSError**)error_;
 
 
 
 
-@property (nonatomic, strong) NSSet* varietals;
+@property (nonatomic, strong) NSSet *varietals;
 
 - (NSMutableSet*)varietalsSet;
 
 
 
 
-@property (nonatomic, strong) Winery* winery;
+@property (nonatomic, strong) Winery *winery;
 
 //- (BOOL)validateWinery:(id*)value_ error:(NSError**)error_;
 

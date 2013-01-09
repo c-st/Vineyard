@@ -37,7 +37,9 @@ extern const struct AppellationFetchedProperties {
 
 
 
+
 @property (nonatomic, strong) NSString* appellationID;
+
 
 
 //- (BOOL)validateAppellationID:(id*)value_ error:(NSError**)error_;
@@ -45,7 +47,9 @@ extern const struct AppellationFetchedProperties {
 
 
 
+
 @property (nonatomic, strong) NSString* name;
+
 
 
 //- (BOOL)validateName:(id*)value_ error:(NSError**)error_;
@@ -54,21 +58,21 @@ extern const struct AppellationFetchedProperties {
 
 
 
-@property (nonatomic, strong) Classification* classification;
+@property (nonatomic, strong) Classification *classification;
 
 //- (BOOL)validateClassification:(id*)value_ error:(NSError**)error_;
 
 
 
 
-@property (nonatomic, strong) Region* region;
+@property (nonatomic, strong) Region *region;
 
 //- (BOOL)validateRegion:(id*)value_ error:(NSError**)error_;
 
 
 
 
-@property (nonatomic, strong) NSSet* wines;
+@property (nonatomic, strong) NSSet *wines;
 
 - (NSMutableSet*)winesSet;
 

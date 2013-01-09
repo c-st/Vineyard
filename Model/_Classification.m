@@ -40,12 +40,13 @@ const struct ClassificationFetchedProperties ClassificationFetchedProperties = {
 	return (ClassificationID*)[super objectID];
 }
 
-+ (NSSet *)keyPathsForValuesAffectingValueForKey:(NSString *)key {
++ (NSSet*)keyPathsForValuesAffectingValueForKey:(NSString*)key {
 	NSSet *keyPaths = [super keyPathsForValuesAffectingValueForKey:key];
 	
 	if ([key isEqualToString:@"qualityRatingValue"]) {
 		NSSet *affectingKey = [NSSet setWithObject:@"qualityRating"];
 		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
+		return keyPaths;
 	}
 
 	return keyPaths;

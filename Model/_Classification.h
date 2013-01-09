@@ -37,7 +37,9 @@ extern const struct ClassificationFetchedProperties {
 
 
 
+
 @property (nonatomic, strong) NSString* classificationID;
+
 
 
 //- (BOOL)validateClassificationID:(id*)value_ error:(NSError**)error_;
@@ -45,7 +47,9 @@ extern const struct ClassificationFetchedProperties {
 
 
 
+
 @property (nonatomic, strong) NSString* name;
+
 
 
 //- (BOOL)validateName:(id*)value_ error:(NSError**)error_;
@@ -53,7 +57,9 @@ extern const struct ClassificationFetchedProperties {
 
 
 
+
 @property (nonatomic, strong) NSNumber* qualityRating;
+
 
 
 @property int16_t qualityRatingValue;
@@ -66,14 +72,14 @@ extern const struct ClassificationFetchedProperties {
 
 
 
-@property (nonatomic, strong) Appellation* appellations;
+@property (nonatomic, strong) Appellation *appellations;
 
 //- (BOOL)validateAppellations:(id*)value_ error:(NSError**)error_;
 
 
 
 
-@property (nonatomic, strong) Country* country;
+@property (nonatomic, strong) Country *country;
 
 //- (BOOL)validateCountry:(id*)value_ error:(NSError**)error_;
 

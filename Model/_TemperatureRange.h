@@ -35,7 +35,9 @@ extern const struct TemperatureRangeFetchedProperties {
 
 
 
+
 @property (nonatomic, strong) NSNumber* temperatureFrom;
+
 
 
 @property float temperatureFromValue;
@@ -47,7 +49,9 @@ extern const struct TemperatureRangeFetchedProperties {
 
 
 
+
 @property (nonatomic, strong) NSNumber* temperatureTo;
+
 
 
 @property float temperatureToValue;
@@ -60,14 +64,14 @@ extern const struct TemperatureRangeFetchedProperties {
 
 
 
-@property (nonatomic, strong) GrapeType* grape;
+@property (nonatomic, strong) GrapeType *grape;
 
 //- (BOOL)validateGrape:(id*)value_ error:(NSError**)error_;
 
 
 
 
-@property (nonatomic, strong) Wine* wine;
+@property (nonatomic, strong) Wine *wine;
 
 //- (BOOL)validateWine:(id*)value_ error:(NSError**)error_;
 

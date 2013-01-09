@@ -37,7 +37,9 @@ extern const struct GrapeTypeFetchedProperties {
 
 
 
+
 @property (nonatomic, strong) NSString* grapeTypeID;
+
 
 
 //- (BOOL)validateGrapeTypeID:(id*)value_ error:(NSError**)error_;
@@ -45,7 +47,9 @@ extern const struct GrapeTypeFetchedProperties {
 
 
 
+
 @property (nonatomic, strong) NSString* name;
+
 
 
 //- (BOOL)validateName:(id*)value_ error:(NSError**)error_;
@@ -54,21 +58,21 @@ extern const struct GrapeTypeFetchedProperties {
 
 
 
-@property (nonatomic, strong) TemperatureRange* defaultTemperatureRange;
+@property (nonatomic, strong) TemperatureRange *defaultTemperatureRange;
 
 //- (BOOL)validateDefaultTemperatureRange:(id*)value_ error:(NSError**)error_;
 
 
 
 
-@property (nonatomic, strong) NSSet* varietals;
+@property (nonatomic, strong) NSSet *varietals;
 
 - (NSMutableSet*)varietalsSet;
 
 
 
 
-@property (nonatomic, strong) NSSet* wines;
+@property (nonatomic, strong) NSSet *wines;
 
 - (NSMutableSet*)winesSet;
 

@@ -40,7 +40,7 @@ const struct GrapeTypeFetchedProperties GrapeTypeFetchedProperties = {
 	return (GrapeTypeID*)[super objectID];
 }
 
-+ (NSSet *)keyPathsForValuesAffectingValueForKey:(NSString *)key {
++ (NSSet*)keyPathsForValuesAffectingValueForKey:(NSString*)key {
 	NSSet *keyPaths = [super keyPathsForValuesAffectingValueForKey:key];
 	
 

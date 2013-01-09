@@ -35,7 +35,9 @@ extern const struct LocationFetchedProperties {
 
 
 
+
 @property (nonatomic, strong) NSNumber* latitude;
+
 
 
 @property double latitudeValue;
@@ -47,7 +49,9 @@ extern const struct LocationFetchedProperties {
 
 
 
+
 @property (nonatomic, strong) NSNumber* longitude;
+
 
 
 @property double longitudeValue;
@@ -60,14 +64,14 @@ extern const struct LocationFetchedProperties {
 
 
 
-@property (nonatomic, strong) Region* region;
+@property (nonatomic, strong) Region *region;
 
 //- (BOOL)validateRegion:(id*)value_ error:(NSError**)error_;
 
 
 
 
-@property (nonatomic, strong) NSSet* wines;
+@property (nonatomic, strong) NSSet *wines;
 
 - (NSMutableSet*)winesSet;
 

@@ -39,16 +39,18 @@ const struct TemperatureRangeFetchedProperties TemperatureRangeFetchedProperties
 	return (TemperatureRangeID*)[super objectID];
 }
 
-+ (NSSet *)keyPathsForValuesAffectingValueForKey:(NSString *)key {
++ (NSSet*)keyPathsForValuesAffectingValueForKey:(NSString*)key {
 	NSSet *keyPaths = [super keyPathsForValuesAffectingValueForKey:key];
 	
 	if ([key isEqualToString:@"temperatureFromValue"]) {
 		NSSet *affectingKey = [NSSet setWithObject:@"temperatureFrom"];
 		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
+		return keyPaths;
 	}
 	if ([key isEqualToString:@"temperatureToValue"]) {
 		NSSet *affectingKey = [NSSet setWithObject:@"temperatureTo"];
 		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
+		return keyPaths;
 	}
 
 	return keyPaths;

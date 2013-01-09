@@ -35,7 +35,9 @@ extern const struct VarietalFetchedProperties {
 
 
 
+
 @property (nonatomic, strong) NSString* name;
+
 
 
 //- (BOOL)validateName:(id*)value_ error:(NSError**)error_;
@@ -43,7 +45,9 @@ extern const struct VarietalFetchedProperties {
 
 
 
+
 @property (nonatomic, strong) NSString* varietalID;
+
 
 
 //- (BOOL)validateVarietalID:(id*)value_ error:(NSError**)error_;
@@ -52,14 +56,14 @@ extern const struct VarietalFetchedProperties {
 
 
 
-@property (nonatomic, strong) GrapeType* grapeType;
+@property (nonatomic, strong) GrapeType *grapeType;
 
 //- (BOOL)validateGrapeType:(id*)value_ error:(NSError**)error_;
 
 
 
 
-@property (nonatomic, strong) NSSet* wines;
+@property (nonatomic, strong) NSSet *wines;
 
 - (NSMutableSet*)winesSet;
 
