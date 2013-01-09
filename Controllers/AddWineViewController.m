@@ -259,7 +259,7 @@
 	if ([wine isValid]) {
 		NSLog(@"saving entry... %@", wine);
 		[wine extendWine];
-		[[NSManagedObjectContext defaultContext] saveNestedContexts];
+		[[NSManagedObjectContext defaultContext] saveToPersistentStoreAndWait];
 		if ([self newWine]) {
 			[self dismissViewControllerAnimated:YES completion:nil];
 		} else {

@@ -39,7 +39,7 @@
 			Country *newCountry = [Country createEntity];
 			[newCountry importValuesForKeysWithObject:object];
 		}
-		[[NSManagedObjectContext defaultContext] saveNestedContexts];
+		[[NSManagedObjectContext defaultContext] saveToPersistentStoreAndWait];
 	}
 	
 	//Classification
@@ -52,7 +52,7 @@
         
 			[newClassification setCountry:[[Country findByAttribute:@"countryID" withValue:[object valueForKeyPath:@"countryID"]] objectAtIndex:0]];
 		}
-		[[NSManagedObjectContext defaultContext] saveNestedContexts];
+		[[NSManagedObjectContext defaultContext] saveToPersistentStoreAndWait];
 	}
 	
 	//Indication
@@ -65,7 +65,7 @@
         
 			[newIndication setCountry:[[Country findByAttribute:@"countryID" withValue:[object valueForKeyPath:@"countryID"]] objectAtIndex:0]];
 		}
-		[[NSManagedObjectContext defaultContext] saveNestedContexts];
+		[[NSManagedObjectContext defaultContext] saveToPersistentStoreAndWait];
 	}
     
     // Region
@@ -78,7 +78,7 @@
         
 			[newRegion setCountry:[[Country findByAttribute:@"countryID" withValue:[object valueForKeyPath:@"countryID"]] objectAtIndex:0]];
 		}
-		[[NSManagedObjectContext defaultContext] saveNestedContexts];
+		[[NSManagedObjectContext defaultContext] saveToPersistentStoreAndWait];
 	}
 	
 	// Appellation
@@ -94,7 +94,7 @@
 				[newAppellation setClassification:[[Classification findByAttribute:@"classificationID" withValue:[object valueForKeyPath:@"classificationID"]] objectAtIndex:0]];
 			}
 		}
-		[[NSManagedObjectContext defaultContext] saveNestedContexts];
+		[[NSManagedObjectContext defaultContext] saveToPersistentStoreAndWait];
 	}
 	
 	// Grape Type
@@ -105,7 +105,7 @@
 			GrapeType *newGrapeType = [GrapeType createEntity];
 			[newGrapeType importValuesForKeysWithObject:object];
 		}
-		[[NSManagedObjectContext defaultContext] saveNestedContexts];
+		[[NSManagedObjectContext defaultContext] saveToPersistentStoreAndWait];
 	}
 	
 	// Temperature ranges
@@ -118,7 +118,7 @@
 			
 			[newTemperatureRange setGrape:[[GrapeType findByAttribute:@"grapeTypeID" withValue:[object valueForKeyPath:@"grapeTypeID"]] objectAtIndex:0]];
 		}
-		[[NSManagedObjectContext defaultContext] saveNestedContexts];
+		[[NSManagedObjectContext defaultContext] saveToPersistentStoreAndWait];
 	}
 	
 	// Varietals
@@ -131,7 +131,7 @@
 			
 			[newVarietal setGrapeType:[[GrapeType findByAttribute:@"grapeTypeID" withValue:[object valueForKeyPath:@"grapeTypeID"]] objectAtIndex:0]];
 		}
-		[[NSManagedObjectContext defaultContext] saveNestedContexts];
+		[[NSManagedObjectContext defaultContext] saveToPersistentStoreAndWait];
 	}
 	
 	// Locations for Regions
@@ -146,7 +146,7 @@
 			//NSLog(@"location: %@", location);
 			
 		}
-		[[NSManagedObjectContext defaultContext] saveNestedContexts];
+		[[NSManagedObjectContext defaultContext] saveToPersistentStoreAndWait];
 	}
 	
 	NSLog(@"done importing!");
