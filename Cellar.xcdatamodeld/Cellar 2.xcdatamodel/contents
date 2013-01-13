@@ -7,6 +7,14 @@
         <relationship name="region" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Region" inverseName="appellations" inverseEntity="Region" syncable="YES"/>
         <relationship name="wines" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Wine" inverseName="appellation" inverseEntity="Wine" syncable="YES"/>
     </entity>
+    <entity name="Characteristics" representedClassName="Characteristics" syncable="YES">
+        <attribute name="acidity" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="body" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="fruit" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="sweetness" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="tannin" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <relationship name="wine" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Wine" inverseName="characteristics" inverseEntity="Wine" syncable="YES"/>
+    </entity>
     <entity name="Classification" representedClassName="Classification" syncable="YES">
         <attribute name="classificationID" attributeType="String" syncable="YES"/>
         <attribute name="name" attributeType="String" syncable="YES"/>
@@ -92,6 +100,7 @@
         <attribute name="rating" optional="YES" attributeType="Integer 16" minValueString="0" maxValueString="100" syncable="YES"/>
         <attribute name="vintage" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="appellation" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Appellation" inverseName="wines" inverseEntity="Appellation" syncable="YES"/>
+        <relationship name="characteristics" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Characteristics" inverseName="wine" inverseEntity="Characteristics" syncable="YES"/>
         <relationship name="collections" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Collection" inverseName="wines" inverseEntity="Collection" syncable="YES"/>
         <relationship name="colour" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="GrapeType" inverseName="wines" inverseEntity="GrapeType" syncable="YES"/>
         <relationship name="country" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Country" inverseName="wines" inverseEntity="Country" syncable="YES"/>
@@ -108,6 +117,7 @@
     <elements>
         <element name="Appellation" positionX="304" positionY="-72" width="128" height="118"/>
         <element name="Classification" positionX="-90" positionY="-244" width="128" height="118"/>
+        <element name="Collection" positionX="79" positionY="566" width="128" height="73"/>
         <element name="Country" positionX="-335" positionY="-99" width="137" height="148"/>
         <element name="GrapeType" positionX="556" positionY="158" width="128" height="118"/>
         <element name="Indication" positionX="-47" positionY="-99" width="128" height="118"/>
@@ -115,8 +125,8 @@
         <element name="Region" positionX="-288" positionY="126" width="128" height="133"/>
         <element name="TemperatureRange" positionX="358" positionY="63" width="128" height="103"/>
         <element name="Varietal" positionX="331" positionY="338" width="128" height="103"/>
-        <element name="Wine" positionX="88" positionY="149" width="128" height="268"/>
+        <element name="Wine" positionX="88" positionY="149" width="128" height="283"/>
         <element name="Winery" positionX="-317" positionY="368" width="128" height="88"/>
-        <element name="Collection" positionX="79" positionY="566" width="128" height="73"/>
+        <element name="Characteristics" positionX="268" positionY="533" width="128" height="133"/>
     </elements>
 </model>

@@ -91,6 +91,10 @@
 		839B6FFA169B88A100BDAACF /* sliderPageControlBg.png in Resources */ = {isa = PBXBuildFile; fileRef = 839B6FF6169B88A100BDAACF /* sliderPageControlBg.png */; };
 		839B6FFB169B88A100BDAACF /* sliderPageControlBg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 839B6FF7169B88A100BDAACF /* sliderPageControlBg@2x.png */; };
 		839B6FFF169B909A00BDAACF /* CharacteristicsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 839B6FFE169B909A00BDAACF /* CharacteristicsViewController.m */; };
+		83AB990916A322C30095A63B /* _Characteristics.m in Sources */ = {isa = PBXBuildFile; fileRef = 83AB990216A322C30095A63B /* _Characteristics.m */; };
+		83AB990A16A322C30095A63B /* Characteristics.m in Sources */ = {isa = PBXBuildFile; fileRef = 83AB990416A322C30095A63B /* Characteristics.m */; };
+		83AB990B16A322C30095A63B /* _Collection.m in Sources */ = {isa = PBXBuildFile; fileRef = 83AB990616A322C30095A63B /* _Collection.m */; };
+		83AB990C16A322C30095A63B /* Collection.m in Sources */ = {isa = PBXBuildFile; fileRef = 83AB990816A322C30095A63B /* Collection.m */; };
 		83B0A8B21689243200D65198 /* wine_bottle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 83B0A8AB1689243200D65198 /* wine_bottle@2x.png */; };
 		83B0A8B31689243200D65198 /* basic2-058.png in Resources */ = {isa = PBXBuildFile; fileRef = 83B0A8AC1689243200D65198 /* basic2-058.png */; };
 		83B0A8B41689243200D65198 /* basic1-044.png in Resources */ = {isa = PBXBuildFile; fileRef = 83B0A8AD1689243200D65198 /* basic1-044.png */; };
@@ -329,6 +333,14 @@
 		839B6FF7169B88A100BDAACF /* sliderPageControlBg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sliderPageControlBg@2x.png"; sourceTree = "<group>"; };
 		839B6FFD169B909A00BDAACF /* CharacteristicsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CharacteristicsViewController.h; path = Controllers/CharacteristicsViewController.h; sourceTree = SOURCE_ROOT; };
 		839B6FFE169B909A00BDAACF /* CharacteristicsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CharacteristicsViewController.m; path = Controllers/CharacteristicsViewController.m; sourceTree = SOURCE_ROOT; };
+		83AB990116A322C30095A63B /* _Characteristics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = _Characteristics.h; path = Model/_Characteristics.h; sourceTree = SOURCE_ROOT; };
+		83AB990216A322C30095A63B /* _Characteristics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = _Characteristics.m; path = Model/_Characteristics.m; sourceTree = SOURCE_ROOT; };
+		83AB990316A322C30095A63B /* Characteristics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Characteristics.h; path = Model/Characteristics.h; sourceTree = SOURCE_ROOT; };
+		83AB990416A322C30095A63B /* Characteristics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Characteristics.m; path = Model/Characteristics.m; sourceTree = SOURCE_ROOT; };
+		83AB990516A322C30095A63B /* _Collection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = _Collection.h; path = Model/_Collection.h; sourceTree = SOURCE_ROOT; };
+		83AB990616A322C30095A63B /* _Collection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = _Collection.m; path = Model/_Collection.m; sourceTree = SOURCE_ROOT; };
+		83AB990716A322C30095A63B /* Collection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Collection.h; path = Model/Collection.h; sourceTree = SOURCE_ROOT; };
+		83AB990816A322C30095A63B /* Collection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Collection.m; path = Model/Collection.m; sourceTree = SOURCE_ROOT; };
 		83B0A8AB1689243200D65198 /* wine_bottle@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "wine_bottle@2x.png"; path = "Resources/Images/wine_bottle@2x.png"; sourceTree = SOURCE_ROOT; };
 		83B0A8AC1689243200D65198 /* basic2-058.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "basic2-058.png"; path = "Resources/Images/basic2-058.png"; sourceTree = SOURCE_ROOT; };
 		83B0A8AD1689243200D65198 /* basic1-044.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "basic1-044.png"; path = "Resources/Images/basic1-044.png"; sourceTree = SOURCE_ROOT; };
@@ -877,6 +889,14 @@
 		83AF98211649C2170030C08C /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				83AB990116A322C30095A63B /* _Characteristics.h */,
+				83AB990216A322C30095A63B /* _Characteristics.m */,
+				83AB990316A322C30095A63B /* Characteristics.h */,
+				83AB990416A322C30095A63B /* Characteristics.m */,
+				83AB990516A322C30095A63B /* _Collection.h */,
+				83AB990616A322C30095A63B /* _Collection.m */,
+				83AB990716A322C30095A63B /* Collection.h */,
+				83AB990816A322C30095A63B /* Collection.m */,
 				838B2DED167E52EC00944657 /* _TemperatureRange.h */,
 				838B2DEE167E52EC00944657 /* _TemperatureRange.m */,
 				838B2DEF167E52EC00944657 /* TemperatureRange.h */,
@@ -1254,6 +1274,10 @@
 				83282EE01699031100C5BE0E /* CellarMapView.m in Sources */,
 				839B6FF1169B885A00BDAACF /* SliderPageControl.m in Sources */,
 				839B6FFF169B909A00BDAACF /* CharacteristicsViewController.m in Sources */,
+				83AB990916A322C30095A63B /* _Characteristics.m in Sources */,
+				83AB990A16A322C30095A63B /* Characteristics.m in Sources */,
+				83AB990B16A322C30095A63B /* _Collection.m in Sources */,
+				83AB990C16A322C30095A63B /* Collection.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

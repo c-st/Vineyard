@@ -16,6 +16,7 @@ extern const struct WineAttributes {
 
 extern const struct WineRelationships {
 	__unsafe_unretained NSString *appellation;
+	__unsafe_unretained NSString *characteristics;
 	__unsafe_unretained NSString *collections;
 	__unsafe_unretained NSString *colour;
 	__unsafe_unretained NSString *country;
@@ -29,6 +30,7 @@ extern const struct WineFetchedProperties {
 } WineFetchedProperties;
 
 @class Appellation;
+@class Characteristics;
 @class Collection;
 @class GrapeType;
 @class Country;
@@ -143,6 +145,13 @@ extern const struct WineFetchedProperties {
 @property (nonatomic, strong) Appellation *appellation;
 
 //- (BOOL)validateAppellation:(id*)value_ error:(NSError**)error_;
+
+
+
+
+@property (nonatomic, strong) Characteristics *characteristics;
+
+//- (BOOL)validateCharacteristics:(id*)value_ error:(NSError**)error_;
 
 
 
@@ -270,6 +279,11 @@ extern const struct WineFetchedProperties {
 
 - (Appellation*)primitiveAppellation;
 - (void)setPrimitiveAppellation:(Appellation*)value;
+
+
+
+- (Characteristics*)primitiveCharacteristics;
+- (void)setPrimitiveCharacteristics:(Characteristics*)value;
 
 
 
