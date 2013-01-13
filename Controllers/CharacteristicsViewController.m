@@ -1,6 +1,7 @@
 
 #import "CharacteristicsViewController.h"
 #import "UIColor+CellarColours.h"
+#import "UIView+ObjectTagAdditions.h"
 
 @interface CharacteristicsViewController ()
 
@@ -8,16 +9,27 @@
 
 @implementation CharacteristicsViewController
 
-@synthesize settingsCell;
+@synthesize settingsCell, characteristics, values;
 
 - (void) loadView {
 	[super loadView];
 	[self.view setBackgroundColor:[UIColor cellarBeigeNoisyColour]];
 	
+	self.values = [[NSMutableDictionary alloc] init];
+	
+	// load existing values
+	if (self.settingsCell.wine.characteristics != nil) {
+		self.characteristics = self.settingsCell.wine.characteristics;
+		// set existing values to sliders
+	} else {
+		self.characteristics = [Characteristics createEntity];
+		[self.characteristics setWine:self.settingsCell.wine];
+	}
+	
 	UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle: @"Done" style:UIBarButtonItemStylePlain target:self action: @selector(finishSelection)];
 	[[self navigationItem] setRightBarButtonItem:doneButton];
 	
-	// Sweetness, Acidity, Tannin, Fruit, Body
+
 	UILabel *backgroundLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 355)];
 	[backgroundLabel setBackgroundColor:[UIColor whiteColor]];
 	[[self view] addSubview:backgroundLabel];
@@ -30,7 +42,7 @@
 	shadow.colors = @[(id)[[UIColor colorWithWhite:0.0 alpha:0.15] CGColor], (id)[[UIColor clearColor] CGColor]];
 	[self.view.layer addSublayer:shadow];
 	
-
+	// Sweetness, Acidity, Tannin, Fruit, Body
 	[self createSliderAndLabel:@"Sweetness" andNamedProperty:@"sweetness" andYPosition:10 onView:self.view];
 	[self createSliderAndLabel:@"Acidity" andNamedProperty:@"acidity" andYPosition:75 onView:self.view];
 	[self createSliderAndLabel:@"Tannin" andNamedProperty:@"tannin" andYPosition:145 onView:self.view];
@@ -51,30 +63,51 @@
 	
 	// Slider
 	SliderPageControl *slider = [[SliderPageControl alloc] initWithFrame:CGRectMake(0, y + 30, self.view.frame.size.width, 20)];
+	[slider setObjectTag:key];
 	[slider setNumberOfPages:5];
 	[slider setCurrentPage:0];
 	[slider setDelegate:self];
 	[slider setShowsHint:YES];
 	[view addSubview:slider];
 	
-	// change values for
+	// try to load current value
+	if ([self.characteristics valueForKeyPath:key] != nil) {
+		//NSLog(@"value is %@", [self.characteristics valueForKeyPath:key]);
+		[slider setCurrentPage:[[self.characteristics valueForKeyPath:key] intValue]];
+	}
+	
+	[slider addTarget:self action:@selector(valueChanged:) forControlEvents:UIControlEventValueChanged];
 }
 
 - (void) finishSelection {
 	if ([self settingsCell] != nil) {
 		// hand values to settings cell.
 		NSLog(@"value is handed to settingsCell...");
-		//[[self settingsCell] listValueWasSelected:[NSSet setWithArray:[self selectedVarietals]]];
+		
+		// save
+		NSString *key;
+		for (key in self.values) {
+			[self.characteristics setValue:[self.values valueForKeyPath:key] forKey:key];
+		}
+		
+		[[self settingsCell] valueWasSelected:[self characteristics]];
 		[self.navigationController popViewControllerAnimated:YES];
 	}
 }
+
 
 - (void) viewDidLoad {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
 }
 
-#pragma mark sliderPageControlDelegate
+#pragma mark sliderPageControlDelegate and event handlers
+
+- (void) valueChanged:(SliderPageControl *) slider {
+	NSLog(@"value changed to %i for %@", slider.currentPage, (NSString *) slider.objectTag);
+	//[self.characteristics setValue:[NSNumber numberWithInt:slider.currentPage] forKey:(NSString *) slider.objectTag];
+	[self.values setObject:[NSNumber numberWithInt:slider.currentPage] forKey:(NSString *) slider.objectTag];
+}
 
 - (NSString *)sliderPageController:(id)controller hintTitleForPage:(NSInteger)page {
 	NSString *hintTitle = [NSString stringWithFormat:@"Hello %i", page];

@@ -231,7 +231,11 @@
 			id currentValue = [wine valueForKey:propertyIdentifier];
 			if (currentValue != nil && [currentValue isKindOfClass:[NSManagedObject class]]) { // NSManagedObject
 				//NSLog(@"setting is managed object: %@", propertyIdentifier);
-				[self.textLabel setText:[currentValue valueForKey:@"name"]];
+				if ([propertyIdentifier isEqualToString:@"characteristics"]) {
+					[self.textLabel setText:@"S: A: T: F: B:"];
+				} else {
+					[self.textLabel setText:[currentValue valueForKey:@"name"]];
+				}
 				self.textLabel.textColor = [UIColor blackColor];
 				self.textLabel.font = [UIFont systemFontOfSize:16];
 			} else if (currentValue != nil && ([currentValue isKindOfClass:[NSSet class]])) { // NSSet
@@ -307,6 +311,9 @@
     return self;
 }
 
+#pragma mark
+#pragma mark Methods to trigger value changes
+
 - (void) valueWasSelected:(NSManagedObject*)managedObject {
 	// reset appellation if country was changed.
 	if ([propertyIdentifier isEqualToString:@"country"]) {
@@ -325,9 +332,13 @@
 	}
 								 
 	[wine setValue:managedObject forKey:propertyIdentifier];
-	NSLog(@"updated Wine for propertyIdentifier %@ %@", propertyIdentifier, managedObject);
+	//NSLog(@"updated Wine for propertyIdentifier %@ %@", propertyIdentifier, managedObject);
 	
-	[self.textLabel setText:[managedObject valueForKey:@"name"]];
+	if ([propertyIdentifier isEqualToString:@"characteristics"]) {
+		[self.textLabel setText:@"S: A: T: F: B:"];
+	} else {
+		[self.textLabel setText:[managedObject valueForKey:@"name"]];
+	}
 	[self.textLabel setTextColor: [UIColor blackColor]];
 }
 

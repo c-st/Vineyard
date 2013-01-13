@@ -177,11 +177,10 @@
 	// Serving temperature
 	SettingsCell *servingTemperatureSettingsCell = [[SettingsCell alloc] initWithWine:[self wine] andType:RangeSettingsCellType andProperty:@"servingTemperature" andName:@"Serving Temperature"];
 	
-	// TODO Characteristics
+	// Characteristics
 	CharacteristicsViewController *characteristicsViewController = [[CharacteristicsViewController alloc] init];
-	// set current characteristics...
 	
-	SettingsCell *characteristicsSettingsCell = [[SettingsCell alloc] initWithWine:[self wine] andType:DetailViewSettingsCellType andProperty:@"varietals" andName:@"Characteristics" andViewController:characteristicsViewController];
+	SettingsCell *characteristicsSettingsCell = [[SettingsCell alloc] initWithWine:[self wine] andType:DetailViewSettingsCellType andProperty:@"characteristics" andName:@"Characteristics" andViewController:characteristicsViewController];
 	[characteristicsViewController setSettingsCell:characteristicsSettingsCell];
 	
 	// TODO Tags
