@@ -137,6 +137,7 @@
 			[slider setMinimumTrackImage:image forState:UIControlStateNormal];
 			[slider setMinimumValue:9.0f];
 			[slider setMaximumValue:25.0f];
+			[slider setValue:slider.minimumValue animated:NO];
 			[slider addTarget:self action:@selector(sliderValueWasChanged:) forControlEvents:UIControlEventValueChanged];
 			
 						
@@ -148,7 +149,7 @@
 				NSLog(@"current value %f", [currentValue floatValue]);
 				[textField setText:[NSString stringWithFormat:@"%.1f %%", [currentValue floatValue]]];
 				[textField setTextColor:[UIColor blackColor]];
-				[slider setValue:[currentValue floatValue]];
+				[slider setValue:[currentValue floatValue] animated:NO];
 			}
 			break;
 		}
@@ -232,7 +233,7 @@
 			if (currentValue != nil && [currentValue isKindOfClass:[NSManagedObject class]]) { // NSManagedObject
 				//NSLog(@"setting is managed object: %@", propertyIdentifier);
 				if ([propertyIdentifier isEqualToString:@"characteristics"]) {
-					[self.textLabel setText:@"S: A: T: F: B:"];
+					[self.textLabel setText:@"Characteristics"];
 				} else {
 					[self.textLabel setText:[currentValue valueForKey:@"name"]];
 				}

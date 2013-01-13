@@ -110,8 +110,27 @@
 }
 
 - (NSString *)sliderPageController:(id)controller hintTitleForPage:(NSInteger)page {
-	NSString *hintTitle = [NSString stringWithFormat:@"Hello %i", page];
-	return hintTitle;
+	NSString *title;
+	switch (page) {
+		case 0:
+			title = @"None";
+			break;
+		case 1:
+			title = @"Few";
+			break;
+		case 2:
+			title = @"Medium";
+			break;
+		case 3:
+			title = @"Medium-High";
+			break;
+		case 4:
+			title = @"High";
+			break;
+		default:
+			break;
+	}
+	return title;;
 }
 
 - (void)onPageChanged:(id)sender {
