@@ -23,7 +23,7 @@
 		// set existing values to sliders
 	} else {
 		self.characteristics = [Characteristics createEntity];
-		[self.characteristics setWine:self.settingsCell.wine];
+		//[self.characteristics setWine:self.settingsCell.wine];
 	}
 	
 	UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle: @"Done" style:UIBarButtonItemStylePlain target:self action: @selector(finishSelection)];
