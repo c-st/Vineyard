@@ -131,7 +131,7 @@
 			//[self.maskView setBackgroundColor:[UIColor blackColor]];
 			[[self superview] insertSubview:self.maskView belowSubview:self];
 			
-			self.hintLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 20, self.maskView.frame.size.width-40, self.maskView.frame.size.height-40)];
+			self.hintLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 140, self.maskView.frame.size.width-40, self.maskView.frame.size.height-40)];
 			[self.hintLabel setBackgroundColor:[UIColor clearColor]];
 			[self.hintLabel setFont:[UIFont boldSystemFontOfSize:40]];
 			[self.hintLabel setNumberOfLines:10];
@@ -270,7 +270,7 @@
 	self.hasDragged = NO;
 	
 	CGPoint endPoint = [[touches anyObject] locationInView:self];
-	
+/*
 	if (endPoint.y<UPPER_TOUCH_LIMIT || endPoint.y>self.frame.size.height)
 	{
 		// ended outside, considered a cancel, should snap to original location
@@ -282,7 +282,7 @@
 		[self.slider setFrame:sliderFrame];
 		[UIView commitAnimations];
 	}
-	else
+	else */
 	{
 		// touch ended inside, should snap to new location
 		float center_x = [self.slider frame].origin.x + [self.slider frame].size.width/2;
