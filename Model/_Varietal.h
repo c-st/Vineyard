@@ -11,6 +11,7 @@ extern const struct VarietalAttributes {
 
 extern const struct VarietalRelationships {
 	__unsafe_unretained NSString *grapeType;
+	__unsafe_unretained NSString *matchingFood;
 	__unsafe_unretained NSString *wines;
 } VarietalRelationships;
 
@@ -18,6 +19,7 @@ extern const struct VarietalFetchedProperties {
 } VarietalFetchedProperties;
 
 @class GrapeType;
+@class Food;
 @class Wine;
 
 
@@ -63,6 +65,13 @@ extern const struct VarietalFetchedProperties {
 
 
 
+@property (nonatomic, strong) Food *matchingFood;
+
+//- (BOOL)validateMatchingFood:(id*)value_ error:(NSError**)error_;
+
+
+
+
 @property (nonatomic, strong) NSSet *wines;
 
 - (NSMutableSet*)winesSet;
@@ -100,6 +109,11 @@ extern const struct VarietalFetchedProperties {
 
 - (GrapeType*)primitiveGrapeType;
 - (void)setPrimitiveGrapeType:(GrapeType*)value;
+
+
+
+- (Food*)primitiveMatchingFood;
+- (void)setPrimitiveMatchingFood:(Food*)value;
 
 
 

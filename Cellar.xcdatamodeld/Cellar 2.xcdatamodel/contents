@@ -39,6 +39,9 @@
         </relationship>
         <relationship name="wines" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Wine" inverseName="country" inverseEntity="Wine" syncable="YES"/>
     </entity>
+    <entity name="Food" representedClassName="Food" syncable="YES">
+        <relationship name="varietal" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Varietal" inverseName="matchingFood" inverseEntity="Varietal" syncable="YES"/>
+    </entity>
     <entity name="GrapeType" representedClassName="GrapeType" syncable="YES">
         <attribute name="grapeTypeID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
@@ -89,6 +92,7 @@
             </userInfo>
         </attribute>
         <relationship name="grapeType" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="GrapeType" inverseName="varietals" inverseEntity="GrapeType" syncable="YES"/>
+        <relationship name="matchingFood" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Food" inverseName="varietal" inverseEntity="Food" syncable="YES"/>
         <relationship name="wines" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Wine" inverseName="varietals" inverseEntity="Wine" syncable="YES"/>
     </entity>
     <entity name="Wine" representedClassName="Wine" syncable="YES">
@@ -124,9 +128,10 @@
         <element name="Location" positionX="-569" positionY="29" width="128" height="103"/>
         <element name="Region" positionX="-288" positionY="126" width="128" height="133"/>
         <element name="TemperatureRange" positionX="358" positionY="63" width="128" height="103"/>
-        <element name="Varietal" positionX="331" positionY="338" width="128" height="103"/>
+        <element name="Varietal" positionX="331" positionY="338" width="128" height="118"/>
         <element name="Wine" positionX="88" positionY="149" width="128" height="283"/>
         <element name="Winery" positionX="-317" positionY="368" width="128" height="88"/>
         <element name="Characteristics" positionX="268" positionY="533" width="128" height="133"/>
+        <element name="Food" positionX="556" positionY="522" width="128" height="58"/>
     </elements>
 </model>

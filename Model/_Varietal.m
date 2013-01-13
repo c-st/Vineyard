@@ -10,6 +10,7 @@ const struct VarietalAttributes VarietalAttributes = {
 
 const struct VarietalRelationships VarietalRelationships = {
 	.grapeType = @"grapeType",
+	.matchingFood = @"matchingFood",
 	.wines = @"wines",
 };
 
@@ -64,6 +65,10 @@ const struct VarietalFetchedProperties VarietalFetchedProperties = {
 
 
 @dynamic grapeType;
+
+	
+
+@dynamic matchingFood;
 
 	
 

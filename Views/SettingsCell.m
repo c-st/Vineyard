@@ -240,7 +240,7 @@
 				self.textLabel.textColor = [UIColor blackColor];
 				self.textLabel.font = [UIFont systemFontOfSize:16];
 			} else if (currentValue != nil && ([currentValue isKindOfClass:[NSSet class]])) { // NSSet
-				NSLog(@"setting is list value: %@", propertyIdentifier);
+				// NSLog(@"setting is list value: %@", propertyIdentifier);
 				if ([(NSSet*) currentValue count] > 0) { // with values
 					NSSet *values = (NSSet *) currentValue;
 					NSString *names = [[NSString alloc] init];
