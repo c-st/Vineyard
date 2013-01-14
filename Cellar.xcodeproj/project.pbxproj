@@ -54,6 +54,7 @@
 		83282EE01699031100C5BE0E /* CellarMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 83282EDF1699031100C5BE0E /* CellarMapView.m */; };
 		833146D51678D2E5000F9654 /* WineFilterFoldViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 833146D41678D2E5000F9654 /* WineFilterFoldViewController.m */; };
 		833146DD16791B0E000F9654 /* PopoverView.m in Sources */ = {isa = PBXBuildFile; fileRef = 833146DB16791B0E000F9654 /* PopoverView.m */; };
+		835016C116A4B63A00B841DF /* CollectionTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 835016C016A4B63A00B841DF /* CollectionTableViewController.m */; };
 		835C6D8B167C9F9C00AC2A04 /* background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 835C6D8A167C9F9C00AC2A04 /* background@2x.png */; };
 		835C6D8E167E1B4700AC2A04 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 835C6D8D167E1B4700AC2A04 /* CoreLocation.framework */; };
 		8361EE291677B4B50057E04B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8361EE281677B4B50057E04B /* main.m */; };
@@ -290,6 +291,8 @@
 		833146DB16791B0E000F9654 /* PopoverView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopoverView.m; sourceTree = "<group>"; };
 		833591E4164B145E00FEA5C9 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		833591E5164B145E00FEA5C9 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		835016BE16A4B61600B841DF /* CollectionTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CollectionTableViewController.h; path = Controllers/CollectionTableViewController.h; sourceTree = SOURCE_ROOT; };
+		835016C016A4B63A00B841DF /* CollectionTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CollectionTableViewController.m; path = Controllers/CollectionTableViewController.m; sourceTree = SOURCE_ROOT; };
 		835C6D8A167C9F9C00AC2A04 /* background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "background@2x.png"; path = "Resources/Images/background@2x.png"; sourceTree = SOURCE_ROOT; };
 		835C6D8D167E1B4700AC2A04 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		835C6D8F167E22A900AC2A04 /* Cellar 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Cellar 2.xcdatamodel"; sourceTree = "<group>"; };
@@ -867,6 +870,8 @@
 				83E79DD51677AA5100E0E42D /* AbstractTableViewController.m */,
 				83E79DDF1677AA5100E0E42D /* AppellationTableViewController.h */,
 				83E79DD91677AA5100E0E42D /* AppellationTableViewController.m */,
+				835016BE16A4B61600B841DF /* CollectionTableViewController.h */,
+				835016C016A4B63A00B841DF /* CollectionTableViewController.m */,
 				83E79DD81677AA5100E0E42D /* ColourTableViewController.h */,
 				83E79DD71677AA5100E0E42D /* ColourTableViewController.m */,
 				83E79DDE1677AA5100E0E42D /* CountryTableViewController.h */,
@@ -1290,6 +1295,7 @@
 				83AB990C16A322C30095A63B /* Collection.m in Sources */,
 				83AB991216A348F50095A63B /* _Food.m in Sources */,
 				83AB991316A348F50095A63B /* Food.m in Sources */,
+				835016C116A4B63A00B841DF /* CollectionTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

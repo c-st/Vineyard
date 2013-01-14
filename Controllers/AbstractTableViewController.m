@@ -44,6 +44,10 @@
 
 -(void) viewWillAppear:(BOOL)animated {
 	[self.tableView setContentOffset:self.showSearchBar ? CGPointMake(0, 44) : CGPointMake(0, 0) animated:YES];
+	[self updateAndRefetch];
+}
+
+- (void) updateAndRefetch {
 	[self.fetchedResultsController.fetchRequest setFetchBatchSize:50];
 	
 	NSError *error;
@@ -151,7 +155,6 @@
 	// TODO make this badge look more like a button
 	
 	if (count > 0) {
-		
 		SSBadgeView *badgeView = [[SSBadgeView alloc] initWithFrame:CGRectMake(0, 5, 40, 20)];
 		badgeView.backgroundColor = [UIColor clearColor];
 		[badgeView setBadgeColor:[[UIColor cellarWineRedColour] colorWithAlphaComponent:0.65f]];

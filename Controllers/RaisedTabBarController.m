@@ -5,7 +5,10 @@
 #import "AddWineViewController.h"
 #import "WineTableViewController.h"
 #import "VarietalTableViewController.h"
+#import "CollectionTableViewController.h"
+
 #import "Country.h"
+#import "Collection.h"
 
 #import "PaperFoldView.h"
 #import "PaperFoldNavigationController.h"
@@ -60,10 +63,7 @@
 	[super viewDidLoad];
 	
 	// Construct the view controllers
-	
-	// 1. Tabs
-	
-	// 1.1 Wines
+	// Wines
 	WineTableViewController *wineTVC = [[WineTableViewController alloc] init];
 	[wineTVC setTitle:@"Wines"];
 	wineTVC.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Wines" image:[UIImage imageNamed:@"food_wine_bottle_glass.png"] tag:0];
@@ -88,7 +88,7 @@
 	[winePaperFoldNC setRightViewController:dummyVC width:150 rightViewFoldCount:1 rightViewPullFactor:1.0];
 	[winePaperFoldNC setLeftViewController:wineRightVC width:120.0];
 	
-	// 1.2 Countries
+	// Countries
 	NSFetchedResultsController *countriesFRC = [Country fetchAllSortedBy:@"name" ascending:YES withPredicate:nil groupBy:nil delegate:nil];
 	CountryTableViewController *countryTVC = [[CountryTableViewController alloc] initWithFetchedResultsController:countriesFRC];
 	
@@ -98,7 +98,7 @@
     UINavigationController *countryNavController = [[UINavigationController alloc] initWithRootViewController:countryTVC];
 	
 	
-	// 1.3 Varietals
+	// Varietals
 	VarietalTableViewController *varietalTVC = [[VarietalTableViewController alloc] init];
 	[varietalTVC setTitle:@"Varietals"];
 	[varietalTVC setShowCount:YES];
@@ -107,30 +107,14 @@
 	UINavigationController *varietalNavController = [[UINavigationController alloc] initWithRootViewController:varietalTVC];
 	
 	
-	// 1.3 Collections
-	UIViewController *collectionsVC = [[UIViewController alloc] init];
-	[collectionsVC setTitle:@"Collections"];
-	[collectionsVC.view setBackgroundColor:[UIColor cellarBeigeNoisyColour]];
+	// Collections
+	// NSFetchedResultsController *collectionsFRC = [Collection fetchAllSortedBy:@"name" ascending:YES withPredicate:nil groupBy:nil delegate:nil];
+	CollectionTableViewController *collectionsTCV = [[CollectionTableViewController alloc] initWithFetchedResultsController:nil];
 	
-	// 1.3.0 Content
-	UINavigationController *collectionsNavController = [[UINavigationController alloc] initWithRootViewController:collectionsVC];
-	PaperFoldNavigationController *paperFoldNavController = [[PaperFoldNavigationController alloc] initWithRootViewController:collectionsNavController];
-	paperFoldNavController.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Collections" image:[UIImage imageNamed:@"collections.png"] tag:0];
-	[[paperFoldNavController paperFoldView] setEnableLeftFoldDragging:NO];
-	
-	// 1.3.1 Left view (dummy)
-	UIViewController *dummy2VC = [[UIViewController alloc] init];
-	[dummy2VC.view setFrame:CGRectMake(0, 0, 100, [self.view bounds].size.height)];
-	[dummy2VC.view setBackgroundColor:[UIColor greenColor]];
-	[paperFoldNavController setLeftViewController:dummy2VC width:100.0];
-	
-	// 1.3.2 Right view
-	UIViewController *rightVC = [[UIViewController alloc] init];
-	[rightVC.view setFrame:CGRectMake(0, 0, 150, [self.view bounds].size.height)];
-	[rightVC.view setBackgroundColor:[UIColor grayColor]];
-	[paperFoldNavController setRightViewController:rightVC width:150 rightViewFoldCount:3 rightViewPullFactor:1.0];
-	
-	
+	[collectionsTCV setTitle:@"Collections"];
+	collectionsTCV.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Collections" image:[UIImage imageNamed:@"collections.png"] tag:0];
+	UINavigationController *collectionsNavController = [[UINavigationController alloc] initWithRootViewController:collectionsTCV];
+
 	
 	// 2.
 	[wineNavController.navigationBar setTintColor:[UIColor cellarWineRedColour]];
@@ -143,7 +127,7 @@
                             countryNavController,
                             [self viewControllerWithTabTitle:@"" image:nil],
                             varietalNavController,
-                            paperFoldNavController]];
+                            collectionsNavController]];
 	
 	[self addCenterButtonWithImage:[UIImage imageNamed:@"add-wine-button.png"] highlightImage:nil];
 }

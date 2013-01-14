@@ -32,6 +32,8 @@
 
 - (id) initWithFetchedResultsController:(NSFetchedResultsController *)controller;
 
+- (void) updateAndRefetch;
+
 // filter based on current Wine configuration.
 - (NSPredicate*) getFetchPredicate:(Wine *)withWine;
 
