@@ -114,8 +114,8 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
 	if ([[self.fetchedResultsController sections] count] > 1) {
-		id <NSFetchedResultsSectionInfo> sectionInfo = [[self.fetchedResultsController sections] objectAtIndex:section];
-		Varietal *v = (Varietal *) [[sectionInfo objects] objectAtIndex:0];
+		id <NSFetchedResultsSectionInfo> sectionInfo = [self.fetchedResultsController sections][section];
+		Varietal *v = (Varietal *) [sectionInfo objects][0];
 		return [NSString stringWithFormat:@"%@ grapes", v.grapeType.name];
 		
 	}

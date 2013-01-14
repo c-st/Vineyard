@@ -157,7 +157,7 @@
     NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"Cellar.sqlite"];
     
 	// handle db upgrade
-	NSDictionary *options = @{[NSNumber numberWithBool:YES] : NSMigratePersistentStoresAutomaticallyOption, [NSNumber numberWithBool:YES] : NSInferMappingModelAutomaticallyOption};
+	NSDictionary *options = @{@YES : NSMigratePersistentStoresAutomaticallyOption, @YES : NSInferMappingModelAutomaticallyOption};
 	
     NSError *error = nil;
     _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];

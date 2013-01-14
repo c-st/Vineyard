@@ -233,15 +233,15 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-	return [[self.configurableProperties objectAtIndex:section] count];
+	return [(self.configurableProperties)[section] count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-	return [[[self configurableProperties] objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+	return [self configurableProperties][indexPath.section][indexPath.row];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath  {
-	SettingsCell *selectedCell = [[[self configurableProperties] objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+	SettingsCell *selectedCell = [self configurableProperties][indexPath.section][indexPath.row];
 	[selectedCell updatePredicateAndRefetch];
 
 	if (selectedCell.settingsTableViewController != nil) {

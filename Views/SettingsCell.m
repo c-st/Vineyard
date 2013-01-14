@@ -64,7 +64,7 @@
 			UIBarButtonItem *flexSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:self action:nil];
 			UIBarButtonItem *doneBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneClicked:)];
 			[doneBtn setTintColor:[UIColor blackColor]];
-			[toolBar setItems:[NSArray arrayWithObjects:flexSpace, doneBtn, nil]];
+			[toolBar setItems:@[flexSpace, doneBtn]];
 			[textField setInputAccessoryView:toolBar];
 			
 			[textField addTarget:self action:@selector(textFieldValueChanged:) forControlEvents:UIControlEventEditingChanged];
@@ -99,7 +99,7 @@
 			UIBarButtonItem *flexSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:self action:nil];
 			UIBarButtonItem *doneBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneClicked:)];
 			[doneBtn setTintColor:[UIColor blackColor]];
-			[toolBar setItems:[NSArray arrayWithObjects:flexSpace, doneBtn, nil]];
+			[toolBar setItems:@[flexSpace, doneBtn]];
 			
 			[textField setInputAccessoryView:toolBar];
 			[textField setInputView:pickerView];
@@ -429,7 +429,7 @@
 #pragma mark Rating picker delegate methods
 
 -(void) ratingPickerValueChanged:(SSRatingPicker *) ratingPicker {
-	[wine setValue:[NSNumber numberWithFloat:ratingPicker.selectedNumberOfStars] forKey:propertyIdentifier];
+	[wine setValue:@(ratingPicker.selectedNumberOfStars) forKey:propertyIdentifier];
 }
 
 
@@ -459,7 +459,7 @@
 
 - (void) doneClicked:(UITextField *) textField {
 	// hide picker
-	[(UITextField *)[[self.contentView subviews] objectAtIndex:0] resignFirstResponder];
+	[(UITextField *)[self.contentView subviews][0] resignFirstResponder];
 }
 
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
@@ -486,7 +486,7 @@
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
 	if ([propertyIdentifier isEqualToString:@"vintage"]) {
 		[wine setValue:[self yearStringForRow:row] forKey:propertyIdentifier];
-		[(UITextField *)[[self.contentView subviews] objectAtIndex:0] setText:[self yearStringForRow:row]];
+		[(UITextField *)[self.contentView subviews][0] setText:[self yearStringForRow:row]];
 	}
 }
 

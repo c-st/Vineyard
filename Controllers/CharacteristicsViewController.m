@@ -106,7 +106,7 @@
 - (void) valueChanged:(SliderPageControl *) slider {
 	NSLog(@"value changed to %i for %@", slider.currentPage, (NSString *) slider.objectTag);
 	//[self.characteristics setValue:[NSNumber numberWithInt:slider.currentPage] forKey:(NSString *) slider.objectTag];
-	[self.values setObject:[NSNumber numberWithInt:slider.currentPage] forKey:(NSString *) slider.objectTag];
+	(self.values)[(NSString *) slider.objectTag] = @(slider.currentPage);
 }
 
 - (NSString *)sliderPageController:(id)controller hintTitleForPage:(NSInteger)page {

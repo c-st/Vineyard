@@ -75,7 +75,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    id  sectionInfo = [[self.fetchedResultsController sections] objectAtIndex:section];
+    id  sectionInfo = [self.fetchedResultsController sections][section];
 	//NSLog(@"numerOfRows in section %i is %i", section, [sectionInfo numberOfObjects]);
     return [sectionInfo numberOfObjects];
 }
@@ -119,8 +119,8 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
 	if ([[self.fetchedResultsController sections] count] > 1) {
-		id <NSFetchedResultsSectionInfo> sectionInfo = [[self.fetchedResultsController sections] objectAtIndex:section];
-		NSString *title = [[[[sectionInfo objects] objectAtIndex:0] region] name];
+		id <NSFetchedResultsSectionInfo> sectionInfo = [self.fetchedResultsController sections][section];
+		NSString *title = [[[sectionInfo objects][0] region] name];
 		return title;
 	}
 	//NSLog(@"returning nil!");
