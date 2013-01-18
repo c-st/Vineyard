@@ -531,8 +531,8 @@
 
 
 - (void) sliderValueWasChanged:(UISlider *) slider {
-	float newStep = roundf((slider.value) / 0.1f);
-    slider.value = newStep * 0.1f;
+	float newStep = roundf((slider.value) / 0.5f);
+    slider.value = newStep * 0.5f;
 	
 	//NSLog(@"%.1f", slider.value);
 	[self updateSliderLabel:slider];
