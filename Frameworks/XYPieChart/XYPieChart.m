@@ -663,7 +663,8 @@ static CGPathRef CGPathCreateArc(CGPoint center, CGFloat radius, CGFloat startAn
     CGSize size = [label sizeWithFont:self.labelFont];
     
     [CATransaction setDisableActions:YES];
-    if(M_PI*2*_labelRadius*pieLayer.percentage < MAX(size.width,size.height) || value <= 0)
+	// if(/M_PI*2*_labelRadius*pieLayer.percentage < MAX(size.width,size.height) || value <= 0)
+    if(value <= 0)
     {
         [textLayer setString:@""];
     }
