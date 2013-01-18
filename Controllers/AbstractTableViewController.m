@@ -248,7 +248,7 @@
 	XYPieChart *chart = [[XYPieChart alloc] initWithFrame:CGRectMake(20, 20, self.view.frame.size.width - 40, 260)];
 	[chart setDelegate:self];
 	[chart setDataSource:self];
-    [chart setLabelRadius:110];
+    [chart setLabelRadius:90];
 	[chart setLabelColor:[UIColor darkGrayColor]];
 	[chart setShowLabel:YES];
 	[chart setShowPercentage:NO];

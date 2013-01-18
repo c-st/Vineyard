@@ -67,7 +67,7 @@
 				 {"varietalID":"grüner_veltiner","name":"Grüner Veltiner", "grapeTypeID":"white"},
 				 {"varietalID":"müller_thurgau","name":"Müller Thurgau", "grapeTypeID":"white"},
 				 {"varietalID":"riesling","name":"Riesling", "grapeTypeID":"white"},
-				 {"varietalID":"gewurztraminer","name":"Gewurztraminer", "grapeTypeID":"white"},
+				 {"varietalID":"gewurztraminer","name":"Gewürztraminer", "grapeTypeID":"white"},
 				 {"varietalID":"silvaner","name":"Silvaner", "grapeTypeID":"white"},
 				 {"varietalID":"viognier","name":"Viognier", "grapeTypeID":"white"},
 				 {"varietalID":"pinot_gris","name":"Pinot Gris", "grapeTypeID":"white"},
@@ -78,6 +78,10 @@
 				 {"varietalID":"malvasia","name":"Malvasia", "grapeTypeID":"white"},
 				 {"varietalID":"muscat_blanc","name":"Muscat Blanc", "grapeTypeID":"white"},
 				 {"varietalID":"scheurebe","name":"Scheurebe", "grapeTypeID":"white"}
+	],
+	
+	"foodTypes":[
+	
 	],
 	
 	"regions":[
