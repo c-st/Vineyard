@@ -4,10 +4,14 @@
 
 #import "CellarTableViewCell.h"
 
+#import "UIImage+Tint.h"
+#import "UIImage+Scale.h"
+#import "UIViewController+KNSemiModal.h"
+
 #import "PaperFoldNavigationController.h"
 #import "SSToolkit.h"
 #import "XYPieChart.h"
-#import "UIViewController+KNSemiModal.h"
+
 
 @class SettingsCell;
 

@@ -42,7 +42,11 @@
 	}
 	
 	if (self.showPieChart) {
-		UIBarButtonItem *pieButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemOrganize target:self action:@selector(showStatsButtonClicked)];
+		UIImage *image = [[[UIImage imageNamed:@"bar-chart.png"] imageTintedWithColor:[UIColor whiteColor]] scaleToSize:CGSizeMake(18, 14)];
+		
+		UIBarButtonItem *pieButton = [[UIBarButtonItem alloc] initWithImage:image style:UIBarButtonItemStylePlain target:self action:@selector(showStatsButtonClicked)];
+		
+		//UIBarButtonItem *pieButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemOrganize target:self action:@selector(showStatsButtonClicked)];
 		[[self navigationItem] setRightBarButtonItem:pieButton];
 	}
 	[fetchedResultsController setDelegate:self];

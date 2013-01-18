@@ -50,6 +50,7 @@
 		8319B0071677C295005E28BB /* TouchThroughUIView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8319AFFA1677C295005E28BB /* TouchThroughUIView.m */; };
 		8319B0081677C295005E28BB /* UIView+Screenshot.m in Sources */ = {isa = PBXBuildFile; fileRef = 8319AFFC1677C295005E28BB /* UIView+Screenshot.m */; };
 		8319B00A1677C6E0005E28BB /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8319B0091677C6E0005E28BB /* MapKit.framework */; };
+		8325354716A9B49F00D25D14 /* bar-chart@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8325354616A9B49F00D25D14 /* bar-chart@2x.png */; };
 		83282EDC1698F6AB00C5BE0E /* SwipeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 83282EDB1698F6AB00C5BE0E /* SwipeView.m */; };
 		83282EE01699031100C5BE0E /* CellarMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 83282EDF1699031100C5BE0E /* CellarMapView.m */; };
 		833146D51678D2E5000F9654 /* WineFilterFoldViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 833146D41678D2E5000F9654 /* WineFilterFoldViewController.m */; };
@@ -283,6 +284,7 @@
 		8319AFFB1677C295005E28BB /* UIView+Screenshot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Screenshot.h"; sourceTree = "<group>"; };
 		8319AFFC1677C295005E28BB /* UIView+Screenshot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Screenshot.m"; sourceTree = "<group>"; };
 		8319B0091677C6E0005E28BB /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		8325354616A9B49F00D25D14 /* bar-chart@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "bar-chart@2x.png"; path = "Resources/Images/bar-chart@2x.png"; sourceTree = SOURCE_ROOT; };
 		83282EDA1698F6AB00C5BE0E /* SwipeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwipeView.h; sourceTree = "<group>"; };
 		83282EDB1698F6AB00C5BE0E /* SwipeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SwipeView.m; sourceTree = "<group>"; };
 		83282EDE1699031100C5BE0E /* CellarMapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CellarMapView.h; path = Views/CellarMapView.h; sourceTree = SOURCE_ROOT; };
@@ -671,6 +673,7 @@
 		832EDF88165FF55400AE20A9 /* Icons */ = {
 			isa = PBXGroup;
 			children = (
+				8325354616A9B49F00D25D14 /* bar-chart@2x.png */,
 				83B0A8AB1689243200D65198 /* wine_bottle@2x.png */,
 				83B0A8AC1689243200D65198 /* basic2-058.png */,
 				83B0A8AD1689243200D65198 /* basic1-044.png */,
@@ -1209,6 +1212,7 @@
 				839B6FF9169B88A100BDAACF /* sliderPageControl@2x.png in Resources */,
 				839B6FFA169B88A100BDAACF /* sliderPageControlBg.png in Resources */,
 				839B6FFB169B88A100BDAACF /* sliderPageControlBg@2x.png in Resources */,
+				8325354716A9B49F00D25D14 /* bar-chart@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
