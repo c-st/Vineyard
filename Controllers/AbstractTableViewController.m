@@ -248,7 +248,7 @@
 	XYPieChart *chart = [[XYPieChart alloc] initWithFrame:CGRectMake(20, 20, self.view.frame.size.width - 40, 260)];
 	[chart setDelegate:self];
 	[chart setDataSource:self];
-    [chart setLabelRadius:80];
+    [chart setLabelRadius:110];
 	[chart setLabelColor:[UIColor darkGrayColor]];
 	[chart setShowLabel:YES];
 	[chart setShowPercentage:NO];
@@ -259,6 +259,7 @@
 	 KNSemiModalOptionKeys.pushParentBack    : @(YES),
 	 KNSemiModalOptionKeys.animationDuration : @(0.3),
 	 KNSemiModalOptionKeys.shadowOpacity     : @(0.3),
+	 KNSemiModalOptionKeys.parentAlpha		 : @(0.4)
 	 }];
 }
 
@@ -292,12 +293,25 @@
 }
 
 - (UIColor *)pieChart:(XYPieChart *)pieChart colorForSliceAtIndex:(NSUInteger)index {
-	return [[UIColor cellarWineRedColour] colorWithAlphaComponent:index % 2 > 0 ? 0.4 : 0.45];
-    
+	switch (index % 3) {
+		case 0:
+			return [[UIColor cellarWineRedColour] colorWithAlphaComponent:0.4];
+			break;
+		case 1:
+			return [[UIColor cellarWineRedColour] colorWithAlphaComponent:0.45];
+			break;
+		case 2:
+			return [[UIColor cellarWineRedColour] colorWithAlphaComponent:0.5];
+			break;
+		default:
+			return [[UIColor cellarWineRedColour] colorWithAlphaComponent:0.4];
+			break;
+	}
+
 }
 
 - (NSString *)pieChart:(XYPieChart *)pieChart textForSliceAtIndex:(NSUInteger)index {
-	return [[self.fetchedResultsController objectAtIndexPath:[self determineIndexPathFromAbsoluteIndex:index]] name];
+	return[[self.fetchedResultsController objectAtIndexPath:[self determineIndexPathFromAbsoluteIndex:index]] name];
 }
 
 #pragma mark - XYPieChart Delegate
