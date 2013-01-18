@@ -53,7 +53,7 @@
 }
 
 -(void) viewWillAppear:(BOOL)animated {
-	[self.tableView setContentOffset:self.showSearchBar ? CGPointMake(0, 44) : CGPointMake(0, 0) animated:YES];
+	//[self.tableView setContentOffset:self.showSearchBar ? CGPointMake(0, 44) : CGPointMake(0, 0) animated:YES];
 	[self updateAndRefetch];
 }
 
@@ -242,10 +242,26 @@
 #pragma mark - Pie Chart Button
 
 - (void) showStatsButtonClicked {
-	UIView *testView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 300)];
+	UIView *testView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 320)];
 	[testView setBackgroundColor:[UIColor cellarBeigeNoisyColour]];
 	
-	XYPieChart *chart = [[XYPieChart alloc] initWithFrame:CGRectMake(20, 20, self.view.frame.size.width - 40, 260)];
+	SSLineView *line = [[SSLineView alloc] initWithFrame:CGRectMake(0, 45, self.view.frame.size.width, 20)];
+	[line setLineColor:[[UIColor lightGrayColor] colorWithAlphaComponent:0.8]];
+	[line setInsetColor:[UIColor whiteColor]];
+	[testView addSubview:line];
+	
+
+	UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+	[button setFrame:CGRectMake(self.view.frame.size.width - 70, 10, 60, 30)];
+	[button setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
+	[button setTintColor:[UIColor lightGrayColor]];
+	[button.titleLabel setFont:[UIFont systemFontOfSize:14]];
+    button.layer.borderColor = [UIColor blackColor].CGColor;
+	[button setTitle:@"Done" forState:UIControlStateNormal];
+	[button addTarget:self action:@selector(dismissPieChartView) forControlEvents:UIControlEventTouchUpInside];
+	[testView addSubview:button];
+	
+	XYPieChart *chart = [[XYPieChart alloc] initWithFrame:CGRectMake(10, 60, self.view.frame.size.width - 20, 250)];
 	[chart setDelegate:self];
 	[chart setDataSource:self];
     [chart setLabelRadius:90];
@@ -262,6 +278,11 @@
 	 KNSemiModalOptionKeys.parentAlpha		 : @(0.4)
 	 }];
 }
+
+- (void) dismissPieChartView {
+	[self dismissSemiModalView];
+}
+
 
 #pragma mark - XYPieChart Data Source
 
