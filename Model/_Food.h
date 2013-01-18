@@ -5,16 +5,20 @@
 
 
 extern const struct FoodAttributes {
+	__unsafe_unretained NSString *foodId;
+	__unsafe_unretained NSString *name;
 } FoodAttributes;
 
 extern const struct FoodRelationships {
-	__unsafe_unretained NSString *varietal;
+	__unsafe_unretained NSString *varietals;
 } FoodRelationships;
 
 extern const struct FoodFetchedProperties {
 } FoodFetchedProperties;
 
 @class Varietal;
+
+
 
 
 @interface FoodID : NSManagedObjectID {}
@@ -30,9 +34,29 @@ extern const struct FoodFetchedProperties {
 
 
 
-@property (nonatomic, strong) Varietal *varietal;
+@property (nonatomic, strong) NSString* foodId;
 
-//- (BOOL)validateVarietal:(id*)value_ error:(NSError**)error_;
+
+
+//- (BOOL)validateFoodId:(id*)value_ error:(NSError**)error_;
+
+
+
+
+
+@property (nonatomic, strong) NSString* name;
+
+
+
+//- (BOOL)validateName:(id*)value_ error:(NSError**)error_;
+
+
+
+
+
+@property (nonatomic, strong) NSSet *varietals;
+
+- (NSMutableSet*)varietalsSet;
 
 
 
@@ -42,14 +66,31 @@ extern const struct FoodFetchedProperties {
 
 @interface _Food (CoreDataGeneratedAccessors)
 
+- (void)addVarietals:(NSSet*)value_;
+- (void)removeVarietals:(NSSet*)value_;
+- (void)addVarietalsObject:(Varietal*)value_;
+- (void)removeVarietalsObject:(Varietal*)value_;
+
 @end
 
 @interface _Food (CoreDataGeneratedPrimitiveAccessors)
 
 
+- (NSString*)primitiveFoodId;
+- (void)setPrimitiveFoodId:(NSString*)value;
 
-- (Varietal*)primitiveVarietal;
-- (void)setPrimitiveVarietal:(Varietal*)value;
+
+
+
+- (NSString*)primitiveName;
+- (void)setPrimitiveName:(NSString*)value;
+
+
+
+
+
+- (NSMutableSet*)primitiveVarietals;
+- (void)setPrimitiveVarietals:(NSMutableSet*)value;
 
 
 @end

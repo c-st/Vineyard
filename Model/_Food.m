@@ -4,10 +4,12 @@
 #import "_Food.h"
 
 const struct FoodAttributes FoodAttributes = {
+	.foodId = @"foodId",
+	.name = @"name",
 };
 
 const struct FoodRelationships FoodRelationships = {
-	.varietal = @"varietal",
+	.varietals = @"varietals",
 };
 
 const struct FoodFetchedProperties FoodFetchedProperties = {
@@ -46,8 +48,31 @@ const struct FoodFetchedProperties FoodFetchedProperties = {
 
 
 
-@dynamic varietal;
+@dynamic foodId;
 
+
+
+
+
+
+@dynamic name;
+
+
+
+
+
+
+@dynamic varietals;
+
+	
+- (NSMutableSet*)varietalsSet {
+	[self willAccessValueForKey:@"varietals"];
+  
+	NSMutableSet *result = (NSMutableSet*)[self mutableSetValueForKey:@"varietals"];
+  
+	[self didAccessValueForKey:@"varietals"];
+	return result;
+}
 	
 
 

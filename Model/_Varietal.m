@@ -71,6 +71,15 @@ const struct VarietalFetchedProperties VarietalFetchedProperties = {
 @dynamic matchingFood;
 
 	
+- (NSMutableSet*)matchingFoodSet {
+	[self willAccessValueForKey:@"matchingFood"];
+  
+	NSMutableSet *result = (NSMutableSet*)[self mutableSetValueForKey:@"matchingFood"];
+  
+	[self didAccessValueForKey:@"matchingFood"];
+	return result;
+}
+	
 
 @dynamic wines;
 

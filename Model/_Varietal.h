@@ -65,9 +65,9 @@ extern const struct VarietalFetchedProperties {
 
 
 
-@property (nonatomic, strong) Food *matchingFood;
+@property (nonatomic, strong) NSSet *matchingFood;
 
-//- (BOOL)validateMatchingFood:(id*)value_ error:(NSError**)error_;
+- (NSMutableSet*)matchingFoodSet;
 
 
 
@@ -83,6 +83,11 @@ extern const struct VarietalFetchedProperties {
 @end
 
 @interface _Varietal (CoreDataGeneratedAccessors)
+
+- (void)addMatchingFood:(NSSet*)value_;
+- (void)removeMatchingFood:(NSSet*)value_;
+- (void)addMatchingFoodObject:(Food*)value_;
+- (void)removeMatchingFoodObject:(Food*)value_;
 
 - (void)addWines:(NSSet*)value_;
 - (void)removeWines:(NSSet*)value_;
@@ -112,8 +117,8 @@ extern const struct VarietalFetchedProperties {
 
 
 
-- (Food*)primitiveMatchingFood;
-- (void)setPrimitiveMatchingFood:(Food*)value;
+- (NSMutableSet*)primitiveMatchingFood;
+- (void)setPrimitiveMatchingFood:(NSMutableSet*)value;
 
 
 
