@@ -13,7 +13,7 @@
 
 @implementation AbstractTableViewController
 
-@synthesize settingsCell, showCount, showSearchBar, paperFoldNC;
+@synthesize settingsCell, showCount, showSearchBar, showPieChart, paperFoldNC;
 @synthesize fetchedResultsController = fetchedResultsController;
 @synthesize managedObjectContext = _managedObjectContext;
 
@@ -26,6 +26,7 @@
         fetchedResultsController = controller;
 		[self setShowCount:NO];
 		[self setShowSearchBar:NO];
+		[self setShowPieChart:NO];
     }
     return self;
 }
@@ -38,6 +39,11 @@
 		[searchBar setDelegate:self];
 		self.tableView.tableHeaderView = searchBar;
 		self.tableView.contentOffset = CGPointMake(0, self.tableView.tableHeaderView.frame.size.height);
+	}
+	
+	if (self.showPieChart) {
+		UIBarButtonItem *pieButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemOrganize target:self action:@selector(showStatsButtonClicked)];
+		[[self navigationItem] setRightBarButtonItem:pieButton];
 	}
 	[fetchedResultsController setDelegate:self];
 }
@@ -228,5 +234,72 @@
 - (NSPredicate*) getFetchPredicate:(Wine *)withWine {
 	return nil;
 }
+
+#pragma mark - Pie Chart Button
+
+- (void) showStatsButtonClicked {
+	UIView *testView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 300)];
+	[testView setBackgroundColor:[UIColor cellarBeigeNoisyColour]];
+	
+	XYPieChart *chart = [[XYPieChart alloc] initWithFrame:CGRectMake(20, 20, self.view.frame.size.width - 40, 260)];
+	[chart setDelegate:self];
+	[chart setDataSource:self];
+    [chart setLabelRadius:80];
+	[chart setLabelColor:[UIColor darkGrayColor]];
+	[chart setShowLabel:YES];
+	[chart setShowPercentage:NO];
+	[chart reloadData];
+	[testView addSubview:chart];
+	
+	[self presentSemiView:testView withOptions:@{
+	 KNSemiModalOptionKeys.pushParentBack    : @(YES),
+	 KNSemiModalOptionKeys.animationDuration : @(0.3),
+	 KNSemiModalOptionKeys.shadowOpacity     : @(0.3),
+	 }];
+}
+
+#pragma mark - XYPieChart Data Source
+
+- (NSIndexPath *) determineIndexPathFromAbsoluteIndex:(NSUInteger)index {
+	int section = 0;
+	int row = index;
+	if ([[self.fetchedResultsController sections][section] numberOfObjects] <= row) {
+		row = index - [[self.fetchedResultsController sections][section] numberOfObjects];
+		section = section + 1;
+	}
+	return [NSIndexPath indexPathForRow:row inSection:section];
+}
+
+- (NSUInteger)numberOfSlicesInPieChart:(XYPieChart *)pieChart {
+	// iterate over all sections
+	int total = 0;
+	
+	for (int i = 0; i < [[self.fetchedResultsController sections] count]; i++) {
+		total += [[self.fetchedResultsController sections][i] numberOfObjects];
+	}
+	return total;
+}
+
+- (CGFloat)pieChart:(XYPieChart *)pieChart valueForSliceAtIndex:(NSUInteger)index {
+	int count = [Wine countOfEntitiesWithPredicate:[self buildCountPredicateForObject:[self.fetchedResultsController objectAtIndexPath:
+																					   [self determineIndexPathFromAbsoluteIndex:index]
+																					   ]]];
+    return count;
+}
+
+- (UIColor *)pieChart:(XYPieChart *)pieChart colorForSliceAtIndex:(NSUInteger)index {
+	return [[UIColor cellarWineRedColour] colorWithAlphaComponent:index % 2 > 0 ? 0.4 : 0.45];
+    
+}
+
+- (NSString *)pieChart:(XYPieChart *)pieChart textForSliceAtIndex:(NSUInteger)index {
+	return [[self.fetchedResultsController objectAtIndexPath:[self determineIndexPathFromAbsoluteIndex:index]] name];
+}
+
+#pragma mark - XYPieChart Delegate
+- (void)pieChart:(XYPieChart *)pieChart didSelectSliceAtIndex:(NSUInteger)index {
+    NSLog(@"did select slice at index %d",index);
+}
+
 
 @end

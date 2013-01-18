@@ -4,6 +4,8 @@
 
 #import "Collection.h"
 
+#import "UIViewController+KNSemiModal.h"
+
 #import "UIImage+Scale.h"
 
 @interface CollectionTableViewController ()
@@ -16,7 +18,7 @@
 	[self setFetchedResultsController:[Collection fetchAllSortedBy:@"name" ascending:YES withPredicate:nil groupBy:nil delegate:nil]];
 	[super viewWillAppear:animated];
 	
-	UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addNewCollection)];
+	UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addCollectionButtonClicked)];
 	[[self navigationItem] setRightBarButtonItem:addButton];
 	
 	NSLog(@"%i collections.", [[[Collection fetchAllSortedBy:@"name" ascending:YES withPredicate:[self getFetchPredicate:nil] groupBy:nil delegate:nil] fetchedObjects] count]);
@@ -61,13 +63,17 @@
 	//[[self navigationController] pushViewController:regionTableViewController animated:YES];
 }
 
-- (void) addNewCollection {
+
+- (void) addCollectionButtonClicked {
+	
+	/*
 	Collection *collection = [Collection createEntity];
 	[collection setName:@"Test"];
 	[[NSManagedObjectContext defaultContext] saveToPersistentStoreAndWait];
 	
 	[self updateAndRefetch];
 	NSLog(@"add");
+	 */
 }
 
 

@@ -117,6 +117,8 @@
 		83D5DD6E163EBC50001C857E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83D5DD6D163EBC50001C857E /* Foundation.framework */; };
 		83D5DD70163EBC50001C857E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83D5DD6F163EBC50001C857E /* CoreGraphics.framework */; };
 		83D5DD72163EBC50001C857E /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83D5DD71163EBC50001C857E /* CoreData.framework */; };
+		83E391A816A998AB001A6135 /* UIViewController+KNSemiModal.m in Sources */ = {isa = PBXBuildFile; fileRef = 83E391A716A998AB001A6135 /* UIViewController+KNSemiModal.m */; };
+		83E391AC16A99A35001A6135 /* XYPieChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 83E391AB16A99A35001A6135 /* XYPieChart.m */; };
 		83E79D9E1677AA0300E0E42D /* Wine.m in Sources */ = {isa = PBXBuildFile; fileRef = 83E79D781677AA0300E0E42D /* Wine.m */; };
 		83E79D9F1677AA0300E0E42D /* _Wine.m in Sources */ = {isa = PBXBuildFile; fileRef = 83E79D791677AA0300E0E42D /* _Wine.m */; };
 		83E79DA01677AA0300E0E42D /* _GrapeType.m in Sources */ = {isa = PBXBuildFile; fileRef = 83E79D7B1677AA0300E0E42D /* _GrapeType.m */; };
@@ -371,6 +373,10 @@
 		83D5DD6D163EBC50001C857E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		83D5DD6F163EBC50001C857E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		83D5DD71163EBC50001C857E /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		83E391A616A998AB001A6135 /* UIViewController+KNSemiModal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIViewController+KNSemiModal.h"; path = "Categories/UIViewController+KNSemiModal.h"; sourceTree = SOURCE_ROOT; };
+		83E391A716A998AB001A6135 /* UIViewController+KNSemiModal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIViewController+KNSemiModal.m"; path = "Categories/UIViewController+KNSemiModal.m"; sourceTree = SOURCE_ROOT; };
+		83E391AA16A99A35001A6135 /* XYPieChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYPieChart.h; sourceTree = "<group>"; };
+		83E391AB16A99A35001A6135 /* XYPieChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYPieChart.m; sourceTree = "<group>"; };
 		83E79D761677AA0300E0E42D /* _Wine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = _Wine.h; path = Model/_Wine.h; sourceTree = SOURCE_ROOT; };
 		83E79D771677AA0300E0E42D /* Wine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Wine.h; path = Model/Wine.h; sourceTree = SOURCE_ROOT; };
 		83E79D781677AA0300E0E42D /* Wine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Wine.m; path = Model/Wine.m; sourceTree = SOURCE_ROOT; };
@@ -649,6 +655,7 @@
 		832EDC4F165FD4FA00AE20A9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				83E391A916A99A35001A6135 /* XYPieChart */,
 				839B6FEE169B885A00BDAACF /* SliderPageControl */,
 				83282ED91698F6AB00C5BE0E /* SwipeView */,
 				83099D4D16826A6F00415556 /* ABTableViewCell */,
@@ -713,6 +720,8 @@
 		83351157165594E900E9D6E1 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				83E391A616A998AB001A6135 /* UIViewController+KNSemiModal.h */,
+				83E391A716A998AB001A6135 /* UIViewController+KNSemiModal.m */,
 				83E79DB21677AA1400E0E42D /* UIImage+ProportionalFill.m */,
 				83E79DB31677AA1400E0E42D /* UIImage+ProportionalFill.h */,
 				83E79DB41677AA1400E0E42D /* UIImage+Tint.h */,
@@ -1035,6 +1044,16 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		83E391A916A99A35001A6135 /* XYPieChart */ = {
+			isa = PBXGroup;
+			children = (
+				83E391AA16A99A35001A6135 /* XYPieChart.h */,
+				83E391AB16A99A35001A6135 /* XYPieChart.m */,
+			);
+			name = XYPieChart;
+			path = Frameworks/XYPieChart;
+			sourceTree = SOURCE_ROOT;
+		};
 		83EF99D4165A615900C56F40 /* App Icon [Rounded] */ = {
 			isa = PBXGroup;
 			children = (
@@ -1296,6 +1315,8 @@
 				83AB991216A348F50095A63B /* _Food.m in Sources */,
 				83AB991316A348F50095A63B /* Food.m in Sources */,
 				835016C116A4B63A00B841DF /* CollectionTableViewController.m in Sources */,
+				83E391A816A998AB001A6135 /* UIViewController+KNSemiModal.m in Sources */,
+				83E391AC16A99A35001A6135 /* XYPieChart.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

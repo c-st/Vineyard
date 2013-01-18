@@ -51,6 +51,7 @@
 	AppellationTableViewController *appellationTableViewController = [[AppellationTableViewController alloc] initWithFetchedResultsController:appellationsController];
 	[appellationTableViewController setTitle:region.name];
 	[appellationTableViewController setShowCount:[self showCount]];
+	[appellationTableViewController setShowPieChart:[self showPieChart]];
 	[[self navigationController] pushViewController:appellationTableViewController animated:YES];
 }
 

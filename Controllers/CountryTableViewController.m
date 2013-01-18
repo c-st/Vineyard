@@ -8,6 +8,9 @@
 
 #import "UIImage+Scale.h"
 
+
+#import "XYPieChart.h"
+
 @interface CountryTableViewController ()
 
 @end
@@ -16,6 +19,7 @@
 
 - (void) viewWillAppear:(BOOL) animated {
 	[self setFetchedResultsController:[Country fetchAllSortedBy:@"name" ascending:YES withPredicate:nil groupBy:nil delegate:nil]];
+	
 	[super viewWillAppear:animated];
 }
 
@@ -61,9 +65,9 @@
 	RegionTableViewController *regionTableViewController = [[RegionTableViewController alloc] initWithFetchedResultsController:regionsController];
 	[regionTableViewController setTitle:country.name];
 	[regionTableViewController setShowCount:[self showCount]];
+	[regionTableViewController setShowPieChart:[self showPieChart]];
 	
 	[[self navigationController] pushViewController:regionTableViewController animated:YES];
 }
-
 
 @end

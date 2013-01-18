@@ -94,6 +94,7 @@
 	
 	[countryTVC setTitle:@"Countries"];
 	[countryTVC setShowCount:YES];
+	[countryTVC setShowPieChart:YES];
 	countryTVC.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Countries" image:[UIImage imageNamed:@"globe-icon.png"] tag:0];
     UINavigationController *countryNavController = [[UINavigationController alloc] initWithRootViewController:countryTVC];
 	
@@ -103,6 +104,7 @@
 	[varietalTVC setTitle:@"Varietals"];
 	[varietalTVC setShowCount:YES];
 	[varietalTVC setPickMode:NO];
+	[varietalTVC setShowPieChart:YES];
 	varietalTVC.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Varietals" image:[UIImage imageNamed:@"food_grapes.png"] tag:0];
 	UINavigationController *varietalNavController = [[UINavigationController alloc] initWithRootViewController:varietalTVC];
 	

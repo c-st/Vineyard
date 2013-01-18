@@ -5,12 +5,13 @@
 #import "CellarTableViewCell.h"
 
 #import "PaperFoldNavigationController.h"
-
 #import "SSToolkit.h"
+#import "XYPieChart.h"
+#import "UIViewController+KNSemiModal.h"
 
 @class SettingsCell;
 
-@interface AbstractTableViewController : UITableViewController <NSFetchedResultsControllerDelegate, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate> {
+@interface AbstractTableViewController : UITableViewController <NSFetchedResultsControllerDelegate, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, XYPieChartDelegate, XYPieChartDataSource> {
 	UISearchBar *searchBar;
 	SettingsCell *settingsCell;
 	
@@ -18,6 +19,7 @@
 	
 	BOOL showCount;
 	BOOL showSearchBar;
+	BOOL showPieChart;
 }
 
 @property (nonatomic, strong) NSManagedObjectContext* managedObjectContext;
@@ -28,6 +30,7 @@
 
 @property (atomic) BOOL showCount;
 @property (atomic) BOOL showSearchBar;
+@property (atomic) BOOL showPieChart;
 
 
 - (id) initWithFetchedResultsController:(NSFetchedResultsController *)controller;
@@ -47,4 +50,7 @@
 - (NSPredicate *) buildCountPredicateForObject:(NSManagedObject *)object;
 
 - (void) filterContentForSearch:(NSString *) searchText;
+
+#pragma mark Pie chart
+- (NSIndexPath *) determineIndexPathFromAbsoluteIndex:(NSUInteger)index;
 @end
