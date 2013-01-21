@@ -66,15 +66,31 @@
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath  {
+	Wine *wine = [[super fetchedResultsController] objectAtIndexPath:indexPath];
+	WineDetailViewController *wineDetail = [[WineDetailViewController alloc] initWithWine:wine];
+	
+	
+	[UIView animateWithDuration:0.8 animations:^{
+		[[[self paperFoldNC] paperFoldView] setPaperFoldState:PaperFoldStateDefault];
+
+	} completion:^(BOOL finished){
+		
+	}];
+	
+	[UIView animateWithDuration:0.8 animations:^{
+		[[self navigationController] pushViewController:wineDetail animated:YES];
+		
+	} completion:^(BOOL finished){
+		
+	}];
+	
 	// unfold and disable
 	[[[self paperFoldNC] paperFoldView] setEnableLeftFoldDragging:NO];
 	[[[self paperFoldNC] paperFoldView] setEnableRightFoldDragging:NO];
 	[[[self paperFoldNC] paperFoldView] setGestureRecognizerEnabled:NO];
-	[[[self paperFoldNC] paperFoldView] setPaperFoldState:PaperFoldStateDefault];
 	
-	Wine *wine = [[super fetchedResultsController] objectAtIndexPath:indexPath];
-	WineDetailViewController *wineDetail = [[WineDetailViewController alloc] initWithWine:wine];
-	[[self navigationController] pushViewController:wineDetail animated:YES];;
+	
+	
 }
 
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {

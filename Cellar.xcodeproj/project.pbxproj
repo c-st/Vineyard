@@ -88,6 +88,7 @@
 		836D07F316ADB5EE00FA090C /* OCAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 836D07EC16ADB5EE00FA090C /* OCAnnotation.m */; };
 		836D07F416ADB5EE00FA090C /* OCDistance.m in Sources */ = {isa = PBXBuildFile; fileRef = 836D07EE16ADB5EE00FA090C /* OCDistance.m */; };
 		836D07F516ADB5EE00FA090C /* OCMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 836D07F116ADB5EE00FA090C /* OCMapView.m */; };
+		836D07F716ADC2F700FA090C /* wine_bottle_normal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 836D07F616ADC2F600FA090C /* wine_bottle_normal@2x.png */; };
 		838B2DF1167E52EC00944657 /* _TemperatureRange.m in Sources */ = {isa = PBXBuildFile; fileRef = 838B2DEE167E52EC00944657 /* _TemperatureRange.m */; };
 		838B2DF2167E52EC00944657 /* TemperatureRange.m in Sources */ = {isa = PBXBuildFile; fileRef = 838B2DF0167E52EC00944657 /* TemperatureRange.m */; };
 		838B2E42167E5EBB00944657 /* NMRangeSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 838B2E31167E5EBB00944657 /* NMRangeSlider.m */; };
@@ -342,6 +343,7 @@
 		836D07EF16ADB5EE00FA090C /* OCGrouping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCGrouping.h; sourceTree = "<group>"; };
 		836D07F016ADB5EE00FA090C /* OCMapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCMapView.h; sourceTree = "<group>"; };
 		836D07F116ADB5EE00FA090C /* OCMapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCMapView.m; sourceTree = "<group>"; };
+		836D07F616ADC2F600FA090C /* wine_bottle_normal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "wine_bottle_normal@2x.png"; path = "Resources/Images/wine_bottle_normal@2x.png"; sourceTree = SOURCE_ROOT; };
 		838B2DED167E52EC00944657 /* _TemperatureRange.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = _TemperatureRange.h; path = Model/_TemperatureRange.h; sourceTree = SOURCE_ROOT; };
 		838B2DEE167E52EC00944657 /* _TemperatureRange.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = _TemperatureRange.m; path = Model/_TemperatureRange.m; sourceTree = SOURCE_ROOT; };
 		838B2DEF167E52EC00944657 /* TemperatureRange.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TemperatureRange.h; path = Model/TemperatureRange.h; sourceTree = SOURCE_ROOT; };
@@ -690,6 +692,7 @@
 		832EDF88165FF55400AE20A9 /* Icons */ = {
 			isa = PBXGroup;
 			children = (
+				836D07F616ADC2F600FA090C /* wine_bottle_normal@2x.png */,
 				8325354616A9B49F00D25D14 /* bar-chart@2x.png */,
 				83B0A8AB1689243200D65198 /* wine_bottle@2x.png */,
 				83B0A8AC1689243200D65198 /* basic2-058.png */,
@@ -1249,6 +1252,7 @@
 				839B6FFA169B88A100BDAACF /* sliderPageControlBg.png in Resources */,
 				839B6FFB169B88A100BDAACF /* sliderPageControlBg@2x.png in Resources */,
 				8325354716A9B49F00D25D14 /* bar-chart@2x.png in Resources */,
+				836D07F716ADC2F700FA090C /* wine_bottle_normal@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

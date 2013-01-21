@@ -7,7 +7,7 @@
 
 #import "CountryTableViewController.h"
 #import "PopoverView.h"
-#import "CellarMapView.h"
+
 
 @interface WineMapFoldViewController ()
 
@@ -15,14 +15,15 @@
 
 @implementation WineMapFoldViewController
 
+@synthesize mapView;
+
 - (void) viewDidLoad {
     [super viewDidLoad];
 	
 	[self.view setBackgroundColor:[UIColor darkGrayColor]]; //darkGray
 	
+	self.mapView = [[CellarMapView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
 	
-	
-	CellarMapView *mapView = [[CellarMapView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
 	[self.view addSubview:mapView];
 	
 	CAGradientLayer *shadow = [CAGradientLayer layer];
@@ -38,28 +39,11 @@
 }
 
 - (void) viewWillAppear:(BOOL)animated {
-}
-
-- (void) viewDidAppear:(BOOL)animated {
-	//[PopoverView showPopoverAtPoint:CGPointMake(10, 10) inView:self.view withTitle:@"Was this helpful?" withStringArray:[NSArray arrayWithObjects:@"YES", @"NO", nil] delegate:self];
+	[mapView setWinesToBeDisplayed:[Wine findAll]];
+	[mapView removeOverlays:mapView.overlays];
+    [mapView doClustering];
 	
 }
 
-#pragma mark - UITableView Delegate Methods
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 10;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 30;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
-    cell.textLabel.text = @"text";
-    cell.textLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:15];
-    return cell;
-}
 
 @end

@@ -2,6 +2,12 @@
 #import "PopoverView.h"
 #import <MapKit/MapKit.h>
 
-@interface WineMapFoldViewController : UIViewController <PopoverViewDelegate, UITableViewDataSource, UITableViewDelegate>
+#import "CellarMapView.h"
+
+@interface WineMapFoldViewController : UIViewController {
+	CellarMapView *mapView;
+}
+
+@property (nonatomic, strong) CellarMapView *mapView;
 
 @end
