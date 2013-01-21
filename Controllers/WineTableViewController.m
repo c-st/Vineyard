@@ -69,20 +69,16 @@
 	Wine *wine = [[super fetchedResultsController] objectAtIndexPath:indexPath];
 	WineDetailViewController *wineDetail = [[WineDetailViewController alloc] initWithWine:wine];
 	
+	// TODO: bug with unbalanced calls
 	
-	[UIView animateWithDuration:0.8 animations:^{
-		[[[self paperFoldNC] paperFoldView] setPaperFoldState:PaperFoldStateDefault];
-
+	[[[self paperFoldNC] paperFoldView] setPaperFoldState:PaperFoldStateDefault];
+	
+	[UIView animateWithDuration:0.5 animations:^{
 	} completion:^(BOOL finished){
 		
 	}];
 	
-	[UIView animateWithDuration:0.8 animations:^{
-		[[self navigationController] pushViewController:wineDetail animated:YES];
-		
-	} completion:^(BOOL finished){
-		
-	}];
+	[[self navigationController] pushViewController:wineDetail animated:YES];
 	
 	// unfold and disable
 	[[[self paperFoldNC] paperFoldView] setEnableLeftFoldDragging:NO];

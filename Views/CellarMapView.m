@@ -8,7 +8,7 @@
 
 
 @implementation CellarMapView
-@synthesize location, zoomLevel, deltaLatitude;
+@synthesize location, zoomLevel, deltaLatitude, wines;
 
 - (id) initWithFrame:(CGRect) frame {
 	self = [super initWithFrame:frame];
@@ -35,11 +35,18 @@
 }
 
 
-- (void) setWinesToBeDisplayed:(NSArray*) wines {
+- (void) setWinesToBeDisplayed:(NSArray*) theWines showRegion:(BOOL) isShowRegion{
 	[self removeAnnotations:self.annotations];
-	for (Wine* wine in wines) {
-		//CLLocationCoordinate2D loc = CLLocationCoordinate2DMake(wine.location.latitudeValue, wine.location.longitudeValue);
-		CLLocationCoordinate2D loc = CLLocationCoordinate2DMake(wine.appellation.region.location.latitudeValue, wine.appellation.region.location.longitudeValue);
+	[self removeOverlays:self.overlays];
+	self.wines = theWines;
+	
+	for (Wine* wine in theWines) {
+		CLLocationCoordinate2D loc;
+		if (isShowRegion) {
+			loc = CLLocationCoordinate2DMake(wine.appellation.region.location.latitudeValue, wine.appellation.region.location.longitudeValue);
+		} else {
+			loc = CLLocationCoordinate2DMake(wine.location.latitudeValue, wine.location.longitudeValue);
+		}
 		MKPointAnnotation *point = [[MKPointAnnotation alloc] init];
 		[point setCoordinate:loc];
 		OCAnnotation *annotation = [[OCAnnotation alloc] initWithAnnotation:point];
@@ -47,6 +54,7 @@
 	}
 	[self doClustering];
 }
+
 
 #pragma mark - map delegate methods
 

@@ -89,6 +89,8 @@
 		836D07F416ADB5EE00FA090C /* OCDistance.m in Sources */ = {isa = PBXBuildFile; fileRef = 836D07EE16ADB5EE00FA090C /* OCDistance.m */; };
 		836D07F516ADB5EE00FA090C /* OCMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 836D07F116ADB5EE00FA090C /* OCMapView.m */; };
 		836D07F716ADC2F700FA090C /* wine_bottle_normal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 836D07F616ADC2F600FA090C /* wine_bottle_normal@2x.png */; };
+		836D080A16ADE23F00FA090C /* SVSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 836D080716ADE23F00FA090C /* SVSegmentedControl.m */; };
+		836D080B16ADE23F00FA090C /* SVSegmentedThumb.m in Sources */ = {isa = PBXBuildFile; fileRef = 836D080916ADE23F00FA090C /* SVSegmentedThumb.m */; };
 		838B2DF1167E52EC00944657 /* _TemperatureRange.m in Sources */ = {isa = PBXBuildFile; fileRef = 838B2DEE167E52EC00944657 /* _TemperatureRange.m */; };
 		838B2DF2167E52EC00944657 /* TemperatureRange.m in Sources */ = {isa = PBXBuildFile; fileRef = 838B2DF0167E52EC00944657 /* TemperatureRange.m */; };
 		838B2E42167E5EBB00944657 /* NMRangeSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 838B2E31167E5EBB00944657 /* NMRangeSlider.m */; };
@@ -344,6 +346,10 @@
 		836D07F016ADB5EE00FA090C /* OCMapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCMapView.h; sourceTree = "<group>"; };
 		836D07F116ADB5EE00FA090C /* OCMapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCMapView.m; sourceTree = "<group>"; };
 		836D07F616ADC2F600FA090C /* wine_bottle_normal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "wine_bottle_normal@2x.png"; path = "Resources/Images/wine_bottle_normal@2x.png"; sourceTree = SOURCE_ROOT; };
+		836D080616ADE23F00FA090C /* SVSegmentedControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVSegmentedControl.h; sourceTree = "<group>"; };
+		836D080716ADE23F00FA090C /* SVSegmentedControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVSegmentedControl.m; sourceTree = "<group>"; };
+		836D080816ADE23F00FA090C /* SVSegmentedThumb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVSegmentedThumb.h; sourceTree = "<group>"; };
+		836D080916ADE23F00FA090C /* SVSegmentedThumb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVSegmentedThumb.m; sourceTree = "<group>"; };
 		838B2DED167E52EC00944657 /* _TemperatureRange.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = _TemperatureRange.h; path = Model/_TemperatureRange.h; sourceTree = SOURCE_ROOT; };
 		838B2DEE167E52EC00944657 /* _TemperatureRange.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = _TemperatureRange.m; path = Model/_TemperatureRange.m; sourceTree = SOURCE_ROOT; };
 		838B2DEF167E52EC00944657 /* TemperatureRange.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TemperatureRange.h; path = Model/TemperatureRange.h; sourceTree = SOURCE_ROOT; };
@@ -675,6 +681,7 @@
 		832EDC4F165FD4FA00AE20A9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				836D080516ADE23F00FA090C /* SVSegmentedControl */,
 				836D07E816ADB5EE00FA090C /* OCMapView */,
 				83E391A916A99A35001A6135 /* XYPieChart */,
 				839B6FEE169B885A00BDAACF /* SliderPageControl */,
@@ -868,6 +875,18 @@
 			);
 			name = OCMapView;
 			path = Frameworks/OCMapView;
+			sourceTree = SOURCE_ROOT;
+		};
+		836D080516ADE23F00FA090C /* SVSegmentedControl */ = {
+			isa = PBXGroup;
+			children = (
+				836D080616ADE23F00FA090C /* SVSegmentedControl.h */,
+				836D080716ADE23F00FA090C /* SVSegmentedControl.m */,
+				836D080816ADE23F00FA090C /* SVSegmentedThumb.h */,
+				836D080916ADE23F00FA090C /* SVSegmentedThumb.m */,
+			);
+			name = SVSegmentedControl;
+			path = Frameworks/SVSegmentedControl;
 			sourceTree = SOURCE_ROOT;
 		};
 		838B2E1D167E5EBB00944657 /* NMRangeSlider */ = {
@@ -1366,6 +1385,8 @@
 				836D07F316ADB5EE00FA090C /* OCAnnotation.m in Sources */,
 				836D07F416ADB5EE00FA090C /* OCDistance.m in Sources */,
 				836D07F516ADB5EE00FA090C /* OCMapView.m in Sources */,
+				836D080A16ADE23F00FA090C /* SVSegmentedControl.m in Sources */,
+				836D080B16ADE23F00FA090C /* SVSegmentedThumb.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
