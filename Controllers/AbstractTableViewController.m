@@ -273,7 +273,7 @@
 	
 	[self presentSemiView:testView withOptions:@{
 	 KNSemiModalOptionKeys.pushParentBack    : @(YES),
-	 KNSemiModalOptionKeys.animationDuration : @(0.3),
+	 KNSemiModalOptionKeys.animationDuration : @(0.25),
 	 KNSemiModalOptionKeys.shadowOpacity     : @(0.3),
 	 KNSemiModalOptionKeys.parentAlpha		 : @(0.4)
 	 }];

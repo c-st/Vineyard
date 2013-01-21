@@ -53,7 +53,7 @@
 		8325354716A9B49F00D25D14 /* bar-chart@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8325354616A9B49F00D25D14 /* bar-chart@2x.png */; };
 		83282EDC1698F6AB00C5BE0E /* SwipeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 83282EDB1698F6AB00C5BE0E /* SwipeView.m */; };
 		83282EE01699031100C5BE0E /* CellarMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 83282EDF1699031100C5BE0E /* CellarMapView.m */; };
-		833146D51678D2E5000F9654 /* WineFilterFoldViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 833146D41678D2E5000F9654 /* WineFilterFoldViewController.m */; };
+		833146D51678D2E5000F9654 /* WineMapFoldViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 833146D41678D2E5000F9654 /* WineMapFoldViewController.m */; };
 		833146DD16791B0E000F9654 /* PopoverView.m in Sources */ = {isa = PBXBuildFile; fileRef = 833146DB16791B0E000F9654 /* PopoverView.m */; };
 		835016C116A4B63A00B841DF /* CollectionTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 835016C016A4B63A00B841DF /* CollectionTableViewController.m */; };
 		835C6D8B167C9F9C00AC2A04 /* background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 835C6D8A167C9F9C00AC2A04 /* background@2x.png */; };
@@ -289,8 +289,8 @@
 		83282EDB1698F6AB00C5BE0E /* SwipeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SwipeView.m; sourceTree = "<group>"; };
 		83282EDE1699031100C5BE0E /* CellarMapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CellarMapView.h; path = Views/CellarMapView.h; sourceTree = SOURCE_ROOT; };
 		83282EDF1699031100C5BE0E /* CellarMapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CellarMapView.m; path = Views/CellarMapView.m; sourceTree = SOURCE_ROOT; };
-		833146D31678D2E5000F9654 /* WineFilterFoldViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WineFilterFoldViewController.h; path = Controllers/WineFilterFoldViewController.h; sourceTree = SOURCE_ROOT; };
-		833146D41678D2E5000F9654 /* WineFilterFoldViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WineFilterFoldViewController.m; path = Controllers/WineFilterFoldViewController.m; sourceTree = SOURCE_ROOT; };
+		833146D31678D2E5000F9654 /* WineMapFoldViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WineMapFoldViewController.h; path = Controllers/WineMapFoldViewController.h; sourceTree = SOURCE_ROOT; };
+		833146D41678D2E5000F9654 /* WineMapFoldViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WineMapFoldViewController.m; path = Controllers/WineMapFoldViewController.m; sourceTree = SOURCE_ROOT; };
 		833146DA16791B0E000F9654 /* PopoverView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopoverView.h; sourceTree = "<group>"; };
 		833146DB16791B0E000F9654 /* PopoverView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopoverView.m; sourceTree = "<group>"; };
 		833591E4164B145E00FEA5C9 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
@@ -697,8 +697,8 @@
 			isa = PBXGroup;
 			children = (
 				833146DF167926AB000F9654 /* Pickers */,
-				833146D31678D2E5000F9654 /* WineFilterFoldViewController.h */,
-				833146D41678D2E5000F9654 /* WineFilterFoldViewController.m */,
+				833146D31678D2E5000F9654 /* WineMapFoldViewController.h */,
+				833146D41678D2E5000F9654 /* WineMapFoldViewController.m */,
 			);
 			name = PaperFold;
 			sourceTree = "<group>";
@@ -1300,7 +1300,7 @@
 				8319B0061677C295005E28BB /* ShadowView.m in Sources */,
 				8319B0071677C295005E28BB /* TouchThroughUIView.m in Sources */,
 				8319B0081677C295005E28BB /* UIView+Screenshot.m in Sources */,
-				833146D51678D2E5000F9654 /* WineFilterFoldViewController.m in Sources */,
+				833146D51678D2E5000F9654 /* WineMapFoldViewController.m in Sources */,
 				833146DD16791B0E000F9654 /* PopoverView.m in Sources */,
 				838B2DF1167E52EC00944657 /* _TemperatureRange.m in Sources */,
 				838B2DF2167E52EC00944657 /* TemperatureRange.m in Sources */,

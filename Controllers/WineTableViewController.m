@@ -42,7 +42,8 @@
 
 - (void) viewDidAppear:(BOOL)animated {
 	// enable left fold
-	[[[self paperFoldNC] paperFoldView] setEnableLeftFoldDragging:YES];
+	[[[self paperFoldNC] paperFoldView] setEnableLeftFoldDragging:NO];
+	[[[self paperFoldNC] paperFoldView] setEnableRightFoldDragging:YES];
 	[[[self paperFoldNC] paperFoldView] setGestureRecognizerEnabled:YES];
 }
 
@@ -67,6 +68,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath  {
 	// unfold and disable
 	[[[self paperFoldNC] paperFoldView] setEnableLeftFoldDragging:NO];
+	[[[self paperFoldNC] paperFoldView] setEnableRightFoldDragging:NO];
 	[[[self paperFoldNC] paperFoldView] setGestureRecognizerEnabled:NO];
 	[[[self paperFoldNC] paperFoldView] setPaperFoldState:PaperFoldStateDefault];
 	

@@ -13,7 +13,7 @@
 #import "PaperFoldView.h"
 #import "PaperFoldNavigationController.h"
 
-#import "WineFilterFoldViewController.h"
+#import "WineMapFoldViewController.h"
 
 
 @implementation RaisedTabBarController
@@ -82,11 +82,11 @@
 	[dummyVC.view setBackgroundColor:[UIColor greenColor]];
 	
 	// 1.1.2 Right view
-	WineFilterFoldViewController *wineRightVC = [[WineFilterFoldViewController alloc] init];
+	WineMapFoldViewController *wineRightVC = [[WineMapFoldViewController alloc] init];
 	[wineRightVC.view setFrame:CGRectMake(0, 0, 120, [self.view bounds].size.height)];
 	
-	[winePaperFoldNC setRightViewController:dummyVC width:150 rightViewFoldCount:1 rightViewPullFactor:1.0];
-	[winePaperFoldNC setLeftViewController:wineRightVC width:120.0];
+	[winePaperFoldNC setRightViewController:wineRightVC width:270 rightViewFoldCount:3 rightViewPullFactor:1.0];
+	[winePaperFoldNC setLeftViewController:dummyVC width:100];
 	
 	// Countries
 	NSFetchedResultsController *countriesFRC = [Country fetchAllSortedBy:@"name" ascending:YES withPredicate:nil groupBy:nil delegate:nil];
