@@ -6,7 +6,7 @@
 #import <QuartzCore/QuartzCore.h>
 
 #import "CountryTableViewController.h"
-#import "SVSegmentedControl.h"
+
 
 
 @interface WineMapFoldViewController ()
@@ -15,7 +15,7 @@
 
 @implementation WineMapFoldViewController
 
-@synthesize mapView;
+@synthesize mapView, segmentedControl;
 
 - (void) viewDidLoad {
     [super viewDidLoad];
@@ -32,22 +32,22 @@
 	shadow.colors = @[(id)[[UIColor colorWithWhite:0.0 alpha:0.6] CGColor], (id)[[UIColor clearColor] CGColor]];
 	[self.view.layer addSublayer:shadow];
 	
-	SVSegmentedControl *navSC = [[SVSegmentedControl alloc] initWithSectionTitles:[NSArray arrayWithObjects:@"Region", @"Tagged", nil]];
-	[navSC setAlpha:0.9];
-    navSC.changeHandler = ^(NSUInteger newIndex) {
+	self.segmentedControl = [[SVSegmentedControl alloc] initWithSectionTitles:[NSArray arrayWithObjects:@"Region", @"Tagged", nil]];
+	[self.segmentedControl setAlpha:0.7];
+    self.segmentedControl.changeHandler = ^(NSUInteger newIndex) {
         [self.mapView setWinesToBeDisplayed:[Wine findAll] showRegion:newIndex==0];
+		[mapView removeOverlays:mapView.overlays];
+		[mapView doClustering];
     };
-	[navSC setFont:[UIFont systemFontOfSize:11]];
-    [navSC setFrame:CGRectMake(0, 0, 100, 30)];
-	navSC.titleEdgeInsets = UIEdgeInsetsMake(0, 14, 0, 14);
+	[self.segmentedControl setFont:[UIFont systemFontOfSize:11]];
+    [self.segmentedControl setFrame:CGRectMake(0, 0, 100, 30)];
+	self.segmentedControl.titleEdgeInsets = UIEdgeInsetsMake(0, 14, 0, 14);
 	
-	navSC.center = CGPointMake(220, 475);
-	navSC.thumb.tintColor = [UIColor cellarWineRedColour];
-	navSC.thumb.textColor = [UIColor whiteColor];
+	self.segmentedControl.center = CGPointMake(220, 460);
+	self.segmentedControl.thumb.tintColor = [UIColor cellarWineRedColour];
+	self.segmentedControl.thumb.textColor = [UIColor whiteColor];
 	
-	[self.view addSubview:navSC];
-	
-	
+	[self.view addSubview:self.segmentedControl];
 }
 
 - (void) layoutSubviews {
@@ -55,7 +55,7 @@
 }
 
 - (void) viewWillAppear:(BOOL)animated {
-	[mapView setWinesToBeDisplayed:[Wine findAll] showRegion:YES];
+	[mapView setWinesToBeDisplayed:[Wine findAll] showRegion:self.segmentedControl.selectedIndex==0];
 	[mapView removeOverlays:mapView.overlays];
     [mapView doClustering];
 	
