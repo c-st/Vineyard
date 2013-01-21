@@ -79,13 +79,13 @@
 	// 1.1.1 Left view (dummy)
 	UIViewController *dummyVC = [[UIViewController alloc] init];
 	[dummyVC.view setFrame:CGRectMake(0, 0, 150, [self.view bounds].size.height)];
-	[dummyVC.view setBackgroundColor:[UIColor greenColor]];
+	[dummyVC.view setBackgroundColor:[UIColor blackColor]];
 	
 	// 1.1.2 Right view
 	WineMapFoldViewController *wineRightVC = [[WineMapFoldViewController alloc] init];
 	[wineRightVC.view setFrame:CGRectMake(0, 0, 120, [self.view bounds].size.height)];
 	
-	[winePaperFoldNC setRightViewController:wineRightVC width:270 rightViewFoldCount:3 rightViewPullFactor:1.0];
+	[winePaperFoldNC setRightViewController:wineRightVC width:280 rightViewFoldCount:2 rightViewPullFactor:1.0];
 	[winePaperFoldNC setLeftViewController:dummyVC width:100];
 	
 	// Countries

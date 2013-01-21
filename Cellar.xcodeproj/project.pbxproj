@@ -94,6 +94,10 @@
 		839B6FFB169B88A100BDAACF /* sliderPageControlBg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 839B6FF7169B88A100BDAACF /* sliderPageControlBg@2x.png */; };
 		839B6FFF169B909A00BDAACF /* CharacteristicsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 839B6FFE169B909A00BDAACF /* CharacteristicsViewController.m */; };
 		839D258A16AD9C4800A482E3 /* ModalTextFieldView.m in Sources */ = {isa = PBXBuildFile; fileRef = 839D258916AD9C4800A482E3 /* ModalTextFieldView.m */; };
+		839D259616ADB17800A482E3 /* OCAlgorithms.m in Sources */ = {isa = PBXBuildFile; fileRef = 839D258E16ADB17800A482E3 /* OCAlgorithms.m */; };
+		839D259716ADB17800A482E3 /* OCAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 839D259016ADB17800A482E3 /* OCAnnotation.m */; };
+		839D259816ADB17800A482E3 /* OCDistance.m in Sources */ = {isa = PBXBuildFile; fileRef = 839D259216ADB17800A482E3 /* OCDistance.m */; };
+		839D259916ADB17800A482E3 /* OCMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 839D259516ADB17800A482E3 /* OCMapView.m */; };
 		83AB990916A322C30095A63B /* _Characteristics.m in Sources */ = {isa = PBXBuildFile; fileRef = 83AB990216A322C30095A63B /* _Characteristics.m */; };
 		83AB990A16A322C30095A63B /* Characteristics.m in Sources */ = {isa = PBXBuildFile; fileRef = 83AB990416A322C30095A63B /* Characteristics.m */; };
 		83AB990B16A322C30095A63B /* _Collection.m in Sources */ = {isa = PBXBuildFile; fileRef = 83AB990616A322C30095A63B /* _Collection.m */; };
@@ -345,6 +349,15 @@
 		839B6FFE169B909A00BDAACF /* CharacteristicsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CharacteristicsViewController.m; path = Controllers/CharacteristicsViewController.m; sourceTree = SOURCE_ROOT; };
 		839D258816AD9C4800A482E3 /* ModalTextFieldView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ModalTextFieldView.h; path = Views/ModalTextFieldView.h; sourceTree = SOURCE_ROOT; };
 		839D258916AD9C4800A482E3 /* ModalTextFieldView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ModalTextFieldView.m; path = Views/ModalTextFieldView.m; sourceTree = SOURCE_ROOT; };
+		839D258D16ADB17800A482E3 /* OCAlgorithms.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCAlgorithms.h; sourceTree = "<group>"; };
+		839D258E16ADB17800A482E3 /* OCAlgorithms.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCAlgorithms.m; sourceTree = "<group>"; };
+		839D258F16ADB17800A482E3 /* OCAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCAnnotation.h; sourceTree = "<group>"; };
+		839D259016ADB17800A482E3 /* OCAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCAnnotation.m; sourceTree = "<group>"; };
+		839D259116ADB17800A482E3 /* OCDistance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCDistance.h; sourceTree = "<group>"; };
+		839D259216ADB17800A482E3 /* OCDistance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCDistance.m; sourceTree = "<group>"; };
+		839D259316ADB17800A482E3 /* OCGrouping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCGrouping.h; sourceTree = "<group>"; };
+		839D259416ADB17800A482E3 /* OCMapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCMapView.h; sourceTree = "<group>"; };
+		839D259516ADB17800A482E3 /* OCMapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCMapView.m; sourceTree = "<group>"; };
 		83AB990116A322C30095A63B /* _Characteristics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = _Characteristics.h; path = Model/_Characteristics.h; sourceTree = SOURCE_ROOT; };
 		83AB990216A322C30095A63B /* _Characteristics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = _Characteristics.m; path = Model/_Characteristics.m; sourceTree = SOURCE_ROOT; };
 		83AB990316A322C30095A63B /* Characteristics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Characteristics.h; path = Model/Characteristics.h; sourceTree = SOURCE_ROOT; };
@@ -660,6 +673,7 @@
 		832EDC4F165FD4FA00AE20A9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				839D258C16ADB17800A482E3 /* OCMapView */,
 				83E391A916A99A35001A6135 /* XYPieChart */,
 				839B6FEE169B885A00BDAACF /* SliderPageControl */,
 				83282ED91698F6AB00C5BE0E /* SwipeView */,
@@ -879,6 +893,23 @@
 			);
 			name = Others;
 			sourceTree = "<group>";
+		};
+		839D258C16ADB17800A482E3 /* OCMapView */ = {
+			isa = PBXGroup;
+			children = (
+				839D258D16ADB17800A482E3 /* OCAlgorithms.h */,
+				839D258E16ADB17800A482E3 /* OCAlgorithms.m */,
+				839D258F16ADB17800A482E3 /* OCAnnotation.h */,
+				839D259016ADB17800A482E3 /* OCAnnotation.m */,
+				839D259116ADB17800A482E3 /* OCDistance.h */,
+				839D259216ADB17800A482E3 /* OCDistance.m */,
+				839D259316ADB17800A482E3 /* OCGrouping.h */,
+				839D259416ADB17800A482E3 /* OCMapView.h */,
+				839D259516ADB17800A482E3 /* OCMapView.m */,
+			);
+			name = OCMapView;
+			path = Frameworks/OCMapView;
+			sourceTree = SOURCE_ROOT;
 		};
 		83AB87ED1651916D008F7094 /* TableViewController */ = {
 			isa = PBXGroup;
@@ -1327,6 +1358,10 @@
 				83E391A816A998AB001A6135 /* UIViewController+KNSemiModal.m in Sources */,
 				83E391AC16A99A35001A6135 /* XYPieChart.m in Sources */,
 				839D258A16AD9C4800A482E3 /* ModalTextFieldView.m in Sources */,
+				839D259616ADB17800A482E3 /* OCAlgorithms.m in Sources */,
+				839D259716ADB17800A482E3 /* OCAnnotation.m in Sources */,
+				839D259816ADB17800A482E3 /* OCDistance.m in Sources */,
+				839D259916ADB17800A482E3 /* OCMapView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
