@@ -1,6 +1,7 @@
 #import <MapKit/MapKit.h>
+#import "OCMapView.h"
 
-@interface CellarMapView : MKMapView {
+@interface CellarMapView : OCMapView {
 	CLLocationCoordinate2D location;
 	int zoomLevel;
 	double deltaLatitude;
