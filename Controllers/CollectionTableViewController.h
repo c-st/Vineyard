@@ -1,5 +1,7 @@
 #import <UIKit/UIKit.h>
 #import "AbstractTableViewController.h"
-@interface CollectionTableViewController : AbstractTableViewController
+#import "ModalTextFieldView.h"
+
+@interface CollectionTableViewController : AbstractTableViewController <ModalTextFieldViewDelegate>
 
 @end

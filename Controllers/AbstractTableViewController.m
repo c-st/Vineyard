@@ -242,15 +242,14 @@
 #pragma mark - Pie Chart Button
 
 - (void) showStatsButtonClicked {
-	UIView *testView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 320)];
-	[testView setBackgroundColor:[UIColor cellarBeigeNoisyColour]];
+	UIView *modalPieChartView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 320)];
+	[modalPieChartView setBackgroundColor:[UIColor cellarBeigeNoisyColour]];
 	
 	SSLineView *line = [[SSLineView alloc] initWithFrame:CGRectMake(0, 45, self.view.frame.size.width, 20)];
 	[line setLineColor:[[UIColor lightGrayColor] colorWithAlphaComponent:0.8]];
 	[line setInsetColor:[UIColor whiteColor]];
-	[testView addSubview:line];
+	[modalPieChartView addSubview:line];
 	
-
 	UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
 	[button setFrame:CGRectMake(self.view.frame.size.width - 70, 10, 60, 30)];
 	[button setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
@@ -259,7 +258,7 @@
     button.layer.borderColor = [UIColor blackColor].CGColor;
 	[button setTitle:@"Done" forState:UIControlStateNormal];
 	[button addTarget:self action:@selector(dismissPieChartView) forControlEvents:UIControlEventTouchUpInside];
-	[testView addSubview:button];
+	[modalPieChartView addSubview:button];
 	
 	XYPieChart *chart = [[XYPieChart alloc] initWithFrame:CGRectMake(10, 60, self.view.frame.size.width - 20, 250)];
 	[chart setDelegate:self];
@@ -269,9 +268,9 @@
 	[chart setShowLabel:YES];
 	[chart setShowPercentage:NO];
 	[chart reloadData];
-	[testView addSubview:chart];
+	[modalPieChartView addSubview:chart];
 	
-	[self presentSemiView:testView withOptions:@{
+	[self presentSemiView:modalPieChartView withOptions:@{
 	 KNSemiModalOptionKeys.pushParentBack    : @(YES),
 	 KNSemiModalOptionKeys.animationDuration : @(0.25),
 	 KNSemiModalOptionKeys.shadowOpacity     : @(0.3),

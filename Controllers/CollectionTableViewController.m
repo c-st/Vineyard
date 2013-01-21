@@ -1,6 +1,7 @@
 #import "UIColor+CellarColours.h"
 #import "CollectionTableViewController.h"
 #import "RegionTableViewController.h"
+#import "ModalTextFieldView.h"
 
 #import "Collection.h"
 
@@ -63,18 +64,40 @@
 	//[[self navigationController] pushViewController:regionTableViewController animated:YES];
 }
 
+#pragma mark
+#pragma mark Modal text field view 
 
 - (void) addCollectionButtonClicked {
+	ModalTextFieldView *modalTextFieldView = [[ModalTextFieldView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 400)];
+	[modalTextFieldView setDelegate:self];
 	
-	/*
-	Collection *collection = [Collection createEntity];
-	[collection setName:@"Test"];
-	[[NSManagedObjectContext defaultContext] saveToPersistentStoreAndWait];
-	
-	[self updateAndRefetch];
-	NSLog(@"add");
-	 */
+	[self presentSemiView:modalTextFieldView withOptions:@{
+		KNSemiModalOptionKeys.pushParentBack    : @(YES),
+		KNSemiModalOptionKeys.animationDuration : @(0.25),
+		KNSemiModalOptionKeys.shadowOpacity     : @(0.3),
+		KNSemiModalOptionKeys.parentAlpha		 : @(0.4)
+	 }];
 }
+
+- (void) cancelButtonPressed:(UITextField*) textField {
+	[textField resignFirstResponder];
+	[self dismissSemiModalView];
+}
+
+- (void) saveButtonPressed:(UITextField*) textField {
+	if ([textField.text length] > 0) {
+		// save
+		Collection *collection = [Collection createEntity];
+		[collection setName:[textField text]];
+		[[NSManagedObjectContext defaultContext] saveToPersistentStoreAndWait];
+		
+		[self updateAndRefetch];
+		
+		[textField resignFirstResponder];
+		[self dismissSemiModalView];
+	}
+}
+
 
 
 @end
