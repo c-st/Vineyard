@@ -34,10 +34,11 @@
 	
 	self.segmentedControl = [[SVSegmentedControl alloc] initWithSectionTitles:[NSArray arrayWithObjects:@"Region", @"Tagged", nil]];
 	[self.segmentedControl setAlpha:0.7];
+	__weak CellarMapView *dupMapView = mapView;
     self.segmentedControl.changeHandler = ^(NSUInteger newIndex) {
-        [self.mapView setWinesToBeDisplayed:[Wine findAll] showRegion:newIndex==0];
-		[mapView removeOverlays:mapView.overlays];
-		[mapView doClustering];
+        [dupMapView setWinesToBeDisplayed:[Wine findAll] showRegion:newIndex==0];
+		[dupMapView removeOverlays:dupMapView.overlays];
+		[dupMapView doClustering];
     };
 	[self.segmentedControl setFont:[UIFont systemFontOfSize:11]];
     [self.segmentedControl setFrame:CGRectMake(0, 0, 100, 30)];
