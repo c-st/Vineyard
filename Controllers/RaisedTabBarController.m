@@ -1,6 +1,7 @@
 #import "UIColor+CellarColours.h"
 
 #import "RaisedTabBarController.h"
+#import "BrowseTableViewController.h"
 #import "CountryTableViewController.h"
 #import "AddWineViewController.h"
 #import "WineTableViewController.h"
@@ -62,13 +63,11 @@
 - (void) viewDidLoad {
 	[super viewDidLoad];
 	
-	// Construct the view controllers
 	// Wines
 	WineTableViewController *wineTVC = [[WineTableViewController alloc] init];
 	[wineTVC setTitle:@"Wines"];
 	wineTVC.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Wines" image:[UIImage imageNamed:@"food_wine_bottle_glass.png"] tag:0];
-	
-	// 1.1.0 Content
+
 	UINavigationController *wineNavController = [[UINavigationController alloc] initWithRootViewController:wineTVC];
 	PaperFoldNavigationController *winePaperFoldNC = [[PaperFoldNavigationController alloc] initWithRootViewController:wineNavController];
 	[winePaperFoldNC.paperFoldView setBackgroundColor:[UIColor blackColor]];
@@ -76,17 +75,27 @@
 	[[winePaperFoldNC paperFoldView] setEnableRightFoldDragging:NO];
 	[wineTVC setPaperFoldNC:winePaperFoldNC];
 	
-	// 1.1.1 Left view (dummy)
 	UIViewController *dummyVC = [[UIViewController alloc] init];
 	[dummyVC.view setFrame:CGRectMake(0, 0, 150, [self.view bounds].size.height)];
 	[dummyVC.view setBackgroundColor:[UIColor blackColor]];
 	
-	// 1.1.2 Right view
 	WineMapFoldViewController *wineRightVC = [[WineMapFoldViewController alloc] init];
 	[wineRightVC.view setFrame:CGRectMake(0, 0, 120, [self.view bounds].size.height)];
 	
 	[winePaperFoldNC setRightViewController:wineRightVC width:280 rightViewFoldCount:2 rightViewPullFactor:1.0];
 	[winePaperFoldNC setLeftViewController:dummyVC width:100];
+	
+	// Browse
+	// BrowseTableViewController
+	BrowseTableViewController *browseTVC = [[BrowseTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
+	[browseTVC setTitle:@"Browse"];
+	[browseTVC setShowCount:NO];
+	[browseTVC setShowPieChart:NO];
+	
+	browseTVC.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Browse" image:[UIImage imageNamed:@"food_grapes.png"] tag:0];
+	UINavigationController *browseNavController = [[UINavigationController alloc] initWithRootViewController:browseTVC];
+	// Paper fold
+	
 	
 	// Countries
 	NSFetchedResultsController *countriesFRC = [Country fetchAllSortedBy:@"name" ascending:YES withPredicate:nil groupBy:nil delegate:nil];
@@ -120,15 +129,17 @@
 	
 	// 2.
 	[wineNavController.navigationBar setTintColor:[UIColor cellarWineRedColour]];
+	[browseNavController.navigationBar setTintColor:[UIColor cellarWineRedColour]];
 	[countryNavController.navigationBar setTintColor:[UIColor cellarWineRedColour]];
 	[varietalNavController.navigationBar setTintColor:[UIColor cellarWineRedColour]];
 	[collectionsNavController.navigationBar setTintColor:[UIColor cellarWineRedColour]];
 	
 	
 	[self setViewControllers:@[winePaperFoldNC,
-                            countryNavController,
+							browseNavController,
+                            // varietalNavController,
                             [self viewControllerWithTabTitle:@"" image:nil],
-                            varietalNavController,
+							countryNavController, // food
                             collectionsNavController]];
 	
 	[self addCenterButtonWithImage:[UIImage imageNamed:@"add-wine-button.png"] highlightImage:nil];

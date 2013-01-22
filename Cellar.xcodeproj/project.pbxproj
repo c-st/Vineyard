@@ -168,6 +168,7 @@
 		83E79DEA1677AA6900E0E42D /* RaisedTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83E79DE81677AA6900E0E42D /* RaisedTabBarController.m */; };
 		83E79DED1677AA8100E0E42D /* InitialDataImportService.m in Sources */ = {isa = PBXBuildFile; fileRef = 83E79DEB1677AA8100E0E42D /* InitialDataImportService.m */; };
 		83E79DF01677AA9C00E0E42D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 83E79DEE1677AA9C00E0E42D /* AppDelegate.m */; };
+		83EADB7A16AF510300B4707D /* BrowseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83EADB7916AF510300B4707D /* BrowseTableViewController.m */; };
 		83EF99E5165AA92700C56F40 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83EF99E4165AA92700C56F40 /* QuartzCore.framework */; };
 /* End PBXBuildFile section */
 
@@ -483,6 +484,8 @@
 		83E79DEC1677AA8100E0E42D /* InitialDataImportService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InitialDataImportService.h; path = Services/InitialDataImportService.h; sourceTree = SOURCE_ROOT; };
 		83E79DEE1677AA9C00E0E42D /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = SOURCE_ROOT; };
 		83E79DEF1677AA9C00E0E42D /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = SOURCE_ROOT; };
+		83EADB7816AF510300B4707D /* BrowseTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BrowseTableViewController.h; path = Controllers/BrowseTableViewController.h; sourceTree = SOURCE_ROOT; };
+		83EADB7916AF510300B4707D /* BrowseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BrowseTableViewController.m; path = Controllers/BrowseTableViewController.m; sourceTree = SOURCE_ROOT; };
 		83EF99D5165A615900C56F40 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		83EF99D6165A615900C56F40 /* iTunesArtwork.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iTunesArtwork.png; sourceTree = "<group>"; };
 		83EF99D7165A615900C56F40 /* iTunesArtwork@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iTunesArtwork@2x.png"; sourceTree = "<group>"; };
@@ -938,6 +941,8 @@
 			children = (
 				83E79DDC1677AA5100E0E42D /* AbstractTableViewController.h */,
 				83E79DD51677AA5100E0E42D /* AbstractTableViewController.m */,
+				83EADB7816AF510300B4707D /* BrowseTableViewController.h */,
+				83EADB7916AF510300B4707D /* BrowseTableViewController.m */,
 				83E79DDF1677AA5100E0E42D /* AppellationTableViewController.h */,
 				83E79DD91677AA5100E0E42D /* AppellationTableViewController.m */,
 				835016BE16A4B61600B841DF /* CollectionTableViewController.h */,
@@ -1387,6 +1392,7 @@
 				836D07F516ADB5EE00FA090C /* OCMapView.m in Sources */,
 				836D080A16ADE23F00FA090C /* SVSegmentedControl.m in Sources */,
 				836D080B16ADE23F00FA090C /* SVSegmentedThumb.m in Sources */,
+				83EADB7A16AF510300B4707D /* BrowseTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

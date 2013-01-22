@@ -41,6 +41,7 @@
 }
 
 - (void) viewDidAppear:(BOOL)animated {
+	NSLog(@"Wine tvc shown");
 	// enable left fold
 	[[[self paperFoldNC] paperFoldView] setEnableLeftFoldDragging:NO];
 	[[[self paperFoldNC] paperFoldView] setEnableRightFoldDragging:YES];
@@ -84,9 +85,6 @@
 	[[[self paperFoldNC] paperFoldView] setEnableLeftFoldDragging:NO];
 	[[[self paperFoldNC] paperFoldView] setEnableRightFoldDragging:NO];
 	[[[self paperFoldNC] paperFoldView] setGestureRecognizerEnabled:NO];
-	
-	
-	
 }
 
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {

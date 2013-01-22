@@ -2,6 +2,7 @@
 #import "Wine.h"
 #import "Country.h"
 
+#import "UIColor+CellarColours.h"
 #import "CellarTableViewCell.h"
 
 #import "UIImage+Tint.h"
