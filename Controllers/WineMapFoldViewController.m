@@ -44,7 +44,7 @@
     [self.segmentedControl setFrame:CGRectMake(0, 0, 100, 30)];
 	self.segmentedControl.titleEdgeInsets = UIEdgeInsetsMake(0, 14, 0, 14);
 	
-	self.segmentedControl.center = CGPointMake(220, 460);
+	self.segmentedControl.center = CGPointMake(220, 470);
 	self.segmentedControl.thumb.tintColor = [UIColor cellarWineRedColour];
 	self.segmentedControl.thumb.textColor = [UIColor whiteColor];
 	
