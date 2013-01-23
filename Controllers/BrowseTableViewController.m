@@ -17,44 +17,53 @@
 - (id) initWithStyle:(UITableViewStyle)style {
 	if ((self = [super initWithStyle:style])) {
 		
-		// Countries
-		NSFetchedResultsController *countriesFRC = [Country fetchAllSortedBy:@"name" ascending:YES withPredicate:nil groupBy:nil delegate:nil];
-		CountryTableViewController *countryTVC = [[CountryTableViewController alloc] initWithFetchedResultsController:countriesFRC];
-		[countryTVC setTitle:@"Countries"];
-		[countryTVC setShowCount:YES];
-		[countryTVC setShowPieChart:YES];
-		countryTVC.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Countries" image:[UIImage imageNamed:@"globe-icon.png"] tag:0];
-		
-		// Varietals
-		VarietalTableViewController *varietalTVC = [[VarietalTableViewController alloc] init];
-		[varietalTVC setTitle:@"Varietals"];
-		[varietalTVC setShowCount:YES];
-		[varietalTVC setPickMode:NO];
-		[varietalTVC setShowPieChart:YES];
-		varietalTVC.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Varietals" image:[UIImage imageNamed:@"food_grapes.png"] tag:0];
-		
-		self.tableGroups = @[
-				@[
-					@{@"name" : @"Country", @"controller" : countryTVC, @"image" : @"globe-icon.png"},
-					@{@"name" : @"Date added", @"controller" : countryTVC, @"image" : @"globe-icon.png"},
-				],
-				@[
-					@{@"name" : @"Vintage", @"controller" : countryTVC},
-					@{@"name" : @"Varietal", @"controller" : varietalTVC, @"image" : @"food_grapes.png"},
-					@{@"name" : @"Matching food", @"controller" : countryTVC}
-				],
-				@[
-					@{@"name" : @"Rating", @"controller" : countryTVC},
-					@{@"name" : @"Price", @"controller" : countryTVC}
-				],
-				@[
-					@{@"name" : @"Characteristics", @"controller" : countryTVC},
-					@{@"name" : @"Tags", @"controller" : countryTVC}
-				]
-			];
-		
 	}
     return self;
+}
+	
+- (void) loadView {
+	if (self.paperFoldNC == nil) {
+		NSLog(@"paperFoldNC is nil! this should not be.");
+	}
+	[super loadView];
+	
+	// Countries
+	NSFetchedResultsController *countriesFRC = [Country fetchAllSortedBy:@"name" ascending:YES withPredicate:nil groupBy:nil delegate:nil];
+	CountryTableViewController *countryTVC = [[CountryTableViewController alloc] initWithFetchedResultsController:countriesFRC];
+	[countryTVC setTitle:@"Countries"];
+	[countryTVC setShowCount:YES];
+	[countryTVC setShowPieChart:YES];
+	[countryTVC setPaperFoldNC:self.paperFoldNC];
+	countryTVC.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Countries" image:[UIImage imageNamed:@"globe-icon.png"] tag:0];
+	
+	// Varietals
+	VarietalTableViewController *varietalTVC = [[VarietalTableViewController alloc] init];
+	[varietalTVC setTitle:@"Varietals"];
+	[varietalTVC setShowCount:YES];
+	[varietalTVC setPickMode:NO];
+	[varietalTVC setShowPieChart:YES];
+	[varietalTVC setPaperFoldNC:self.paperFoldNC];
+	varietalTVC.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Varietals" image:[UIImage imageNamed:@"food_grapes.png"] tag:0];
+	
+	self.tableGroups = @[
+					  @[
+							@{@"name" : @"Country", @"controller" : countryTVC, @"image" : @"globe-icon.png"},
+							@{@"name" : @"Date added", @"controller" : countryTVC},
+						],
+						@[
+							@{@"name" : @"Vintage", @"controller" : countryTVC},
+							@{@"name" : @"Varietal", @"controller" : varietalTVC, @"image" : @"food_grapes.png"},
+							@{@"name" : @"Matching food", @"controller" : countryTVC}
+						],
+						@[
+							@{@"name" : @"Rating", @"controller" : countryTVC},
+							@{@"name" : @"Price", @"controller" : countryTVC}
+						],
+						@[
+							@{@"name" : @"Characteristics", @"controller" : countryTVC},
+							@{@"name" : @"Tags", @"controller" : countryTVC}
+						]
+					];
 }
 
 - (void) viewWillAppear:(BOOL) animated {

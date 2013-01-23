@@ -30,6 +30,9 @@
 	if (self.fetchedResultsController == nil) {
 		[self setFetchedResultsController:[Wine fetchAllSortedBy:@"name" ascending:YES withPredicate:[self getFetchPredicate:nil] groupBy:nil delegate:nil]];
 	}
+	if (self.paperFoldNC == nil) {
+		NSLog(@"paperFoldNC is nil! this should not be.");
+	}
 	
 	NSError *error;
 	[[NSManagedObjectContext defaultContext] reset];
@@ -41,7 +44,7 @@
 }
 
 - (void) viewDidAppear:(BOOL)animated {
-	NSLog(@"Wine tvc shown");
+	NSLog(@"view did appear");
 	// enable left fold
 	[[[self paperFoldNC] paperFoldView] setEnableLeftFoldDragging:NO];
 	[[[self paperFoldNC] paperFoldView] setEnableRightFoldDragging:YES];

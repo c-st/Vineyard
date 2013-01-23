@@ -201,6 +201,7 @@
 	WineTableViewController *wineTableViewController = [[WineTableViewController alloc] initWithFetchedResultsController:wineSearchController];
 	[wineTableViewController setTitle:[object valueForKey:@"name"]];
 	[wineTableViewController setShowCount:NO];
+	[wineTableViewController setPaperFoldNC:self.paperFoldNC];
 	[[self navigationController] pushViewController:wineTableViewController animated:YES];
 }
 

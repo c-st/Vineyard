@@ -73,6 +73,7 @@
 	[winePaperFoldNC.paperFoldView setBackgroundColor:[UIColor blackColor]];
 	winePaperFoldNC.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Wines" image:[UIImage imageNamed:@"food_wine_bottle_glass.png"] tag:0];
 	[[winePaperFoldNC paperFoldView] setEnableRightFoldDragging:NO];
+	[[winePaperFoldNC paperFoldView] setEnableLeftFoldDragging:NO];
 	[wineTVC setPaperFoldNC:winePaperFoldNC];
 	
 	UIViewController *dummyVC = [[UIViewController alloc] init];
@@ -85,6 +86,7 @@
 	[winePaperFoldNC setRightViewController:wineRightVC width:280 rightViewFoldCount:2 rightViewPullFactor:1.0];
 	[winePaperFoldNC setLeftViewController:dummyVC width:100];
 	
+	
 	// Browse
 	// BrowseTableViewController
 	BrowseTableViewController *browseTVC = [[BrowseTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
@@ -94,13 +96,28 @@
 	
 	browseTVC.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Browse" image:[UIImage imageNamed:@"browse.png"] tag:0];
 	UINavigationController *browseNavController = [[UINavigationController alloc] initWithRootViewController:browseTVC];
-	// Paper fold
+	
+	PaperFoldNavigationController *browsePaperFoldNC = [[PaperFoldNavigationController alloc] initWithRootViewController:browseNavController];
+	[browsePaperFoldNC.paperFoldView setBackgroundColor:[UIColor blackColor]];
+	browsePaperFoldNC.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Browse" image:[UIImage imageNamed:@"browse.png"] tag:0];
+	[[browsePaperFoldNC paperFoldView] setEnableRightFoldDragging:NO];
+	[[browsePaperFoldNC paperFoldView] setEnableLeftFoldDragging:NO];
+	[browseTVC setPaperFoldNC:browsePaperFoldNC];
+	
+	UIViewController *dummy2VC = [[UIViewController alloc] init];
+	[dummy2VC.view setFrame:CGRectMake(0, 0, 150, [self.view bounds].size.height)];
+	[dummy2VC.view setBackgroundColor:[UIColor blackColor]];
+	
+	WineMapFoldViewController *browseRightVC = [[WineMapFoldViewController alloc] init];
+	[browseRightVC.view setFrame:CGRectMake(0, 0, 120, [self.view bounds].size.height)];
+	
+	[browsePaperFoldNC setRightViewController:browseRightVC width:280 rightViewFoldCount:2 rightViewPullFactor:1.0];
+	[browsePaperFoldNC setLeftViewController:dummy2VC width:100];
 	
 	
 	// Countries
 	NSFetchedResultsController *countriesFRC = [Country fetchAllSortedBy:@"name" ascending:YES withPredicate:nil groupBy:nil delegate:nil];
 	CountryTableViewController *countryTVC = [[CountryTableViewController alloc] initWithFetchedResultsController:countriesFRC];
-	
 	[countryTVC setTitle:@"Food"];
 	[countryTVC setShowCount:YES];
 	[countryTVC setShowPieChart:YES];
@@ -108,12 +125,9 @@
     UINavigationController *countryNavController = [[UINavigationController alloc] initWithRootViewController:countryTVC];
 	
 	
-	
-	
 	// Collections
 	// NSFetchedResultsController *collectionsFRC = [Collection fetchAllSortedBy:@"name" ascending:YES withPredicate:nil groupBy:nil delegate:nil];
 	CollectionTableViewController *collectionsTCV = [[CollectionTableViewController alloc] initWithFetchedResultsController:nil];
-	
 	[collectionsTCV setTitle:@"Collections"];
 	collectionsTCV.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Collections" image:[UIImage imageNamed:@"collections.png"] tag:0];
 	UINavigationController *collectionsNavController = [[UINavigationController alloc] initWithRootViewController:collectionsTCV];
@@ -127,11 +141,10 @@
 	
 	
 	[self setViewControllers:@[winePaperFoldNC,
-							browseNavController,
-                            // varietalNavController,
+							browsePaperFoldNC,
                             [self viewControllerWithTabTitle:@"" image:nil],
 							collectionsNavController,
-							countryNavController, // food
+							countryNavController, // food? characteristics?
                             ]];
 	
 	[self addCenterButtonWithImage:[UIImage imageNamed:@"add-wine-button.png"] highlightImage:nil];
