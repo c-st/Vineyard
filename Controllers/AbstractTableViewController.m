@@ -42,7 +42,7 @@
 	}
 	
 	if (self.showPieChart) {
-		UIImage *image = [[[UIImage imageNamed:@"bar-chart.png"] imageTintedWithColor:[UIColor whiteColor]] scaleToSize:CGSizeMake(18, 14)];
+		UIImage *image = [[[UIImage imageNamed:@"pie.png"] imageTintedWithColor:[UIColor whiteColor]] scaleToSize:CGSizeMake(16, 16)];
 		
 		UIBarButtonItem *pieButton = [[UIBarButtonItem alloc] initWithImage:image style:UIBarButtonItemStylePlain target:self action:@selector(showStatsButtonClicked)];
 		

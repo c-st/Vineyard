@@ -83,7 +83,7 @@
 	WineMapFoldViewController *wineRightVC = [[WineMapFoldViewController alloc] init];
 	[wineRightVC.view setFrame:CGRectMake(0, 0, 120, [self.view bounds].size.height)];
 	
-	[winePaperFoldNC setRightViewController:wineRightVC width:280 rightViewFoldCount:2 rightViewPullFactor:1.0];
+	[winePaperFoldNC setRightViewController:wineRightVC width:275 rightViewFoldCount:2 rightViewPullFactor:1.0];
 	[winePaperFoldNC setLeftViewController:dummyVC width:100];
 	
 	
@@ -111,7 +111,7 @@
 	WineMapFoldViewController *browseRightVC = [[WineMapFoldViewController alloc] init];
 	[browseRightVC.view setFrame:CGRectMake(0, 0, 120, [self.view bounds].size.height)];
 	
-	[browsePaperFoldNC setRightViewController:browseRightVC width:280 rightViewFoldCount:2 rightViewPullFactor:1.0];
+	[browsePaperFoldNC setRightViewController:browseRightVC width:275 rightViewFoldCount:2 rightViewPullFactor:1.0];
 	[browsePaperFoldNC setLeftViewController:dummy2VC width:100];
 	
 	

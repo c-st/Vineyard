@@ -24,6 +24,11 @@
 	[self.tableView setRowHeight:120];
 	[self.tableView setBackgroundColor:[UIColor cellarBeigeNoisyColour]];
 	self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 10, 0);
+	
+	// show button for map fold
+	UIImage *image = [[[UIImage imageNamed:@"map.png"] imageTintedWithColor:[UIColor whiteColor]] scaleToSize:CGSizeMake(16, 16)];
+	UIBarButtonItem *mapButton = [[UIBarButtonItem alloc] initWithImage:image style:UIBarButtonItemStylePlain target:self action:@selector(showMapFoldButtonClicked)];
+	[[self navigationItem] setRightBarButtonItem:mapButton];
 }
 
 - (void) viewWillAppear:(BOOL)animated {
@@ -44,7 +49,7 @@
 }
 
 - (void) viewDidAppear:(BOOL)animated {
-	NSLog(@"view did appear");
+	//NSLog(@"view did appear");
 	// enable left fold
 	[[[self paperFoldNC] paperFoldView] setEnableLeftFoldDragging:NO];
 	[[[self paperFoldNC] paperFoldView] setEnableRightFoldDragging:YES];
@@ -92,6 +97,14 @@
 
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
 	NSLog(@"didChangeContent");
+}
+
+- (void) showMapFoldButtonClicked {
+	if ([[[self paperFoldNC] paperFoldView] state] == PaperFoldStateDefault) {
+		[[[self paperFoldNC] paperFoldView] setPaperFoldState:PaperFoldStateRightUnfolded animated:YES];
+	} else {
+		[[[self paperFoldNC] paperFoldView] setPaperFoldState:PaperFoldStateDefault animated:YES];
+	}
 }
 
 @end
