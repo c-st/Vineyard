@@ -169,6 +169,8 @@
 		83E79DED1677AA8100E0E42D /* InitialDataImportService.m in Sources */ = {isa = PBXBuildFile; fileRef = 83E79DEB1677AA8100E0E42D /* InitialDataImportService.m */; };
 		83E79DF01677AA9C00E0E42D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 83E79DEE1677AA9C00E0E42D /* AppDelegate.m */; };
 		83EADB7A16AF510300B4707D /* BrowseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83EADB7916AF510300B4707D /* BrowseTableViewController.m */; };
+		83EE754F16B0722300B5B10B /* browse@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 83EE754E16B0722300B5B10B /* browse@2x.png */; };
+		83EE755216B0733800B5B10B /* plate@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 83EE755116B0733800B5B10B /* plate@2x.png */; };
 		83EF99E5165AA92700C56F40 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83EF99E4165AA92700C56F40 /* QuartzCore.framework */; };
 /* End PBXBuildFile section */
 
@@ -486,6 +488,8 @@
 		83E79DEF1677AA9C00E0E42D /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = SOURCE_ROOT; };
 		83EADB7816AF510300B4707D /* BrowseTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BrowseTableViewController.h; path = Controllers/BrowseTableViewController.h; sourceTree = SOURCE_ROOT; };
 		83EADB7916AF510300B4707D /* BrowseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BrowseTableViewController.m; path = Controllers/BrowseTableViewController.m; sourceTree = SOURCE_ROOT; };
+		83EE754E16B0722300B5B10B /* browse@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "browse@2x.png"; path = "Resources/Images/browse@2x.png"; sourceTree = SOURCE_ROOT; };
+		83EE755116B0733800B5B10B /* plate@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "plate@2x.png"; path = "Resources/Images/plate@2x.png"; sourceTree = SOURCE_ROOT; };
 		83EF99D5165A615900C56F40 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		83EF99D6165A615900C56F40 /* iTunesArtwork.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iTunesArtwork.png; sourceTree = "<group>"; };
 		83EF99D7165A615900C56F40 /* iTunesArtwork@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iTunesArtwork@2x.png"; sourceTree = "<group>"; };
@@ -702,6 +706,8 @@
 		832EDF88165FF55400AE20A9 /* Icons */ = {
 			isa = PBXGroup;
 			children = (
+				83EE755116B0733800B5B10B /* plate@2x.png */,
+				83EE754E16B0722300B5B10B /* browse@2x.png */,
 				836D07F616ADC2F600FA090C /* wine_bottle_normal@2x.png */,
 				8325354616A9B49F00D25D14 /* bar-chart@2x.png */,
 				83B0A8AB1689243200D65198 /* wine_bottle@2x.png */,
@@ -1277,6 +1283,8 @@
 				839B6FFB169B88A100BDAACF /* sliderPageControlBg@2x.png in Resources */,
 				8325354716A9B49F00D25D14 /* bar-chart@2x.png in Resources */,
 				836D07F716ADC2F700FA090C /* wine_bottle_normal@2x.png in Resources */,
+				83EE754F16B0722300B5B10B /* browse@2x.png in Resources */,
+				83EE755216B0733800B5B10B /* plate@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

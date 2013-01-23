@@ -92,7 +92,7 @@
 	[browseTVC setShowCount:NO];
 	[browseTVC setShowPieChart:NO];
 	
-	browseTVC.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Browse" image:[UIImage imageNamed:@"food_grapes.png"] tag:0];
+	browseTVC.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Browse" image:[UIImage imageNamed:@"browse.png"] tag:0];
 	UINavigationController *browseNavController = [[UINavigationController alloc] initWithRootViewController:browseTVC];
 	// Paper fold
 	
@@ -101,21 +101,13 @@
 	NSFetchedResultsController *countriesFRC = [Country fetchAllSortedBy:@"name" ascending:YES withPredicate:nil groupBy:nil delegate:nil];
 	CountryTableViewController *countryTVC = [[CountryTableViewController alloc] initWithFetchedResultsController:countriesFRC];
 	
-	[countryTVC setTitle:@"Countries"];
+	[countryTVC setTitle:@"Food"];
 	[countryTVC setShowCount:YES];
 	[countryTVC setShowPieChart:YES];
-	countryTVC.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Countries" image:[UIImage imageNamed:@"globe-icon.png"] tag:0];
+	countryTVC.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Food" image:[UIImage imageNamed:@"plate.png"] tag:0];
     UINavigationController *countryNavController = [[UINavigationController alloc] initWithRootViewController:countryTVC];
 	
 	
-	// Varietals
-	VarietalTableViewController *varietalTVC = [[VarietalTableViewController alloc] init];
-	[varietalTVC setTitle:@"Varietals"];
-	[varietalTVC setShowCount:YES];
-	[varietalTVC setPickMode:NO];
-	[varietalTVC setShowPieChart:YES];
-	varietalTVC.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Varietals" image:[UIImage imageNamed:@"food_grapes.png"] tag:0];
-	UINavigationController *varietalNavController = [[UINavigationController alloc] initWithRootViewController:varietalTVC];
 	
 	
 	// Collections
@@ -131,7 +123,6 @@
 	[wineNavController.navigationBar setTintColor:[UIColor cellarWineRedColour]];
 	[browseNavController.navigationBar setTintColor:[UIColor cellarWineRedColour]];
 	[countryNavController.navigationBar setTintColor:[UIColor cellarWineRedColour]];
-	[varietalNavController.navigationBar setTintColor:[UIColor cellarWineRedColour]];
 	[collectionsNavController.navigationBar setTintColor:[UIColor cellarWineRedColour]];
 	
 	
@@ -139,8 +130,9 @@
 							browseNavController,
                             // varietalNavController,
                             [self viewControllerWithTabTitle:@"" image:nil],
+							collectionsNavController,
 							countryNavController, // food
-                            collectionsNavController]];
+                            ]];
 	
 	[self addCenterButtonWithImage:[UIImage imageNamed:@"add-wine-button.png"] highlightImage:nil];
 }
