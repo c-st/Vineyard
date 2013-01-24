@@ -10,6 +10,8 @@
 #import "AddWineViewController.h"
 #import "WineDetailViewController.h"
 
+#import "WineMapFoldViewController.h"
+
 #import "PaperFoldNavigationController.h"
 
 @interface WineTableViewController ()
@@ -102,12 +104,19 @@
 }
 
 - (void) showMapFoldButtonClicked {
+	UIViewController *viewC = [[self paperFoldNC] rightViewController];
+	if ([viewC isKindOfClass:[WineMapFoldViewController class]]) {
+		NSLog(@"WineMapFoldViewController");
+		WineMapFoldViewController *wineMapC = (WineMapFoldViewController *) viewC;
+		[wineMapC setWines:self.fetchedResultsController.fetchedObjects];
+	}
+
 	NSLog(@"button state is %i", [[[self paperFoldNC] paperFoldView] state]);
 	if ([[[self paperFoldNC] paperFoldView] state] == PaperFoldStateDefault) {
-		NSLog(@"unfold");
+		//NSLog(@"unfold");
 		[[[self paperFoldNC] paperFoldView] setPaperFoldState:PaperFoldStateRightUnfolded animated:YES];
 	} else {
-		NSLog(@"fold");
+		//NSLog(@"fold");
 		[[[self paperFoldNC] paperFoldView] setPaperFoldState:PaperFoldStateDefault animated:YES];
 	}
 }

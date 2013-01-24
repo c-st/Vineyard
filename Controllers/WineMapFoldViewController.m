@@ -19,7 +19,7 @@
 
 - (void) viewDidLoad {
     [super viewDidLoad];
-	[self.view setBackgroundColor:[UIColor darkGrayColor]]; //darkGray
+	[self.view setBackgroundColor:[UIColor darkGrayColor]];
 	
 	self.mapView = [[CellarMapView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
 	
@@ -32,11 +32,11 @@
 	shadow.colors = @[(id)[[UIColor colorWithWhite:0.0 alpha:0.6] CGColor], (id)[[UIColor clearColor] CGColor]];
 	[self.view.layer addSublayer:shadow];
 	
-	self.segmentedControl = [[SVSegmentedControl alloc] initWithSectionTitles:[NSArray arrayWithObjects:@"Region", @"Tagged", nil]];
+	self.segmentedControl = [[SVSegmentedControl alloc] initWithSectionTitles:@[@"Region", @"Tagged"]];
 	[self.segmentedControl setAlpha:0.7];
 	__weak CellarMapView *dupMapView = mapView;
     self.segmentedControl.changeHandler = ^(NSUInteger newIndex) {
-        [dupMapView setWinesToBeDisplayed:[Wine findAll] showRegion:newIndex==0];
+        [dupMapView setWinesToBeDisplayed:dupMapView.wines showRegion:newIndex==0];
 		[dupMapView removeOverlays:dupMapView.overlays];
 		[dupMapView doClustering];
     };
@@ -55,11 +55,18 @@
 
 }
 
+- (void) setWines:(NSArray *)wines {
+	[self.mapView setWines:wines];
+}
+
 - (void) viewWillAppear:(BOOL)animated {
-	[mapView setWinesToBeDisplayed:[Wine findAll] showRegion:self.segmentedControl.selectedIndex==0];
+	// set wines from currently displayed wine list
+	if (self.mapView.wines != nil) {
+		[mapView setWinesToBeDisplayed:self.mapView.wines showRegion:self.segmentedControl.selectedIndex==0];
+	}
+	
 	[mapView removeOverlays:mapView.overlays];
     [mapView doClustering];
-	
 }
 
 

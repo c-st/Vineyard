@@ -14,9 +14,6 @@
 	self = [super initWithFrame:frame];
     if (self) {
 		[self setDelegate:self];
-		
-		//[self setWinesToBeDisplayed:[Wine findAll]];
-		
 		[self setClusteringMethod:OCClusteringMethodGrid];
 		[self setClusteringEnabled:YES];
 		[self setClusterSize:0.2];
@@ -33,7 +30,6 @@
     }
     return self;
 }
-
 
 - (void) setWinesToBeDisplayed:(NSArray*) theWines showRegion:(BOOL) isShowRegion{
 	[self removeAnnotations:self.annotations];
@@ -61,7 +57,6 @@
 	
 	for (Wine *wine in self.wines) {
 		coordinate = [self getCoordinateFromWine:wine showRegion:isShowRegion];
-		
 		if (coordinate.latitude > max_lat) {max_lat = coordinate.latitude;}
 		if (coordinate.latitude < min_lat) {min_lat = coordinate.latitude;}
 		if (coordinate.longitude > max_long) {max_long = coordinate.longitude;}
@@ -73,16 +68,16 @@
 	double center_lat = (max_lat + min_lat) / 2;
 	
 	//calculate deltas
-	double deltaLat = abs(max_lat - min_lat);
-	double deltaLong = abs(max_long - min_long);
+	double deltaLat = fabs(max_lat - min_lat);
+	double deltaLong = fabs(max_long - min_long);
 	
 	//set minimal delta
 	if (deltaLat < 5) {deltaLat = 5;}
 	if (deltaLong < 5) {deltaLong = 5;}
 	
 	//debug
-	NSLog(@"center long: %f, center lat: %f", center_long, center_lat);
-	NSLog(@"max_long: %f, min_long: %f, max_lat: %f, min_lat: %f", max_long, min_long, max_lat, min_lat);
+	//NSLog(@"center long: %f, center lat: %f", center_long, center_lat);
+	//NSLog(@"max_long: %f, min_long: %f, max_lat: %f, min_lat: %f", max_long, min_long, max_lat, min_lat);
 	
 	//create new region and set map
 	CLLocationCoordinate2D coord = {.latitude =  center_lat, .longitude =  center_long};

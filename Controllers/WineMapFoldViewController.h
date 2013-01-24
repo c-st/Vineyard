@@ -8,8 +8,12 @@
 @interface WineMapFoldViewController : UIViewController {
 	CellarMapView *mapView;
 	SVSegmentedControl *segmentedControl;
+	
 }
 
 @property (nonatomic, strong) CellarMapView *mapView;
 @property (nonatomic, strong) SVSegmentedControl *segmentedControl;
+
+- (void) setWines:(NSArray *)wines;
+
 @end
