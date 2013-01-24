@@ -44,7 +44,17 @@
 	if (![[self fetchedResultsController] performFetch:&error]) {
 		NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
 	}
-	//NSLog(@"%i wines.", [[[Wine fetchAllSortedBy:@"name" ascending:YES withPredicate:[self getFetchPredicate:nil] groupBy:nil delegate:nil] fetchedObjects] count]);
+	
+	/*
+	int wineCount = [[[Wine fetchAllSortedBy:@"name" ascending:YES withPredicate:[self getFetchPredicate:nil] groupBy:nil delegate:nil] fetchedObjects] count];
+	if (wineCount == 0) {
+		NSLog(@"no wines yet");
+		UIView *addWineView = [[UIView alloc] initWithFrame:CGRectMake(100, 100, 50, 50)];
+		[addWineView setBackgroundColor:[UIColor redColor]];
+		[self.view addSubview:addWineView];
+	}
+	 */
+	
 	[self.tableView reloadData];
 }
 
@@ -69,7 +79,6 @@
         cell = [[FastWineCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"WineCell" andWine:wine];
 		[cell setParentTableViewController:self];
     }
-	
     return cell;
 }
 
@@ -79,14 +88,7 @@
 	WineDetailViewController *wineDetail = [[WineDetailViewController alloc] initWithWine:wine];
 	
 	// TODO: bug with unbalanced calls
-	
 	[[[self paperFoldNC] paperFoldView] setPaperFoldState:PaperFoldStateDefault];
-	
-	[UIView animateWithDuration:0.5 animations:^{
-	} completion:^(BOOL finished){
-		
-	}];
-	
 	[[self navigationController] pushViewController:wineDetail animated:YES];
 	
 	// unfold and disable
@@ -100,9 +102,12 @@
 }
 
 - (void) showMapFoldButtonClicked {
+	NSLog(@"button state is %i", [[[self paperFoldNC] paperFoldView] state]);
 	if ([[[self paperFoldNC] paperFoldView] state] == PaperFoldStateDefault) {
+		NSLog(@"unfold");
 		[[[self paperFoldNC] paperFoldView] setPaperFoldState:PaperFoldStateRightUnfolded animated:YES];
 	} else {
+		NSLog(@"fold");
 		[[[self paperFoldNC] paperFoldView] setPaperFoldState:PaperFoldStateDefault animated:YES];
 	}
 }

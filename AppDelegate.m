@@ -31,52 +31,15 @@
     
     // Import sample data
 	[InitialDataImportService importInitialDataFromJson];
-    
-    
-    // Display data
-	/*
-	for (Wine *w in [Wine findAll]) {
-        NSLog(@"-->Wine Name is %@. Appellation is %@", w.name, w.appellation.name);
-    }
-	 */
-	/*
-    for (Classification *c in [Classification findAll]) {
-        NSLog(@"-->Classification Name is %@. Country is %@ %@ %i", c.name, c.country.name, c.country.countryID, c.qualityRatingValue);
-    }
-	*/
-	
-	/*
-	for (Indication *i in [Indication findAll]) {
-        NSLog(@"-->Indication Name is %@. Type is %@ Rating %i", i.name, i.type, i.qualityRatingValue);
-    }
-	*/
-	
-	/*
-	for (Region *r in [Region findAll]) {
-        NSLog(@"-->Region Name is %@. Country is %@ %@", r.name, r.country.name, r.country.countryID);
-    }
-    
-    NSArray *appellations = [Appellation findAll];
-    NSLog(@"Appellations Total count is %i", [appellations count]);
-    for (Appellation *ap in appellations) {
-        NSLog(@"Name is %@. RegionID is %@", ap.name, ap.region.regionID);
-    }
-    */
-	/*
-	for (Varietal *v in [Varietal findAll]) {
-        NSLog(@"-->Varietal %@ %@", v.name, v.grapeType.name);
-    }
-	*/
 	
 	RaisedTabBarController *tab = [[RaisedTabBarController alloc] init];
 	
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     [self.window setBackgroundColor:[UIColor blackColor]];
-    
     [self.window addSubview:tab.view];
     self.window.rootViewController = tab;
     [self.window makeKeyAndVisible];
-    
+
     return YES;
 }
 

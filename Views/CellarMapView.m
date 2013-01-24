@@ -41,18 +41,65 @@
 	self.wines = theWines;
 	
 	for (Wine* wine in theWines) {
-		CLLocationCoordinate2D loc;
-		if (isShowRegion) {
-			loc = CLLocationCoordinate2DMake(wine.appellation.region.location.latitudeValue, wine.appellation.region.location.longitudeValue);
-		} else {
-			loc = CLLocationCoordinate2DMake(wine.location.latitudeValue, wine.location.longitudeValue);
-		}
 		MKPointAnnotation *point = [[MKPointAnnotation alloc] init];
-		[point setCoordinate:loc];
+		[point setCoordinate:[self getCoordinateFromWine:wine showRegion:isShowRegion]];
 		OCAnnotation *annotation = [[OCAnnotation alloc] initWithAnnotation:point];
 		[self addAnnotation:annotation];
 	}
+	[self centerMapForWines:isShowRegion];
 	[self doClustering];
+}
+
+- (void) centerMapForWines: (BOOL) isShowRegion {
+	Wine *firstWine = self.wines[0];
+	CLLocationCoordinate2D coordinate = [self getCoordinateFromWine:firstWine showRegion:isShowRegion];
+	
+	double max_long = coordinate.longitude;
+	double min_long = coordinate.longitude;
+	double max_lat = coordinate.latitude;
+	double min_lat = coordinate.latitude;
+	
+	for (Wine *wine in self.wines) {
+		coordinate = [self getCoordinateFromWine:wine showRegion:isShowRegion];
+		
+		if (coordinate.latitude > max_lat) {max_lat = coordinate.latitude;}
+		if (coordinate.latitude < min_lat) {min_lat = coordinate.latitude;}
+		if (coordinate.longitude > max_long) {max_long = coordinate.longitude;}
+		if (coordinate.longitude < min_long) {min_long = coordinate.longitude;}
+	}
+	
+	//calculate center of map
+	double center_long = (max_long + min_long) / 2;
+	double center_lat = (max_lat + min_lat) / 2;
+	
+	//calculate deltas
+	double deltaLat = abs(max_lat - min_lat);
+	double deltaLong = abs(max_long - min_long);
+	
+	//set minimal delta
+	if (deltaLat < 5) {deltaLat = 5;}
+	if (deltaLong < 5) {deltaLong = 5;}
+	
+	//debug
+	NSLog(@"center long: %f, center lat: %f", center_long, center_lat);
+	NSLog(@"max_long: %f, min_long: %f, max_lat: %f, min_lat: %f", max_long, min_long, max_lat, min_lat);
+	
+	//create new region and set map
+	CLLocationCoordinate2D coord = {.latitude =  center_lat, .longitude =  center_long};
+	MKCoordinateSpan span = MKCoordinateSpanMake(deltaLat, deltaLong);
+	MKCoordinateRegion region = {coord, span};
+	
+	[self setRegion:region animated:YES];
+}
+
+- (CLLocationCoordinate2D) getCoordinateFromWine:(Wine *)wine showRegion:(BOOL) isShowRegion {
+	CLLocationCoordinate2D loc;
+	if (isShowRegion) {
+		loc = CLLocationCoordinate2DMake(wine.appellation.region.location.latitudeValue, wine.appellation.region.location.longitudeValue);
+	} else {
+		loc = CLLocationCoordinate2DMake(wine.location.latitudeValue, wine.location.longitudeValue);
+	}
+	return loc;
 }
 
 
