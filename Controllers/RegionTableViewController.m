@@ -52,6 +52,8 @@
 	[appellationTableViewController setTitle:region.name];
 	[appellationTableViewController setShowCount:[self showCount]];
 	[appellationTableViewController setShowPieChart:[self showPieChart]];
+	[appellationTableViewController setPaperFoldNC:self.paperFoldNC];
+	
 	[[self navigationController] pushViewController:appellationTableViewController animated:YES];
 }
 

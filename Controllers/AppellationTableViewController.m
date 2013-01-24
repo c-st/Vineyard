@@ -94,6 +94,7 @@
 	
 	[wineTableViewController setTitle:appellation.name];
 	[wineTableViewController setShowCount:NO];
+	[wineTableViewController setPaperFoldNC:self.paperFoldNC];
 	
 	if ([wineSearchController.fetchedObjects count] > 0) {
 		[[self navigationController] pushViewController:wineTableViewController animated:YES];

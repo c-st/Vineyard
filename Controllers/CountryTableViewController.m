@@ -66,6 +66,7 @@
 	[regionTableViewController setTitle:country.name];
 	[regionTableViewController setShowCount:[self showCount]];
 	[regionTableViewController setShowPieChart:[self showPieChart]];
+	[regionTableViewController setPaperFoldNC:self.paperFoldNC];
 	
 	[[self navigationController] pushViewController:regionTableViewController animated:YES];
 }

@@ -38,7 +38,7 @@
 		[self setFetchedResultsController:[Wine fetchAllSortedBy:@"name" ascending:YES withPredicate:[self getFetchPredicate:nil] groupBy:nil delegate:nil]];
 	}
 	if (self.paperFoldNC == nil) {
-		NSLog(@"paperFoldNC is nil! this should not be.");
+		NSLog(@"wine TVC paperFoldNC is nil! this should not be.");
 	}
 	
 	NSError *error;
@@ -76,6 +76,13 @@
 	}
 }
 
+- (void) viewWillDisappear:(BOOL)animated {
+	// unfold and disable
+	[[[self paperFoldNC] paperFoldView] setEnableLeftFoldDragging:NO];
+	[[[self paperFoldNC] paperFoldView] setEnableRightFoldDragging:NO];
+	//[[[self paperFoldNC] paperFoldView] setGestureRecognizerEnabled:NO];
+}
+
 
 - (NSPredicate*) getFetchPredicate:(Wine *)withWine {
 	return [NSPredicate predicateWithFormat:@"name.length > 0"];
@@ -98,29 +105,28 @@
 	WineDetailViewController *wineDetail = [[WineDetailViewController alloc] initWithWine:wine];
 	
 	// TODO: bug with unbalanced calls
-	[[[self paperFoldNC] paperFoldView] setPaperFoldState:PaperFoldStateDefault];
+	if ([[[self paperFoldNC] paperFoldView] state] != PaperFoldStateDefault) {
+		[[[self paperFoldNC] paperFoldView] setPaperFoldState:PaperFoldStateDefault];
+	}
 	[[self navigationController] pushViewController:wineDetail animated:YES];
-	
-	// unfold and disable
-	[[[self paperFoldNC] paperFoldView] setEnableLeftFoldDragging:NO];
-	[[[self paperFoldNC] paperFoldView] setEnableRightFoldDragging:NO];
-	[[[self paperFoldNC] paperFoldView] setGestureRecognizerEnabled:NO];
 }
 
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
 	NSLog(@"didChangeContent");
 }
 
-- (void) showMapFoldButtonClicked {
-	
 
+
+- (void) showMapFoldButtonClicked {
 	NSLog(@"button state is %i", [[[self paperFoldNC] paperFoldView] state]);
 	if ([[[self paperFoldNC] paperFoldView] state] == PaperFoldStateDefault) {
-		//NSLog(@"unfold");
+		NSLog(@"unfold");
 		[[[self paperFoldNC] paperFoldView] setPaperFoldState:PaperFoldStateRightUnfolded animated:YES];
+		[[[self paperFoldNC] paperFoldView] setPaperFoldState:PaperFoldStateRightUnfolded];
 	} else {
-		//NSLog(@"fold");
+		NSLog(@"fold");
 		[[[self paperFoldNC] paperFoldView] setPaperFoldState:PaperFoldStateDefault animated:YES];
+		[[[self paperFoldNC] paperFoldView] setPaperFoldState:PaperFoldStateDefault];
 	}
 }
 

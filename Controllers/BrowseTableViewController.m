@@ -23,7 +23,7 @@
 	
 - (void) loadView {
 	if (self.paperFoldNC == nil) {
-		NSLog(@"paperFoldNC is nil! this should not be.");
+		NSLog(@"browseTVC paperFoldNC is nil! this should not be.");
 	}
 	[super loadView];
 	
