@@ -9,8 +9,9 @@
 
 #import "SwipeView.h"
 #import "CellarMapView.h"
+#import "ModalView.h"
 
-@interface WineDetailViewController : UIViewController <UIScrollViewDelegate, SwipeViewDelegate, SwipeViewDataSource> {
+@interface WineDetailViewController : UIViewController <UIScrollViewDelegate, SwipeViewDelegate, SwipeViewDataSource, ModalViewDelegate> {
 	Wine *wine;
 	
 	SwipeView *swipeView;

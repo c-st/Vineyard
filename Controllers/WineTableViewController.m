@@ -120,11 +120,9 @@
 - (void) showMapFoldButtonClicked {
 	NSLog(@"button state is %i", [[[self paperFoldNC] paperFoldView] state]);
 	if ([[[self paperFoldNC] paperFoldView] state] == PaperFoldStateDefault) {
-		NSLog(@"unfold");
 		[[[self paperFoldNC] paperFoldView] setPaperFoldState:PaperFoldStateRightUnfolded animated:YES];
 		[[[self paperFoldNC] paperFoldView] setPaperFoldState:PaperFoldStateRightUnfolded];
 	} else {
-		NSLog(@"fold");
 		[[[self paperFoldNC] paperFoldView] setPaperFoldState:PaperFoldStateDefault animated:YES];
 		[[[self paperFoldNC] paperFoldView] setPaperFoldState:PaperFoldStateDefault];
 	}

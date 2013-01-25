@@ -1,9 +1,7 @@
 
-#import "ModalTextFieldView.h"
+#import "ModalCollectionView.h"
 
-@implementation ModalTextFieldView
-
-@synthesize textField;
+@implementation ModalCollectionView
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -33,7 +31,7 @@
 		[titleLabel setBackgroundColor:[UIColor clearColor]];
 		[titleLabel setTextColor:[UIColor darkGrayColor]];
 		[titleLabel setFont:[UIFont systemFontOfSize:17]];
-		[titleLabel setText:@"Add Collection"];
+		[titleLabel setText:@"Add To Collection"];
 		[self addSubview:titleLabel];
 		
 		// right button
@@ -43,49 +41,22 @@
 		[saveButton setTintColor:[UIColor lightGrayColor]];
 		[saveButton.titleLabel setFont:[UIFont systemFontOfSize:14]];
 		saveButton.layer.borderColor = [UIColor blackColor].CGColor;
-		[saveButton setTitle:@"Add" forState:UIControlStateNormal];
+		[saveButton setTitle:@"Done" forState:UIControlStateNormal];
 		[saveButton addTarget:self.delegate action:@selector(triggerSaveButton) forControlEvents:UIControlEventTouchUpInside];
 		[saveButton setEnabled:NO];
 		[self addSubview:saveButton];
-		
-		// Name
-		UILabel *nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 70, 70, 20)];
-		[nameLabel setBackgroundColor:[UIColor clearColor]];
-		[nameLabel setText:@"Name:"];
-		[self addSubview:nameLabel];
-		
-		// text field
-		self.textField = [[UITextField alloc] initWithFrame:CGRectMake(80, 70, 220, 20)];
-		[textField setBackgroundColor:[UIColor redColor]];
-		[textField setFont:[UIFont systemFontOfSize:16]];
-		[textField setBackgroundColor:[UIColor clearColor]];
-		[textField becomeFirstResponder];
-		[textField addTarget:self action:@selector(textFieldValueChanged:) forControlEvents:UIControlEventEditingChanged];
-		[self addSubview:textField];
-		
-		SSLineView *line2 = [[SSLineView alloc] initWithFrame:CGRectMake(20, 95, 280, 2)];
-		[line2 setLineColor:[[UIColor lightGrayColor] colorWithAlphaComponent:0.6]];
-		[line2 setInsetColor:[UIColor clearColor]];
-		[self addSubview:line2];
-		
+
+		// table view
     }
     return self;
 }
 
 - (void) triggerCancelButton {
-	[delegate cancelButtonPressed:self.textField];
+	[delegate cancelButtonPressed:nil];
 }
 
 - (void) triggerSaveButton {
-	[delegate saveButtonPressed:self.textField];
-}
-
-- (void) textFieldValueChanged:(UITextField *) theTextField {
-	if ([theTextField.text length] > 0) {
-		[self.saveButton setEnabled:YES];
-	} else {
-		[self.saveButton setEnabled:NO];
-	}
+	[delegate saveButtonPressed:nil];
 }
 
 @end

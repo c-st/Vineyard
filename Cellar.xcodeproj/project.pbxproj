@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		83099D5016826A6F00415556 /* ABTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 83099D4F16826A6F00415556 /* ABTableViewCell.m */; };
 		83099D5316826B1100415556 /* FastWineCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 83099D5216826B1100415556 /* FastWineCell.m */; };
+		830B9CF416B318690068668C /* ModalView.m in Sources */ = {isa = PBXBuildFile; fileRef = 830B9CF316B318690068668C /* ModalView.m */; };
 		8319AFB71677BFF8005E28BB /* MagicalImportFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 8319AF7F1677BFF8005E28BB /* MagicalImportFunctions.m */; };
 		8319AFB81677BFF8005E28BB /* NSAttributeDescription+MagicalDataImport.m in Sources */ = {isa = PBXBuildFile; fileRef = 8319AF811677BFF8005E28BB /* NSAttributeDescription+MagicalDataImport.m */; };
 		8319AFB91677BFF8005E28BB /* NSEntityDescription+MagicalDataImport.m in Sources */ = {isa = PBXBuildFile; fileRef = 8319AF831677BFF8005E28BB /* NSEntityDescription+MagicalDataImport.m */; };
@@ -51,6 +52,7 @@
 		8319B0081677C295005E28BB /* UIView+Screenshot.m in Sources */ = {isa = PBXBuildFile; fileRef = 8319AFFC1677C295005E28BB /* UIView+Screenshot.m */; };
 		8319B00A1677C6E0005E28BB /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8319B0091677C6E0005E28BB /* MapKit.framework */; };
 		8325354716A9B49F00D25D14 /* bar-chart@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8325354616A9B49F00D25D14 /* bar-chart@2x.png */; };
+		8327C90E16B31D3400429336 /* ModalCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8327C90D16B31D3400429336 /* ModalCollectionView.m */; };
 		83282EDC1698F6AB00C5BE0E /* SwipeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 83282EDB1698F6AB00C5BE0E /* SwipeView.m */; };
 		83282EE01699031100C5BE0E /* CellarMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 83282EDF1699031100C5BE0E /* CellarMapView.m */; };
 		833146D51678D2E5000F9654 /* WineMapFoldViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 833146D41678D2E5000F9654 /* WineMapFoldViewController.m */; };
@@ -221,6 +223,8 @@
 		83099D4F16826A6F00415556 /* ABTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABTableViewCell.m; sourceTree = "<group>"; };
 		83099D5116826B1100415556 /* FastWineCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FastWineCell.h; path = Views/FastWineCell.h; sourceTree = SOURCE_ROOT; };
 		83099D5216826B1100415556 /* FastWineCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FastWineCell.m; path = Views/FastWineCell.m; sourceTree = SOURCE_ROOT; };
+		830B9CF216B318690068668C /* ModalView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ModalView.h; path = Views/ModalView.h; sourceTree = SOURCE_ROOT; };
+		830B9CF316B318690068668C /* ModalView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ModalView.m; path = Views/ModalView.m; sourceTree = SOURCE_ROOT; };
 		8319AF7E1677BFF8005E28BB /* MagicalImportFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MagicalImportFunctions.h; sourceTree = "<group>"; };
 		8319AF7F1677BFF8005E28BB /* MagicalImportFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MagicalImportFunctions.m; sourceTree = "<group>"; };
 		8319AF801677BFF8005E28BB /* NSAttributeDescription+MagicalDataImport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSAttributeDescription+MagicalDataImport.h"; sourceTree = "<group>"; };
@@ -300,6 +304,8 @@
 		8319AFFC1677C295005E28BB /* UIView+Screenshot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Screenshot.m"; sourceTree = "<group>"; };
 		8319B0091677C6E0005E28BB /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		8325354616A9B49F00D25D14 /* bar-chart@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "bar-chart@2x.png"; path = "Resources/Images/bar-chart@2x.png"; sourceTree = SOURCE_ROOT; };
+		8327C90C16B31D3400429336 /* ModalCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ModalCollectionView.h; path = Views/ModalCollectionView.h; sourceTree = SOURCE_ROOT; };
+		8327C90D16B31D3400429336 /* ModalCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ModalCollectionView.m; path = Views/ModalCollectionView.m; sourceTree = SOURCE_ROOT; };
 		83282EDA1698F6AB00C5BE0E /* SwipeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwipeView.h; sourceTree = "<group>"; };
 		83282EDB1698F6AB00C5BE0E /* SwipeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SwipeView.m; sourceTree = "<group>"; };
 		83282EDE1699031100C5BE0E /* CellarMapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CellarMapView.h; path = Views/CellarMapView.h; sourceTree = SOURCE_ROOT; };
@@ -874,8 +880,12 @@
 				83E79DC81677AA2600E0E42D /* CellarTableViewCell.h */,
 				83282EDE1699031100C5BE0E /* CellarMapView.h */,
 				83282EDF1699031100C5BE0E /* CellarMapView.m */,
+				830B9CF216B318690068668C /* ModalView.h */,
+				830B9CF316B318690068668C /* ModalView.m */,
 				839D258816AD9C4800A482E3 /* ModalTextFieldView.h */,
 				839D258916AD9C4800A482E3 /* ModalTextFieldView.m */,
+				8327C90C16B31D3400429336 /* ModalCollectionView.h */,
+				8327C90D16B31D3400429336 /* ModalCollectionView.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1417,6 +1427,8 @@
 				836D080A16ADE23F00FA090C /* SVSegmentedControl.m in Sources */,
 				836D080B16ADE23F00FA090C /* SVSegmentedThumb.m in Sources */,
 				83EADB7A16AF510300B4707D /* BrowseTableViewController.m in Sources */,
+				830B9CF416B318690068668C /* ModalView.m in Sources */,
+				8327C90E16B31D3400429336 /* ModalCollectionView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

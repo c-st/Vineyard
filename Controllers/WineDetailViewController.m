@@ -1,10 +1,13 @@
 
 #import "WineDetailViewController.h"
 #import "AddWineViewController.h"
+#import "ModalCollectionView.h"
 
 #import "MKMapView+ZoomLevel.h"
 #import "UIColor+CellarColours.h"
 #import "SSToolkit.h"
+
+#import "UIViewController+KNSemiModal.h"
 
 @interface WineDetailViewController ()
 
@@ -188,6 +191,12 @@
 
 	[self addHeaderArea:scrollView];
 	
+	UIButton *addToCollectionButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+	[addToCollectionButton setFrame:CGRectMake(50, 200, 150, 20)];
+	[addToCollectionButton setTitle:@"Add to collection" forState:UIControlStateNormal];
+	[addToCollectionButton addTarget:self action:@selector(addToCollectionButtonPressed) forControlEvents:UIControlEventTouchUpInside];
+	[scrollView addSubview:addToCollectionButton];
+	
 	[self.view addSubview:scrollView];
 }
 
@@ -223,7 +232,7 @@
 }
 
 #pragma mark
-#pragma mark Location
+#pragma mark Map & Location
 
 - (void) scrollViewDidScroll:(UIScrollView *)theScrollView {
 	// determine active mapView
@@ -258,9 +267,28 @@
 	} completion:^(BOOL finished){}];
 }
 
+#pragma mark
+#pragma mark Add To Collection button
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
+- (void) addToCollectionButtonPressed {
+	ModalCollectionView *modalCollectionView = [[ModalCollectionView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 250)];
+	[modalCollectionView setDelegate:self];
+	
+	[self presentSemiView:modalCollectionView withOptions:@{
+	 KNSemiModalOptionKeys.pushParentBack    : @(YES),
+	 KNSemiModalOptionKeys.animationDuration : @(0.25),
+	 KNSemiModalOptionKeys.shadowOpacity     : @(0.3),
+	 KNSemiModalOptionKeys.parentAlpha		 : @(0.4)
+	 }];
+}
+
+- (void) cancelButtonPressed:(id) sender {
+	NSLog(@"cancel");
+	[self dismissSemiModalView];
+}
+
+- (void) saveButtonPressed:(id) sender {
+	[self dismissSemiModalView];
 }
 
 
