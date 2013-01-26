@@ -80,7 +80,7 @@
 	// unfold and disable
 	[[[self paperFoldNC] paperFoldView] setEnableLeftFoldDragging:NO];
 	[[[self paperFoldNC] paperFoldView] setEnableRightFoldDragging:NO];
-	//[[[self paperFoldNC] paperFoldView] setGestureRecognizerEnabled:NO];
+	[[[self paperFoldNC] paperFoldView] setGestureRecognizerEnabled:NO];
 }
 
 
