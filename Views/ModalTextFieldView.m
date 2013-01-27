@@ -77,11 +77,12 @@
 }
 
 - (void) triggerSaveButton {
+	[self.textField setText:[[self.textField text] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]]];
 	[delegate saveButtonPressed:self.textField];
 }
 
 - (void) textFieldValueChanged:(UITextField *) theTextField {
-	if ([theTextField.text length] > 0) {
+	if ([[theTextField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] length] > 0) {
 		[self.saveButton setEnabled:YES];
 	} else {
 		[self.saveButton setEnabled:NO];
