@@ -78,8 +78,8 @@
 - (void) viewWillDisappear:(BOOL)animated {
 	// unfold and disable
 	[[[self paperFoldNC] paperFoldView] setEnableLeftFoldDragging:NO];
-	[[[self paperFoldNC] paperFoldView] setEnableRightFoldDragging:NO];
-	[[[self paperFoldNC] paperFoldView] setGestureRecognizerEnabled:NO];
+	//[[[self paperFoldNC] paperFoldView] setEnableRightFoldDragging:NO];
+	//[[[self paperFoldNC] paperFoldView] setGestureRecognizerEnabled:NO];
 }
 
 
@@ -106,6 +106,11 @@
 	if ([[[self paperFoldNC] paperFoldView] state] != PaperFoldStateDefault) {
 		[[[self paperFoldNC] paperFoldView] setPaperFoldState:PaperFoldStateDefault];
 	}
+	
+	// disable map fold in order to retain swipe functionality
+	[[[self paperFoldNC] paperFoldView] setEnableRightFoldDragging:NO];
+	[[[self paperFoldNC] paperFoldView] setGestureRecognizerEnabled:NO];
+	
 	[[self navigationController] pushViewController:wineDetail animated:YES];
 }
 
@@ -114,6 +119,8 @@
 }
 
 - (void) showMapFoldButtonClicked {
+	[self.tableView setContentOffset:self.tableView.contentOffset animated:NO];
+	[self.tableView setScrollEnabled:NO];
 	//NSLog(@"button state is %i", [[[self paperFoldNC] paperFoldView] state]);
 	if ([[[self paperFoldNC] paperFoldView] state] == PaperFoldStateDefault) {
 		[[[self paperFoldNC] paperFoldView] setPaperFoldState:PaperFoldStateRightUnfolded animated:YES];

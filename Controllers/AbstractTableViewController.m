@@ -242,6 +242,8 @@
 #pragma mark - Pie Chart Button
 
 - (void) showStatsButtonClicked {
+	[self.tableView setContentOffset:self.tableView.contentOffset animated:NO];
+	
 	UIView *modalPieChartView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 320)];
 	[modalPieChartView setBackgroundColor:[UIColor cellarBeigeNoisyColour]];
 	
