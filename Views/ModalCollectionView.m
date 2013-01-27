@@ -58,7 +58,7 @@
 		[self addSubview:saveButton];
 
 		// table view
-		self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(20, 50, 280, 180)];
+		self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(20, 49, 280, 200)];
 		[tableView setDelegate:self];
 		[tableView setDataSource:self];
 		[tableView setBackgroundView:nil];
@@ -99,6 +99,7 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
 		[cell.textLabel setText:[collection name]];
+		[cell.textLabel setFont:[UIFont boldSystemFontOfSize:16]];
 		[cell setSelectionStyle:UITableViewCellSelectionStyleGray];
     }
 	
