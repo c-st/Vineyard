@@ -70,7 +70,6 @@
 	// set wines to fold map view
 	UIViewController *viewC = [[self paperFoldNC] rightViewController];
 	if ([viewC isKindOfClass:[WineMapFoldViewController class]]) {
-		NSLog(@"WineMapFoldViewController");
 		WineMapFoldViewController *wineMapC = (WineMapFoldViewController *) viewC;
 		[wineMapC setWines:self.fetchedResultsController.fetchedObjects];
 	}
@@ -99,7 +98,6 @@
     return cell;
 }
 
-
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath  {
 	Wine *wine = [[super fetchedResultsController] objectAtIndexPath:indexPath];
 	WineDetailViewController *wineDetail = [[WineDetailViewController alloc] initWithWine:wine];
@@ -115,10 +113,8 @@
 	NSLog(@"didChangeContent");
 }
 
-
-
 - (void) showMapFoldButtonClicked {
-	NSLog(@"button state is %i", [[[self paperFoldNC] paperFoldView] state]);
+	//NSLog(@"button state is %i", [[[self paperFoldNC] paperFoldView] state]);
 	if ([[[self paperFoldNC] paperFoldView] state] == PaperFoldStateDefault) {
 		[[[self paperFoldNC] paperFoldView] setPaperFoldState:PaperFoldStateRightUnfolded animated:YES];
 		[[[self paperFoldNC] paperFoldView] setPaperFoldState:PaperFoldStateRightUnfolded];

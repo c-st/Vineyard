@@ -17,28 +17,14 @@
 }
 
 -(void) viewWillAppear:(BOOL)animated {
-	
 	if (self.settingsCell.wine != nil) {
 		[self.settingsCell.wine setCountry:self.settingsCell.wine.country]; //workaround for bug
-		
 		NSPredicate *predicate = [self getFetchPredicate:self.settingsCell.wine];
 		//[self setFetchedResultsController:[Appellation fetchAllGroupedBy:@"region" withPredicate:predicate sortedBy:@"region.name,name" ascending:YES]];
-		
 		[self setFetchedResultsController:[Appellation fetchAllSortedBy:@"region.name,name" ascending:YES withPredicate:predicate groupBy:@"region" delegate:self]];
-		
 		//sortedBy:nil works  -  @"region.name,name"
 	}
 	[super viewWillAppear:animated];
-}
-
-- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
-    Appellation *appellation = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    cell.textLabel.text = appellation.name;
-	
-	if ([self showCount]) {
-		// count wines
-		cell.accessoryView = [self buildAccessoryViewFromPredicate:[self buildCountPredicateForObject:appellation] andObject:appellation andIndexPath:indexPath];
-	}
 }
 
 - (NSPredicate *) buildCountPredicateForObject:(NSManagedObject *)object {
@@ -74,6 +60,15 @@
     return cell;
 }
 
+- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
+    Appellation *appellation = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    cell.textLabel.text = appellation.name;
+	if ([self showCount]) {
+		// count wines
+		cell.accessoryView = [self buildAccessoryViewFromPredicate:[self buildCountPredicateForObject:appellation] andObject:appellation andIndexPath:indexPath];
+	}
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     id  sectionInfo = [self.fetchedResultsController sections][section];
 	//NSLog(@"numerOfRows in section %i is %i", section, [sectionInfo numberOfObjects]);
@@ -86,16 +81,12 @@
 	}
 	
 	Appellation *appellation = [[super fetchedResultsController] objectAtIndexPath:indexPath];
-	
 	NSPredicate *searchStatement = [NSPredicate predicateWithFormat:@"appellation.appellationID == %@", appellation.appellationID];
     NSFetchedResultsController *wineSearchController = [Wine fetchAllSortedBy:@"appellation.name" ascending:YES withPredicate:searchStatement groupBy:nil delegate:self];
-
 	WineTableViewController *wineTableViewController = [[WineTableViewController alloc] initWithFetchedResultsController:wineSearchController];
-	
 	[wineTableViewController setTitle:appellation.name];
 	[wineTableViewController setShowCount:NO];
 	[wineTableViewController setPaperFoldNC:self.paperFoldNC];
-	
 	if ([wineSearchController.fetchedObjects count] > 0) {
 		[[self navigationController] pushViewController:wineTableViewController animated:YES];
 	}

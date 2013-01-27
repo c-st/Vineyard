@@ -29,7 +29,7 @@
 #pragma mark View
 
 - (void) viewWillAppear:(BOOL)animated {
-	if ([self.wine.name length] == 0) {
+	if ([self.wine.name length] == 0) { // wine was deleted
 		[[self navigationController] popViewControllerAnimated:NO];
 	} else {
 		[self loadView];

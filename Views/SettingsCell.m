@@ -140,7 +140,6 @@
 			[slider setValue:slider.minimumValue animated:NO];
 			[slider addTarget:self action:@selector(sliderValueWasChanged:) forControlEvents:UIControlEventValueChanged];
 			
-						
 			[self.contentView addSubview:slider];
 			
 			// check for current value
@@ -195,10 +194,8 @@
 				[slider setLowerValue:currentRange.temperatureFromValue upperValue:currentRange.temperatureToValue animated:NO];
 				[textField setTextColor:[UIColor blackColor]];
 			}
-			
 			[slider addTarget:self action:@selector(updateRangeSliderLabel:) forControlEvents:UIControlEventValueChanged];
 			[slider addTarget:self action:@selector(sliderForRangeWasChanged:) forControlEvents:UIControlEventTouchUpInside];
-			
 			[self.contentView addSubview:slider];
 			
 			break;

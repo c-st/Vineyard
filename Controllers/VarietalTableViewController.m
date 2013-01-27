@@ -1,5 +1,6 @@
 
 #import "VarietalTableViewController.h"
+#import "WineTableViewController.h"
 #import "Varietal.h"
 #import "Wine.h"
 #import "GrapeType.h"
@@ -71,10 +72,13 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *CellIdentifier = @"VarietalCell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    CellarTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+        cell = [[CellarTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
 		[cell setSelectionStyle:UITableViewCellEditingStyleNone];
+		if ([self showCount]) {
+			[cell setShowArrow:YES];
+		}
     }
 	[self configureCell:cell atIndexPath:indexPath];
     return cell;
@@ -92,6 +96,14 @@
 			[selectedVarietals addObject:varietal];
 			[cell setAccessoryType:UITableViewCellAccessoryCheckmark];
 		}
+	} else {
+		NSFetchedResultsController *wineSearchController = [Wine fetchAllSortedBy:@"name" ascending:YES withPredicate:[self buildCountPredicateForObject:varietal] groupBy:nil delegate:self];
+		
+		WineTableViewController *wineTableViewController = [[WineTableViewController alloc] initWithFetchedResultsController:wineSearchController];
+		[wineTableViewController setTitle:[varietal valueForKey:@"name"]];
+		[wineTableViewController setShowCount:NO];
+		[wineTableViewController setPaperFoldNC:self.paperFoldNC];
+		[[self navigationController] pushViewController:wineTableViewController animated:YES];
 	}
 }
 
@@ -117,7 +129,6 @@
 		id <NSFetchedResultsSectionInfo> sectionInfo = [self.fetchedResultsController sections][section];
 		Varietal *v = (Varietal *) [sectionInfo objects][0];
 		return [NSString stringWithFormat:@"%@ grapes", v.grapeType.name];
-		
 	}
 	return nil;
 }
