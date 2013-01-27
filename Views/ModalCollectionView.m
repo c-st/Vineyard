@@ -1,12 +1,24 @@
 
 #import "ModalCollectionView.h"
 
+#import "Collection.h"
+
 @implementation ModalCollectionView
 
-- (id)initWithFrame:(CGRect)frame
-{
+@synthesize fetchedResultsController, assignedCollections, wine, tableView;
+
+- (id)initWithFrame:(CGRect)frame andWine:(Wine *) theWine {
     self = [super initWithFrame:frame];
     if (self) {
+		NSLog(@"%i collections.", [[[Collection fetchAllSortedBy:@"name" ascending:YES withPredicate:nil groupBy:nil delegate:nil] fetchedObjects] count]);
+		[self setFetchedResultsController:[Collection fetchAllSortedBy:@"name" ascending:YES withPredicate:nil groupBy:nil delegate:nil]];
+		
+		[self setWine:theWine];
+		self.assignedCollections = [[NSMutableArray alloc] init];
+		[self.assignedCollections addObjectsFromArray:[[[wine collections] allObjects] mutableCopy]];
+		NSLog(@"%i", [wine.collections count]);
+		
+		// UI
         [self setBackgroundColor:[UIColor cellarBeigeNoisyColour]];
 		
 		SSLineView *line = [[SSLineView alloc] initWithFrame:CGRectMake(0, 45, self.frame.size.width, 2)];
@@ -43,10 +55,15 @@
 		saveButton.layer.borderColor = [UIColor blackColor].CGColor;
 		[saveButton setTitle:@"Done" forState:UIControlStateNormal];
 		[saveButton addTarget:self.delegate action:@selector(triggerSaveButton) forControlEvents:UIControlEventTouchUpInside];
-		[saveButton setEnabled:NO];
 		[self addSubview:saveButton];
 
 		// table view
+		self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(20, 50, 280, 180)];
+		[tableView setDelegate:self];
+		[tableView setDataSource:self];
+		[tableView setBackgroundView:nil];
+		[tableView setBackgroundColor:[UIColor clearColor]];
+		[self addSubview:tableView];
     }
     return self;
 }
@@ -56,7 +73,58 @@
 }
 
 - (void) triggerSaveButton {
-	[delegate saveButtonPressed:nil];
+	[delegate saveButtonPressed:self.assignedCollections];
+}
+
+#pragma mark - table view delegate methods
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+	return 40;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    id  sectionInfo = [fetchedResultsController sections][section];
+    return [sectionInfo numberOfObjects];
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 1;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+	Collection *collection = [self.fetchedResultsController objectAtIndexPath:indexPath];
+	
+    static NSString *CellIdentifier = @"CollectionModalCell";
+    UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+		[cell.textLabel setText:[collection name]];
+		[cell setSelectionStyle:UITableViewCellSelectionStyleGray];
+    }
+	
+	if ([self.assignedCollections containsObject:collection]) {
+		[cell setAccessoryType:UITableViewCellAccessoryCheckmark];
+		[cell setBackgroundColor:[UIColor cellarBeigeNoisyColour]];
+	} else {
+		[cell setAccessoryType:UITableViewCellAccessoryNone];
+	}
+	
+    return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath  {
+	UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+	Collection *collection = [self.fetchedResultsController objectAtIndexPath:indexPath];
+	
+	if ([self.assignedCollections containsObject:collection]) {
+		[self.assignedCollections removeObject:collection];
+		[cell setAccessoryType:UITableViewCellAccessoryNone];
+	} else {
+		[self.assignedCollections addObject:collection];
+		[cell setAccessoryType:UITableViewCellAccessoryCheckmark];
+	}
+	
+	[self.tableView deselectRowAtIndexPath:indexPath animated:NO];
 }
 
 @end

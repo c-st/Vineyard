@@ -271,7 +271,7 @@
 #pragma mark Add To Collection button
 
 - (void) addToCollectionButtonPressed {
-	ModalCollectionView *modalCollectionView = [[ModalCollectionView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 250)];
+	ModalCollectionView *modalCollectionView = [[ModalCollectionView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 250) andWine:self.wine];
 	[modalCollectionView setDelegate:self];
 	
 	[self presentSemiView:modalCollectionView withOptions:@{
@@ -283,11 +283,13 @@
 }
 
 - (void) cancelButtonPressed:(id) sender {
-	NSLog(@"cancel");
 	[self dismissSemiModalView];
 }
 
-- (void) saveButtonPressed:(id) sender {
+- (void) saveButtonPressed:(NSMutableArray*) collections {
+	// use given list to persist collections
+	[self.wine setCollections:[NSSet setWithArray:collections]];
+	[[NSManagedObjectContext defaultContext] saveToPersistentStoreAndWait];
 	[self dismissSemiModalView];
 }
 

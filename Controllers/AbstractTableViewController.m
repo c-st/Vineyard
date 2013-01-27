@@ -15,7 +15,6 @@
 
 @synthesize settingsCell, showCount, showSearchBar, showPieChart, paperFoldNC;
 @synthesize fetchedResultsController = fetchedResultsController;
-@synthesize managedObjectContext = _managedObjectContext;
 
 #pragma mark
 #pragma mark Initialization

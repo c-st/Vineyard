@@ -27,7 +27,6 @@
 	BOOL showPieChart;
 }
 
-@property (nonatomic, strong) NSManagedObjectContext* managedObjectContext;
 @property (nonatomic, retain) NSFetchedResultsController *fetchedResultsController;
 @property (nonatomic, strong) SettingsCell* settingsCell;
 
