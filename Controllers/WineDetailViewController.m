@@ -192,7 +192,7 @@
 	[self addHeaderArea:scrollView];
 	
 	UIButton *addToCollectionButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-	[addToCollectionButton setFrame:CGRectMake(50, 200, 150, 20)];
+	[addToCollectionButton setFrame:CGRectMake(50, 200, 150, 40)];
 	[addToCollectionButton setTitle:@"Add to collection" forState:UIControlStateNormal];
 	[addToCollectionButton addTarget:self action:@selector(addToCollectionButtonPressed) forControlEvents:UIControlEventTouchUpInside];
 	[scrollView addSubview:addToCollectionButton];
