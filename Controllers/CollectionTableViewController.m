@@ -37,8 +37,8 @@
 }
 
 - (NSPredicate *) buildCountPredicateForObject:(NSManagedObject *)object {
-	Country* country = (Country *) object;
-	return [NSPredicate predicateWithFormat:@"(country.countryID == %@)", country.countryID];
+	Collection* collection = (Collection *) object;
+	return [NSPredicate predicateWithFormat:@"ANY collections == %@", collection];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {

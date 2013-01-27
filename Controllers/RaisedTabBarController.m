@@ -129,6 +129,7 @@
 	// NSFetchedResultsController *collectionsFRC = [Collection fetchAllSortedBy:@"name" ascending:YES withPredicate:nil groupBy:nil delegate:nil];
 	CollectionTableViewController *collectionsTCV = [[CollectionTableViewController alloc] initWithFetchedResultsController:nil];
 	[collectionsTCV setTitle:@"Collections"];
+	[collectionsTCV setShowCount:YES];
 	collectionsTCV.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Collections" image:[UIImage imageNamed:@"collections.png"] tag:0];
 	UINavigationController *collectionsNavController = [[UINavigationController alloc] initWithRootViewController:collectionsTCV];
 
