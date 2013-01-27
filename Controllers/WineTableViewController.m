@@ -119,8 +119,9 @@
 }
 
 - (void) showMapFoldButtonClicked {
+	// stop scrolling
 	[self.tableView setContentOffset:self.tableView.contentOffset animated:NO];
-	[self.tableView setScrollEnabled:NO];
+	
 	//NSLog(@"button state is %i", [[[self paperFoldNC] paperFoldView] state]);
 	if ([[[self paperFoldNC] paperFoldView] state] == PaperFoldStateDefault) {
 		[[[self paperFoldNC] paperFoldView] setPaperFoldState:PaperFoldStateRightUnfolded animated:YES];
