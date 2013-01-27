@@ -29,7 +29,11 @@
 #pragma mark View
 
 - (void) viewWillAppear:(BOOL)animated {
-	[self loadView];
+	if ([self.wine.name length] == 0) {
+		[[self navigationController] popViewControllerAnimated:NO];
+	} else {
+		[self loadView];
+	}
 }
 
 - (CellarMapView*) buildLocationView:(CLLocationCoordinate2D)coordinate andZoomLevel:(int)zoomLevel {

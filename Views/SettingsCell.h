@@ -15,7 +15,8 @@ typedef NS_ENUM( NSUInteger, SettingsCellType ) {
 	AlcoholSettingsCellType,
 	RangeSettingsCellType,
 	DetailViewSettingsCellType,
-	RatingSettingsCellType
+	RatingSettingsCellType,
+	DeleteWineCellType
 };
 
 @interface SettingsCell : UITableViewCell <UITextFieldDelegate, UIPickerViewDataSource, UIPickerViewDelegate> {

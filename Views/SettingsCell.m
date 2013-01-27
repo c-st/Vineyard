@@ -266,6 +266,20 @@
 			}
 			break;
 		}
+		
+		case DeleteWineCellType: {
+			[self setSelectionStyle:UITableViewCellSelectionStyleGray];
+			[self setAccessoryType:UITableViewCellAccessoryNone];
+			[self.textLabel setText:@"Delete"];
+			[self.textLabel setTextColor:[UIColor whiteColor]];
+			[self.textLabel setTextAlignment:NSTextAlignmentCenter];
+			[self.textLabel setBackgroundColor:[UIColor clearColor]];
+			
+			[self setBackgroundView:[[UIImageView alloc] initWithImage:[[UIImage imageNamed:@"delete-button.png"] stretchableImageWithLeftCapWidth:8.0f topCapHeight:0.0f]]];
+			
+			break;
+		}
+			
 		default:
 			break;
 	}

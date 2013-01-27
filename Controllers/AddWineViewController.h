@@ -6,10 +6,10 @@
 #import "Country.h"
 #import "Location.h"
 
-@interface AddWineViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, CLLocationManagerDelegate> {
+@interface AddWineViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, CLLocationManagerDelegate, UIActionSheetDelegate> {
 	CLLocationManager *locationManager;
 
-	NSArray *configurableProperties;
+	NSMutableArray *configurableProperties;
 	Wine *wine;
 
 	UITableViewController *tableView;
@@ -19,7 +19,7 @@
 }
 
 @property (nonatomic, strong) CLLocationManager *locationManager;
-@property (nonatomic, strong) NSArray *configurableProperties;
+@property (nonatomic, strong) NSMutableArray *configurableProperties;
 @property (nonatomic, strong) Wine *wine;
 
 @property (nonatomic, strong) UITableViewController *tableView;

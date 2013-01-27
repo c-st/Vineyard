@@ -6,6 +6,9 @@
 #import "ColourTableViewController.h"
 #import "CharacteristicsViewController.h"
 
+#import "UIView+Genie.h"
+#import "UIView+SSToolkitAdditions.h"
+
 #import "SettingsCell.h"
 
 #import "UIColor+CellarColours.h"
@@ -189,6 +192,8 @@
 	// TODO Notes
 	SettingsCell *notes = [[SettingsCell alloc] initWithWine:[self wine] andType:DetailViewSettingsCellType andProperty:@"varietals" andName:@"Notes" andTableViewController:varietalTableViewController];
 	
+	
+	
 	// TODO: Tags, Notes, Tasting notes, barrel time
 	
 	NSArray *basics = nil;
@@ -211,12 +216,22 @@
 	
 	NSArray *wineNotes = @[characteristicsSettingsCell, tags, notes];
 	
-	[self setConfigurableProperties:@[basics,
+	
+	
+	[self setConfigurableProperties:[@[basics,
 									 varietal,
 									 tasting,
 									 rating,
-									 wineNotes
-									 ]];
+									 wineNotes] mutableCopy]];
+	
+	if (![self newWine]) {
+		NSLog(@"editing");
+		// Delete
+		SettingsCell *deleteSettingsCell = [[SettingsCell alloc] initWithWine:[self wine] andType:DeleteWineCellType andProperty:@"varietals" andName:@"Delete"];
+		
+		NSArray *delete = @[deleteSettingsCell];
+		[[self configurableProperties] addObject:delete];
+	}
 	
 }
 
@@ -248,7 +263,10 @@
 		[[self navigationController] pushViewController:selectedCell.settingsTableViewController animated:YES];
 	} else if (selectedCell.viewController != nil) {
 		[[self navigationController] pushViewController:selectedCell.viewController animated:YES];
+	} else if (selectedCell.cellType == DeleteWineCellType) {
+		[self deleteWineButtonPressed];
 	}
+	
 }
 
 #pragma mark
@@ -281,6 +299,41 @@
 			[UIView setAnimationTransition:UIViewAnimationTransitionFlipFromLeft forView:self.navigationController.view cache:NO];
 		} completion:^(BOOL finished){}];
 		[[self navigationController] popViewControllerAnimated:NO];
+	}
+}
+
+#pragma mark Deleting wine
+
+- (void) deleteWineButtonPressed {
+	NSLog(@"delete wine");
+	UIActionSheet *confirmSheet = [[UIActionSheet alloc]
+                             initWithTitle:@"Do you really want to delete this wine?"
+                             delegate:self
+                             cancelButtonTitle:@"Cancel"
+                             destructiveButtonTitle:@"Delete"
+                             otherButtonTitles:nil];
+	[confirmSheet showInView:[UIApplication sharedApplication].keyWindow];
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex {
+	if (buttonIndex == 0) {
+		[self.wine deleteEntity];
+		[[NSManagedObjectContext defaultContext] saveToPersistentStoreAndWait];
+	
+		UIImage *screen = [self.navigationController.view imageRepresentation];
+		UIImageView *imageView = [[UIImageView alloc] initWithImage:screen];
+		
+		[self.navigationController.view addSubview:imageView];
+		CGRect endRect = CGRectMake(self.navigationController.view.frame.size.width / 2 - 30, self.navigationController.view.frame.size.height, 60, 80);
+		
+		[[self navigationController] popViewControllerAnimated:NO];
+		
+		[imageView genieInTransitionWithDuration:0.7
+							destinationRect:endRect
+							destinationEdge:BCRectEdgeTop
+								 completion:^{
+									 [imageView removeFromSuperview];
+								 }];
 	}
 }
 
