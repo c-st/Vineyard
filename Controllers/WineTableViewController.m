@@ -71,7 +71,13 @@
 	UIViewController *viewC = [[self paperFoldNC] rightViewController];
 	if ([viewC isKindOfClass:[WineMapFoldViewController class]]) {
 		WineMapFoldViewController *wineMapC = (WineMapFoldViewController *) viewC;
-		[wineMapC setWines:self.fetchedResultsController.fetchedObjects];
+		NSArray *fetchResult = self.fetchedResultsController.fetchedObjects;
+		if ([fetchResult count] > 0) {
+			[wineMapC setWines:fetchResult];
+		} else {
+			NSLog(@"no wines in list");
+			[wineMapC setWines:[[NSArray alloc] init]];
+		}
 	}
 }
 

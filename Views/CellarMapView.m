@@ -47,6 +47,10 @@
 }
 
 - (void) centerMapForWines: (BOOL) isShowRegion {
+	if ([self.wines count] == 0) {
+		NSLog(@"no wines to center. returning.");
+		return;
+	}
 	Wine *firstWine = self.wines[0];
 	CLLocationCoordinate2D coordinate = [self getCoordinateFromWine:firstWine showRegion:isShowRegion];
 	
