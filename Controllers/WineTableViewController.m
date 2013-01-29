@@ -61,12 +61,10 @@
 }
 
 - (void) viewDidAppear:(BOOL)animated {
-	//NSLog(@"view did appear");
-	// enable left fold
+	// enable paper fold
 	[[[self paperFoldNC] paperFoldView] setEnableLeftFoldDragging:NO];
 	[[[self paperFoldNC] paperFoldView] setEnableRightFoldDragging:YES];
 	[[[self paperFoldNC] paperFoldView] setGestureRecognizerEnabled:YES];
-	
 	
 	// set wines to fold map view
 	UIViewController *viewC = [[self paperFoldNC] rightViewController];
@@ -101,16 +99,14 @@
 	Wine *wine = [[super fetchedResultsController] objectAtIndexPath:indexPath];
 	WineDetailViewController *wineDetail = [[WineDetailViewController alloc] initWithWine:wine];
 	
-	// TODO: bug with unbalanced calls
-	if ([[[self paperFoldNC] paperFoldView] state] != PaperFoldStateDefault) {
-		[[[self paperFoldNC] paperFoldView] setPaperFoldState:PaperFoldStateDefault];
-	}
-	
 	// disable map fold in order to retain swipe functionality
 	[[[self paperFoldNC] paperFoldView] setEnableRightFoldDragging:NO];
 	[[[self paperFoldNC] paperFoldView] setGestureRecognizerEnabled:NO];
 	
-	[[self navigationController] pushViewController:wineDetail animated:YES];
+	// only unfold, if paperfold is not open.
+	if ([[[self paperFoldNC] paperFoldView] state] == PaperFoldStateDefault) {
+		[[self navigationController] pushViewController:wineDetail animated:YES];
+	}
 }
 
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
@@ -124,10 +120,8 @@
 	//NSLog(@"button state is %i", [[[self paperFoldNC] paperFoldView] state]);
 	if ([[[self paperFoldNC] paperFoldView] state] == PaperFoldStateDefault) {
 		[[[self paperFoldNC] paperFoldView] setPaperFoldState:PaperFoldStateRightUnfolded animated:YES];
-		[[[self paperFoldNC] paperFoldView] setPaperFoldState:PaperFoldStateRightUnfolded];
 	} else {
 		[[[self paperFoldNC] paperFoldView] setPaperFoldState:PaperFoldStateDefault animated:YES];
-		[[[self paperFoldNC] paperFoldView] setPaperFoldState:PaperFoldStateDefault];
 	}
 }
 

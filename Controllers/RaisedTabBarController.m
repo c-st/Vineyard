@@ -60,60 +60,49 @@
 	return YES;
 }
 
-- (void) viewDidLoad {
-	[super viewDidLoad];
+- (PaperFoldNavigationController*) createPaperFoldNavControllerForRootViewController:(AbstractTableViewController*) rootViewController andTabBarItem:(UITabBarItem*) tabBarItem {
+	[rootViewController setTabBarItem:tabBarItem];
+	UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:rootViewController];
+	[navigationController.navigationBar setTintColor:[UIColor cellarWineRedColour]];
 	
-	// Wines
-	WineTableViewController *wineTVC = [[WineTableViewController alloc] init];
-	[wineTVC setTitle:@"Wines"];
-	wineTVC.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Wines" image:[UIImage imageNamed:@"food_wine_bottle_glass.png"] tag:0];
-
-	UINavigationController *wineNavController = [[UINavigationController alloc] initWithRootViewController:wineTVC];
-	PaperFoldNavigationController *winePaperFoldNC = [[PaperFoldNavigationController alloc] initWithRootViewController:wineNavController];
-	[winePaperFoldNC.paperFoldView setBackgroundColor:[UIColor blackColor]];
-	winePaperFoldNC.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Wines" image:[UIImage imageNamed:@"food_wine_bottle_glass.png"] tag:0];
-	[[winePaperFoldNC paperFoldView] setEnableRightFoldDragging:NO];
-	[[winePaperFoldNC paperFoldView] setEnableLeftFoldDragging:NO];
-	[wineTVC setPaperFoldNC:winePaperFoldNC];
+	PaperFoldNavigationController *paperFoldNavigationController = [[PaperFoldNavigationController alloc] initWithRootViewController:navigationController];
+	[paperFoldNavigationController.paperFoldView setBackgroundColor:[UIColor blackColor]];
+	[paperFoldNavigationController setTabBarItem:tabBarItem];
+	[rootViewController setPaperFoldNC:paperFoldNavigationController];
 	
+	// dummy
 	UIViewController *dummyVC = [[UIViewController alloc] init];
 	[dummyVC.view setFrame:CGRectMake(0, 0, 150, [self.view bounds].size.height)];
 	[dummyVC.view setBackgroundColor:[UIColor blackColor]];
 	
-	WineMapFoldViewController *wineRightVC = [[WineMapFoldViewController alloc] init];
-	[wineRightVC.view setFrame:CGRectMake(0, 0, 120, [self.view bounds].size.height)];
+	// map fold view c
+	WineMapFoldViewController *mapFoldViewController = [[WineMapFoldViewController alloc] init];
+	[mapFoldViewController.view setFrame:CGRectMake(0, 0, 275, [self.view bounds].size.height)];
 	
-	[winePaperFoldNC setRightViewController:wineRightVC width:275 rightViewFoldCount:2 rightViewPullFactor:1.0];
-	[winePaperFoldNC setLeftViewController:dummyVC width:100];
+	[paperFoldNavigationController setRightViewController:mapFoldViewController width:275 rightViewFoldCount:1 rightViewPullFactor:2.0];
+	[paperFoldNavigationController setLeftViewController:dummyVC width:100];
 	
+	[[paperFoldNavigationController paperFoldView] setEnableRightFoldDragging:NO];
+	[[paperFoldNavigationController paperFoldView] setEnableLeftFoldDragging:NO];
 	
-	// Browse
-	// BrowseTableViewController
+	return paperFoldNavigationController;
+}
+
+- (void) viewDidLoad {
+	[super viewDidLoad];
+	
+	// Wines (Paperfold)
+	WineTableViewController *wineTVC = [[WineTableViewController alloc] init];
+	[wineTVC setTitle:@"Wines"];
+	PaperFoldNavigationController *winePaperFoldNC = [self createPaperFoldNavControllerForRootViewController:wineTVC
+																							   andTabBarItem:[[UITabBarItem alloc] initWithTitle:@"Wines" image:[UIImage imageNamed:@"food_wine_bottle_glass.png"] tag:0]];
+	// Browse (Paperfold)
 	BrowseTableViewController *browseTVC = [[BrowseTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
 	[browseTVC setTitle:@"Browse"];
 	[browseTVC setShowCount:NO];
 	[browseTVC setShowPieChart:NO];
-	
-	browseTVC.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Browse" image:[UIImage imageNamed:@"browse.png"] tag:0];
-	UINavigationController *browseNavController = [[UINavigationController alloc] initWithRootViewController:browseTVC];
-	
-	PaperFoldNavigationController *browsePaperFoldNC = [[PaperFoldNavigationController alloc] initWithRootViewController:browseNavController];
-	[browsePaperFoldNC.paperFoldView setBackgroundColor:[UIColor blackColor]];
-	browsePaperFoldNC.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Browse" image:[UIImage imageNamed:@"browse.png"] tag:0];
-	[[browsePaperFoldNC paperFoldView] setEnableRightFoldDragging:NO];
-	[[browsePaperFoldNC paperFoldView] setEnableLeftFoldDragging:NO];
-	[browseTVC setPaperFoldNC:browsePaperFoldNC];
-	
-	UIViewController *dummy2VC = [[UIViewController alloc] init];
-	[dummy2VC.view setFrame:CGRectMake(0, 0, 150, [self.view bounds].size.height)];
-	[dummy2VC.view setBackgroundColor:[UIColor blackColor]];
-	
-	WineMapFoldViewController *browseRightVC = [[WineMapFoldViewController alloc] init];
-	[browseRightVC.view setFrame:CGRectMake(0, 0, 120, [self.view bounds].size.height)];
-	
-	[browsePaperFoldNC setRightViewController:browseRightVC width:275 rightViewFoldCount:2 rightViewPullFactor:1.0];
-	[browsePaperFoldNC setLeftViewController:dummy2VC width:100];
-	
+	PaperFoldNavigationController *browsePaperFoldNC = [self createPaperFoldNavControllerForRootViewController:browseTVC
+																							   andTabBarItem:[[UITabBarItem alloc] initWithTitle:@"Browse" image:[UIImage imageNamed:@"browse.png"] tag:0]];
 	
 	// Countries
 	NSFetchedResultsController *countriesFRC = [Country fetchAllSortedBy:@"name" ascending:YES withPredicate:nil groupBy:nil delegate:nil];
@@ -132,13 +121,6 @@
 	[collectionsTCV setShowCount:YES];
 	collectionsTCV.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Collections" image:[UIImage imageNamed:@"collections.png"] tag:0];
 	UINavigationController *collectionsNavController = [[UINavigationController alloc] initWithRootViewController:collectionsTCV];
-
-	
-	// 2.
-	[wineNavController.navigationBar setTintColor:[UIColor cellarWineRedColour]];
-	[browseNavController.navigationBar setTintColor:[UIColor cellarWineRedColour]];
-	[countryNavController.navigationBar setTintColor:[UIColor cellarWineRedColour]];
-	[collectionsNavController.navigationBar setTintColor:[UIColor cellarWineRedColour]];
 	
 	
 	[self setViewControllers:@[winePaperFoldNC,
