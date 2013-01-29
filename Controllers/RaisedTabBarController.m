@@ -78,8 +78,9 @@
 	// map fold view c
 	WineMapFoldViewController *mapFoldViewController = [[WineMapFoldViewController alloc] init];
 	[mapFoldViewController.view setFrame:CGRectMake(0, 0, 275, [self.view bounds].size.height)];
+	[mapFoldViewController.view setBackgroundColor:[UIColor blackColor]];
 	
-	[paperFoldNavigationController setRightViewController:mapFoldViewController width:275 rightViewFoldCount:1 rightViewPullFactor:2.0];
+	[paperFoldNavigationController setRightViewController:mapFoldViewController width:275 rightViewFoldCount:2 rightViewPullFactor:1.0];
 	[paperFoldNavigationController setLeftViewController:dummyVC width:100];
 	
 	[[paperFoldNavigationController paperFoldView] setEnableRightFoldDragging:NO];

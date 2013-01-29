@@ -103,9 +103,11 @@
 	[[[self paperFoldNC] paperFoldView] setEnableRightFoldDragging:NO];
 	[[[self paperFoldNC] paperFoldView] setGestureRecognizerEnabled:NO];
 	
-	// only unfold, if paperfold is not open.
+	// only unfold, if paperfold is not open. otherwise fold back.
 	if ([[[self paperFoldNC] paperFoldView] state] == PaperFoldStateDefault) {
 		[[self navigationController] pushViewController:wineDetail animated:YES];
+	} else {
+		[[[self paperFoldNC] paperFoldView] setPaperFoldState:PaperFoldStateDefault animated:YES];
 	}
 }
 
