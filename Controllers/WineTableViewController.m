@@ -67,6 +67,7 @@
 	[[[self paperFoldNC] paperFoldView] setEnableRightFoldDragging:YES];
 	[[[self paperFoldNC] paperFoldView] setGestureRecognizerEnabled:YES];
 	
+	
 	// set wines to fold map view
 	UIViewController *viewC = [[self paperFoldNC] rightViewController];
 	if ([viewC isKindOfClass:[WineMapFoldViewController class]]) {
@@ -80,14 +81,6 @@
 		}
 	}
 }
-
-- (void) viewWillDisappear:(BOOL)animated {
-	// unfold and disable
-	[[[self paperFoldNC] paperFoldView] setEnableLeftFoldDragging:NO];
-	//[[[self paperFoldNC] paperFoldView] setEnableRightFoldDragging:NO];
-	//[[[self paperFoldNC] paperFoldView] setGestureRecognizerEnabled:NO];
-}
-
 
 - (NSPredicate*) getFetchPredicate:(Wine *)withWine {
 	return [NSPredicate predicateWithFormat:@"name.length > 0"];
