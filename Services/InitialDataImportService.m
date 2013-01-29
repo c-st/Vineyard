@@ -22,7 +22,7 @@
 
 @implementation InitialDataImportService
 
-+ (void)importInitialDataFromJson {
++ (void)importInitialDataFromJson:(NSManagedObjectContext*) context {
     // Import sample data
     NSError *error = nil;
     NSData *json = [NSData dataWithContentsOfFile: [[NSBundle mainBundle] pathForResource:@"data.json" ofType:nil]];
@@ -36,23 +36,26 @@
 		NSLog(@"Importing countries...");
 		for (object in data[@"countries"]) {
 			//NSLog(@"inserting new country: %@", object);
-			Country *newCountry = [Country createEntity];
-			[newCountry importValuesForKeysWithObject:object];
-		}
-		[[NSManagedObjectContext defaultContext] saveToPersistentStoreAndWait];
-	}
 	
+			//[MagicalRecord saveWithBlock:^(NSManagedObjectContext *localContext) {
+				Country *newCountry = [Country createInContext:context];
+				[newCountry importValuesForKeysWithObject:object];
+			//}];
+			
+		}
+	}
+
 	//Classification
 	if (![Classification hasAtLeastOneEntity]) {
 		NSLog(@"Importing classifications...");
 		for (object in data[@"classifications"]) {
 			//NSLog(@"inserting new region: %@", object);
-			Classification *newClassification = [Classification createEntity];
+			Classification *newClassification = [Classification createInContext:context];
 			[newClassification importValuesForKeysWithObject:object];
         
-			[newClassification setCountry:[Country findByAttribute:@"countryID" withValue:[object valueForKeyPath:@"countryID"]][0]];
+			[newClassification setCountry:[Country findByAttribute:@"countryID" withValue:[object valueForKeyPath:@"countryID"] inContext:context][0]];
 		}
-		[[NSManagedObjectContext defaultContext] saveToPersistentStoreAndWait];
+		//[context saveToPersistentStoreAndWait];
 	}
 	
 	//Indication
@@ -60,41 +63,41 @@
 		NSLog(@"Importing indications...");
 		for (object in data[@"indications"]) {
 			//NSLog(@"inserting new region: %@", object);
-			Indication *newIndication = [Indication createEntity];
+			Indication *newIndication = [Indication createInContext:context];
 			[newIndication importValuesForKeysWithObject:object];
         
-			[newIndication setCountry:[Country findByAttribute:@"countryID" withValue:[object valueForKeyPath:@"countryID"]][0]];
+			[newIndication setCountry:[Country findByAttribute:@"countryID" withValue:[object valueForKeyPath:@"countryID"] inContext:context][0]];
 		}
-		[[NSManagedObjectContext defaultContext] saveToPersistentStoreAndWait];
+		//[context saveToPersistentStoreAndWait];
 	}
-    
+ 
     // Region
 	if (![Region hasAtLeastOneEntity]) {
 		NSLog(@"Importing regions...");
 		for (object in data[@"regions"]) {
 			//NSLog(@"inserting new region: %@", object);
-			Region *newRegion = [Region createEntity];
+			Region *newRegion = [Region createInContext:context];
 			[newRegion importValuesForKeysWithObject:object];
         
-			[newRegion setCountry:[Country findByAttribute:@"countryID" withValue:[object valueForKeyPath:@"countryID"]][0]];
+			[newRegion setCountry:[Country findByAttribute:@"countryID" withValue:[object valueForKeyPath:@"countryID"] inContext:context][0]];
 		}
-		[[NSManagedObjectContext defaultContext] saveToPersistentStoreAndWait];
+		//[context saveToPersistentStoreAndWait];
 	}
-	
+
 	// Appellation
 	if (![Appellation hasAtLeastOneEntity]) {
 		NSLog(@"Importing appellations...");
 		for (object in data[@"appellations"]) {
 			//NSLog(@"inserting new appellation: %@", object);
-			Appellation *newAppellation = [Appellation createEntity];
+			Appellation *newAppellation = [Appellation createInContext:context];
 			[newAppellation importValuesForKeysWithObject:object];
-			[newAppellation setRegion:[Region findByAttribute:@"regionID" withValue:[object valueForKeyPath:@"regionID"]][0]];
+			[newAppellation setRegion:[Region findByAttribute:@"regionID" withValue:[object valueForKeyPath:@"regionID"] inContext:context][0]];
 		
 			if (![[object valueForKeyPath:@"classificationID"] isEqualToString:@""]) {
-				[newAppellation setClassification:[Classification findByAttribute:@"classificationID" withValue:[object valueForKeyPath:@"classificationID"]][0]];
+				[newAppellation setClassification:[Classification findByAttribute:@"classificationID" withValue:[object valueForKeyPath:@"classificationID"] inContext:context][0]];
 			}
 		}
-		[[NSManagedObjectContext defaultContext] saveToPersistentStoreAndWait];
+		//[context saveToPersistentStoreAndWait];
 	}
 	
 	// Grape Type
@@ -102,10 +105,10 @@
 		NSLog(@"Importing grape types...");
 		for (object in data[@"grapeTypes"]) {
 			//NSLog(@"inserting new varietal: %@", object);
-			GrapeType *newGrapeType = [GrapeType createEntity];
+			GrapeType *newGrapeType = [GrapeType createInContext:context];
 			[newGrapeType importValuesForKeysWithObject:object];
 		}
-		[[NSManagedObjectContext defaultContext] saveToPersistentStoreAndWait];
+		//[context saveToPersistentStoreAndWait];
 	}
 	
 	// Temperature ranges
@@ -113,12 +116,12 @@
 		NSLog(@"Importing temperature ranges...");
 		for (object in data[@"defaultTemperatureRanges"]) {
 			//NSLog(@"inserting new varietal: %@", object);
-			TemperatureRange *newTemperatureRange = [TemperatureRange createEntity];
+			TemperatureRange *newTemperatureRange = [TemperatureRange createInContext:context];
 			[newTemperatureRange importValuesForKeysWithObject:object];
 			
-			[newTemperatureRange setGrape:[GrapeType findByAttribute:@"grapeTypeID" withValue:[object valueForKeyPath:@"grapeTypeID"]][0]];
+			[newTemperatureRange setGrape:[GrapeType findByAttribute:@"grapeTypeID" withValue:[object valueForKeyPath:@"grapeTypeID"] inContext:context][0]];
 		}
-		[[NSManagedObjectContext defaultContext] saveToPersistentStoreAndWait];
+		//[context saveToPersistentStoreAndWait];
 	}
 	
 	// Varietals
@@ -126,12 +129,12 @@
 		NSLog(@"Importing varietals...");
 		for (object in data[@"varietals"]) {
 			//NSLog(@"inserting new varietal: %@", object);
-			Varietal *newVarietal = [Varietal createEntity];
+			Varietal *newVarietal = [Varietal createInContext:context];
 			[newVarietal importValuesForKeysWithObject:object];
 			
-			[newVarietal setGrapeType:[GrapeType findByAttribute:@"grapeTypeID" withValue:[object valueForKeyPath:@"grapeTypeID"]][0]];
+			[newVarietal setGrapeType:[GrapeType findByAttribute:@"grapeTypeID" withValue:[object valueForKeyPath:@"grapeTypeID"] inContext:context][0]];
 		}
-		[[NSManagedObjectContext defaultContext] saveToPersistentStoreAndWait];
+		//[context saveToPersistentStoreAndWait];
 	}
 	
 	// Locations for Regions
@@ -139,14 +142,14 @@
 		NSLog(@"Importing locations for regions...");
 		for (object in data[@"regionLocations"]) {
 			//NSLog(@"inserting new location for region: %@", object);
-			Location *location = [Location createEntity];
+			Location *location = [Location createInContext:context];
 			[location setLatitude:[object valueForKeyPath:@"latitude"]];
 			[location setLongitude:[object valueForKeyPath:@"longitude"]];
-			[location setRegion:[Region findByAttribute:@"regionID" withValue:[object valueForKeyPath:@"regionID"]][0]];
+			[location setRegion:[Region findByAttribute:@"regionID" withValue:[object valueForKeyPath:@"regionID"] inContext:context][0]];
 			//NSLog(@"location: %@", location);
 			
 		}
-		[[NSManagedObjectContext defaultContext] saveToPersistentStoreAndWait];
+		//[context saveToPersistentStoreAndWait];
 	}
 	
 	NSLog(@"done importing!");

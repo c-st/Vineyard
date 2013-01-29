@@ -16,6 +16,7 @@
 #import "GrapeType.h"
 
 #import "InitialDataImportService.h"
+#import "MBProgressHUD.h"
 
 @implementation AppDelegate
 
@@ -30,7 +31,7 @@
     //[InitialDataImportService clearStore];
     
     // Import sample data
-	[InitialDataImportService importInitialDataFromJson];
+	//[InitialDataImportService importInitialDataFromJson];
 	
 	RaisedTabBarController *tab = [[RaisedTabBarController alloc] init];
 	
@@ -39,8 +40,32 @@
     [self.window addSubview:tab.view];
     self.window.rootViewController = tab;
     [self.window makeKeyAndVisible];
+	
+	
+	// initial data import
+	[MBProgressHUD showHUDAddedTo:tab.view animated:YES];
+	dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
+		// Import sample data
+		[MagicalRecord saveInBackgroundWithBlock:^(NSManagedObjectContext *localContext){
+			[InitialDataImportService importInitialDataFromJson:localContext];
+		}];
+		
+		
+		dispatch_async(dispatch_get_main_queue(), ^{
+			[MBProgressHUD hideHUDForView:tab.view animated:YES];
+			//[[NSManagedObjectContext defaultContext] mergeChangesFromContextDidSaveNotification:nil];
+		});
+	});
 
     return YES;
+}
+
+- (void)mergeChangesAfterImportFinished:(NSNotification *)notification{
+	NSLog(@"requesting to merge changes");
+	// Merge changes into the main context on the main thread
+	[self.managedObjectContext performSelectorOnMainThread:@selector(mergeChangesFromContextDidSaveNotification:)
+								  withObject:notification
+							   waitUntilDone:YES];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

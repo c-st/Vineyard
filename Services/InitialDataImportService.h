@@ -10,7 +10,7 @@
 
 @interface InitialDataImportService : NSObject
 
-+ (void)importInitialDataFromJson;
++ (void)importInitialDataFromJson:(NSManagedObjectContext*) context;
 
 + (void)clearStore;
 
