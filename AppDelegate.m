@@ -45,12 +45,13 @@
 	// initial data import
 	[MBProgressHUD showHUDAddedTo:tab.view animated:YES];
 	dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
-		// Import sample data
-		[MagicalRecord saveInBackgroundWithBlock:^(NSManagedObjectContext *localContext){
+		
+		// is currently spawning yet another thread. so hud disappears too soon.
+		[MagicalRecord saveWithBlock:^(NSManagedObjectContext *localContext) {
+			// Import sample data
 			[InitialDataImportService importInitialDataFromJson:localContext];
 		}];
-		
-		
+
 		dispatch_async(dispatch_get_main_queue(), ^{
 			[MBProgressHUD hideHUDForView:tab.view animated:YES];
 			//[[NSManagedObjectContext defaultContext] mergeChangesFromContextDidSaveNotification:nil];
