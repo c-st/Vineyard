@@ -44,6 +44,7 @@
 		83282EE01699031100C5BE0E /* CellarMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 83282EDF1699031100C5BE0E /* CellarMapView.m */; };
 		833146D51678D2E5000F9654 /* WineMapFoldViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 833146D41678D2E5000F9654 /* WineMapFoldViewController.m */; };
 		833146DD16791B0E000F9654 /* PopoverView.m in Sources */ = {isa = PBXBuildFile; fileRef = 833146DB16791B0E000F9654 /* PopoverView.m */; };
+		8336837816B88A3200D7A947 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 8336836316B88A3200D7A947 /* MBProgressHUD.m */; };
 		8343ABE516B86D3000492D57 /* FacingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8343ABCF16B86D3000492D57 /* FacingView.m */; };
 		8343ABE616B86D3000492D57 /* FoldView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8343ABD116B86D3000492D57 /* FoldView.m */; };
 		8343ABE716B86D3000492D57 /* MultiFoldView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8343ABD316B86D3000492D57 /* MultiFoldView.m */; };
@@ -296,6 +297,8 @@
 		833146DB16791B0E000F9654 /* PopoverView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopoverView.m; sourceTree = "<group>"; };
 		833591E4164B145E00FEA5C9 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		833591E5164B145E00FEA5C9 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		8336836216B88A3200D7A947 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		8336836316B88A3200D7A947 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		8343ABCE16B86D3000492D57 /* FacingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacingView.h; sourceTree = "<group>"; };
 		8343ABCF16B86D3000492D57 /* FacingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FacingView.m; sourceTree = "<group>"; };
 		8343ABD016B86D3000492D57 /* FoldView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoldView.h; sourceTree = "<group>"; };
@@ -671,6 +674,7 @@
 		832EDC4F165FD4FA00AE20A9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8336834716B88A3200D7A947 /* MBProgressHUD */,
 				8343ABCD16B86D3000492D57 /* PaperFold */,
 				836D080516ADE23F00FA090C /* SVSegmentedControl */,
 				836D07E816ADB5EE00FA090C /* OCMapView */,
@@ -821,6 +825,16 @@
 			);
 			path = Views;
 			sourceTree = "<group>";
+		};
+		8336834716B88A3200D7A947 /* MBProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				8336836216B88A3200D7A947 /* MBProgressHUD.h */,
+				8336836316B88A3200D7A947 /* MBProgressHUD.m */,
+			);
+			name = MBProgressHUD;
+			path = Frameworks/MBProgressHUD;
+			sourceTree = SOURCE_ROOT;
 		};
 		8343ABCD16B86D3000492D57 /* PaperFold */ = {
 			isa = PBXGroup;
@@ -1435,6 +1449,7 @@
 				8343ABEE16B86D3000492D57 /* ShadowView.m in Sources */,
 				8343ABEF16B86D3000492D57 /* TouchThroughUIView.m in Sources */,
 				8343ABF016B86D3000492D57 /* UIView+Screenshot.m in Sources */,
+				8336837816B88A3200D7A947 /* MBProgressHUD.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
