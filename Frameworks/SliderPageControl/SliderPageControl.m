@@ -269,8 +269,8 @@
 	if (self.hasDragged) [self showMaskView:NO];
 	self.hasDragged = NO;
 	
-	CGPoint endPoint = [[touches anyObject] locationInView:self];
 /*
+	CGPoint endPoint = [[touches anyObject] locationInView:self];
 	if (endPoint.y<UPPER_TOUCH_LIMIT || endPoint.y>self.frame.size.height)
 	{
 		// ended outside, considered a cancel, should snap to original location
