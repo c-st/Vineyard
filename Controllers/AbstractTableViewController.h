@@ -22,9 +22,7 @@
 	
 	PaperFoldNavigationController *paperFoldNC;
 	
-	BOOL showCount;
-	BOOL showSearchBar;
-	BOOL showPieChart;
+
 }
 
 @property (nonatomic, retain) NSFetchedResultsController *fetchedResultsController;
@@ -35,6 +33,7 @@
 @property (atomic) BOOL showCount;
 @property (atomic) BOOL showSearchBar;
 @property (atomic) BOOL showPieChart;
+@property (atomic) BOOL allowPaperFoldDragging;
 
 
 - (id) initWithFetchedResultsController:(NSFetchedResultsController *)controller;

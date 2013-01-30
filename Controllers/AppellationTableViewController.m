@@ -20,9 +20,7 @@
 	if (self.settingsCell.wine != nil) {
 		[self.settingsCell.wine setCountry:self.settingsCell.wine.country]; //workaround for bug
 		NSPredicate *predicate = [self getFetchPredicate:self.settingsCell.wine];
-		//[self setFetchedResultsController:[Appellation fetchAllGroupedBy:@"region" withPredicate:predicate sortedBy:@"region.name,name" ascending:YES]];
 		[self setFetchedResultsController:[Appellation fetchAllSortedBy:@"region.name,name" ascending:YES withPredicate:predicate groupBy:@"region" delegate:self]];
-		//sortedBy:nil works  -  @"region.name,name"
 	}
 	[super viewWillAppear:animated];
 }

@@ -60,6 +60,12 @@
 	[self.tableView reloadData];
 }
 
+- (void) viewWillDisappear:(BOOL)animated {
+	if ([[[self paperFoldNC] paperFoldView] state] == PaperFoldStateDefault) {
+		//NSLog(@"PaperFoldStateDefault");
+	}
+}
+
 - (void) viewDidAppear:(BOOL)animated {
 	// enable paper fold
 	[[[self paperFoldNC] paperFoldView] setEnableLeftFoldDragging:NO];
@@ -111,15 +117,11 @@
 	}
 }
 
-- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
-	NSLog(@"didChangeContent");
-}
-
 - (void) showMapFoldButtonClicked {
 	// stop scrolling
 	[self.tableView setContentOffset:self.tableView.contentOffset animated:NO];
 	
-	//NSLog(@"button state is %i", [[[self paperFoldNC] paperFoldView] state]);
+	NSLog(@"button state is %i", [[[self paperFoldNC] paperFoldView] state]);
 	if ([[[self paperFoldNC] paperFoldView] state] == PaperFoldStateDefault) {
 		[[[self paperFoldNC] paperFoldView] setPaperFoldState:PaperFoldStateRightUnfolded animated:YES];
 	} else {

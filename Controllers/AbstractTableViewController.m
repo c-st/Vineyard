@@ -13,7 +13,7 @@
 
 @implementation AbstractTableViewController
 
-@synthesize settingsCell, showCount, showSearchBar, showPieChart, paperFoldNC;
+@synthesize settingsCell, showCount, showSearchBar, showPieChart, allowPaperFoldDragging, paperFoldNC;
 @synthesize fetchedResultsController = fetchedResultsController;
 
 #pragma mark
@@ -26,12 +26,15 @@
 		[self setShowCount:NO];
 		[self setShowSearchBar:NO];
 		[self setShowPieChart:NO];
+		[self setAllowPaperFoldDragging:NO];
     }
     return self;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+	[fetchedResultsController setDelegate:self];
+	
 	if (self.showSearchBar) {
 		searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
 		[searchBar setTintColor:[UIColor cellarWineRedColour]];
@@ -42,22 +45,23 @@
 	
 	if (self.showPieChart) {
 		UIImage *image = [[[UIImage imageNamed:@"pie.png"] imageTintedWithColor:[UIColor whiteColor]] scaleToSize:CGSizeMake(16, 16)];
-		
 		UIBarButtonItem *pieButton = [[UIBarButtonItem alloc] initWithImage:image style:UIBarButtonItemStylePlain target:self action:@selector(showStatsButtonClicked)];
-		
-		//UIBarButtonItem *pieButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemOrganize target:self action:@selector(showStatsButtonClicked)];
 		[[self navigationItem] setRightBarButtonItem:pieButton];
 	}
-	[fetchedResultsController setDelegate:self];
+	
 }
 
--(void) viewWillAppear:(BOOL)animated {
-	//[self.tableView setContentOffset:self.showSearchBar ? CGPointMake(0, 44) : CGPointMake(0, 0) animated:YES];
+- (void) viewWillAppear:(BOOL)animated {
 	[self updateAndRefetch];
 }
 
+- (void) viewDidAppear:(BOOL)animated {
+	[[[self paperFoldNC] paperFoldView] setEnableLeftFoldDragging:[self allowPaperFoldDragging]];
+	[[[self paperFoldNC] paperFoldView] setEnableRightFoldDragging:[self allowPaperFoldDragging]];
+}
+
 - (void) updateAndRefetch {
-	[self.fetchedResultsController.fetchRequest setFetchBatchSize:50];
+	[self.fetchedResultsController.fetchRequest setFetchBatchSize:20];
 	
 	NSError *error;
 	if (![[self fetchedResultsController] performFetch:&error]) {
