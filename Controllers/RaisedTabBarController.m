@@ -107,7 +107,16 @@
 	PaperFoldNavigationController *browsePaperFoldNC = [self createPaperFoldNavControllerForRootViewController:browseTVC
 																							   andTabBarItem:[[UITabBarItem alloc] initWithTitle:@"Browse" image:[UIImage imageNamed:@"browse.png"] tag:0]];
 	
-	// Countries
+	// Collections
+	// NSFetchedResultsController *collectionsFRC = [Collection fetchAllSortedBy:@"name" ascending:YES withPredicate:nil groupBy:nil delegate:nil];
+	CollectionTableViewController *collectionsTVC = [[CollectionTableViewController alloc] initWithFetchedResultsController:nil];
+	[collectionsTVC setTitle:@"Collections"];
+	[collectionsTVC setShowCount:YES];
+	[collectionsTVC setShowPieChart:NO];
+	PaperFoldNavigationController *collectionPaperFoldNC = [self createPaperFoldNavControllerForRootViewController:collectionsTVC
+																								 andTabBarItem:[[UITabBarItem alloc] initWithTitle:@"Collections" image:[UIImage imageNamed:@"collections.png"] tag:0]];
+	
+	// Countries // Food
 	NSFetchedResultsController *countriesFRC = [Country fetchAllSortedBy:@"name" ascending:YES withPredicate:nil groupBy:nil delegate:nil];
 	CountryTableViewController *countryTVC = [[CountryTableViewController alloc] initWithFetchedResultsController:countriesFRC];
 	[countryTVC setTitle:@"Food"];
@@ -117,19 +126,10 @@
     UINavigationController *countryNavController = [[UINavigationController alloc] initWithRootViewController:countryTVC];
 	
 	
-	// Collections
-	// NSFetchedResultsController *collectionsFRC = [Collection fetchAllSortedBy:@"name" ascending:YES withPredicate:nil groupBy:nil delegate:nil];
-	CollectionTableViewController *collectionsTCV = [[CollectionTableViewController alloc] initWithFetchedResultsController:nil];
-	[collectionsTCV setTitle:@"Collections"];
-	[collectionsTCV setShowCount:YES];
-	collectionsTCV.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Collections" image:[UIImage imageNamed:@"collections.png"] tag:0];
-	UINavigationController *collectionsNavController = [[UINavigationController alloc] initWithRootViewController:collectionsTCV];
-	
-	
 	[self setViewControllers:@[winePaperFoldNC,
 							browsePaperFoldNC,
                             [self viewControllerWithTabTitle:@"" image:nil],
-							collectionsNavController,
+							collectionPaperFoldNC,
 							countryNavController, // food? characteristics?
                             ]];
 	
