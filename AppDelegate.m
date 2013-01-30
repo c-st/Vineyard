@@ -43,19 +43,15 @@
 	
 	
 	// initial data import
-	[MBProgressHUD showHUDAddedTo:tab.view animated:YES];
-	dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
-		
-		// is currently spawning yet another thread. so hud disappears too soon.
-		[MagicalRecord saveWithBlock:^(NSManagedObjectContext *localContext) {
-			// Import sample data
-			[InitialDataImportService importInitialDataFromJson:localContext];
-		}];
-
-		dispatch_async(dispatch_get_main_queue(), ^{
-			[MBProgressHUD hideHUDForView:tab.view animated:YES];
-		});
-	});
+	MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:tab.view animated:YES];
+	hud.mode = MBProgressHUDModeIndeterminate;
+	hud.labelText = @"Importing some data...";
+	[MagicalRecord saveWithBlock:^(NSManagedObjectContext *localContext) {
+		// Import sample data
+		[InitialDataImportService importInitialDataFromJson:localContext];
+	} completion:^(BOOL success, NSError *error) {
+		[MBProgressHUD hideHUDForView:tab.view animated:YES];
+	}];
 
     return YES;
 }
