@@ -54,20 +54,12 @@
 
 		dispatch_async(dispatch_get_main_queue(), ^{
 			[MBProgressHUD hideHUDForView:tab.view animated:YES];
-			//[[NSManagedObjectContext defaultContext] mergeChangesFromContextDidSaveNotification:nil];
 		});
 	});
 
     return YES;
 }
 
-- (void)mergeChangesAfterImportFinished:(NSNotification *)notification{
-	NSLog(@"requesting to merge changes");
-	// Merge changes into the main context on the main thread
-	[self.managedObjectContext performSelectorOnMainThread:@selector(mergeChangesFromContextDidSaveNotification:)
-								  withObject:notification
-							   waitUntilDone:YES];
-}
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
