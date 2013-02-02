@@ -47,17 +47,19 @@
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
 	NSDictionary *rating = [self.values objectAtIndex:indexPath.row];
 	
-    //cell.textLabel.text = [rating valueForKey:@"name"];
+    cell.textLabel.text = [rating valueForKey:@"name"];
     //cell.detailTextLabel.text = [NSString stringWithFormat:@"%@, %@", region.name, region.regionID];
-	
-	SSRatingPicker *ratingPicker = [[SSRatingPicker alloc] initWithFrame:CGRectMake(22, 18, 220, 50)];
-	[ratingPicker setBackgroundColor:[UIColor clearColor]];
-	[ratingPicker setTotalNumberOfStars:6];
-	[ratingPicker setSelectedNumberOfStars:[[rating valueForKey:@"starCount"] floatValue]];
-	[ratingPicker setStarSpacing:19.0f];
-	[ratingPicker.textLabel setText:@""];
-	[ratingPicker setUserInteractionEnabled:NO];
-	[cell.contentView addSubview:ratingPicker];
+	float starCount = [[rating valueForKey:@"starCount"] floatValue];
+	if (starCount > 0) {
+		SSRatingPicker *ratingPicker = [[SSRatingPicker alloc] initWithFrame:CGRectMake(70, 15, 180, 20)];
+		[ratingPicker setBackgroundColor:[UIColor clearColor]];
+		[ratingPicker setTotalNumberOfStars:6];
+		[ratingPicker setSelectedNumberOfStars:starCount];
+		[ratingPicker setStarSpacing:4.0f];
+		[ratingPicker.textLabel setText:@""];
+		[ratingPicker setUserInteractionEnabled:NO];
+		[cell.contentView addSubview:ratingPicker];
+	}
 	
 	if ([self showCount]) {
 		// count wines
@@ -80,7 +82,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-	return 60;
+	return 55;
 }
 
 - (void) updateAndRefetch {
