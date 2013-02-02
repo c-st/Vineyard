@@ -12,15 +12,14 @@
 
 - (id) init {
 	if ((self = [super init])) {
-		NSLog(@"init");
 		self.values = @[
 					@{@"name" : @"Unrated", @"starCount" : @0},
-					@{@"name" : @"1 Star",  @"starCount" : @1},
-					@{@"name" : @"2 Stars", @"starCount" : @2},
-					@{@"name" : @"3 Stars", @"starCount" : @3},
-					@{@"name" : @"4 Stars", @"starCount" : @4},
+					@{@"name" : @"6 Stars", @"starCount" : @6},
 					@{@"name" : @"5 Stars", @"starCount" : @5},
-					@{@"name" : @"6 Stars", @"starCount" : @6}
+					@{@"name" : @"4 Stars", @"starCount" : @4},
+					@{@"name" : @"3 Stars", @"starCount" : @3},
+					@{@"name" : @"2 Stars", @"starCount" : @2},
+					@{@"name" : @"1 Star",  @"starCount" : @1}
 				];
 
 	}
@@ -51,7 +50,7 @@
     //cell.textLabel.text = [rating valueForKey:@"name"];
     //cell.detailTextLabel.text = [NSString stringWithFormat:@"%@, %@", region.name, region.regionID];
 	
-	SSRatingPicker *ratingPicker = [[SSRatingPicker alloc] initWithFrame:CGRectMake(22, 12, 220, 50)];
+	SSRatingPicker *ratingPicker = [[SSRatingPicker alloc] initWithFrame:CGRectMake(22, 18, 220, 50)];
 	[ratingPicker setBackgroundColor:[UIColor clearColor]];
 	[ratingPicker setTotalNumberOfStars:6];
 	[ratingPicker setSelectedNumberOfStars:[[rating valueForKey:@"starCount"] floatValue]];
@@ -81,7 +80,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-	return 50;
+	return 60;
 }
 
 - (void) updateAndRefetch {
