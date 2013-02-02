@@ -1,11 +1,9 @@
-#import "UIColor+CellarColours.h"
+
 #import "AbstractTableViewController.h"
 #import "WineTableViewController.h"
 #import "SettingsCell.h"
-#import "UIView+ObjectTagAdditions.h"
-#import <QuartzCore/QuartzCore.h>
 
-#import "SSToolkit/SSToolkit.h"
+
 
 @interface AbstractTableViewController ()
 

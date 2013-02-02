@@ -52,24 +52,6 @@
 	return [NSPredicate predicateWithFormat:@"(grapeType.grapeTypeID ==[c] %@) || (%@ = null)", withWine.colour.grapeTypeID, withWine.colour];
 }
 
-- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
-    Varietal *varietal = [self.fetchedResultsController objectAtIndexPath:indexPath];
-	
-	cell.textLabel.text = [NSString stringWithFormat:@"%@", varietal.name];
-	
-	if ([self showCount]) {
-		// count wines
-		cell.accessoryView = [self buildAccessoryViewFromPredicate:[self buildCountPredicateForObject:varietal] andObject:varietal andIndexPath:indexPath];
-	}
-	
-	if ([self.selectedVarietals containsObject:varietal]) {
-		[cell setAccessoryType:UITableViewCellAccessoryCheckmark];
-		[cell setBackgroundColor:[UIColor cellarBeigeNoisyColour]];
-	} else {
-		[cell setAccessoryType:UITableViewCellAccessoryNone];
-	}
-}
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *CellIdentifier = @"VarietalCell";
     CellarTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
@@ -82,6 +64,21 @@
     }
 	[self configureCell:cell atIndexPath:indexPath];
     return cell;
+}
+
+- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
+    Varietal *varietal = [self.fetchedResultsController objectAtIndexPath:indexPath];
+	cell.textLabel.text = [NSString stringWithFormat:@"%@", varietal.name];
+	if ([self showCount]) {
+		// count wines
+		cell.accessoryView = [self buildAccessoryViewFromPredicate:[self buildCountPredicateForObject:varietal] andObject:varietal andIndexPath:indexPath];
+	}
+	if ([self.selectedVarietals containsObject:varietal]) {
+		[cell setAccessoryType:UITableViewCellAccessoryCheckmark];
+		[cell setBackgroundColor:[UIColor cellarBeigeNoisyColour]];
+	} else {
+		[cell setAccessoryType:UITableViewCellAccessoryNone];
+	}
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath  {

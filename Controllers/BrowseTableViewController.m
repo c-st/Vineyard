@@ -3,6 +3,7 @@
 
 #import "CountryTableViewController.h"
 #import "VarietalTableViewController.h"
+#import "RatingTableViewController.h"
 
 #import "UIImage+Tint.h"
 
@@ -34,7 +35,6 @@
 	[countryTVC setShowCount:YES];
 	[countryTVC setShowPieChart:YES];
 	[countryTVC setPaperFoldNC:self.paperFoldNC];
-	countryTVC.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Countries" image:[UIImage imageNamed:@"globe-icon.png"] tag:0];
 	
 	// Varietals
 	VarietalTableViewController *varietalTVC = [[VarietalTableViewController alloc] init];
@@ -43,10 +43,16 @@
 	[varietalTVC setPickMode:NO];
 	[varietalTVC setShowPieChart:YES];
 	[varietalTVC setPaperFoldNC:self.paperFoldNC];
-	varietalTVC.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Varietals" image:[UIImage imageNamed:@"food_grapes.png"] tag:0];
+	
+	// Ratings
+	RatingTableViewController *ratingTVC = [[RatingTableViewController alloc] init];
+	[ratingTVC setTitle:@"Ratings"];
+	[ratingTVC setShowCount:YES];
+	[ratingTVC setShowPieChart:YES];
+	[ratingTVC setPaperFoldNC:self.paperFoldNC];
 	
 	self.tableGroups = @[
-					  @[
+						@[
 							@{@"name" : @"Country", @"controller" : countryTVC, @"image" : @"globe-icon.png"},
 							@{@"name" : @"Date added", @"controller" : countryTVC},
 						],
@@ -56,7 +62,7 @@
 							@{@"name" : @"Matching food", @"controller" : countryTVC}
 						],
 						@[
-							@{@"name" : @"Rating", @"controller" : countryTVC},
+							@{@"name" : @"Rating", @"controller" : ratingTVC, @"image" : @"badge.png"},
 							@{@"name" : @"Price", @"controller" : countryTVC}
 						],
 						@[
@@ -82,10 +88,11 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *CellIdentifier = @"BrowseCell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    CellarTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+        cell = [[CellarTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
 		[cell setSelectionStyle:UITableViewCellEditingStyleNone];
+		[cell setShowArrow:YES];
     }
 	[self configureCell:cell atIndexPath:indexPath];
     return cell;
@@ -93,14 +100,12 @@
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
 	NSDictionary *item = [[self.tableGroups objectAtIndex:indexPath.section] objectAtIndex:[indexPath row]];
-	
 	cell.textLabel.text = [item objectForKey:@"name"];
 	[cell.imageView setImage:[[UIImage imageNamed:[item objectForKey:@"image"]] imageTintedWithColor:[UIColor cellarWineRedColour]]];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	NSDictionary *item = [[self.tableGroups objectAtIndex:indexPath.section] objectAtIndex:[indexPath row]];
-	
 	[self.navigationController pushViewController:[item objectForKey:@"controller"] animated:YES];
 }
 

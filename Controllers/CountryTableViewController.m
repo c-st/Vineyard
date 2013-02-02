@@ -23,17 +23,6 @@
 	[super viewWillAppear:animated];
 }
 
-- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
-    Country *country = [self.fetchedResultsController objectAtIndexPath:indexPath];
-	
-	cell.imageView.image = [[UIImage imageNamed:[country.isoCode stringByAppendingString:@".png"]] scaleToSize:CGSizeMake(26, 26)];
-    cell.textLabel.text = country.name;
-	
-	if ([self showCount]) {
-		cell.accessoryView = [self buildAccessoryViewFromPredicate:[self buildCountPredicateForObject:country] andObject:country andIndexPath:indexPath];
-	}
-}
-
 - (NSPredicate *) buildCountPredicateForObject:(NSManagedObject *)object {
 	Country* country = (Country *) object;
 	return [NSPredicate predicateWithFormat:@"(country.countryID == %@)", country.countryID];
@@ -50,6 +39,15 @@
     }
    [self configureCell:cell atIndexPath:indexPath];
     return cell;
+}
+
+- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
+    Country *country = [self.fetchedResultsController objectAtIndexPath:indexPath];
+	cell.imageView.image = [[UIImage imageNamed:[country.isoCode stringByAppendingString:@".png"]] scaleToSize:CGSizeMake(26, 26)];
+    cell.textLabel.text = country.name;
+	if ([self showCount]) {
+		cell.accessoryView = [self buildAccessoryViewFromPredicate:[self buildCountPredicateForObject:country] andObject:country andIndexPath:indexPath];
+	}
 }
 
 

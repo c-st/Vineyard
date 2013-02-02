@@ -58,17 +58,20 @@
 		8343ABEF16B86D3000492D57 /* TouchThroughUIView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8343ABE216B86D3000492D57 /* TouchThroughUIView.m */; };
 		8343ABF016B86D3000492D57 /* UIView+Screenshot.m in Sources */ = {isa = PBXBuildFile; fileRef = 8343ABE416B86D3000492D57 /* UIView+Screenshot.m */; };
 		8343B83916B70D9D00F14CDF /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8343B83816B70D9D00F14CDF /* Icon@2x.png */; };
+		8344BDCF16BC9A42003777D0 /* tag@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8344BDCB16BC9A42003777D0 /* tag@2x.png */; };
+		8344BDD016BC9A42003777D0 /* briefcase@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8344BDCC16BC9A42003777D0 /* briefcase@2x.png */; };
+		8344BDD116BC9A42003777D0 /* box@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8344BDCD16BC9A42003777D0 /* box@2x.png */; };
+		8344BDD216BC9A42003777D0 /* badge@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8344BDCE16BC9A42003777D0 /* badge@2x.png */; };
+		8344BDD516BC9B73003777D0 /* RatingTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8344BDD416BC9B73003777D0 /* RatingTableViewController.m */; };
 		835016C116A4B63A00B841DF /* CollectionTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 835016C016A4B63A00B841DF /* CollectionTableViewController.m */; };
 		835C6D8E167E1B4700AC2A04 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 835C6D8D167E1B4700AC2A04 /* CoreLocation.framework */; };
 		835D709616B5985300680687 /* add-wine-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 835D707916B5985300680687 /* add-wine-button@2x.png */; };
 		835D709716B5985300680687 /* background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 835D707A16B5985300680687 /* background@2x.png */; };
 		835D709816B5985300680687 /* bar-chart@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 835D707B16B5985300680687 /* bar-chart@2x.png */; };
 		835D709916B5985300680687 /* basic1-044.png in Resources */ = {isa = PBXBuildFile; fileRef = 835D707C16B5985300680687 /* basic1-044.png */; };
-		835D709A16B5985300680687 /* basic1-101.png in Resources */ = {isa = PBXBuildFile; fileRef = 835D707D16B5985300680687 /* basic1-101.png */; };
 		835D709B16B5985300680687 /* basic2-058.png in Resources */ = {isa = PBXBuildFile; fileRef = 835D707E16B5985300680687 /* basic2-058.png */; };
 		835D709C16B5985300680687 /* basic2-154.png in Resources */ = {isa = PBXBuildFile; fileRef = 835D707F16B5985300680687 /* basic2-154.png */; };
 		835D709D16B5985300680687 /* browse@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 835D708016B5985300680687 /* browse@2x.png */; };
-		835D709E16B5985300680687 /* collections@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 835D708116B5985300680687 /* collections@2x.png */; };
 		835D709F16B5985300680687 /* food_grapes@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 835D708216B5985300680687 /* food_grapes@2x.png */; };
 		835D70A016B5985300680687 /* food_grapes_black@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 835D708316B5985300680687 /* food_grapes_black@2x.png */; };
 		835D70A116B5985300680687 /* food_wine_bottle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 835D708416B5985300680687 /* food_wine_bottle@2x.png */; };
@@ -322,6 +325,12 @@
 		8343ABE316B86D3000492D57 /* UIView+Screenshot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Screenshot.h"; sourceTree = "<group>"; };
 		8343ABE416B86D3000492D57 /* UIView+Screenshot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Screenshot.m"; sourceTree = "<group>"; };
 		8343B83816B70D9D00F14CDF /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
+		8344BDCB16BC9A42003777D0 /* tag@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tag@2x.png"; sourceTree = "<group>"; };
+		8344BDCC16BC9A42003777D0 /* briefcase@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "briefcase@2x.png"; sourceTree = "<group>"; };
+		8344BDCD16BC9A42003777D0 /* box@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "box@2x.png"; sourceTree = "<group>"; };
+		8344BDCE16BC9A42003777D0 /* badge@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "badge@2x.png"; sourceTree = "<group>"; };
+		8344BDD316BC9B73003777D0 /* RatingTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RatingTableViewController.h; path = Controllers/RatingTableViewController.h; sourceTree = SOURCE_ROOT; };
+		8344BDD416BC9B73003777D0 /* RatingTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RatingTableViewController.m; path = Controllers/RatingTableViewController.m; sourceTree = SOURCE_ROOT; };
 		835016BE16A4B61600B841DF /* CollectionTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CollectionTableViewController.h; path = Controllers/CollectionTableViewController.h; sourceTree = SOURCE_ROOT; };
 		835016C016A4B63A00B841DF /* CollectionTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CollectionTableViewController.m; path = Controllers/CollectionTableViewController.m; sourceTree = SOURCE_ROOT; };
 		835C6D8D167E1B4700AC2A04 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -330,11 +339,9 @@
 		835D707A16B5985300680687 /* background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background@2x.png"; sourceTree = "<group>"; };
 		835D707B16B5985300680687 /* bar-chart@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bar-chart@2x.png"; sourceTree = "<group>"; };
 		835D707C16B5985300680687 /* basic1-044.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "basic1-044.png"; sourceTree = "<group>"; };
-		835D707D16B5985300680687 /* basic1-101.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "basic1-101.png"; sourceTree = "<group>"; };
 		835D707E16B5985300680687 /* basic2-058.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "basic2-058.png"; sourceTree = "<group>"; };
 		835D707F16B5985300680687 /* basic2-154.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "basic2-154.png"; sourceTree = "<group>"; };
 		835D708016B5985300680687 /* browse@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "browse@2x.png"; sourceTree = "<group>"; };
-		835D708116B5985300680687 /* collections@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "collections@2x.png"; sourceTree = "<group>"; };
 		835D708216B5985300680687 /* food_grapes@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "food_grapes@2x.png"; sourceTree = "<group>"; };
 		835D708316B5985300680687 /* food_grapes_black@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "food_grapes_black@2x.png"; sourceTree = "<group>"; };
 		835D708416B5985300680687 /* food_wine_bottle@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "food_wine_bottle@2x.png"; sourceTree = "<group>"; };
@@ -877,15 +884,17 @@
 		835D707816B5985300680687 /* Icons */ = {
 			isa = PBXGroup;
 			children = (
+				8344BDCB16BC9A42003777D0 /* tag@2x.png */,
+				8344BDCC16BC9A42003777D0 /* briefcase@2x.png */,
+				8344BDCD16BC9A42003777D0 /* box@2x.png */,
+				8344BDCE16BC9A42003777D0 /* badge@2x.png */,
 				835D707916B5985300680687 /* add-wine-button@2x.png */,
 				835D707A16B5985300680687 /* background@2x.png */,
 				835D707B16B5985300680687 /* bar-chart@2x.png */,
 				835D707C16B5985300680687 /* basic1-044.png */,
-				835D707D16B5985300680687 /* basic1-101.png */,
 				835D707E16B5985300680687 /* basic2-058.png */,
 				835D707F16B5985300680687 /* basic2-154.png */,
 				835D708016B5985300680687 /* browse@2x.png */,
-				835D708116B5985300680687 /* collections@2x.png */,
 				835D708216B5985300680687 /* food_grapes@2x.png */,
 				835D708316B5985300680687 /* food_grapes_black@2x.png */,
 				835D708416B5985300680687 /* food_wine_bottle@2x.png */,
@@ -1001,6 +1010,8 @@
 				83E79DD61677AA5100E0E42D /* VarietalTableViewController.m */,
 				83E79DD41677AA5100E0E42D /* WineTableViewController.h */,
 				83E79DD31677AA5100E0E42D /* WineTableViewController.m */,
+				8344BDD316BC9B73003777D0 /* RatingTableViewController.h */,
+				8344BDD416BC9B73003777D0 /* RatingTableViewController.m */,
 			);
 			name = TableViewController;
 			sourceTree = "<group>";
@@ -1301,11 +1312,9 @@
 				835D709716B5985300680687 /* background@2x.png in Resources */,
 				835D709816B5985300680687 /* bar-chart@2x.png in Resources */,
 				835D709916B5985300680687 /* basic1-044.png in Resources */,
-				835D709A16B5985300680687 /* basic1-101.png in Resources */,
 				835D709B16B5985300680687 /* basic2-058.png in Resources */,
 				835D709C16B5985300680687 /* basic2-154.png in Resources */,
 				835D709D16B5985300680687 /* browse@2x.png in Resources */,
-				835D709E16B5985300680687 /* collections@2x.png in Resources */,
 				835D709F16B5985300680687 /* food_grapes@2x.png in Resources */,
 				835D70A016B5985300680687 /* food_grapes_black@2x.png in Resources */,
 				835D70A116B5985300680687 /* food_wine_bottle@2x.png in Resources */,
@@ -1330,6 +1339,10 @@
 				8343ABE916B86D3000492D57 /* PaperFoldResources.bundle in Resources */,
 				8343ABEC16B86D3000492D57 /* swipe_guide.psd in Resources */,
 				8343ABED16B86D3000492D57 /* swipe_guide2.psd in Resources */,
+				8344BDCF16BC9A42003777D0 /* tag@2x.png in Resources */,
+				8344BDD016BC9A42003777D0 /* briefcase@2x.png in Resources */,
+				8344BDD116BC9A42003777D0 /* box@2x.png in Resources */,
+				8344BDD216BC9A42003777D0 /* badge@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1450,6 +1463,7 @@
 				8343ABEF16B86D3000492D57 /* TouchThroughUIView.m in Sources */,
 				8343ABF016B86D3000492D57 /* UIView+Screenshot.m in Sources */,
 				8336837816B88A3200D7A947 /* MBProgressHUD.m in Sources */,
+				8344BDD516BC9B73003777D0 /* RatingTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

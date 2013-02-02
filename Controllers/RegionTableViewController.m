@@ -4,22 +4,7 @@
 #import "Region.h"
 #import "Appellation.h"
 
-@interface RegionTableViewController ()
-
-@end
-
 @implementation RegionTableViewController
-
-- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {	
-    Region *region = [[super fetchedResultsController] objectAtIndexPath:indexPath];
-    cell.textLabel.text = region.name;
-    //cell.detailTextLabel.text = [NSString stringWithFormat:@"%@, %@", region.name, region.regionID];
-	
-	if ([self showCount]) {
-		// count wines
-		cell.accessoryView = [self buildAccessoryViewFromPredicate:[self buildCountPredicateForObject:region] andObject:region andIndexPath:indexPath];
-	}
-}
 
 - (NSPredicate *) buildCountPredicateForObject:(NSManagedObject *)object {
 	Region* region = (Region *) object;
@@ -37,6 +22,17 @@
     }
    [self configureCell:cell atIndexPath:indexPath];
     return cell;
+}
+
+- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
+    Region *region = [[super fetchedResultsController] objectAtIndexPath:indexPath];
+    cell.textLabel.text = region.name;
+    //cell.detailTextLabel.text = [NSString stringWithFormat:@"%@, %@", region.name, region.regionID];
+	
+	if ([self showCount]) {
+		// count wines
+		cell.accessoryView = [self buildAccessoryViewFromPredicate:[self buildCountPredicateForObject:region] andObject:region andIndexPath:indexPath];
+	}
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath  {
