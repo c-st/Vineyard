@@ -43,8 +43,7 @@
 	[self.segmentedControl setFont:[UIFont systemFontOfSize:11]];
     [self.segmentedControl setFrame:CGRectMake(0, 0, 100, 30)];
 	self.segmentedControl.titleEdgeInsets = UIEdgeInsetsMake(0, 14, 0, 14);
-	
-	self.segmentedControl.center = CGPointMake(220, 470);
+	self.segmentedControl.center = CGPointMake(220, self.view.frame.size.height - 80);
 	self.segmentedControl.thumb.tintColor = [UIColor cellarWineRedColour];
 	self.segmentedControl.thumb.textColor = [UIColor whiteColor];
 	
