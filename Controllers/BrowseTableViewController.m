@@ -57,7 +57,7 @@
 							@{@"name" : @"Date added", @"controller" : countryTVC},
 						],
 						@[
-							@{@"name" : @"Vintage", @"controller" : countryTVC},
+							@{@"name" : @"Vintage", @"controller" : countryTVC, @"image" : @"calendar.png"},
 							@{@"name" : @"Varietal", @"controller" : varietalTVC, @"image" : @"food_grapes.png"},
 							@{@"name" : @"Matching food", @"controller" : countryTVC}
 						],
