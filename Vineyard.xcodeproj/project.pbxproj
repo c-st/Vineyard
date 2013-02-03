@@ -64,6 +64,7 @@
 		8344BDD216BC9A42003777D0 /* badge@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8344BDCE16BC9A42003777D0 /* badge@2x.png */; };
 		8344BDD516BC9B73003777D0 /* RatingTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8344BDD416BC9B73003777D0 /* RatingTableViewController.m */; };
 		835016C116A4B63A00B841DF /* CollectionTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 835016C016A4B63A00B841DF /* CollectionTableViewController.m */; };
+		8354FC0816BEBEB700C411B9 /* CA.png in Resources */ = {isa = PBXBuildFile; fileRef = 8354FC0716BEBEB700C411B9 /* CA.png */; };
 		835C6D8E167E1B4700AC2A04 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 835C6D8D167E1B4700AC2A04 /* CoreLocation.framework */; };
 		835D709616B5985300680687 /* add-wine-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 835D707916B5985300680687 /* add-wine-button@2x.png */; };
 		835D709716B5985300680687 /* background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 835D707A16B5985300680687 /* background@2x.png */; };
@@ -333,6 +334,7 @@
 		8344BDD416BC9B73003777D0 /* RatingTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RatingTableViewController.m; path = Controllers/RatingTableViewController.m; sourceTree = SOURCE_ROOT; };
 		835016BE16A4B61600B841DF /* CollectionTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CollectionTableViewController.h; path = Controllers/CollectionTableViewController.h; sourceTree = SOURCE_ROOT; };
 		835016C016A4B63A00B841DF /* CollectionTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CollectionTableViewController.m; path = Controllers/CollectionTableViewController.m; sourceTree = SOURCE_ROOT; };
+		8354FC0716BEBEB700C411B9 /* CA.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = CA.png; path = Resources/Flags/CA.png; sourceTree = SOURCE_ROOT; };
 		835C6D8D167E1B4700AC2A04 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		835C6D8F167E22A900AC2A04 /* Vineyard 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Vineyard 2.xcdatamodel"; sourceTree = "<group>"; };
 		835D707916B5985300680687 /* add-wine-button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "add-wine-button@2x.png"; sourceTree = "<group>"; };
@@ -773,6 +775,7 @@
 		83358FF9164B133B00FEA5C9 /* Flags */ = {
 			isa = PBXGroup;
 			children = (
+				8354FC0716BEBEB700C411B9 /* CA.png */,
 				83B0A8BF168FBDFA00D65198 /* AR.png */,
 				8361EE431677B51E0057E04B /* CH.png */,
 				8361EE441677B51E0057E04B /* US.png */,
@@ -1344,6 +1347,7 @@
 				8344BDD216BC9A42003777D0 /* badge@2x.png in Resources */,
 				83FDC7EB16BD6B36005AA988 /* pricetag@2x.png in Resources */,
 				83FDC7EC16BD6B36005AA988 /* calendar@2x.png in Resources */,
+				8354FC0816BEBEB700C411B9 /* CA.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

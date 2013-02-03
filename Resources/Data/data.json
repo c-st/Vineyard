@@ -10,7 +10,10 @@
 				 {"countryID":"us", "name":"United-States", "isoCode":"US"},
 				 {"countryID":"zaf", "name":"South-Africa", "isoCode":"ZAF"},
 				 {"countryID":"nzl", "name":"New-Zealand", "isoCode":"NZL"},
-				 {"countryID":"ar", "name":"Argentina", "isoCode":"AR"}
+				 {"countryID":"ar", "name":"Argentina", "isoCode":"AR"},
+				 {"countryID":"ca", "name":"Canada", "isoCode":"CA"},
+				 {"countryID":"pt", "name":"Portugal", "isoCode":"PT"},
+				
                  ],
 	
 	"classifications":[
@@ -101,8 +104,7 @@
 			   {"regionID":"pais_vasco", "name":"Pais Vasco", "countryID":"es"},
 			   {"regionID":"rioja", "name":"Rioja", "countryID":"es"},
 			   {"regionID":"valencia", "name":"Valencia", "countryID":"es"},
-			   
-			   
+ 
 			   {"regionID":"alsace", "name":"Alsace", "countryID":"fr"},
 			   {"regionID":"aquitaine", "name":"Aquitaine", "countryID":"fr"},
 			   {"regionID":"auvergne", "name":"Auvergne", "countryID":"fr"},
@@ -129,8 +131,7 @@
 			   {"regionID":"savoie", "name":"Savoie", "countryID":"fr"},
 			   {"regionID":"sud_ouest", "name":"Sud Ouest", "countryID":"fr"},
 			   {"regionID":"vallée_de_la_loire", "name":"Vallée de la Loire", "countryID":"fr"},
-			   
-			   
+
 			   {"regionID":"ahr", "name":"Ahr", "countryID":"de"},
 			   {"regionID":"baden", "name":"Baden", "countryID":"de"},
 			   {"regionID":"franken", "name":"Franken", "countryID":"de"},
@@ -144,8 +145,7 @@
 			   {"regionID":"saale_unstrut", "name":"Saale Unstrut", "countryID":"de"},
 			   {"regionID":"sachsen", "name":"Sachsen", "countryID":"de"},
 			   {"regionID":"württemberg", "name":"Württemberg", "countryID":"de"},
-			   
-			   
+
 			   {"regionID":"aargau", "name":"Aargau", "countryID":"ch"},
 			   {"regionID":"bern", "name":"Bern", "countryID":"ch"},
 			   {"regionID":"fribourg", "name":"Fribourg", "countryID":"ch"},
@@ -157,7 +157,6 @@
 			   {"regionID":"ticino", "name":"Ticino", "countryID":"ch"},
 			   {"regionID":"valais", "name":"Valais", "countryID":"ch"},
 			   {"regionID":"vaud", "name":"Vaud", "countryID":"ch"},
-			   
 			   
 			   {"regionID":"abruzzo", "name":"Abruzzo", "countryID":"it"},
 			   {"regionID":"basilicata", "name":"Basilicata", "countryID":"it"},
@@ -179,14 +178,12 @@
 			   {"regionID":"umbria", "name":"Umbria", "countryID":"it"},
 			   {"regionID":"valle_d'aosta", "name":"Valle d'Aosta", "countryID":"it"},
 			   {"regionID":"veneto", "name":"Veneto", "countryID":"it"},
-			   
-			   
+ 
 			   {"regionID":"aconcagua", "name":"Aconcagua", "countryID":"chl"},
 			   {"regionID":"atacama", "name":"Atacama", "countryID":"chl"},
 			   {"regionID":"coquimbo", "name":"Coquimbo", "countryID":"chl"},
 			   {"regionID":"sur", "name":"Sur", "countryID":"chl"},
 			   {"regionID":"valle_central", "name":"Valle Central", "countryID":"chl"},
-			   
 			   
 			   {"regionID":"central_greece", "name":"Central Greece", "countryID":"grc"},
 			   {"regionID":"crête", "name":"Crête", "countryID":"grc"},
@@ -195,13 +192,11 @@
 			   {"regionID":"notio_aigaio", "name":"Notio Aigaio", "countryID":"grc"},
 			   {"regionID":"peloponnissos", "name":"Peloponnissos", "countryID":"grc"},
 			   
-			   
 			   {"regionID":"california", "name":"California", "countryID":"us"},
 			   {"regionID":"central", "name":"Central", "countryID":"us"},
 			   {"regionID":"east_coast", "name":"East Coast", "countryID":"us"},
 			   {"regionID":"hawaii", "name":"Hawaii", "countryID":"us"},
 			   {"regionID":"north_west", "name":"North West", "countryID":"us"},
-			   
 			   
 			   {"regionID":"breede_river_valley", "name":"Breede River Valley", "countryID":"zaf"},
 			   {"regionID":"coastal_region", "name":"Coastal Region", "countryID":"zaf"},
@@ -211,7 +206,6 @@
 			   {"regionID":"northern_cape", "name":"Northern Cape", "countryID":"zaf"},
 			   {"regionID":"olifants_river", "name":"Olifants River", "countryID":"zaf"},
 			   {"regionID":"western_cape", "name":"Western Cape", "countryID":"zaf"},
-			   
 			   
 			   {"regionID":"auckland", "name":"Auckland", "countryID":"nzl"},
 			   {"regionID":"bay_of_plenty", "name":"Bay of Plenty", "countryID":"nzl"},
@@ -236,8 +230,25 @@
 			   {"regionID":"río_negro", "name":"Río Negro", "countryID":"ar"},
 			   {"regionID":"salta", "name":"Salta", "countryID":"ar"},
 			   {"regionID":"san_juan", "name":"San Juan", "countryID":"ar"},
-			   {"regionID":"tucumán", "name":"Tucumán", "countryID":"ar"}
+			   {"regionID":"tucumán", "name":"Tucumán", "countryID":"ar"},
 			   
+			   {"regionID":"alberta", "name":"Alberta", "countryID":"ca"},
+			   {"regionID":"british_columbia", "name":"British Columbia", "countryID":"ca"},
+			   {"regionID":"manitoba", "name":"Manitoba", "countryID":"ca"},
+			   {"regionID":"ontario", "name":"Ontario", "countryID":"ca"},
+			   {"regionID":"saskatchewan", "name":"Saskatchewan", "countryID":"ca"},
+			   
+			   {"regionID":"alentejano", "name":"Alentejano", "countryID":"pt"},
+			   {"regionID":"algarve", "name":"Algarve", "countryID":"pt"},
+			   {"regionID":"açores", "name":"Açores", "countryID":"pt"},
+			   {"regionID":"beiras", "name":"Beiras", "countryID":"pt"},
+			   {"regionID":"duriense", "name":"Duriense", "countryID":"pt"},
+			   {"regionID":"estremadura", "name":"Estremadura", "countryID":"pt"},
+			   {"regionID":"madeira", "name":"Madeira", "countryID":"pt"},
+			   {"regionID":"minho", "name":"Minho", "countryID":"pt"},
+			   {"regionID":"ribatejo", "name":"Ribatejo", "countryID":"pt"},
+			   {"regionID":"terras_do_sado", "name":"Terras do Sado", "countryID":"pt"},
+			   {"regionID":"transmontano", "name":"Transmontano", "countryID":"pt"}
                ],
 	
 	"regionLocations":[
@@ -373,7 +384,23 @@
 					   {"regionID":"río_negro", "latitude":-40.73443430, "longitude":-66.61764549999999},
 					   {"regionID":"salta", "latitude":-24.78293230, "longitude":-65.41215520},
 					   {"regionID":"san_juan", "latitude":-31.52727320, "longitude":-68.52140810},
-					   {"regionID":"tucumán", "latitude":-26.94684630, "longitude":-65.28570820}
+					   {"regionID":"tucumán", "latitude":-26.94684630, "longitude":-65.28570820},
+					   {"regionID":"alberta", "latitude":53.93327060, "longitude":-116.57650350},
+					   {"regionID":"british_columbia", "latitude":53.72666830, "longitude":-127.64762060},
+					   {"regionID":"manitoba", "latitude":53.76086080, "longitude":-98.81387629999999},
+					   {"regionID":"ontario", "latitude":34.06334430, "longitude":-117.65088760},
+					   {"regionID":"saskatchewan", "latitude":52.93991590, "longitude":-106.45086390},
+					   {"regionID":"alentejano", "latitude":40.31335210, "longitude":-7.800707699999998},
+					   {"regionID":"algarve", "latitude":37.01795380, "longitude":-7.930834000000001},
+					   {"regionID":"açores", "latitude":37.74124880, "longitude":-25.67559440},
+					   {"regionID":"beiras", "latitude":38.63751340, "longitude":-9.042888099999999},
+					   {"regionID":"duriense", "latitude":41.30103510, "longitude":-7.74223540},
+					   {"regionID":"estremadura", "latitude":39.49373920, "longitude":-6.06791940},
+					   {"regionID":"madeira", "latitude":32.76070740000001, "longitude":-16.95947230},
+					   {"regionID":"minho", "latitude":41.7234470, "longitude":-8.7701470},
+					   {"regionID":"ribatejo", "latitude":38.71697970, "longitude":-9.39431480},
+					   {"regionID":"terras_do_sado", "latitude":38.56793980, "longitude":-8.83608480},
+					   {"regionID":"transmontano", "latitude":41.80616520, "longitude":-6.756742699999999}
 	],
     
 	"appellations":[
@@ -3234,6 +3261,103 @@
 					{"appellationID":"alto_verde", "name":"Alto Verde", "regionID":"tucumán","classificationID":""},
 					{"appellationID":"colalao_del_valle", "name":"Colalao del Valle", "regionID":"tucumán","classificationID":""},
 					{"appellationID":"tafí", "name":"Tafí", "regionID":"tucumán","classificationID":""},
-					{"appellationID":"tucumán", "name":"Tucumán", "regionID":"tucumán","classificationID":""}
+					{"appellationID":"tucumán", "name":"Tucumán", "regionID":"tucumán","classificationID":""},
+					
+					
+					{"appellationID":"alberta", "name":"Alberta", "regionID":"alberta","classificationID":""},
+					{"appellationID":"british_columbia", "name":"British Columbia", "regionID":"british_columbia","classificationID":""},
+					{"appellationID":"fraser_valley", "name":"Fraser Valley", "regionID":"british_columbia","classificationID":""},
+					{"appellationID":"gulf_islands", "name":"Gulf Islands", "regionID":"british_columbia","classificationID":""},
+					{"appellationID":"okanagan_valley", "name":"Okanagan Valley", "regionID":"british_columbia","classificationID":""},
+					{"appellationID":"salt_spring_island", "name":"Salt Spring Island", "regionID":"british_columbia","classificationID":""},
+					{"appellationID":"similkameen_valley", "name":"Similkameen Valley", "regionID":"british_columbia","classificationID":""},
+					{"appellationID":"vancouver_island", "name":"Vancouver Island", "regionID":"british_columbia","classificationID":""},
+					{"appellationID":"manitoba", "name":"Manitoba", "regionID":"manitoba","classificationID":""},
+					{"appellationID":"beamsville_bench", "name":"Beamsville Bench", "regionID":"ontario","classificationID":""},
+					{"appellationID":"creek_shores", "name":"Creek Shores", "regionID":"ontario","classificationID":""},
+					{"appellationID":"four_mile_creek", "name":"Four Mile Creek", "regionID":"ontario","classificationID":""},
+					{"appellationID":"lake_erie_north_shore", "name":"Lake Erie North Shore", "regionID":"ontario","classificationID":""},
+					{"appellationID":"lincoln_lakeshore", "name":"Lincoln Lakeshore", "regionID":"ontario","classificationID":""},
+					{"appellationID":"niagara_escarpment", "name":"Niagara Escarpment", "regionID":"ontario","classificationID":""},
+					{"appellationID":"niagara_lakeshore", "name":"Niagara Lakeshore", "regionID":"ontario","classificationID":""},
+					{"appellationID":"niagara_peninsula", "name":"Niagara Peninsula", "regionID":"ontario","classificationID":""},
+					{"appellationID":"niagara_river", "name":"Niagara River", "regionID":"ontario","classificationID":""},
+					{"appellationID":"niagara_on_the_lake", "name":"Niagara on the Lake", "regionID":"ontario","classificationID":""},
+					{"appellationID":"ontario", "name":"Ontario", "regionID":"ontario","classificationID":""},
+					{"appellationID":"pelee_island", "name":"Pelee Island", "regionID":"ontario","classificationID":""},
+					{"appellationID":"prince_edward_county", "name":"Prince Edward County", "regionID":"ontario","classificationID":""},
+					{"appellationID":"saint_david's_bench", "name":"Saint David's Bench", "regionID":"ontario","classificationID":""},
+					{"appellationID":"short_hills_bench", "name":"Short Hills Bench", "regionID":"ontario","classificationID":""},
+					{"appellationID":"twenty_mile_bench", "name":"Twenty Mile Bench", "regionID":"ontario","classificationID":""},
+					{"appellationID":"vinemount_ridge", "name":"Vinemount Ridge", "regionID":"ontario","classificationID":""},
+					{"appellationID":"saskatchewan", "name":"Saskatchewan", "regionID":"saskatchewan","classificationID":""},
+					
+					
+					{"appellationID":"alentejo", "name":"Alentejo", "regionID":"alentejano","classificationID":""},
+					{"appellationID":"evora", "name":"Evora", "regionID":"alentejano","classificationID":""},
+					{"appellationID":"granja_amareleja", "name":"Granja Amareleja", "regionID":"alentejano","classificationID":""},
+					{"appellationID":"moura", "name":"Moura", "regionID":"alentejano","classificationID":""},
+					{"appellationID":"vinho_regional_alentejano", "name":"Vinho Regional Alentejano", "regionID":"alentejano","classificationID":""},
+					{"appellationID":"lagoa", "name":"Lagoa", "regionID":"algarve","classificationID":""},
+					{"appellationID":"lagos", "name":"Lagos", "regionID":"algarve","classificationID":""},
+					{"appellationID":"portimão", "name":"Portimão", "regionID":"algarve","classificationID":""},
+					{"appellationID":"tavira", "name":"Tavira", "regionID":"algarve","classificationID":""},
+					{"appellationID":"vinho_licoroso_algarve", "name":"Vinho Licoroso Algarve", "regionID":"algarve","classificationID":""},
+					{"appellationID":"vinho_regional_algarve", "name":"Vinho Regional Algarve", "regionID":"algarve","classificationID":""},
+					{"appellationID":"biscoitos", "name":"Biscoitos", "regionID":"açores","classificationID":""},
+					{"appellationID":"graciosa", "name":"Graciosa", "regionID":"açores","classificationID":""},
+					{"appellationID":"pico", "name":"Pico", "regionID":"açores","classificationID":""},
+					{"appellationID":"vinho_regional_açores", "name":"Vinho Regional Açores", "regionID":"açores","classificationID":""},
+					{"appellationID":"bairrada", "name":"Bairrada", "regionID":"beiras","classificationID":""},
+					{"appellationID":"beira_interior", "name":"Beira Interior", "regionID":"beiras","classificationID":""},
+					{"appellationID":"castelo_rodrigo", "name":"Castelo Rodrigo", "regionID":"beiras","classificationID":""},
+					{"appellationID":"cova_de_beira", "name":"Cova de Beira", "regionID":"beiras","classificationID":""},
+					{"appellationID":"dão", "name":"Dão", "regionID":"beiras","classificationID":""},
+					{"appellationID":"dão_nobre", "name":"Dão Nobre", "regionID":"beiras","classificationID":""},
+					{"appellationID":"encostas_da_nave", "name":"Encostas da Nave", "regionID":"beiras","classificationID":""},
+					{"appellationID":"lafões", "name":"Lafões", "regionID":"beiras","classificationID":""},
+					{"appellationID":"pinhel", "name":"Pinhel", "regionID":"beiras","classificationID":""},
+					{"appellationID":"távora_varosa", "name":"Távora Varosa", "regionID":"beiras","classificationID":""},
+					{"appellationID":"varosa", "name":"Varosa", "regionID":"beiras","classificationID":""},
+					{"appellationID":"vinho_espumante_beiras", "name":"Vinho Espumante Beiras", "regionID":"beiras","classificationID":""},
+					{"appellationID":"vinho_regional_beiras", "name":"Vinho Regional Beiras", "regionID":"beiras","classificationID":""},
+					{"appellationID":"douro", "name":"Douro", "regionID":"duriense","classificationID":""},
+					{"appellationID":"moscatel_do_douro", "name":"Moscatel do Douro", "regionID":"duriense","classificationID":""},
+					{"appellationID":"porto", "name":"Porto", "regionID":"duriense","classificationID":""},
+					{"appellationID":"setúbal_roxo", "name":"Setúbal Roxo", "regionID":"duriense","classificationID":""},
+					{"appellationID":"vinho_regional_duriense", "name":"Vinho Regional Duriense", "regionID":"duriense","classificationID":""},
+					{"appellationID":"alenquer", "name":"Alenquer", "regionID":"estremadura","classificationID":""},
+					{"appellationID":"arruda", "name":"Arruda", "regionID":"estremadura","classificationID":""},
+					{"appellationID":"bucelas", "name":"Bucelas", "regionID":"estremadura","classificationID":""},
+					{"appellationID":"carcavelos", "name":"Carcavelos", "regionID":"estremadura","classificationID":""},
+					{"appellationID":"colares", "name":"Colares", "regionID":"estremadura","classificationID":""},
+					{"appellationID":"encostas_d'aire", "name":"Encostas d'Aire", "regionID":"estremadura","classificationID":""},
+					{"appellationID":"lisboa", "name":"Lisboa", "regionID":"estremadura","classificationID":""},
+					{"appellationID":"lourinhã", "name":"Lourinhã", "regionID":"estremadura","classificationID":""},
+					{"appellationID":"torres_vedras", "name":"Torres Vedras", "regionID":"estremadura","classificationID":""},
+					{"appellationID":"vinho_regional_tejo", "name":"Vinho Regional Tejo", "regionID":"estremadura","classificationID":""},
+					{"appellationID":"óbidos", "name":"Óbidos", "regionID":"estremadura","classificationID":""},
+					{"appellationID":"madeira", "name":"Madeira", "regionID":"madeira","classificationID":""},
+					{"appellationID":"vinho_regional_terras_madeirenses", "name":"Vinho Regional Terras Madeirenses", "regionID":"madeira","classificationID":""},
+					{"appellationID":"vinho_regional_minho", "name":"Vinho Regional Minho", "regionID":"minho","classificationID":""},
+					{"appellationID":"vinho_verde", "name":"Vinho Verde", "regionID":"minho","classificationID":""},
+					{"appellationID":"vinho_verde_alvarinho", "name":"Vinho Verde Alvarinho", "regionID":"minho","classificationID":""},
+					{"appellationID":"vinho_verde_alvarinho_espumante", "name":"Vinho Verde Alvarinho Espumante", "regionID":"minho","classificationID":""},
+					{"appellationID":"almeirim", "name":"Almeirim", "regionID":"ribatejo","classificationID":""},
+					{"appellationID":"cartaxo", "name":"Cartaxo", "regionID":"ribatejo","classificationID":""},
+					{"appellationID":"chamusca", "name":"Chamusca", "regionID":"ribatejo","classificationID":""},
+					{"appellationID":"coruche", "name":"Coruche", "regionID":"ribatejo","classificationID":""},
+					{"appellationID":"ribatejo", "name":"Ribatejo", "regionID":"ribatejo","classificationID":""},
+					{"appellationID":"tomar", "name":"Tomar", "regionID":"ribatejo","classificationID":""},
+					{"appellationID":"vinho_regional_ribatejo", "name":"Vinho Regional Ribatejo", "regionID":"ribatejo","classificationID":""},
+					{"appellationID":"arrabida", "name":"Arrabida", "regionID":"terras_do_sado","classificationID":""},
+					{"appellationID":"moscatel_de_setúbal", "name":"Moscatel de Setúbal", "regionID":"terras_do_sado","classificationID":""},
+					{"appellationID":"palmela", "name":"Palmela", "regionID":"terras_do_sado","classificationID":""},
+					{"appellationID":"setúbal", "name":"Setúbal", "regionID":"terras_do_sado","classificationID":""},
+					{"appellationID":"vinho_regional_terras_do_sado", "name":"Vinho Regional Terras do Sado", "regionID":"terras_do_sado","classificationID":""},
+					{"appellationID":"trás_os_montes", "name":"Trás os Montes", "regionID":"transmontano","classificationID":""},
+					{"appellationID":"vinho_regional_transmontana", "name":"Vinho Regional Transmontana", "regionID":"transmontano","classificationID":""}
+					
+					
                     ]
 }
