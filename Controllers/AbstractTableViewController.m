@@ -38,7 +38,7 @@
 		[searchBar setTintColor:[UIColor cellarWineRedColour]];
 		[searchBar setDelegate:self];
 		self.tableView.tableHeaderView = searchBar;
-		self.tableView.contentOffset = CGPointMake(0, self.tableView.tableHeaderView.frame.size.height);
+		//self.tableView.contentOffset = CGPointMake(0, self.tableView.tableHeaderView.frame.size.height);
 	}
 	
 	if (self.showPieChart) {
