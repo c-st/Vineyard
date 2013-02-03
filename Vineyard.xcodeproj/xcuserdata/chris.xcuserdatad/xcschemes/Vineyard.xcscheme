@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "83D5DD66163EBC50001C857E"
-               BuildableName = "Cellar.app"
-               BlueprintName = "Cellar"
-               ReferencedContainer = "container:Cellar.xcodeproj">
+               BuildableName = "Vineyard.app"
+               BlueprintName = "Vineyard"
+               ReferencedContainer = "container:Vineyard.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "83D5DD66163EBC50001C857E"
-            BuildableName = "Cellar.app"
-            BlueprintName = "Cellar"
-            ReferencedContainer = "container:Cellar.xcodeproj">
+            BuildableName = "Vineyard.app"
+            BlueprintName = "Vineyard"
+            ReferencedContainer = "container:Vineyard.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -52,9 +52,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "83D5DD66163EBC50001C857E"
-            BuildableName = "Cellar.app"
-            BlueprintName = "Cellar"
-            ReferencedContainer = "container:Cellar.xcodeproj">
+            BuildableName = "Vineyard.app"
+            BlueprintName = "Vineyard"
+            ReferencedContainer = "container:Vineyard.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <CommandLineArguments>
@@ -80,9 +80,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "83D5DD66163EBC50001C857E"
-            BuildableName = "Cellar.app"
-            BlueprintName = "Cellar"
-            ReferencedContainer = "container:Cellar.xcodeproj">
+            BuildableName = "Vineyard.app"
+            BlueprintName = "Vineyard"
+            ReferencedContainer = "container:Vineyard.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

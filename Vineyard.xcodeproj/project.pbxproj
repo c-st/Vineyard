@@ -105,7 +105,7 @@
 		8361EE591677B51E0057E04B /* CL.png in Resources */ = {isa = PBXBuildFile; fileRef = 8361EE4D1677B51E0057E04B /* CL.png */; };
 		8361EE5A1677B51E0057E04B /* AT.png in Resources */ = {isa = PBXBuildFile; fileRef = 8361EE4E1677B51E0057E04B /* AT.png */; };
 		8361EE5C1677B5290057E04B /* data.json in Resources */ = {isa = PBXBuildFile; fileRef = 8361EE5B1677B5290057E04B /* data.json */; };
-		8361EE621677B55B0057E04B /* Cellar.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8361EE601677B55B0057E04B /* Cellar.xcdatamodeld */; };
+		8361EE621677B55B0057E04B /* Vineyard.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8361EE601677B55B0057E04B /* Vineyard.xcdatamodeld */; };
 		8361EE781677B5B70057E04B /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8361EE771677B5B70057E04B /* Default-568h@2x.png */; };
 		836D07F216ADB5EE00FA090C /* OCAlgorithms.m in Sources */ = {isa = PBXBuildFile; fileRef = 836D07EA16ADB5EE00FA090C /* OCAlgorithms.m */; };
 		836D07F316ADB5EE00FA090C /* OCAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 836D07EC16ADB5EE00FA090C /* OCAnnotation.m */; };
@@ -334,7 +334,7 @@
 		835016BE16A4B61600B841DF /* CollectionTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CollectionTableViewController.h; path = Controllers/CollectionTableViewController.h; sourceTree = SOURCE_ROOT; };
 		835016C016A4B63A00B841DF /* CollectionTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CollectionTableViewController.m; path = Controllers/CollectionTableViewController.m; sourceTree = SOURCE_ROOT; };
 		835C6D8D167E1B4700AC2A04 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		835C6D8F167E22A900AC2A04 /* Cellar 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Cellar 2.xcdatamodel"; sourceTree = "<group>"; };
+		835C6D8F167E22A900AC2A04 /* Vineyard 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Vineyard 2.xcdatamodel"; sourceTree = "<group>"; };
 		835D707916B5985300680687 /* add-wine-button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "add-wine-button@2x.png"; sourceTree = "<group>"; };
 		835D707A16B5985300680687 /* background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background@2x.png"; sourceTree = "<group>"; };
 		835D707B16B5985300680687 /* bar-chart@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bar-chart@2x.png"; sourceTree = "<group>"; };
@@ -376,9 +376,9 @@
 		8361EE4D1677B51E0057E04B /* CL.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = CL.png; path = Resources/Flags/CL.png; sourceTree = SOURCE_ROOT; };
 		8361EE4E1677B51E0057E04B /* AT.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = AT.png; path = Resources/Flags/AT.png; sourceTree = SOURCE_ROOT; };
 		8361EE5B1677B5290057E04B /* data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = data.json; path = Resources/Data/data.json; sourceTree = SOURCE_ROOT; };
-		8361EE5D1677B54D0057E04B /* Cellar-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Cellar-Info.plist"; sourceTree = SOURCE_ROOT; };
-		8361EE5E1677B54D0057E04B /* Cellar-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Cellar-Prefix.pch"; sourceTree = SOURCE_ROOT; };
-		8361EE611677B55B0057E04B /* Cellar.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Cellar.xcdatamodel; sourceTree = "<group>"; };
+		8361EE5D1677B54D0057E04B /* Vineyard-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; name = "Vineyard-Info.plist"; path = "Users/Chris/Dropbox/Projects/Vineyard/Vineyard/Vineyard-Info.plist"; sourceTree = SDKROOT; };
+		8361EE5E1677B54D0057E04B /* Vineyard-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Vineyard-Prefix.pch"; path = "Users/Chris/Dropbox/Projects/Vineyard/Vineyard/Vineyard-Prefix.pch"; sourceTree = SDKROOT; };
+		8361EE611677B55B0057E04B /* Vineyard.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Vineyard.xcdatamodel; sourceTree = "<group>"; };
 		8361EE771677B5B70057E04B /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "Resources/Default-568h@2x.png"; sourceTree = SOURCE_ROOT; };
 		836D07E916ADB5EE00FA090C /* OCAlgorithms.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCAlgorithms.h; sourceTree = "<group>"; };
 		836D07EA16ADB5EE00FA090C /* OCAlgorithms.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCAlgorithms.m; sourceTree = "<group>"; };
@@ -428,7 +428,7 @@
 		83B76CC9167E9C11006964ED /* slider-default-track@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "slider-default-track@2x.png"; sourceTree = "<group>"; };
 		83B76CCA167E9C11006964ED /* slider-default-trackBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "slider-default-trackBackground.png"; sourceTree = "<group>"; };
 		83B76CCB167E9C11006964ED /* slider-default_trackBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "slider-default_trackBackground@2x.png"; sourceTree = "<group>"; };
-		83D5DD67163EBC50001C857E /* Cellar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cellar.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		83D5DD67163EBC50001C857E /* Vineyard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Vineyard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		83D5DD6B163EBC50001C857E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		83D5DD6D163EBC50001C857E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		83D5DD6F163EBC50001C857E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -1113,7 +1113,7 @@
 				8319B0091677C6E0005E28BB /* MapKit.framework */,
 				8319AFD11677C09F005E28BB /* SSToolkit.xcodeproj */,
 				832EDC4F165FD4FA00AE20A9 /* Frameworks */,
-				83D5DD73163EBC50001C857E /* Cellar */,
+				83D5DD73163EBC50001C857E /* Vineyard */,
 				83D5DD6A163EBC50001C857E /* Frameworks */,
 				83D5DD68163EBC50001C857E /* Products */,
 			);
@@ -1122,7 +1122,7 @@
 		83D5DD68163EBC50001C857E /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				83D5DD67163EBC50001C857E /* Cellar.app */,
+				83D5DD67163EBC50001C857E /* Vineyard.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1139,7 +1139,7 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		83D5DD73163EBC50001C857E /* Cellar */ = {
+		83D5DD73163EBC50001C857E /* Vineyard */ = {
 			isa = PBXGroup;
 			children = (
 				83351157165594E900E9D6E1 /* Categories */,
@@ -1149,18 +1149,19 @@
 				833591E0164B143F00FEA5C9 /* Services */,
 				83E79DEE1677AA9C00E0E42D /* AppDelegate.m */,
 				83E79DEF1677AA9C00E0E42D /* AppDelegate.h */,
-				8361EE601677B55B0057E04B /* Cellar.xcdatamodeld */,
+				8361EE601677B55B0057E04B /* Vineyard.xcdatamodeld */,
 				83D5DD74163EBC50001C857E /* Supporting Files */,
 				83358FF6164B133B00FEA5C9 /* Resources */,
 			);
+			name = Vineyard;
 			path = Cellar;
 			sourceTree = "<group>";
 		};
 		83D5DD74163EBC50001C857E /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				8361EE5D1677B54D0057E04B /* Cellar-Info.plist */,
-				8361EE5E1677B54D0057E04B /* Cellar-Prefix.pch */,
+				8361EE5D1677B54D0057E04B /* Vineyard-Info.plist */,
+				8361EE5E1677B54D0057E04B /* Vineyard-Prefix.pch */,
 				8361EE281677B4B50057E04B /* main.m */,
 			);
 			name = "Supporting Files";
@@ -1189,9 +1190,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		83D5DD66163EBC50001C857E /* Cellar */ = {
+		83D5DD66163EBC50001C857E /* Vineyard */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 83D5DD8A163EBC50001C857E /* Build configuration list for PBXNativeTarget "Cellar" */;
+			buildConfigurationList = 83D5DD8A163EBC50001C857E /* Build configuration list for PBXNativeTarget "Vineyard" */;
 			buildPhases = (
 				83D5DD63163EBC50001C857E /* Sources */,
 				83D5DD64163EBC50001C857E /* Frameworks */,
@@ -1203,9 +1204,9 @@
 				8319AFDE1677C0CE005E28BB /* PBXTargetDependency */,
 				8319AFE01677C0CE005E28BB /* PBXTargetDependency */,
 			);
-			name = Cellar;
+			name = Vineyard;
 			productName = Cellar;
-			productReference = 83D5DD67163EBC50001C857E /* Cellar.app */;
+			productReference = 83D5DD67163EBC50001C857E /* Vineyard.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -1217,7 +1218,7 @@
 				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = "Christian Stangier";
 			};
-			buildConfigurationList = 83D5DD61163EBC50001C857E /* Build configuration list for PBXProject "Cellar" */;
+			buildConfigurationList = 83D5DD61163EBC50001C857E /* Build configuration list for PBXProject "Vineyard" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -1250,7 +1251,7 @@
 			);
 			projectRoot = "";
 			targets = (
-				83D5DD66163EBC50001C857E /* Cellar */,
+				83D5DD66163EBC50001C857E /* Vineyard */,
 			);
 		};
 /* End PBXProject section */
@@ -1394,7 +1395,7 @@
 				83E79DED1677AA8100E0E42D /* InitialDataImportService.m in Sources */,
 				83E79DF01677AA9C00E0E42D /* AppDelegate.m in Sources */,
 				8361EE291677B4B50057E04B /* main.m in Sources */,
-				8361EE621677B55B0057E04B /* Cellar.xcdatamodeld in Sources */,
+				8361EE621677B55B0057E04B /* Vineyard.xcdatamodeld in Sources */,
 				8319AFB71677BFF8005E28BB /* MagicalImportFunctions.m in Sources */,
 				8319AFB81677BFF8005E28BB /* NSAttributeDescription+MagicalDataImport.m in Sources */,
 				8319AFB91677BFF8005E28BB /* NSEntityDescription+MagicalDataImport.m in Sources */,
@@ -1541,12 +1542,12 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Cellar-Prefix.pch";
+				GCC_PREFIX_HEADER = "Vineyard-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
 					"Frameworks/SS-Toolkit/SSToolkit",
 					"Frameworks/SS-Toolkit",
 				);
-				INFOPLIST_FILE = "Cellar-Info.plist";
+				INFOPLIST_FILE = "/Users/Chris/Dropbox/Projects/Vineyard/Vineyard/Vineyard-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../../../../Library/Developer/Xcode/DerivedData/Cellar-ayhnfeybmgjysfflcbmcjmnyqkqz/Build/Products/Debug-iphoneos\"",
@@ -1557,7 +1558,7 @@
 					"-all_load",
 					"-ObjC",
 				);
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Vineyard;
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1570,12 +1571,12 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Cellar-Prefix.pch";
+				GCC_PREFIX_HEADER = "Vineyard-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
 					"Frameworks/SS-Toolkit/SSToolkit",
 					"Frameworks/SS-Toolkit",
 				);
-				INFOPLIST_FILE = "Cellar-Info.plist";
+				INFOPLIST_FILE = "/Users/Chris/Dropbox/Projects/Vineyard/Vineyard/Vineyard-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../../../../Library/Developer/Xcode/DerivedData/Cellar-ayhnfeybmgjysfflcbmcjmnyqkqz/Build/Products/Debug-iphoneos\"",
@@ -1586,7 +1587,7 @@
 					"-all_load",
 					"-ObjC",
 				);
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Vineyard;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				WRAPPER_EXTENSION = app;
@@ -1596,7 +1597,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		83D5DD61163EBC50001C857E /* Build configuration list for PBXProject "Cellar" */ = {
+		83D5DD61163EBC50001C857E /* Build configuration list for PBXProject "Vineyard" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				83D5DD88163EBC50001C857E /* Debug */,
@@ -1605,7 +1606,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		83D5DD8A163EBC50001C857E /* Build configuration list for PBXNativeTarget "Cellar" */ = {
+		83D5DD8A163EBC50001C857E /* Build configuration list for PBXNativeTarget "Vineyard" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				83D5DD8B163EBC50001C857E /* Debug */,
@@ -1617,14 +1618,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		8361EE601677B55B0057E04B /* Cellar.xcdatamodeld */ = {
+		8361EE601677B55B0057E04B /* Vineyard.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				835C6D8F167E22A900AC2A04 /* Cellar 2.xcdatamodel */,
-				8361EE611677B55B0057E04B /* Cellar.xcdatamodel */,
+				835C6D8F167E22A900AC2A04 /* Vineyard 2.xcdatamodel */,
+				8361EE611677B55B0057E04B /* Vineyard.xcdatamodel */,
 			);
-			currentVersion = 835C6D8F167E22A900AC2A04 /* Cellar 2.xcdatamodel */;
-			path = Cellar.xcdatamodeld;
+			currentVersion = 835C6D8F167E22A900AC2A04 /* Vineyard 2.xcdatamodel */;
+			path = Vineyard.xcdatamodeld;
 			sourceTree = SOURCE_ROOT;
 			versionGroupType = wrapper.xcdatamodel;
 		};
