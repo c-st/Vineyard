@@ -98,7 +98,7 @@
 }
 
 - (void) drawVintage:(CGPoint) point {
-	if (wine.vintage == nil) {
+	if (wine.vintage == nil || [wine.vintage intValue] == 0) {
 		return;
 	}
 	
