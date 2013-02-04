@@ -77,6 +77,7 @@
 	[scrollView setShowsVerticalScrollIndicator:NO];
 	[scrollView setScrollEnabled:YES];
 	[scrollView setUserInteractionEnabled:YES];
+	[scrollView setShowsVerticalScrollIndicator:YES];
 	
 	// "Hidden" Label
 	UILabel *label = [[UILabel alloc] init];
