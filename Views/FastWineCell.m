@@ -105,7 +105,7 @@
 	UIFont *font = [UIFont fontWithName:@"Baskerville" size:18];
 	UIColor *textColor = [UIColor darkGrayColor];
 	[textColor set];
-	[self.wine.vintage drawAtPoint:point withFont:font];
+	[[NSString stringWithFormat:@"%@", self.wine.vintage] drawAtPoint:point withFont:font];
 }
 
 - (void) drawAppellationRegion:(CGPoint) appellationPoint localizationPoint:(CGPoint) localizationPoint {

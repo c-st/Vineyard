@@ -215,7 +215,7 @@
 	
 	NSArray *tasting = @[alcoholContentSettingsCell, servingTemperatureSettingsCell];
 	
-	NSArray *wineNotes = @[characteristicsSettingsCell, tags, notes];
+	NSArray *wineNotes = @[characteristicsSettingsCell];//, tags, notes];
 	
 	
 	

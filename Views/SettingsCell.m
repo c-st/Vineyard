@@ -109,12 +109,13 @@
 			[self.contentView addSubview:textField];
 			
 			// check for current value
-			id currentValue = [wine valueForKey:propertyIdentifier];
-			if (currentValue != nil && [currentValue isKindOfClass:[NSString class]]) {
-				NSInteger *currentRow = [self rowForYearString:currentValue];
+			
+			NSNumber *currentValue = [wine valueForKey:propertyIdentifier];
+			if (currentValue != nil && [currentValue intValue] > 0) {
+				NSInteger *currentRow = [self rowForYear:currentValue];
 				NSLog(@"setting value is %@, row is %ld", currentValue, (long)currentRow);
 				[pickerView selectRow:currentRow inComponent:0 animated:YES];
-				[textField setText:currentValue];
+				[textField setText:[NSString stringWithFormat:@"%@", currentValue]];
 				[textField setTextColor:[UIColor blackColor]];
 			}
 			break;
@@ -448,24 +449,16 @@
 #pragma mark Year PickerView delegate methods
 
 // generate year as string from row
-- (NSString *) yearStringForRow:(NSInteger) row {
-	NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-	[formatter setDateFormat:@"yyyy"];
-	NSDate *date = [[NSDate date] dateByAddingTimeInterval:-365*24*60*60*(row)];
-	NSString *yearString = [formatter stringFromDate:date];
-	return yearString;
+- (NSNumber *) yearForRow:(NSInteger) row {
+	// current year - row
+	NSDateComponents *components = [[NSCalendar currentCalendar] components:NSYearCalendarUnit fromDate:[NSDate date]];
+	return [NSNumber numberWithInteger:[components year] - row];
 }
 
 // determine row from string
-- (NSInteger *) rowForYearString:(NSString*) year {
-	NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-	[formatter setDateFormat:@"yyyy"];
-	NSDate *date = [formatter dateFromString:year];
-	NSDateComponents *components = [[NSCalendar currentCalendar] components:NSYearCalendarUnit fromDate:date];
-	int *determinedYear = [components year];
-	components = [[NSCalendar currentCalendar] components:NSYearCalendarUnit fromDate:[NSDate date]];
-	int *currentYear = [components year];
-	return (long)currentYear-(long)determinedYear;
+- (NSInteger *) rowForYear:(NSNumber*) year {
+	NSDateComponents *components = [[NSCalendar currentCalendar] components:NSYearCalendarUnit fromDate:[NSDate date]];
+	return [components year] - [year integerValue];
 }
 
 - (void) doneClicked:(UITextField *) textField {
@@ -482,22 +475,22 @@
 
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
 	if ([propertyIdentifier isEqualToString:@"vintage"]) {
-		return 30;
+		return 50;
 	} 
 	return 1;
 }
 
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
 	if ([propertyIdentifier isEqualToString:@"vintage"]) {
-		return [self yearStringForRow:row];
+		return [NSString stringWithFormat:@"%i", [[self yearForRow:row] integerValue]];
 	}
 	return @"Not defined";
 }
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
 	if ([propertyIdentifier isEqualToString:@"vintage"]) {
-		[wine setValue:[self yearStringForRow:row] forKey:propertyIdentifier];
-		[(UITextField *)[self.contentView subviews][0] setText:[self yearStringForRow:row]];
+		[wine setValue:[self yearForRow:row] forKey:propertyIdentifier];
+		[(UITextField *)[self.contentView subviews][0] setText:[NSString stringWithFormat:@"%i", [[self yearForRow:row] integerValue]]];
 	}
 }
 

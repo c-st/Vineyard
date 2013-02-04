@@ -132,9 +132,13 @@ extern const struct WineFetchedProperties {
 
 
 
-@property (nonatomic, strong) NSString* vintage;
+@property (nonatomic, strong) NSNumber* vintage;
 
 
+
+@property int16_t vintageValue;
+- (int16_t)vintageValue;
+- (void)setVintageValue:(int16_t)value_;
 
 //- (BOOL)validateVintage:(id*)value_ error:(NSError**)error_;
 
@@ -270,8 +274,11 @@ extern const struct WineFetchedProperties {
 
 
 
-- (NSString*)primitiveVintage;
-- (void)setPrimitiveVintage:(NSString*)value;
+- (NSNumber*)primitiveVintage;
+- (void)setPrimitiveVintage:(NSNumber*)value;
+
+- (int16_t)primitiveVintageValue;
+- (void)setPrimitiveVintageValue:(int16_t)value_;
 
 
 

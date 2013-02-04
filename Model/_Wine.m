@@ -69,6 +69,11 @@ const struct WineFetchedProperties WineFetchedProperties = {
 		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
 		return keyPaths;
 	}
+	if ([key isEqualToString:@"vintageValue"]) {
+		NSSet *affectingKey = [NSSet setWithObject:@"vintage"];
+		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
+		return keyPaths;
+	}
 
 	return keyPaths;
 }
@@ -177,6 +182,25 @@ const struct WineFetchedProperties WineFetchedProperties = {
 
 @dynamic vintage;
 
+
+
+- (int16_t)vintageValue {
+	NSNumber *result = [self vintage];
+	return [result shortValue];
+}
+
+- (void)setVintageValue:(int16_t)value_ {
+	[self setVintage:[NSNumber numberWithShort:value_]];
+}
+
+- (int16_t)primitiveVintageValue {
+	NSNumber *result = [self primitiveVintage];
+	return [result shortValue];
+}
+
+- (void)setPrimitiveVintageValue:(int16_t)value_ {
+	[self setPrimitiveVintage:[NSNumber numberWithShort:value_]];
+}
 
 
 
