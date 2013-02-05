@@ -35,13 +35,10 @@
 	if (![Country hasAtLeastOneEntity]) {
 		NSLog(@"Importing countries...");
 		for (object in data[@"countries"]) {
+			[Country importFromObject:object inContext:context];
 			//NSLog(@"inserting new country: %@", object);
-	
-			//[MagicalRecord saveWithBlock:^(NSManagedObjectContext *localContext) {
-				Country *newCountry = [Country createInContext:context];
-				[newCountry importValuesForKeysWithObject:object];
-			//}];
-			
+//			Country *newCountry = [Country createInContext:context];
+//			[newCountry importValuesForKeysWithObject:object];
 		}
 	}
 
@@ -52,7 +49,6 @@
 			//NSLog(@"inserting new region: %@", object);
 			Classification *newClassification = [Classification createInContext:context];
 			[newClassification importValuesForKeysWithObject:object];
-        
 			[newClassification setCountry:[Country findByAttribute:@"countryID" withValue:[object valueForKeyPath:@"countryID"] inContext:context][0]];
 		}
 		//[context saveToPersistentStoreAndWait];

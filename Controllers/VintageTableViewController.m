@@ -5,6 +5,8 @@
 
 @implementation VintageTableViewController
 
+@synthesize years;
+
 - (id) init {
 	if ((self = [super init])) {
 	}
@@ -12,14 +14,22 @@
 }
 
 - (void) viewWillAppear:(BOOL)animated {
-	// find all wines with year != null, add all years
-	NSPredicate *yearPredicate = [NSPredicate predicateWithFormat:@"year > 0"];
-	NSLog(@"matching wines %i", [[Wine findAllWithPredicate:yearPredicate] count]);
+	// find all wines with year != null, add to years
+	NSPredicate *yearPredicate = [NSPredicate predicateWithFormat:@"vintage > 0"];
+	NSArray *wines = [Wine findAllWithPredicate:yearPredicate];
+	NSMutableArray *vintages = [[NSMutableArray alloc] init];
+	for (Wine *wine in wines) {
+		if (![vintages containsObject:wine.vintage]) {
+			[vintages addObject:wine.vintage];
+		}
+	}
+	[self setYears:vintages];
+	//NSLog(@"%i", [vintages count]);
 	
 }
 
 - (NSPredicate *) buildCountPredicateForYear:(NSNumber *)year {
-	return [NSPredicate predicateWithFormat:@"year == %i", year];
+	return [NSPredicate predicateWithFormat:@"vintage == %@", year];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -37,23 +47,27 @@
 }
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
-	//NSDictionary *rating = [self.values objectAtIndex:indexPath.row];
+	NSNumber *year = [self.years objectAtIndex:indexPath.row];
 	
     // add year
+	[[cell textLabel] setText:[NSString stringWithFormat:@"%@", year]];
 	
 	if ([self showCount]) {
 		// count wines
-		//cell.accessoryView = [self buildAccessoryViewFromPredicate:[self buildCountPredicateForRating:rating] andObject:nil andIndexPath:indexPath];
+		cell.accessoryView = [self buildAccessoryViewFromPredicate:[self buildCountPredicateForYear:year] andObject:nil andIndexPath:indexPath];
 	}
 }
 
 - (void) countButtonClicked:(UIButton *) sender {
 	// fetch selected row object
+	// fetch selected row object
+	NSIndexPath *path = [sender objectTag];
+	NSNumber *year = [years objectAtIndex:path.row];
 	
-	NSFetchedResultsController *wineSearchController = [Wine fetchAllSortedBy:@"name" ascending:YES withPredicate:[self buildCountPredicateForYear:@2013] groupBy:nil delegate:self];
+	NSFetchedResultsController *wineSearchController = [Wine fetchAllSortedBy:@"name" ascending:YES withPredicate:[self buildCountPredicateForYear:year] groupBy:nil delegate:self];
 	
 	WineTableViewController *wineTableViewController = [[WineTableViewController alloc] initWithFetchedResultsController:wineSearchController];
-//	[wineTableViewController setTitle:[rating valueForKey:@"name"]];
+	[wineTableViewController setTitle:[NSString stringWithFormat:@"%@", year]];
 	[wineTableViewController setShowCount:NO];
 	[wineTableViewController setPaperFoldNC:self.paperFoldNC];
 	[[self navigationController] pushViewController:wineTableViewController animated:YES];
@@ -69,7 +83,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 0; //[values count];
+    return [years count];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -77,16 +91,16 @@
 }
 
 - (NSUInteger)numberOfSlicesInPieChart:(XYPieChart *)pieChart {
-	return 0; //[values count];
+	return [years count];
 }
 
 - (CGFloat)pieChart:(XYPieChart *)pieChart valueForSliceAtIndex:(NSUInteger)index {
-	//int count = [Wine countOfEntitiesWithPredicate:[self buildCountPredicateForRating:[values objectAtIndex:index]]];
-    return 0; //count;
+	int count = [Wine countOfEntitiesWithPredicate:[self buildCountPredicateForYear:[years objectAtIndex:index]]];
+    return count;
 }
 
 - (NSString *)pieChart:(XYPieChart *)pieChart textForSliceAtIndex:(NSUInteger)index {
-	return @""; //[[values objectAtIndex:index] valueForKey:@"name"];
+	return [NSString stringWithFormat:@"%@", [years objectAtIndex:index]];
 }
 
 

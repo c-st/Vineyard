@@ -138,7 +138,7 @@
 	[vintageLabel setBackgroundColor:[UIColor clearColor]];
 	[vintageLabel setTextColor:[UIColor darkGrayColor]];
 	[vintageLabel setFont:[UIFont fontWithName:@"Baskerville" size:20]];
-	[vintageLabel setText:[wine vintage]];
+	[vintageLabel setText:[NSString stringWithFormat:@"%@",[wine vintage]]];
 	[view addSubview:vintageLabel];
 	
 	// Rating

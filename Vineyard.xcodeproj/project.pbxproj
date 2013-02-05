@@ -114,6 +114,7 @@
 		836D07F516ADB5EE00FA090C /* OCMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 836D07F116ADB5EE00FA090C /* OCMapView.m */; };
 		836D080A16ADE23F00FA090C /* SVSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 836D080716ADE23F00FA090C /* SVSegmentedControl.m */; };
 		836D080B16ADE23F00FA090C /* SVSegmentedThumb.m in Sources */ = {isa = PBXBuildFile; fileRef = 836D080916ADE23F00FA090C /* SVSegmentedThumb.m */; };
+		8384626D16C0730B002C47C2 /* VintageTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8384626C16C0730B002C47C2 /* VintageTableViewController.m */; };
 		838B2DF1167E52EC00944657 /* _TemperatureRange.m in Sources */ = {isa = PBXBuildFile; fileRef = 838B2DEE167E52EC00944657 /* _TemperatureRange.m */; };
 		838B2DF2167E52EC00944657 /* TemperatureRange.m in Sources */ = {isa = PBXBuildFile; fileRef = 838B2DF0167E52EC00944657 /* TemperatureRange.m */; };
 		838B2E42167E5EBB00944657 /* NMRangeSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 838B2E31167E5EBB00944657 /* NMRangeSlider.m */; };
@@ -395,6 +396,8 @@
 		836D080716ADE23F00FA090C /* SVSegmentedControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVSegmentedControl.m; sourceTree = "<group>"; };
 		836D080816ADE23F00FA090C /* SVSegmentedThumb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVSegmentedThumb.h; sourceTree = "<group>"; };
 		836D080916ADE23F00FA090C /* SVSegmentedThumb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVSegmentedThumb.m; sourceTree = "<group>"; };
+		8384626B16C0730B002C47C2 /* VintageTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VintageTableViewController.h; path = Controllers/VintageTableViewController.h; sourceTree = SOURCE_ROOT; };
+		8384626C16C0730B002C47C2 /* VintageTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VintageTableViewController.m; path = Controllers/VintageTableViewController.m; sourceTree = SOURCE_ROOT; };
 		838B2DED167E52EC00944657 /* _TemperatureRange.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = _TemperatureRange.h; path = Model/_TemperatureRange.h; sourceTree = SOURCE_ROOT; };
 		838B2DEE167E52EC00944657 /* _TemperatureRange.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = _TemperatureRange.m; path = Model/_TemperatureRange.m; sourceTree = SOURCE_ROOT; };
 		838B2DEF167E52EC00944657 /* TemperatureRange.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TemperatureRange.h; path = Model/TemperatureRange.h; sourceTree = SOURCE_ROOT; };
@@ -1015,6 +1018,8 @@
 				83E79DD31677AA5100E0E42D /* WineTableViewController.m */,
 				8344BDD316BC9B73003777D0 /* RatingTableViewController.h */,
 				8344BDD416BC9B73003777D0 /* RatingTableViewController.m */,
+				8384626B16C0730B002C47C2 /* VintageTableViewController.h */,
+				8384626C16C0730B002C47C2 /* VintageTableViewController.m */,
 			);
 			name = TableViewController;
 			sourceTree = "<group>";
@@ -1469,6 +1474,7 @@
 				8343ABF016B86D3000492D57 /* UIView+Screenshot.m in Sources */,
 				8336837816B88A3200D7A947 /* MBProgressHUD.m in Sources */,
 				8344BDD516BC9B73003777D0 /* RatingTableViewController.m in Sources */,
+				8384626D16C0730B002C47C2 /* VintageTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

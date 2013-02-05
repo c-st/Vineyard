@@ -162,7 +162,7 @@
 
 - (UIView *) buildAccessoryViewFromPredicate:(NSPredicate *)searchPredicate andObject:(NSManagedObject *) object andIndexPath:(NSIndexPath *)indexPath {
 	int count = [Wine countOfEntitiesWithPredicate:searchPredicate];
-	
+
 	// TODO make this badge look more like a button
 	
 	if (count > 0) {

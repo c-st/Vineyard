@@ -113,7 +113,6 @@
 		NSString *title = [[[sectionInfo objects][0] region] name];
 		return title;
 	}
-	//NSLog(@"returning nil!");
 	return nil;
 }
 

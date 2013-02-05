@@ -2,6 +2,7 @@
 #import "BrowseTableViewController.h"
 
 #import "CountryTableViewController.h"
+#import "VintageTableViewController.h"
 #import "VarietalTableViewController.h"
 #import "RatingTableViewController.h"
 
@@ -31,14 +32,21 @@
 	// Countries
 	NSFetchedResultsController *countriesFRC = [Country fetchAllSortedBy:@"name" ascending:YES withPredicate:nil groupBy:nil delegate:nil];
 	CountryTableViewController *countryTVC = [[CountryTableViewController alloc] initWithFetchedResultsController:countriesFRC];
-	[countryTVC setTitle:@"Countries"];
+	[countryTVC setTitle:@"Country"];
 	[countryTVC setShowCount:YES];
 	[countryTVC setShowPieChart:YES];
 	[countryTVC setPaperFoldNC:self.paperFoldNC];
 	
+	// Vintage
+	VintageTableViewController *vintageTVC = [[VintageTableViewController alloc] init];
+	[vintageTVC setTitle:@"Vintage"];
+	[vintageTVC setShowCount:YES];
+	[vintageTVC setShowPieChart:YES];
+	[vintageTVC setPaperFoldNC:self.paperFoldNC];
+	
 	// Varietals
 	VarietalTableViewController *varietalTVC = [[VarietalTableViewController alloc] init];
-	[varietalTVC setTitle:@"Varietals"];
+	[varietalTVC setTitle:@"Varietal"];
 	[varietalTVC setShowCount:YES];
 	[varietalTVC setPickMode:NO];
 	[varietalTVC setShowPieChart:YES];
@@ -46,7 +54,7 @@
 	
 	// Ratings
 	RatingTableViewController *ratingTVC = [[RatingTableViewController alloc] init];
-	[ratingTVC setTitle:@"Ratings"];
+	[ratingTVC setTitle:@"Rating"];
 	[ratingTVC setShowCount:YES];
 	[ratingTVC setShowPieChart:YES];
 	[ratingTVC setPaperFoldNC:self.paperFoldNC];
@@ -57,7 +65,7 @@
 							@{@"name" : @"Date added", @"controller" : countryTVC},
 						],
 						@[
-							@{@"name" : @"Vintage", @"controller" : countryTVC, @"image" : @"calendar.png"},
+							@{@"name" : @"Vintage", @"controller" : vintageTVC, @"image" : @"calendar.png"},
 							@{@"name" : @"Varietal", @"controller" : varietalTVC, @"image" : @"food_grapes.png"},
 							@{@"name" : @"Matching food", @"controller" : countryTVC}
 						],
