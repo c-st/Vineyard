@@ -29,9 +29,6 @@
     [MagicalRecord setupCoreDataStack];
     
     //[InitialDataImportService clearStore];
-    
-    // Import sample data
-	//[InitialDataImportService importInitialDataFromJson];
 	
 	RaisedTabBarController *tab = [[RaisedTabBarController alloc] init];
 	

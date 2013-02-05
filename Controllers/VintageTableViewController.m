@@ -16,7 +16,7 @@
 - (void) viewWillAppear:(BOOL)animated {
 	// find all wines with year != null, add to years
 	NSPredicate *yearPredicate = [NSPredicate predicateWithFormat:@"vintage > 0"];
-	NSArray *wines = [Wine findAllWithPredicate:yearPredicate];
+	NSArray *wines = [Wine findAllSortedBy:@"vintage" ascending:NO withPredicate:yearPredicate];
 	NSMutableArray *vintages = [[NSMutableArray alloc] init];
 	for (Wine *wine in wines) {
 		if (![vintages containsObject:wine.vintage]) {
@@ -24,8 +24,9 @@
 		}
 	}
 	[self setYears:vintages];
-	//NSLog(@"%i", [vintages count]);
+	NSLog(@"%i", [vintages count]);
 	
+	[self.tableView reloadData];
 }
 
 - (NSPredicate *) buildCountPredicateForYear:(NSNumber *)year {
