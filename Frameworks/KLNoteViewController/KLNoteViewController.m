@@ -8,11 +8,12 @@
 
 #import "KLNoteViewController.h"
 #import <QuartzCore/QuartzCore.h>
+#import "UIColor+CellarColours.h"
 
 //Layout properties
 #define kDefaultMinimizedScalingFactor 0.98     //Amount to shrink each card from the previous one
 #define kDefaultMaximizedScalingFactor 1.00     //Maximum a card can be scaled to
-#define kDefaultNavigationBarOverlap 0.75       //Defines vertical overlap of each navigation toolbar. Slight hack that prevents rounding errors from showing the whitespace between navigation toolbars. Can be customized if require more/less packing of navigation toolbars
+#define kDefaultNavigationBarOverlap 0.8       //Defines vertical overlap of each navigation toolbar. Slight hack that prevents rounding errors from showing the whitespace between navigation toolbars. Can be customized if require more/less packing of navigation toolbars
 
 //Animation properties
 #define kDefaultAnimationDuration 0.3           //Amount of time for the animations to occur
@@ -20,17 +21,17 @@
 #define kDefaultReloadShowAnimationDuration 0.6
 
 //Position for the stack of navigation controllers to originate at
-#define kDefaultVerticalOrigin 100              //Vertical origin of the controller card stack. Making this value larger/smaller will make the card shift down/up.
+#define kDefaultVerticalOrigin 40              //Vertical origin of the controller card stack. Making this value larger/smaller will make the card shift down/up.
 
 //Corner radius properties
-#define kDefaultCornerRadius 5.0
+#define kDefaultCornerRadius 3.0
 
 //Shadow Properties - Note : Disabling shadows greatly improves performance and fluidity of animations
 #define kDefaultShadowEnabled YES
 #define kDefaultShadowColor [UIColor blackColor]
 #define kDefaultShadowOffset CGSizeMake(0, -5)
 #define kDefaultShadowRadius kDefaultCornerRadius
-#define kDefaultShadowOpacity 0.60
+#define kDefaultShadowOpacity 0.30
 
 //Gesture properties
 #define kDefaultMinimumPressDuration 0.2
@@ -65,6 +66,7 @@
     for (int i = 0; i < index; i ++) {
         CGFloat scalingFactor = [self scalingFactorForIndex: i];
         NSLog(@"%@", controllerCard.navigationController.navigationBar);
+		[controllerCard.navigationController.navigationBar setTintColor:[UIColor cellarWineRedColour]];
         originOffset += scalingFactor * controllerCard.navigationController.navigationBar.frame.size.height * kDefaultNavigationBarOverlap;
     }
     
@@ -91,6 +93,9 @@
         KLControllerCard* noteContainer = [[KLControllerCard alloc] initWithNoteViewController: self
                                                                                     navigationController: navigationController
                                                                                                    index:count];
+		
+		[noteContainer.navigationController.navigationBar setTintColor:[UIColor cellarWineRedColour]];
+		
         [noteContainer setDelegate: self];
         [navigationControllers addObject: noteContainer];
         

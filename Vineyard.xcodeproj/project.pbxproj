@@ -46,6 +46,7 @@
 		833146DD16791B0E000F9654 /* PopoverView.m in Sources */ = {isa = PBXBuildFile; fileRef = 833146DB16791B0E000F9654 /* PopoverView.m */; };
 		8336837816B88A3200D7A947 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 8336836316B88A3200D7A947 /* MBProgressHUD.m */; };
 		833C151116CAEF370009B560 /* KLNoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 833C151016CAEF370009B560 /* KLNoteViewController.m */; };
+		833C151416CAFBCD0009B560 /* NoteRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 833C151316CAFBCD0009B560 /* NoteRootViewController.m */; };
 		8343ABE516B86D3000492D57 /* FacingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8343ABCF16B86D3000492D57 /* FacingView.m */; };
 		8343ABE616B86D3000492D57 /* FoldView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8343ABD116B86D3000492D57 /* FoldView.m */; };
 		8343ABE716B86D3000492D57 /* MultiFoldView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8343ABD316B86D3000492D57 /* MultiFoldView.m */; };
@@ -307,6 +308,8 @@
 		8336836316B88A3200D7A947 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		833C150F16CAEF370009B560 /* KLNoteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLNoteViewController.h; sourceTree = "<group>"; };
 		833C151016CAEF370009B560 /* KLNoteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLNoteViewController.m; sourceTree = "<group>"; };
+		833C151216CAFBCD0009B560 /* NoteRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NoteRootViewController.h; path = Controllers/NoteRootViewController.h; sourceTree = SOURCE_ROOT; };
+		833C151316CAFBCD0009B560 /* NoteRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NoteRootViewController.m; path = Controllers/NoteRootViewController.m; sourceTree = SOURCE_ROOT; };
 		8343ABCE16B86D3000492D57 /* FacingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacingView.h; sourceTree = "<group>"; };
 		8343ABCF16B86D3000492D57 /* FacingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FacingView.m; sourceTree = "<group>"; };
 		8343ABD016B86D3000492D57 /* FoldView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoldView.h; sourceTree = "<group>"; };
@@ -1005,6 +1008,8 @@
 				83E79DE91677AA6900E0E42D /* RaisedTabBarController.h */,
 				839B6FFD169B909A00BDAACF /* CharacteristicsViewController.h */,
 				839B6FFE169B909A00BDAACF /* CharacteristicsViewController.m */,
+				833C151216CAFBCD0009B560 /* NoteRootViewController.h */,
+				833C151316CAFBCD0009B560 /* NoteRootViewController.m */,
 			);
 			name = Others;
 			sourceTree = "<group>";
@@ -1490,6 +1495,7 @@
 				8344BDD516BC9B73003777D0 /* RatingTableViewController.m in Sources */,
 				8384626D16C0730B002C47C2 /* VintageTableViewController.m in Sources */,
 				833C151116CAEF370009B560 /* KLNoteViewController.m in Sources */,
+				833C151416CAFBCD0009B560 /* NoteRootViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

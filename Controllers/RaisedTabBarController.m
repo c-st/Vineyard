@@ -16,8 +16,9 @@
 
 #import "WineMapFoldViewController.h"
 
-#import "InitialDataImportService.h"
+#import "NoteRootViewController.h"
 
+#import "InitialDataImportService.h"
 
 @implementation RaisedTabBarController
 
@@ -108,7 +109,6 @@
 																							   andTabBarItem:[[UITabBarItem alloc] initWithTitle:@"Browse" image:[UIImage imageNamed:@"browse.png"] tag:0]];
 	
 	// Collections
-	// NSFetchedResultsController *collectionsFRC = [Collection fetchAllSortedBy:@"name" ascending:YES withPredicate:nil groupBy:nil delegate:nil];
 	CollectionTableViewController *collectionsTVC = [[CollectionTableViewController alloc] initWithFetchedResultsController:nil];
 	[collectionsTVC setTitle:@"Collections"];
 	[collectionsTVC setShowCount:YES];
@@ -116,21 +116,26 @@
 	PaperFoldNavigationController *collectionPaperFoldNC = [self createPaperFoldNavControllerForRootViewController:collectionsTVC
 																								 andTabBarItem:[[UITabBarItem alloc] initWithTitle:@"Collections" image:[UIImage imageNamed:@"box.png"] tag:0]];
 	
+	// Test NV
+	NoteRootViewController *noteVC = [[NoteRootViewController alloc] init];
+	
+	
 	// Countries // Food
 	NSFetchedResultsController *countriesFRC = [Country fetchAllSortedBy:@"name" ascending:YES withPredicate:nil groupBy:nil delegate:nil];
 	CountryTableViewController *countryTVC = [[CountryTableViewController alloc] initWithFetchedResultsController:countriesFRC];
 	[countryTVC setTitle:@"Food"];
 	[countryTVC setShowCount:YES];
 	[countryTVC setShowPieChart:YES];
-	countryTVC.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Food" image:[UIImage imageNamed:@"plate.png"] tag:0];
-    UINavigationController *countryNavController = [[UINavigationController alloc] initWithRootViewController:countryTVC];
+	
+	noteVC.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Food" image:[UIImage imageNamed:@"plate.png"] tag:0];
+    UINavigationController *countryNavController = [[UINavigationController alloc] initWithRootViewController:noteVC];
 	
 	
 	[self setViewControllers:@[winePaperFoldNC,
 							browsePaperFoldNC,
                             [self viewControllerWithTabTitle:@"" image:nil],
 							collectionPaperFoldNC,
-							countryNavController, // food? characteristics?
+							noteVC, // food? characteristics?
                             ]];
 	
 	[self addCenterButtonWithImage:[UIImage imageNamed:@"add-wine-button.png"] highlightImage:nil];
