@@ -108,16 +108,20 @@
 	PaperFoldNavigationController *browsePaperFoldNC = [self createPaperFoldNavControllerForRootViewController:browseTVC
 																							   andTabBarItem:[[UITabBarItem alloc] initWithTitle:@"Browse" image:[UIImage imageNamed:@"browse.png"] tag:0]];
 	
-	// Collections
+	// Collections (deprecated)
+	/*
 	CollectionTableViewController *collectionsTVC = [[CollectionTableViewController alloc] initWithFetchedResultsController:nil];
 	[collectionsTVC setTitle:@"Collections"];
 	[collectionsTVC setShowCount:YES];
 	[collectionsTVC setShowPieChart:NO];
 	PaperFoldNavigationController *collectionPaperFoldNC = [self createPaperFoldNavControllerForRootViewController:collectionsTVC
 																								 andTabBarItem:[[UITabBarItem alloc] initWithTitle:@"Collections" image:[UIImage imageNamed:@"box.png"] tag:0]];
+	*/
 	
-	// Test NV
+	// Collections
+	// TODO: add paperfold
 	NoteRootViewController *noteVC = [[NoteRootViewController alloc] init];
+	noteVC.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Collections" image:[UIImage imageNamed:@"box.png"] tag:0];
 	
 	
 	// Countries // Food
@@ -126,16 +130,15 @@
 	[countryTVC setTitle:@"Food"];
 	[countryTVC setShowCount:YES];
 	[countryTVC setShowPieChart:YES];
-	
-	noteVC.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Food" image:[UIImage imageNamed:@"plate.png"] tag:0];
-    UINavigationController *countryNavController = [[UINavigationController alloc] initWithRootViewController:noteVC];
+	UINavigationController *countryNavController = [[UINavigationController alloc] initWithRootViewController:countryTVC];
+	countryTVC.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Food" image:[UIImage imageNamed:@"plate.png"] tag:0];
 	
 	
 	[self setViewControllers:@[winePaperFoldNC,
 							browsePaperFoldNC,
                             [self viewControllerWithTabTitle:@"" image:nil],
-							collectionPaperFoldNC,
-							noteVC, // food? characteristics?
+							noteVC,
+							countryNavController, // food? characteristics?
                             ]];
 	
 	[self addCenterButtonWithImage:[UIImage imageNamed:@"add-wine-button.png"] highlightImage:nil];
