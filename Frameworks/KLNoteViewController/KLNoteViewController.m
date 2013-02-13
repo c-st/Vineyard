@@ -65,7 +65,7 @@
     CGFloat originOffset = 0;
     for (int i = 0; i < index; i ++) {
         CGFloat scalingFactor = [self scalingFactorForIndex: i];
-        NSLog(@"%@", controllerCard.navigationController.navigationBar);
+        //NSLog(@"%@", controllerCard.navigationController.navigationBar);
 		[controllerCard.navigationController.navigationBar setTintColor:[UIColor cellarWineRedColour]];
         originOffset += scalingFactor * controllerCard.navigationController.navigationBar.frame.size.height * kDefaultNavigationBarOverlap;
     }

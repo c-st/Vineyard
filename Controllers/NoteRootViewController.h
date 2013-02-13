@@ -1,7 +1,8 @@
 #import "KLNoteViewController.h"
+#import "ModalTextFieldView.h"
 
-@interface NoteRootViewController : UIViewController <KLNoteViewControllerDataSource, KLNoteViewControllerDelegate>
+@interface NoteRootViewController : UIViewController <KLNoteViewControllerDataSource, KLNoteViewControllerDelegate, ModalViewDelegate>
 
+@property (nonatomic, retain) NSFetchedResultsController *fetchedResultsController;
 @property(nonatomic, strong) KLNoteViewController* noteViewController;
-@property(nonatomic, strong) NSArray* controllers;
 @end
