@@ -13,7 +13,7 @@
 //Layout properties
 #define kDefaultMinimizedScalingFactor 0.98     //Amount to shrink each card from the previous one
 #define kDefaultMaximizedScalingFactor 1.00     //Maximum a card can be scaled to
-#define kDefaultNavigationBarOverlap 0.8       //Defines vertical overlap of each navigation toolbar. Slight hack that prevents rounding errors from showing the whitespace between navigation toolbars. Can be customized if require more/less packing of navigation toolbars
+#define kDefaultNavigationBarOverlap 0.9       //Defines vertical overlap of each navigation toolbar. Slight hack that prevents rounding errors from showing the whitespace between navigation toolbars. Can be customized if require more/less packing of navigation toolbars
 
 //Animation properties
 #define kDefaultAnimationDuration 0.3           //Amount of time for the animations to occur
@@ -21,7 +21,7 @@
 #define kDefaultReloadShowAnimationDuration 0.6
 
 //Position for the stack of navigation controllers to originate at
-#define kDefaultVerticalOrigin 40              //Vertical origin of the controller card stack. Making this value larger/smaller will make the card shift down/up.
+#define kDefaultVerticalOrigin 60              //Vertical origin of the controller card stack. Making this value larger/smaller will make the card shift down/up.
 
 //Corner radius properties
 #define kDefaultCornerRadius 3.0
@@ -298,11 +298,14 @@
         UILongPressGestureRecognizer* pressGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self
                                                                                              action:@selector(didPerformLongPress:)];
         [pressGesture setMinimumPressDuration: kDefaultMinimumPressDuration];
+		
+		UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didPerformTap:)];
 
         //Add the gestures to the navigationcontrollers navigation bar
-        [self.navigationController.navigationBar addGestureRecognizer: panGesture];
+        [self.navigationController.navigationBar addGestureRecognizer:panGesture];
         [self.navigationController.navigationBar addGestureRecognizer:pressGesture];
-        
+        [self.navigationController.navigationBar addGestureRecognizer:tapGesture];
+		
         //Initialize the state to default
         [self setState:KLControllerCardStateDefault
               animated:NO];
@@ -318,6 +321,16 @@
         //Go to full size
         [self setState:KLControllerCardStateFullScreen animated:YES];
     }
+}
+
+-(void) didPerformTap:(UITapGestureRecognizer*) recognizer {
+	if (self.state == KLControllerCardStateDefault) {
+        //Go to full size
+        [self setState:KLControllerCardStateFullScreen animated:YES];
+    } else if (self.state == KLControllerCardStateFullScreen) {
+		// go back
+		[self setState:KLControllerCardStateDefault animated:YES];
+	}
 }
 
 -(void) redrawShadow {
