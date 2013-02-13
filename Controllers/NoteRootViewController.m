@@ -29,25 +29,31 @@
 	[self.navigationController.navigationBar setTintColor:[UIColor cellarWineRedColour]];
 	
 	UIButton *addCollectionButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-	[addCollectionButton setFrame:CGRectMake(93, 20, 120, 30)];
+	[addCollectionButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+	[addCollectionButton setTintColor:[UIColor blackColor]];
+	[addCollectionButton.titleLabel setFont:[UIFont systemFontOfSize:14]];
+	[addCollectionButton setFrame:CGRectMake(93, 00, 120, 30)];
 	[addCollectionButton setTitle:@"Add collection" forState:UIControlStateNormal];
 	[addCollectionButton addTarget:self action:@selector(addCollectionButtonClicked) forControlEvents:UIControlEventTouchUpInside];
 	[self.view addSubview:addCollectionButton];
 	
+	[self updateAndRefetch:NO];
+	[self.noteViewController reloadData];
 	
-	[self updateAndRefetch];
 	[self.view addSubview:self.noteViewController.view];
 	[self.view setBackgroundColor:[UIColor blackColor]];
 }
 
-- (void) updateAndRefetch {
+- (void) updateAndRefetch:(BOOL)reload {
 	[self.fetchedResultsController.fetchRequest setFetchBatchSize:20];
-	
 	NSError *error;
 	if (![[self fetchedResultsController] performFetch:&error]) {
 		NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
 	}
-    [self.noteViewController reloadData];
+	
+	if (reload) {
+		[self.noteViewController reloadDataAnimated:YES];
+	}
 }
 
 - (NSPredicate *) buildCountPredicateForObject:(NSManagedObject *)object {
@@ -59,6 +65,7 @@
 #pragma mark NoteViewController delegate methods
 
 - (NSInteger)numberOfControllerCardsInNoteView:(KLNoteViewController*) noteView {
+	NSLog(@"numberOfControllerCards");
 	return [self.fetchedResultsController.fetchedObjects count];
 }
 
@@ -86,8 +93,6 @@
 #pragma mark Modal text field view
 
 - (void) addCollectionButtonClicked {
-	NSLog(@"button");
-	
 	ModalTextFieldView *modalTextFieldView = [[ModalTextFieldView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 400)];
 	[modalTextFieldView setDelegate:self];
 	
@@ -110,11 +115,11 @@
 		Collection *collection = [Collection createEntity];
 		[collection setName:[textField text]];
 		[[NSManagedObjectContext defaultContext] saveToPersistentStoreAndWait];
-		
-		[self updateAndRefetch];
+	
+		[self updateAndRefetch:YES];
 		
 		[textField resignFirstResponder];
-		[self dismissSemiModalView];
+		[self dismissSemiModalView];		
 	}
 }
 
