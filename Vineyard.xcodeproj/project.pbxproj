@@ -185,6 +185,7 @@
 		83E79DEA1677AA6900E0E42D /* RaisedTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83E79DE81677AA6900E0E42D /* RaisedTabBarController.m */; };
 		83E79DED1677AA8100E0E42D /* InitialDataImportService.m in Sources */ = {isa = PBXBuildFile; fileRef = 83E79DEB1677AA8100E0E42D /* InitialDataImportService.m */; };
 		83E79DF01677AA9C00E0E42D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 83E79DEE1677AA9C00E0E42D /* AppDelegate.m */; };
+		83E9449B16CC23120009CDEF /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83E9449A16CC23120009CDEF /* Crashlytics.framework */; };
 		83EADB7A16AF510300B4707D /* BrowseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83EADB7916AF510300B4707D /* BrowseTableViewController.m */; };
 		83EF99E5165AA92700C56F40 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83EF99E4165AA92700C56F40 /* QuartzCore.framework */; };
 		83FDC7EB16BD6B36005AA988 /* pricetag@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 83FDC7E916BD6B36005AA988 /* pricetag@2x.png */; };
@@ -528,6 +529,7 @@
 		83E79DEC1677AA8100E0E42D /* InitialDataImportService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InitialDataImportService.h; path = Services/InitialDataImportService.h; sourceTree = SOURCE_ROOT; };
 		83E79DEE1677AA9C00E0E42D /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = SOURCE_ROOT; };
 		83E79DEF1677AA9C00E0E42D /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = SOURCE_ROOT; };
+		83E9449A16CC23120009CDEF /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		83EADB7816AF510300B4707D /* BrowseTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BrowseTableViewController.h; path = Controllers/BrowseTableViewController.h; sourceTree = SOURCE_ROOT; };
 		83EADB7916AF510300B4707D /* BrowseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BrowseTableViewController.m; path = Controllers/BrowseTableViewController.m; sourceTree = SOURCE_ROOT; };
 		83EF99D5165A615900C56F40 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
@@ -551,6 +553,7 @@
 				83D5DD6E163EBC50001C857E /* Foundation.framework in Frameworks */,
 				83D5DD70163EBC50001C857E /* CoreGraphics.framework in Frameworks */,
 				83D5DD72163EBC50001C857E /* CoreData.framework in Frameworks */,
+				83E9449B16CC23120009CDEF /* Crashlytics.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1136,6 +1139,7 @@
 			isa = PBXGroup;
 			children = (
 				8343B83816B70D9D00F14CDF /* Icon@2x.png */,
+				83E9449A16CC23120009CDEF /* Crashlytics.framework */,
 				835C6D8D167E1B4700AC2A04 /* CoreLocation.framework */,
 				8319B0091677C6E0005E28BB /* MapKit.framework */,
 				8319AFD11677C09F005E28BB /* SSToolkit.xcodeproj */,
@@ -1224,6 +1228,7 @@
 				83D5DD63163EBC50001C857E /* Sources */,
 				83D5DD64163EBC50001C857E /* Frameworks */,
 				83D5DD65163EBC50001C857E /* Resources */,
+				83E9449816CC22DE0009CDEF /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -1376,6 +1381,22 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		83E9449816CC22DE0009CDEF /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Crashlytics.framework/run c37d25484429789917901b68f8c6c123a6b540e5";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		83D5DD63163EBC50001C857E /* Sources */ = {
@@ -1571,6 +1592,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Vineyard-Prefix.pch";
@@ -1600,6 +1625,10 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Vineyard-Prefix.pch";

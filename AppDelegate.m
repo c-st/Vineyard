@@ -18,6 +18,8 @@
 #import "InitialDataImportService.h"
 #import "MBProgressHUD.h"
 
+#import <Crashlytics/Crashlytics.h>
+
 @implementation AppDelegate
 
 @synthesize managedObjectContext = _managedObjectContext;
@@ -50,6 +52,7 @@
 		[MBProgressHUD hideHUDForView:tab.view animated:YES];
 	}];
 
+	[Crashlytics startWithAPIKey:@"c37d25484429789917901b68f8c6c123a6b540e5"];
     return YES;
 }
 
