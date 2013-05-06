@@ -294,6 +294,10 @@
                                                                                              action:@selector(didPerformLongPress:)];
         [pressGesture setMinimumPressDuration: kDefaultMinimumPressDuration];
 
+		UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didPerformTap:)];
+		[tapGesture setCancelsTouchesInView:YES];
+		[tapGesture setDelaysTouchesBegan:YES];
+
         //Add the gestures to the navigationcontrollers navigation bar
         [self.navigationController.navigationBar addGestureRecognizer: panGesture];
         [self.navigationController.navigationBar addGestureRecognizer:pressGesture];
