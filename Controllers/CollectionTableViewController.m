@@ -9,6 +9,7 @@
 
 #import "UIImage+Scale.h"
 
+#import <Crashlytics/Crashlytics.h>
 @interface CollectionTableViewController ()
 
 @end
@@ -23,6 +24,7 @@
 	[[self navigationItem] setRightBarButtonItem:addButton];
 	
 	NSLog(@"%i collections.", [[[Collection fetchAllSortedBy:@"name" ascending:YES withPredicate:[self getFetchPredicate:nil] groupBy:nil delegate:nil] fetchedObjects] count]);
+	[[Crashlytics sharedInstance] crash];
 }
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {

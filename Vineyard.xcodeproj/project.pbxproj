@@ -109,6 +109,7 @@
 		8361EE5C1677B5290057E04B /* data.json in Resources */ = {isa = PBXBuildFile; fileRef = 8361EE5B1677B5290057E04B /* data.json */; };
 		8361EE621677B55B0057E04B /* Vineyard.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8361EE601677B55B0057E04B /* Vineyard.xcdatamodeld */; };
 		8361EE781677B5B70057E04B /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8361EE771677B5B70057E04B /* Default-568h@2x.png */; };
+		83640E071739AA3A00725119 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83640E061739AA3A00725119 /* Crashlytics.framework */; };
 		836D07F216ADB5EE00FA090C /* OCAlgorithms.m in Sources */ = {isa = PBXBuildFile; fileRef = 836D07EA16ADB5EE00FA090C /* OCAlgorithms.m */; };
 		836D07F316ADB5EE00FA090C /* OCAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 836D07EC16ADB5EE00FA090C /* OCAnnotation.m */; };
 		836D07F416ADB5EE00FA090C /* OCDistance.m in Sources */ = {isa = PBXBuildFile; fileRef = 836D07EE16ADB5EE00FA090C /* OCDistance.m */; };
@@ -386,6 +387,7 @@
 		8361EE5E1677B54D0057E04B /* Vineyard-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Vineyard-Prefix.pch"; path = "Users/Chris/Dropbox/Projects/Vineyard/Vineyard/Vineyard-Prefix.pch"; sourceTree = SDKROOT; };
 		8361EE611677B55B0057E04B /* Vineyard.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Vineyard.xcdatamodel; sourceTree = "<group>"; };
 		8361EE771677B5B70057E04B /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "Resources/Default-568h@2x.png"; sourceTree = SOURCE_ROOT; };
+		83640E061739AA3A00725119 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		836D07E916ADB5EE00FA090C /* OCAlgorithms.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCAlgorithms.h; sourceTree = "<group>"; };
 		836D07EA16ADB5EE00FA090C /* OCAlgorithms.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCAlgorithms.m; sourceTree = "<group>"; };
 		836D07EB16ADB5EE00FA090C /* OCAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCAnnotation.h; sourceTree = "<group>"; };
@@ -548,6 +550,7 @@
 				83D5DD6E163EBC50001C857E /* Foundation.framework in Frameworks */,
 				83D5DD70163EBC50001C857E /* CoreGraphics.framework in Frameworks */,
 				83D5DD72163EBC50001C857E /* CoreData.framework in Frameworks */,
+				83640E071739AA3A00725119 /* Crashlytics.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1152,6 +1155,7 @@
 		83D5DD6A163EBC50001C857E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				83640E061739AA3A00725119 /* Crashlytics.framework */,
 				83EF99E4165AA92700C56F40 /* QuartzCore.framework */,
 				83D5DD6B163EBC50001C857E /* UIKit.framework */,
 				83D5DD6D163EBC50001C857E /* Foundation.framework */,
@@ -1219,6 +1223,7 @@
 				83D5DD63163EBC50001C857E /* Sources */,
 				83D5DD64163EBC50001C857E /* Frameworks */,
 				83D5DD65163EBC50001C857E /* Resources */,
+				83640E041739AA0100725119 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -1371,6 +1376,22 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		83640E041739AA0100725119 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Crashlytics.framework/run c37d25484429789917901b68f8c6c123a6b540e5";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		83D5DD63163EBC50001C857E /* Sources */ = {
@@ -1565,6 +1586,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Vineyard-Prefix.pch";
@@ -1594,6 +1619,10 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Vineyard-Prefix.pch";
