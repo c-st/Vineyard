@@ -10,6 +10,7 @@
 		83099D5016826A6F00415556 /* ABTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 83099D4F16826A6F00415556 /* ABTableViewCell.m */; };
 		83099D5316826B1100415556 /* FastWineCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 83099D5216826B1100415556 /* FastWineCell.m */; };
 		830B9CF416B318690068668C /* ModalView.m in Sources */ = {isa = PBXBuildFile; fileRef = 830B9CF316B318690068668C /* ModalView.m */; };
+		831998CD174A507D00E4044F /* FastCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 831998CC174A507D00E4044F /* FastCollectionCell.m */; };
 		8319AFB71677BFF8005E28BB /* MagicalImportFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 8319AF7F1677BFF8005E28BB /* MagicalImportFunctions.m */; };
 		8319AFB81677BFF8005E28BB /* NSAttributeDescription+MagicalDataImport.m in Sources */ = {isa = PBXBuildFile; fileRef = 8319AF811677BFF8005E28BB /* NSAttributeDescription+MagicalDataImport.m */; };
 		8319AFB91677BFF8005E28BB /* NSEntityDescription+MagicalDataImport.m in Sources */ = {isa = PBXBuildFile; fileRef = 8319AF831677BFF8005E28BB /* NSEntityDescription+MagicalDataImport.m */; };
@@ -236,6 +237,8 @@
 		83099D5216826B1100415556 /* FastWineCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FastWineCell.m; path = Views/FastWineCell.m; sourceTree = SOURCE_ROOT; };
 		830B9CF216B318690068668C /* ModalView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ModalView.h; path = Views/ModalView.h; sourceTree = SOURCE_ROOT; };
 		830B9CF316B318690068668C /* ModalView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ModalView.m; path = Views/ModalView.m; sourceTree = SOURCE_ROOT; };
+		831998CB174A507D00E4044F /* FastCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FastCollectionCell.h; path = Views/FastCollectionCell.h; sourceTree = SOURCE_ROOT; };
+		831998CC174A507D00E4044F /* FastCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FastCollectionCell.m; path = Views/FastCollectionCell.m; sourceTree = SOURCE_ROOT; };
 		8319AF7E1677BFF8005E28BB /* MagicalImportFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MagicalImportFunctions.h; sourceTree = "<group>"; };
 		8319AF7F1677BFF8005E28BB /* MagicalImportFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MagicalImportFunctions.m; sourceTree = "<group>"; };
 		8319AF801677BFF8005E28BB /* NSAttributeDescription+MagicalDataImport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSAttributeDescription+MagicalDataImport.h"; sourceTree = "<group>"; };
@@ -842,6 +845,8 @@
 				839D258916AD9C4800A482E3 /* ModalTextFieldView.m */,
 				8327C90C16B31D3400429336 /* ModalCollectionView.h */,
 				8327C90D16B31D3400429336 /* ModalCollectionView.m */,
+				831998CB174A507D00E4044F /* FastCollectionCell.h */,
+				831998CC174A507D00E4044F /* FastCollectionCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1511,6 +1516,7 @@
 				8344BDD516BC9B73003777D0 /* RatingTableViewController.m in Sources */,
 				8384626D16C0730B002C47C2 /* VintageTableViewController.m in Sources */,
 				833C151116CAEF370009B560 /* KLNoteViewController.m in Sources */,
+				831998CD174A507D00E4044F /* FastCollectionCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

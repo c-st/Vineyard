@@ -91,7 +91,6 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-	// moved to FastWineCell from WineCell
 	FastWineCell *cell = [tableView dequeueReusableCellWithIdentifier:@"WineCell"];
 	if (cell == nil) {
 		Wine *wine = [[super fetchedResultsController] objectAtIndexPath:indexPath];

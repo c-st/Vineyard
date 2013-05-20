@@ -8,13 +8,22 @@
 #import "UIViewController+KNSemiModal.h"
 
 #import "UIImage+Scale.h"
+#import "FastCollectionCell.h"
 
-#import <Crashlytics/Crashlytics.h>
 @interface CollectionTableViewController ()
 
 @end
 
 @implementation CollectionTableViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+	[self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+	[self.tableView setRowHeight:120];
+	[self.tableView setBackgroundColor:[UIColor cellarBeigeNoisyColour]];
+	self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 10, 0);
+}
+
 
 - (void) viewWillAppear:(BOOL) animated {
 	[self setFetchedResultsController:[Collection fetchAllSortedBy:@"name" ascending:YES withPredicate:nil groupBy:nil delegate:nil]];
@@ -24,7 +33,6 @@
 	[[self navigationItem] setRightBarButtonItem:addButton];
 	
 	NSLog(@"%i collections.", [[[Collection fetchAllSortedBy:@"name" ascending:YES withPredicate:[self getFetchPredicate:nil] groupBy:nil delegate:nil] fetchedObjects] count]);
-	[[Crashlytics sharedInstance] crash];
 }
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
@@ -43,6 +51,18 @@
 	return [NSPredicate predicateWithFormat:@"ANY collections == %@", collection];
 }
 
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+	FastCollectionCell *cell = [tableView dequeueReusableCellWithIdentifier:@"WineCell"];
+	if (cell == nil) {
+		Collection *collection = [[super fetchedResultsController] objectAtIndexPath:indexPath];
+        cell = [[FastCollectionCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"CollectionCell" andCollection:collection];
+		[cell setParentTableViewController:self];
+    }
+    return cell;
+}
+
+/*
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *CellIdentifier = @"CollectionCell";
     CellarTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
@@ -55,13 +75,14 @@
    [self configureCell:cell atIndexPath:indexPath];
     return cell;
 }
-
+*/
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath  {
 	if([super respondsToSelector:@selector(tableView:didSelectRowAtIndexPath:)]) {
 		[super tableView:tableView didSelectRowAtIndexPath:indexPath];
 	}
 	
+	NSLog(@"show wines...");
     // ... show wines ...
 	//[[self navigationController] pushViewController:regionTableViewController animated:YES];
 }
