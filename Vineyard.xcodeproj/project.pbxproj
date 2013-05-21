@@ -118,6 +118,7 @@
 		836D080A16ADE23F00FA090C /* SVSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 836D080716ADE23F00FA090C /* SVSegmentedControl.m */; };
 		836D080B16ADE23F00FA090C /* SVSegmentedThumb.m in Sources */ = {isa = PBXBuildFile; fileRef = 836D080916ADE23F00FA090C /* SVSegmentedThumb.m */; };
 		837E8B75174BD3360051F1A0 /* openbox@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 837E8B74174BD3360051F1A0 /* openbox@2x.png */; };
+		837E8B7C174BE5BD0051F1A0 /* ModalCollectionDeleteView.m in Sources */ = {isa = PBXBuildFile; fileRef = 837E8B7B174BE5BD0051F1A0 /* ModalCollectionDeleteView.m */; };
 		8384626D16C0730B002C47C2 /* VintageTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8384626C16C0730B002C47C2 /* VintageTableViewController.m */; };
 		838B2DF1167E52EC00944657 /* _TemperatureRange.m in Sources */ = {isa = PBXBuildFile; fileRef = 838B2DEE167E52EC00944657 /* _TemperatureRange.m */; };
 		838B2DF2167E52EC00944657 /* TemperatureRange.m in Sources */ = {isa = PBXBuildFile; fileRef = 838B2DF0167E52EC00944657 /* TemperatureRange.m */; };
@@ -406,6 +407,8 @@
 		836D080816ADE23F00FA090C /* SVSegmentedThumb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVSegmentedThumb.h; sourceTree = "<group>"; };
 		836D080916ADE23F00FA090C /* SVSegmentedThumb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVSegmentedThumb.m; sourceTree = "<group>"; };
 		837E8B74174BD3360051F1A0 /* openbox@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "openbox@2x.png"; sourceTree = "<group>"; };
+		837E8B7A174BE5BD0051F1A0 /* ModalCollectionDeleteView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ModalCollectionDeleteView.h; path = Views/ModalCollectionDeleteView.h; sourceTree = SOURCE_ROOT; };
+		837E8B7B174BE5BD0051F1A0 /* ModalCollectionDeleteView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ModalCollectionDeleteView.m; path = Views/ModalCollectionDeleteView.m; sourceTree = SOURCE_ROOT; };
 		8384626B16C0730B002C47C2 /* VintageTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VintageTableViewController.h; path = Controllers/VintageTableViewController.h; sourceTree = SOURCE_ROOT; };
 		8384626C16C0730B002C47C2 /* VintageTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VintageTableViewController.m; path = Controllers/VintageTableViewController.m; sourceTree = SOURCE_ROOT; };
 		838B2DED167E52EC00944657 /* _TemperatureRange.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = _TemperatureRange.h; path = Model/_TemperatureRange.h; sourceTree = SOURCE_ROOT; };
@@ -849,6 +852,8 @@
 				8327C90D16B31D3400429336 /* ModalCollectionView.m */,
 				831998CB174A507D00E4044F /* FastCollectionCell.h */,
 				831998CC174A507D00E4044F /* FastCollectionCell.m */,
+				837E8B7A174BE5BD0051F1A0 /* ModalCollectionDeleteView.h */,
+				837E8B7B174BE5BD0051F1A0 /* ModalCollectionDeleteView.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1521,6 +1526,7 @@
 				8384626D16C0730B002C47C2 /* VintageTableViewController.m in Sources */,
 				833C151116CAEF370009B560 /* KLNoteViewController.m in Sources */,
 				831998CD174A507D00E4044F /* FastCollectionCell.m in Sources */,
+				837E8B7C174BE5BD0051F1A0 /* ModalCollectionDeleteView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

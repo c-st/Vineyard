@@ -13,7 +13,12 @@
 		NSLog(@"%i collections.", [[[Collection fetchAllSortedBy:@"name" ascending:YES withPredicate:nil groupBy:nil delegate:nil] fetchedObjects] count]);
 		[self setFetchedResultsController:[Collection fetchAllSortedBy:@"name" ascending:YES withPredicate:nil groupBy:nil delegate:nil]];
 		
-		[self setWine:theWine];
+		if (theWine != nil) {
+			[self setWine:theWine];
+		} else {
+			NSLog(@"no wine");
+		}
+		
 		self.assignedCollections = [[NSMutableArray alloc] init];
 		[self.assignedCollections addObjectsFromArray:[[[wine collections] allObjects] mutableCopy]];
 		NSLog(@"%i", [wine.collections count]);
@@ -76,6 +81,15 @@
 	[delegate saveButtonPressed:self.assignedCollections];
 }
 
+- (void) updateAndRefetch {
+	[self.fetchedResultsController.fetchRequest setFetchBatchSize:20];
+	NSError *error;
+	if (![[self fetchedResultsController] performFetch:&error]) {
+		NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+	}
+    [self.tableView reloadData];
+}
+
 #pragma mark - table view delegate methods
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -83,7 +97,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    id  sectionInfo = [fetchedResultsController sections][section];
+    id sectionInfo = [fetchedResultsController sections][section];
     return [sectionInfo numberOfObjects];
 }
 

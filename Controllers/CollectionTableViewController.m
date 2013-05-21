@@ -1,7 +1,9 @@
 #import "UIColor+CellarColours.h"
 #import "CollectionTableViewController.h"
 #import "RegionTableViewController.h"
+
 #import "ModalTextFieldView.h"
+#import "ModalCollectionDeleteView.h"
 
 #import "WineTableViewController.h"
 
@@ -10,6 +12,7 @@
 #import "UIViewController+KNSemiModal.h"
 
 #import "UIImage+Scale.h"
+#import "UIImage+Tint.h"
 #import "FastCollectionCell.h"
 
 @interface CollectionTableViewController ()
@@ -31,24 +34,15 @@
 	[self setFetchedResultsController:[Collection fetchAllSortedBy:@"name" ascending:YES withPredicate:nil groupBy:nil delegate:nil]];
 	[super viewWillAppear:animated];
 	
+	UIBarButtonItem *deleteButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemTrash target:self action:@selector(deleteCollectionButtonClicked)];
+	[[self navigationItem] setLeftBarButtonItem:deleteButton];
+	
 	UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addCollectionButtonClicked)];
 	[[self navigationItem] setRightBarButtonItem:addButton];
-	
+
 	NSLog(@"%i collections.", [[[Collection fetchAllSortedBy:@"name" ascending:YES withPredicate:[self getFetchPredicate:nil] groupBy:nil delegate:nil] fetchedObjects] count]);
 }
 
-/*
-- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
-    Collection *collection = [self.fetchedResultsController objectAtIndexPath:indexPath];
-	
-	// cell.imageView.image = [[UIImage imageNamed:[country.isoCode stringByAppendingString:@".png"]] scaleToSize:CGSizeMake(26, 26)];
-    cell.textLabel.text = collection.name;
-	
-	if ([self showCount]) {
-		cell.accessoryView = [self buildAccessoryViewFromPredicate:[self buildCountPredicateForObject:collection] andObject:collection andIndexPath:indexPath];
-	}
-}
-*/
 
 - (NSPredicate *) buildCountPredicateForObject:(NSManagedObject *)object {
 	Collection* collection = (Collection *) object;
@@ -106,7 +100,19 @@
 }
 
 #pragma mark
-#pragma mark Modal text field view 
+#pragma mark Modal text field view
+
+- (void) deleteCollectionButtonClicked {
+	ModalCollectionDeleteView *modaCollectionDeleteView = [[ModalCollectionDeleteView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 300)];
+	[modaCollectionDeleteView setDelegate:self];
+	
+	[self presentSemiView:modaCollectionDeleteView withOptions:@{
+	 KNSemiModalOptionKeys.pushParentBack    : @(YES),
+	 KNSemiModalOptionKeys.animationDuration : @(0.25),
+	 KNSemiModalOptionKeys.shadowOpacity     : @(0.3),
+	 KNSemiModalOptionKeys.parentAlpha		 : @(0.2)
+	 }];
+}
 
 - (void) addCollectionButtonClicked {
 	ModalTextFieldView *modalTextFieldView = [[ModalTextFieldView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 400)];
@@ -123,6 +129,7 @@
 - (void) cancelButtonPressed:(UITextField*) textField {
 	[textField resignFirstResponder];
 	[self dismissSemiModalView];
+	[self updateAndRefetch];
 }
 
 - (void) saveButtonPressed:(UITextField*) textField {

@@ -11,4 +11,7 @@
 @property (nonatomic, strong) Wine *wine;
 
 - (id)initWithFrame:(CGRect)frame andWine:(Wine *) theWine;
+
+- (void) updateAndRefetch;
+
 @end
