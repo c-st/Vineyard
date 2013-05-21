@@ -3,6 +3,8 @@
 #import "RegionTableViewController.h"
 #import "ModalTextFieldView.h"
 
+#import "WineTableViewController.h"
+
 #import "Collection.h"
 
 #import "UIViewController+KNSemiModal.h"
@@ -19,7 +21,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 	[self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
-	[self.tableView setRowHeight:120];
+	[self.tableView setRowHeight:70];
 	[self.tableView setBackgroundColor:[UIColor cellarBeigeNoisyColour]];
 	self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 10, 0);
 }
@@ -35,6 +37,7 @@
 	NSLog(@"%i collections.", [[[Collection fetchAllSortedBy:@"name" ascending:YES withPredicate:[self getFetchPredicate:nil] groupBy:nil delegate:nil] fetchedObjects] count]);
 }
 
+/*
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
     Collection *collection = [self.fetchedResultsController objectAtIndexPath:indexPath];
 	
@@ -45,6 +48,7 @@
 		cell.accessoryView = [self buildAccessoryViewFromPredicate:[self buildCountPredicateForObject:collection] andObject:collection andIndexPath:indexPath];
 	}
 }
+*/
 
 - (NSPredicate *) buildCountPredicateForObject:(NSManagedObject *)object {
 	Collection* collection = (Collection *) object;
@@ -81,6 +85,20 @@
 	if([super respondsToSelector:@selector(tableView:didSelectRowAtIndexPath:)]) {
 		[super tableView:tableView didSelectRowAtIndexPath:indexPath];
 	}
+	
+	Collection *collection = [[super fetchedResultsController] objectAtIndexPath:indexPath];
+	NSFetchedResultsController *wineSearchController = [Wine fetchAllSortedBy:@"name" ascending:YES withPredicate:[self buildCountPredicateForObject:collection] groupBy:nil delegate:self];
+	
+	//NSPredicate *searchStatement = [NSPredicate predicateWithFormat:@"appellation.appellationID == %@", appellation.appellationID];
+	
+	WineTableViewController *wineTableViewController = [[WineTableViewController alloc] initWithFetchedResultsController:wineSearchController];
+	[wineTableViewController setTitle:collection.name];
+	[wineTableViewController setShowCount:NO];
+	[wineTableViewController setPaperFoldNC:self.paperFoldNC];
+	//if ([wineSearchController.fetchedObjects count] > 0) {
+		[[self navigationController] pushViewController:wineTableViewController animated:YES];
+	//}
+	
 	
 	NSLog(@"show wines...");
     // ... show wines ...

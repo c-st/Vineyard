@@ -117,6 +117,7 @@
 		836D07F516ADB5EE00FA090C /* OCMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 836D07F116ADB5EE00FA090C /* OCMapView.m */; };
 		836D080A16ADE23F00FA090C /* SVSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 836D080716ADE23F00FA090C /* SVSegmentedControl.m */; };
 		836D080B16ADE23F00FA090C /* SVSegmentedThumb.m in Sources */ = {isa = PBXBuildFile; fileRef = 836D080916ADE23F00FA090C /* SVSegmentedThumb.m */; };
+		837E8B75174BD3360051F1A0 /* openbox@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 837E8B74174BD3360051F1A0 /* openbox@2x.png */; };
 		8384626D16C0730B002C47C2 /* VintageTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8384626C16C0730B002C47C2 /* VintageTableViewController.m */; };
 		838B2DF1167E52EC00944657 /* _TemperatureRange.m in Sources */ = {isa = PBXBuildFile; fileRef = 838B2DEE167E52EC00944657 /* _TemperatureRange.m */; };
 		838B2DF2167E52EC00944657 /* TemperatureRange.m in Sources */ = {isa = PBXBuildFile; fileRef = 838B2DF0167E52EC00944657 /* TemperatureRange.m */; };
@@ -404,6 +405,7 @@
 		836D080716ADE23F00FA090C /* SVSegmentedControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVSegmentedControl.m; sourceTree = "<group>"; };
 		836D080816ADE23F00FA090C /* SVSegmentedThumb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVSegmentedThumb.h; sourceTree = "<group>"; };
 		836D080916ADE23F00FA090C /* SVSegmentedThumb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVSegmentedThumb.m; sourceTree = "<group>"; };
+		837E8B74174BD3360051F1A0 /* openbox@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "openbox@2x.png"; sourceTree = "<group>"; };
 		8384626B16C0730B002C47C2 /* VintageTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VintageTableViewController.h; path = Controllers/VintageTableViewController.h; sourceTree = SOURCE_ROOT; };
 		8384626C16C0730B002C47C2 /* VintageTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VintageTableViewController.m; path = Controllers/VintageTableViewController.m; sourceTree = SOURCE_ROOT; };
 		838B2DED167E52EC00944657 /* _TemperatureRange.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = _TemperatureRange.h; path = Model/_TemperatureRange.h; sourceTree = SOURCE_ROOT; };
@@ -912,6 +914,7 @@
 		835D707816B5985300680687 /* Icons */ = {
 			isa = PBXGroup;
 			children = (
+				837E8B74174BD3360051F1A0 /* openbox@2x.png */,
 				83FDC7E916BD6B36005AA988 /* pricetag@2x.png */,
 				83FDC7EA16BD6B36005AA988 /* calendar@2x.png */,
 				8344BDCB16BC9A42003777D0 /* tag@2x.png */,
@@ -1377,6 +1380,7 @@
 				83FDC7EB16BD6B36005AA988 /* pricetag@2x.png in Resources */,
 				83FDC7EC16BD6B36005AA988 /* calendar@2x.png in Resources */,
 				8354FC0816BEBEB700C411B9 /* CA.png in Resources */,
+				837E8B75174BD3360051F1A0 /* openbox@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

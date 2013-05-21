@@ -60,20 +60,43 @@
 	
 	// draw line
 	CGContextSaveGState(context);
-	CGRect lineBounds = CGRectMake(18, 38, 300, 0);
 	
-	CGContextSetLineWidth(context, 1.0f);
-	CGContextSetStrokeColorWithColor(context, [[UIColor lightGrayColor] colorWithAlphaComponent:0.2].CGColor);
-	CGContextMoveToPoint(context, lineBounds.origin.x, lineBounds.origin.y);
-	CGContextAddLineToPoint(context, lineBounds.size.width, lineBounds.origin.y);
-	CGContextStrokePath(context);
+}
+
+- (void) drawBox:(CGPoint) point {
+	[[[[UIImage imageNamed:@"openbox.png"] scaleToSize:CGSizeMake(35, 35)] imageTintedWithColor:[[UIColor cellarWineRedColour] colorWithAlphaComponent:0.75f]] drawAtPoint:point];
+}
+
+- (void) drawName:(CGPoint) point {
+	UIFont *font = [UIFont fontWithName:@"Baskerville" size:21];
+	UIColor *textColor = [UIColor blackColor];
+	[textColor set];
 	
-	CGContextSetStrokeColorWithColor(context, [UIColor whiteColor].CGColor);
-	CGContextMoveToPoint(context, lineBounds.origin.x, lineBounds.origin.y + 1.0);
-	CGContextAddLineToPoint(context, lineBounds.size.width, lineBounds.origin.y + 1.0);
-	CGContextStrokePath(context);
+	NSString *title = self.collection.name;
+	if (title.length > 15) {
+		title = [[title substringToIndex:15] stringByAppendingString:@"..."];
+	}
+	[title drawAtPoint:point withFont:font];
+}
+
+- (void) drawCount:(CGPoint) point {
+	UIFont *font = [UIFont fontWithName:@"Baskerville" size:21];
+	UIColor *textColor = [UIColor lightGrayColor];
+	[textColor set];
 	
-	CGContextRestoreGState(context);
+	NSString *title;
+	int count = [collection.wines count];
+	if (count > 1 || count == 0) {
+		title = [NSString stringWithFormat:@" %i wines", [collection.wines count]];
+	} else if (count > 99) {
+		title = [NSString stringWithFormat:@" %i", [collection.wines count]];
+	} else {
+		title = [NSString stringWithFormat:@" %i wine", [collection.wines count]];
+	}
+	
+	
+	//[self.collection.name drawAtPoint:point withFont:font];
+	[title drawAtPoint:point withFont:font];
 }
 
 - (void) drawContentView:(CGRect)rect highlighted:(BOOL)highlighted {
@@ -81,19 +104,12 @@
 	
 	[self drawWineCellContainer:rect context:context];
 	
-	//[self drawName:CGPointMake(19, 14)];
+	[self drawBox:CGPointMake(20, 17)];
 	
-	//[self drawVintage:CGPointMake(265, 15)];
+	[self drawName:CGPointMake(67, 24)];
 	
-	//[self drawAppellationRegion:CGPointMake(20, 40) localizationPoint:CGPointMake(18, 93)];
+	[self drawCount:CGPointMake(220, 24)];
 	
-	//[self drawVarietals:CGPointMake(17, 55)];
-	
-	//[self drawTemperature:CGPointMake(21, 74)];
-	
-	//[self drawColour:CGPointMake(266, 33)];
-	
-	//[self drawRating: CGRectMake(0, 90, 518, 0)];
 }
 
 
