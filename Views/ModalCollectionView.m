@@ -98,10 +98,10 @@
     UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
-		[cell.textLabel setText:[collection name]];
 		[cell.textLabel setFont:[UIFont boldSystemFontOfSize:16]];
 		[cell setSelectionStyle:UITableViewCellSelectionStyleGray];
     }
+	[cell.textLabel setText:[collection name]];
 	
 	if ([self.assignedCollections containsObject:collection]) {
 		[cell setAccessoryType:UITableViewCellAccessoryCheckmark];
