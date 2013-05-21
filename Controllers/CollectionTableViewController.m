@@ -89,6 +89,7 @@
 	[wineTableViewController setTitle:collection.name];
 	[wineTableViewController setShowCount:NO];
 	[wineTableViewController setPaperFoldNC:self.paperFoldNC];
+	[wineTableViewController setAddWineInfoText:@"There are no wines in \nthis collection yet.\n\n You can add them\n by navigating to a wine\n and adding it to this collection!"];
 	//if ([wineSearchController.fetchedObjects count] > 0) {
 		[[self navigationController] pushViewController:wineTableViewController animated:YES];
 	//}
@@ -122,7 +123,7 @@
 		KNSemiModalOptionKeys.pushParentBack    : @(YES),
 		KNSemiModalOptionKeys.animationDuration : @(0.25),
 		KNSemiModalOptionKeys.shadowOpacity     : @(0.3),
-		KNSemiModalOptionKeys.parentAlpha		 : @(0.4)
+		KNSemiModalOptionKeys.parentAlpha		: @(0.4)
 	 }];
 }
 

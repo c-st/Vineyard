@@ -20,6 +20,8 @@
 
 @implementation WineTableViewController
 
+@synthesize addWineInfoView, addWineInfoText;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
 	[self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
@@ -47,15 +49,25 @@
 		NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
 	}
 	
-	/*
-	int wineCount = [[[Wine fetchAllSortedBy:@"name" ascending:YES withPredicate:[self getFetchPredicate:nil] groupBy:nil delegate:nil] fetchedObjects] count];
-	if (wineCount == 0) {
-		NSLog(@"no wines yet");
-		UIView *addWineView = [[UIView alloc] initWithFrame:CGRectMake(100, 100, 50, 50)];
-		[addWineView setBackgroundColor:[UIColor redColor]];
-		[self.view addSubview:addWineView];
+	// "Add wines" info 
+	addWineInfoView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 200)];
+	[addWineInfoView setBackgroundColor:[UIColor clearColor]];
+	[addWineInfoView setHidden:YES];
+	UILabel *addLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 320, 200)];
+	[addLabel setTextAlignment:NSTextAlignmentCenter];
+	[addLabel setBackgroundColor:[UIColor clearColor]];
+	[addLabel setTextColor:[UIColor darkGrayColor]];
+	[addLabel setTextAlignment:NSTextAlignmentCenter];
+	[addLabel setNumberOfLines:0];
+	[addLabel setFont:[UIFont fontWithName:@"Bradley Hand" size:19]];
+	if ([addWineInfoText length] == 0) {
+		[addLabel setText:@"Oh... There are no wines yet...\n\n You can add them\n by using the\n button down there!"];
+	} else {
+		[addLabel setText:addWineInfoText];
 	}
-	 */
+	[addWineInfoView addSubview:addLabel];
+	[self.tableView setScrollEnabled:YES];
+	[self.view addSubview:addWineInfoView];
 	
 	[self.tableView reloadData];
 }
@@ -79,9 +91,13 @@
 		NSArray *fetchResult = self.fetchedResultsController.fetchedObjects;
 		if ([fetchResult count] > 0) {
 			[wineMapC setWines:fetchResult];
+			[addWineInfoView setHidden:YES];
+			[self.tableView setScrollEnabled:YES];
 		} else {
 			NSLog(@"no wines in list");
 			[wineMapC setWines:[[NSArray alloc] init]];
+			[addWineInfoView setHidden:NO];
+			[self.tableView setScrollEnabled:NO];
 		}
 	}
 }
