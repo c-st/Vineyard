@@ -46,7 +46,6 @@
 		UIBarButtonItem *pieButton = [[UIBarButtonItem alloc] initWithImage:image style:UIBarButtonItemStylePlain target:self action:@selector(showStatsButtonClicked)];
 		[[self navigationItem] setRightBarButtonItem:pieButton];
 	}
-	
 }
 
 - (void) viewWillAppear:(BOOL)animated {

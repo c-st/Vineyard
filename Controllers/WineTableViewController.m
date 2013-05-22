@@ -22,19 +22,6 @@
 
 @synthesize addWineInfoView, addWineInfoText;
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-	[self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
-	[self.tableView setRowHeight:120];
-	[self.tableView setBackgroundColor:[UIColor cellarBeigeNoisyColour]];
-	self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 10, 0);
-	
-	// show button for map fold
-	UIImage *image = [[[UIImage imageNamed:@"map.png"] imageTintedWithColor:[UIColor whiteColor]] scaleToSize:CGSizeMake(16, 16)];
-	UIBarButtonItem *mapButton = [[UIBarButtonItem alloc] initWithImage:image style:UIBarButtonItemStylePlain target:self action:@selector(showMapFoldButtonClicked)];
-	[[self navigationItem] setRightBarButtonItem:mapButton];
-}
-
 - (void) viewWillAppear:(BOOL)animated {
 	if (self.fetchedResultsController == nil) {
 		[self setFetchedResultsController:[Wine fetchAllSortedBy:@"name" ascending:YES withPredicate:[self getFetchPredicate:nil] groupBy:nil delegate:nil]];
@@ -49,7 +36,7 @@
 		NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
 	}
 	
-	// "Add wines" info 
+	// add helpful screen: "Add wines" info
 	addWineInfoView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 200)];
 	[addWineInfoView setBackgroundColor:[UIColor clearColor]];
 	[addWineInfoView setHidden:YES];
@@ -70,12 +57,6 @@
 	[self.view addSubview:addWineInfoView];
 	
 	[self.tableView reloadData];
-}
-
-- (void) viewWillDisappear:(BOOL)animated {
-	if ([[[self paperFoldNC] paperFoldView] state] == PaperFoldStateDefault) {
-		//NSLog(@"PaperFoldStateDefault");
-	}
 }
 
 - (void) viewDidAppear:(BOOL)animated {
@@ -99,6 +80,26 @@
 			[addWineInfoView setHidden:NO];
 			[self.tableView setScrollEnabled:NO];
 		}
+	}
+}
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+	[self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+	[self.tableView setRowHeight:120];
+	[self.tableView setBackgroundColor:[UIColor cellarBeigeNoisyColour]];
+	self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 10, 0);
+	
+	// show button for map fold
+	UIImage *image = [[[UIImage imageNamed:@"map.png"] imageTintedWithColor:[UIColor whiteColor]] scaleToSize:CGSizeMake(16, 16)];
+	UIBarButtonItem *mapButton = [[UIBarButtonItem alloc] initWithImage:image style:UIBarButtonItemStylePlain target:self action:@selector(showMapFoldButtonClicked)];
+	[[self navigationItem] setRightBarButtonItem:mapButton];
+}
+
+
+- (void) viewWillDisappear:(BOOL)animated {
+	if ([[[self paperFoldNC] paperFoldView] state] == PaperFoldStateDefault) {
+		//NSLog(@"PaperFoldStateDefault");
 	}
 }
 
@@ -138,13 +139,10 @@
 	
 	NSLog(@"button state is %i", [[[self paperFoldNC] paperFoldView] state]);
 	if ([[[self paperFoldNC] paperFoldView] state] == PaperFoldStateDefault) {
-		NSLog(@"opening right fold..");
-		
 		//[[[self paperFoldNC] paperFoldView] setPaperFoldState:PaperFoldStateRightUnfolded animated:YES];
 		[[[self paperFoldNC] paperFoldView] setPaperFoldState:PaperFoldStateRightUnfolded animated:NO]; // this seems to work reliably
 	} else {
 		[[[self paperFoldNC] paperFoldView] setPaperFoldState:PaperFoldStateDefault animated:YES];
-		//[[[self paperFoldNC] paperFoldView] setPaperFoldState:PaperFoldStateDefault animated:NO];
 	}
 }
 
