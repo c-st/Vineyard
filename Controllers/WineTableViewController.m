@@ -134,13 +134,17 @@
 
 - (void) showMapFoldButtonClicked {
 	// stop scrolling
-	[self.tableView setContentOffset:self.tableView.contentOffset animated:NO];
+	//[self.tableView setContentOffset:self.tableView.contentOffset animated:NO];
 	
 	NSLog(@"button state is %i", [[[self paperFoldNC] paperFoldView] state]);
 	if ([[[self paperFoldNC] paperFoldView] state] == PaperFoldStateDefault) {
-		[[[self paperFoldNC] paperFoldView] setPaperFoldState:PaperFoldStateRightUnfolded animated:YES];
+		NSLog(@"opening right fold..");
+		
+		//[[[self paperFoldNC] paperFoldView] setPaperFoldState:PaperFoldStateRightUnfolded animated:YES];
+		[[[self paperFoldNC] paperFoldView] setPaperFoldState:PaperFoldStateRightUnfolded animated:NO]; // this seems to work reliably
 	} else {
 		[[[self paperFoldNC] paperFoldView] setPaperFoldState:PaperFoldStateDefault animated:YES];
+		//[[[self paperFoldNC] paperFoldView] setPaperFoldState:PaperFoldStateDefault animated:NO];
 	}
 }
 
