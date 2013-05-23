@@ -110,4 +110,9 @@
 - (NSString *)pieChart:(XYPieChart *)pieChart textForSliceAtIndex:(NSUInteger)index {
 	return [[values objectAtIndex:index] valueForKey:@"name"];
 }
+
+// hack: overriden to not display "add item" view here
+- (UIView *)buildAddItemView {
+	return nil;
+}
 @end
