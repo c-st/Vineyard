@@ -20,12 +20,16 @@
 
 @implementation WineTableViewController
 
-@synthesize addWineInfoView, addWineInfoText;
+@synthesize customAddItemInfoText;
+
 
 - (void) viewWillAppear:(BOOL)animated {
 	if (self.fetchedResultsController == nil) {
 		[self setFetchedResultsController:[Wine fetchAllSortedBy:@"name" ascending:YES withPredicate:[self getFetchPredicate:nil] groupBy:nil delegate:nil]];
 	}
+	
+	[super viewWillAppear:animated];
+	
 	if (self.paperFoldNC == nil) {
 		NSLog(@"wine TVC paperFoldNC is nil! this should not be.");
 	}
@@ -36,35 +40,6 @@
 		NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
 	}
 	
-	// add helpful screen: "Add wines" info
-	addWineInfoView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 200)];
-	[addWineInfoView setBackgroundColor:[UIColor clearColor]];
-	[addWineInfoView setHidden:YES];
-	UILabel *addLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 320, 200)];
-	[addLabel setTextAlignment:NSTextAlignmentCenter];
-	[addLabel setBackgroundColor:[UIColor clearColor]];
-	[addLabel setTextColor:[UIColor darkGrayColor]];
-	[addLabel setTextAlignment:NSTextAlignmentCenter];
-	[addLabel setNumberOfLines:0];
-	[addLabel setFont:[UIFont fontWithName:@"Bradley Hand" size:19]];
-	if ([addWineInfoText length] == 0) {
-		[addLabel setText:@"Oh... There are no wines yet...\n\n You can add them\n by using the\n button down there!"];
-	} else {
-		[addLabel setText:addWineInfoText];
-	}
-	[addWineInfoView addSubview:addLabel];
-	[self.tableView setScrollEnabled:YES];
-	[self.view addSubview:addWineInfoView];
-	
-	[self.tableView reloadData];
-}
-
-- (void) viewDidAppear:(BOOL)animated {
-	// enable paper fold
-	[[[self paperFoldNC] paperFoldView] setEnableLeftFoldDragging:NO];
-	[[[self paperFoldNC] paperFoldView] setEnableRightFoldDragging:YES];
-	[[[self paperFoldNC] paperFoldView] setGestureRecognizerEnabled:YES];
-	
 	// set wines to fold map view
 	UIViewController *viewC = [[self paperFoldNC] rightViewController];
 	if ([viewC isKindOfClass:[WineMapFoldViewController class]]) {
@@ -72,15 +47,23 @@
 		NSArray *fetchResult = self.fetchedResultsController.fetchedObjects;
 		if ([fetchResult count] > 0) {
 			[wineMapC setWines:fetchResult];
-			[addWineInfoView setHidden:YES];
-			[self.tableView setScrollEnabled:YES];
+			[self.navigationItem.rightBarButtonItem setEnabled:YES];
+			[[[self paperFoldNC] paperFoldView] setEnableRightFoldDragging:YES];
 		} else {
-			NSLog(@"no wines in list");
 			[wineMapC setWines:[[NSArray alloc] init]];
-			[addWineInfoView setHidden:NO];
-			[self.tableView setScrollEnabled:NO];
+			[self.navigationItem.rightBarButtonItem setEnabled:NO];
+			[[[self paperFoldNC] paperFoldView] setEnableRightFoldDragging:NO];
 		}
 	}
+	
+	[self.tableView reloadData];
+}
+
+- (void) viewDidAppear:(BOOL)animated {
+	// enable paper fold
+	[[[self paperFoldNC] paperFoldView] setEnableLeftFoldDragging:NO];
+	//[[[self paperFoldNC] paperFoldView] setEnableRightFoldDragging:YES];
+	[[[self paperFoldNC] paperFoldView] setGestureRecognizerEnabled:YES];
 }
 
 - (void)viewDidLoad {
@@ -135,7 +118,7 @@
 
 - (void) showMapFoldButtonClicked {
 	// stop scrolling
-	//[self.tableView setContentOffset:self.tableView.contentOffset animated:NO];
+	[self.tableView setContentOffset:self.tableView.contentOffset animated:NO];
 	
 	NSLog(@"button state is %i", [[[self paperFoldNC] paperFoldView] state]);
 	if ([[[self paperFoldNC] paperFoldView] state] == PaperFoldStateDefault) {
@@ -144,6 +127,13 @@
 	} else {
 		[[[self paperFoldNC] paperFoldView] setPaperFoldState:PaperFoldStateDefault animated:YES];
 	}
+}
+
+- (NSString *)addItemInfoText {
+	if ([self.customAddItemInfoText length] > 0) {
+		return [self customAddItemInfoText];
+	}
+	return @"Oh... There are no wines yet...\n\n You can add them\n by using the\n button down there!";
 }
 
 @end

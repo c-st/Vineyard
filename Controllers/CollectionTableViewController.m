@@ -27,12 +27,17 @@
 	[self.tableView setRowHeight:70];
 	[self.tableView setBackgroundColor:[UIColor cellarBeigeNoisyColour]];
 	self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 10, 0);
+	
+	[self setFetchedResultsController:[Collection fetchAllSortedBy:@"name" ascending:YES withPredicate:nil groupBy:nil delegate:nil]];
 }
 
 
 - (void) viewWillAppear:(BOOL) animated {
-	[self setFetchedResultsController:[Collection fetchAllSortedBy:@"name" ascending:YES withPredicate:nil groupBy:nil delegate:nil]];
 	[super viewWillAppear:animated];
+	
+	NSLog(@"collection tvc: view will appear");
+	
+	
 	
 	UIBarButtonItem *deleteButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemTrash target:self action:@selector(deleteCollectionButtonClicked)];
 	[[self navigationItem] setLeftBarButtonItem:deleteButton];
@@ -41,6 +46,8 @@
 	[[self navigationItem] setRightBarButtonItem:addButton];
 
 	NSLog(@"%i collections.", [[[Collection fetchAllSortedBy:@"name" ascending:YES withPredicate:[self getFetchPredicate:nil] groupBy:nil delegate:nil] fetchedObjects] count]);
+	
+	[self.tableView reloadData];
 }
 
 
@@ -60,21 +67,6 @@
     return cell;
 }
 
-/*
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *CellIdentifier = @"CollectionCell";
-    CellarTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[CellarTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
-		if ([self showCount]) {
-			[cell setShowArrow:YES];
-		}
-    }
-   [self configureCell:cell atIndexPath:indexPath];
-    return cell;
-}
-*/
-
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath  {
 	if([super respondsToSelector:@selector(tableView:didSelectRowAtIndexPath:)]) {
 		[super tableView:tableView didSelectRowAtIndexPath:indexPath];
@@ -89,15 +81,8 @@
 	[wineTableViewController setTitle:collection.name];
 	[wineTableViewController setShowCount:NO];
 	[wineTableViewController setPaperFoldNC:self.paperFoldNC];
-	[wineTableViewController setAddWineInfoText:@"There are no wines in \nthis collection yet.\n\n You can add them\n by navigating to a wine\n and adding it to this collection!"];
-	//if ([wineSearchController.fetchedObjects count] > 0) {
-		[[self navigationController] pushViewController:wineTableViewController animated:YES];
-	//}
-	
-	
-	NSLog(@"show wines...");
-    // ... show wines ...
-	//[[self navigationController] pushViewController:regionTableViewController animated:YES];
+	[wineTableViewController setCustomAddItemInfoText:@"There are no wines in \nthis collection yet.\n\n You can add them\n by navigating to a wine\n and adding it to this collection!"];
+	[[self navigationController] pushViewController:wineTableViewController animated:YES];
 }
 
 #pragma mark
@@ -113,6 +98,8 @@
 	 KNSemiModalOptionKeys.shadowOpacity     : @(0.3),
 	 KNSemiModalOptionKeys.parentAlpha		 : @(0.4)
 	 }];
+	
+	[self viewWillAppear:YES];
 }
 
 - (void) addCollectionButtonClicked {
@@ -125,12 +112,16 @@
 		KNSemiModalOptionKeys.shadowOpacity     : @(0.3),
 		KNSemiModalOptionKeys.parentAlpha		: @(0.4)
 	 }];
+	
+	[self viewWillAppear:YES];
 }
 
 - (void) cancelButtonPressed:(UITextField*) textField {
 	[textField resignFirstResponder];
 	[self dismissSemiModalView];
 	[self updateAndRefetch];
+	
+	[self viewWillAppear:YES];
 }
 
 - (void) saveButtonPressed:(UITextField*) textField {
@@ -145,8 +136,12 @@
 		[textField resignFirstResponder];
 		[self dismissSemiModalView];
 	}
+	
+	[self viewWillAppear:YES];
 }
 
-
+- (NSString *)addItemInfoText {
+	return @"Oh... There are no collections yet...\n\n You can add one\n by using the\n button up there!";
+}
 
 @end

@@ -19,29 +19,25 @@
 #import "SSToolkit.h"
 #import "XYPieChart.h"
 
-
-
 @class SettingsCell;
 
 @interface AbstractTableViewController : UITableViewController <NSFetchedResultsControllerDelegate, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, XYPieChartDelegate, XYPieChartDataSource> {
 	UISearchBar *searchBar;
 	SettingsCell *settingsCell;
+	UIView *addItemInfoView;
 	
 	PaperFoldNavigationController *paperFoldNC;
-	
-
 }
 
 @property (nonatomic, retain) NSFetchedResultsController *fetchedResultsController;
 @property (nonatomic, strong) SettingsCell* settingsCell;
-
 @property (nonatomic, strong) PaperFoldNavigationController *paperFoldNC;
+@property (nonatomic, strong) UIView *addItemInfoView;
 
 @property (atomic) BOOL showCount;
 @property (atomic) BOOL showSearchBar;
 @property (atomic) BOOL showPieChart;
 @property (atomic) BOOL allowPaperFoldDragging;
-
 
 - (id) initWithFetchedResultsController:(NSFetchedResultsController *)controller;
 
@@ -63,4 +59,10 @@
 
 #pragma mark Pie chart
 - (NSIndexPath *) determineIndexPathFromAbsoluteIndex:(NSUInteger)index;
+
+#pragma add item info view
+- (UIView *)buildAddItemView;
+- (NSString *)addItemInfoText;
+
+
 @end

@@ -11,7 +11,7 @@
 
 @implementation AbstractTableViewController
 
-@synthesize settingsCell, showCount, showSearchBar, showPieChart, allowPaperFoldDragging, paperFoldNC;
+@synthesize settingsCell, showCount, showSearchBar, showPieChart, allowPaperFoldDragging, paperFoldNC, addItemInfoView;
 @synthesize fetchedResultsController = fetchedResultsController;
 
 #pragma mark
@@ -48,8 +48,26 @@
 	}
 }
 
+- (void) loadView {
+	[super loadView];
+	[self setAddItemInfoView:[self buildAddItemView]];
+	[self.view addSubview:[self addItemInfoView]];
+}
+
 - (void) viewWillAppear:(BOOL)animated {
 	[self updateAndRefetch];
+	
+	// check if we have to show the "No items here" view
+	NSArray *fetchResult = self.fetchedResultsController.fetchedObjects;
+	if ([fetchResult count] > 0) {
+		[addItemInfoView setHidden:YES];
+		[self.tableView setScrollEnabled:YES];
+	} else {
+		NSLog(@"no wines in list");
+		[addItemInfoView setHidden:NO];
+		[self.tableView setScrollEnabled:NO];
+	}
+
 }
 
 - (void) viewDidAppear:(BOOL)animated {
@@ -59,7 +77,6 @@
 
 - (void) updateAndRefetch {
 	[self.fetchedResultsController.fetchRequest setFetchBatchSize:20];
-	
 	NSError *error;
 	if (![[self fetchedResultsController] performFetch:&error]) {
 		NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
@@ -342,5 +359,25 @@
     NSLog(@"did select slice at index %d",index);
 }
 
+- (UIView *)buildAddItemView {
+	// add helpful screen: "Add wines" info
+	UIView *infoView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 200)];
+	[infoView setBackgroundColor:[UIColor clearColor]];
+	[infoView setHidden:YES]; // hidden by default
+	UILabel *addLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 320, 200)];
+	[addLabel setTextAlignment:NSTextAlignmentCenter];
+	[addLabel setBackgroundColor:[UIColor clearColor]];
+	[addLabel setTextColor:[UIColor darkGrayColor]];
+	[addLabel setTextAlignment:NSTextAlignmentCenter];
+	[addLabel setNumberOfLines:0];
+	[addLabel setFont:[UIFont fontWithName:@"Bradley Hand" size:19]];
+	[addLabel setText:[self addItemInfoText]];
+	[infoView addSubview:addLabel];
+	return infoView;
+}
+
+- (NSString *)addItemInfoText {
+	return @"Oh... There are no items yet.";
+}
 
 @end
