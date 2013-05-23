@@ -63,7 +63,6 @@
 		[addItemInfoView setHidden:YES];
 		[self.tableView setScrollEnabled:YES];
 	} else {
-		NSLog(@"no wines in list");
 		[addItemInfoView setHidden:NO];
 		[self.tableView setScrollEnabled:NO];
 	}

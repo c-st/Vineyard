@@ -126,6 +126,7 @@
 		839B6FF1169B885A00BDAACF /* SliderPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 839B6FF0169B885A00BDAACF /* SliderPageControl.m */; };
 		839B6FFF169B909A00BDAACF /* CharacteristicsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 839B6FFE169B909A00BDAACF /* CharacteristicsViewController.m */; };
 		839D258A16AD9C4800A482E3 /* ModalTextFieldView.m in Sources */ = {isa = PBXBuildFile; fileRef = 839D258916AD9C4800A482E3 /* ModalTextFieldView.m */; };
+		83AACCCD174ECF6F00D53F35 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83AACCCC174ECF6F00D53F35 /* MessageUI.framework */; };
 		83AB990916A322C30095A63B /* _Characteristics.m in Sources */ = {isa = PBXBuildFile; fileRef = 83AB990216A322C30095A63B /* _Characteristics.m */; };
 		83AB990A16A322C30095A63B /* Characteristics.m in Sources */ = {isa = PBXBuildFile; fileRef = 83AB990416A322C30095A63B /* Characteristics.m */; };
 		83AB990B16A322C30095A63B /* _Collection.m in Sources */ = {isa = PBXBuildFile; fileRef = 83AB990616A322C30095A63B /* _Collection.m */; };
@@ -423,6 +424,7 @@
 		839B6FFE169B909A00BDAACF /* CharacteristicsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CharacteristicsViewController.m; path = Controllers/CharacteristicsViewController.m; sourceTree = SOURCE_ROOT; };
 		839D258816AD9C4800A482E3 /* ModalTextFieldView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ModalTextFieldView.h; path = Views/ModalTextFieldView.h; sourceTree = SOURCE_ROOT; };
 		839D258916AD9C4800A482E3 /* ModalTextFieldView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ModalTextFieldView.m; path = Views/ModalTextFieldView.m; sourceTree = SOURCE_ROOT; };
+		83AACCCC174ECF6F00D53F35 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		83AB990116A322C30095A63B /* _Characteristics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = _Characteristics.h; path = Model/_Characteristics.h; sourceTree = SOURCE_ROOT; };
 		83AB990216A322C30095A63B /* _Characteristics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = _Characteristics.m; path = Model/_Characteristics.m; sourceTree = SOURCE_ROOT; };
 		83AB990316A322C30095A63B /* Characteristics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Characteristics.h; path = Model/Characteristics.h; sourceTree = SOURCE_ROOT; };
@@ -550,6 +552,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				83AACCCD174ECF6F00D53F35 /* MessageUI.framework in Frameworks */,
 				835C6D8E167E1B4700AC2A04 /* CoreLocation.framework in Frameworks */,
 				8319B00A1677C6E0005E28BB /* MapKit.framework in Frameworks */,
 				8319AFE11677C0DC005E28BB /* libSSToolkit.a in Frameworks */,
@@ -1146,6 +1149,7 @@
 		83D5DD5C163EBC50001C857E = {
 			isa = PBXGroup;
 			children = (
+				83AACCCC174ECF6F00D53F35 /* MessageUI.framework */,
 				8343B83816B70D9D00F14CDF /* Icon@2x.png */,
 				835C6D8D167E1B4700AC2A04 /* CoreLocation.framework */,
 				8319B0091677C6E0005E28BB /* MapKit.framework */,
