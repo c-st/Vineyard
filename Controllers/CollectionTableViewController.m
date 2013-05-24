@@ -34,11 +34,7 @@
 
 - (void) viewWillAppear:(BOOL) animated {
 	[super viewWillAppear:animated];
-	
-	NSLog(@"collection tvc: view will appear");
-	
-	
-	
+
 	UIBarButtonItem *deleteButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemTrash target:self action:@selector(deleteCollectionButtonClicked)];
 	[[self navigationItem] setLeftBarButtonItem:deleteButton];
 	
@@ -120,7 +116,6 @@
 	[textField resignFirstResponder];
 	[self dismissSemiModalView];
 	[self updateAndRefetch];
-	
 	[self viewWillAppear:YES];
 }
 
