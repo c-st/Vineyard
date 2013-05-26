@@ -133,7 +133,7 @@
 	if ([self.customAddItemInfoText length] > 0) {
 		return [self customAddItemInfoText];
 	}
-	return @"Oh... There are no wines yet...\n\n You can add them\n by using the\n button down there!";
+	return @"There are no wines yet...\n\n You can add them\n by using the\n button down there!";
 }
 
 @end

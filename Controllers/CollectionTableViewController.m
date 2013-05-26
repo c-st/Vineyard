@@ -41,7 +41,7 @@
 	UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addCollectionButtonClicked)];
 	[[self navigationItem] setRightBarButtonItem:addButton];
 
-	NSLog(@"%i collections.", [[[Collection fetchAllSortedBy:@"name" ascending:YES withPredicate:[self getFetchPredicate:nil] groupBy:nil delegate:nil] fetchedObjects] count]);
+	//NSLog(@"%i collections.", [[[Collection fetchAllSortedBy:@"name" ascending:YES withPredicate:[self getFetchPredicate:nil] groupBy:nil delegate:nil] fetchedObjects] count]);
 	
 	[self.tableView reloadData];
 }
@@ -136,7 +136,7 @@
 }
 
 - (NSString *)addItemInfoText {
-	return @"Oh... There are no collections yet...\n\n You can add one\n by using the\n button up there!";
+	return @"There are no collections yet...\n\n You can add one\n by using the\n button up there!";
 }
 
 @end
