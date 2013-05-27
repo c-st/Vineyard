@@ -46,6 +46,8 @@
 		833146D51678D2E5000F9654 /* WineMapFoldViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 833146D41678D2E5000F9654 /* WineMapFoldViewController.m */; };
 		833146DD16791B0E000F9654 /* PopoverView.m in Sources */ = {isa = PBXBuildFile; fileRef = 833146DB16791B0E000F9654 /* PopoverView.m */; };
 		8336837816B88A3200D7A947 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 8336836316B88A3200D7A947 /* MBProgressHUD.m */; };
+		833A61391753FADA0005399A /* cash@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 833A61381753FADA0005399A /* cash@2x.png */; };
+		833A613D1753FBE00005399A /* PriceTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 833A613C1753FBDF0005399A /* PriceTableViewController.m */; };
 		833C151116CAEF370009B560 /* KLNoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 833C151016CAEF370009B560 /* KLNoteViewController.m */; };
 		8343ABE516B86D3000492D57 /* FacingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8343ABCF16B86D3000492D57 /* FacingView.m */; };
 		8343ABE616B86D3000492D57 /* FoldView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8343ABD116B86D3000492D57 /* FoldView.m */; };
@@ -312,6 +314,9 @@
 		833591E5164B145E00FEA5C9 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		8336836216B88A3200D7A947 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		8336836316B88A3200D7A947 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		833A61381753FADA0005399A /* cash@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cash@2x.png"; sourceTree = "<group>"; };
+		833A613B1753FBD30005399A /* PriceTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PriceTableViewController.h; path = Controllers/PriceTableViewController.h; sourceTree = SOURCE_ROOT; };
+		833A613C1753FBDF0005399A /* PriceTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PriceTableViewController.m; path = Controllers/PriceTableViewController.m; sourceTree = SOURCE_ROOT; };
 		833C150F16CAEF370009B560 /* KLNoteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLNoteViewController.h; sourceTree = "<group>"; };
 		833C151016CAEF370009B560 /* KLNoteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLNoteViewController.m; sourceTree = "<group>"; };
 		8343ABCE16B86D3000492D57 /* FacingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacingView.h; sourceTree = "<group>"; };
@@ -837,26 +842,26 @@
 		833591EA164B147600FEA5C9 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				83099D5116826B1100415556 /* FastWineCell.h */,
-				83099D5216826B1100415556 /* FastWineCell.m */,
-				83E79DC31677AA2600E0E42D /* SettingsCell.m */,
-				83E79DC41677AA2600E0E42D /* SettingsCell.h */,
+				83282EDE1699031100C5BE0E /* CellarMapView.h */,
+				83282EDF1699031100C5BE0E /* CellarMapView.m */,
+				83E79DC81677AA2600E0E42D /* CellarTableViewCell.h */,
 				83E79DC51677AA2600E0E42D /* CellarTableViewCell.m */,
 				83E79DC61677AA2600E0E42D /* ColourCell.h */,
 				83E79DC71677AA2600E0E42D /* ColourCell.m */,
-				83E79DC81677AA2600E0E42D /* CellarTableViewCell.h */,
-				83282EDE1699031100C5BE0E /* CellarMapView.h */,
-				83282EDF1699031100C5BE0E /* CellarMapView.m */,
-				830B9CF216B318690068668C /* ModalView.h */,
-				830B9CF316B318690068668C /* ModalView.m */,
-				839D258816AD9C4800A482E3 /* ModalTextFieldView.h */,
-				839D258916AD9C4800A482E3 /* ModalTextFieldView.m */,
-				8327C90C16B31D3400429336 /* ModalCollectionView.h */,
-				8327C90D16B31D3400429336 /* ModalCollectionView.m */,
 				831998CB174A507D00E4044F /* FastCollectionCell.h */,
 				831998CC174A507D00E4044F /* FastCollectionCell.m */,
+				83099D5116826B1100415556 /* FastWineCell.h */,
+				83099D5216826B1100415556 /* FastWineCell.m */,
 				837E8B7A174BE5BD0051F1A0 /* ModalCollectionDeleteView.h */,
 				837E8B7B174BE5BD0051F1A0 /* ModalCollectionDeleteView.m */,
+				8327C90C16B31D3400429336 /* ModalCollectionView.h */,
+				8327C90D16B31D3400429336 /* ModalCollectionView.m */,
+				839D258816AD9C4800A482E3 /* ModalTextFieldView.h */,
+				839D258916AD9C4800A482E3 /* ModalTextFieldView.m */,
+				830B9CF216B318690068668C /* ModalView.h */,
+				830B9CF316B318690068668C /* ModalView.m */,
+				83E79DC41677AA2600E0E42D /* SettingsCell.h */,
+				83E79DC31677AA2600E0E42D /* SettingsCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -922,6 +927,7 @@
 		835D707816B5985300680687 /* Icons */ = {
 			isa = PBXGroup;
 			children = (
+				833A61381753FADA0005399A /* cash@2x.png */,
 				837E8B74174BD3360051F1A0 /* openbox@2x.png */,
 				83FDC7E916BD6B36005AA988 /* pricetag@2x.png */,
 				83FDC7EA16BD6B36005AA988 /* calendar@2x.png */,
@@ -1033,26 +1039,28 @@
 			children = (
 				83E79DDC1677AA5100E0E42D /* AbstractTableViewController.h */,
 				83E79DD51677AA5100E0E42D /* AbstractTableViewController.m */,
-				83EADB7816AF510300B4707D /* BrowseTableViewController.h */,
-				83EADB7916AF510300B4707D /* BrowseTableViewController.m */,
 				83E79DDF1677AA5100E0E42D /* AppellationTableViewController.h */,
 				83E79DD91677AA5100E0E42D /* AppellationTableViewController.m */,
+				83EADB7816AF510300B4707D /* BrowseTableViewController.h */,
+				83EADB7916AF510300B4707D /* BrowseTableViewController.m */,
 				835016BE16A4B61600B841DF /* CollectionTableViewController.h */,
 				835016C016A4B63A00B841DF /* CollectionTableViewController.m */,
 				83E79DD81677AA5100E0E42D /* ColourTableViewController.h */,
 				83E79DD71677AA5100E0E42D /* ColourTableViewController.m */,
 				83E79DDE1677AA5100E0E42D /* CountryTableViewController.h */,
 				83E79DDB1677AA5100E0E42D /* CountryTableViewController.m */,
+				833A613B1753FBD30005399A /* PriceTableViewController.h */,
+				833A613C1753FBDF0005399A /* PriceTableViewController.m */,
+				8344BDD316BC9B73003777D0 /* RatingTableViewController.h */,
+				8344BDD416BC9B73003777D0 /* RatingTableViewController.m */,
 				83E79DE01677AA5100E0E42D /* RegionTableViewController.h */,
 				83E79DDA1677AA5100E0E42D /* RegionTableViewController.m */,
 				83E79DDD1677AA5100E0E42D /* VarietalTableViewController.h */,
 				83E79DD61677AA5100E0E42D /* VarietalTableViewController.m */,
-				83E79DD41677AA5100E0E42D /* WineTableViewController.h */,
-				83E79DD31677AA5100E0E42D /* WineTableViewController.m */,
-				8344BDD316BC9B73003777D0 /* RatingTableViewController.h */,
-				8344BDD416BC9B73003777D0 /* RatingTableViewController.m */,
 				8384626B16C0730B002C47C2 /* VintageTableViewController.h */,
 				8384626C16C0730B002C47C2 /* VintageTableViewController.m */,
+				83E79DD41677AA5100E0E42D /* WineTableViewController.h */,
+				83E79DD31677AA5100E0E42D /* WineTableViewController.m */,
 			);
 			name = TableViewController;
 			sourceTree = "<group>";
@@ -1390,6 +1398,7 @@
 				83FDC7EC16BD6B36005AA988 /* calendar@2x.png in Resources */,
 				8354FC0816BEBEB700C411B9 /* CA.png in Resources */,
 				837E8B75174BD3360051F1A0 /* openbox@2x.png in Resources */,
+				833A61391753FADA0005399A /* cash@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1531,6 +1540,7 @@
 				833C151116CAEF370009B560 /* KLNoteViewController.m in Sources */,
 				831998CD174A507D00E4044F /* FastCollectionCell.m in Sources */,
 				837E8B7C174BE5BD0051F1A0 /* ModalCollectionDeleteView.m in Sources */,
+				833A613D1753FBE00005399A /* PriceTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

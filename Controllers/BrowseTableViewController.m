@@ -5,6 +5,7 @@
 #import "VintageTableViewController.h"
 #import "VarietalTableViewController.h"
 #import "RatingTableViewController.h"
+#import "PriceTableViewController.h"
 
 #import "UIImage+Tint.h"
 
@@ -59,6 +60,13 @@
 	[ratingTVC setShowPieChart:YES];
 	[ratingTVC setPaperFoldNC:self.paperFoldNC];
 	
+	// Prices
+	PriceTableViewController *priceTVC = [[PriceTableViewController alloc] init];
+	[priceTVC setTitle:@"Price"];
+	[priceTVC setShowCount:YES];
+	[priceTVC setShowPieChart:YES];
+	[priceTVC setPaperFoldNC:self.paperFoldNC];
+	
 	self.tableGroups = @[
 						@[
 							@{@"name" : @"Country", @"controller" : countryTVC, @"image" : @"globe-icon.png"},
@@ -71,7 +79,7 @@
 						],
 						@[
 							@{@"name" : @"Rating", @"controller" : ratingTVC, @"image" : @"badge.png"},
-							@{@"name" : @"Price", @"controller" : countryTVC}
+							@{@"name" : @"Price", @"controller" : priceTVC, @"image" : @"pricetag.png"}
 						],
 						@[
 							@{@"name" : @"Characteristics", @"controller" : countryTVC},

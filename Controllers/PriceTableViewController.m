@@ -1,37 +1,36 @@
-#import "RatingTableViewController.h"
+#import "PriceTableViewController.h"
 
 #import "WineTableViewController.h"
 
-@interface RatingTableViewController ()
+@interface PriceTableViewController ()
 
 @end
 
-@implementation RatingTableViewController
+@implementation PriceTableViewController
 
 @synthesize values;
 
 - (id) init {
 	if ((self = [super init])) {
 		self.values = @[
-					@{@"name" : @"Unrated", @"starCount" : @0},
-					@{@"name" : @"6 Stars", @"starCount" : @6},
-					@{@"name" : @"5 Stars", @"starCount" : @5},
-					@{@"name" : @"4 Stars", @"starCount" : @4},
-					@{@"name" : @"3 Stars", @"starCount" : @3},
-					@{@"name" : @"2 Stars", @"starCount" : @2},
-					@{@"name" : @"1 Star",  @"starCount" : @1}
+					@{@"name" : @"No price", @"lowerBound" : @0, @"upperBound" : @0},
+					@{@"name" : @"< 20", @"lowerBound" : @0.01, @"upperBound" : @19},
+					@{@"name" : @"20 - 50", @"lowerBound" : @20, @"upperBound" : @49},
+					@{@"name" : @"50 - 80", @"lowerBound" : @50, @"upperBound" : @80},
+					@{@"name" : @"80 - 100", @"lowerBound" : @80, @"upperBound" : @100},
+					@{@"name" : @"80 - 100", @"lowerBound" : @100, @"upperBound" : @150},
 				];
 
 	}
     return self;
 }
 
-- (NSPredicate *) buildCountPredicateForRating:(NSDictionary *)object {
-	return [NSPredicate predicateWithFormat:@"rating == %i", [[object valueForKey:@"starCount"] integerValue]];
+- (NSPredicate *) buildCountPredicateForPrice:(NSDictionary *)object {
+	return [NSPredicate predicateWithFormat:@"price >= %lf AND price <= %lf", [[object valueForKey:@"lowerBound"] floatValue], [[object valueForKey:@"upperBound"] floatValue]];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *CellIdentifier = @"RatingCell";
+    static NSString *CellIdentifier = @"PriceCell";
     CellarTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[CellarTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
@@ -45,37 +44,36 @@
 }
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
-	NSDictionary *rating = [self.values objectAtIndex:indexPath.row];
-	
-    cell.textLabel.text = [rating valueForKey:@"name"];
-    //cell.detailTextLabel.text = [NSString stringWithFormat:@"%@, %@", region.name, region.regionID];
-	float starCount = [[rating valueForKey:@"starCount"] floatValue];
-	if (starCount > 0) {
-		SSRatingPicker *ratingPicker = [[SSRatingPicker alloc] initWithFrame:CGRectMake(70, 15, 180, 20)];
-		[ratingPicker setBackgroundColor:[UIColor clearColor]];
-		[ratingPicker setTotalNumberOfStars:6];
-		[ratingPicker setSelectedNumberOfStars:starCount];
-		[ratingPicker setStarSpacing:4.0f];
-		[ratingPicker.textLabel setText:@""];
-		[ratingPicker setUserInteractionEnabled:NO];
-		[cell.contentView addSubview:ratingPicker];
+	NSDictionary *price = [self.values objectAtIndex:indexPath.row];
+	if ([[price valueForKey:@"lowerBound"] floatValue] == 0.0f) {
+		cell.textLabel.text = [price valueForKey:@"name"];
+	} else {
+		cell.textLabel.text = [[price valueForKey:@"name"] stringByAppendingString:[NSString stringWithFormat:@" %@", [self getCurrencySymbol]]];
 	}
+    //cell.detailTextLabel.text = [NSString stringWithFormat:@"%@, %@", region.name, region.regionID];
 	
 	if ([self showCount]) {
 		// count wines
-		cell.accessoryView = [self buildAccessoryViewFromPredicate:[self buildCountPredicateForRating:rating] andObject:nil andIndexPath:indexPath];
+		cell.accessoryView = [self buildAccessoryViewFromPredicate:[self buildCountPredicateForPrice:price] andObject:nil andIndexPath:indexPath];
 	}
 }
+
+- (NSString *) getCurrencySymbol {
+	NSLocale *theLocale = [NSLocale currentLocale];
+	return [theLocale objectForKey:NSLocaleCurrencySymbol];
+}
+
 
 - (void) countButtonClicked:(UIButton *) sender {
 	// fetch selected row object
 	NSIndexPath *path = [sender objectTag];
-	NSDictionary *rating = [values objectAtIndex:path.row];
+	NSDictionary *price = [values objectAtIndex:path.row];
 	
-	NSFetchedResultsController *wineSearchController = [Wine fetchAllSortedBy:@"name" ascending:YES withPredicate:[self buildCountPredicateForRating:rating] groupBy:nil delegate:self];
+	NSFetchedResultsController *wineSearchController = [Wine fetchAllSortedBy:@"name" ascending:YES withPredicate:[self buildCountPredicateForPrice:price] groupBy:nil delegate:self];
 	
 	WineTableViewController *wineTableViewController = [[WineTableViewController alloc] initWithFetchedResultsController:wineSearchController];
-	[wineTableViewController setTitle:[rating valueForKey:@"name"]];
+	
+	[wineTableViewController setTitle:[[price valueForKey:@"name"] stringByAppendingString:[NSString stringWithFormat:@" %@", [self getCurrencySymbol]]] ];
 	[wineTableViewController setShowCount:NO];
 	[wineTableViewController setPaperFoldNC:self.paperFoldNC];
 	[[self navigationController] pushViewController:wineTableViewController animated:YES];
@@ -107,7 +105,7 @@
 }
 
 - (CGFloat)pieChart:(XYPieChart *)pieChart valueForSliceAtIndex:(NSUInteger)index {
-	int count = [Wine countOfEntitiesWithPredicate:[self buildCountPredicateForRating:[values objectAtIndex:index]]];
+	int count = [Wine countOfEntitiesWithPredicate:[self buildCountPredicateForPrice:[values objectAtIndex:index]]];
     return count;
 }
 
