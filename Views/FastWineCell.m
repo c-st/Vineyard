@@ -208,7 +208,7 @@
 	
 	[self drawAppellationRegion:CGPointMake(20, 40) localizationPoint:CGPointMake(18, 93)];
 	
-	[self drawVarietals:CGPointMake(17, 55)];
+	[self drawVarietals:CGPointMake(4, 55)];
 	
 	[self drawTemperature:CGPointMake(21, 74)];
 	
