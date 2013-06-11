@@ -18,9 +18,8 @@
 					@{@"name" : @"20 - 50", @"lowerBound" : @20, @"upperBound" : @49},
 					@{@"name" : @"50 - 80", @"lowerBound" : @50, @"upperBound" : @80},
 					@{@"name" : @"80 - 100", @"lowerBound" : @80, @"upperBound" : @100},
-					@{@"name" : @"80 - 100", @"lowerBound" : @100, @"upperBound" : @150},
+					@{@"name" : @"100 - 150", @"lowerBound" : @100, @"upperBound" : @150},
 				];
-
 	}
     return self;
 }

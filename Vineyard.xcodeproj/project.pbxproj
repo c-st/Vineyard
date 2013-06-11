@@ -1267,7 +1267,7 @@
 		83D5DD5E163EBC50001C857E /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0460;
+				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Christian Stangier";
 			};
 			buildConfigurationList = 83D5DD61163EBC50001C857E /* Build configuration list for PBXProject "Vineyard" */;
@@ -1584,6 +1584,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				ONLY_ACTIVE_ARCH = YES;
 				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 			};
