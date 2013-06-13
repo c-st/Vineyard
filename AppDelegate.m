@@ -33,6 +33,8 @@
     [MagicalRecord setupCoreDataStack];
 	
 	[Crashlytics startWithAPIKey:@"c37d25484429789917901b68f8c6c123a6b540e5"];
+	
+	return YES;
     
     //[InitialDataImportService clearStore];
 	
@@ -42,6 +44,7 @@
 	//[wineTVC.view setTintColor:[UIColor cellarWineRedColour]];
 	
 	// Wine
+	/*
 	VYWineTableViewController *wineTVC = [[VYWineTableViewController alloc] init];
 	[wineTVC setTitle:@"Wines"];
 	UINavigationController *wineNavController = [[UINavigationController alloc] initWithRootViewController:wineTVC];
@@ -59,6 +62,8 @@
 	[collectionsTVC setTitle:@"Collections"];
 	UINavigationController *collectionsNavController = [[UINavigationController alloc] initWithRootViewController:collectionsTVC];
 	[collectionsNavController setTabBarItem:[[UITabBarItem alloc] initWithTitle:@"Collections" image:[UIImage imageNamed:@"box.png"] tag:0]];
+	*/
+	
 	
 	// ?
 	/*
@@ -90,7 +95,7 @@
 	
 
 	*/
-	
+	/*
 	UITabBarController *tab = [[UITabBarController alloc] init];
 	[tab.view setTintColor:[UIColor cellarWineRedColour]];
 	[tab setViewControllers:@[wineNavController, browseNavController, collectionsNavController]];
@@ -102,7 +107,7 @@
     [self.window addSubview:tab.view];
     self.window.rootViewController = tab;
     [self.window makeKeyAndVisible];
-	
+	*/
 	
 	// initial data import
 	/*
@@ -116,7 +121,6 @@
 		[MBProgressHUD hideHUDForView:tab.view animated:YES];
 	}];
 	 */
-    return YES;
 }
 
 

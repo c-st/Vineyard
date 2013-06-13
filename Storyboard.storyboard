@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4457.6" systemVersion="12E55" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="zdi-Wi-pNR">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3682.6"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller - Browse-->
+        <scene sceneID="Som-L1-LyL">
+            <objects>
+                <viewController id="8JJ-7M-iVT" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="UCw-4T-yX6">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <extendedEdge key="edgesForExtendedLayout"/>
+                    <tabBarItem key="tabBarItem" title="Browse" image="browse" id="eRa-F7-aRU"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="j96-HG-GO3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="665" y="-2063"/>
+        </scene>
+        <!--Table View Controller - Wines-->
+        <scene sceneID="Uh0-zX-SXg">
+            <objects>
+                <tableViewController id="NGD-fY-0LX" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="7aa-ZF-6VO">
+                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="3CH-FU-nTa">
+                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                            </tableViewCell>
+                        </prototypes>
+                    </tableView>
+                    <extendedEdge key="edgesForExtendedLayout"/>
+                    <navigationItem key="navigationItem" title="Wines" id="MA0-Xi-YeK">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="f4q-hQ-k0X"/>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5lt-1u-SGa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1199" y="-2806"/>
+        </scene>
+        <!--Navigation Controller - Wines-->
+        <scene sceneID="2Jn-s6-Cz1">
+            <objects>
+                <navigationController definesPresentationContext="YES" id="xnI-lF-tcR" sceneMemberID="viewController">
+                    <extendedEdge key="edgesForExtendedLayout"/>
+                    <tabBarItem key="tabBarItem" title="Wines" image="food_wine_bottle_glass" id="unt-II-NMu"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="eJq-l0-NFw">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="NGD-fY-0LX" kind="relationship" relationship="rootViewController" id="0KA-bR-Vj1"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cZE-pd-6Td" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="665" y="-2806"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="0Vu-Mx-zcX">
+            <objects>
+                <tabBarController definesPresentationContext="YES" id="zdi-Wi-pNR" sceneMemberID="viewController">
+                    <extendedEdge key="edgesForExtendedLayout"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="gOZ-dG-xrr">
+                        <rect key="frame" x="129" y="330" width="163" height="49"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="xnI-lF-tcR" kind="relationship" relationship="viewControllers" id="dtq-pn-vIW"/>
+                        <segue destination="8JJ-7M-iVT" kind="relationship" relationship="viewControllers" id="nu5-lw-V2G"/>
+                        <segue destination="MRR-bz-GtM" kind="relationship" relationship="viewControllers" id="0mj-a9-jPm"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QOp-bP-ODV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-26" y="-2063"/>
+        </scene>
+        <!--View Controller - Collections-->
+        <scene sceneID="u35-jl-jOk">
+            <objects>
+                <viewController id="MRR-bz-GtM" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="vqd-gA-4CK">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <extendedEdge key="edgesForExtendedLayout"/>
+                    <tabBarItem key="tabBarItem" title="Collections" image="box" id="Jwx-BS-ggq"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="juB-bV-LfI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="665" y="-1347"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="box" width="26" height="26"/>
+        <image name="browse" width="26" height="26"/>
+        <image name="food_wine_bottle_glass" width="26" height="26"/>
+    </resources>
+    <color key="tintColor" red="0.52987007472826086" green="0.17198982455347764" blue="0.2799728119517147" alpha="1" colorSpace="calibratedRGB"/>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
+</document>
