@@ -21,7 +21,7 @@
 
 @implementation RaisedTabBarController
 
-// Create a view controller and setup it's tab bar item with a title and image
+// Create a view controller and setup its tab bar item with a title and image
 -(UIViewController*) viewControllerWithTabTitle:(NSString*) title image:(UIImage*)image {
 	UIViewController* viewController = [[UIViewController alloc] init];
 	viewController.tabBarItem = [[UITabBarItem alloc] initWithTitle:title image:image tag:0];
@@ -128,12 +128,12 @@
 	
 	[self setViewControllers:@[winePaperFoldNC,
 							browsePaperFoldNC,
-                            [self viewControllerWithTabTitle:@"" image:nil],
+                            //[self viewControllerWithTabTitle:@"" image:nil],
 							collectionPaperFoldNC,
-							countryNavController, // food? characteristics?
+							//countryNavController, // food? characteristics?
                             ]];
 	
-	[self addCenterButtonWithImage:[UIImage imageNamed:@"add-wine-button.png"] highlightImage:nil];
+	//[self addCenterButtonWithImage:[UIImage imageNamed:@"add-wine-button.png"] highlightImage:nil];
 }
 
 @end
