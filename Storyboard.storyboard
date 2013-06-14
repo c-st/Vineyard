@@ -124,7 +124,7 @@
         <!--Navigation Controller - Add Wine-->
         <scene sceneID="o2b-SH-6lm">
             <objects>
-                <navigationController title="Add Wine" toolbarHidden="NO" id="J9X-Mr-Loh" sceneMemberID="viewController">
+                <navigationController title="Add Wine" id="J9X-Mr-Loh" sceneMemberID="viewController">
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="LlE-r1-6Ps">
                         <rect key="frame" x="0.0" y="0.0" width="0.0" height="44"/>
