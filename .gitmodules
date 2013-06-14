@@ -9,9 +9,6 @@
 [submodule "Frameworks/Magical-Record"]
 	path = Frameworks/Magical-Record
 	url = https://chris-stangier@github.com/magicalpanda/MagicalRecord.git
-[submodule "Frameworks/SS-Toolkit"]
-	path = Frameworks/SS-Toolkit
-	url = https://chris-stangier@github.com/soffes/sstoolkit.git
 [submodule "Frameworks/MBProgressHUD"]
 	path = Frameworks/MBProgressHUD
 	url = /Users/Chris/Dropbox/Projects/Cellar/Cellar/Frameworks/MBProgressHUD
