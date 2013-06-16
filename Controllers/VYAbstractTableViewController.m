@@ -10,6 +10,7 @@
 
 @interface VYAbstractTableViewController ()
 
+
 @end
 
 @implementation VYAbstractTableViewController
@@ -25,11 +26,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+	[_fetchedResultsController setDelegate:self];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -37,18 +36,50 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - NSFetchedResultsControllerDelegate
+
+- (void) controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type newIndexPath:(NSIndexPath *)newIndexPath {
+	NSLog(@"didChangeObject");
+}
+
+- (void) controller:(NSFetchedResultsController *)controller didChangeSection:(id<NSFetchedResultsSectionInfo>)sectionInfo atIndex:(NSUInteger)sectionIndex forChangeType:(NSFetchedResultsChangeType)type {
+	NSLog(@"didChangeSection");
+}
+
+- (void) controllerWillChangeContent:(NSFetchedResultsController *)controller {
+	NSLog(@"willChangeContent");
+}
+
+- (void) controllerDidChangeContent:(NSFetchedResultsController *)controller {
+	NSLog(@"didChangeContent");
+}
+
+#pragma mark - Custom fetch methods
+
+- (void) updateAndRefetch {
+	[self.fetchedResultsController.fetchRequest setFetchBatchSize:20];
+	NSError *error;
+	if (![[self fetchedResultsController] performFetch:&error]) {
+		NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+	}
+    [self.tableView reloadData];
+}
+
+- (NSPredicate *) getFetchPredicate:(Wine *)withWine {
+	return nil;
+}
+
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
-    return 0;
+//    return 1;
+	return [[_fetchedResultsController sections] count];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    return 0;
+    id  sectionInfo = [_fetchedResultsController sections][section];
+    return [sectionInfo numberOfObjects];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {

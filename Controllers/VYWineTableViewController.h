@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "VYAbstractTableViewController.h"
 
+#import "Wine.h"
+
 @interface VYWineTableViewController : VYAbstractTableViewController
 
 @end

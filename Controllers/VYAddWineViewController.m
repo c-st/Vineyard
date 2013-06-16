@@ -19,21 +19,25 @@
 
 @implementation VYAddWineViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+
+- (id)initWithStyle:(UITableViewStyle)style {
+    self = [super initWithStyle:style];
     if (self) {
-		// TODO: is not called from storyboard. viewDidLoad ok?
+        // Custom initialization
+		NSLog(@"init with style");
     }
     return self;
 }
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
 	
 	// new wine
-	NSLog(@"new");
+	NSLog(@"new wine");
 	[self setWine:[Wine createEntity]];
 	[_wine setCreationTime:[NSDate date]];
+	[self requestLocationUpdate];
 }
 
 - (IBAction)nameEditingChanged:(id)sender {
@@ -42,6 +46,7 @@
 }
 
 - (IBAction)cancelButtonTapped:(id)sender {
+	[[NSManagedObjectContext defaultContext] rollback];
 	[self dismissViewControllerAnimated:YES completion:nil];
 }
 
