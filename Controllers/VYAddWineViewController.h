@@ -7,10 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreLocation/CoreLocation.h>
 
-@interface VYAddWineViewController : UITableViewController {
+#import "Wine.h"
+#import "Appellation.h"
+#import "Country.h"
+#import "Location.h"
+
+@interface VYAddWineViewController : UITableViewController <CLLocationManagerDelegate> {
+//	CLLocationManager *locationManager;
 }
-
-- (IBAction) cancel:(id)sender;
 
 @end

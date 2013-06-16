@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4457.6" systemVersion="12E55" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="zdi-Wi-pNR">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4457.6" systemVersion="13A476u" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="zdi-Wi-pNR">
     <dependencies>
+        <development version="5000" identifier="xcode"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3682.6"/>
     </dependencies>
     <scenes>
@@ -57,9 +58,9 @@
                                                     <rect key="frame" x="14" y="10" width="286" height="23"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="words" enablesReturnKeyAutomatically="YES"/>
                                                     <connections>
-                                                        <action selector="nameWasEntered:" destination="3yX-Ha-EkY" eventType="editingChanged" id="5db-DA-Egn"/>
+                                                        <action selector="nameEditingChanged:" destination="3yX-Ha-EkY" eventType="editingChanged" id="7li-V9-kfM"/>
                                                     </connections>
                                                 </textField>
                                             </subviews>
@@ -104,14 +105,18 @@
                     <navigationItem key="navigationItem" title="Add Wine" id="IaF-F1-d9A">
                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="UW3-tC-Fmc">
                             <connections>
-                                <action selector="cancel:" destination="3yX-Ha-EkY" id="kQI-u4-Oa0"/>
+                                <action selector="cancelButtonTapped:" destination="3yX-Ha-EkY" id="lTD-bq-TNO"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" enabled="NO" title="Done" id="OZR-8K-hMo"/>
+                        <barButtonItem key="rightBarButtonItem" enabled="NO" title="Done" id="OZR-8K-hMo">
+                            <connections>
+                                <action selector="doneButtonTapped:" destination="3yX-Ha-EkY" id="tJN-CZ-h8p"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="doneButton" destination="OZR-8K-hMo" id="jnD-nF-xBR"/>
-                        <outlet property="nameLabel" destination="mlY-Fd-nNu" id="grz-qm-c2a"/>
+                        <outlet property="nameTextField" destination="mlY-Fd-nNu" id="oU3-4R-FKu"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DuH-4j-xIg" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -246,10 +251,11 @@
         <class className="VYAddWineViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/VYAddWineViewController.h"/>
             <relationships>
-                <relationship kind="action" name="cancel:"/>
-                <relationship kind="action" name="nameWasEntered:"/>
+                <relationship kind="action" name="cancelButtonTapped:"/>
+                <relationship kind="action" name="doneButtonTapped:"/>
+                <relationship kind="action" name="nameEditingChanged:"/>
                 <relationship kind="outlet" name="doneButton" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="nameLabel" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="nameTextField" candidateClass="UITextField"/>
             </relationships>
         </class>
         <class className="VYWineTableViewController" superclassName="VYAbstractTableViewController">
