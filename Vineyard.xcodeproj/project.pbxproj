@@ -535,7 +535,6 @@
 				83AF98211649C2170030C08C /* Models */,
 				833591E0164B143F00FEA5C9 /* Services */,
 				8361EE601677B55B0057E04B /* Vineyard.xcdatamodeld */,
-				8386B5AD176A4DD5002AF30C /* Storyboard.storyboard */,
 			);
 			name = Vineyard;
 			path = Cellar;
@@ -691,6 +690,7 @@
 			isa = PBXGroup;
 			children = (
 				83FB89DF1768E5F100C00757 /* Media.xcassets */,
+				8386B5AD176A4DD5002AF30C /* Storyboard.storyboard */,
 				83AACCCC174ECF6F00D53F35 /* MessageUI.framework */,
 				835C6D8D167E1B4700AC2A04 /* CoreLocation.framework */,
 				8319B0091677C6E0005E28BB /* MapKit.framework */,
