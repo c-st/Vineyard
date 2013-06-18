@@ -36,14 +36,14 @@
                                     <rect key="frame" x="0.0" y="0.0" width="287" height="54"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" ambiguous="YES" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mzA-gh-Ap0">
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mzA-gh-Ap0">
                                             <rect key="frame" x="15" y="9" width="32" height="22"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" ambiguous="YES" text="Detail" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8YP-lA-4f8">
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Detail" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8YP-lA-4f8">
                                             <rect key="frame" x="15" y="31" width="32" height="14"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
@@ -53,6 +53,12 @@
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
+                                <constraints>
+                                    <constraint firstItem="mzA-gh-Ap0" firstAttribute="top" secondItem="MJM-q0-gnM" secondAttribute="top" constant="9" id="7Bd-e7-Jzl"/>
+                                    <constraint firstAttribute="bottom" secondItem="8YP-lA-4f8" secondAttribute="bottom" constant="10" id="KDz-F8-nqg"/>
+                                    <constraint firstItem="mzA-gh-Ap0" firstAttribute="leading" secondItem="MJM-q0-gnM" secondAttribute="leading" constant="15" id="w1p-fu-G2k"/>
+                                    <constraint firstItem="8YP-lA-4f8" firstAttribute="leading" secondItem="MJM-q0-gnM" secondAttribute="leading" constant="15" id="zOg-tf-sTT"/>
+                                </constraints>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -281,6 +287,9 @@
         <image name="food_wine_bottle_glass" width="26" height="26"/>
     </resources>
     <classes>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
         <class className="VYAbstractTableViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/VYAbstractTableViewController.h"/>
         </class>
