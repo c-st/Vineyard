@@ -18,7 +18,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="j96-HG-GO3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1191" y="-2063"/>
+            <point key="canvasLocation" x="-3241" y="-3855"/>
         </scene>
         <!--Wine Table View Controller - Wines-->
         <scene sceneID="Uh0-zX-SXg">
@@ -36,14 +36,14 @@
                                     <rect key="frame" x="0.0" y="0.0" width="287" height="54"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mzA-gh-Ap0">
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" ambiguous="YES" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mzA-gh-Ap0">
                                             <rect key="frame" x="15" y="9" width="32" height="22"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Detail" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8YP-lA-4f8">
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" ambiguous="YES" text="Detail" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8YP-lA-4f8">
                                             <rect key="frame" x="15" y="31" width="32" height="14"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
@@ -53,12 +53,6 @@
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
-                                <constraints>
-                                    <constraint firstItem="mzA-gh-Ap0" firstAttribute="top" secondItem="MJM-q0-gnM" secondAttribute="top" constant="9" id="7Bd-e7-Jzl"/>
-                                    <constraint firstAttribute="bottom" secondItem="8YP-lA-4f8" secondAttribute="bottom" constant="10" id="KDz-F8-nqg"/>
-                                    <constraint firstItem="mzA-gh-Ap0" firstAttribute="leading" secondItem="MJM-q0-gnM" secondAttribute="leading" constant="15" id="w1p-fu-G2k"/>
-                                    <constraint firstItem="8YP-lA-4f8" firstAttribute="leading" secondItem="MJM-q0-gnM" secondAttribute="leading" constant="15" id="zOg-tf-sTT"/>
-                                </constraints>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -76,7 +70,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5lt-1u-SGa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1199" y="-2806"/>
+            <point key="canvasLocation" x="-2345" y="-3071"/>
         </scene>
         <!--Add Wine View Controller - Add Wine-->
         <scene sceneID="0VO-4o-x9v">
@@ -163,7 +157,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DuH-4j-xIg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2272" y="-3510"/>
+            <point key="canvasLocation" x="-1164" y="-3855"/>
         </scene>
         <!--Navigation Controller - Add Wine-->
         <scene sceneID="o2b-SH-6lm">
@@ -180,7 +174,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oQI-qS-xSa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1738" y="-3510"/>
+            <point key="canvasLocation" x="-1698" y="-3855"/>
         </scene>
         <!--Navigation Controller - Wines-->
         <scene sceneID="2Jn-s6-Cz1">
@@ -202,7 +196,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cZE-pd-6Td" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="665" y="-2806"/>
+            <point key="canvasLocation" x="-3799" y="-3071"/>
         </scene>
         <!--Tab Bar Controller - Main-->
         <scene sceneID="0Vu-Mx-zcX">
@@ -223,7 +217,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QOp-bP-ODV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-26" y="-2063"/>
+            <point key="canvasLocation" x="-4458" y="-3071"/>
         </scene>
         <!--View Controller - Collections-->
         <scene sceneID="u35-jl-jOk">
@@ -238,7 +232,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="juB-bV-LfI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1191" y="-1347"/>
+            <point key="canvasLocation" x="-3241" y="-2355"/>
         </scene>
         <!--Navigation Controller - Browse-->
         <scene sceneID="Mnu-As-MWl">
@@ -258,7 +252,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ah2-mk-ixI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="665" y="-2063"/>
+            <point key="canvasLocation" x="-3799" y="-3855"/>
         </scene>
         <!--Navigation Controller - Collections-->
         <scene sceneID="efw-mj-BdR">
@@ -278,7 +272,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3L5-rR-YrY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="665" y="-1347"/>
+            <point key="canvasLocation" x="-3799" y="-2355"/>
         </scene>
     </scenes>
     <resources>
@@ -287,9 +281,6 @@
         <image name="food_wine_bottle_glass" width="26" height="26"/>
     </resources>
     <classes>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
         <class className="VYAbstractTableViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/VYAbstractTableViewController.h"/>
         </class>

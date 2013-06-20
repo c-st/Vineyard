@@ -34,7 +34,7 @@
     [super viewDidLoad];
 	
 	// new wine
-	NSLog(@"new wine");
+	//NSLog(@"new wine");
 	[self setWine:[Wine createEntity]];
 	[_wine setCreationTime:[NSDate date]];
 	[self requestLocationUpdate];
@@ -81,7 +81,7 @@
 }
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
-    NSLog(@"Location %f %f", newLocation.coordinate.latitude, newLocation.coordinate.longitude);
+    //NSLog(@"Location %f %f", newLocation.coordinate.latitude, newLocation.coordinate.longitude);
 	
 	// if a new wine is created, set location.
 	//if ([self newWine]) {
