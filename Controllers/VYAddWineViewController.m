@@ -13,31 +13,48 @@
 @property (weak, nonatomic) IBOutlet UITextField *nameTextField;
 
 @property (weak, nonatomic) Wine *wine;
-
-@property (strong, nonatomic) NSManagedObjectContext *scratchPadContext;
-
 @property (nonatomic, strong) CLLocationManager *locationManager;
 @end
 
+
 @implementation VYAddWineViewController
 
-
+// new wine
 - (id)initWithStyle:(UITableViewStyle)style {
     self = [super initWithStyle:style];
     if (self) {
-        // Custom initialization
-		NSLog(@"init with style");
+		// Create a new wine
+		[self setWine: [Wine createEntity]];
+		[self setTitle:@"Add a Wine"];
+		[self setNewWine:YES];
+		
+		[self requestLocationUpdate];
+		[[self wine] setCreationTime:[NSDate date]];
     }
+	
+	return self;
+}
+
+// existing wine
+- (id) initWithWine:(Wine *)theWine {
+	if ((self = [super init])) {
+		[self setWine:theWine];
+		
+		//[self setTitle:[NSString stringWithFormat:@"%@", theWine.name]];
+		[self setTitle:@"Edit Wine"];
+		[self setNewWine:NO];
+	}
+	
     return self;
 }
 
 
 - (void)viewDidLoad {
-    [super viewDidLoad];
+    //[super viewDidLoad];
 	[self setWine:[Wine createEntity]];
 	
-	[_wine setCreationTime:[NSDate date]];
-	[self requestLocationUpdate];
+	//[_wine setCreationTime:[NSDate date]];
+	//[self requestLocationUpdate];
 }
 
 - (IBAction)nameEditingChanged:(id)sender {
@@ -82,15 +99,16 @@
 }
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
-    //NSLog(@"Location %f %f", newLocation.coordinate.latitude, newLocation.coordinate.longitude);
-	
-	// if a new wine is created, set location.
-	//if ([self newWine]) {
+    NSLog(@"Location %f %f", newLocation.coordinate.latitude, newLocation.coordinate.longitude);
 	
 	Location *loc = [Location createEntity];
 	[loc setLatitudeValue:newLocation.coordinate.latitude];
 	[loc setLongitudeValue:newLocation.coordinate.longitude];
-	[self.wine setLocation:loc];
+	
+	// if a new wine is created, set location.
+	if ([self newWine]) {
+		[self.wine setLocation:loc];
+	}
 	
 	[manager stopUpdatingLocation];
 }
