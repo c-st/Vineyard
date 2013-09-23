@@ -168,6 +168,7 @@
 		8361EE5B1677B5290057E04B /* data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = data.json; path = Resources/Data/data.json; sourceTree = SOURCE_ROOT; };
 		8361EE611677B55B0057E04B /* Vineyard.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Vineyard.xcdatamodel; sourceTree = "<group>"; };
 		83640E061739AA3A00725119 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
+		836FFC651773AEDB00330626 /* Vineyard-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Vineyard-Prefix.pch"; path = "../Vineyard-Prefix.pch"; sourceTree = "<group>"; };
 		837E8B7A174BE5BD0051F1A0 /* ModalCollectionDeleteView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ModalCollectionDeleteView.h; path = Views/ModalCollectionDeleteView.h; sourceTree = SOURCE_ROOT; };
 		837E8B7B174BE5BD0051F1A0 /* ModalCollectionDeleteView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ModalCollectionDeleteView.m; path = Views/ModalCollectionDeleteView.m; sourceTree = SOURCE_ROOT; };
 		8384626B16C0730B002C47C2 /* VintageTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VintageTableViewController.h; path = Controllers/VintageTableViewController.h; sourceTree = SOURCE_ROOT; };
@@ -525,6 +526,7 @@
 		8386B59A176A2405002AF30C /* Vineyard */ = {
 			isa = PBXGroup;
 			children = (
+				836FFC651773AEDB00330626 /* Vineyard-Prefix.pch */,
 				83358FF7164B133B00FEA5C9 /* Resources */,
 				8386B59D176A2509002AF30C /* Views */,
 				8386B59C176A24F9002AF30C /* Controllers */,
