@@ -35,25 +35,25 @@
 #pragma mark - NSFetchedResultsControllerDelegate
 
 - (void) controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type newIndexPath:(NSIndexPath *)newIndexPath {
-	NSLog(@"didChangeObject");
+	//NSLog(@"didChangeObject");
 }
 
 - (void) controller:(NSFetchedResultsController *)controller didChangeSection:(id<NSFetchedResultsSectionInfo>)sectionInfo atIndex:(NSUInteger)sectionIndex forChangeType:(NSFetchedResultsChangeType)type {
-	NSLog(@"didChangeSection");
+	//NSLog(@"didChangeSection");
 }
 
 - (void) controllerWillChangeContent:(NSFetchedResultsController *)controller {
-	NSLog(@"willChangeContent");
+	//NSLog(@"willChangeContent");
 }
 
 - (void) controllerDidChangeContent:(NSFetchedResultsController *)controller {
-	NSLog(@"didChangeContent");
+	//NSLog(@"didChangeContent");
 }
 
 #pragma mark - Custom fetch methods
 
 - (void) updateAndRefetch {
-	NSLog(@"updateAndRefetch");
+	//NSLog(@"updateAndRefetch");
 
 	[self.fetchedResultsController.fetchRequest setFetchBatchSize:20];
 	NSError *error;

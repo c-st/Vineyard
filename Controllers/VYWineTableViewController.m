@@ -9,7 +9,7 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-	NSLog(@"viewWillAppear");
+	//NSLog(@"viewWillAppear");
 	[self updateAndRefetch];
 }
 
@@ -44,5 +44,25 @@
     }	
 }
 
+#pragma mark - Navigation
+
+// In a story board-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+	NSIndexPath *path = [self.tableView indexPathForSelectedRow];
+	Wine *wine = [[super fetchedResultsController] objectAtIndexPath:path];
+	if (wine != nil) {
+		//NSLog(@"VYWineTableViewContoller -> prepareForSeque. Pushing wine %@", wine);
+		/*
+		if ([[segue destinationViewController] isKindOfClass:[VYAddWineViewController class]]) {
+			NSLog(@"target is AddWineViewController");
+		}
+		*/
+		if ([[segue destinationViewController] isKindOfClass:[VYWineViewController class]]) {
+			NSLog(@"target is WineViewController");
+			VYWineViewController *wineViewController = [segue destinationViewController];
+			[wineViewController setWine:wine];
+		}
+	}
+}
 
 @end

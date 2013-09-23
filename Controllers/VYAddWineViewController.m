@@ -12,49 +12,55 @@
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *doneButton;
 @property (weak, nonatomic) IBOutlet UITextField *nameTextField;
 
-@property (weak, nonatomic) Wine *wine;
 @property (nonatomic, strong) CLLocationManager *locationManager;
 @end
 
 
 @implementation VYAddWineViewController
 
-// new wine
-- (id)initWithStyle:(UITableViewStyle)style {
-    self = [super initWithStyle:style];
-    if (self) {
+/*
+- (id) init {
+	if ((self = [super init])) {
+		NSLog(@"init");
 		// Create a new wine
 		[self setWine: [Wine createEntity]];
 		[self setTitle:@"Add a Wine"];
 		[self setNewWine:YES];
-		
 		[self requestLocationUpdate];
 		[[self wine] setCreationTime:[NSDate date]];
-    }
-	
+	}
 	return self;
 }
+*/
 
-// existing wine
-- (id) initWithWine:(Wine *)theWine {
-	if ((self = [super init])) {
-		[self setWine:theWine];
-		
-		//[self setTitle:[NSString stringWithFormat:@"%@", theWine.name]];
-		[self setTitle:@"Edit Wine"];
-		[self setNewWine:NO];
-	}
-	
+
+- (id) initWithCoder:(NSCoder *)aDecoder {
+	NSLog(@"initWithCoder");
+	self = [super initWithCoder:aDecoder];
+    if (self) {
+        [self setNewWine:YES];
+    }
     return self;
+}
+
+
+- (void) setWineForEditing:(Wine *)theWine {
+	NSLog(@"setWineForEditing");
+	[self setWine:theWine];
+	[self setNewWine:NO];
 }
 
 
 - (void)viewDidLoad {
     //[super viewDidLoad];
-	[self setWine:[Wine createEntity]];
-	
-	//[_wine setCreationTime:[NSDate date]];
-	//[self requestLocationUpdate];
+	NSLog(@"viewDidLoad");
+	if ([self newWine]) {
+		[self setWine:[Wine createEntity]];
+		[_wine setCreationTime:[NSDate date]];
+		[self requestLocationUpdate];
+	} else {
+		// set title etc.
+	}
 }
 
 - (IBAction)nameEditingChanged:(id)sender {
@@ -63,7 +69,12 @@
 }
 
 - (IBAction)cancelButtonTapped:(id)sender {
-	[[self wine] deleteEntity];
+	if ([self newWine]) {
+		NSLog(@"new wine");
+		[[self wine] deleteEntity];
+	} else {
+		[[NSManagedObjectContext defaultContext] rollback];
+	}
 	[self dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -75,8 +86,6 @@
 	
 	//NSLog(@"saving entry... %@", _wine);
 	[_wine extendWine];
-	
-	
 	[[NSManagedObjectContext defaultContext] saveToPersistentStoreAndWait];
 	[self dismissViewControllerAnimated:YES completion:nil];
 }
@@ -98,7 +107,9 @@
 	[_locationManager startUpdatingLocation];
 }
 
-- (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
+- (void)locationManager:(CLLocationManager *) manager didUpdateToLocation:(CLLocation *)newLocation
+		   fromLocation:(CLLocation *)oldLocation {
+	
     NSLog(@"Location %f %f", newLocation.coordinate.latitude, newLocation.coordinate.longitude);
 	
 	Location *loc = [Location createEntity];

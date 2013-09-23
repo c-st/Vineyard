@@ -56,6 +56,9 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="7Eb-wh-ntk" kind="push" id="aTJ-h4-Gx3"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -74,6 +77,31 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5lt-1u-SGa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-2345" y="-3071"/>
+        </scene>
+        <!--Wine View Controller - Wine-->
+        <scene sceneID="ktd-jF-ROW">
+            <objects>
+                <viewController title="Wine" id="7Eb-wh-ntk" customClass="VYWineViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="yzt-zn-xYd"/>
+                        <viewControllerLayoutGuide type="bottom" id="CFF-rt-jgo"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="qyk-Vg-9t5">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Title" id="RZC-SI-Ahq">
+                        <barButtonItem key="rightBarButtonItem" title="Edit" id="Vao-HB-Deh">
+                            <connections>
+                                <segue destination="J9X-Mr-Loh" kind="modal" id="pbj-fT-YB2"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xcJ-ot-2d3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1690" y="-3071"/>
         </scene>
         <!--Add Wine View Controller - Add Wine-->
         <scene sceneID="0VO-4o-x9v">
@@ -156,7 +184,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DuH-4j-xIg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1164" y="-3855"/>
+            <point key="canvasLocation" x="-542" y="-3855"/>
         </scene>
         <!--Navigation Controller - Add Wine-->
         <scene sceneID="o2b-SH-6lm">
@@ -173,7 +201,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oQI-qS-xSa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1698" y="-3855"/>
+            <point key="canvasLocation" x="-1076" y="-3855"/>
         </scene>
         <!--Navigation Controller - Wines-->
         <scene sceneID="2Jn-s6-Cz1">
@@ -289,4 +317,7 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="pbj-fT-YB2"/>
+    </inferredMetricsTieBreakers>
 </document>

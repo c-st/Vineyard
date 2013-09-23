@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		8319B00A1677C6E0005E28BB /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8319B0091677C6E0005E28BB /* MapKit.framework */; };
+		8329FE7317F0D580008AD86F /* VYWineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8329FE7217F0D580008AD86F /* VYWineViewController.m */; };
 		835C6D8E167E1B4700AC2A04 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 835C6D8D167E1B4700AC2A04 /* CoreLocation.framework */; };
 		83617B33176A7447009E900E /* VYAddWineViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = 83617B31176A7362009E900E /* VYAddWineViewController.h */; };
 		83617B34176A7447009E900E /* VYAddWineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83617B32176A7362009E900E /* VYAddWineViewController.m */; };
@@ -96,6 +97,8 @@
 		8327C90D16B31D3400429336 /* ModalCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ModalCollectionView.m; path = Views/ModalCollectionView.m; sourceTree = SOURCE_ROOT; };
 		83282EDE1699031100C5BE0E /* CellarMapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CellarMapView.h; path = Views/CellarMapView.h; sourceTree = SOURCE_ROOT; };
 		83282EDF1699031100C5BE0E /* CellarMapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CellarMapView.m; path = Views/CellarMapView.m; sourceTree = SOURCE_ROOT; };
+		8329FE7117F0D580008AD86F /* VYWineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VYWineViewController.h; path = Controllers/VYWineViewController.h; sourceTree = SOURCE_ROOT; };
+		8329FE7217F0D580008AD86F /* VYWineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VYWineViewController.m; path = Controllers/VYWineViewController.m; sourceTree = SOURCE_ROOT; };
 		833146D31678D2E5000F9654 /* WineMapFoldViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WineMapFoldViewController.h; path = Controllers/WineMapFoldViewController.h; sourceTree = SOURCE_ROOT; };
 		833146D41678D2E5000F9654 /* WineMapFoldViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WineMapFoldViewController.m; path = Controllers/WineMapFoldViewController.m; sourceTree = SOURCE_ROOT; };
 		833A613B1753FBD30005399A /* PriceTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PriceTableViewController.h; path = Controllers/PriceTableViewController.h; sourceTree = SOURCE_ROOT; };
@@ -469,6 +472,8 @@
 				8386B5A4176A2646002AF30C /* VYWineTableViewController.m */,
 				83617B31176A7362009E900E /* VYAddWineViewController.h */,
 				83617B32176A7362009E900E /* VYAddWineViewController.m */,
+				8329FE7117F0D580008AD86F /* VYWineViewController.h */,
+				8329FE7217F0D580008AD86F /* VYWineViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -899,6 +904,7 @@
 				83E79DF01677AA9C00E0E42D /* AppDelegate.m in Sources */,
 				8361EE291677B4B50057E04B /* main.m in Sources */,
 				83C4F0C517F0950400ABC91D /* NSManagedObject+MagicalDataImport.m in Sources */,
+				8329FE7317F0D580008AD86F /* VYWineViewController.m in Sources */,
 				8361EE621677B55B0057E04B /* Vineyard.xcdatamodeld in Sources */,
 				83AB990916A322C30095A63B /* _Characteristics.m in Sources */,
 				83C4F0C717F0950400ABC91D /* NSManagedObject+MagicalRecord.m in Sources */,

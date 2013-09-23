@@ -17,10 +17,10 @@
 @interface VYAddWineViewController : UITableViewController <CLLocationManagerDelegate> {
 //	CLLocationManager *locationManager;
 	
-	//BOOL newWine;
 }
 
 @property (atomic) BOOL newWine;
+@property (nonatomic) Wine* wine;
 
-- (id) initWithWine:(Wine *)theWine;
+- (void) setWineForEditing:(Wine *)theWine;
 @end

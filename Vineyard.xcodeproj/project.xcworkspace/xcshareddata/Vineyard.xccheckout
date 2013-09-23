@@ -2,8 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>CBA4E2CF-32F1-44D3-B6B3-ECF90045FEDB</string>
+	<string>6FEB1D89-166C-4F75-9156-D10AC87C8369</string>
 	<key>IDESourceControlProjectName</key>
 	<string>Vineyard</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
@@ -16,8 +18,6 @@
 		<string>https://github.com/soffes/sstoolkit.git</string>
 		<key>734142E4-1C70-4E9A-888B-AB93842005E5</key>
 		<string>https://github.com/chris-stangier/Vineyard.git</string>
-		<key>C09ECD1D-F781-41ED-B090-6F97AA0EB1B4</key>
-		<string>https://github.com/magicalpanda/MagicalRecord.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>Vineyard.xcodeproj/project.xcworkspace</string>
@@ -31,8 +31,6 @@
 		<string>../../Frameworks/SS-Toolkit</string>
 		<key>734142E4-1C70-4E9A-888B-AB93842005E5</key>
 		<string>../..</string>
-		<key>C09ECD1D-F781-41ED-B090-6F97AA0EB1B4</key>
-		<string>../../Frameworks/Magical-Record</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/chris-stangier/Vineyard.git</string>
@@ -46,9 +44,9 @@
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>35E548DF-C242-416D-86E5-E75D65E63B82</string>
+			<string>021F9993-1C11-4056-9F33-06F7596DCC16</string>
 			<key>IDESourceControlWCCName</key>
-			<string>SS-Toolkit</string>
+			<string>MBProgressHUD</string>
 		</dict>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
@@ -62,9 +60,9 @@
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>C09ECD1D-F781-41ED-B090-6F97AA0EB1B4</string>
+			<string>35E548DF-C242-416D-86E5-E75D65E63B82</string>
 			<key>IDESourceControlWCCName</key>
-			<string>Magical-Record</string>
+			<string>SS-Toolkit</string>
 		</dict>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
@@ -73,14 +71,6 @@
 			<string>734142E4-1C70-4E9A-888B-AB93842005E5</string>
 			<key>IDESourceControlWCCName</key>
 			<string>Vineyard</string>
-		</dict>
-		<dict>
-			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
-			<string>public.vcs.git</string>
-			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>021F9993-1C11-4056-9F33-06F7596DCC16</string>
-			<key>IDESourceControlWCCName</key>
-			<string>MBProgressHUD</string>
 		</dict>
 	</array>
 </dict>
