@@ -9,6 +9,7 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
+	NSLog(@"viewWillAppear");
 	[self updateAndRefetch];
 }
 
@@ -36,9 +37,11 @@
 - (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject
        atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type
       newIndexPath:(NSIndexPath *)newIndexPath {
+	
+	// throws error when context is reset..
 	if (type == NSFetchedResultsChangeDelete) {
-        [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }
+        [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+    }	
 }
 
 

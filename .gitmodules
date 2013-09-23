@@ -6,9 +6,6 @@
 	url = /Users/Chris/Dropbox/Projects/Cellar/Cellar/Frameworks/PaperFold-for-iOS
 	path = Frameworks/sstoolk.it
 	url = /Users/Chris/Dropbox/Projects/Cellar/Cellar/Frameworks/sstoolk.it
-[submodule "Frameworks/Magical-Record"]
-	path = Frameworks/Magical-Record
-	url = https://chris-stangier@github.com/magicalpanda/MagicalRecord.git
 [submodule "Frameworks/MBProgressHUD"]
 	path = Frameworks/MBProgressHUD
 	url = /Users/Chris/Dropbox/Projects/Cellar/Cellar/Frameworks/MBProgressHUD

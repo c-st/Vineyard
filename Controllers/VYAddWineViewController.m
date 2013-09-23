@@ -14,6 +14,8 @@
 
 @property (weak, nonatomic) Wine *wine;
 
+@property (strong, nonatomic) NSManagedObjectContext *scratchPadContext;
+
 @property (nonatomic, strong) CLLocationManager *locationManager;
 @end
 
@@ -32,10 +34,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-	
-	// new wine
-	//NSLog(@"new wine");
 	[self setWine:[Wine createEntity]];
+	
 	[_wine setCreationTime:[NSDate date]];
 	[self requestLocationUpdate];
 }
@@ -46,7 +46,7 @@
 }
 
 - (IBAction)cancelButtonTapped:(id)sender {
-	[[NSManagedObjectContext defaultContext] rollback];
+	[[self wine] deleteEntity];
 	[self dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -56,9 +56,10 @@
 		return;
 	}
 	
-	NSLog(@"saving entry... %@", _wine);
+	//NSLog(@"saving entry... %@", _wine);
 	[_wine extendWine];
-		
+	
+	
 	[[NSManagedObjectContext defaultContext] saveToPersistentStoreAndWait];
 	[self dismissViewControllerAnimated:YES completion:nil];
 }
