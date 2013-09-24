@@ -6,9 +6,9 @@
 //  Copyright (c) 2013 Christian Stangier. All rights reserved.
 //
 
-#import "VYAddWineViewController.h"
+#import "VYAddEditWineViewController.h"
 
-@interface VYAddWineViewController ()
+@interface VYAddEditWineViewController ()
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *doneButton;
 @property (weak, nonatomic) IBOutlet UITextField *nameTextField;
 
@@ -16,7 +16,7 @@
 @end
 
 
-@implementation VYAddWineViewController
+@implementation VYAddEditWineViewController
 
 /*
 - (id) init {
@@ -58,7 +58,9 @@
 		[self setWine:[Wine createEntity]];
 		[_wine setCreationTime:[NSDate date]];
 		[self requestLocationUpdate];
+		[[self navigationItem] setTitle:@"New wine"];
 	} else {
+		[[self navigationItem] setTitle:@"Edit wine"];
 		// set title etc.
 	}
 }

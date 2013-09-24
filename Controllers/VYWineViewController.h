@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "VYAddWineViewController.h"
+#import "VYAddEditWineViewController.h"
 #import "Wine.h"
 
 @interface VYWineViewController : UIViewController

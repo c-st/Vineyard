@@ -10,8 +10,8 @@
 		8319B00A1677C6E0005E28BB /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8319B0091677C6E0005E28BB /* MapKit.framework */; };
 		8329FE7317F0D580008AD86F /* VYWineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8329FE7217F0D580008AD86F /* VYWineViewController.m */; };
 		835C6D8E167E1B4700AC2A04 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 835C6D8D167E1B4700AC2A04 /* CoreLocation.framework */; };
-		83617B33176A7447009E900E /* VYAddWineViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = 83617B31176A7362009E900E /* VYAddWineViewController.h */; };
-		83617B34176A7447009E900E /* VYAddWineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83617B32176A7362009E900E /* VYAddWineViewController.m */; };
+		83617B33176A7447009E900E /* VYAddEditWineViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = 83617B31176A7362009E900E /* VYAddEditWineViewController.h */; };
+		83617B34176A7447009E900E /* VYAddEditWineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83617B32176A7362009E900E /* VYAddEditWineViewController.m */; };
 		8361EE291677B4B50057E04B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8361EE281677B4B50057E04B /* main.m */; };
 		8361EE5C1677B5290057E04B /* data.json in Resources */ = {isa = PBXBuildFile; fileRef = 8361EE5B1677B5290057E04B /* data.json */; };
 		8361EE621677B55B0057E04B /* Vineyard.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8361EE601677B55B0057E04B /* Vineyard.xcdatamodeld */; };
@@ -111,8 +111,8 @@
 		835C6D8F167E22A900AC2A04 /* Vineyard 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Vineyard 2.xcdatamodel"; sourceTree = "<group>"; };
 		835D70B416B5B98E00680687 /* UIView+Genie.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+Genie.h"; path = "Categories/UIView+Genie.h"; sourceTree = SOURCE_ROOT; };
 		835D70B516B5B98E00680687 /* UIView+Genie.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+Genie.m"; path = "Categories/UIView+Genie.m"; sourceTree = SOURCE_ROOT; };
-		83617B31176A7362009E900E /* VYAddWineViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = VYAddWineViewController.h; path = Controllers/VYAddWineViewController.h; sourceTree = SOURCE_ROOT; };
-		83617B32176A7362009E900E /* VYAddWineViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = VYAddWineViewController.m; path = Controllers/VYAddWineViewController.m; sourceTree = SOURCE_ROOT; };
+		83617B31176A7362009E900E /* VYAddEditWineViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = VYAddEditWineViewController.h; path = Controllers/VYAddEditWineViewController.h; sourceTree = SOURCE_ROOT; };
+		83617B32176A7362009E900E /* VYAddEditWineViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = VYAddEditWineViewController.m; path = Controllers/VYAddEditWineViewController.m; sourceTree = SOURCE_ROOT; };
 		8361EE281677B4B50057E04B /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = SOURCE_ROOT; };
 		8361EE5B1677B5290057E04B /* data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = data.json; path = Resources/Data/data.json; sourceTree = SOURCE_ROOT; };
 		8361EE611677B55B0057E04B /* Vineyard.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Vineyard.xcdatamodel; sourceTree = "<group>"; };
@@ -470,8 +470,8 @@
 				8386B59F176A257D002AF30C /* VYAbstractTableViewController.m */,
 				8386B5A3176A2646002AF30C /* VYWineTableViewController.h */,
 				8386B5A4176A2646002AF30C /* VYWineTableViewController.m */,
-				83617B31176A7362009E900E /* VYAddWineViewController.h */,
-				83617B32176A7362009E900E /* VYAddWineViewController.m */,
+				83617B31176A7362009E900E /* VYAddEditWineViewController.h */,
+				83617B32176A7362009E900E /* VYAddEditWineViewController.m */,
 				8329FE7117F0D580008AD86F /* VYWineViewController.h */,
 				8329FE7217F0D580008AD86F /* VYWineViewController.m */,
 			);
@@ -854,8 +854,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				83617B33176A7447009E900E /* VYAddWineViewController.h in Sources */,
-				83617B34176A7447009E900E /* VYAddWineViewController.m in Sources */,
+				83617B33176A7447009E900E /* VYAddEditWineViewController.h in Sources */,
+				83617B34176A7447009E900E /* VYAddEditWineViewController.m in Sources */,
 				83C4F0D317F0950400ABC91D /* MagicalRecord+Options.m in Sources */,
 				83C4F0CF17F0950400ABC91D /* NSPersistentStoreCoordinator+MagicalRecord.m in Sources */,
 				83C4F0D617F0950400ABC91D /* MagicalRecord.m in Sources */,

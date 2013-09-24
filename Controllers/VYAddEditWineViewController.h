@@ -14,7 +14,7 @@
 #import "Country.h"
 #import "Location.h"
 
-@interface VYAddWineViewController : UITableViewController <CLLocationManagerDelegate> {
+@interface VYAddEditWineViewController : UITableViewController <CLLocationManagerDelegate> {
 //	CLLocationManager *locationManager;
 	
 }

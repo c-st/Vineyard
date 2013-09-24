@@ -17,6 +17,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 	//NSLog(@"self wine: %@", [self wine]);
+	[[self navigationItem] setTitle:[[self wine] name]];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -26,9 +27,9 @@
 		
 		// pass data through
 		if ([[[[segue destinationViewController] viewControllers] objectAtIndex:0]
-			 isKindOfClass:[VYAddWineViewController class]]) {
+			 isKindOfClass:[VYAddEditWineViewController class]]) {
 			
-			VYAddWineViewController *editWineViewController =
+			VYAddEditWineViewController *editWineViewController =
 				[[[segue destinationViewController] viewControllers] objectAtIndex:0];
 			
 			NSLog(@"target is AddWineViewController. setting wine");
