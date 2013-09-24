@@ -2,6 +2,9 @@
 
 @implementation VYWineTableViewController
 
+#pragma mark
+#pragma mark Initialization
+
 - (void)viewDidLoad {
     [super viewDidLoad];
 	[self setFetchedResultsController:[Wine fetchAllSortedBy:@"name" ascending:YES withPredicate:nil groupBy:nil delegate:nil]];
@@ -20,6 +23,9 @@
     [[cell textLabel] setText:[wine name]];
     return cell;
 }
+
+#pragma mark
+#pragma mark GUI
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
     return YES;
@@ -44,7 +50,9 @@
     }	
 }
 
-#pragma mark - Navigation
+
+#pragma mark
+#pragma mark View Navigation
 
 // In a story board-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {

@@ -15,27 +15,12 @@
 @property (nonatomic, strong) CLLocationManager *locationManager;
 @end
 
-
 @implementation VYAddEditWineViewController
 
-/*
-- (id) init {
-	if ((self = [super init])) {
-		NSLog(@"init");
-		// Create a new wine
-		[self setWine: [Wine createEntity]];
-		[self setTitle:@"Add a Wine"];
-		[self setNewWine:YES];
-		[self requestLocationUpdate];
-		[[self wine] setCreationTime:[NSDate date]];
-	}
-	return self;
-}
-*/
-
+#pragma mark
+#pragma mark Initialization
 
 - (id) initWithCoder:(NSCoder *)aDecoder {
-	NSLog(@"initWithCoder");
 	self = [super initWithCoder:aDecoder];
     if (self) {
         [self setNewWine:YES];
@@ -45,7 +30,6 @@
 
 
 - (void) setWineForEditing:(Wine *)theWine {
-	NSLog(@"setWineForEditing");
 	[self setWine:theWine];
 	[self setNewWine:NO];
 }
@@ -53,7 +37,6 @@
 
 - (void)viewDidLoad {
     //[super viewDidLoad];
-	NSLog(@"viewDidLoad");
 	if ([self newWine]) {
 		[self setWine:[Wine createEntity]];
 		[_wine setCreationTime:[NSDate date]];
@@ -61,9 +44,14 @@
 		[[self navigationItem] setTitle:@"New wine"];
 	} else {
 		[[self navigationItem] setTitle:@"Edit wine"];
+		[self.nameTextField setText:[self.wine name]];
+		[self nameEditingChanged:nil];
 		// set title etc.
 	}
 }
+
+#pragma mark
+#pragma mark GUI Events
 
 - (IBAction)nameEditingChanged:(id)sender {
 	[_doneButton setEnabled:[[_nameTextField text] length] > 0];
@@ -72,7 +60,6 @@
 
 - (IBAction)cancelButtonTapped:(id)sender {
 	if ([self newWine]) {
-		NSLog(@"new wine");
 		[[self wine] deleteEntity];
 	} else {
 		[[NSManagedObjectContext defaultContext] rollback];
@@ -85,18 +72,11 @@
 		NSLog(@"Wine is not valid!");
 		return;
 	}
-	
-	//NSLog(@"saving entry... %@", _wine);
 	[_wine extendWine];
 	[[NSManagedObjectContext defaultContext] saveToPersistentStoreAndWait];
 	[self dismissViewControllerAnimated:YES completion:nil];
 }
 
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
 #pragma mark
 #pragma mark Location

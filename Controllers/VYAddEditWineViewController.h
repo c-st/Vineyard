@@ -15,7 +15,6 @@
 #import "Location.h"
 
 @interface VYAddEditWineViewController : UITableViewController <CLLocationManagerDelegate> {
-//	CLLocationManager *locationManager;
 	
 }
 

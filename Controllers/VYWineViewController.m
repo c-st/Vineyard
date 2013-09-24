@@ -20,6 +20,9 @@
 	[[self navigationItem] setTitle:[[self wine] name]];
 }
 
+#pragma mark
+#pragma mark View Navigation
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
 	if ([self wine] != nil) {
 		NSLog(@"VYWineTableViewContoller -> prepareForSeque. Pushing wine");
