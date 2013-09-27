@@ -39,6 +39,11 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
 	Country *country = [[super fetchedResultsController] objectAtIndexPath:indexPath];
     [[cell textLabel] setText:[country name]];
+	
+	if ([self inPickerMode]) {
+		// disable accessory
+		[cell setAccessoryType:UITableViewCellAccessoryNone];
+	}
     return cell;
 }
     
@@ -49,6 +54,7 @@
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
     return NO;
 }
+
 
 #pragma mark
 #pragma mark View Navigation
@@ -69,8 +75,12 @@
 			NSFetchedResultsController *regionsController = [Region fetchAllSortedBy:@"name" ascending:YES withPredicate:searchStatement groupBy:nil delegate:self];
 			
 			[regionTableViewController setFetchedResultsController:regionsController];
+		} else if ([[segue destinationViewController] isKindOfClass:[VYAddEditWineViewController class]]) {
+			VYAddEditWineViewController *addEditWineController = [segue destinationViewController];
+			[[addEditWineController wine] setCountry:country];
 		}
 	}
 }
+
 
 @end

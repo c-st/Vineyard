@@ -8,6 +8,9 @@
 
 #import "VYAbstractTableViewController.h"
 #import "VYRegionTableViewController.h"
+#import "VYAddEditWineViewController.h"
+
+#import "Wine.h"
 #import "Country.h"
 
 @interface VYCountryTableViewController : VYAbstractTableViewController

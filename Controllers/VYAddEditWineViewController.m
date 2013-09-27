@@ -11,6 +11,7 @@
 @interface VYAddEditWineViewController ()
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *doneButton;
 @property (weak, nonatomic) IBOutlet UITextField *nameTextField;
+@property (weak, nonatomic) IBOutlet UITextField *countryTextField;
 
 @property (nonatomic, strong) CLLocationManager *locationManager;
 @end
@@ -46,9 +47,15 @@
 		[[self navigationItem] setTitle:@"Edit wine"];
 		[self.nameTextField setText:[self.wine name]];
 		[self nameEditingChanged:nil];
-		// set title etc.
 	}
 }
+
+- (void) viewWillAppear:(BOOL)animated {
+	[self.nameTextField setText:[self.wine name]];
+	[self.countryTextField setText:[[self.wine country] name]];
+	[super viewWillAppear:animated];
+}
+
 
 #pragma mark
 #pragma mark GUI Events
@@ -77,6 +84,34 @@
 	[self dismissViewControllerAnimated:YES completion:nil];
 }
 
+#pragma mark
+#pragma mark Table View Data source
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+	return [super tableView:tableView numberOfRowsInSection:section];
+    //id  sectionInfo = [self.fetchedResultsController sections][section];
+//    return [sectionInfo numberOfObjects];
+}
+
+#pragma mark
+#pragma mark View Navigation
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+	if ([[segue destinationViewController] isKindOfClass:[VYCountryTableViewController class]]) {
+		VYCountryTableViewController *countryTableViewController = [segue destinationViewController];
+		[countryTableViewController setInPickerMode:YES];
+		[countryTableViewController setFetchedResultsController:[Country fetchAllSortedBy:@"name" ascending:YES withPredicate:nil groupBy:nil delegate:countryTableViewController]];
+	}
+}
+
+-(BOOL)canPerformUnwindSegueAction:(SEL)action fromViewController:(UIViewController *)fromViewController withSender:(id)sender {
+	return YES;
+}
+
+- (IBAction)unwindFromPickerView:(UIStoryboardSegue*)sender {
+	if ([[sender sourceViewController] isKindOfClass:[VYCountryTableViewController class]]) {
+	}
+}
 
 #pragma mark
 #pragma mark Location

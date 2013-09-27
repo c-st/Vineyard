@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
 
+#import "VYCountryTableViewController.h"
+
 #import "Wine.h"
 #import "Appellation.h"
 #import "Country.h"

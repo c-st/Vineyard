@@ -14,5 +14,7 @@
 
 @property (nonatomic, retain) NSFetchedResultsController *fetchedResultsController;
 
+@property (atomic) BOOL inPickerMode;
+
 - (void) updateAndRefetch;
 @end

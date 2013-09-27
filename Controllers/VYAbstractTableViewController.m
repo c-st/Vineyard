@@ -53,8 +53,6 @@
 #pragma mark - Custom fetch methods
 
 - (void) updateAndRefetch {
-	//NSLog(@"updateAndRefetch");
-
 	[self.fetchedResultsController.fetchRequest setFetchBatchSize:20];
 	NSError *error;
 	if (![[self fetchedResultsController] performFetch:&error]) {
