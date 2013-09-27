@@ -34,6 +34,17 @@
 	
 	[Crashlytics startWithAPIKey:@"c37d25484429789917901b68f8c6c123a6b540e5"];
 	
+	//[InitialDataImportService clearStore];
+	
+	// import sample data
+	/**
+	[MagicalRecord saveWithBlock:^(NSManagedObjectContext *localContext) {
+		[InitialDataImportService importInitialDataFromJson:localContext];
+	} completion:^(BOOL success, NSError *error) {
+		NSLog(@"finished importing.");
+	}];
+	*/
+	
 	return YES;
     
     //[InitialDataImportService clearStore];

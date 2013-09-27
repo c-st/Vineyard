@@ -14,25 +14,42 @@
 
 @implementation VYCountryTableViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
+#pragma mark
+#pragma mark Initialization
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+	[self setFetchedResultsController:
+	 [Country fetchAllSortedBy:@"name" ascending:YES withPredicate:nil groupBy:nil delegate:nil]];
+	[[self fetchedResultsController] setDelegate:self];
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)viewWillAppear:(BOOL)animated {
+	[self updateAndRefetch];
+	
+	NSLog(@"%i results", [self.fetchedResultsController.fetchedObjects count]);
 }
+
+#pragma mark
+#pragma mark Table View Data source
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    static NSString *CellIdentifier = @"CountryCell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+	Country *country = [[super fetchedResultsController] objectAtIndexPath:indexPath];
+    [[cell textLabel] setText:[country name]];
+    return cell;
+}
+    
+	
+#pragma mark
+#pragma mark GUI
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    return NO;
+}
+
+#pragma mark
+#pragma mark View Navigation
 
 @end

@@ -7,6 +7,7 @@
 //
 
 #import "VYAbstractTableViewController.h"
+#import "Country.h"
 
 @interface VYCountryTableViewController : VYAbstractTableViewController
 

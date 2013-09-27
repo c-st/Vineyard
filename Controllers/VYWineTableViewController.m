@@ -7,7 +7,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-	[self setFetchedResultsController:[Wine fetchAllSortedBy:@"name" ascending:YES withPredicate:nil groupBy:nil delegate:nil]];
+	[self setFetchedResultsController:
+		[Wine fetchAllSortedBy:@"name" ascending:YES withPredicate:nil groupBy:nil delegate:nil]];
+	
 	[[self fetchedResultsController] setDelegate:self];
 }
 
