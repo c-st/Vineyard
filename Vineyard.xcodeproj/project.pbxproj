@@ -15,6 +15,10 @@
 		8361EE5C1677B5290057E04B /* data.json in Resources */ = {isa = PBXBuildFile; fileRef = 8361EE5B1677B5290057E04B /* data.json */; };
 		8361EE621677B55B0057E04B /* Vineyard.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8361EE601677B55B0057E04B /* Vineyard.xcdatamodeld */; };
 		83640E071739AA3A00725119 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83640E061739AA3A00725119 /* Crashlytics.framework */; };
+		8364970217F6010E00013463 /* VYCountryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8364970117F6010E00013463 /* VYCountryTableViewController.m */; };
+		8364970317F6045D00013463 /* InitialDataImportService.m in Sources */ = {isa = PBXBuildFile; fileRef = 83E79DEB1677AA8100E0E42D /* InitialDataImportService.m */; };
+		8364970417F6048000013463 /* TemperatureRange.m in Sources */ = {isa = PBXBuildFile; fileRef = 838B2DF0167E52EC00944657 /* TemperatureRange.m */; };
+		8364970517F6049500013463 /* _TemperatureRange.m in Sources */ = {isa = PBXBuildFile; fileRef = 838B2DEE167E52EC00944657 /* _TemperatureRange.m */; };
 		8386B5A6176A29B5002AF30C /* VYAbstractTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8386B59F176A257D002AF30C /* VYAbstractTableViewController.m */; };
 		8386B5A8176A29B5002AF30C /* VYWineTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8386B5A4176A2646002AF30C /* VYWineTableViewController.m */; };
 		8386B5A9176A2C12002AF30C /* UIColor+CellarColours.m in Sources */ = {isa = PBXBuildFile; fileRef = 83E79DBA1677AA1400E0E42D /* UIColor+CellarColours.m */; };
@@ -113,6 +117,8 @@
 		8361EE5B1677B5290057E04B /* data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = data.json; path = Resources/Data/data.json; sourceTree = SOURCE_ROOT; };
 		8361EE611677B55B0057E04B /* Vineyard.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Vineyard.xcdatamodel; sourceTree = "<group>"; };
 		83640E061739AA3A00725119 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
+		8364970017F6010E00013463 /* VYCountryTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VYCountryTableViewController.h; path = Controllers/VYCountryTableViewController.h; sourceTree = SOURCE_ROOT; };
+		8364970117F6010E00013463 /* VYCountryTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VYCountryTableViewController.m; path = Controllers/VYCountryTableViewController.m; sourceTree = SOURCE_ROOT; };
 		837E8B7A174BE5BD0051F1A0 /* ModalCollectionDeleteView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ModalCollectionDeleteView.h; path = Views/ModalCollectionDeleteView.h; sourceTree = SOURCE_ROOT; };
 		837E8B7B174BE5BD0051F1A0 /* ModalCollectionDeleteView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ModalCollectionDeleteView.m; path = Views/ModalCollectionDeleteView.m; sourceTree = SOURCE_ROOT; };
 		8384626B16C0730B002C47C2 /* VintageTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VintageTableViewController.h; path = Controllers/VintageTableViewController.h; sourceTree = SOURCE_ROOT; };
@@ -431,6 +437,15 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		836496FF17F600DD00013463 /* BrowseTableViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				8364970017F6010E00013463 /* VYCountryTableViewController.h */,
+				8364970117F6010E00013463 /* VYCountryTableViewController.m */,
+			);
+			name = BrowseTableViewControllers;
+			sourceTree = "<group>";
+		};
 		8386B59A176A2405002AF30C /* Vineyard */ = {
 			isa = PBXGroup;
 			children = (
@@ -462,6 +477,7 @@
 		8386B59C176A24F9002AF30C /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				836496FF17F600DD00013463 /* BrowseTableViewControllers */,
 				8386B59E176A257D002AF30C /* VYAbstractTableViewController.h */,
 				8386B59F176A257D002AF30C /* VYAbstractTableViewController.m */,
 				8386B5A3176A2646002AF30C /* VYWineTableViewController.h */,
@@ -850,6 +866,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8364970517F6049500013463 /* _TemperatureRange.m in Sources */,
+				8364970417F6048000013463 /* TemperatureRange.m in Sources */,
+				8364970317F6045D00013463 /* InitialDataImportService.m in Sources */,
 				83617B34176A7447009E900E /* VYAddEditWineViewController.m in Sources */,
 				83C4F0D317F0950400ABC91D /* MagicalRecord+Options.m in Sources */,
 				83C4F0CF17F0950400ABC91D /* NSPersistentStoreCoordinator+MagicalRecord.m in Sources */,
@@ -884,6 +903,7 @@
 				83C4F0BE17F0950400ABC91D /* NSAttributeDescription+MagicalDataImport.m in Sources */,
 				83E79DAB1677AA0300E0E42D /* Region.m in Sources */,
 				83E79DAC1677AA0300E0E42D /* _Appellation.m in Sources */,
+				8364970217F6010E00013463 /* VYCountryTableViewController.m in Sources */,
 				83E79DAD1677AA0300E0E42D /* _Location.m in Sources */,
 				83E79DAE1677AA0300E0E42D /* _Winery.m in Sources */,
 				83E79DAF1677AA0300E0E42D /* Appellation.m in Sources */,
