@@ -10,18 +10,14 @@
 		8319B00A1677C6E0005E28BB /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8319B0091677C6E0005E28BB /* MapKit.framework */; };
 		8329FE7317F0D580008AD86F /* VYWineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8329FE7217F0D580008AD86F /* VYWineViewController.m */; };
 		835C6D8E167E1B4700AC2A04 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 835C6D8D167E1B4700AC2A04 /* CoreLocation.framework */; };
-		83617B33176A7447009E900E /* VYAddEditWineViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = 83617B31176A7362009E900E /* VYAddEditWineViewController.h */; };
 		83617B34176A7447009E900E /* VYAddEditWineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83617B32176A7362009E900E /* VYAddEditWineViewController.m */; };
 		8361EE291677B4B50057E04B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8361EE281677B4B50057E04B /* main.m */; };
 		8361EE5C1677B5290057E04B /* data.json in Resources */ = {isa = PBXBuildFile; fileRef = 8361EE5B1677B5290057E04B /* data.json */; };
 		8361EE621677B55B0057E04B /* Vineyard.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8361EE601677B55B0057E04B /* Vineyard.xcdatamodeld */; };
 		83640E071739AA3A00725119 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83640E061739AA3A00725119 /* Crashlytics.framework */; };
-		8386B5A5176A29B5002AF30C /* VYAbstractTableViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = 8386B59E176A257D002AF30C /* VYAbstractTableViewController.h */; };
 		8386B5A6176A29B5002AF30C /* VYAbstractTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8386B59F176A257D002AF30C /* VYAbstractTableViewController.m */; };
-		8386B5A7176A29B5002AF30C /* VYWineTableViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = 8386B5A3176A2646002AF30C /* VYWineTableViewController.h */; };
 		8386B5A8176A29B5002AF30C /* VYWineTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8386B5A4176A2646002AF30C /* VYWineTableViewController.m */; };
 		8386B5A9176A2C12002AF30C /* UIColor+CellarColours.m in Sources */ = {isa = PBXBuildFile; fileRef = 83E79DBA1677AA1400E0E42D /* UIColor+CellarColours.m */; };
-		8386B5AA176A2C12002AF30C /* UIColor+CellarColours.h in Sources */ = {isa = PBXBuildFile; fileRef = 83E79DBB1677AA1400E0E42D /* UIColor+CellarColours.h */; };
 		8386B5AB176A3384002AF30C /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 83FB89DF1768E5F100C00757 /* Media.xcassets */; };
 		8386B5EF176A52DE002AF30C /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8386B5AD176A4DD5002AF30C /* Storyboard.storyboard */; };
 		83AACCCD174ECF6F00D53F35 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83AACCCC174ECF6F00D53F35 /* MessageUI.framework */; };
@@ -854,7 +850,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				83617B33176A7447009E900E /* VYAddEditWineViewController.h in Sources */,
 				83617B34176A7447009E900E /* VYAddEditWineViewController.m in Sources */,
 				83C4F0D317F0950400ABC91D /* MagicalRecord+Options.m in Sources */,
 				83C4F0CF17F0950400ABC91D /* NSPersistentStoreCoordinator+MagicalRecord.m in Sources */,
@@ -862,12 +857,9 @@
 				83C4F0BF17F0950400ABC91D /* NSEntityDescription+MagicalDataImport.m in Sources */,
 				8386B5A9176A2C12002AF30C /* UIColor+CellarColours.m in Sources */,
 				83C4F0D417F0950400ABC91D /* MagicalRecord+Setup.m in Sources */,
-				8386B5AA176A2C12002AF30C /* UIColor+CellarColours.h in Sources */,
-				8386B5A5176A29B5002AF30C /* VYAbstractTableViewController.h in Sources */,
 				83C4F0C917F0950400ABC91D /* NSManagedObjectContext+MagicalObserving.m in Sources */,
 				8386B5A6176A29B5002AF30C /* VYAbstractTableViewController.m in Sources */,
 				83C4F0C617F0950400ABC91D /* NSManagedObject+MagicalFinders.m in Sources */,
-				8386B5A7176A29B5002AF30C /* VYWineTableViewController.h in Sources */,
 				8386B5A8176A29B5002AF30C /* VYWineTableViewController.m in Sources */,
 				83C4F0CE17F0950400ABC91D /* NSPersistentStore+MagicalRecord.m in Sources */,
 				83E79D9E1677AA0300E0E42D /* Wine.m in Sources */,
@@ -1003,10 +995,7 @@
 					"Frameworks/SS-Toolkit",
 				);
 				INFOPLIST_FILE = "/Users/Chris/Dropbox/Projects/Vineyard/Vineyard/Vineyard-Info.plist";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/Frameworks/Magical-Record/Project Files/iOS App Unit Tests/Frameworks/OCMockLibrary\"",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = (
 					"-all_load",
 					"-ObjC",
@@ -1036,10 +1025,7 @@
 					"Frameworks/SS-Toolkit",
 				);
 				INFOPLIST_FILE = "/Users/Chris/Dropbox/Projects/Vineyard/Vineyard/Vineyard-Info.plist";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/Frameworks/Magical-Record/Project Files/iOS App Unit Tests/Frameworks/OCMockLibrary\"",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = (
 					"-all_load",
 					"-ObjC",
