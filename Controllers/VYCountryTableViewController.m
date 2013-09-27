@@ -24,6 +24,7 @@
 	[[self fetchedResultsController] setDelegate:self];
 }
 
+
 - (void)viewWillAppear:(BOOL)animated {
 	[self updateAndRefetch];
 	
@@ -51,5 +52,34 @@
 
 #pragma mark
 #pragma mark View Navigation
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+	NSIndexPath *path = [self.tableView indexPathForSelectedRow];
+	Country *country = [[super fetchedResultsController] objectAtIndexPath:path];
+	if (country != nil) {
+		//NSLog(@"VYWineTableViewContoller -> prepareForSeque. Pushing wine %@", wine);
+		/*
+		 if ([[segue destinationViewController] isKindOfClass:[VYAddWineViewController class]]) {
+		 NSLog(@"target is AddWineViewController");
+		 }
+		 */
+		if ([[segue destinationViewController] isKindOfClass:[VYRegionTableViewController class]]) {
+			NSLog(@"target is RegionViewController");
+			VYRegionTableViewController *regionTableViewController = [segue destinationViewController];
+			[[regionTableViewController navigationItem] setTitle:[country name]];
+			
+			// find all regions from selected country
+			NSPredicate *searchStatement =
+				[NSPredicate predicateWithFormat:@"country.countryID == %@", country.countryID];
+			
+			NSFetchedResultsController *regionsController = [Region fetchAllSortedBy:@"name" ascending:YES withPredicate:searchStatement groupBy:nil delegate:self];
+			
+			[regionTableViewController setFetchedResultsController:regionsController];
+			[regionTableViewController updateAndRefetch];
+												
+//			[wineViewController setWine:wine];
+		}
+	}
+}
 
 @end

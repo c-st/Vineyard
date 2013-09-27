@@ -1,5 +1,5 @@
 //
-//  VYCountryTableViewController.h
+//  VYRegionTableViewController.h
 //  Vineyard
 //
 //  Created by Christian Stangier on 27.09.13.
@@ -7,9 +7,11 @@
 //
 
 #import "VYAbstractTableViewController.h"
-#import "VYRegionTableViewController.h"
-#import "Country.h"
 
-@interface VYCountryTableViewController : VYAbstractTableViewController
+#import "Country.h"
+#import "Region.h"
+
+
+@interface VYRegionTableViewController : VYAbstractTableViewController
 
 @end

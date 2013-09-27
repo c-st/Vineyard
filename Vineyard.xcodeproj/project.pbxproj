@@ -19,6 +19,7 @@
 		8364970317F6045D00013463 /* InitialDataImportService.m in Sources */ = {isa = PBXBuildFile; fileRef = 83E79DEB1677AA8100E0E42D /* InitialDataImportService.m */; };
 		8364970417F6048000013463 /* TemperatureRange.m in Sources */ = {isa = PBXBuildFile; fileRef = 838B2DF0167E52EC00944657 /* TemperatureRange.m */; };
 		8364970517F6049500013463 /* _TemperatureRange.m in Sources */ = {isa = PBXBuildFile; fileRef = 838B2DEE167E52EC00944657 /* _TemperatureRange.m */; };
+		8364970817F60CA300013463 /* VYRegionTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8364970717F60CA300013463 /* VYRegionTableViewController.m */; };
 		8386B5A6176A29B5002AF30C /* VYAbstractTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8386B59F176A257D002AF30C /* VYAbstractTableViewController.m */; };
 		8386B5A8176A29B5002AF30C /* VYWineTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8386B5A4176A2646002AF30C /* VYWineTableViewController.m */; };
 		8386B5A9176A2C12002AF30C /* UIColor+CellarColours.m in Sources */ = {isa = PBXBuildFile; fileRef = 83E79DBA1677AA1400E0E42D /* UIColor+CellarColours.m */; };
@@ -119,6 +120,8 @@
 		83640E061739AA3A00725119 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		8364970017F6010E00013463 /* VYCountryTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VYCountryTableViewController.h; path = Controllers/VYCountryTableViewController.h; sourceTree = SOURCE_ROOT; };
 		8364970117F6010E00013463 /* VYCountryTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VYCountryTableViewController.m; path = Controllers/VYCountryTableViewController.m; sourceTree = SOURCE_ROOT; };
+		8364970617F60CA300013463 /* VYRegionTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VYRegionTableViewController.h; path = Controllers/VYRegionTableViewController.h; sourceTree = SOURCE_ROOT; };
+		8364970717F60CA300013463 /* VYRegionTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VYRegionTableViewController.m; path = Controllers/VYRegionTableViewController.m; sourceTree = SOURCE_ROOT; };
 		837E8B7A174BE5BD0051F1A0 /* ModalCollectionDeleteView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ModalCollectionDeleteView.h; path = Views/ModalCollectionDeleteView.h; sourceTree = SOURCE_ROOT; };
 		837E8B7B174BE5BD0051F1A0 /* ModalCollectionDeleteView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ModalCollectionDeleteView.m; path = Views/ModalCollectionDeleteView.m; sourceTree = SOURCE_ROOT; };
 		8384626B16C0730B002C47C2 /* VintageTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VintageTableViewController.h; path = Controllers/VintageTableViewController.h; sourceTree = SOURCE_ROOT; };
@@ -442,6 +445,8 @@
 			children = (
 				8364970017F6010E00013463 /* VYCountryTableViewController.h */,
 				8364970117F6010E00013463 /* VYCountryTableViewController.m */,
+				8364970617F60CA300013463 /* VYRegionTableViewController.h */,
+				8364970717F60CA300013463 /* VYRegionTableViewController.m */,
 			);
 			name = BrowseTableViewControllers;
 			sourceTree = "<group>";
@@ -878,6 +883,7 @@
 				83C4F0D417F0950400ABC91D /* MagicalRecord+Setup.m in Sources */,
 				83C4F0C917F0950400ABC91D /* NSManagedObjectContext+MagicalObserving.m in Sources */,
 				8386B5A6176A29B5002AF30C /* VYAbstractTableViewController.m in Sources */,
+				8364970817F60CA300013463 /* VYRegionTableViewController.m in Sources */,
 				83C4F0C617F0950400ABC91D /* NSManagedObject+MagicalFinders.m in Sources */,
 				8386B5A8176A29B5002AF30C /* VYWineTableViewController.m in Sources */,
 				83C4F0CE17F0950400ABC91D /* NSPersistentStore+MagicalRecord.m in Sources */,
