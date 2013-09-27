@@ -7,7 +7,7 @@
 //
 
 #import "VYAbstractTableViewController.h"
-
+#import "VYAppellationTableViewController.h"
 #import "Country.h"
 #import "Region.h"
 

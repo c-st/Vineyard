@@ -27,7 +27,6 @@
 @synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
 
 
-
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Setup MagicalRecord
     [MagicalRecord setupCoreDataStack];
@@ -37,13 +36,13 @@
 	//[InitialDataImportService clearStore];
 	
 	// import sample data
-	/**
+	
 	[MagicalRecord saveWithBlock:^(NSManagedObjectContext *localContext) {
-		[InitialDataImportService importInitialDataFromJson:localContext];
+		//[InitialDataImportService importInitialDataFromJson:localContext];
 	} completion:^(BOOL success, NSError *error) {
 		NSLog(@"finished importing.");
 	}];
-	*/
+	
 	
 	return YES;
     

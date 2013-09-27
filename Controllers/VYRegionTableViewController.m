@@ -9,11 +9,9 @@
 #import "VYRegionTableViewController.h"
 
 @interface VYRegionTableViewController ()
-
 @end
 
 @implementation VYRegionTableViewController
-
 
 #pragma mark
 #pragma mark Initialization
@@ -28,7 +26,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
 	[self updateAndRefetch];
-	NSLog(@"%i results", [self.fetchedResultsController.fetchedObjects count]);
+	//NSLog(@"%i results", [self.fetchedResultsController.fetchedObjects count]);
 }
 
 #pragma mark
@@ -42,12 +40,34 @@
     return cell;
 }
 
-
 #pragma mark
 #pragma mark GUI
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
     return NO;
+}
+
+#pragma mark
+#pragma mark View Navigation
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+	NSIndexPath *path = [self.tableView indexPathForSelectedRow];
+	Region *region = [[super fetchedResultsController] objectAtIndexPath:path];
+	if (region != nil) {
+		if ([[segue destinationViewController] isKindOfClass:[VYAppellationTableViewController class]]) {
+			NSLog(@"target is VYAppellationTableViewController");
+			VYAppellationTableViewController *appellationTableViewController = [segue destinationViewController];
+			//[[appellationTableViewController navigationItem] setTitle:[region name]];
+			
+			// find all regions from selected country
+			NSPredicate *searchStatement =
+			[NSPredicate predicateWithFormat:@"region.regionID == %@", region.regionID];
+			
+			NSFetchedResultsController *appellationsController = [Appellation fetchAllSortedBy:@"name" ascending:YES withPredicate:searchStatement groupBy:nil delegate:self];
+			
+			[appellationTableViewController setFetchedResultsController:appellationsController];
+		}
+	}
 }
 
 @end
