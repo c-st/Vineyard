@@ -72,7 +72,12 @@
 			[regionTableViewController setFetchedResultsController:regionsController];
 		} else if ([[segue destinationViewController] isKindOfClass:[VYAddEditWineViewController class]]) {
 			VYAddEditWineViewController *addEditWineController = [segue destinationViewController];
+			//reset appellation
+			if ([addEditWineController.wine country] == nil || [addEditWineController.wine country] != country) {
+				[addEditWineController.wine setAppellation:nil];
+			}
 			[[addEditWineController wine] setCountry:country];
+			
 		}
 	}
 }
