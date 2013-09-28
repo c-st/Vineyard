@@ -122,6 +122,7 @@
 		NSPredicate *searchPredicate = [NSPredicate predicateWithFormat:@"(region.country.countryID == %@) || (%@ = null)", self.wine.country.countryID, self.wine.country.countryID];
 		
 		[appellationsTableViewController setFetchedResultsController:[Appellation fetchAllSortedBy:@"region.name,name" ascending:YES withPredicate:searchPredicate groupBy:@"region" delegate:appellationsTableViewController]];
+		
 	}
 }
 

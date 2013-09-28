@@ -9,7 +9,7 @@
 #import "VYAppellationTableViewController.h"
 
 @interface VYAppellationTableViewController ()
-
+@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 @end
 
 @implementation VYAppellationTableViewController
@@ -25,6 +25,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
 	[self updateAndRefetch];
+	[self.searchBar setDelegate:self];
 	//NSLog(@"%i results", [self.fetchedResultsController.fetchedObjects count]);
 }
 
@@ -37,6 +38,38 @@
 	Appellation *appellation = [[super fetchedResultsController] objectAtIndexPath:indexPath];
     [[cell textLabel] setText:[appellation name]];
     return cell;
+}
+
+#pragma mark
+#pragma mark UISearchBar delegate methods
+
+-(void) searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
+    [self filterContentForSearch:searchText];
+}
+
+-(void) searchBarSearchButtonClicked:(UISearchBar *)theSearchBar {
+	NSLog(@"searchBarbuttonc");
+    [self filterContentForSearch:theSearchBar.text];
+    [self.view endEditing:YES];
+}
+
+- (void) filterContentForSearch:(NSString *) searchText {
+	if ([[self.navigationController.viewControllers objectAtIndex:0] isKindOfClass:[VYAddEditWineViewController class]]) {
+		NSLog(@"search for: %@", self.searchBar.text);
+		VYAddEditWineViewController *addEditWineController = [self.navigationController.viewControllers objectAtIndex:0];
+		
+		NSPredicate *search = ([self.searchBar.text length] > 0) ? [NSPredicate predicateWithFormat:
+							   @"((region.country.countryID == %@) || (%@ = null)) AND name CONTAINS[c] %@",
+							   addEditWineController.wine.country.countryID, addEditWineController.wine.country.countryID,
+							   self.searchBar.text]
+								: [NSPredicate predicateWithFormat: @"(region.country.countryID == %@) || (%@ = null)",
+								addEditWineController.wine.country.countryID, addEditWineController.wine.country.countryID];
+		
+		[self.fetchedResultsController.fetchRequest setPredicate:search];
+		NSError *error;
+		[self.fetchedResultsController performFetch:&error];
+		[self.tableView reloadData];
+	}
 }
 
 
