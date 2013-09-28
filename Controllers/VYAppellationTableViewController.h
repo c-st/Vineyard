@@ -11,6 +11,7 @@
 
 #import "Region.h"
 #import "Appellation.h"
+#import "Country.h"
 
 @interface VYAppellationTableViewController : VYAbstractTableViewController
 

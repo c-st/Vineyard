@@ -47,6 +47,16 @@
     return NO;
 }
 
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+	if ([[self.fetchedResultsController sections] count] > 1) {
+		id <NSFetchedResultsSectionInfo> sectionInfo = [self.fetchedResultsController sections][section];
+		//NSLog(@"%@", [sectionInfo objects][0]);
+		Appellation *appellation = [sectionInfo objects][0];
+		return [[appellation region] name];
+	}
+	return nil;
+}
+
 #pragma mark
 #pragma mark View Navigation
 
