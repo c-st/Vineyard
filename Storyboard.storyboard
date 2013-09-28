@@ -464,6 +464,9 @@
                                                 </textField>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="2Oo-ad-f48" kind="push" id="gfC-Vc-2cj"/>
+                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -505,6 +508,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="appellationTextField" destination="kTk-Ku-PeB" id="6Dl-nA-ckr"/>
                         <outlet property="countryTextField" destination="VIx-oG-24Y" id="XZL-44-HVP"/>
                         <outlet property="doneButton" destination="OZR-8K-hMo" id="jnD-nF-xBR"/>
                         <outlet property="nameTextField" destination="mlY-Fd-nNu" id="oU3-4R-FKu"/>
@@ -673,7 +677,49 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="esL-v4-251" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="csb-Oj-FIG" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="598" y="-4363"/>
+            <point key="canvasLocation" x="520" y="-4687"/>
+        </scene>
+        <!--Appellation Table View Controller - Appellations-->
+        <scene sceneID="5eV-Ke-pec">
+            <objects>
+                <tableViewController id="2Oo-ad-f48" customClass="VYAppellationTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="FCe-XE-UNl">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AppellationCell" textLabel="hfC-SR-aEj" style="IBUITableViewCellStyleDefault" id="t2b-R6-rMA">
+                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="t2b-R6-rMA" id="plO-Qh-nfp">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="hfC-SR-aEj">
+                                            <rect key="frame" x="15" y="0.0" width="290" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="BFK-Wp-CdZ" kind="unwind" unwindAction="unwindFromPickerView:" id="cue-3B-8en"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="2Oo-ad-f48" id="7ke-uB-emR"/>
+                            <outlet property="delegate" destination="2Oo-ad-f48" id="zhp-tB-gq7"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Appellations" id="Rrj-mK-Uvz"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="svY-aC-crP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="BFK-Wp-CdZ" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="942" y="-4687"/>
         </scene>
     </scenes>
     <resources>

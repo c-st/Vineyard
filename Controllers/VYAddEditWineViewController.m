@@ -12,6 +12,7 @@
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *doneButton;
 @property (weak, nonatomic) IBOutlet UITextField *nameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *countryTextField;
+@property (weak, nonatomic) IBOutlet UITextField *appellationTextField;
 
 @property (nonatomic, strong) CLLocationManager *locationManager;
 @end
@@ -53,6 +54,7 @@
 - (void) viewWillAppear:(BOOL)animated {
 	[self.nameTextField setText:[self.wine name]];
 	[self.countryTextField setText:[[self.wine country] name]];
+	[self.appellationTextField setText:[[self.wine appellation] name]];
 	[self.tableView reloadData];
 	[super viewWillAppear:animated];
 }
@@ -112,6 +114,14 @@
 		VYCountryTableViewController *countryTableViewController = [segue destinationViewController];
 		[countryTableViewController setInPickerMode:YES];
 		[countryTableViewController setFetchedResultsController:[Country fetchAllSortedBy:@"name" ascending:YES withPredicate:nil groupBy:nil delegate:countryTableViewController]];
+		
+	} else if ([[segue destinationViewController] isKindOfClass:[VYAppellationTableViewController class]]) {
+		VYAppellationTableViewController *appellationsTableViewController = [segue destinationViewController];
+		[appellationsTableViewController setInPickerMode:YES];
+		
+		NSPredicate *searchPredicate = [NSPredicate predicateWithFormat:@"(region.country.countryID == %@) || (%@ = null)", self.wine.country.countryID, self.wine.country.countryID];
+		
+		[appellationsTableViewController setFetchedResultsController:[Appellation fetchAllSortedBy:@"region.name,name" ascending:YES withPredicate:searchPredicate groupBy:@"region" delegate:appellationsTableViewController]];
 	}
 }
 

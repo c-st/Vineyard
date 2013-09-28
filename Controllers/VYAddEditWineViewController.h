@@ -10,6 +10,7 @@
 #import <CoreLocation/CoreLocation.h>
 
 #import "VYCountryTableViewController.h"
+#import "VYAppellationTableViewController.h"
 
 #import "Wine.h"
 #import "Appellation.h"

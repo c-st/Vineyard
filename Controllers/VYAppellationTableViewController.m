@@ -47,4 +47,18 @@
     return NO;
 }
 
+#pragma mark
+#pragma mark View Navigation
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+	NSIndexPath *path = [self.tableView indexPathForSelectedRow];
+	Appellation *appellation = [[super fetchedResultsController] objectAtIndexPath:path];
+	if (appellation != nil) {
+		if ([[segue destinationViewController] isKindOfClass:[VYAddEditWineViewController class]]) {
+			VYAddEditWineViewController *addEditWineController = [segue destinationViewController];
+			[[addEditWineController wine] setAppellation:appellation];
+		}
+	}
+}
+
 @end

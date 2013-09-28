@@ -7,6 +7,7 @@
 //
 
 #import "VYAbstractTableViewController.h"
+#import "VYAddEditWineViewController.h"
 
 #import "Region.h"
 #import "Appellation.h"

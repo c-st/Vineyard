@@ -39,11 +39,6 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
 	Country *country = [[super fetchedResultsController] objectAtIndexPath:indexPath];
     [[cell textLabel] setText:[country name]];
-	
-	if ([self inPickerMode]) {
-		// disable accessory
-		[cell setAccessoryType:UITableViewCellAccessoryNone];
-	}
     return cell;
 }
     
