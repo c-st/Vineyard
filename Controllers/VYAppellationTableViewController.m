@@ -37,6 +37,7 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
 	Appellation *appellation = [[super fetchedResultsController] objectAtIndexPath:indexPath];
     [[cell textLabel] setText:[appellation name]];
+	[[cell detailTextLabel] setText:[NSString stringWithFormat:@"%i", [Wine countOfEntitiesWithPredicate:[self buildCountPredicateForObject:appellation]]]];
     return cell;
 }
 
@@ -103,5 +104,14 @@
 		}
 	}
 }
+
+#pragma mark
+#pragma mark Methods declared at superclass
+
+- (NSPredicate *) buildCountPredicateForObject:(NSManagedObject *)object {
+	Appellation* appellation = (Appellation *) object;
+	return [NSPredicate predicateWithFormat:@"(appellation.appellationID == %@)", appellation.appellationID];
+}
+
 
 @end

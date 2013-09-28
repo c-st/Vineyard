@@ -37,6 +37,7 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
 	Region *region = [[super fetchedResultsController] objectAtIndexPath:indexPath];
     [[cell textLabel] setText:[region name]];
+	[[cell detailTextLabel] setText:[NSString stringWithFormat:@"%i", [Wine countOfEntitiesWithPredicate:[self buildCountPredicateForObject:region]]]];
     return cell;
 }
 
@@ -69,5 +70,14 @@
 		}
 	}
 }
+
+#pragma mark
+#pragma mark Methods declared at superclass
+
+- (NSPredicate *) buildCountPredicateForObject:(NSManagedObject *)object {
+	Region* region = (Region *) object;
+	return [NSPredicate predicateWithFormat:@"(appellation.region.regionID == %@)", region.regionID];
+}
+
 
 @end

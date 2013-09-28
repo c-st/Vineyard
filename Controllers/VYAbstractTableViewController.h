@@ -17,4 +17,6 @@
 @property (atomic) BOOL inPickerMode;
 
 - (void) updateAndRefetch;
+
+- (NSPredicate *) buildCountPredicateForObject:(NSManagedObject *)object;
 @end

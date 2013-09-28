@@ -39,6 +39,8 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
 	Country *country = [[super fetchedResultsController] objectAtIndexPath:indexPath];
     [[cell textLabel] setText:[country name]];
+	[[cell detailTextLabel] setText:[NSString stringWithFormat:@"%i", [Wine countOfEntitiesWithPredicate:[self buildCountPredicateForObject:country]]]];
+
     return cell;
 }
     
@@ -80,6 +82,14 @@
 			
 		}
 	}
+}
+
+#pragma mark
+#pragma mark Methods declared at superclass
+
+- (NSPredicate *) buildCountPredicateForObject:(NSManagedObject *)object {
+	Country* country = (Country *) object;
+	return [NSPredicate predicateWithFormat:@"(country.countryID == %@)", country.countryID];
 }
 
 

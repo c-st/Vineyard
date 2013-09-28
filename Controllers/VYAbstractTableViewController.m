@@ -87,6 +87,12 @@
     return cell;
 }
 
+#pragma mark - Methods to override
+
+- (NSPredicate *) buildCountPredicateForObject:(NSManagedObject *)object {
+	return nil;
+}
+
 /*
 // Override to support editing the table view.
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
