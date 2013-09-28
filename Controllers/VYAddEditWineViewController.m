@@ -53,7 +53,12 @@
 - (void) viewWillAppear:(BOOL)animated {
 	[self.nameTextField setText:[self.wine name]];
 	[self.countryTextField setText:[[self.wine country] name]];
+	[self.tableView reloadData];
 	[super viewWillAppear:animated];
+}
+
+- (void) viewWillDisappear:(BOOL)animated {
+	[self.nameTextField resignFirstResponder];
 }
 
 
@@ -88,9 +93,15 @@
 #pragma mark Table View Data source
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+	// if country is set, display appellations as well.
+	if (section == 0) {
+		if ([self.wine country] != nil) {
+			return 3;
+		} else {
+			return 2;
+		}
+	}
 	return [super tableView:tableView numberOfRowsInSection:section];
-    //id  sectionInfo = [self.fetchedResultsController sections][section];
-//    return [sectionInfo numberOfObjects];
 }
 
 #pragma mark

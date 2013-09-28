@@ -129,7 +129,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="gjb-ex-503" imageView="xBy-MR-VZ7" style="IBUITableViewCellStyleDefault" id="ZKI-1K-zMA">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="gjb-ex-503" style="IBUITableViewCellStyleDefault" id="ZKI-1K-zMA">
                                         <rect key="frame" x="0.0" y="394" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ZKI-1K-zMA" id="DC8-lv-aaV">
@@ -137,16 +137,12 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Price" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="gjb-ex-503">
-                                                    <rect key="frame" x="58" y="0.0" width="247" height="43"/>
+                                                    <rect key="frame" x="15" y="0.0" width="290" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="pricetag" id="xBy-MR-VZ7">
-                                                    <rect key="frame" x="15" y="10" width="28" height="23"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                </imageView>
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -637,7 +633,7 @@
             </objects>
             <point key="canvasLocation" x="-3799" y="-2355"/>
         </scene>
-        <!--Country Table View Controller - Countries-->
+        <!--Country Table View Controller - Country-->
         <scene sceneID="X4P-mC-eVx">
             <objects>
                 <tableViewController extendedLayoutIncludesOpaqueBars="YES" id="Gbd-UC-zCN" customClass="VYCountryTableViewController" sceneMemberID="viewController">
@@ -672,7 +668,7 @@
                             <outlet property="delegate" destination="Gbd-UC-zCN" id="QVF-1f-Gjd"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Countries" id="JDp-9T-1Hb"/>
+                    <navigationItem key="navigationItem" title="Country" id="JDp-9T-1Hb"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="esL-v4-251" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="csb-Oj-FIG" userLabel="Exit" sceneMemberID="exit"/>
@@ -684,7 +680,6 @@
         <image name="box" width="26" height="26"/>
         <image name="browse" width="26" height="26"/>
         <image name="food_wine_bottle_glass" width="26" height="26"/>
-        <image name="pricetag" width="28" height="23"/>
     </resources>
     <color key="tintColor" red="0.77282184103260865" green="0.19152447880442358" blue="0.41627913668768196" alpha="1" colorSpace="calibratedRGB"/>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
