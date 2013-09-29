@@ -47,7 +47,7 @@
 }
 
 - (void) controllerDidChangeContent:(NSFetchedResultsController *)controller {
-	//NSLog(@"didChangeContent");
+	NSLog(@"didChangeContent");
 }
 
 #pragma mark - Custom fetch methods

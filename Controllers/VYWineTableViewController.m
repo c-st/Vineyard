@@ -5,17 +5,29 @@
 #pragma mark
 #pragma mark Initialization
 
+- (id)initWithCoder:(NSCoder *)aDecoder {
+	NSLog(@"initWithCoder");
+    self = [super initWithCoder:aDecoder];
+    if (self) {
+        
+    }
+    return self;
+}
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
 	NSLog(@"viewDidLoad resetting fetched rc");
+	
 	// display all wines if no results controller is set yet
 	if ([self fetchedResultsController] == nil) {
+		NSLog(@"setting fetched rcontroller");
 		[self setFetchedResultsController:[Wine fetchAllSortedBy:@"name" ascending:YES withPredicate:nil groupBy:nil delegate:nil]];
 	}
-	[[self fetchedResultsController] setDelegate:self];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
+	
 	// BUG here
 	[self updateAndRefetch];
 }

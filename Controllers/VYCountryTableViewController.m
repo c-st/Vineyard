@@ -101,8 +101,10 @@
 		if ([sender isKindOfClass:[VYIndexPathButton class]]) {
 			VYIndexPathButton *button = sender;
 			NSIndexPath *path = [button indexPath];
+			[wineTableViewController.fetchedResultsController setDelegate:nil];
 			NSFetchedResultsController *findWinesRC = [Wine fetchAllSortedBy:@"name" ascending:YES withPredicate:[self buildCountPredicateForObject:[self.fetchedResultsController objectAtIndexPath:path]] groupBy:nil delegate:self];
 			[wineTableViewController setFetchedResultsController:findWinesRC];
+			[NSFetchedResultsController deleteCacheWithName:nil];
 			[wineTableViewController setPresetData:[self.fetchedResultsController objectAtIndexPath:path]];
 		}
 	}

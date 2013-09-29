@@ -10,8 +10,7 @@
 
 @implementation VYIndexPathButton
 
-- (id)initWithCoder:(NSCoder *)aDecoder;
-{
+- (id)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
     if (self) {
         // Initialization code
