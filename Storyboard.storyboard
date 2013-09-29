@@ -307,6 +307,9 @@
                                             <state key="normal" title="78">
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
+                                            <connections>
+                                                <segue destination="NGD-fY-0LX" kind="push" id="n4r-gv-QE3"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                     <constraints>
@@ -364,6 +367,9 @@
                                             <state key="normal" title="78">
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
+                                            <connections>
+                                                <segue destination="NGD-fY-0LX" kind="push" id="sQy-cH-s3p"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                     <constraints>
@@ -812,7 +818,7 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="atK-uJ-A5l"/>
+        <segue reference="sQy-cH-s3p"/>
         <segue reference="Jmw-vd-A0q"/>
     </inferredMetricsTieBreakers>
 </document>

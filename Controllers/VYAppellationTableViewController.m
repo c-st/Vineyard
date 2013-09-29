@@ -112,6 +112,17 @@
 			[[addEditWineController wine] setAppellation:appellation];
 		}
 	}
+	
+	// Navigation to WineTableView from count button
+	if ([[segue destinationViewController] isKindOfClass:[VYWineTableViewController class]]) {
+		VYWineTableViewController *wineTableViewController = [segue destinationViewController];
+		if ([sender isKindOfClass:[VYIndexPathButton class]]) {
+			VYIndexPathButton *button = sender;
+			NSIndexPath *path = [button indexPath];
+			NSFetchedResultsController *findWinesRC = [Wine fetchAllSortedBy:@"name" ascending:YES withPredicate:[self buildCountPredicateForObject:[self.fetchedResultsController objectAtIndexPath:path]] groupBy:nil delegate:self];
+			[wineTableViewController setFetchedResultsController:findWinesRC];
+		}
+	}
 }
 
 #pragma mark
