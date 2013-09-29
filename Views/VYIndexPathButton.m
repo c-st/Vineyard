@@ -10,14 +10,18 @@
 
 @implementation VYIndexPathButton
 
-- (id)initWithFrame:(CGRect)frame
+- (id)initWithCoder:(NSCoder *)aDecoder;
 {
-    self = [super initWithFrame:frame];
+    self = [super initWithCoder:aDecoder];
     if (self) {
         // Initialization code
+//		[self.layer setBorderWidth:0.0];
+		[self.layer setCornerRadius:10.0];
+		[[self layer] setMasksToBounds:YES];
     }
     return self;
 }
+
 
 /*
 // Only override drawRect: if you perform custom drawing.

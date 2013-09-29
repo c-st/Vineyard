@@ -124,7 +124,12 @@
 			NSIndexPath *path = [button indexPath];
 			NSFetchedResultsController *findWinesRC = [Wine fetchAllSortedBy:@"name" ascending:YES withPredicate:[self buildCountPredicateForObject:[self.fetchedResultsController objectAtIndexPath:path]] groupBy:nil delegate:self];
 			[wineTableViewController setFetchedResultsController:findWinesRC];
+		} else if ([sender isKindOfClass:[UITableViewCell class]]) {
+			NSIndexPath * path = [self.tableView indexPathForCell:sender];
+			NSFetchedResultsController *findWinesRC = [Wine fetchAllSortedBy:@"name" ascending:YES withPredicate:[self buildCountPredicateForObject:[self.fetchedResultsController objectAtIndexPath:path]] groupBy:nil delegate:self];
+			[wineTableViewController setFetchedResultsController:findWinesRC];
 		}
+		
 	}
 }
 
