@@ -39,7 +39,14 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
 	Country *country = [[super fetchedResultsController] objectAtIndexPath:indexPath];
     [[cell textLabel] setText:[country name]];
-	[[cell detailTextLabel] setText:[NSString stringWithFormat:@"%i", [Wine countOfEntitiesWithPredicate:[self buildCountPredicateForObject:country]]]];
+	
+	// set browse table view cell specifics
+	if ([cell isKindOfClass:[VYBrowseTableViewCell class]]) {
+		VYBrowseTableViewCell *browseCell = (VYBrowseTableViewCell *) cell;
+		[[browseCell wineCountButton] setTitle:[NSString stringWithFormat:@"%i", [Wine countOfEntitiesWithPredicate:[self buildCountPredicateForObject:country]]] forState:UIControlStateNormal];
+		[[browseCell wineCountButton] setIndexPath:indexPath];
+		cell = browseCell;
+	}
 
     return cell;
 }
@@ -57,13 +64,13 @@
 #pragma mark View Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+	NSLog(@"prepareForSegue -> %@", [segue destinationViewController]);
 	NSIndexPath *path = [self.tableView indexPathForSelectedRow];
 	Country *country = [[super fetchedResultsController] objectAtIndexPath:path];
+	
 	if (country != nil) {
 		if ([[segue destinationViewController] isKindOfClass:[VYRegionTableViewController class]]) {
-			NSLog(@"target is RegionViewController");
 			VYRegionTableViewController *regionTableViewController = [segue destinationViewController];
-			//[[regionTableViewController navigationItem] setTitle:[country name]];
 			
 			// find all regions from selected country
 			NSPredicate *searchStatement =
@@ -72,6 +79,7 @@
 			NSFetchedResultsController *regionsController = [Region fetchAllSortedBy:@"name" ascending:YES withPredicate:searchStatement groupBy:nil delegate:self];
 			
 			[regionTableViewController setFetchedResultsController:regionsController];
+			
 		} else if ([[segue destinationViewController] isKindOfClass:[VYAddEditWineViewController class]]) {
 			VYAddEditWineViewController *addEditWineController = [segue destinationViewController];
 			//reset appellation
@@ -80,6 +88,17 @@
 			}
 			[[addEditWineController wine] setCountry:country];
 			
+		}
+	}
+	
+	// Navigation to WineTableView from count button
+	if ([[segue destinationViewController] isKindOfClass:[VYWineTableViewController class]]) {
+		VYWineTableViewController *wineTableViewController = [segue destinationViewController];
+		if ([sender isKindOfClass:[VYIndexPathButton class]]) {
+			VYIndexPathButton *button = sender;
+			NSIndexPath *path = [button indexPath];
+			NSFetchedResultsController *findWinesRC = [Wine fetchAllSortedBy:@"name" ascending:YES withPredicate:[self buildCountPredicateForObject:[self.fetchedResultsController objectAtIndexPath:path]] groupBy:nil delegate:self];
+			[wineTableViewController setFetchedResultsController:findWinesRC];
 		}
 	}
 }

@@ -7,14 +7,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-	[self setFetchedResultsController:
-		[Wine fetchAllSortedBy:@"name" ascending:YES withPredicate:nil groupBy:nil delegate:nil]];
 	
+	// display all wines if no results controller is set yet
+	if ([self fetchedResultsController] == nil) {
+		[self setFetchedResultsController:[Wine fetchAllSortedBy:@"name" ascending:YES withPredicate:nil groupBy:nil delegate:nil]];
+	}
 	[[self fetchedResultsController] setDelegate:self];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-	//NSLog(@"viewWillAppear");
 	[self updateAndRefetch];
 }
 
@@ -61,12 +62,6 @@
 	NSIndexPath *path = [self.tableView indexPathForSelectedRow];
 	Wine *wine = [[super fetchedResultsController] objectAtIndexPath:path];
 	if (wine != nil) {
-		//NSLog(@"VYWineTableViewContoller -> prepareForSeque. Pushing wine %@", wine);
-		/*
-		if ([[segue destinationViewController] isKindOfClass:[VYAddWineViewController class]]) {
-			NSLog(@"target is AddWineViewController");
-		}
-		*/
 		if ([[segue destinationViewController] isKindOfClass:[VYWineViewController class]]) {
 			NSLog(@"target is WineViewController");
 			VYWineViewController *wineViewController = [segue destinationViewController];

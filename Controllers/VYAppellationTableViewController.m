@@ -36,8 +36,17 @@
     static NSString *CellIdentifier = @"AppellationCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
 	Appellation *appellation = [[super fetchedResultsController] objectAtIndexPath:indexPath];
+	
     [[cell textLabel] setText:[appellation name]];
-	[[cell detailTextLabel] setText:[NSString stringWithFormat:@"%i", [Wine countOfEntitiesWithPredicate:[self buildCountPredicateForObject:appellation]]]];
+	
+	// set browse table view cell specifics
+	if ([cell isKindOfClass:[VYBrowseTableViewCell class]]) {
+		VYBrowseTableViewCell *browseCell = (VYBrowseTableViewCell *) cell;
+		[[browseCell wineCountButton] setTitle:[NSString stringWithFormat:@"%i", [Wine countOfEntitiesWithPredicate:[self buildCountPredicateForObject:appellation]]] forState:UIControlStateNormal];
+		[[browseCell wineCountButton] setIndexPath:indexPath];
+		cell = browseCell;
+	}
+	
     return cell;
 }
 

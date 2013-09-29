@@ -9,6 +9,8 @@
 #import "VYAbstractTableViewController.h"
 #import "VYRegionTableViewController.h"
 #import "VYAddEditWineViewController.h"
+#import "VYWineTableViewController.h"
+#import "VYBrowseTableViewCell.h"
 
 #import "Wine.h"
 #import "Country.h"

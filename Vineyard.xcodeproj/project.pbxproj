@@ -26,6 +26,8 @@
 		8386B5A9176A2C12002AF30C /* UIColor+CellarColours.m in Sources */ = {isa = PBXBuildFile; fileRef = 83E79DBA1677AA1400E0E42D /* UIColor+CellarColours.m */; };
 		8386B5AB176A3384002AF30C /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 83FB89DF1768E5F100C00757 /* Media.xcassets */; };
 		8386B5EF176A52DE002AF30C /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8386B5AD176A4DD5002AF30C /* Storyboard.storyboard */; };
+		83A42AE017F76A3F0067ECF0 /* VYBrowseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 83A42ADF17F76A3F0067ECF0 /* VYBrowseTableViewCell.m */; };
+		83A42AE317F826B60067ECF0 /* VYIndexPathButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 83A42AE217F826B60067ECF0 /* VYIndexPathButton.m */; };
 		83AACCCD174ECF6F00D53F35 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83AACCCC174ECF6F00D53F35 /* MessageUI.framework */; };
 		83AB990916A322C30095A63B /* _Characteristics.m in Sources */ = {isa = PBXBuildFile; fileRef = 83AB990216A322C30095A63B /* _Characteristics.m */; };
 		83AB990A16A322C30095A63B /* Characteristics.m in Sources */ = {isa = PBXBuildFile; fileRef = 83AB990416A322C30095A63B /* Characteristics.m */; };
@@ -142,6 +144,10 @@
 		839B6FFE169B909A00BDAACF /* CharacteristicsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CharacteristicsViewController.m; path = Controllers/CharacteristicsViewController.m; sourceTree = SOURCE_ROOT; };
 		839D258816AD9C4800A482E3 /* ModalTextFieldView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ModalTextFieldView.h; path = Views/ModalTextFieldView.h; sourceTree = SOURCE_ROOT; };
 		839D258916AD9C4800A482E3 /* ModalTextFieldView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ModalTextFieldView.m; path = Views/ModalTextFieldView.m; sourceTree = SOURCE_ROOT; };
+		83A42ADE17F76A3F0067ECF0 /* VYBrowseTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VYBrowseTableViewCell.h; path = Views/VYBrowseTableViewCell.h; sourceTree = SOURCE_ROOT; };
+		83A42ADF17F76A3F0067ECF0 /* VYBrowseTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VYBrowseTableViewCell.m; path = Views/VYBrowseTableViewCell.m; sourceTree = SOURCE_ROOT; };
+		83A42AE117F826B60067ECF0 /* VYIndexPathButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VYIndexPathButton.h; path = Views/VYIndexPathButton.h; sourceTree = SOURCE_ROOT; };
+		83A42AE217F826B60067ECF0 /* VYIndexPathButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VYIndexPathButton.m; path = Views/VYIndexPathButton.m; sourceTree = SOURCE_ROOT; };
 		83AACCCC174ECF6F00D53F35 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		83AB990116A322C30095A63B /* _Characteristics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = _Characteristics.h; path = Model/_Characteristics.h; sourceTree = SOURCE_ROOT; };
 		83AB990216A322C30095A63B /* _Characteristics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = _Characteristics.m; path = Model/_Characteristics.m; sourceTree = SOURCE_ROOT; };
@@ -503,6 +509,10 @@
 		8386B59D176A2509002AF30C /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				83A42ADE17F76A3F0067ECF0 /* VYBrowseTableViewCell.h */,
+				83A42ADF17F76A3F0067ECF0 /* VYBrowseTableViewCell.m */,
+				83A42AE117F826B60067ECF0 /* VYIndexPathButton.h */,
+				83A42AE217F826B60067ECF0 /* VYIndexPathButton.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -890,6 +900,7 @@
 				8386B5A6176A29B5002AF30C /* VYAbstractTableViewController.m in Sources */,
 				8364970817F60CA300013463 /* VYRegionTableViewController.m in Sources */,
 				83C4F0C617F0950400ABC91D /* NSManagedObject+MagicalFinders.m in Sources */,
+				83A42AE317F826B60067ECF0 /* VYIndexPathButton.m in Sources */,
 				8386B5A8176A29B5002AF30C /* VYWineTableViewController.m in Sources */,
 				83C4F0CE17F0950400ABC91D /* NSPersistentStore+MagicalRecord.m in Sources */,
 				83E79D9E1677AA0300E0E42D /* Wine.m in Sources */,
@@ -924,6 +935,7 @@
 				83C4F0C117F0950400ABC91D /* NSObject+MagicalDataImport.m in Sources */,
 				83E79DB01677AA0300E0E42D /* Location.m in Sources */,
 				83E79DB11677AA0300E0E42D /* Winery.m in Sources */,
+				83A42AE017F76A3F0067ECF0 /* VYBrowseTableViewCell.m in Sources */,
 				83C4F0D117F0950400ABC91D /* MagicalRecord+ErrorHandling.m in Sources */,
 				83E79DF01677AA9C00E0E42D /* AppDelegate.m in Sources */,
 				8361EE291677B4B50057E04B /* main.m in Sources */,

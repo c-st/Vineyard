@@ -37,7 +37,15 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
 	Region *region = [[super fetchedResultsController] objectAtIndexPath:indexPath];
     [[cell textLabel] setText:[region name]];
-	[[cell detailTextLabel] setText:[NSString stringWithFormat:@"%i", [Wine countOfEntitiesWithPredicate:[self buildCountPredicateForObject:region]]]];
+	
+	// set browse table view cell specifics
+	if ([cell isKindOfClass:[VYBrowseTableViewCell class]]) {
+		VYBrowseTableViewCell *browseCell = (VYBrowseTableViewCell *) cell;
+		[[browseCell wineCountButton] setTitle:[NSString stringWithFormat:@"%i", [Wine countOfEntitiesWithPredicate:[self buildCountPredicateForObject:region]]] forState:UIControlStateNormal];
+		[[browseCell wineCountButton] setIndexPath:indexPath];
+		cell = browseCell;
+	}
+	
     return cell;
 }
 
@@ -58,7 +66,6 @@
 		if ([[segue destinationViewController] isKindOfClass:[VYAppellationTableViewController class]]) {
 			NSLog(@"target is VYAppellationTableViewController");
 			VYAppellationTableViewController *appellationTableViewController = [segue destinationViewController];
-			//[[appellationTableViewController navigationItem] setTitle:[region name]];
 			
 			// find all regions from selected country
 			NSPredicate *searchStatement =
