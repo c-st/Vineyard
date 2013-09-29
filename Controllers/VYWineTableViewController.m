@@ -57,8 +57,8 @@
 #pragma mark
 #pragma mark View Navigation
 
-// In a story board-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+	NSLog(@"prepareForSegue %@ -> %@", self, [segue destinationViewController]);
 	NSIndexPath *path = [self.tableView indexPathForSelectedRow];
 	Wine *wine = [[super fetchedResultsController] objectAtIndexPath:path];
 	if (wine != nil) {
@@ -67,6 +67,8 @@
 			VYWineViewController *wineViewController = [segue destinationViewController];
 			[wineViewController setWine:wine];
 		}
+	} else {
+		NSLog(@"wine is nil");
 	}
 }
 

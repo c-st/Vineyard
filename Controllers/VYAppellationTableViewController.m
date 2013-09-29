@@ -107,6 +107,7 @@
 #pragma mark View Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+	NSLog(@"prepareForSegue %@ -> %@", self, [segue destinationViewController]);
 	NSIndexPath *path = [self.tableView indexPathForSelectedRow];
 	Appellation *appellation = [[super fetchedResultsController] objectAtIndexPath:path];
 	if (appellation != nil) {

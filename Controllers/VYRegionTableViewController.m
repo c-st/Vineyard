@@ -65,6 +65,7 @@
 #pragma mark View Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+	NSLog(@"prepareForSegue %@ -> %@", self, [segue destinationViewController]);
 	NSIndexPath *path = [self.tableView indexPathForSelectedRow];
 	Region *region = [[super fetchedResultsController] objectAtIndexPath:path];
 	if (region != nil) {

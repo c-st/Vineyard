@@ -67,7 +67,7 @@
 #pragma mark View Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-	NSLog(@"prepareForSegue -> %@", [segue destinationViewController]);
+	NSLog(@"prepareForSegue %@ -> %@", self, [segue destinationViewController]);
 	NSIndexPath *path = [self.tableView indexPathForSelectedRow];
 	Country *country = [[super fetchedResultsController] objectAtIndexPath:path];
 	
@@ -85,6 +85,7 @@
 			
 		} else if ([[segue destinationViewController] isKindOfClass:[VYAddEditWineViewController class]]) {
 			VYAddEditWineViewController *addEditWineController = [segue destinationViewController];
+			
 			//reset appellation
 			if ([addEditWineController.wine country] == nil || [addEditWineController.wine country] != country) {
 				[addEditWineController.wine setAppellation:nil];
