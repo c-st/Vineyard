@@ -14,6 +14,9 @@
 
 @property (nonatomic, retain) NSFetchedResultsController *fetchedResultsController;
 
+// when navigating from 
+@property (nonatomic) NSManagedObject *presetData;
+
 @property (atomic) BOOL inPickerMode;
 
 - (void) updateAndRefetch;

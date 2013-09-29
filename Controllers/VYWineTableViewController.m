@@ -7,7 +7,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-	
+	NSLog(@"viewDidLoad resetting fetched rc");
 	// display all wines if no results controller is set yet
 	if ([self fetchedResultsController] == nil) {
 		[self setFetchedResultsController:[Wine fetchAllSortedBy:@"name" ascending:YES withPredicate:nil groupBy:nil delegate:nil]];
@@ -16,6 +16,7 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
+	// BUG here
 	[self updateAndRefetch];
 }
 
@@ -68,7 +69,22 @@
 			[wineViewController setWine:wine];
 		}
 	} else {
-		NSLog(@"wine is nil");
+		if ([[[segue destinationViewController] viewControllers][0] isKindOfClass:[VYAddEditWineViewController class]]) {
+			VYAddEditWineViewController *addEditWineController =
+				[[segue destinationViewController] viewControllers][0];
+			
+			if ([self.presetData isKindOfClass:[Country class]]) {
+				[[addEditWineController wine] setCountry:(Country *) self.presetData];
+			} else if ([self.presetData isKindOfClass:[Region class]]) {
+				Region *region = (Region *) self.presetData;
+				[[addEditWineController wine] setCountry:[region country]];
+			} else if ([self.presetData isKindOfClass:[Appellation class]]) {
+				Appellation *appellation = (Appellation *) self.presetData;
+				[[addEditWineController wine] setAppellation:appellation];
+				[[addEditWineController wine] setCountry:appellation.region.country];
+			}
+			
+		}
 	}
 }
 

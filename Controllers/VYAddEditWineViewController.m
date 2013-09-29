@@ -26,6 +26,7 @@
 	self = [super initWithCoder:aDecoder];
     if (self) {
         [self setNewWine:YES];
+		[self setWine:[Wine createEntity]];
     }
     return self;
 }
@@ -40,7 +41,7 @@
 - (void)viewDidLoad {
     //[super viewDidLoad];
 	if ([self newWine]) {
-		[self setWine:[Wine createEntity]];
+		
 		[_wine setCreationTime:[NSDate date]];
 		[self requestLocationUpdate];
 		[[self navigationItem] setTitle:@"New wine"];
@@ -74,12 +75,13 @@
 
 - (IBAction)cancelButtonTapped:(id)sender {
 	if ([self newWine]) {
-		[[self wine] deleteEntity];
+	[[self wine] deleteEntity];
 	} else {
 		[[NSManagedObjectContext defaultContext] rollback];
 	}
 	[self dismissViewControllerAnimated:YES completion:nil];
 }
+
 
 - (IBAction)doneButtonTapped:(id)sender {
 	if (![_wine isValid]) {

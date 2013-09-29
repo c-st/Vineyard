@@ -103,6 +103,7 @@
 			NSIndexPath *path = [button indexPath];
 			NSFetchedResultsController *findWinesRC = [Wine fetchAllSortedBy:@"name" ascending:YES withPredicate:[self buildCountPredicateForObject:[self.fetchedResultsController objectAtIndexPath:path]] groupBy:nil delegate:self];
 			[wineTableViewController setFetchedResultsController:findWinesRC];
+			[wineTableViewController setPresetData:[self.fetchedResultsController objectAtIndexPath:path]];
 		}
 	}
 }
