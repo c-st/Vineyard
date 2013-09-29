@@ -22,12 +22,16 @@
 	[[self fetchedResultsController] setDelegate:self];
 }
 
-
 - (void)viewWillAppear:(BOOL)animated {
-	[self updateAndRefetch];
+	[super viewWillAppear:animated];
 	[self.searchBar setDelegate:self];
-	//NSLog(@"%i results", [self.fetchedResultsController.fetchedObjects count]);
 }
+
+- (void) viewDidAppear:(BOOL)animated {
+	[super viewDidAppear:animated];
+	[self updateAndRefetch]; // is a bit too late, but not messing up animation.
+}
+
 
 #pragma mark
 #pragma mark Table View Data source
@@ -93,8 +97,7 @@
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
 	if ([[self.fetchedResultsController sections] count] > 1) {
 		id <NSFetchedResultsSectionInfo> sectionInfo = [self.fetchedResultsController sections][section];
-		//NSLog(@"%@", [sectionInfo objects][0]);
-		Appellation *appellation = [sectionInfo objects][0];
+		Appellation *appellation = [sectionInfo objects][0]; // use first item from list
 		return [[appellation region] name];
 	}
 	return nil;

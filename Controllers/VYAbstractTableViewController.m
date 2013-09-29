@@ -58,7 +58,7 @@
 	if (![[self fetchedResultsController] performFetch:&error]) {
 		NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
 	}
-    [self.tableView reloadData];
+	[self.tableView reloadData];
 }
 
 - (NSPredicate *) getFetchPredicate:(Wine *)withWine {
