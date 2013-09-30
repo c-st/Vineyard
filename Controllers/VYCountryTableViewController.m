@@ -74,13 +74,10 @@
 	if (country != nil) {
 		if ([[segue destinationViewController] isKindOfClass:[VYRegionTableViewController class]]) {
 			VYRegionTableViewController *regionTableViewController = [segue destinationViewController];
-			
 			// find all regions from selected country
 			NSPredicate *searchStatement =
 				[NSPredicate predicateWithFormat:@"country.countryID == %@", country.countryID];
-			
-			NSFetchedResultsController *regionsController = [Region fetchAllSortedBy:@"name" ascending:YES withPredicate:searchStatement groupBy:nil delegate:self];
-			
+			NSFetchedResultsController *regionsController = [Region fetchAllSortedBy:@"name" ascending:YES withPredicate:searchStatement groupBy:nil delegate:regionTableViewController];
 			[regionTableViewController setFetchedResultsController:regionsController];
 			
 		} else if ([[segue destinationViewController] isKindOfClass:[VYAddEditWineViewController class]]) {
@@ -102,7 +99,7 @@
 			VYIndexPathButton *button = sender;
 			NSIndexPath *path = [button indexPath];
 			[wineTableViewController.fetchedResultsController setDelegate:nil];
-			NSFetchedResultsController *findWinesRC = [Wine fetchAllSortedBy:@"name" ascending:YES withPredicate:[self buildCountPredicateForObject:[self.fetchedResultsController objectAtIndexPath:path]] groupBy:nil delegate:self];
+			NSFetchedResultsController *findWinesRC = [Wine fetchAllSortedBy:@"name" ascending:YES withPredicate:[self buildCountPredicateForObject:[self.fetchedResultsController objectAtIndexPath:path]] groupBy:nil delegate:wineTableViewController];
 			[wineTableViewController setFetchedResultsController:findWinesRC];
 			[NSFetchedResultsController deleteCacheWithName:nil];
 			[wineTableViewController setPresetData:[self.fetchedResultsController objectAtIndexPath:path]];

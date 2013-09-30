@@ -265,7 +265,7 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="wineCountButton" destination="EcZ-VM-qHL" id="mqC-Tw-VpE"/>
-                                    <segue destination="mTo-L1-zGx" kind="push" id="LpP-PS-ewK"/>
+                                    <segue destination="mTo-L1-zGx" kind="push" id="lNQ-cZ-VfF"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -278,7 +278,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uY0-fc-a5m" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2614" y="-4909"/>
+            <point key="canvasLocation" x="-2630" y="-4909"/>
         </scene>
         <!--Region Table View Controller - Regions-->
         <scene sceneID="ciE-hN-ZYS">
@@ -828,7 +828,7 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="0KA-bR-Vj1"/>
         <segue reference="Jmw-vd-A0q"/>
+        <segue reference="qNw-h6-BGt"/>
     </inferredMetricsTieBreakers>
 </document>

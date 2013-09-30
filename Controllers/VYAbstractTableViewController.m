@@ -47,7 +47,7 @@
 }
 
 - (void) controllerDidChangeContent:(NSFetchedResultsController *)controller {
-	NSLog(@"didChangeContent");
+	//NSLog(@"didChangeContent");
 }
 
 #pragma mark - Custom fetch methods
@@ -69,7 +69,6 @@
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-//    return 1;
 	return [[_fetchedResultsController sections] count];
 }
 
