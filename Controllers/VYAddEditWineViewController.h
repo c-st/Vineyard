@@ -16,11 +16,12 @@
 #import "Appellation.h"
 #import "Country.h"
 #import "Location.h"
+#import "GrapeType.h"
 
 @interface VYAddEditWineViewController : UITableViewController <CLLocationManagerDelegate> {
 	
 }
-
+@property (nonatomic) NSArray* grapeTypes;
 @property (atomic) BOOL newWine;
 @property (nonatomic) Wine* wine;
 

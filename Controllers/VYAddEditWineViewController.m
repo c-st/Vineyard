@@ -14,6 +14,8 @@
 @property (weak, nonatomic) IBOutlet UITextField *countryTextField;
 @property (weak, nonatomic) IBOutlet UITextField *appellationTextField;
 
+@property (weak, nonatomic) IBOutlet UISegmentedControl *colourControl;
+
 @property (nonatomic, strong) CLLocationManager *locationManager;
 @end
 
@@ -26,7 +28,12 @@
 	self = [super initWithCoder:aDecoder];
     if (self) {
         [self setNewWine:YES];
-		[self setWine:[Wine createEntity]];
+		
+		// set grape types
+		self.grapeTypes = @[
+			[GrapeType findByAttribute:@"grapeTypeID" withValue:@"red"][0],
+			[GrapeType findByAttribute:@"grapeTypeID" withValue:@"rose"][0],
+			[GrapeType findByAttribute:@"grapeTypeID" withValue:@"white"][0]];
     }
     return self;
 }
@@ -41,13 +48,16 @@
 - (void)viewDidLoad {
     //[super viewDidLoad];
 	if ([self newWine]) {
-		
-		[_wine setCreationTime:[NSDate date]];
-		[self requestLocationUpdate];
 		[[self navigationItem] setTitle:@"New wine"];
+		[self setWine:[Wine createEntity]];
+		[self.wine setCreationTime:[NSDate date]];
+		//[self.wine setColour:[self.grapeTypes objectAtIndex:[self.colourControl selectedSegmentIndex]]];
+		[self requestLocationUpdate];
 	} else {
 		[[self navigationItem] setTitle:@"Edit wine"];
 		[self.nameTextField setText:[self.wine name]];
+		//NSLog(@"edit existing wine %i", [self.grapeTypes indexOfObject:[self.wine colour]]);
+		//[self.colourControl setSelectedSegmentIndex:[self.grapeTypes indexOfObject:[self.wine colour]]];
 		[self nameEditingChanged:nil];
 	}
 }
@@ -67,10 +77,17 @@
 
 #pragma mark
 #pragma mark GUI Events
+- (IBAction)colourValueChanged:(UISegmentedControl *)sender {
+	NSLog(@"changed %i", [sender selectedSegmentIndex]);
+	
+	//GrapeType *type = [self.grapeTypes objectAtIndex:[sender selectedSegmentIndex]];
+	//[self.wine setColour:type];
+}
 
-- (IBAction)nameEditingChanged:(id)sender {
-	[_doneButton setEnabled:[[_nameTextField text] length] > 0];
-	[_wine setName:[_nameTextField text]];
+
+- (IBAction)nameEditingChanged:(UITextField *)sender {
+	[self.doneButton setEnabled:[[_nameTextField text] length] > 0];
+	[self.wine setName:[_nameTextField text]];
 }
 
 - (IBAction)cancelButtonTapped:(id)sender {
@@ -82,13 +99,13 @@
 	[self dismissViewControllerAnimated:YES completion:nil];
 }
 
-
 - (IBAction)doneButtonTapped:(id)sender {
-	if (![_wine isValid]) {
+	NSLog(@"saving");
+	if (![self.wine isValid]) {
 		NSLog(@"Wine is not valid!");
 		return;
 	}
-	[_wine extendWine];
+	[self.wine extendWine];
 	[[NSManagedObjectContext defaultContext] saveToPersistentStoreAndWait];
 	[self dismissViewControllerAnimated:YES completion:nil];
 }

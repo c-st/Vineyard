@@ -43,19 +43,21 @@
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-	
+
     if (editingStyle == UITableViewCellEditingStyleDelete) {
+		NSLog(@"commitEditingStyle Delete");
+		
 		// delete wine
 		Wine *wine = [[self fetchedResultsController] objectAtIndexPath:indexPath];
 		[wine deleteEntity];
 		[[NSManagedObjectContext defaultContext] saveToPersistentStoreAndWait];
     }
-	
 }
 
 - (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject
        atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type
       newIndexPath:(NSIndexPath *)newIndexPath {
+	NSLog(@"didChange");
 	
 	// only perform animation when view is visible (fixes crash on other table view which wasn't updated yet)
 	if ([self isViewLoaded] && [self.view window]) {

@@ -502,12 +502,12 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Title" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mlY-Fd-nNu">
-                                                    <rect key="frame" x="14" y="15" width="286" height="23"/>
+                                                    <rect key="frame" x="17" y="10" width="286" height="23"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="words" enablesReturnKeyAutomatically="YES"/>
                                                     <connections>
-                                                        <action selector="nameEditingChanged:" destination="3yX-Ha-EkY" eventType="editingChanged" id="7li-V9-kfM"/>
+                                                        <action selector="nameEditingChanged:" destination="3yX-Ha-EkY" eventType="editingChanged" id="5bM-YB-EPT"/>
                                                     </connections>
                                                 </textField>
                                             </subviews>
@@ -558,20 +558,70 @@
                             </tableViewSection>
                             <tableViewSection id="hCQ-Eb-8DB">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="1Uy-Yn-J4D">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="UlV-ee-jmJ">
                                         <rect key="frame" x="0.0" y="251" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1Uy-Yn-J4D" id="bb9-dR-X7Z">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="UlV-ee-jmJ" id="TmX-FA-QeB">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Title" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dR2-9I-Grh">
-                                                    <rect key="frame" x="14" y="15" width="286" height="23"/>
+                                                <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="y5l-BT-Rb6">
+                                                    <rect key="frame" x="117" y="8" width="155" height="29"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <segments>
+                                                        <segment title="Red"/>
+                                                        <segment title="Rosé"/>
+                                                        <segment title="White"/>
+                                                    </segments>
+                                                    <connections>
+                                                        <action selector="colourValueChanged:" destination="3yX-Ha-EkY" eventType="valueChanged" id="FZx-dL-yMm"/>
+                                                    </connections>
+                                                </segmentedControl>
+                                                <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Colour" placeholder="Varietal" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QT4-q6-v1p">
+                                                    <rect key="frame" x="17" y="10" width="92" height="23"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="words" enablesReturnKeyAutomatically="YES"/>
+                                                    <connections>
+                                                        <action selector="nameEditingChanged:" destination="3yX-Ha-EkY" eventType="editingChanged" id="8SO-g3-KVt"/>
+                                                    </connections>
+                                                </textField>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="1Uy-Yn-J4D">
+                                        <rect key="frame" x="0.0" y="295" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1Uy-Yn-J4D" id="bb9-dR-X7Z">
+                                            <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Varietal" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dR2-9I-Grh">
+                                                    <rect key="frame" x="17" y="10" width="286" height="23"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="words" enablesReturnKeyAutomatically="YES"/>
                                                     <connections>
                                                         <action selector="nameEditingChanged:" destination="3yX-Ha-EkY" eventType="editingChanged" id="VYe-Lf-DHe"/>
+                                                    </connections>
+                                                </textField>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="fpp-En-otP">
+                                        <rect key="frame" x="0.0" y="339" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fpp-En-otP" id="ylN-T9-wLu">
+                                            <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Vintage" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="78T-z7-E0C">
+                                                    <rect key="frame" x="17" y="10" width="286" height="23"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="words" enablesReturnKeyAutomatically="YES"/>
+                                                    <connections>
+                                                        <action selector="nameEditingChanged:" destination="3yX-Ha-EkY" eventType="editingChanged" id="i73-yA-C1E"/>
                                                     </connections>
                                                 </textField>
                                             </subviews>
@@ -595,6 +645,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="appellationTextField" destination="kTk-Ku-PeB" id="6Dl-nA-ckr"/>
+                        <outlet property="colourControl" destination="y5l-BT-Rb6" id="Miq-2T-rnY"/>
                         <outlet property="countryTextField" destination="VIx-oG-24Y" id="XZL-44-HVP"/>
                         <outlet property="doneButton" destination="OZR-8K-hMo" id="jnD-nF-xBR"/>
                         <outlet property="nameTextField" destination="mlY-Fd-nNu" id="oU3-4R-FKu"/>

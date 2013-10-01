@@ -16,7 +16,7 @@
         // Initialization code
 //		[self.layer setBorderWidth:0.0];
 		[self.layer setCornerRadius:10.0];
-		//[[self layer] setMasksToBounds:YES];
+		[[self layer] setMasksToBounds:YES];
     }
     return self;
 }
