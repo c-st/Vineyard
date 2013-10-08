@@ -502,9 +502,10 @@
                                                     <rect key="frame" x="17" y="10" width="286" height="23"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
-                                                    <textInputTraits key="textInputTraits" autocapitalizationType="words" enablesReturnKeyAutomatically="YES"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" enablesReturnKeyAutomatically="YES"/>
                                                     <connections>
                                                         <action selector="nameEditingChanged:" destination="3yX-Ha-EkY" eventType="editingChanged" id="5bM-YB-EPT"/>
+                                                        <action selector="nameEditingFinished:" destination="3yX-Ha-EkY" eventType="editingDidEndOnExit" id="IBj-W8-Ewh"/>
                                                     </connections>
                                                 </textField>
                                             </subviews>

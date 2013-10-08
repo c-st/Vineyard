@@ -21,7 +21,6 @@
 @interface VYAddEditWineViewController : UITableViewController <CLLocationManagerDelegate> {
 	
 }
-@property (nonatomic) NSArray* grapeTypes;
 @property (atomic) BOOL newWine;
 @property (nonatomic) Wine* wine;
 

@@ -15,7 +15,6 @@
 @property (weak, nonatomic) IBOutlet UITextField *appellationTextField;
 @property (weak, nonatomic) IBOutlet UITextField *colourTextField;
 
-@property (weak, nonatomic) IBOutlet UISegmentedControl *colourControl;
 
 @property (nonatomic, strong) CLLocationManager *locationManager;
 @end
@@ -29,12 +28,6 @@
 	self = [super initWithCoder:aDecoder];
     if (self) {
         [self setNewWine:YES];
-		
-		// set grape types
-		self.grapeTypes = @[
-			[GrapeType findByAttribute:@"grapeTypeID" withValue:@"red"][0],
-			[GrapeType findByAttribute:@"grapeTypeID" withValue:@"rose"][0],
-			[GrapeType findByAttribute:@"grapeTypeID" withValue:@"white"][0]];
     }
     return self;
 }
@@ -93,6 +86,10 @@
 	[self.wine setName:[_nameTextField text]];
 }
 
+- (IBAction)nameEditingFinished:(UITextField *)sender {
+	[sender resignFirstResponder];
+}
+
 - (IBAction)cancelButtonTapped:(id)sender {
 	if ([self newWine]) {
 	[[self wine] deleteEntity];
@@ -125,6 +122,16 @@
 			return 2;
 		}
 	}
+	
+	// if colour is set, display varietals as well
+	if (section == 1) {
+		if ([self.wine colour] != nil) {
+			return 3;
+		} else {
+			return 2;
+		}
+	}
+	
 	return [super tableView:tableView numberOfRowsInSection:section];
 }
 
