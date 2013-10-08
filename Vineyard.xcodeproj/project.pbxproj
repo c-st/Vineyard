@@ -11,6 +11,7 @@
 		8329FE7317F0D580008AD86F /* VYWineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8329FE7217F0D580008AD86F /* VYWineViewController.m */; };
 		835C6D8E167E1B4700AC2A04 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 835C6D8D167E1B4700AC2A04 /* CoreLocation.framework */; };
 		8360EE2218048B1300AFEDE3 /* VYGrapeTypeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8360EE2118048B1300AFEDE3 /* VYGrapeTypeTableViewController.m */; };
+		8360EE251804955E00AFEDE3 /* VYVarietalsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8360EE241804955E00AFEDE3 /* VYVarietalsTableViewController.m */; };
 		83617B34176A7447009E900E /* VYAddEditWineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83617B32176A7362009E900E /* VYAddEditWineViewController.m */; };
 		8361EE291677B4B50057E04B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8361EE281677B4B50057E04B /* main.m */; };
 		8361EE5C1677B5290057E04B /* data.json in Resources */ = {isa = PBXBuildFile; fileRef = 8361EE5B1677B5290057E04B /* data.json */; };
@@ -118,6 +119,8 @@
 		835D70B516B5B98E00680687 /* UIView+Genie.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+Genie.m"; path = "Categories/UIView+Genie.m"; sourceTree = SOURCE_ROOT; };
 		8360EE2018048B1300AFEDE3 /* VYGrapeTypeTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VYGrapeTypeTableViewController.h; path = Controllers/VYGrapeTypeTableViewController.h; sourceTree = SOURCE_ROOT; };
 		8360EE2118048B1300AFEDE3 /* VYGrapeTypeTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VYGrapeTypeTableViewController.m; path = Controllers/VYGrapeTypeTableViewController.m; sourceTree = SOURCE_ROOT; };
+		8360EE231804955E00AFEDE3 /* VYVarietalsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VYVarietalsTableViewController.h; path = Controllers/VYVarietalsTableViewController.h; sourceTree = SOURCE_ROOT; };
+		8360EE241804955E00AFEDE3 /* VYVarietalsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VYVarietalsTableViewController.m; path = Controllers/VYVarietalsTableViewController.m; sourceTree = SOURCE_ROOT; };
 		83617B31176A7362009E900E /* VYAddEditWineViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = VYAddEditWineViewController.h; path = Controllers/VYAddEditWineViewController.h; sourceTree = SOURCE_ROOT; };
 		83617B32176A7362009E900E /* VYAddEditWineViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = VYAddEditWineViewController.m; path = Controllers/VYAddEditWineViewController.m; sourceTree = SOURCE_ROOT; };
 		8361EE281677B4B50057E04B /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = SOURCE_ROOT; };
@@ -457,12 +460,14 @@
 			children = (
 				8364970917F6232E00013463 /* VYAppellationTableViewController.h */,
 				8364970A17F6232E00013463 /* VYAppellationTableViewController.m */,
-				8360EE2018048B1300AFEDE3 /* VYGrapeTypeTableViewController.h */,
-				8360EE2118048B1300AFEDE3 /* VYGrapeTypeTableViewController.m */,
 				8364970017F6010E00013463 /* VYCountryTableViewController.h */,
 				8364970117F6010E00013463 /* VYCountryTableViewController.m */,
+				8360EE2018048B1300AFEDE3 /* VYGrapeTypeTableViewController.h */,
+				8360EE2118048B1300AFEDE3 /* VYGrapeTypeTableViewController.m */,
 				8364970617F60CA300013463 /* VYRegionTableViewController.h */,
 				8364970717F60CA300013463 /* VYRegionTableViewController.m */,
+				8360EE231804955E00AFEDE3 /* VYVarietalsTableViewController.h */,
+				8360EE241804955E00AFEDE3 /* VYVarietalsTableViewController.m */,
 			);
 			name = BrowseTableViewControllers;
 			sourceTree = "<group>";
@@ -906,6 +911,7 @@
 				8364970817F60CA300013463 /* VYRegionTableViewController.m in Sources */,
 				83C4F0C617F0950400ABC91D /* NSManagedObject+MagicalFinders.m in Sources */,
 				83A42AE317F826B60067ECF0 /* VYIndexPathButton.m in Sources */,
+				8360EE251804955E00AFEDE3 /* VYVarietalsTableViewController.m in Sources */,
 				8386B5A8176A29B5002AF30C /* VYWineTableViewController.m in Sources */,
 				83C4F0CE17F0950400ABC91D /* NSPersistentStore+MagicalRecord.m in Sources */,
 				83E79D9E1677AA0300E0E42D /* Wine.m in Sources */,

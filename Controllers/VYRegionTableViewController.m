@@ -50,7 +50,6 @@
 		[[browseCell wineCountButton] setIndexPath:indexPath];
 		cell = browseCell;
 	}
-	
     return cell;
 }
 

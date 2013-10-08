@@ -74,12 +74,5 @@
 	}
 }
 
-#pragma mark
-#pragma mark Methods declared at superclass
-
-- (NSPredicate *) buildCountPredicateForObject:(NSManagedObject *)object {
-	Country* country = (Country *) object;
-	return [NSPredicate predicateWithFormat:@"(country.countryID == %@)", country.countryID];
-}
 
 @end

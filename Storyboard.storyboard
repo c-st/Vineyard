@@ -519,7 +519,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Country" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VIx-oG-24Y">
-                                                    <rect key="frame" x="17" y="10" width="286" height="23"/>
+                                                    <rect key="frame" x="17" y="10" width="265" height="23"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
                                                     <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
@@ -538,7 +538,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Appellation" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kTk-Ku-PeB">
-                                                    <rect key="frame" x="17" y="10" width="286" height="23"/>
+                                                    <rect key="frame" x="17" y="10" width="265" height="23"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
                                                     <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
@@ -561,7 +561,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Colour" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QT4-q6-v1p">
-                                                    <rect key="frame" x="17" y="10" width="92" height="23"/>
+                                                    <rect key="frame" x="17" y="10" width="265" height="23"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="words" enablesReturnKeyAutomatically="YES"/>
@@ -580,13 +580,16 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Varietal" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dR2-9I-Grh">
-                                                    <rect key="frame" x="17" y="10" width="286" height="23"/>
+                                                    <rect key="frame" x="17" y="10" width="265" height="23"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="words" enablesReturnKeyAutomatically="YES"/>
                                                 </textField>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="IKA-11-1oF" kind="push" id="gfj-Ex-5Gh"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="fpp-En-otP">
                                         <rect key="frame" x="0.0" y="339" width="320" height="44"/>
@@ -596,7 +599,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Vintage" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="78T-z7-E0C">
-                                                    <rect key="frame" x="17" y="10" width="286" height="23"/>
+                                                    <rect key="frame" x="17" y="10" width="265" height="23"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="words" enablesReturnKeyAutomatically="YES"/>
@@ -664,6 +667,43 @@
                 <exit id="yLS-dM-m2P" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="515" y="-3855"/>
+        </scene>
+        <!--Varietals Table View Controller - Varietals-->
+        <scene sceneID="xfo-qb-2fW">
+            <objects>
+                <tableViewController id="IKA-11-1oF" customClass="VYVarietalsTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="qoz-tZ-Lxd">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="checkmark" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="VarietalCell" id="T9k-Te-CfP">
+                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="T9k-Te-CfP" id="1T4-I3-7y6">
+                                    <rect key="frame" x="0.0" y="0.0" width="281" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <sections/>
+                        <connections>
+                            <outlet property="dataSource" destination="IKA-11-1oF" id="hFf-Cg-hVN"/>
+                            <outlet property="delegate" destination="IKA-11-1oF" id="FTf-8e-FNW"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Varietals" id="SuX-fp-bj1">
+                        <barButtonItem key="rightBarButtonItem" title="Done" id="ebu-jl-Y3w">
+                            <connections>
+                                <segue destination="77a-ZW-QeK" kind="unwind" unwindAction="unwindFromPickerView:" id="TkA-Zh-Idp"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UF6-gc-Srb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="77a-ZW-QeK" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="942" y="-3855"/>
         </scene>
         <!--Navigation Controller - Add/Edit Wine-->
         <scene sceneID="o2b-SH-6lm">

@@ -139,6 +139,7 @@
 #pragma mark View Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+	NSLog(@"prepareForSegue %@ -> %@", self, [segue destinationViewController]);
 	if ([[segue destinationViewController] isKindOfClass:[VYCountryTableViewController class]]) {
 		VYCountryTableViewController *countryTableViewController = [segue destinationViewController];
 		[countryTableViewController setInPickerMode:YES];
@@ -152,6 +153,9 @@
 		
 		[appellationsTableViewController setFetchedResultsController:[Appellation fetchAllSortedBy:@"region.name,name" ascending:YES withPredicate:searchPredicate groupBy:@"region" delegate:appellationsTableViewController]];
 		
+	} else if ([[segue destinationViewController] isKindOfClass:[VYVarietalsTableViewController class]]) {
+		VYVarietalsTableViewController *varietalsTableViewController = [segue destinationViewController];
+		[varietalsTableViewController setSelectedVarietals:[[self.wine.varietals allObjects] mutableCopy]];
 	}
 }
 
