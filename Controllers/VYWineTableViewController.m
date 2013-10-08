@@ -57,7 +57,6 @@
 - (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject
        atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type
       newIndexPath:(NSIndexPath *)newIndexPath {
-	NSLog(@"didChange");
 	
 	// only perform animation when view is visible (fixes crash on other table view which wasn't updated yet)
 	if ([self isViewLoaded] && [self.view window]) {

@@ -88,7 +88,6 @@
 				[addEditWineController.wine setAppellation:nil];
 			}
 			[[addEditWineController wine] setCountry:country];
-			
 		}
 	}
 	

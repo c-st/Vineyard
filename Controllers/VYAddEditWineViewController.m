@@ -13,6 +13,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *nameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *countryTextField;
 @property (weak, nonatomic) IBOutlet UITextField *appellationTextField;
+@property (weak, nonatomic) IBOutlet UITextField *colourTextField;
 
 @property (weak, nonatomic) IBOutlet UISegmentedControl *colourControl;
 
@@ -66,6 +67,8 @@
 	[self.nameTextField setText:[self.wine name]];
 	[self.countryTextField setText:[[self.wine country] name]];
 	[self.appellationTextField setText:[[self.wine appellation] name]];
+	[self.colourTextField setText:[[self.wine colour] name]];
+	
 	[self.tableView reloadData];
 	[super viewWillAppear:animated];
 }
