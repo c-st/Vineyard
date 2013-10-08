@@ -20,9 +20,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-	[self setFetchedResultsController:
-	 [Varietal fetchAllSortedBy:@"name" ascending:YES withPredicate:nil groupBy:nil delegate:nil]];
-	[[self fetchedResultsController] setDelegate:self];
+	//[self setFetchedResultsController:
+	 //[Varietal fetchAllSortedBy:@"name" ascending:YES withPredicate:nil groupBy:nil delegate:nil]];
+	
+	//[self setFetchedResultsController:[Varietal fetchAllGroupedBy:@"grapeType" withPredicate:self.settingsCell.wine != nil ? [self getFetchPredicate:self.settingsCell.wine]:nil sortedBy:@"grapeType,name" ascending:YES]];
+	
 }
 
 - (void)viewWillAppear:(BOOL)animated {

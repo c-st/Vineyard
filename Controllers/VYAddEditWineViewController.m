@@ -45,13 +45,10 @@
 		[[self navigationItem] setTitle:@"New wine"];
 		[self setWine:[Wine createEntity]];
 		[self.wine setCreationTime:[NSDate date]];
-		//[self.wine setColour:[self.grapeTypes objectAtIndex:[self.colourControl selectedSegmentIndex]]];
 		[self requestLocationUpdate];
 	} else {
 		[[self navigationItem] setTitle:@"Edit wine"];
 		[self.nameTextField setText:[self.wine name]];
-		//NSLog(@"edit existing wine %i", [self.grapeTypes indexOfObject:[self.wine colour]]);
-		//[self.colourControl setSelectedSegmentIndex:[self.grapeTypes indexOfObject:[self.wine colour]]];
 		[self nameEditingChanged:nil];
 	}
 }
@@ -73,13 +70,6 @@
 
 #pragma mark
 #pragma mark GUI Events
-- (IBAction)colourValueChanged:(UISegmentedControl *)sender {
-	NSLog(@"changed %i", [sender selectedSegmentIndex]);
-	
-	//GrapeType *type = [self.grapeTypes objectAtIndex:[sender selectedSegmentIndex]];
-	//[self.wine setColour:type];
-}
-
 
 - (IBAction)nameEditingChanged:(UITextField *)sender {
 	[self.doneButton setEnabled:[[_nameTextField text] length] > 0];
@@ -156,6 +146,11 @@
 	} else if ([[segue destinationViewController] isKindOfClass:[VYVarietalsTableViewController class]]) {
 		VYVarietalsTableViewController *varietalsTableViewController = [segue destinationViewController];
 		[varietalsTableViewController setSelectedVarietals:[[self.wine.varietals allObjects] mutableCopy]];
+		
+		NSPredicate *searchPredicate = [NSPredicate predicateWithFormat:@"(grapeType.grapeTypeID == %@)", self.wine.colour.grapeTypeID];
+		
+		[varietalsTableViewController setFetchedResultsController:[Varietal fetchAllGroupedBy:@"grapeType"
+																				withPredicate:searchPredicate sortedBy:@"grapeType,name" ascending:YES]];
 	}
 }
 

@@ -18,6 +18,7 @@
 #import "Country.h"
 #import "Location.h"
 #import "GrapeType.h"
+#import "Varietal.h"
 
 @interface VYAddEditWineViewController : UITableViewController <CLLocationManagerDelegate> {
 	
