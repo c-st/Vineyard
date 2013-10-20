@@ -107,6 +107,9 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="HMh-XJ-sxA" kind="push" id="MVu-E8-JEH"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="UFn-o7-Gln" style="IBUITableViewCellStyleDefault" id="nGp-Oi-dfV">
                                         <rect key="frame" x="0.0" y="328" width="320" height="44"/>
@@ -214,6 +217,66 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v9J-pb-3Dz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-3241" y="-3855"/>
+        </scene>
+        <!--Varietals Table View Controller - Varietals-->
+        <scene sceneID="CUJ-o1-CWn">
+            <objects>
+                <tableViewController id="HMh-XJ-sxA" customClass="VYVarietalsTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="7zI-3e-Xx6">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="VarietalCell" textLabel="jMy-Y1-2fB" style="IBUITableViewCellStyleDefault" id="fmE-jy-ssp" customClass="VYBrowseTableViewCell">
+                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fmE-jy-ssp" id="432-IZ-lJL">
+                                    <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <button opaque="NO" alpha="0.80000001192092896" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KZB-ri-Tyj" customClass="VYIndexPathButton">
+                                            <rect key="frame" x="250" y="10" width="37" height="24"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="37" id="Ofw-tK-L0Q"/>
+                                            </constraints>
+                                            <state key="normal" title="78">
+                                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <state key="selected">
+                                                <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            </state>
+                                        </button>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="jMy-Y1-2fB">
+                                            <rect key="frame" x="15" y="0.0" width="270" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="KZB-ri-Tyj" secondAttribute="bottom" constant="9" id="Oca-Xj-TR1"/>
+                                        <constraint firstItem="KZB-ri-Tyj" firstAttribute="top" secondItem="432-IZ-lJL" secondAttribute="top" constant="10" id="SNE-zX-xsV"/>
+                                        <constraint firstAttribute="trailing" secondItem="KZB-ri-Tyj" secondAttribute="trailing" id="iUY-sh-9DY"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="wineCountButton" destination="KZB-ri-Tyj" id="Ydq-TC-MHx"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="HMh-XJ-sxA" id="Ns0-Mu-Qqg"/>
+                            <outlet property="delegate" destination="HMh-XJ-sxA" id="Zma-2h-JEc"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Varietals" id="0f7-S0-tsA"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oWH-pH-qOn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2630" y="-3855"/>
         </scene>
         <!--Country Table View Controller - Countries-->
         <scene sceneID="3a7-wM-xQl">
@@ -929,7 +992,7 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="bMi-eB-UWE"/>
-        <segue reference="Jmw-vd-A0q"/>
+        <segue reference="pbj-fT-YB2"/>
+        <segue reference="atK-uJ-A5l"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -66,9 +66,10 @@
 	if ([[segue destinationViewController] isKindOfClass:[VYAddEditWineViewController class]]) {
 		VYAddEditWineViewController *addEditWineController = [segue destinationViewController];
 		
-		//reset appellation
+		// reset grape type
 		if ([addEditWineController.wine colour] == nil || [addEditWineController.wine colour] != grapeType) {
 			[addEditWineController.wine setColour:nil];
+			[addEditWineController.wine setVarietals:nil];
 		}
 		[[addEditWineController wine] setColour:grapeType];
 	}

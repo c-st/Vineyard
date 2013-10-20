@@ -18,13 +18,15 @@
 #pragma mark
 #pragma mark Initialization
 
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-	//[self setFetchedResultsController:
-	 //[Varietal fetchAllSortedBy:@"name" ascending:YES withPredicate:nil groupBy:nil delegate:nil]];
 	
-	//[self setFetchedResultsController:[Varietal fetchAllGroupedBy:@"grapeType" withPredicate:self.settingsCell.wine != nil ? [self getFetchPredicate:self.settingsCell.wine]:nil sortedBy:@"grapeType,name" ascending:YES]];
+	if (self.fetchedResultsController == nil) {
+		[self setFetchedResultsController:[Varietal fetchAllGroupedBy:@"grapeType" withPredicate:nil sortedBy:@"grapeType.name,name" ascending:YES]];
+	}
 	
+	[[self fetchedResultsController] setDelegate:self];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -45,10 +47,12 @@
 	Varietal *varietal = [[super fetchedResultsController] objectAtIndexPath:indexPath];
     [[cell textLabel] setText:[varietal name]];
 	
-	if ([self.selectedVarietals containsObject:varietal]) {
-		[cell setAccessoryType:UITableViewCellAccessoryCheckmark];
-	} else {
-		[cell setAccessoryType:UITableViewCellAccessoryNone];
+	if ([self inPickerMode]) {
+		if ([self.selectedVarietals containsObject:varietal]) {
+			[cell setAccessoryType:UITableViewCellAccessoryCheckmark];
+		} else {
+			[cell setAccessoryType:UITableViewCellAccessoryNone];
+		}
 	}
 	
 	// set browse table view cell specifics
@@ -65,13 +69,27 @@
 	UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
 	Varietal *varietal = [[super fetchedResultsController] objectAtIndexPath:indexPath];
 	
-	if ([self.selectedVarietals containsObject:varietal]) {
-		[self.selectedVarietals removeObject:varietal];
-		[cell setAccessoryType:UITableViewCellAccessoryNone];
-	} else {
-		[self.selectedVarietals addObject:varietal];
-		[cell setAccessoryType:UITableViewCellAccessoryCheckmark];
+	if ([self inPickerMode]) {
+		if ([self.selectedVarietals containsObject:varietal]) {
+			[self.selectedVarietals removeObject:varietal];
+			[cell setAccessoryType:UITableViewCellAccessoryNone];
+		} else {
+			[self.selectedVarietals addObject:varietal];
+			[cell setAccessoryType:UITableViewCellAccessoryCheckmark];
+		}
 	}
+}
+
+#pragma mark
+#pragma mark GUI
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+	if ([[self.fetchedResultsController sections] count] > 1) {
+		id <NSFetchedResultsSectionInfo> sectionInfo = [self.fetchedResultsController sections][section];
+		Varietal *varietal = [sectionInfo objects][0]; // use first item from list
+		return [varietal.grapeType name];
+	}
+	return nil;
 }
 
 

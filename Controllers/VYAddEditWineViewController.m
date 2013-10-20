@@ -146,11 +146,14 @@
 	} else if ([[segue destinationViewController] isKindOfClass:[VYVarietalsTableViewController class]]) {
 		VYVarietalsTableViewController *varietalsTableViewController = [segue destinationViewController];
 		[varietalsTableViewController setSelectedVarietals:[[self.wine.varietals allObjects] mutableCopy]];
+		[varietalsTableViewController setInPickerMode:YES];
 		
+		if (self.wine.colour != nil) { 	// display full list, if no colour is set
 		NSPredicate *searchPredicate = [NSPredicate predicateWithFormat:@"(grapeType.grapeTypeID == %@)", self.wine.colour.grapeTypeID];
 		
 		[varietalsTableViewController setFetchedResultsController:[Varietal fetchAllGroupedBy:@"grapeType"
 																				withPredicate:searchPredicate sortedBy:@"grapeType,name" ascending:YES]];
+		}
 	}
 }
 
