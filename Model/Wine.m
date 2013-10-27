@@ -35,4 +35,19 @@
 	}
 }
 
+// Creates a sorted string expression of all varietals of this wine
+- (NSString *) varietalsString {
+	NSString *varietalsString = [[NSString alloc] init];
+	if ([self.varietals count] > 0) {
+		NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
+		NSArray *sortedVarietals = [[self.varietalsSet allObjects] sortedArrayUsingDescriptors:[NSArray arrayWithObject:sort]];
+		for (id v in sortedVarietals) {
+			NSLog(@"%@", [v name]);
+			varietalsString = [varietalsString stringByAppendingFormat:@"%@ ", [v name]];
+		
+		}
+	}
+	return varietalsString;
+}
+
 @end

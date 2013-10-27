@@ -7,4 +7,6 @@
  Extend information (set country, when only region was set etc.).
  */
 - (void) extendWine;
+- (NSString *) varietalsString;
+
 @end
