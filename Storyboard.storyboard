@@ -247,6 +247,9 @@
                                             <state key="selected">
                                                 <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             </state>
+                                            <connections>
+                                                <segue destination="NGD-fY-0LX" kind="push" id="N6V-fw-HUT"/>
+                                            </connections>
                                         </button>
                                         <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="jMy-Y1-2fB">
                                             <rect key="frame" x="15" y="0.0" width="270" height="43"/>
@@ -993,7 +996,7 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="N6V-fw-HUT"/>
         <segue reference="pbj-fT-YB2"/>
-        <segue reference="atK-uJ-A5l"/>
     </inferredMetricsTieBreakers>
 </document>
