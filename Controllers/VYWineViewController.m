@@ -9,6 +9,8 @@
 #import "VYWineViewController.h"
 
 @interface VYWineViewController ()
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (weak, nonatomic) IBOutlet MKMapView *mapView;
 
 @end
 
@@ -18,6 +20,8 @@
     [super viewDidLoad];
 	//NSLog(@"self wine: %@", [self wine]);
 	[[self navigationItem] setTitle:[[self wine] name]];
+	
+	[self.scrollView setDelegate:self];
 }
 
 #pragma mark
@@ -39,6 +43,12 @@
 			[editWineViewController setWineForEditing:[self wine]];
 		}
 	}
+}
+
+#pragma mark
+#pragma mark Scrolling
+- (void)scrollViewDidScroll:(UIScrollView *)theScrollView {
+	NSLog(@"scrolling");
 }
 
 @end

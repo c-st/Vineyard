@@ -118,9 +118,9 @@
 	// if colour is set, display varietals as well
 	if (section == 1) {
 		if ([self.wine colour] != nil) {
-			return 3;
-		} else {
 			return 2;
+		} else {
+			return 1;
 		}
 	}
 	

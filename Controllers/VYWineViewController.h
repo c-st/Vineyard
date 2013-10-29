@@ -7,10 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MapKit/MapKit.h>
 #import "VYAddEditWineViewController.h"
 #import "Wine.h"
 
-@interface VYWineViewController : UIViewController
+
+@interface VYWineViewController : UIViewController <UIScrollViewDelegate>
 
 @property (nonatomic) Wine* wine;
 
