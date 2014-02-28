@@ -5,7 +5,7 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>DC401B18-A056-4EBC-AAD1-FA475BE00D34</string>
+	<string>80343916-7EC6-4652-AA7A-866B31F4D867</string>
 	<key>IDESourceControlProjectName</key>
 	<string>Vineyard</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
@@ -16,7 +16,7 @@
 		<string>https://github.com/chris-stangier/PaperFold-for-iOS.git</string>
 		<key>35E548DF-C242-416D-86E5-E75D65E63B82</key>
 		<string>https://github.com/soffes/sstoolkit.git</string>
-		<key>734142E4-1C70-4E9A-888B-AB93842005E5</key>
+		<key>61BA3967-AE4B-4ED1-8520-09E50E15D235</key>
 		<string>https://github.com/chris-stangier/Vineyard.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
@@ -29,7 +29,7 @@
 		<string>../../Frameworks/PaperFold-for-iOS</string>
 		<key>35E548DF-C242-416D-86E5-E75D65E63B82</key>
 		<string>../../Frameworks/SS-Toolkit</string>
-		<key>734142E4-1C70-4E9A-888B-AB93842005E5</key>
+		<key>61BA3967-AE4B-4ED1-8520-09E50E15D235</key>
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
@@ -37,7 +37,7 @@
 	<key>IDESourceControlProjectVersion</key>
 	<integer>110</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>734142E4-1C70-4E9A-888B-AB93842005E5</string>
+	<string>61BA3967-AE4B-4ED1-8520-09E50E15D235</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
@@ -68,7 +68,7 @@
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>734142E4-1C70-4E9A-888B-AB93842005E5</string>
+			<string>61BA3967-AE4B-4ED1-8520-09E50E15D235</string>
 			<key>IDESourceControlWCCName</key>
 			<string>Vineyard</string>
 		</dict>
