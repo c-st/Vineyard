@@ -19,8 +19,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 	//NSLog(@"self wine: %@", [self wine]);
-	[[self navigationItem] setTitle:[[self wine] name]];
-	
+
 	[self.scrollView setDelegate:self];
 	
 	self.center = CLLocationCoordinate2DMake(self.wine.appellation.region.location.latitudeValue, self.wine.appellation.region.location.longitudeValue);
@@ -34,6 +33,19 @@
     CLLocationCoordinate2D referencePosition2 = [self.mapView convertPoint:CGPointMake(0, 100) toCoordinateFromView:self.mapView];
 	self.deltaLatitudeFor1px = (referencePosition2.latitude - referencePosition.latitude) / 100;
 	//NSLog(@"%i", self.deltaLatitudeFor1px);
+}
+
+- (void) viewWillAppear:(BOOL)animated {
+	[super viewWillAppear:animated];
+	[[self navigationItem] setTitle:[[self wine] name]];
+	CGRect frame = CGRectMake(0, 0, 0, 44);
+	UILabel *label = [[UILabel alloc] initWithFrame:frame];
+	//[label setBackgroundColor:[UIColor blueColor]];
+	[label setTextAlignment:NSTextAlignmentCenter];
+	[label setFont:[UIFont fontWithName:@"HelveticaNeue-UltraLight" size:25.0f]];
+    label.text = self.navigationItem.title;
+	[[self navigationItem] setTitleView:label];
+	
 }
 
 #pragma mark
