@@ -4,4 +4,5 @@ platform :ios, "7.0"
 
 target "Vineyard" do
 	pod 'ReactiveCocoa'
+	pod "MagicalRecord/Shorthand"
 end
