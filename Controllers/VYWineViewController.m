@@ -24,24 +24,17 @@
 
 	[self.scrollView setDelegate:self];
 	[self.swipeView setCurrentPage:1];
-	
-	
-//	self.center = CLLocationCoordinate2DMake(self.wine.appellation.region.location.latitudeValue, self.wine.appellation.region.location.longitudeValue);
-//	self.center = CLLocationCoordinate2DMake(self.wine.location.latitudeValue, self.wine.location.longitudeValue);
-	NSLog(@"%f %f", self.wine.location.latitudeValue, self.wine.location.longitudeValue);
-	
-
-	//NSLog(@"%i", self.deltaLatitudeFor1px);
 }
 
+// update from potential wine edit
 - (void) viewWillAppear:(BOOL)animated {
 	[super viewWillAppear:animated];
 	[[self navigationItem] setTitle:[[self wine] name]];
 	CGRect frame = CGRectMake(0, 0, 0, 44);
 	UILabel *label = [[UILabel alloc] initWithFrame:frame];
-	//[label setBackgroundColor:[UIColor blueColor]];
 	[label setTextAlignment:NSTextAlignmentCenter];
 	[label setFont:[UIFont fontWithName:@"HelveticaNeue-UltraLight" size:25.0f]];
+	
     label.text = self.navigationItem.title;
 	[[self navigationItem] setTitleView:label];
 	
@@ -64,12 +57,12 @@
 		[self setCenterLocation:CLLocationCoordinate2DMake(self.wine.appellation.region.location.latitudeValue,
 														   self.wine.appellation.region.location.longitudeValue)];
 		
-		return [self mapViewForLocation:[self centerLocation] andZoomLevel:5];
+		return [self mapViewForLocation:[self centerLocation] andZoomLevel:6];
 	} else if (index == 2) {
 		[self setCenterLocation:CLLocationCoordinate2DMake(self.wine.location.latitudeValue,
 														   self.wine.location.longitudeValue)];
 		
-		return [self mapViewForLocation:[self centerLocation] andZoomLevel:9];
+		return [self mapViewForLocation:[self centerLocation] andZoomLevel:15];
 	} else {
 		// error
 		return nil;
@@ -81,7 +74,7 @@
 
 	[mapView setScrollEnabled:NO];
 	[mapView setZoomEnabled:NO];
-	[mapView setRegion:MKCoordinateRegionMakeWithDistance(location, 1000, 1000)];
+	[mapView setRegion:MKCoordinateRegionMakeWithDistance(location, 800, 800)];
 	[mapView setCenterCoordinate:location zoomLevel:level animated:YES];
 	
 	CLLocationCoordinate2D referencePosition = [mapView convertPoint:CGPointMake(0, 0) toCoordinateFromView:mapView];
