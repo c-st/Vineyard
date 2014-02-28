@@ -537,13 +537,15 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="788"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
-                                    <mapView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" mapType="standard" zoomEnabled="NO" scrollEnabled="NO" rotateEnabled="NO" pitchEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rBq-LZ-NG0">
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6pA-A3-sCM" customClass="SwipeView">
                                         <rect key="frame" x="0.0" y="-300" width="320" height="480"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="480" id="Lke-9P-MQY"/>
-                                        </constraints>
-                                    </mapView>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.77282184099999995" green="0.19152447880000001" blue="0.4162791367" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <outlet property="dataSource" destination="7Eb-wh-ntk" id="6Xq-BH-ug4"/>
+                                            <outlet property="delegate" destination="7Eb-wh-ntk" id="fAB-US-d5L"/>
+                                        </connections>
+                                    </view>
                                     <segmentedControl opaque="NO" alpha="0.65000000000000002" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="1" translatesAutoresizingMaskIntoConstraints="NO" id="dOS-f3-aQh">
                                         <rect key="frame" x="49" y="143" width="222" height="29"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -552,6 +554,9 @@
                                             <segment title="Region"/>
                                             <segment title="Tagged"/>
                                         </segments>
+                                        <connections>
+                                            <action selector="pageSelected:" destination="7Eb-wh-ntk" eventType="valueChanged" id="1DK-4P-8OA"/>
+                                        </connections>
                                     </segmentedControl>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lorem Ipsum Dolor Sit Amet" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="70Z-oB-RvX">
                                         <rect key="frame" x="20" y="188" width="280" height="21"/>
@@ -562,14 +567,11 @@
                                     </label>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="rBq-LZ-NG0" firstAttribute="leading" secondItem="NpI-TH-8Tg" secondAttribute="leading" id="7Rj-gF-xZH"/>
                                     <constraint firstItem="70Z-oB-RvX" firstAttribute="top" secondItem="NpI-TH-8Tg" secondAttribute="top" constant="188" id="IxH-Wh-VBg"/>
                                     <constraint firstItem="70Z-oB-RvX" firstAttribute="leading" secondItem="NpI-TH-8Tg" secondAttribute="leading" constant="20" symbolic="YES" id="JMh-aV-MmK"/>
                                     <constraint firstAttribute="bottom" secondItem="70Z-oB-RvX" secondAttribute="bottom" constant="579" id="Sc6-Iv-y4T"/>
                                     <constraint firstItem="70Z-oB-RvX" firstAttribute="centerX" secondItem="NpI-TH-8Tg" secondAttribute="centerX" id="V9n-MP-lOG"/>
-                                    <constraint firstItem="rBq-LZ-NG0" firstAttribute="top" secondItem="NpI-TH-8Tg" secondAttribute="top" constant="-300" id="gQh-cj-CZW"/>
                                     <constraint firstAttribute="trailing" secondItem="70Z-oB-RvX" secondAttribute="trailing" constant="20" symbolic="YES" id="hq7-Sp-oOK"/>
-                                    <constraint firstItem="rBq-LZ-NG0" firstAttribute="centerX" secondItem="70Z-oB-RvX" secondAttribute="centerX" id="xAp-SO-Dv7"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
@@ -589,8 +591,9 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="mapView" destination="rBq-LZ-NG0" id="sOg-lN-Vgx"/>
+                        <outlet property="pageSelectorControl" destination="dOS-f3-aQh" id="YLA-aa-Zwb"/>
                         <outlet property="scrollView" destination="NpI-TH-8Tg" id="Owh-ta-7rc"/>
+                        <outlet property="swipeView" destination="6pA-A3-sCM" id="dT4-SL-Sgu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xcJ-ot-2d3" userLabel="First Responder" sceneMemberID="firstResponder"/>

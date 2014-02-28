@@ -10,7 +10,9 @@
 
 @interface VYWineViewController ()
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
-@property (weak, nonatomic) IBOutlet MKMapView *mapView;
+@property (weak, nonatomic) IBOutlet SwipeView *swipeView;
+
+@property (weak, nonatomic) IBOutlet UISegmentedControl *pageSelectorControl;
 
 @end
 
@@ -21,17 +23,14 @@
 	//NSLog(@"self wine: %@", [self wine]);
 
 	[self.scrollView setDelegate:self];
+	[self.swipeView setCurrentPage:1];
 	
-	self.center = CLLocationCoordinate2DMake(self.wine.appellation.region.location.latitudeValue, self.wine.appellation.region.location.longitudeValue);
+	
+//	self.center = CLLocationCoordinate2DMake(self.wine.appellation.region.location.latitudeValue, self.wine.appellation.region.location.longitudeValue);
 //	self.center = CLLocationCoordinate2DMake(self.wine.location.latitudeValue, self.wine.location.longitudeValue);
 	NSLog(@"%f %f", self.wine.location.latitudeValue, self.wine.location.longitudeValue);
 	
-	self.mapView.region = MKCoordinateRegionMakeWithDistance(self.center, 1000, 1000);
-	[self.mapView setCenterCoordinate:self.center zoomLevel:5 animated:YES];
-	
-	CLLocationCoordinate2D referencePosition = [self.mapView convertPoint:CGPointMake(0, 0) toCoordinateFromView:self.mapView];
-    CLLocationCoordinate2D referencePosition2 = [self.mapView convertPoint:CGPointMake(0, 100) toCoordinateFromView:self.mapView];
-	self.deltaLatitudeFor1px = (referencePosition2.latitude - referencePosition.latitude) / 100;
+
 	//NSLog(@"%i", self.deltaLatitudeFor1px);
 }
 
@@ -46,6 +45,60 @@
     label.text = self.navigationItem.title;
 	[[self navigationItem] setTitleView:label];
 	
+}
+
+#pragma mark
+#pragma mark Swipe view delegate
+
+- (NSInteger) numberOfItemsInSwipeView:(SwipeView *)swipeView {
+	return 3;
+}
+
+- (UIView *) swipeView:(SwipeView *)swipeView viewForItemAtIndex:(NSInteger)index reusingView:(UIView *)view {
+	
+	if (index == 0) {
+		UIView *colorView = [[UIView alloc] initWithFrame:CGRectMake(0, -300, 320, 480)];
+		[colorView setBackgroundColor:[UIColor lightGrayColor]];
+		return colorView;
+	} else if (index == 1) {
+		[self setCenterLocation:CLLocationCoordinate2DMake(self.wine.appellation.region.location.latitudeValue,
+														   self.wine.appellation.region.location.longitudeValue)];
+		
+		return [self mapViewForLocation:[self centerLocation] andZoomLevel:5];
+	} else if (index == 2) {
+		[self setCenterLocation:CLLocationCoordinate2DMake(self.wine.location.latitudeValue,
+														   self.wine.location.longitudeValue)];
+		
+		return [self mapViewForLocation:[self centerLocation] andZoomLevel:9];
+	} else {
+		// error
+		return nil;
+	}
+}
+
+- (MKMapView *) mapViewForLocation:(CLLocationCoordinate2D)location andZoomLevel:(NSInteger)level {
+	MKMapView *mapView = [[MKMapView alloc] initWithFrame:CGRectMake(0, -300, 320, 480)];
+
+	[mapView setScrollEnabled:NO];
+	[mapView setZoomEnabled:NO];
+	[mapView setRegion:MKCoordinateRegionMakeWithDistance(location, 1000, 1000)];
+	[mapView setCenterCoordinate:location zoomLevel:level animated:YES];
+	
+	CLLocationCoordinate2D referencePosition = [mapView convertPoint:CGPointMake(0, 0) toCoordinateFromView:mapView];
+    CLLocationCoordinate2D referencePosition2 = [mapView convertPoint:CGPointMake(0, 100) toCoordinateFromView:mapView];
+	
+	self.deltaLatitudeFor1px = (referencePosition2.latitude - referencePosition.latitude) / 100;
+	
+	return mapView  ;
+}
+
+
+- (void) swipeViewCurrentItemIndexDidChange:(SwipeView *)theSwipeView {
+	[self.pageSelectorControl setSelectedSegmentIndex:theSwipeView.currentPage];
+	
+}
+- (IBAction)pageSelected:(UISegmentedControl *)segmentControl {
+	[self.swipeView setCurrentPage:[segmentControl selectedSegmentIndex]];
 }
 
 #pragma mark
@@ -71,14 +124,16 @@
 
 #pragma mark
 #pragma mark Scrolling
+
 - (void)scrollViewDidScroll:(UIScrollView *)theScrollView {
 	CGFloat y = theScrollView.contentOffset.y;
     // did we drag ?
     if (y < 0) {
-		double deltaLat = y* self.deltaLatitudeFor1px;
-		CLLocationCoordinate2D newCenter = CLLocationCoordinate2DMake(self.center.latitude-deltaLat / 2, self.center.longitude);
-		//[self.mapView setCenterCoordinate:newCenter zoomLevel:8 animated:NO];
-		[self.mapView setCenterCoordinate:newCenter animated:NO];
+		if ([self.swipeView currentPage] > 0) {
+			double deltaLat = y * self.deltaLatitudeFor1px;
+			CLLocationCoordinate2D newCenter = CLLocationCoordinate2DMake([self centerLocation].latitude-deltaLat / 2, [self centerLocation].longitude);
+			[(MKMapView *)[self.swipeView currentItemView] setCenterCoordinate:newCenter animated:NO];
+		}
     }
 }
 

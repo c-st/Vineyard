@@ -9,17 +9,18 @@
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
 #import "MKMapView+ZoomLevel.h"
+#import "SwipeView.h"
 
 #import "VYAddEditWineViewController.h"
 #import "Wine.h"
 #import "Location.h"
 
 
-@interface VYWineViewController : UIViewController <UIScrollViewDelegate>
+@interface VYWineViewController : UIViewController <UIScrollViewDelegate, SwipeViewDelegate, SwipeViewDataSource>
 
 @property (nonatomic) Wine* wine;
 
-@property (nonatomic) CLLocationCoordinate2D center;
+@property (nonatomic) CLLocationCoordinate2D centerLocation;
 @property (nonatomic) CLLocationDegrees deltaLatitudeFor1px;
 
 @end

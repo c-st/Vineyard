@@ -7,5 +7,6 @@ target "Vineyard" do
 	pod 'MagicalRecord/Shorthand'
 	pod 'MKMapView-ZoomLevel'
 	pod 'FXBlurView'
+	pod 'SwipeView'
 	
 end
