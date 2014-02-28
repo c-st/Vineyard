@@ -23,6 +23,7 @@
 		8364970517F6049500013463 /* _TemperatureRange.m in Sources */ = {isa = PBXBuildFile; fileRef = 838B2DEE167E52EC00944657 /* _TemperatureRange.m */; };
 		8364970817F60CA300013463 /* VYRegionTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8364970717F60CA300013463 /* VYRegionTableViewController.m */; };
 		8364970B17F6232E00013463 /* VYAppellationTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8364970A17F6232E00013463 /* VYAppellationTableViewController.m */; };
+		8374B9A518C0E74600B6BAFF /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8374B9A418C0E74600B6BAFF /* Accelerate.framework */; };
 		8386B5A6176A29B5002AF30C /* VYAbstractTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8386B59F176A257D002AF30C /* VYAbstractTableViewController.m */; };
 		8386B5A8176A29B5002AF30C /* VYWineTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8386B5A4176A2646002AF30C /* VYWineTableViewController.m */; };
 		8386B5A9176A2C12002AF30C /* UIColor+CellarColours.m in Sources */ = {isa = PBXBuildFile; fileRef = 83E79DBA1677AA1400E0E42D /* UIColor+CellarColours.m */; };
@@ -109,6 +110,7 @@
 		8364970717F60CA300013463 /* VYRegionTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VYRegionTableViewController.m; path = Controllers/VYRegionTableViewController.m; sourceTree = SOURCE_ROOT; };
 		8364970917F6232E00013463 /* VYAppellationTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VYAppellationTableViewController.h; path = Controllers/VYAppellationTableViewController.h; sourceTree = SOURCE_ROOT; };
 		8364970A17F6232E00013463 /* VYAppellationTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VYAppellationTableViewController.m; path = Controllers/VYAppellationTableViewController.m; sourceTree = SOURCE_ROOT; };
+		8374B9A418C0E74600B6BAFF /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		837E8B7A174BE5BD0051F1A0 /* ModalCollectionDeleteView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ModalCollectionDeleteView.h; path = Views/ModalCollectionDeleteView.h; sourceTree = SOURCE_ROOT; };
 		837E8B7B174BE5BD0051F1A0 /* ModalCollectionDeleteView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ModalCollectionDeleteView.m; path = Views/ModalCollectionDeleteView.m; sourceTree = SOURCE_ROOT; };
 		8384626B16C0730B002C47C2 /* VintageTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VintageTableViewController.h; path = Controllers/VintageTableViewController.h; sourceTree = SOURCE_ROOT; };
@@ -247,6 +249,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8374B9A518C0E74600B6BAFF /* Accelerate.framework in Frameworks */,
 				83AACCCD174ECF6F00D53F35 /* MessageUI.framework in Frameworks */,
 				835C6D8E167E1B4700AC2A04 /* CoreLocation.framework in Frameworks */,
 				8319B00A1677C6E0005E28BB /* MapKit.framework in Frameworks */,
@@ -266,6 +269,7 @@
 		832EDC4F165FD4FA00AE20A9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8374B9A418C0E74600B6BAFF /* Accelerate.framework */,
 				83E391A916A99A35001A6135 /* XYPieChart */,
 				8D6CE69C8F1D4A78863AE541 /* libPods-Vineyard.a */,
 			);
