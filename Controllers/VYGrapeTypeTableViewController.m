@@ -24,15 +24,6 @@
 	[[self fetchedResultsController] setDelegate:self];
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-	[super viewWillAppear:animated];
-	
-}
-
-- (void) viewDidAppear:(BOOL)animated {
-	[super viewDidAppear:animated];
-	[self updateAndRefetch];
-}
 
 #pragma mark
 #pragma mark Table View Data source
