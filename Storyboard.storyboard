@@ -534,9 +534,23 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NpI-TH-8Tg">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="788"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GeZ-V8-KuL">
+                                        <rect key="frame" x="0.0" y="179" width="320" height="500"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <subviews>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="&quot;Stop scrolling!&quot;" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tcq-Dp-xQy">
+                                                <rect key="frame" x="20" y="600" width="280" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                    </view>
                                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6pA-A3-sCM" customClass="SwipeView">
                                         <rect key="frame" x="0.0" y="-300" width="320" height="480"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -566,10 +580,11 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
+                                <color key="backgroundColor" red="0.77282184099999995" green="0.19152447880000001" blue="0.4162791367" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="70Z-oB-RvX" firstAttribute="top" secondItem="NpI-TH-8Tg" secondAttribute="top" constant="188" id="IxH-Wh-VBg"/>
                                     <constraint firstItem="70Z-oB-RvX" firstAttribute="leading" secondItem="NpI-TH-8Tg" secondAttribute="leading" constant="20" symbolic="YES" id="JMh-aV-MmK"/>
-                                    <constraint firstAttribute="bottom" secondItem="70Z-oB-RvX" secondAttribute="bottom" constant="579" id="Sc6-Iv-y4T"/>
+                                    <constraint firstAttribute="bottom" secondItem="70Z-oB-RvX" secondAttribute="bottom" constant="359" id="Sc6-Iv-y4T"/>
                                     <constraint firstItem="70Z-oB-RvX" firstAttribute="centerX" secondItem="NpI-TH-8Tg" secondAttribute="centerX" id="V9n-MP-lOG"/>
                                     <constraint firstAttribute="trailing" secondItem="70Z-oB-RvX" secondAttribute="trailing" constant="20" symbolic="YES" id="hq7-Sp-oOK"/>
                                 </constraints>
@@ -579,7 +594,7 @@
                         <constraints>
                             <constraint firstItem="NpI-TH-8Tg" firstAttribute="leading" secondItem="qyk-Vg-9t5" secondAttribute="leading" id="TMQ-y2-kRs"/>
                             <constraint firstAttribute="trailing" secondItem="NpI-TH-8Tg" secondAttribute="trailing" id="TSq-sb-yWK"/>
-                            <constraint firstAttribute="bottom" secondItem="NpI-TH-8Tg" secondAttribute="bottom" constant="-220" id="qTV-hg-oF4"/>
+                            <constraint firstAttribute="bottom" secondItem="NpI-TH-8Tg" secondAttribute="bottom" id="qTV-hg-oF4"/>
                             <constraint firstItem="NpI-TH-8Tg" firstAttribute="top" secondItem="qyk-Vg-9t5" secondAttribute="top" id="uSQ-lJ-F1n"/>
                         </constraints>
                     </view>
