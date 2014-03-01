@@ -37,7 +37,10 @@
 	
     label.text = self.navigationItem.title;
 	[[self navigationItem] setTitleView:label];
-	
+}
+
+- (void) viewWillDisappear:(BOOL)animated {
+	[[self scrollView] setDelegate:nil]; // workaround for crash when going back and scrollview is scrolled down
 }
 
 #pragma mark
@@ -48,7 +51,6 @@
 }
 
 - (UIView *) swipeView:(SwipeView *)swipeView viewForItemAtIndex:(NSInteger)index reusingView:(UIView *)view {
-	
 	if (index == 0) {
 		UIView *colorView = [[UIView alloc] initWithFrame:CGRectMake(0, -300, 320, 480)];
 		[colorView setBackgroundColor:[UIColor lightGrayColor]];
@@ -56,12 +58,10 @@
 	} else if (index == 1) {
 		[self setCenterLocation:CLLocationCoordinate2DMake(self.wine.appellation.region.location.latitudeValue,
 														   self.wine.appellation.region.location.longitudeValue)];
-		
 		return [self mapViewForLocation:[self centerLocation] andZoomLevel:6];
 	} else if (index == 2) {
 		[self setCenterLocation:CLLocationCoordinate2DMake(self.wine.location.latitudeValue,
 														   self.wine.location.longitudeValue)];
-		
 		return [self mapViewForLocation:[self centerLocation] andZoomLevel:15];
 	} else {
 		// error
@@ -70,8 +70,7 @@
 }
 
 - (MKMapView *) mapViewForLocation:(CLLocationCoordinate2D)location andZoomLevel:(NSInteger)level {
-	MKMapView *mapView = [[MKMapView alloc] initWithFrame:CGRectMake(0, -300, 320, 480)];
-
+	MKMapView *mapView = [[MKMapView alloc] initWithFrame:CGRectMake(0, 0, 320, 480)];
 	[mapView setScrollEnabled:NO];
 	[mapView setZoomEnabled:NO];
 	[mapView setRegion:MKCoordinateRegionMakeWithDistance(location, 800, 800)];
@@ -95,6 +94,21 @@
 }
 
 #pragma mark
+#pragma mark Scrolling
+
+- (void)scrollViewDidScroll:(UIScrollView *)theScrollView {
+	CGFloat y = theScrollView.contentOffset.y;
+    if (y < 0) {
+		if ([self.swipeView currentPage] > 0 &&
+			[[self.swipeView currentItemView] isKindOfClass:[MKMapView class]]) {
+			double deltaLat = y * self.deltaLatitudeFor1px;
+			CLLocationCoordinate2D newCenter = CLLocationCoordinate2DMake([self centerLocation].latitude-deltaLat / 2, [self centerLocation].longitude);
+			[(MKMapView *)[self.swipeView currentItemView] setCenterCoordinate:newCenter animated:NO];
+		}
+    }
+}
+
+#pragma mark
 #pragma mark View Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -107,27 +121,12 @@
 			 isKindOfClass:[VYAddEditWineViewController class]]) {
 			
 			VYAddEditWineViewController *editWineViewController =
-				[[[segue destinationViewController] viewControllers] objectAtIndex:0];
+			[[[segue destinationViewController] viewControllers] objectAtIndex:0];
 			
 			NSLog(@"target is AddWineViewController. setting wine");
 			[editWineViewController setWineForEditing:[self wine]];
 		}
 	}
-}
-
-#pragma mark
-#pragma mark Scrolling
-
-- (void)scrollViewDidScroll:(UIScrollView *)theScrollView {
-	CGFloat y = theScrollView.contentOffset.y;
-    // did we drag ?
-    if (y < 0) {
-		if ([self.swipeView currentPage] > 0) {
-			double deltaLat = y * self.deltaLatitudeFor1px;
-			CLLocationCoordinate2D newCenter = CLLocationCoordinate2DMake([self centerLocation].latitude-deltaLat / 2, [self centerLocation].longitude);
-			[(MKMapView *)[self.swipeView currentItemView] setCenterCoordinate:newCenter animated:NO];
-		}
-    }
 }
 
 @end
