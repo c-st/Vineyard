@@ -30,6 +30,7 @@
 	
 	BOOL _headerLoaded;
 	BOOL _footerLoaded;
+	BOOL _accessoryViewActive;
 }
 
 @property (nonatomic) IBOutlet UIView* headerView;

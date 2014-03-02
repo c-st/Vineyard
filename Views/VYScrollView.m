@@ -41,9 +41,8 @@
 	
 	
 	if (scrollView.contentOffset.y > 0) { // dragging up
-		if (scrollView.contentOffset.y > 120) {// threshold pulling down reached
+		if (scrollView.contentOffset.y > 120) {
 			if (_footerLoaded) return;
-			NSLog(@"threshold up reached");
 			if ([externalDelegate respondsToSelector:@selector(footerLoadedInScrollView:)]) {
 				[externalDelegate performSelector:@selector(footerLoadedInScrollView:) withObject:self];
 			}
@@ -57,7 +56,6 @@
 		}
 	} else { // dragging down
 		if (scrollView.contentOffset.y < - 20) {
-			NSLog(@"threshold down reached");
 			if (_headerLoaded) return;
 			if ([externalDelegate respondsToSelector:@selector(headerLoadedInScrollView:)]) {
 				[externalDelegate performSelector:@selector(headerLoadedInScrollView:) withObject:self];
@@ -69,6 +67,7 @@
 			if ([externalDelegate respondsToSelector:@selector(headerUnloadedInScrollView:)]) {
 				[externalDelegate performSelector:@selector(headerUnloadedInScrollView:) withObject:self];
 			}
+			_headerLoaded = NO;
 		}
 	}
 }
@@ -78,10 +77,9 @@
 		[externalDelegate scrollViewDidEndDragging:scrollView willDecelerate:decelerate];
 	}
 	
-	if (_footerLoaded) {
-		NSLog(@"pushing footer up!");
+	if (_footerLoaded && !_accessoryViewActive) {
 		[self pushViewUp];
-	} else if(_headerLoaded) {
+	} else if(_headerLoaded && _accessoryViewActive) {
 		[self pushViewDown];
 	}
 }
@@ -89,9 +87,6 @@
 
 - (void)pushViewUp {
 	[self setAccessoryView:[externalDelegate accessoryViewForScrollView:self]];
-	
-	NSLog(@"%f %f", self.accessoryView.frame.size.height, self.contentOffset.y);
-	
 	[self.accessoryView setFrame: CGRectMake(0,
 										self.accessoryView.frame.size.height + self.contentOffset.y,
 										self.accessoryView.frame.size.width,
@@ -100,7 +95,6 @@
 	[self addSubview:self.accessoryView];
 	[[self footerView] setHidden:YES];
 	
-	NSLog(@"%f %f", self.frame.origin.y, self.contentOffset.y);
 	[UIView animateWithDuration:.3 animations:^{
 		[self.accessoryView setFrame:CGRectMake(self.frame.origin.x,
 												50,//self.frame.origin.y,
@@ -110,6 +104,8 @@
 		
 	} completion:^(BOOL finished) {
 	}];
+	
+	_accessoryViewActive = YES;
 }
 
 - (void) pushViewDown {
@@ -122,12 +118,10 @@
 		NSLog(@"completion block");
 		[self.accessoryView removeFromSuperview];
 		
-		[self setScrollEnabled:NO];
-		[self setScrollEnabled:YES];
-		
 		[[self footerView] setHidden:NO];
 	}];
-
+	
+	_accessoryViewActive = NO;
 }
 
 
