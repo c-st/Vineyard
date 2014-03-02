@@ -9,8 +9,8 @@
 #import "VYWineViewController.h"
 
 @interface VYWineViewController ()
-@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet SwipeView *swipeView;
+@property (weak, nonatomic) IBOutlet VYScrollView *scrollView;
 
 @property (weak, nonatomic) IBOutlet UISegmentedControl *pageSelectorControl;
 
@@ -52,7 +52,7 @@
 
 - (UIView *) swipeView:(SwipeView *)swipeView viewForItemAtIndex:(NSInteger)index reusingView:(UIView *)view {
 	if (index == 0) {
-		UIView *colorView = [[UIView alloc] initWithFrame:CGRectMake(0, -300, 320, 480)];
+		UIView *colorView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 480)];
 		[colorView setBackgroundColor:[UIColor lightGrayColor]];
 		return colorView;
 	} else if (index == 1) {
@@ -77,13 +77,12 @@
 	[mapView setCenterCoordinate:location zoomLevel:level animated:YES];
 	
 	CLLocationCoordinate2D referencePosition = [mapView convertPoint:CGPointMake(0, 0) toCoordinateFromView:mapView];
-    CLLocationCoordinate2D referencePosition2 = [mapView convertPoint:CGPointMake(0, 100) toCoordinateFromView:mapView];
+	CLLocationCoordinate2D referencePosition2 = [mapView convertPoint:CGPointMake(0, 100) toCoordinateFromView:mapView];
 	
 	self.deltaLatitudeFor1px = (referencePosition2.latitude - referencePosition.latitude) / 100;
 	
-	return mapView  ;
+	return mapView;
 }
-
 
 - (void) swipeViewCurrentItemIndexDidChange:(SwipeView *)theSwipeView {
 	[self.pageSelectorControl setSelectedSegmentIndex:theSwipeView.currentPage];
@@ -93,12 +92,30 @@
 	[self.swipeView setCurrentPage:[segmentControl selectedSegmentIndex]];
 }
 
+
 #pragma mark
-#pragma mark Scrolling
+#pragma mark VYScrollView delegate
+
+-(UIView*) accessoryViewForScrollView:(VYScrollView*)scrollView {
+	UIView *view = [[[NSBundle mainBundle] loadNibNamed:@"WineAccessoryView" owner:self options:nil] objectAtIndex:0];
+	return view;
+}
+
+-(void) footerLoadedInScrollView:(VYScrollView *)scrollView {
+	[(UILabel *)[scrollView footerView] setText:@"RELEASE NOW"];
+}
+
+-(void) footerUnloadedInScrollView:(VYScrollView *)scrollView {
+	[(UILabel *)[scrollView footerView] setText:@"UP UP UP"];
+}
+
+#pragma mark
+#pragma mark ScrollView delegate
 
 - (void)scrollViewDidScroll:(UIScrollView *)theScrollView {
 	CGFloat y = theScrollView.contentOffset.y;
     if (y < 0) {
+		NSLog(@"%f", y);
 		if ([self.swipeView currentPage] > 0 &&
 			[[self.swipeView currentItemView] isKindOfClass:[MKMapView class]]) {
 			double deltaLat = y * self.deltaLatitudeFor1px;

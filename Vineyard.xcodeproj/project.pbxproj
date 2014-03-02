@@ -24,6 +24,8 @@
 		8364970817F60CA300013463 /* VYRegionTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8364970717F60CA300013463 /* VYRegionTableViewController.m */; };
 		8364970B17F6232E00013463 /* VYAppellationTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8364970A17F6232E00013463 /* VYAppellationTableViewController.m */; };
 		8374B9A518C0E74600B6BAFF /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8374B9A418C0E74600B6BAFF /* Accelerate.framework */; };
+		8374B9A818C28B7200B6BAFF /* VYScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8374B9A718C28B7200B6BAFF /* VYScrollView.m */; };
+		8374B9AA18C2B67300B6BAFF /* WineAccessoryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8374B9A918C2B67300B6BAFF /* WineAccessoryView.xib */; };
 		8386B5A6176A29B5002AF30C /* VYAbstractTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8386B59F176A257D002AF30C /* VYAbstractTableViewController.m */; };
 		8386B5A8176A29B5002AF30C /* VYWineTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8386B5A4176A2646002AF30C /* VYWineTableViewController.m */; };
 		8386B5A9176A2C12002AF30C /* UIColor+CellarColours.m in Sources */ = {isa = PBXBuildFile; fileRef = 83E79DBA1677AA1400E0E42D /* UIColor+CellarColours.m */; };
@@ -111,6 +113,9 @@
 		8364970917F6232E00013463 /* VYAppellationTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VYAppellationTableViewController.h; path = Controllers/VYAppellationTableViewController.h; sourceTree = SOURCE_ROOT; };
 		8364970A17F6232E00013463 /* VYAppellationTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VYAppellationTableViewController.m; path = Controllers/VYAppellationTableViewController.m; sourceTree = SOURCE_ROOT; };
 		8374B9A418C0E74600B6BAFF /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		8374B9A618C28B7200B6BAFF /* VYScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VYScrollView.h; path = Views/VYScrollView.h; sourceTree = SOURCE_ROOT; };
+		8374B9A718C28B7200B6BAFF /* VYScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VYScrollView.m; path = Views/VYScrollView.m; sourceTree = SOURCE_ROOT; };
+		8374B9A918C2B67300B6BAFF /* WineAccessoryView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = WineAccessoryView.xib; path = Resources/Data/WineAccessoryView.xib; sourceTree = SOURCE_ROOT; };
 		837E8B7A174BE5BD0051F1A0 /* ModalCollectionDeleteView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ModalCollectionDeleteView.h; path = Views/ModalCollectionDeleteView.h; sourceTree = SOURCE_ROOT; };
 		837E8B7B174BE5BD0051F1A0 /* ModalCollectionDeleteView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ModalCollectionDeleteView.m; path = Views/ModalCollectionDeleteView.m; sourceTree = SOURCE_ROOT; };
 		8384626B16C0730B002C47C2 /* VintageTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VintageTableViewController.h; path = Controllers/VintageTableViewController.h; sourceTree = SOURCE_ROOT; };
@@ -320,6 +325,7 @@
 			isa = PBXGroup;
 			children = (
 				8361EE5B1677B5290057E04B /* data.json */,
+				8374B9A918C2B67300B6BAFF /* WineAccessoryView.xib */,
 			);
 			name = Resources;
 			path = Resources/Data;
@@ -440,6 +446,8 @@
 				83A42ADF17F76A3F0067ECF0 /* VYBrowseTableViewCell.m */,
 				83A42AE117F826B60067ECF0 /* VYIndexPathButton.h */,
 				83A42AE217F826B60067ECF0 /* VYIndexPathButton.m */,
+				8374B9A618C28B7200B6BAFF /* VYScrollView.h */,
+				8374B9A718C28B7200B6BAFF /* VYScrollView.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -694,6 +702,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8374B9AA18C2B67300B6BAFF /* WineAccessoryView.xib in Resources */,
 				8386B5AB176A3384002AF30C /* Media.xcassets in Resources */,
 				8361EE5C1677B5290057E04B /* data.json in Resources */,
 				8386B5EF176A52DE002AF30C /* Storyboard.storyboard in Resources */,
@@ -797,6 +806,7 @@
 				83AB990C16A322C30095A63B /* Collection.m in Sources */,
 				83AB991216A348F50095A63B /* _Food.m in Sources */,
 				83AB991316A348F50095A63B /* Food.m in Sources */,
+				8374B9A818C28B7200B6BAFF /* VYScrollView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

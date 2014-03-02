@@ -11,12 +11,13 @@
 #import "MKMapView+ZoomLevel.h"
 #import "SwipeView.h"
 
+#import "VYScrollView.h"
 #import "VYAddEditWineViewController.h"
 #import "Wine.h"
 #import "Location.h"
 
 
-@interface VYWineViewController : UIViewController <UIScrollViewDelegate, SwipeViewDelegate, SwipeViewDataSource>
+@interface VYWineViewController : UIViewController <UIScrollViewDelegate, VYScrollViewDelegate, SwipeViewDelegate, SwipeViewDataSource>
 
 @property (nonatomic) Wine* wine;
 
