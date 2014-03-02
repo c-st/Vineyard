@@ -27,6 +27,7 @@
 		8374B9A818C28B7200B6BAFF /* VYScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8374B9A718C28B7200B6BAFF /* VYScrollView.m */; };
 		8374B9AA18C2B67300B6BAFF /* WineAccessoryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8374B9A918C2B67300B6BAFF /* WineAccessoryView.xib */; };
 		8374B9AD18C3680E00B6BAFF /* VYWineTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8374B9AC18C3680E00B6BAFF /* VYWineTableViewCell.m */; };
+		8374B9B018C36FDC00B6BAFF /* VYRoundedImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8374B9AF18C36FDC00B6BAFF /* VYRoundedImageView.m */; };
 		8386B5A6176A29B5002AF30C /* VYAbstractTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8386B59F176A257D002AF30C /* VYAbstractTableViewController.m */; };
 		8386B5A8176A29B5002AF30C /* VYWineTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8386B5A4176A2646002AF30C /* VYWineTableViewController.m */; };
 		8386B5A9176A2C12002AF30C /* UIColor+CellarColours.m in Sources */ = {isa = PBXBuildFile; fileRef = 83E79DBA1677AA1400E0E42D /* UIColor+CellarColours.m */; };
@@ -119,6 +120,8 @@
 		8374B9A918C2B67300B6BAFF /* WineAccessoryView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = WineAccessoryView.xib; path = Resources/Data/WineAccessoryView.xib; sourceTree = SOURCE_ROOT; };
 		8374B9AB18C3680E00B6BAFF /* VYWineTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VYWineTableViewCell.h; path = Views/VYWineTableViewCell.h; sourceTree = SOURCE_ROOT; };
 		8374B9AC18C3680E00B6BAFF /* VYWineTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VYWineTableViewCell.m; path = Views/VYWineTableViewCell.m; sourceTree = SOURCE_ROOT; };
+		8374B9AE18C36FDC00B6BAFF /* VYRoundedImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VYRoundedImageView.h; path = Views/VYRoundedImageView.h; sourceTree = SOURCE_ROOT; };
+		8374B9AF18C36FDC00B6BAFF /* VYRoundedImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VYRoundedImageView.m; path = Views/VYRoundedImageView.m; sourceTree = SOURCE_ROOT; };
 		837E8B7A174BE5BD0051F1A0 /* ModalCollectionDeleteView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ModalCollectionDeleteView.h; path = Views/ModalCollectionDeleteView.h; sourceTree = SOURCE_ROOT; };
 		837E8B7B174BE5BD0051F1A0 /* ModalCollectionDeleteView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ModalCollectionDeleteView.m; path = Views/ModalCollectionDeleteView.m; sourceTree = SOURCE_ROOT; };
 		8384626B16C0730B002C47C2 /* VintageTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VintageTableViewController.h; path = Controllers/VintageTableViewController.h; sourceTree = SOURCE_ROOT; };
@@ -453,6 +456,8 @@
 				8374B9A718C28B7200B6BAFF /* VYScrollView.m */,
 				8374B9AB18C3680E00B6BAFF /* VYWineTableViewCell.h */,
 				8374B9AC18C3680E00B6BAFF /* VYWineTableViewCell.m */,
+				8374B9AE18C36FDC00B6BAFF /* VYRoundedImageView.h */,
+				8374B9AF18C36FDC00B6BAFF /* VYRoundedImageView.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -811,6 +816,7 @@
 				8374B9AD18C3680E00B6BAFF /* VYWineTableViewCell.m in Sources */,
 				83AB990C16A322C30095A63B /* Collection.m in Sources */,
 				83AB991216A348F50095A63B /* _Food.m in Sources */,
+				8374B9B018C36FDC00B6BAFF /* VYRoundedImageView.m in Sources */,
 				83AB991316A348F50095A63B /* Food.m in Sources */,
 				8374B9A818C28B7200B6BAFF /* VYScrollView.m in Sources */,
 			);

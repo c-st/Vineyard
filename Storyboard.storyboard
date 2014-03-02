@@ -484,19 +484,24 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Wine Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9ub-mf-X2Y">
-                                            <rect key="frame" x="68" y="6" width="170" height="21"/>
+                                            <rect key="frame" x="74" y="9" width="170" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="89g-j6-EXP">
-                                            <rect key="frame" x="20" y="8" width="40" height="48"/>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="89g-j6-EXP" customClass="VYRoundedImageView">
+                                            <rect key="frame" x="20" y="9" width="46" height="46"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <color key="backgroundColor" red="0.77282184099999995" green="0.19152447880000001" blue="0.4162791367" alpha="1" colorSpace="calibratedRGB"/>
+                                        </imageView>
+                                        <imageView userInteractionEnabled="NO" alpha="0.80000000000000004" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ES" translatesAutoresizingMaskIntoConstraints="NO" id="FjM-8e-Hse">
+                                            <rect key="frame" x="50" y="45" width="16" height="17"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="flagImage" destination="FjM-8e-Hse" id="zNC-lv-Tba"/>
                                     <outlet property="wineImageView" destination="jd8-Ez-Nwq" id="J6L-Z8-PqC"/>
                                     <outlet property="wineTitleLabel" destination="9ub-mf-X2Y" id="Glk-10-e0N"/>
                                     <segue destination="7Eb-wh-ntk" kind="push" id="aTJ-h4-Gx3"/>
@@ -1097,6 +1102,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="ES" width="64" height="64"/>
         <image name="browse" width="26" height="26"/>
         <image name="food_wine_bottle_glass" width="26" height="26"/>
         <image name="tag" width="26" height="26"/>

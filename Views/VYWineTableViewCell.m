@@ -24,8 +24,10 @@
 }
 
 - (void) updateViewFromWine {
-	NSLog(@"building view for %@", self.wine);
+	//NSLog(@"building view for %@", self.wine);
 	[self.wineTitleLabel setText:[self.wine name]];
+	[self.flagImage setImage:[UIImage imageNamed:[self.wine.country.isoCode stringByAppendingString:@".png"]]];
+	
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
