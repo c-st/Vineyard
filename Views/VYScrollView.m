@@ -115,7 +115,6 @@
 												self.frame.size.width,
 												self.frame.size.height)];
 	} completion:^(BOOL finished) {
-		NSLog(@"completion block");
 		[self.accessoryView removeFromSuperview];
 		
 		[[self footerView] setHidden:NO];

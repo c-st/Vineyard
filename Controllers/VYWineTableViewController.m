@@ -28,11 +28,13 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *CellIdentifier = @"WineCell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-	Wine *wine = [[self fetchedResultsController] objectAtIndexPath:indexPath];
-    [[cell textLabel] setText:[wine name]];
-    return cell;
+	static NSString *CellIdentifier = @"WineCell";
+	VYWineTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+	[cell setWine:[[self fetchedResultsController] objectAtIndexPath:indexPath]];
+	[cell updateViewFromWine];
+	
+	//[[cell textLabel] setText:[wine name]];
+	return cell;
 }
 
 #pragma mark

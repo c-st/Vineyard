@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "VYAbstractTableViewController.h"
 
+#import "VYWineTableViewCell.h"
 #import "VYAddEditWineViewController.h"
 #import "VYWineViewController.h"
 
