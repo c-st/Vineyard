@@ -69,6 +69,13 @@
 	if (index == 0) {
 		UIView *colorView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 480)];
 		[colorView setBackgroundColor:[UIColor lightGrayColor]];
+		
+		if ([self.wine image] != nil) {
+			UIImageView *wineImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 480)];
+			[wineImageView setImage:[UIImage imageWithData:[self.wine image]]];
+			[colorView addSubview:wineImageView];
+		}
+		
 		return colorView;
 	} else if (index == 1) {
 		[self setCenterLocation:CLLocationCoordinate2DMake(self.wine.appellation.region.location.latitudeValue,

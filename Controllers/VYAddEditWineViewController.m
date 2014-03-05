@@ -15,6 +15,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *appellationTextField;
 @property (weak, nonatomic) IBOutlet UITextField *colourTextField;
 @property (weak, nonatomic) IBOutlet UITextField *varietalTextField;
+@property (weak, nonatomic) IBOutlet VYRoundedImageView *wineImageView;
 
 
 @property (nonatomic, strong) CLLocationManager *locationManager;
@@ -60,6 +61,8 @@
 	[self.appellationTextField setText:[[self.wine appellation] name]];
 	[self.colourTextField setText:[[self.wine colour] name]];
 	[self.varietalTextField setText:[self.wine varietalsString]];
+	
+	[self.wineImageView setImage:[UIImage imageWithData:[self.wine image]]];
 	
 	[self.tableView reloadData];
 	[super viewWillAppear:animated];
@@ -109,9 +112,9 @@
 	// if country is set, display appellations as well.
 	if (section == 0) {
 		if ([self.wine country] != nil) {
-			return 3;
+			return 4;
 		} else {
-			return 2;
+			return 3;
 		}
 	}
 	
@@ -135,7 +138,8 @@
 	if ([[segue destinationViewController] isKindOfClass:[VYCountryTableViewController class]]) {
 		VYCountryTableViewController *countryTableViewController = [segue destinationViewController];
 		[countryTableViewController setInPickerMode:YES];
-		[countryTableViewController setFetchedResultsController:[Country fetchAllSortedBy:@"name" ascending:YES withPredicate:nil groupBy:nil delegate:countryTableViewController]];
+		[countryTableViewController setFetchedResultsController:
+		 [Country fetchAllSortedBy:@"name" ascending:YES withPredicate:nil groupBy:nil delegate:countryTableViewController]];
 		
 	} else if ([[segue destinationViewController] isKindOfClass:[VYAppellationTableViewController class]]) {
 		VYAppellationTableViewController *appellationsTableViewController = [segue destinationViewController];
@@ -164,8 +168,11 @@
 }
 
 - (IBAction)unwindFromPickerView:(UIStoryboardSegue*)sender {
-	if ([[sender sourceViewController] isKindOfClass:[VYCountryTableViewController class]]) {
+	/*
+	if ([[sender sourceViewController] isKindOfClass:[VYTakePhotoViewController class]]) {
+		NSLog(@"fetching image from controller - saving it to wine");
 	}
+	 */
 }
 
 #pragma mark

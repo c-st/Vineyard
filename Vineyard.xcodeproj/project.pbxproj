@@ -10,6 +10,7 @@
 		8319B00A1677C6E0005E28BB /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8319B0091677C6E0005E28BB /* MapKit.framework */; };
 		8329FE7317F0D580008AD86F /* VYWineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8329FE7217F0D580008AD86F /* VYWineViewController.m */; };
 		8349B83C18C79FE400B26F30 /* EDStarRating.m in Sources */ = {isa = PBXBuildFile; fileRef = 8349B83B18C79FE400B26F30 /* EDStarRating.m */; };
+		8349B83F18C7B01C00B26F30 /* VYTakePhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8349B83E18C7B01C00B26F30 /* VYTakePhotoViewController.m */; };
 		835C6D8E167E1B4700AC2A04 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 835C6D8D167E1B4700AC2A04 /* CoreLocation.framework */; };
 		8360EE2218048B1300AFEDE3 /* VYGrapeTypeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8360EE2118048B1300AFEDE3 /* VYGrapeTypeTableViewController.m */; };
 		8360EE251804955E00AFEDE3 /* VYVarietalsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8360EE241804955E00AFEDE3 /* VYVarietalsTableViewController.m */; };
@@ -95,6 +96,8 @@
 		8344BDD416BC9B73003777D0 /* RatingTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RatingTableViewController.m; path = Controllers/RatingTableViewController.m; sourceTree = SOURCE_ROOT; };
 		8349B83A18C79FE400B26F30 /* EDStarRating.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EDStarRating.h; sourceTree = SOURCE_ROOT; };
 		8349B83B18C79FE400B26F30 /* EDStarRating.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EDStarRating.m; sourceTree = SOURCE_ROOT; };
+		8349B83D18C7B01C00B26F30 /* VYTakePhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VYTakePhotoViewController.h; sourceTree = SOURCE_ROOT; };
+		8349B83E18C7B01C00B26F30 /* VYTakePhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VYTakePhotoViewController.m; sourceTree = SOURCE_ROOT; };
 		835016BE16A4B61600B841DF /* CollectionTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CollectionTableViewController.h; path = Controllers/CollectionTableViewController.h; sourceTree = SOURCE_ROOT; };
 		835016C016A4B63A00B841DF /* CollectionTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CollectionTableViewController.m; path = Controllers/CollectionTableViewController.m; sourceTree = SOURCE_ROOT; };
 		835C6D8D167E1B4700AC2A04 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -454,6 +457,8 @@
 				83617B32176A7362009E900E /* VYAddEditWineViewController.m */,
 				8329FE7117F0D580008AD86F /* VYWineViewController.h */,
 				8329FE7217F0D580008AD86F /* VYWineViewController.m */,
+				8349B83D18C7B01C00B26F30 /* VYTakePhotoViewController.h */,
+				8349B83E18C7B01C00B26F30 /* VYTakePhotoViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -806,6 +811,7 @@
 				83E79DA51677AA0300E0E42D /* Country.m in Sources */,
 				83E79DA61677AA0300E0E42D /* _Indication.m in Sources */,
 				83E79DA71677AA0300E0E42D /* Indication.m in Sources */,
+				8349B83F18C7B01C00B26F30 /* VYTakePhotoViewController.m in Sources */,
 				83E79DA81677AA0300E0E42D /* _Classification.m in Sources */,
 				83E79DA91677AA0300E0E42D /* Classification.m in Sources */,
 				83E79DAA1677AA0300E0E42D /* _Region.m in Sources */,

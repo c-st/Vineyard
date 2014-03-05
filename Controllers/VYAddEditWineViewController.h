@@ -12,6 +12,8 @@
 #import "VYCountryTableViewController.h"
 #import "VYAppellationTableViewController.h"
 #import "VYVarietalsTableViewController.h"
+#import "VYTakePhotoViewController.h"
+#import "VYRoundedImageView.h"
 
 #import "Wine.h"
 #import "Appellation.h"
