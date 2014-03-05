@@ -8,5 +8,6 @@ target "Vineyard" do
 	pod 'MKMapView-ZoomLevel'
 	pod 'FXBlurView'
 	pod 'SwipeView'
+	#pod 'EDStarRating'
 	
 end
