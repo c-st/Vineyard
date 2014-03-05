@@ -11,7 +11,7 @@
 @interface VYWineViewController ()
 @property (weak, nonatomic) IBOutlet SwipeView *swipeView;
 @property (weak, nonatomic) IBOutlet VYScrollView *scrollView;
-
+@property (weak, nonatomic) IBOutlet EDStarRating *starRatingControl;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *pageSelectorControl;
 
 @end
@@ -33,10 +33,22 @@
 	CGRect frame = CGRectMake(0, 0, 0, 44);
 	UILabel *label = [[UILabel alloc] initWithFrame:frame];
 	[label setTextAlignment:NSTextAlignmentCenter];
-	[label setFont:[UIFont fontWithName:@"HelveticaNeue-UltraLight" size:25.0f]];
-	
+	[label setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:22.0f]];
     label.text = self.navigationItem.title;
 	[[self navigationItem] setTitleView:label];
+	
+	// stars
+	[self.starRatingControl setMaxRating:5];
+	[self.starRatingControl setStarImage:[[UIImage imageNamed:@"star-template.png"]
+										  imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate]];
+	
+	[self.starRatingControl setStarHighlightedImage:[[UIImage imageNamed:@"star-highlighted-template"]
+													 imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate]];
+	
+	[self.starRatingControl setDisplayMode:EDStarRatingDisplayFull];
+	[self.starRatingControl setHorizontalMargin:15.0];
+	[self.starRatingControl setRating:[[self.wine rating] floatValue]];
+	
 }
 
 - (void) viewWillDisappear:(BOOL)animated {
@@ -115,7 +127,6 @@
 - (void)scrollViewDidScroll:(UIScrollView *)theScrollView {
 	CGFloat y = theScrollView.contentOffset.y;
     if (y < 0) {
-		NSLog(@"%f", y);
 		if ([self.swipeView currentPage] > 0 &&
 			[[self.swipeView currentItemView] isKindOfClass:[MKMapView class]]) {
 			double deltaLat = y * self.deltaLatitudeFor1px;

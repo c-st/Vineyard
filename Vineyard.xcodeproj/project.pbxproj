@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		8319B00A1677C6E0005E28BB /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8319B0091677C6E0005E28BB /* MapKit.framework */; };
 		8329FE7317F0D580008AD86F /* VYWineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8329FE7217F0D580008AD86F /* VYWineViewController.m */; };
+		8349B83C18C79FE400B26F30 /* EDStarRating.m in Sources */ = {isa = PBXBuildFile; fileRef = 8349B83B18C79FE400B26F30 /* EDStarRating.m */; };
 		835C6D8E167E1B4700AC2A04 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 835C6D8D167E1B4700AC2A04 /* CoreLocation.framework */; };
 		8360EE2218048B1300AFEDE3 /* VYGrapeTypeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8360EE2118048B1300AFEDE3 /* VYGrapeTypeTableViewController.m */; };
 		8360EE251804955E00AFEDE3 /* VYVarietalsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8360EE241804955E00AFEDE3 /* VYVarietalsTableViewController.m */; };
@@ -92,6 +93,8 @@
 		833A613C1753FBDF0005399A /* PriceTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PriceTableViewController.m; path = Controllers/PriceTableViewController.m; sourceTree = SOURCE_ROOT; };
 		8344BDD316BC9B73003777D0 /* RatingTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RatingTableViewController.h; path = Controllers/RatingTableViewController.h; sourceTree = SOURCE_ROOT; };
 		8344BDD416BC9B73003777D0 /* RatingTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RatingTableViewController.m; path = Controllers/RatingTableViewController.m; sourceTree = SOURCE_ROOT; };
+		8349B83A18C79FE400B26F30 /* EDStarRating.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EDStarRating.h; sourceTree = SOURCE_ROOT; };
+		8349B83B18C79FE400B26F30 /* EDStarRating.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EDStarRating.m; sourceTree = SOURCE_ROOT; };
 		835016BE16A4B61600B841DF /* CollectionTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CollectionTableViewController.h; path = Controllers/CollectionTableViewController.h; sourceTree = SOURCE_ROOT; };
 		835016C016A4B63A00B841DF /* CollectionTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CollectionTableViewController.m; path = Controllers/CollectionTableViewController.m; sourceTree = SOURCE_ROOT; };
 		835C6D8D167E1B4700AC2A04 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -384,6 +387,15 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		8349B83618C79FCB00B26F30 /* 3rd party */ = {
+			isa = PBXGroup;
+			children = (
+				8349B83A18C79FE400B26F30 /* EDStarRating.h */,
+				8349B83B18C79FE400B26F30 /* EDStarRating.m */,
+			);
+			name = "3rd party";
+			sourceTree = "<group>";
+		};
 		836496FF17F600DD00013463 /* BrowseTableViewControllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -404,6 +416,7 @@
 		8386B59A176A2405002AF30C /* Vineyard */ = {
 			isa = PBXGroup;
 			children = (
+				8349B83618C79FCB00B26F30 /* 3rd party */,
 				83C4EEAD17F08F9100ABC91D /* Vineyard-Prefix.pch */,
 				83358FF7164B133B00FEA5C9 /* Resources */,
 				8386B59D176A2509002AF30C /* Views */,
@@ -805,6 +818,7 @@
 				83E79DB01677AA0300E0E42D /* Location.m in Sources */,
 				83E79DB11677AA0300E0E42D /* Winery.m in Sources */,
 				83A42AE017F76A3F0067ECF0 /* VYBrowseTableViewCell.m in Sources */,
+				8349B83C18C79FE400B26F30 /* EDStarRating.m in Sources */,
 				83E79DF01677AA9C00E0E42D /* AppDelegate.m in Sources */,
 				8361EE291677B4B50057E04B /* main.m in Sources */,
 				8329FE7317F0D580008AD86F /* VYWineViewController.m in Sources */,

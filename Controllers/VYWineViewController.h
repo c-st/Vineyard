@@ -10,7 +10,7 @@
 #import <MapKit/MapKit.h>
 #import "MKMapView+ZoomLevel.h"
 #import "SwipeView.h"
-
+#import "EDStarRating.h"
 #import "VYScrollView.h"
 #import "VYAddEditWineViewController.h"
 #import "Wine.h"

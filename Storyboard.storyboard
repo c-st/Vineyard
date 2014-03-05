@@ -557,6 +557,25 @@
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Grape &amp; Taste" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4mU-mh-ugJ">
+                                                <rect key="frame" x="13" y="120" width="280" height="37"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue-UltraLight" family="Helvetica Neue" pointSize="25"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Price &amp; Preference" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g4N-MS-fbA">
+                                                <rect key="frame" x="13" y="226" width="280" height="37"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue-UltraLight" family="Helvetica Neue" pointSize="25"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="x2C-w9-THR" customClass="EDStarRating">
+                                                <rect key="frame" x="60" y="10" width="201" height="33"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                            </view>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                     </view>
@@ -581,21 +600,21 @@
                                             <action selector="pageSelected:" destination="7Eb-wh-ntk" eventType="valueChanged" id="1DK-4P-8OA"/>
                                         </connections>
                                     </segmentedControl>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lorem Ipsum Dolor Sit Amet" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="70Z-oB-RvX">
-                                        <rect key="frame" x="20" y="188" width="280" height="21"/>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Location" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="70Z-oB-RvX">
+                                        <rect key="frame" x="13" y="238" width="280" height="37"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-UltraLight" family="Helvetica Neue" pointSize="25"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                                 <color key="backgroundColor" red="0.77282184099999995" green="0.19152447880000001" blue="0.4162791367" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstItem="70Z-oB-RvX" firstAttribute="top" secondItem="NpI-TH-8Tg" secondAttribute="top" constant="188" id="IxH-Wh-VBg"/>
-                                    <constraint firstItem="70Z-oB-RvX" firstAttribute="leading" secondItem="NpI-TH-8Tg" secondAttribute="leading" constant="20" symbolic="YES" id="JMh-aV-MmK"/>
-                                    <constraint firstAttribute="bottom" secondItem="70Z-oB-RvX" secondAttribute="bottom" constant="359" id="Sc6-Iv-y4T"/>
-                                    <constraint firstItem="70Z-oB-RvX" firstAttribute="centerX" secondItem="NpI-TH-8Tg" secondAttribute="centerX" id="V9n-MP-lOG"/>
-                                    <constraint firstAttribute="trailing" secondItem="70Z-oB-RvX" secondAttribute="trailing" constant="20" symbolic="YES" id="hq7-Sp-oOK"/>
+                                    <constraint firstItem="70Z-oB-RvX" firstAttribute="top" secondItem="NpI-TH-8Tg" secondAttribute="top" constant="238" id="IxH-Wh-VBg"/>
+                                    <constraint firstItem="70Z-oB-RvX" firstAttribute="leading" secondItem="NpI-TH-8Tg" secondAttribute="leading" constant="13" id="JMh-aV-MmK"/>
+                                    <constraint firstAttribute="bottom" secondItem="70Z-oB-RvX" secondAttribute="bottom" constant="293" id="Sc6-Iv-y4T"/>
+                                    <constraint firstItem="70Z-oB-RvX" firstAttribute="centerX" secondItem="NpI-TH-8Tg" secondAttribute="centerX" constant="-7" id="V9n-MP-lOG"/>
+                                    <constraint firstAttribute="trailing" secondItem="70Z-oB-RvX" secondAttribute="trailing" constant="27" id="hq7-Sp-oOK"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="footerView" destination="tcq-Dp-xQy" id="U1B-T7-t4Z"/>
@@ -620,6 +639,7 @@
                     <connections>
                         <outlet property="pageSelectorControl" destination="dOS-f3-aQh" id="YLA-aa-Zwb"/>
                         <outlet property="scrollView" destination="NpI-TH-8Tg" id="INL-jK-FYq"/>
+                        <outlet property="starRatingControl" destination="x2C-w9-THR" id="JR1-iB-CwD"/>
                         <outlet property="swipeView" destination="6pA-A3-sCM" id="dT4-SL-Sgu"/>
                     </connections>
                 </viewController>
@@ -1115,6 +1135,6 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="0KA-bR-Vj1"/>
-        <segue reference="Jmw-vd-A0q"/>
+        <segue reference="pbj-fT-YB2"/>
     </inferredMetricsTieBreakers>
 </document>
