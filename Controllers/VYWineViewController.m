@@ -26,9 +26,11 @@
 	[self.swipeView setCurrentPage:1];
 }
 
-// update from potential wine edit
+// update view from potential wine edit
 - (void) viewWillAppear:(BOOL)animated {
 	[super viewWillAppear:animated];
+	
+	// set custom navigation item
 	[[self navigationItem] setTitle:[[self wine] name]];
 	CGRect frame = CGRectMake(0, 0, 0, 44);
 	UILabel *label = [[UILabel alloc] initWithFrame:frame];
@@ -38,6 +40,7 @@
 	[[self navigationItem] setTitleView:label];
 	
 	// stars
+	[self.starRatingControl setBackgroundColor:[UIColor whiteColor]];
 	[self.starRatingControl setMaxRating:5];
 	[self.starRatingControl setStarImage:[[UIImage imageNamed:@"star-template.png"]
 										  imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate]];
@@ -70,10 +73,12 @@
 	} else if (index == 1) {
 		[self setCenterLocation:CLLocationCoordinate2DMake(self.wine.appellation.region.location.latitudeValue,
 														   self.wine.appellation.region.location.longitudeValue)];
+		
 		return [self mapViewForLocation:[self centerLocation] andZoomLevel:6];
 	} else if (index == 2) {
 		[self setCenterLocation:CLLocationCoordinate2DMake(self.wine.location.latitudeValue,
 														   self.wine.location.longitudeValue)];
+		
 		return [self mapViewForLocation:[self centerLocation] andZoomLevel:15];
 	} else {
 		// error
