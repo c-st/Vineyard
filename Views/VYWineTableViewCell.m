@@ -31,6 +31,8 @@
 	}
 	if ([self.wine imageThumbnail] != nil) {
 		[self.wineImageView setImage:[UIImage imageWithData:[self.wine imageThumbnail]]];
+	} else {
+		[self.wineImageView setImage:nil];
 	}
 	
 }

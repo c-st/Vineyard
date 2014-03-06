@@ -83,7 +83,7 @@
 		[addEditWineController.wine setImage:imageData];
 		
 		// generate thumbnail
-		NSData *thumbnailData = UIImagePNGRepresentation([self.wineImage thumbnailImage:200
+		NSData *thumbnailData = UIImagePNGRepresentation([self.wineImage thumbnailImage:150
 																	  transparentBorder:0
 																		   cornerRadius:0
 																   interpolationQuality:kCGInterpolationDefault]);
