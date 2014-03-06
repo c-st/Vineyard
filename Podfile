@@ -9,5 +9,6 @@ target "Vineyard" do
 	pod 'FXBlurView'
 	pod 'SwipeView'
 	#pod 'EDStarRating'
+	pod 'UIImage-Categories', :git => 'git://github.com/fastred/UIImage-Categories'
 	
 end

@@ -26,9 +26,11 @@
 - (void) updateViewFromWine {
 	//NSLog(@"building view for %@", self.wine);
 	[self.wineTitleLabel setText:[self.wine name]];
-	[self.flagImage setImage:[UIImage imageNamed:[self.wine.country.isoCode stringByAppendingString:@".png"]]];
-	if ([self.wine image] != nil) {
-		[self.wineImageView setImage:[UIImage imageWithData:[self.wine image]]];
+	if ([self.wine country] != nil) {
+		[self.flagImage setImage:[UIImage imageNamed:[self.wine.country.isoCode stringByAppendingString:@".png"]]];
+	}
+	if ([self.wine imageThumbnail] != nil) {
+		[self.wineImageView setImage:[UIImage imageWithData:[self.wine imageThumbnail]]];
 	}
 	
 }

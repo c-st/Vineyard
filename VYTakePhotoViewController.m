@@ -30,6 +30,13 @@
     [super viewDidLoad];
 
 	
+	
+}
+
+- (void) viewDidAppear:(BOOL)animated {
+	[super viewDidAppear:animated];
+	UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+	
 	if (![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
         UIAlertView *myAlertView = [[UIAlertView alloc] initWithTitle:@"Error"
 															  message:@"Device has no camera"
@@ -37,18 +44,14 @@
 													cancelButtonTitle:@"OK"
 													otherButtonTitles: nil];
         [myAlertView show];
-		return;
-    }
-}
-
-- (void) viewDidAppear:(BOOL)animated {
-	[super viewDidAppear:animated];
-	
-	UIImagePickerController *picker = [[UIImagePickerController alloc] init];
-    picker.delegate = self;
-    picker.allowsEditing = YES;
-    picker.sourceType = UIImagePickerControllerSourceTypeCamera;
-	[picker setCameraFlashMode:UIImagePickerControllerCameraFlashModeOff];
+		_alreadyPresented = YES;
+		[self dismissViewControllerAnimated:NO completion:nil];
+    } else {
+		picker.delegate = self;
+		picker.allowsEditing = YES;
+		picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+		[picker setCameraFlashMode:UIImagePickerControllerCameraFlashModeOff];
+	}
 	
 	if (!_alreadyPresented) {
 		[self presentViewController:picker animated:YES completion:NULL];
@@ -75,8 +78,17 @@
 
 	if ([[segue destinationViewController] isKindOfClass:[VYAddEditWineViewController class]]) {
 		VYAddEditWineViewController *addEditWineController = [segue destinationViewController];
+		// save full sized image
 		NSData *imageData = UIImagePNGRepresentation([self wineImage]);
 		[addEditWineController.wine setImage:imageData];
+		
+		// generate thumbnail
+		NSData *thumbnailData = UIImagePNGRepresentation([self.wineImage thumbnailImage:200
+																	  transparentBorder:0
+																		   cornerRadius:0
+																   interpolationQuality:kCGInterpolationDefault]);
+		
+		[addEditWineController.wine setImageThumbnail:thumbnailData];
 	}
 }
 

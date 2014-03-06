@@ -7,6 +7,7 @@ const struct WineAttributes WineAttributes = {
 	.alcoholContent = @"alcoholContent",
 	.creationTime = @"creationTime",
 	.image = @"image",
+	.imageThumbnail = @"imageThumbnail",
 	.name = @"name",
 	.price = @"price",
 	.rating = @"rating",
@@ -115,6 +116,13 @@ const struct WineFetchedProperties WineFetchedProperties = {
 
 
 @dynamic image;
+
+
+
+
+
+
+@dynamic imageThumbnail;
 
 
 

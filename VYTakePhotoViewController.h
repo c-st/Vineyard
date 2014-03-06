@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "VYAddEditWineViewController.h"
+#import "UIImage+Resize.h"
 
 @interface VYTakePhotoViewController : UIViewController<UINavigationControllerDelegate, UIImagePickerControllerDelegate> {
 	BOOL _alreadyPresented;
