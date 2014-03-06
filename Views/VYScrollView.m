@@ -97,7 +97,7 @@
 	
 	[UIView animateWithDuration:.3 animations:^{
 		[self.accessoryView setFrame:CGRectMake(self.frame.origin.x,
-												50,//self.frame.origin.y,
+												40,//self.frame.origin.y,
 												self.accessoryView.frame.size.width,
 												self.accessoryView.frame.size.height +1)];
 		[self setContentOffset:CGPointMake(0, 0)];
