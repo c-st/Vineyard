@@ -110,16 +110,25 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 	// if country is set, display appellations as well.
-	if (section == 0) {
+	if (section == 1) {
 		if ([self.wine country] != nil) {
-			return 4;
-		} else {
 			return 3;
+		} else {
+			return 2;
+		}
+	}
+	
+	// vintage
+	if (section == 2) {
+		if (_vintageRowVisible) {
+			return 2;
+		} else {
+			return 1;
 		}
 	}
 	
 	// if colour is set, display varietals as well
-	if (section == 1) {
+	if (section == 3) {
 		if ([self.wine colour] != nil) {
 			return 2;
 		} else {
@@ -129,6 +138,41 @@
 	
 	return [super tableView:tableView numberOfRowsInSection:section];
 }
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+	//NSLog(@"height for row");
+	return [super tableView:tableView heightForRowAtIndexPath:indexPath];
+}
+
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+	NSLog(@"didSelect %@", indexPath);
+	
+	NSIndexPath* vintageYearRow = [NSIndexPath indexPathForRow:1 inSection:2];
+	
+	if (indexPath.section == 2 && indexPath.row == 0) {
+		_vintageRowVisible = !_vintageRowVisible;
+		
+		//[tableView reloadData];
+		[tableView beginUpdates];
+		
+		if (_vintageRowVisible) {
+			[tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:vintageYearRow] withRowAnimation:UITableViewRowAnimationAutomatic];
+		} else {
+			[tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:vintageYearRow] withRowAnimation:UITableViewRowAnimationMiddle];
+		}
+		
+		[UIView animateWithDuration:0.3 animations:^{
+			[tableView endUpdates];
+		} completion:^(BOOL finished) {
+			if (_vintageRowVisible) {
+				[tableView scrollToRowAtIndexPath:vintageYearRow atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
+			}
+		}];
+	}
+
+}
+
 
 #pragma mark
 #pragma mark View Navigation

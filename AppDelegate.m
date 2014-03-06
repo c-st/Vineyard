@@ -38,7 +38,7 @@
 	// import sample data
 	
 	[MagicalRecord saveWithBlock:^(NSManagedObjectContext *localContext) {
-		//[InitialDataImportService importInitialDataFromJson:localContext];
+		[InitialDataImportService importInitialDataFromJson:localContext];
 	} completion:^(BOOL success, NSError *error) {
 		NSLog(@"finished importing.");
 	}];

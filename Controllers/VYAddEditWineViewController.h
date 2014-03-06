@@ -23,6 +23,7 @@
 #import "Varietal.h"
 
 @interface VYAddEditWineViewController : UITableViewController <CLLocationManagerDelegate> {
+	BOOL _vintageRowVisible;
 	
 }
 @property (atomic) BOOL newWine;
