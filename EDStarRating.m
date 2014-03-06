@@ -41,10 +41,16 @@
 {
     maxRating=5.0;
     _rating=0.0;
-    horizontalMargin=10.0;
+    horizontalMargin=0.0;
     displayMode = EDStarRatingDisplayFull;
     halfStarThreshold=ED_DEFAULT_HALFSTAR_THRESHOLD;
-    [self setBackgroundColor:[EDColor clearColor]];
+    [self setBackgroundColor:[EDColor whiteColor]];
+	
+	[self setStarImage:[[UIImage imageNamed:@"star-template.png"]
+					imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate]];
+	
+	[self setStarHighlightedImage:[[UIImage imageNamed:@"star-highlighted-template"]
+								imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate]];
     
 }
 #if  EDSTAR_MACOSX
