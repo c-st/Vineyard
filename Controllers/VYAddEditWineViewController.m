@@ -17,6 +17,8 @@
 @property (weak, nonatomic) IBOutlet UITextField *varietalTextField;
 @property (weak, nonatomic) IBOutlet EDStarRating *wineStarRating;
 @property (weak, nonatomic) IBOutlet VYRoundedImageView *wineImageView;
+@property (weak, nonatomic) IBOutlet UIPickerView *vintagePickerView;
+@property (weak, nonatomic) IBOutlet UITextField *vintageTextField;
 
 
 @property (nonatomic, strong) CLLocationManager *locationManager;
@@ -64,6 +66,13 @@
 	[self.varietalTextField setText:[self.wine varietalsString]];
 	
 	[self.wineImageView setImage:[UIImage imageWithData:[self.wine image]]];
+	
+	// vintage picker
+	if ([self.wine vintage] != nil) {
+		NSInteger *vintageRow = [self getCurrentYear] - [self.wine vintageValue];
+		[self.vintagePickerView selectRow:vintageRow inComponent:0 animated:NO];
+		[self.vintageTextField setText:[NSString stringWithFormat:@"%i", [self.wine vintageValue]]];
+	}
 	
 	[self.wineStarRating setRating:[self.wine ratingValue]];
 	[self.wineStarRating setDelegate:self];
@@ -116,6 +125,33 @@
 	NSLog(@"wineRatingChanged");
 	[self.wine setRating:[NSNumber numberWithFloat:[self.wineStarRating rating]]];
 }
+
+#pragma mark
+#pragma mark Picker view delegate & Data source
+
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
+	return 1;
+}
+
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
+	return 120;
+}
+
+- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
+	return [NSString stringWithFormat:@"%li", [self getCurrentYear] - row];
+}
+
+- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
+	[self.wine setVintage:[NSNumber numberWithInteger:[self getCurrentYear] - row]];
+	[self.vintageTextField setText:[NSString stringWithFormat:@"%i", [self.wine vintageValue]]];
+}
+
+- (NSInteger) getCurrentYear {
+	NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+	NSDateComponents *components = [gregorian components:NSYearCalendarUnit fromDate:[NSDate date]];
+	return [components year];
+}
+
 
 #pragma mark
 #pragma mark Table View Data source
