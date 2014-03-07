@@ -19,6 +19,7 @@
 @property (weak, nonatomic) IBOutlet VYRoundedImageView *wineImageView;
 @property (weak, nonatomic) IBOutlet UIPickerView *vintagePickerView;
 @property (weak, nonatomic) IBOutlet UITextField *vintageTextField;
+@property (weak, nonatomic) IBOutlet UITextView *notesTextView;
 
 
 @property (nonatomic, strong) CLLocationManager *locationManager;
@@ -56,6 +57,15 @@
 		[self.nameTextField setText:[self.wine name]];
 		[self nameEditingChanged:nil];
 	}
+	
+	UITapGestureRecognizer *gestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyboard)];
+	gestureRecognizer.cancelsTouchesInView = NO;
+	[self.tableView addGestureRecognizer:gestureRecognizer];
+}
+
+- (void) hideKeyboard {
+    [self.nameTextField resignFirstResponder];
+    [self.notesTextView resignFirstResponder];
 }
 
 - (void) viewWillAppear:(BOOL)animated {
@@ -64,7 +74,7 @@
 	[self.appellationTextField setText:[[self.wine appellation] name]];
 	[self.colourTextField setText:[[self.wine colour] name]];
 	[self.varietalTextField setText:[self.wine varietalsString]];
-	
+	[self.notesTextView setText:[self.wine notes]];
 	[self.wineImageView setImage:[UIImage imageWithData:[self.wine image]]];
 	
 	// vintage picker
@@ -122,7 +132,6 @@
 #pragma mark ED Star rating delegate
 
 -(void)starsSelectionChanged:(EDStarRating *)control rating:(float)rating {
-	NSLog(@"wineRatingChanged");
 	[self.wine setRating:[NSNumber numberWithFloat:[self.wineStarRating rating]]];
 }
 
@@ -151,6 +160,14 @@
 	NSDateComponents *components = [gregorian components:NSYearCalendarUnit fromDate:[NSDate date]];
 	return [components year];
 }
+
+#pragma mark
+#pragma mark Text view delegate
+
+- (void)textViewDidEndEditing:(UITextView *)textView {
+	[self.wine setNotes:[textView text]];
+}
+
 
 
 #pragma mark
@@ -187,15 +204,7 @@
 	return [super tableView:tableView numberOfRowsInSection:section];
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-	//NSLog(@"height for row");
-	return [super tableView:tableView heightForRowAtIndexPath:indexPath];
-}
-
-
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-	NSLog(@"didSelect %@", indexPath);
-	
 	NSIndexPath* vintageYearRow = [NSIndexPath indexPathForRow:1 inSection:2];
 	
 	if (indexPath.section == 2 && indexPath.row == 0) {
@@ -260,11 +269,7 @@
 }
 
 - (IBAction)unwindFromPickerView:(UIStoryboardSegue*)sender {
-	/*
-	if ([[sender sourceViewController] isKindOfClass:[VYTakePhotoViewController class]]) {
-		NSLog(@"fetching image from controller - saving it to wine");
-	}
-	 */
+
 }
 
 #pragma mark

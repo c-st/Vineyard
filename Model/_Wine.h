@@ -10,6 +10,7 @@ extern const struct WineAttributes {
 	__unsafe_unretained NSString *image;
 	__unsafe_unretained NSString *imageThumbnail;
 	__unsafe_unretained NSString *name;
+	__unsafe_unretained NSString *notes;
 	__unsafe_unretained NSString *price;
 	__unsafe_unretained NSString *rating;
 	__unsafe_unretained NSString *vintage;
@@ -39,6 +40,7 @@ extern const struct WineFetchedProperties {
 @class TemperatureRange;
 @class Varietal;
 @class Winery;
+
 
 
 
@@ -111,6 +113,16 @@ extern const struct WineFetchedProperties {
 
 
 //- (BOOL)validateName:(id*)value_ error:(NSError**)error_;
+
+
+
+
+
+@property (nonatomic, strong) NSString* notes;
+
+
+
+//- (BOOL)validateNotes:(id*)value_ error:(NSError**)error_;
 
 
 
@@ -270,6 +282,12 @@ extern const struct WineFetchedProperties {
 
 - (NSString*)primitiveName;
 - (void)setPrimitiveName:(NSString*)value;
+
+
+
+
+- (NSString*)primitiveNotes;
+- (void)setPrimitiveNotes:(NSString*)value;
 
 
 
