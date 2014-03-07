@@ -15,6 +15,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *appellationTextField;
 @property (weak, nonatomic) IBOutlet UITextField *colourTextField;
 @property (weak, nonatomic) IBOutlet UITextField *varietalTextField;
+@property (weak, nonatomic) IBOutlet EDStarRating *wineStarRating;
 @property (weak, nonatomic) IBOutlet VYRoundedImageView *wineImageView;
 
 
@@ -64,6 +65,9 @@
 	
 	[self.wineImageView setImage:[UIImage imageWithData:[self.wine image]]];
 	
+	[self.wineStarRating setRating:[self.wine ratingValue]];
+	[self.wineStarRating setDelegate:self];
+	
 	[self.tableView reloadData];
 	[super viewWillAppear:animated];
 }
@@ -103,6 +107,14 @@
 	[self.wine extendWine];
 	[[NSManagedObjectContext defaultContext] saveToPersistentStoreAndWait];
 	[self dismissViewControllerAnimated:YES completion:nil];
+}
+
+#pragma mark
+#pragma mark ED Star rating delegate
+
+-(void)starsSelectionChanged:(EDStarRating *)control rating:(float)rating {
+	NSLog(@"wineRatingChanged");
+	[self.wine setRating:[NSNumber numberWithFloat:[self.wineStarRating rating]]];
 }
 
 #pragma mark
