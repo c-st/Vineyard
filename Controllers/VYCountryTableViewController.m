@@ -34,10 +34,17 @@
 	Country *country = [[super fetchedResultsController] objectAtIndexPath:indexPath];
     [[cell textLabel] setText:[country name]];
 	
+	UIImage *flag = [UIImage imageNamed:[country.isoCode stringByAppendingString:@".png"]];
+	if (flag != nil) {
+		[cell.imageView setImage:[flag resizedImage:CGSizeMake(24, 24) interpolationQuality:kCGInterpolationHigh]];
+		[cell.imageView setAlpha:0.6];
+		
+	}
+
 	// set browse table view cell specifics
 	if ([cell isKindOfClass:[VYBrowseTableViewCell class]]) {
 		VYBrowseTableViewCell *browseCell = (VYBrowseTableViewCell *) cell;
-		[[browseCell wineCountButton] setTitle:[NSString stringWithFormat:@"%i", [Wine countOfEntitiesWithPredicate:[self buildCountPredicateForObject:country]]] forState:UIControlStateNormal];
+		[[browseCell wineCountButton] setTitle:[NSString stringWithFormat:@"%zd", [Wine countOfEntitiesWithPredicate:[self buildCountPredicateForObject:country]]] forState:UIControlStateNormal];
 		[[browseCell wineCountButton] setIndexPath:indexPath];
 		cell = browseCell;
 	}

@@ -11,6 +11,7 @@
 #import "VYAddEditWineViewController.h"
 #import "VYWineTableViewController.h"
 #import "VYBrowseTableViewCell.h"
+#import "UIImage+Scale.h"
 
 #import "Wine.h"
 #import "Country.h"
