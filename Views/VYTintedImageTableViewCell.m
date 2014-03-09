@@ -14,20 +14,16 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         // Initialization code
-        
     }
     return self;
 }
 
 - (void)awakeFromNib {
-    // Initialization code
-    [self.cellImage setImage:[self.cellImage.image rt_tintedImageWithColor:[self tintColor]]];
+    [self.imageView setImage:[self.imageView.image rt_tintedImageWithColor:[UIColor vineyardRed]]];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
 }
 
 @end

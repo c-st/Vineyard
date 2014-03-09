@@ -16,6 +16,8 @@
 #import "Varietal.h"
 #import "GrapeType.h"
 
+#import "UIColor+VineyardColours.h"
+
 #import "InitialDataImportService.h"
 
 #import <Crashlytics/Crashlytics.h>
@@ -44,7 +46,7 @@
 	}];
     
     // workaround for non-working tint colour
-    [self.window setTintColor:[UIColor colorWithRed:0.773 green:0.192 blue:0.416 alpha:1.000]];
+    [self.window setTintColor:[UIColor vineyardRed]];
 	
 	return YES;
     

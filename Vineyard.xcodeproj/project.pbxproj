@@ -31,9 +31,9 @@
 		8374B9AD18C3680E00B6BAFF /* VYWineTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8374B9AC18C3680E00B6BAFF /* VYWineTableViewCell.m */; };
 		8374B9B018C36FDC00B6BAFF /* VYRoundedImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8374B9AF18C36FDC00B6BAFF /* VYRoundedImageView.m */; };
 		837904EA18CCE25E00EE92CD /* VYTintedImageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 837904E918CCE25E00EE92CD /* VYTintedImageTableViewCell.m */; };
+		837904EE18CCECB200EE92CD /* UIColor+VineyardColours.m in Sources */ = {isa = PBXBuildFile; fileRef = 837904ED18CCECB200EE92CD /* UIColor+VineyardColours.m */; };
 		8386B5A6176A29B5002AF30C /* VYAbstractTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8386B59F176A257D002AF30C /* VYAbstractTableViewController.m */; };
 		8386B5A8176A29B5002AF30C /* VYWineTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8386B5A4176A2646002AF30C /* VYWineTableViewController.m */; };
-		8386B5A9176A2C12002AF30C /* UIColor+CellarColours.m in Sources */ = {isa = PBXBuildFile; fileRef = 83E79DBA1677AA1400E0E42D /* UIColor+CellarColours.m */; };
 		8386B5AB176A3384002AF30C /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 83FB89DF1768E5F100C00757 /* Media.xcassets */; };
 		8386B5EF176A52DE002AF30C /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8386B5AD176A4DD5002AF30C /* Storyboard.storyboard */; };
 		83A42AE017F76A3F0067ECF0 /* VYBrowseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 83A42ADF17F76A3F0067ECF0 /* VYBrowseTableViewCell.m */; };
@@ -131,6 +131,8 @@
 		8374B9AF18C36FDC00B6BAFF /* VYRoundedImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VYRoundedImageView.m; path = Views/VYRoundedImageView.m; sourceTree = SOURCE_ROOT; };
 		837904E818CCE25E00EE92CD /* VYTintedImageTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VYTintedImageTableViewCell.h; path = Views/VYTintedImageTableViewCell.h; sourceTree = SOURCE_ROOT; };
 		837904E918CCE25E00EE92CD /* VYTintedImageTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VYTintedImageTableViewCell.m; path = Views/VYTintedImageTableViewCell.m; sourceTree = SOURCE_ROOT; };
+		837904EC18CCECB200EE92CD /* UIColor+VineyardColours.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIColor+VineyardColours.h"; path = "Categories/UIColor+VineyardColours.h"; sourceTree = SOURCE_ROOT; };
+		837904ED18CCECB200EE92CD /* UIColor+VineyardColours.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIColor+VineyardColours.m"; path = "Categories/UIColor+VineyardColours.m"; sourceTree = SOURCE_ROOT; };
 		837E8B7A174BE5BD0051F1A0 /* ModalCollectionDeleteView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ModalCollectionDeleteView.h; path = Views/ModalCollectionDeleteView.h; sourceTree = SOURCE_ROOT; };
 		837E8B7B174BE5BD0051F1A0 /* ModalCollectionDeleteView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ModalCollectionDeleteView.m; path = Views/ModalCollectionDeleteView.m; sourceTree = SOURCE_ROOT; };
 		8384626B16C0730B002C47C2 /* VintageTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VintageTableViewController.h; path = Controllers/VintageTableViewController.h; sourceTree = SOURCE_ROOT; };
@@ -225,8 +227,6 @@
 		83E79DB71677AA1400E0E42D /* UIView+ObjectTagAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+ObjectTagAdditions.h"; path = "Categories/UIView+ObjectTagAdditions.h"; sourceTree = SOURCE_ROOT; };
 		83E79DB81677AA1400E0E42D /* UIImage+Scale.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Scale.m"; path = "Categories/UIImage+Scale.m"; sourceTree = SOURCE_ROOT; };
 		83E79DB91677AA1400E0E42D /* UIImage+Scale.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+Scale.h"; path = "Categories/UIImage+Scale.h"; sourceTree = SOURCE_ROOT; };
-		83E79DBA1677AA1400E0E42D /* UIColor+CellarColours.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIColor+CellarColours.m"; path = "Categories/UIColor+CellarColours.m"; sourceTree = SOURCE_ROOT; };
-		83E79DBB1677AA1400E0E42D /* UIColor+CellarColours.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIColor+CellarColours.h"; path = "Categories/UIColor+CellarColours.h"; sourceTree = SOURCE_ROOT; };
 		83E79DC31677AA2600E0E42D /* SettingsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingsCell.m; path = Views/SettingsCell.m; sourceTree = SOURCE_ROOT; };
 		83E79DC41677AA2600E0E42D /* SettingsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SettingsCell.h; path = Views/SettingsCell.h; sourceTree = SOURCE_ROOT; };
 		83E79DC51677AA2600E0E42D /* CellarTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CellarTableViewCell.m; path = Views/CellarTableViewCell.m; sourceTree = SOURCE_ROOT; };
@@ -419,9 +419,19 @@
 			name = BrowseTableViewControllers;
 			sourceTree = "<group>";
 		};
+		837904EB18CCEC5000EE92CD /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				837904EC18CCECB200EE92CD /* UIColor+VineyardColours.h */,
+				837904ED18CCECB200EE92CD /* UIColor+VineyardColours.m */,
+			);
+			name = Categories;
+			sourceTree = "<group>";
+		};
 		8386B59A176A2405002AF30C /* Vineyard */ = {
 			isa = PBXGroup;
 			children = (
+				837904EB18CCEC5000EE92CD /* Categories */,
 				8349B83618C79FCB00B26F30 /* 3rd party */,
 				83C4EEAD17F08F9100ABC91D /* Vineyard-Prefix.pch */,
 				83358FF7164B133B00FEA5C9 /* Resources */,
@@ -430,22 +440,12 @@
 				83E79DEF1677AA9C00E0E42D /* AppDelegate.h */,
 				83E79DEE1677AA9C00E0E42D /* AppDelegate.m */,
 				8361EE281677B4B50057E04B /* main.m */,
-				8386B59B176A24CC002AF30C /* Categories */,
 				83AF98211649C2170030C08C /* Models */,
 				833591E0164B143F00FEA5C9 /* Services */,
 				8361EE601677B55B0057E04B /* Vineyard.xcdatamodeld */,
 			);
 			name = Vineyard;
 			path = Cellar;
-			sourceTree = "<group>";
-		};
-		8386B59B176A24CC002AF30C /* Categories */ = {
-			isa = PBXGroup;
-			children = (
-				83E79DBA1677AA1400E0E42D /* UIColor+CellarColours.m */,
-				83E79DBB1677AA1400E0E42D /* UIColor+CellarColours.h */,
-			);
-			name = Categories;
 			sourceTree = "<group>";
 		};
 		8386B59C176A24F9002AF30C /* Controllers */ = {
@@ -799,13 +799,13 @@
 				8364970417F6048000013463 /* TemperatureRange.m in Sources */,
 				8364970317F6045D00013463 /* InitialDataImportService.m in Sources */,
 				83617B34176A7447009E900E /* VYAddEditWineViewController.m in Sources */,
-				8386B5A9176A2C12002AF30C /* UIColor+CellarColours.m in Sources */,
 				8386B5A6176A29B5002AF30C /* VYAbstractTableViewController.m in Sources */,
 				837904EA18CCE25E00EE92CD /* VYTintedImageTableViewCell.m in Sources */,
 				8364970817F60CA300013463 /* VYRegionTableViewController.m in Sources */,
 				83A42AE317F826B60067ECF0 /* VYIndexPathButton.m in Sources */,
 				8360EE251804955E00AFEDE3 /* VYVarietalsTableViewController.m in Sources */,
 				8386B5A8176A29B5002AF30C /* VYWineTableViewController.m in Sources */,
+				837904EE18CCECB200EE92CD /* UIColor+VineyardColours.m in Sources */,
 				83E79D9E1677AA0300E0E42D /* Wine.m in Sources */,
 				83E79D9F1677AA0300E0E42D /* _Wine.m in Sources */,
 				83E79DA01677AA0300E0E42D /* _GrapeType.m in Sources */,
