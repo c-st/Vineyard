@@ -10,5 +10,5 @@ target "Vineyard" do
 	pod 'SwipeView'
 	#pod 'EDStarRating'
 	pod 'UIImage-Categories', :git => 'git://github.com/fastred/UIImage-Categories'
-	
+	pod 'UIImage+RTTint'
 end
