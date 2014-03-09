@@ -13,7 +13,6 @@
     return self;
 }
 
-
 - (void)viewDidLoad {
     [super viewDidLoad];
 	// display all wines if no results controller is set yet
@@ -23,6 +22,7 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
 	[self updateAndRefetch];
 }
 

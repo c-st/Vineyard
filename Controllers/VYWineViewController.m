@@ -28,17 +28,12 @@
 
 // update view from potential wine edit
 - (void) viewWillAppear:(BOOL)animated {
+    
+    [[self navigationItem] setTitle:[[self wine] name]];
+    
 	[super viewWillAppear:animated];
-	
-	// set custom navigation item
-	[[self navigationItem] setTitle:[[self wine] name]];
-	CGRect frame = CGRectMake(0, 0, 0, 44);
-	UILabel *label = [[UILabel alloc] initWithFrame:frame];
-	[label setTextAlignment:NSTextAlignmentCenter];
-	[label setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:22.0f]];
-    label.text = self.navigationItem.title;
-	[[self navigationItem] setTitleView:label];
-	
+
+    
 	// stars
 	[self.starRatingControl setBackgroundColor:[UIColor whiteColor]];
 	[self.starRatingControl setMaxRating:5];

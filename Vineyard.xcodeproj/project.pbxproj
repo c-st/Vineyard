@@ -32,6 +32,8 @@
 		8374B9B018C36FDC00B6BAFF /* VYRoundedImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8374B9AF18C36FDC00B6BAFF /* VYRoundedImageView.m */; };
 		837904EA18CCE25E00EE92CD /* VYTintedImageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 837904E918CCE25E00EE92CD /* VYTintedImageTableViewCell.m */; };
 		837904EE18CCECB200EE92CD /* UIColor+VineyardColours.m in Sources */ = {isa = PBXBuildFile; fileRef = 837904ED18CCECB200EE92CD /* UIColor+VineyardColours.m */; };
+		837904F318CCF8F000EE92CD /* VYViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 837904F218CCF8F000EE92CD /* VYViewController.m */; };
+		837904F718CCFA6C00EE92CD /* VYTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 837904F618CCFA6C00EE92CD /* VYTableViewController.m */; };
 		8386B5A6176A29B5002AF30C /* VYAbstractTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8386B59F176A257D002AF30C /* VYAbstractTableViewController.m */; };
 		8386B5A8176A29B5002AF30C /* VYWineTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8386B5A4176A2646002AF30C /* VYWineTableViewController.m */; };
 		8386B5AB176A3384002AF30C /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 83FB89DF1768E5F100C00757 /* Media.xcassets */; };
@@ -133,6 +135,10 @@
 		837904E918CCE25E00EE92CD /* VYTintedImageTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VYTintedImageTableViewCell.m; path = Views/VYTintedImageTableViewCell.m; sourceTree = SOURCE_ROOT; };
 		837904EC18CCECB200EE92CD /* UIColor+VineyardColours.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIColor+VineyardColours.h"; path = "Categories/UIColor+VineyardColours.h"; sourceTree = SOURCE_ROOT; };
 		837904ED18CCECB200EE92CD /* UIColor+VineyardColours.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIColor+VineyardColours.m"; path = "Categories/UIColor+VineyardColours.m"; sourceTree = SOURCE_ROOT; };
+		837904F118CCF8F000EE92CD /* VYViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VYViewController.h; path = Controllers/VYViewController.h; sourceTree = SOURCE_ROOT; };
+		837904F218CCF8F000EE92CD /* VYViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VYViewController.m; path = Controllers/VYViewController.m; sourceTree = SOURCE_ROOT; };
+		837904F518CCFA6C00EE92CD /* VYTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VYTableViewController.h; path = Controllers/VYTableViewController.h; sourceTree = SOURCE_ROOT; };
+		837904F618CCFA6C00EE92CD /* VYTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VYTableViewController.m; path = Controllers/VYTableViewController.m; sourceTree = SOURCE_ROOT; };
 		837E8B7A174BE5BD0051F1A0 /* ModalCollectionDeleteView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ModalCollectionDeleteView.h; path = Views/ModalCollectionDeleteView.h; sourceTree = SOURCE_ROOT; };
 		837E8B7B174BE5BD0051F1A0 /* ModalCollectionDeleteView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ModalCollectionDeleteView.m; path = Views/ModalCollectionDeleteView.m; sourceTree = SOURCE_ROOT; };
 		8384626B16C0730B002C47C2 /* VintageTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VintageTableViewController.h; path = Controllers/VintageTableViewController.h; sourceTree = SOURCE_ROOT; };
@@ -428,6 +434,19 @@
 			name = Categories;
 			sourceTree = "<group>";
 		};
+		837904F418CCFA3400EE92CD /* Custom Superclasses */ = {
+			isa = PBXGroup;
+			children = (
+				837904F118CCF8F000EE92CD /* VYViewController.h */,
+				837904F218CCF8F000EE92CD /* VYViewController.m */,
+				837904F518CCFA6C00EE92CD /* VYTableViewController.h */,
+				837904F618CCFA6C00EE92CD /* VYTableViewController.m */,
+				8386B59E176A257D002AF30C /* VYAbstractTableViewController.h */,
+				8386B59F176A257D002AF30C /* VYAbstractTableViewController.m */,
+			);
+			name = "Custom Superclasses";
+			sourceTree = "<group>";
+		};
 		8386B59A176A2405002AF30C /* Vineyard */ = {
 			isa = PBXGroup;
 			children = (
@@ -451,9 +470,8 @@
 		8386B59C176A24F9002AF30C /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				837904F418CCFA3400EE92CD /* Custom Superclasses */,
 				836496FF17F600DD00013463 /* BrowseTableViewControllers */,
-				8386B59E176A257D002AF30C /* VYAbstractTableViewController.h */,
-				8386B59F176A257D002AF30C /* VYAbstractTableViewController.m */,
 				8386B5A3176A2646002AF30C /* VYWineTableViewController.h */,
 				8386B5A4176A2646002AF30C /* VYWineTableViewController.m */,
 				83617B31176A7362009E900E /* VYAddEditWineViewController.h */,
@@ -825,6 +843,7 @@
 				83E79DAC1677AA0300E0E42D /* _Appellation.m in Sources */,
 				8364970217F6010E00013463 /* VYCountryTableViewController.m in Sources */,
 				83E79DAD1677AA0300E0E42D /* _Location.m in Sources */,
+				837904F318CCF8F000EE92CD /* VYViewController.m in Sources */,
 				83E79DAE1677AA0300E0E42D /* _Winery.m in Sources */,
 				83E79DAF1677AA0300E0E42D /* Appellation.m in Sources */,
 				83E79DB01677AA0300E0E42D /* Location.m in Sources */,
@@ -834,6 +853,7 @@
 				83E79DF01677AA9C00E0E42D /* AppDelegate.m in Sources */,
 				8361EE291677B4B50057E04B /* main.m in Sources */,
 				8329FE7317F0D580008AD86F /* VYWineViewController.m in Sources */,
+				837904F718CCFA6C00EE92CD /* VYTableViewController.m in Sources */,
 				8361EE621677B55B0057E04B /* Vineyard.xcdatamodeld in Sources */,
 				83AB990916A322C30095A63B /* _Characteristics.m in Sources */,
 				83AB990A16A322C30095A63B /* Characteristics.m in Sources */,

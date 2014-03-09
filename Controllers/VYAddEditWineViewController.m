@@ -38,15 +38,13 @@
     return self;
 }
 
-
 - (void) setWineForEditing:(Wine *)theWine {
 	[self setWine:theWine];
 	[self setNewWine:NO];
 }
 
-
 - (void)viewDidLoad {
-    //[super viewDidLoad];
+    [super viewDidLoad];
 	if ([self newWine]) {
 		[[self navigationItem] setTitle:@"New wine"];
 		[self setWine:[Wine createEntity]];
@@ -147,7 +145,7 @@
 }
 
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
-	return [NSString stringWithFormat:@"%li", [self getCurrentYear] - row];
+	return [NSString stringWithFormat:@"%zd", [self getCurrentYear] - row];
 }
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {

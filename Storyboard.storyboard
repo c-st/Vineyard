@@ -8,7 +8,7 @@
         <!--Table View Controller - Browse-->
         <scene sceneID="7Uh-kJ-5C7">
             <objects>
-                <tableViewController title="Browse" extendedLayoutIncludesOpaqueBars="YES" id="Erm-AD-W1t" sceneMemberID="viewController">
+                <tableViewController title="Browse" extendedLayoutIncludesOpaqueBars="YES" id="Erm-AD-W1t" customClass="VYTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="none" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="dEb-LM-jVd">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -373,7 +373,7 @@
         <!--Wine Table View Controller - Wines-->
         <scene sceneID="Uh0-zX-SXg">
             <objects>
-                <tableViewController extendedLayoutIncludesOpaqueBars="YES" id="NGD-fY-0LX" customClass="VYWineTableViewController" sceneMemberID="viewController">
+                <tableViewController extendedLayoutIncludesOpaqueBars="YES" clearsSelectionOnViewWillAppear="NO" id="NGD-fY-0LX" customClass="VYWineTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="90" sectionHeaderHeight="22" sectionFooterHeight="22" id="dLg-X0-Q0i">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -904,12 +904,12 @@
             </objects>
             <point key="canvasLocation" x="-652" y="-3855"/>
         </scene>
-        <!--Navigation Controller - Wines-->
+        <!--Navigation Controller - Wines- -->
         <scene sceneID="2Jn-s6-Cz1">
             <objects>
                 <navigationController definesPresentationContext="YES" id="xnI-lF-tcR" sceneMemberID="viewController">
                     <extendedEdge key="edgesForExtendedLayout" top="YES"/>
-                    <tabBarItem key="tabBarItem" title="Wines" image="food_wine_bottle_glass" id="unt-II-NMu"/>
+                    <tabBarItem key="tabBarItem" title="Wines-" image="food_wine_bottle_glass" id="unt-II-NMu"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="eJq-l0-NFw">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

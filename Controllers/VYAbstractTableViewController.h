@@ -7,10 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "VYTableViewController.h"
 #import "Wine.h"
 
-@interface VYAbstractTableViewController : UITableViewController<NSFetchedResultsControllerDelegate>
+@interface VYAbstractTableViewController : VYTableViewController<NSFetchedResultsControllerDelegate>
 
 @property (nonatomic, retain) NSFetchedResultsController *fetchedResultsController;
 

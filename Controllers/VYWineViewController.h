@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
+#import "VYViewController.h"
 #import "MKMapView+ZoomLevel.h"
 #import "SwipeView.h"
 #import "EDStarRating.h"
@@ -17,7 +18,7 @@
 #import "Location.h"
 
 
-@interface VYWineViewController : UIViewController <UIScrollViewDelegate, VYScrollViewDelegate, SwipeViewDelegate, SwipeViewDataSource>
+@interface VYWineViewController : VYViewController <UIScrollViewDelegate, VYScrollViewDelegate, SwipeViewDelegate, SwipeViewDataSource>
 
 @property (nonatomic) Wine* wine;
 

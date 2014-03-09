@@ -22,7 +22,7 @@
 #import "GrapeType.h"
 #import "Varietal.h"
 
-@interface VYAddEditWineViewController : UITableViewController <CLLocationManagerDelegate, EDStarRatingProtocol, UIPickerViewDataSource, UIPickerViewDelegate, UITextViewDelegate> {
+@interface VYAddEditWineViewController : VYTableViewController <CLLocationManagerDelegate, EDStarRatingProtocol, UIPickerViewDataSource, UIPickerViewDelegate, UITextViewDelegate> {
 	BOOL _vintageRowVisible;
 	
 }
