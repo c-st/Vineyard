@@ -42,7 +42,9 @@
 	} completion:^(BOOL success, NSError *error) {
 		NSLog(@"finished importing.");
 	}];
-	
+    
+    // workaround for non-working tint colour
+    [self.window setTintColor:[UIColor colorWithRed:0.773 green:0.192 blue:0.416 alpha:1.000]];
 	
 	return YES;
     
