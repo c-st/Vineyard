@@ -22,6 +22,8 @@
 
 #import <Crashlytics/Crashlytics.h>
 
+static NSString * const kVineyardStoreName = @"Vineyard.sqlite";
+
 @implementation AppDelegate
 
 @synthesize managedObjectContext = _managedObjectContext;
@@ -31,7 +33,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Setup MagicalRecord
-    [MagicalRecord setupCoreDataStack];
+    [MagicalRecord setupCoreDataStackWithStoreNamed:kVineyardStoreName];
 	
 	[Crashlytics startWithAPIKey:@"c37d25484429789917901b68f8c6c123a6b540e5"];
 	
@@ -49,92 +51,6 @@
     [self.window setTintColor:[UIColor vineyardRed]];
 	
 	return YES;
-    
-    //[InitialDataImportService clearStore];
-	
-	// Build tab view controllers
-	// Wines (Paperfold)
-	
-	//[wineTVC.view setTintColor:[UIColor cellarWineRedColour]];
-	
-	// Wine
-	/*
-	VYWineTableViewController *wineTVC = [[VYWineTableViewController alloc] init];
-	[wineTVC setTitle:@"Wines"];
-	UINavigationController *wineNavController = [[UINavigationController alloc] initWithRootViewController:wineTVC];
-	[wineNavController setTabBarItem:[[UITabBarItem alloc] initWithTitle:@"Wines" image:[UIImage imageNamed:@"food_wine_bottle_glass.png"] tag:0]];
-	
-	// Browse
-	VYWineTableViewController *browseTVC = [[VYWineTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
-	[browseTVC setTitle:@"Browse"];
-	UINavigationController *browseNavController = [[UINavigationController alloc] initWithRootViewController:browseTVC];
-	[browseNavController setTabBarItem:[[UITabBarItem alloc] initWithTitle:@"Browse" image:[UIImage imageNamed:@"browse.png"] tag:0]];
-	
-	
-	// Collections
-	VYWineTableViewController *collectionsTVC = [[VYWineTableViewController alloc] init];
-	[collectionsTVC setTitle:@"Collections"];
-	UINavigationController *collectionsNavController = [[UINavigationController alloc] initWithRootViewController:collectionsTVC];
-	[collectionsNavController setTabBarItem:[[UITabBarItem alloc] initWithTitle:@"Collections" image:[UIImage imageNamed:@"box.png"] tag:0]];
-	*/
-	
-	
-	// ?
-	/*
-	// Browse (Paperfold)
-	BrowseTableViewController *browseTVC = [[BrowseTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
-	[browseTVC setTitle:@"Browse"];
-	[browseTVC setShowCount:NO];
-	[browseTVC setShowPieChart:NO];
-	PaperFoldNavigationController *browsePaperFoldNC = [self createPaperFoldNavControllerForRootViewController:browseTVC
-																								 andTabBarItem:[[UITabBarItem alloc] initWithTitle:@"Browse" image:[UIImage imageNamed:@"browse.png"] tag:0]];
-	
-	// Collections
-	// NSFetchedResultsController *collectionsFRC = [Collection fetchAllSortedBy:@"name" ascending:YES withPredicate:nil groupBy:nil delegate:nil];
-	CollectionTableViewController *collectionsTVC = [[CollectionTableViewController alloc] initWithFetchedResultsController:nil];
-	[collectionsTVC setTitle:@"Collections"];
-	[collectionsTVC setShowCount:YES];
-	[collectionsTVC setShowPieChart:NO];
-	PaperFoldNavigationController *collectionPaperFoldNC = [self createPaperFoldNavControllerForRootViewController:collectionsTVC
-																									 andTabBarItem:[[UITabBarItem alloc] initWithTitle:@"Collections" image:[UIImage imageNamed:@"box.png"] tag:0]];
-	
-	// Countries // Food
-	NSFetchedResultsController *countriesFRC = [Country fetchAllSortedBy:@"name" ascending:YES withPredicate:nil groupBy:nil delegate:nil];
-	CountryTableViewController *countryTVC = [[CountryTableViewController alloc] initWithFetchedResultsController:countriesFRC];
-	[countryTVC setTitle:@"Food"];
-	[countryTVC setShowCount:YES];
-	[countryTVC setShowPieChart:YES];
-	countryTVC.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Food" image:[UIImage imageNamed:@"plate.png"] tag:0];
-    UINavigationController *countryNavController = [[UINavigationController alloc] initWithRootViewController:countryTVC];
-	
-
-	*/
-	/*
-	UITabBarController *tab = [[UITabBarController alloc] init];
-	[tab.view setTintColor:[UIColor cellarWineRedColour]];
-	[tab setViewControllers:@[wineNavController, browseNavController, collectionsNavController]];
-	
-	
-	[self.window setTintColor:[UIColor cellarWineRedColour]];
-    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    //[self.window setBackgroundColor:[UIColor blackColor]];
-    [self.window addSubview:tab.view];
-    self.window.rootViewController = tab;
-    [self.window makeKeyAndVisible];
-	*/
-	
-	// initial data import
-	/*
-	MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:tab.view animated:YES];
-	hud.mode = MBProgressHUDModeIndeterminate;
-	hud.labelText = @"Importing some data...";
-	[MagicalRecord saveWithBlock:^(NSManagedObjectContext *localContext) {
-		// Import sample data
-		[InitialDataImportService importInitialDataFromJson:localContext];
-	} completion:^(BOOL success, NSError *error) {
-		[MBProgressHUD hideHUDForView:tab.view animated:YES];
-	}];
-	 */
 }
 
 
