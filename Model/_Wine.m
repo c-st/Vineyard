@@ -23,6 +23,7 @@ const struct WineRelationships WineRelationships = {
 	.country = @"country",
 	.location = @"location",
 	.servingTemperature = @"servingTemperature",
+	.tags = @"tags",
 	.varietals = @"varietals",
 	.winery = @"winery",
 };
@@ -257,6 +258,19 @@ const struct WineFetchedProperties WineFetchedProperties = {
 
 @dynamic servingTemperature;
 
+	
+
+@dynamic tags;
+
+	
+- (NSMutableSet*)tagsSet {
+	[self willAccessValueForKey:@"tags"];
+  
+	NSMutableSet *result = (NSMutableSet*)[self mutableSetValueForKey:@"tags"];
+  
+	[self didAccessValueForKey:@"tags"];
+	return result;
+}
 	
 
 @dynamic varietals;

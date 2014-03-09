@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="5059" systemVersion="13D12" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="Appellation" representedClassName="Appellation" syncable="YES">
-        <attribute name="appellationID" attributeType="String" syncable="YES"/>
+        <attribute name="appellationID" attributeType="String" indexed="YES" syncable="YES"/>
         <attribute name="name" attributeType="String" syncable="YES"/>
         <relationship name="classification" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Classification" inverseName="appellations" inverseEntity="Classification" syncable="YES"/>
         <relationship name="region" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Region" inverseName="appellations" inverseEntity="Region" syncable="YES"/>
@@ -16,7 +16,7 @@
         <relationship name="wine" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Wine" inverseName="characteristics" inverseEntity="Wine" syncable="YES"/>
     </entity>
     <entity name="Classification" representedClassName="Classification" syncable="YES">
-        <attribute name="classificationID" attributeType="String" syncable="YES"/>
+        <attribute name="classificationID" attributeType="String" indexed="YES" syncable="YES"/>
         <attribute name="name" attributeType="String" syncable="YES"/>
         <attribute name="qualityRating" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <relationship name="appellations" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Appellation" inverseName="classification" inverseEntity="Appellation" syncable="YES"/>
@@ -28,7 +28,7 @@
     </entity>
     <entity name="Country" representedClassName="Country" syncable="YES">
         <attribute name="countryID" attributeType="String" syncable="YES"/>
-        <attribute name="isoCode" attributeType="String" syncable="YES"/>
+        <attribute name="isoCode" attributeType="String" indexed="YES" syncable="YES"/>
         <attribute name="name" attributeType="String" syncable="YES"/>
         <relationship name="classifications" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Classification" inverseName="country" inverseEntity="Classification" syncable="YES"/>
         <relationship name="indications" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Indication" inverseName="country" inverseEntity="Indication" syncable="YES"/>
@@ -40,19 +40,19 @@
         <relationship name="wines" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Wine" inverseName="country" inverseEntity="Wine" syncable="YES"/>
     </entity>
     <entity name="Food" representedClassName="Food" syncable="YES">
-        <attribute name="foodId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="foodId" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="varietals" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Varietal" inverseName="matchingFood" inverseEntity="Varietal" syncable="YES"/>
     </entity>
     <entity name="GrapeType" representedClassName="GrapeType" syncable="YES">
-        <attribute name="grapeTypeID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="grapeTypeID" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="defaultTemperatureRange" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="TemperatureRange" inverseName="grape" inverseEntity="TemperatureRange" syncable="YES"/>
         <relationship name="varietals" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Varietal" inverseName="grapeType" inverseEntity="Varietal" syncable="YES"/>
         <relationship name="wines" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Wine" inverseName="colour" inverseEntity="Wine" syncable="YES"/>
     </entity>
     <entity name="Indication" representedClassName="Indication" syncable="YES">
-        <attribute name="indicationID" attributeType="String" syncable="YES"/>
+        <attribute name="indicationID" attributeType="String" indexed="YES" syncable="YES"/>
         <attribute name="name" attributeType="String" syncable="YES"/>
         <attribute name="qualityRating" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="type" attributeType="String" syncable="YES"/>
@@ -66,7 +66,7 @@
     </entity>
     <entity name="Region" representedClassName="Region" syncable="YES">
         <attribute name="name" attributeType="String" syncable="YES"/>
-        <attribute name="regionID" attributeType="String" syncable="YES">
+        <attribute name="regionID" attributeType="String" indexed="YES" syncable="YES">
             <userInfo>
                 <entry key="mappedKeyName" value="regionID"/>
             </userInfo>
@@ -79,6 +79,10 @@
         </relationship>
         <relationship name="location" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Location" inverseName="region" inverseEntity="Location" syncable="YES"/>
         <relationship name="wineries" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Winery" inverseName="region" inverseEntity="Winery" syncable="YES"/>
+    </entity>
+    <entity name="Tag" representedClassName="Tag" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
+        <relationship name="wines" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Wine" inverseName="tags" inverseEntity="Wine" syncable="YES"/>
     </entity>
     <entity name="TemperatureRange" representedClassName="TemperatureRange" syncable="YES">
         <attribute name="temperatureFrom" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
@@ -114,6 +118,7 @@
         <relationship name="country" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Country" inverseName="wines" inverseEntity="Country" syncable="YES"/>
         <relationship name="location" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Location" inverseName="wines" inverseEntity="Location" syncable="YES"/>
         <relationship name="servingTemperature" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="TemperatureRange" inverseName="wine" inverseEntity="TemperatureRange" syncable="YES"/>
+        <relationship name="tags" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Tag" inverseName="wines" inverseEntity="Tag" syncable="YES"/>
         <relationship name="varietals" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Varietal" inverseName="wines" inverseEntity="Varietal" syncable="YES"/>
         <relationship name="winery" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Winery" inverseName="wines" inverseEntity="Winery" syncable="YES"/>
     </entity>
@@ -135,7 +140,8 @@
         <element name="Region" positionX="-288" positionY="126" width="128" height="133"/>
         <element name="TemperatureRange" positionX="358" positionY="63" width="128" height="103"/>
         <element name="Varietal" positionX="331" positionY="338" width="128" height="118"/>
-        <element name="Wine" positionX="88" positionY="149" width="128" height="313"/>
+        <element name="Wine" positionX="88" positionY="149" width="128" height="328"/>
         <element name="Winery" positionX="-317" positionY="368" width="128" height="88"/>
+        <element name="Tag" positionX="-119" positionY="569" width="128" height="73"/>
     </elements>
 </model>
