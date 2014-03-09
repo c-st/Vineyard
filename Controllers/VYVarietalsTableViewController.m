@@ -22,9 +22,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 	
-	if (self.fetchedResultsController == nil) {
-		[self setFetchedResultsController:[Varietal fetchAllGroupedBy:@"grapeType" withPredicate:nil sortedBy:@"grapeType.name,name" ascending:YES]];
-	}
+    NSPredicate *searchPredicate = (self.inPickerMode) ? nil : [NSPredicate predicateWithFormat:@"wines.@count > 0"];
+        
+    [self setFetchedResultsController:[Varietal fetchAllGroupedBy:@"grapeType"
+                                                    withPredicate:searchPredicate
+                                                         sortedBy:@"grapeType.name,name"
+                                                        ascending:YES]];
 	
 	[[self fetchedResultsController] setDelegate:self];
 }
@@ -49,7 +52,7 @@
 	// set browse table view cell specifics
 	if ([cell isKindOfClass:[VYBrowseTableViewCell class]]) {
 		VYBrowseTableViewCell *browseCell = (VYBrowseTableViewCell *) cell;
-		[[browseCell wineCountButton] setTitle:[NSString stringWithFormat:@"%i", [Wine countOfEntitiesWithPredicate:[self buildCountPredicateForObject:varietal]]] forState:UIControlStateNormal];
+		[[browseCell wineCountButton] setTitle:[NSString stringWithFormat:@"%zd", [Wine countOfEntitiesWithPredicate:[self buildCountPredicateForObject:varietal]]] forState:UIControlStateNormal];
 		[[browseCell wineCountButton] setIndexPath:indexPath];
 		cell = browseCell;
 	}
