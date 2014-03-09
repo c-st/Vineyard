@@ -36,7 +36,7 @@
 	// set browse table view cell specifics
 	if ([cell isKindOfClass:[VYBrowseTableViewCell class]]) {
 		VYBrowseTableViewCell *browseCell = (VYBrowseTableViewCell *) cell;
-		[[browseCell wineCountButton] setTitle:[NSString stringWithFormat:@"%i", [Wine countOfEntitiesWithPredicate:[self buildCountPredicateForObject:region]]] forState:UIControlStateNormal];
+		[[browseCell wineCountButton] setTitle:[NSString stringWithFormat:@"%zd", [Wine countOfEntitiesWithPredicate:[self buildCountPredicateForObject:region]]] forState:UIControlStateNormal];
 		[[browseCell wineCountButton] setIndexPath:indexPath];
 		cell = browseCell;
 	}
@@ -62,9 +62,8 @@
 			NSLog(@"target is VYAppellationTableViewController");
 			VYAppellationTableViewController *appellationTableViewController = [segue destinationViewController];
 			
-			// find all regions from selected country
-			NSPredicate *searchStatement =
-			[NSPredicate predicateWithFormat:@"region.regionID == %@", region.regionID];
+			// find all appellations from selected region with more than 1 wine
+			NSPredicate *searchStatement = (self.inPickerMode) ? [NSPredicate predicateWithFormat:@"region.regionID == %@", region.regionID] : [NSPredicate predicateWithFormat:@"region.regionID == %@ AND wines.@count > 0", region.regionID];
 			
 			NSFetchedResultsController *appellationsController = [Appellation fetchAllSortedBy:@"name" ascending:YES withPredicate:searchStatement groupBy:nil delegate:self];
 			

@@ -19,8 +19,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-	[self setFetchedResultsController:
-	 [Country fetchAllSortedBy:@"name" ascending:YES withPredicate:nil groupBy:nil delegate:nil]];
+    
+    NSPredicate *searchPredicate = (self.inPickerMode) ? nil : [NSPredicate predicateWithFormat:@"wines.@count > 0"];
+    
+	[self setFetchedResultsController:[Country fetchAllSortedBy:@"name"
+                                                      ascending:YES
+                                                  withPredicate:searchPredicate
+                                                        groupBy:nil
+                                                       delegate:nil]];
+    
 	[[self fetchedResultsController] setDelegate:self];
 }
 
@@ -72,10 +79,16 @@
 	if (country != nil) {
 		if ([[segue destinationViewController] isKindOfClass:[VYRegionTableViewController class]]) {
 			VYRegionTableViewController *regionTableViewController = [segue destinationViewController];
-			// find all regions from selected country
-			NSPredicate *searchStatement =
-				[NSPredicate predicateWithFormat:@"country.countryID == %@", country.countryID];
-			NSFetchedResultsController *regionsController = [Region fetchAllSortedBy:@"name" ascending:YES withPredicate:searchStatement groupBy:nil delegate:regionTableViewController];
+            
+			// find all regions from selected country with at least 1 wine
+			NSPredicate *searchStatement = (self.inPickerMode) ? [NSPredicate predicateWithFormat:@"(country.countryID == %@)", country.countryID] : [NSPredicate predicateWithFormat:@"(country.countryID == %@) AND (SUBQUERY(appellations, $x, (SUBQUERY($x.wines, $y, $y.name!=nil).@count > 0)).@count > 0)", country.countryID];
+			
+            NSFetchedResultsController *regionsController = [Region fetchAllSortedBy:@"name"
+                                                                           ascending:YES
+                                                                       withPredicate:searchStatement
+                                                                             groupBy:nil
+                                                                            delegate:regionTableViewController];
+            
 			[regionTableViewController setFetchedResultsController:regionsController];
 			
 		} else if ([[segue destinationViewController] isKindOfClass:[VYAddEditWineViewController class]]) {

@@ -46,7 +46,7 @@
 	// set browse table view cell specifics
 	if ([cell isKindOfClass:[VYBrowseTableViewCell class]]) {
 		VYBrowseTableViewCell *browseCell = (VYBrowseTableViewCell *) cell;
-		[[browseCell wineCountButton] setTitle:[NSString stringWithFormat:@"%i", [Wine countOfEntitiesWithPredicate:[self buildCountPredicateForObject:appellation]]] forState:UIControlStateNormal];
+		[[browseCell wineCountButton] setTitle:[NSString stringWithFormat:@"%zd", [Wine countOfEntitiesWithPredicate:[self buildCountPredicateForObject:appellation]]] forState:UIControlStateNormal];
 		[[browseCell wineCountButton] setIndexPath:indexPath];
 		cell = browseCell;
 	}

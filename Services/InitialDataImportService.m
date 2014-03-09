@@ -31,6 +31,16 @@
     //NSLog(@"%@", data);
     id object;
 	
+	//[Country MR_importFromArray:data[@"countries"]];
+	//[Classification MR_importFromArray:data[@"classifications"]];
+	//[Indication MR_importFromArray:data[@"indications"]];
+	//[Region MR_importFromArray:data[@"regions"]];
+	//[Appellation MR_importFromArray:data[@"appellations"]];
+	//[GrapeType MR_importFromArray:data[@"grapeTypes"]];
+	// ranges
+	//[Varietal MR_importFromArray:data[@"varietals"]];
+	//[Location MR_importFromArray:data[@"regionLocations"]];
+	
 	// Country
 	if (![Country hasAtLeastOneEntity]) {
 		NSLog(@"Importing countries...");
