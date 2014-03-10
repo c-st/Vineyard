@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5051" systemVersion="13D12" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="zdi-Wi-pNR">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5053" systemVersion="13D12" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="zdi-Wi-pNR">
     <dependencies>
         <development version="5000" identifier="xcode"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
@@ -770,12 +770,18 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="169"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="347-Js-aq6">
-                                                    <rect key="frame" x="9" y="11" width="303" height="143"/>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="347-Js-aq6" customClass="RPFloatingPlaceholderTextView">
+                                                    <rect key="frame" x="9" y="20" width="303" height="143"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences" enablesReturnKeyAutomatically="YES"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Wine notes"/>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
+                                                            <color key="value" red="0.76470595600000002" green="0.20000001789999999" blue="0.4156863093" alpha="1" colorSpace="deviceRGB"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
                                                     <connections>
                                                         <outlet property="delegate" destination="3yX-Ha-EkY" id="lRr-54-bTA"/>
                                                     </connections>
@@ -904,12 +910,12 @@
             </objects>
             <point key="canvasLocation" x="-652" y="-3855"/>
         </scene>
-        <!--Navigation Controller - Wines- -->
+        <!--Navigation Controller - Wines-->
         <scene sceneID="2Jn-s6-Cz1">
             <objects>
                 <navigationController definesPresentationContext="YES" id="xnI-lF-tcR" sceneMemberID="viewController">
                     <extendedEdge key="edgesForExtendedLayout" top="YES"/>
-                    <tabBarItem key="tabBarItem" title="Wines-" image="food_wine_bottle_glass" id="unt-II-NMu"/>
+                    <tabBarItem key="tabBarItem" title="Wines" image="food_wine_bottle_glass" id="unt-II-NMu"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="eJq-l0-NFw">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1140,7 +1146,7 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="Jmw-vd-A0q"/>
         <segue reference="0KA-bR-Vj1"/>
+        <segue reference="pbj-fT-YB2"/>
     </inferredMetricsTieBreakers>
 </document>

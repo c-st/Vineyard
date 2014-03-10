@@ -11,4 +11,5 @@ target "Vineyard" do
 	#pod 'EDStarRating'
 	pod 'UIImage-Categories', :git => 'git://github.com/fastred/UIImage-Categories'
 	pod 'UIImage+RTTint'
+    pod 'RPFloatingPlaceholders'
 end
