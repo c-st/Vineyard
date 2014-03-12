@@ -122,8 +122,12 @@
 		return;
 	}
 	[self.wine extendWine];
-	[[NSManagedObjectContext defaultContext] saveToPersistentStoreAndWait];
-	[self dismissViewControllerAnimated:YES completion:nil];
+    
+    // save wine
+    [[NSManagedObjectContext defaultContext] saveToPersistentStoreWithCompletion:
+     ^(BOOL success, NSError *error) {
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }];
 }
 
 #pragma mark
