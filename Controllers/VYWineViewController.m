@@ -19,6 +19,8 @@
 @implementation VYWineViewController
 
 - (void)viewDidLoad {
+    [[self navigationItem] setTitle:[[self wine] name]];
+    
     [super viewDidLoad];
 	//NSLog(@"self wine: %@", [self wine]);
 
@@ -28,11 +30,7 @@
 
 // update view from potential wine edit
 - (void) viewWillAppear:(BOOL)animated {
-    
-    [[self navigationItem] setTitle:[[self wine] name]];
-    
 	[super viewWillAppear:animated];
-
     
 	// stars
 	[self.starRatingControl setBackgroundColor:[UIColor whiteColor]];
