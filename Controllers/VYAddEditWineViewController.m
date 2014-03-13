@@ -21,6 +21,12 @@
 @property (weak, nonatomic) IBOutlet UITextField *vintageTextField;
 @property (weak, nonatomic) IBOutlet UITextView *notesTextView;
 
+@property (weak, nonatomic) IBOutlet UISlider *alcoholSlider;
+@property (weak, nonatomic) IBOutlet NMRangeSlider *temperatureRangeSlider;
+@property (weak, nonatomic) IBOutlet UITextField *alcoholValueTextField;
+@property (weak, nonatomic) IBOutlet UITextField *temperatureRangeTextField;
+
+
 
 @property (nonatomic, strong) CLLocationManager *locationManager;
 @end
@@ -74,7 +80,14 @@
 	[self.varietalTextField setText:[self.wine varietalsString]];
 	[self.notesTextView setText:[self.wine notes]];
 	[self.wineImageView setImage:[UIImage imageWithData:[self.wine image]]];
-	
+    
+    if ([self.wine alcoholContent] != nil) {
+        [self.alcoholSlider setValue:[self.wine alcoholContentValue]];
+        [self alcoholValueChanged:self.alcoholSlider];
+    }
+
+    // alcohol, temperature range
+    
 	// vintage picker
 	if ([self.wine vintage] != nil) {
 		NSInteger *vintageRow = [self getCurrentYear] - [self.wine vintageValue];
@@ -168,6 +181,21 @@
 
 - (void)textViewDidEndEditing:(UITextView *)textView {
 	[self.wine setNotes:[textView text]];
+}
+
+
+#pragma mark
+#pragma mark Slider event handling
+
+- (IBAction)alcoholValueChanged:(UISlider *)slider {
+    [slider setValue:roundf(slider.value * 2.0) / 2 animated:NO];
+    [self.alcoholValueTextField setText:[NSString stringWithFormat:@"%.1f vol.", [slider value]]];
+    [self.wine setAlcoholContentValue:[slider value]];
+}
+
+
+- (IBAction)temperatureRangeValueChanged:(NMRangeSlider *)slider {
+    NSLog(@"min %f max %f", [slider lowerValue], [slider upperValue]);
 }
 
 

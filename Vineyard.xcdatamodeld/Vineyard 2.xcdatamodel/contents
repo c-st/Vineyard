@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="5059" systemVersion="13D12" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="5063" systemVersion="13D12" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="Appellation" representedClassName="Appellation" syncable="YES">
         <attribute name="appellationID" attributeType="String" indexed="YES" syncable="YES"/>
         <attribute name="name" attributeType="String" syncable="YES"/>
@@ -85,8 +85,8 @@
         <relationship name="wines" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Wine" inverseName="tags" inverseEntity="Wine" syncable="YES"/>
     </entity>
     <entity name="TemperatureRange" representedClassName="TemperatureRange" syncable="YES">
-        <attribute name="temperatureFrom" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="temperatureTo" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="temperatureFrom" optional="YES" attributeType="Float" syncable="YES"/>
+        <attribute name="temperatureTo" optional="YES" attributeType="Float" syncable="YES"/>
         <relationship name="grape" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="GrapeType" inverseName="defaultTemperatureRange" inverseEntity="GrapeType" syncable="YES"/>
         <relationship name="wine" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Wine" inverseName="servingTemperature" inverseEntity="Wine" syncable="YES"/>
     </entity>
@@ -102,7 +102,7 @@
         <relationship name="wines" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Wine" inverseName="varietals" inverseEntity="Wine" syncable="YES"/>
     </entity>
     <entity name="Wine" representedClassName="Wine" syncable="YES">
-        <attribute name="alcoholContent" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="alcoholContent" optional="YES" attributeType="Double" syncable="YES"/>
         <attribute name="creationTime" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="image" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
         <attribute name="imageThumbnail" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
@@ -138,10 +138,10 @@
         <element name="Indication" positionX="-47" positionY="-99" width="128" height="118"/>
         <element name="Location" positionX="-569" positionY="29" width="128" height="103"/>
         <element name="Region" positionX="-288" positionY="126" width="128" height="133"/>
+        <element name="Tag" positionX="-119" positionY="569" width="128" height="73"/>
         <element name="TemperatureRange" positionX="358" positionY="63" width="128" height="103"/>
         <element name="Varietal" positionX="331" positionY="338" width="128" height="118"/>
         <element name="Wine" positionX="88" positionY="149" width="128" height="328"/>
         <element name="Winery" positionX="-317" positionY="368" width="128" height="88"/>
-        <element name="Tag" positionX="-119" positionY="569" width="128" height="73"/>
     </elements>
 </model>

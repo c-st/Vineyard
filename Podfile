@@ -12,4 +12,5 @@ target "Vineyard" do
 	pod 'UIImage-Categories', :git => 'git://github.com/fastred/UIImage-Categories'
 	pod 'UIImage+RTTint'
     pod 'RPFloatingPlaceholders'
+    pod 'NMRangeSlider'
 end

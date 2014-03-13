@@ -14,6 +14,7 @@
 #import "VYVarietalsTableViewController.h"
 #import "VYTakePhotoViewController.h"
 #import "VYRoundedImageView.h"
+#import "NMRangeSlider.h"
 
 #import "Wine.h"
 #import "Appellation.h"

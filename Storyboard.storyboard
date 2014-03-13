@@ -832,10 +832,60 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
+                            <tableViewSection id="T79-ZV-s2o">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="bkK-vg-4zL">
+                                        <rect key="frame" x="0.0" y="748" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bkK-vg-4zL" id="B9B-vG-ghr">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="12" minValue="0.0" maxValue="25" translatesAutoresizingMaskIntoConstraints="NO" id="ShT-aH-UKy">
+                                                    <rect key="frame" x="118" y="7" width="184" height="31"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <connections>
+                                                        <action selector="alcoholValueChanged:" destination="3yX-Ha-EkY" eventType="valueChanged" id="qsa-WB-q20"/>
+                                                    </connections>
+                                                </slider>
+                                                <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Alcohol" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ttI-QH-n0G">
+                                                    <rect key="frame" x="20" y="10" width="110" height="23"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="words" enablesReturnKeyAutomatically="YES"/>
+                                                </textField>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="iLR-45-hhH">
+                                        <rect key="frame" x="0.0" y="792" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="iLR-45-hhH" id="j7c-Gq-Rvj">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Temperature" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0oN-sf-lQV">
+                                                    <rect key="frame" x="20" y="10" width="110" height="23"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="words" enablesReturnKeyAutomatically="YES"/>
+                                                </textField>
+                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="C4Z-pj-YWz" customClass="NMRangeSlider">
+                                                    <rect key="frame" x="116" y="11" width="184" height="22"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <connections>
+                                                        <action selector="temperatureRangeValueChanged:" destination="3yX-Ha-EkY" eventType="valueChanged" id="98a-rZ-oaX"/>
+                                                    </connections>
+                                                </view>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
                             <tableViewSection id="Rpy-tk-I3k">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="Cih-T1-Clb">
-                                        <rect key="frame" x="0.0" y="748" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="856" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Cih-T1-Clb" id="bB9-6o-3An">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -853,7 +903,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="170" id="DuW-jG-lO9">
-                                        <rect key="frame" x="0.0" y="792" width="320" height="170"/>
+                                        <rect key="frame" x="0.0" y="900" width="320" height="170"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="DuW-jG-lO9" id="5aw-1d-TWc">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="169"/>
@@ -895,12 +945,16 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="alcoholSlider" destination="ShT-aH-UKy" id="jqc-Zx-0ot"/>
+                        <outlet property="alcoholValueTextField" destination="ttI-QH-n0G" id="laV-0m-pxd"/>
                         <outlet property="appellationTextField" destination="kTk-Ku-PeB" id="6Dl-nA-ckr"/>
                         <outlet property="colourTextField" destination="QT4-q6-v1p" id="gGk-4N-Gyb"/>
                         <outlet property="countryTextField" destination="VIx-oG-24Y" id="XZL-44-HVP"/>
                         <outlet property="doneButton" destination="OZR-8K-hMo" id="jnD-nF-xBR"/>
                         <outlet property="nameTextField" destination="mlY-Fd-nNu" id="oU3-4R-FKu"/>
                         <outlet property="notesTextView" destination="347-Js-aq6" id="jix-NH-Emt"/>
+                        <outlet property="temperatureRangeSlider" destination="C4Z-pj-YWz" id="knA-eg-Ep5"/>
+                        <outlet property="temperatureRangeTextField" destination="0oN-sf-lQV" id="iPk-75-yyv"/>
                         <outlet property="varietalTextField" destination="dR2-9I-Grh" id="rJm-7F-odZ"/>
                         <outlet property="vintagePickerView" destination="xkZ-o1-EjR" id="SYW-7j-hjD"/>
                         <outlet property="vintageTextField" destination="sVv-Dd-flG" id="G3P-xZ-Pkz"/>
