@@ -197,7 +197,7 @@
 - (IBAction)alcoholValueChanged:(UISlider *)slider {
     [slider setValue:roundf(slider.value * 2.0)/2 animated:NO];
     
-    [self.alcoholValueTextField setText:[NSString stringWithFormat:@"%.1f vol.", [slider value]]];
+    [self.alcoholValueTextField setText:[NSString stringWithFormat:@"%.1f%% vol.", [slider value]]];
     [self.wine setAlcoholContentValue:[slider value]];
 }
 
