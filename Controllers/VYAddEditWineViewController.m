@@ -81,12 +81,19 @@
 	[self.notesTextView setText:[self.wine notes]];
 	[self.wineImageView setImage:[UIImage imageWithData:[self.wine image]]];
     
+    // alcohol slider
     if ([self.wine alcoholContent] != nil) {
         [self.alcoholSlider setValue:[self.wine alcoholContentValue]];
         [self alcoholValueChanged:self.alcoholSlider];
     }
 
-    // alcohol, temperature range
+    // temperature range
+    NSLog(@"%@", self.wine.servingTemperature);
+    if ([self.wine servingTemperature] != nil) {
+        [self.temperatureRangeSlider setLowerValue:[self.wine.servingTemperature temperatureFromValue]];
+        [self.temperatureRangeSlider setUpperValue:[self.wine.servingTemperature temperatureToValue]];
+        [self temperatureRangeValueChanged:self.temperatureRangeSlider];
+    }
     
 	// vintage picker
 	if ([self.wine vintage] != nil) {
@@ -188,14 +195,29 @@
 #pragma mark Slider event handling
 
 - (IBAction)alcoholValueChanged:(UISlider *)slider {
-    [slider setValue:roundf(slider.value * 2.0) / 2 animated:NO];
+    [slider setValue:roundf(slider.value * 2.0)/2 animated:NO];
+    
     [self.alcoholValueTextField setText:[NSString stringWithFormat:@"%.1f vol.", [slider value]]];
     [self.wine setAlcoholContentValue:[slider value]];
 }
 
 
 - (IBAction)temperatureRangeValueChanged:(NMRangeSlider *)slider {
-    NSLog(@"min %f max %f", [slider lowerValue], [slider upperValue]);
+    [slider setLowerValue:roundf(slider.lowerValue * 2.0)/2 animated:NO];
+    [slider setUpperValue:roundf(slider.upperValue * 2.0)/2 animated:NO];
+    
+    [self.temperatureRangeTextField setText:[NSString stringWithFormat:@"%.1f%@ - %.1f%@",
+                                             [slider lowerValue],
+                                             @"\u00B0",
+                                             [slider upperValue],
+                                             @"\u00B0"]];
+    
+    if (self.wine.servingTemperature == nil) {
+        TemperatureRange *range = [TemperatureRange createEntity];
+		[self.wine setServingTemperature:range];
+    }
+    [self.wine.servingTemperature setTemperatureFromValue:[slider lowerValue]];
+    [self.wine.servingTemperature setTemperatureToValue:[slider upperValue]];
 }
 
 

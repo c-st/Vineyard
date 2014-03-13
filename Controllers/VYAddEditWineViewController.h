@@ -22,6 +22,7 @@
 #import "Location.h"
 #import "GrapeType.h"
 #import "Varietal.h"
+#import "TemperatureRange.h"
 
 @interface VYAddEditWineViewController : VYTableViewController <CLLocationManagerDelegate, EDStarRatingProtocol, UIPickerViewDataSource, UIPickerViewDelegate, UITextViewDelegate> {
 	BOOL _vintageRowVisible;
