@@ -13,4 +13,5 @@ target "Vineyard" do
 	pod 'UIImage+RTTint'
     pod 'RPFloatingPlaceholders'
     pod 'NMRangeSlider'
+    pod 'TITokenField', :git => 'git://github.com/chris-stangier/TITokenField'
 end
