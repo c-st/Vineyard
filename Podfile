@@ -3,7 +3,7 @@ platform :ios, "7.0"
 
 
 target "Vineyard" do
-	pod 'ReactiveCocoa'
+	#pod 'ReactiveCocoa'
 	pod 'MagicalRecord/Shorthand'
 	pod 'MKMapView-ZoomLevel'
 	pod 'FXBlurView'
@@ -13,5 +13,5 @@ target "Vineyard" do
 	pod 'UIImage+RTTint'
     pod 'RPFloatingPlaceholders'
     pod 'NMRangeSlider'
-    pod 'TITokenField', :git => 'git://github.com/chris-stangier/TITokenField'
+    pod 'RMSTokenView', :git => 'git://github.com/chris-stangier/RMSTokenView'
 end
